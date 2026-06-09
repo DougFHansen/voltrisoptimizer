@@ -89,7 +89,7 @@ export default function VPNGuide() {
             content: `
         <p class="mb-4 text-gray-300">
             Always select the region WHERE THE GAME SERVER IS LOCATED.
-            <br/>If you play CS2 on an SP server, select "BR São Paulo."
+            <br/>If you play CS2 on an Eastern server, select "US East (New York)."
             <br/>If you play WoW on a US East server, select "US New York."
             <br/>Do not select the region where YOU live, but rather the destination. ExitLag will create the tunnel from your house to there.
         </p>

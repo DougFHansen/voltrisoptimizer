@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 import { generateSitemapUrls } from '@/lib/seo';
+import { regionsData } from '@/app/regions/data';
 
 /**
  * Helper to get real last modified date from file system.
@@ -132,23 +133,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // 2. Technical SEO - Regional Coverage (Dynamic Params)
-  // We explicitly include the 27 state capitals for maximum regional resonance
-  const regionalSlugs = [
-    'sao-paulo', 'rio-de-janeiro', 'belo-horizonte', 'curitiba',
-    'porto-alegre', 'salvador', 'brasilia', 'fortaleza',
-    'recife', 'goiania', 'florianopolis', 'manaus',
-    'belem', 'vitoria', 'campo-grande', 'cuiaba',
-    'sao-luis', 'natal', 'joao-pessoa', 'maceio',
-    'teresina', 'aracaju', 'palmas', 'rio-branco',
-    'porto-velho', 'boa-vista', 'macapa'
-  ];
-
-  const regionalRoutes = regionalSlugs.map(slug => ({
-    url: `${domain}/it-technician-in/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }));
+  const regionalRoutes = regionsData.flatMap(country => 
+    country.cities.map(city => ({
+      url: `${domain}/regions/${country.slug}/${city.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }))
+  );
 
   // Combine and deduplicate if necessary
   const combined = [...sitemapEntries, ...regionalRoutes];

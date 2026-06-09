@@ -232,7 +232,7 @@ export default function PoliticaPrivacidade() {
                 <ul className="space-y-2 text-slate-300 text-sm">
                   <li className="flex gap-2 items-center"><FaEnvelope /> contato@voltrisoptimizer.com</li>
                   <li className="flex gap-2 items-center"><FaPhone /> +55 (11) 99671-6235</li>
-                  <li className="flex gap-2 items-center"><FaMapMarkerAlt /> São Paulo, SP, Brazil</li>
+                  <li className="flex gap-2 items-center"><FaMapMarkerAlt /> Worldwide Remote Operations</li>
                 </ul>
               </section>
             </div>

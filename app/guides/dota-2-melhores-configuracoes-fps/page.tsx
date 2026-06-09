@@ -1,4 +1,4 @@
-﻿import { Metadata } from 'next';
+import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -198,7 +198,7 @@ export default function DotaGuide() {
         },
         {
             question: "Experiencing high packet loss?",
-            answer: "Check your server region. You can also try forcing a specific relay cluster using the command `sdr SDRClient_ForceRelayCluster gru` (to force the São Paulo route)."
+            answer: "Check your server region. You can also try forcing a specific relay cluster using the command `sdr SDRClient_ForceRelayCluster jfk` (to force the New York route)."
         }
     ];
 

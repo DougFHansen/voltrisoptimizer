@@ -167,7 +167,7 @@ export default function TermsOfUse() {
                 <h2 className="text-xl font-bold text-white mb-4 flex gap-3 items-center"><FaBalanceScale className="text-[#8B31FF]" /> 8. General Provisions</h2>
                 <ul className="space-y-2 text-slate-300 text-sm">
                   <li className="flex gap-2 items-center"><FaGavel /> Laws of Brazil</li>
-                  <li className="flex gap-2 items-center"><FaMapMarkerAlt /> Jurisdiction of São Paulo, SP</li>
+                  <li className="flex gap-2 items-center"><FaMapMarkerAlt /> Global Remote Service</li>
                   <li className="flex gap-2 items-center"><FaHandshake /> Tolerance is not a waiver</li>
                 </ul>
               </section>

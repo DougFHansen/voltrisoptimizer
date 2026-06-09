@@ -1,4 +1,4 @@
-﻿import { Metadata } from 'next';
+import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -35,7 +35,7 @@ export default function ExitLagReviewGuide() {
             title: "The Brazilian route dilemma in 2026",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          In 2026, having 1 Giga internet (1000 Mbps) doesn't guarantee a low ping. Download speed is like the width of a road, but **Ping** is the time the car takes to go and return. Many providers in Brazil use inefficient routes, sending your data from São Paulo to the US before it reaches the game server, which might even be in Rio de Janeiro. This is where **ExitLag** promises to act.
+          In 2026, having 1 Giga internet (1000 Mbps) doesn't guarantee a low ping. Download speed is like the width of a road, but **Ping** is the time the car takes to go and return. Many providers use inefficient routes, sending your data from New York to California before it reaches the game server, which might even be in London. This is where **ExitLag** promises to act.
         </p>
       `
         },
@@ -55,7 +55,7 @@ export default function ExitLagReviewGuide() {
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">The limit of physics:</h4>
             <p class="text-sm text-gray-300">
-                If you already live close to the game server (e.g., in São Paulo playing LoL) and your ping is already 5ms to 10ms, ExitLag **will not lower your ping**. It cannot make light travel faster than its physical limit. <br/><br/>
+                If you already live close to the game server (e.g., in New York playing on a US East server) and your ping is already 5ms to 10ms, ExitLag **will not lower your ping**. It cannot make light travel faster than its physical limit. <br/><br/>
                 It also won't solve lag if your internet is via unstable Wi-Fi or radio. The software optimizes the route from the street out, not the mess of cables inside your house in 2026.
             </p>
         </div>

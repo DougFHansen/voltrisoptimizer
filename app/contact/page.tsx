@@ -182,7 +182,7 @@ export default function ContatoPage() {
                     <MapPin className="w-6 h-6 text-[#FF4B6B] mt-1 shrink-0" />
                     <div>
                       <h4 className="text-white font-bold mb-1">Location</h4>
-                      <p className="text-slate-400">São Paulo, SP</p>
+                      <p className="text-slate-400">Worldwide Operations</p>
                       <p className="text-slate-500 text-sm mt-1">100% Remote service worldwide</p>
                     </div>
                   </div>

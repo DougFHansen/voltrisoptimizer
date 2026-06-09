@@ -10,73 +10,69 @@ import {
     BoltIcon,
     MapPinIcon,
     CheckBadgeIcon,
-    ChatBubbleLeftRightIcon,
-    ChevronDownIcon
+    GlobeAltIcon,
+    ChatBubbleLeftRightIcon
 } from '@heroicons/react/24/outline';
 import { Gamepad2, Wrench, Shield, Cpu } from 'lucide-react';
 import TechFloatingElements from '@/components/TechFloatingElements';
 
-interface LocalTecnicoClientProps {
-    locationName: string;
-    stateAbbr: string;
-    regionalContext: {
-        neighborhoods: string[];
-        cities?: string[];
-        localFact?: string;
-    };
+interface RegionsClientProps {
+    cityName: string;
+    countryName: string;
+    continentName: string;
 }
 
-export default function LocalTecnicoClient({ locationName, stateAbbr, regionalContext }: LocalTecnicoClientProps) {
-    const idx = (locationName.length + (stateAbbr ? stateAbbr.length : 0)) % 3;
+export default function RegionsClient({ cityName, countryName, continentName }: RegionsClientProps) {
+    const idx = (cityName.length) % 3;
 
     const heroTitles = [
         <h1 key="0" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-            IT <span className="inline-block py-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Technician in {locationName}</span>
+            Remote IT <span className="inline-block py-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Services in {cityName}</span>
         </h1>,
         <h1 key="1" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-            Remote IT <span className="inline-block py-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text italic">Support in {locationName}</span>
+            Professional PC <span className="inline-block py-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text italic">Optimization for {cityName}</span>
         </h1>,
         <h1 key="2" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-            Premium <span className="inline-block py-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Assistance in {locationName}</span>
+            Premium IT <span className="inline-block py-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Support in {cityName}</span>
         </h1>
     ];
 
     const heroDescriptions = [
         <p key="0" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Computer maintenance, gaming PC optimization, and elite remote technical support. The best technology service in <strong>{locationName}</strong> available 24/7.
+            Computer maintenance, gaming PC optimization, and elite remote technical support. The best technology service for clients in <strong>{cityName}</strong>, {countryName}, available worldwide.
         </p>,
         <p key="1" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            The highest performance for your computer in <strong>{locationName}</strong>. Remote and express service for formatting, virus removal, and FPS boost.
+            Unleash the highest performance for your computer in <strong>{cityName}</strong>. 100% remote service for Windows formatting, virus removal, and FPS boost.
         </p>,
         <p key="2" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Hardware and software diagnosis specialists operating directly in <strong>{locationName}</strong> through our 100% secure remote infrastructure.
+            Hardware and software diagnosis specialists providing online solutions directly to <strong>{cityName}</strong> through our secure remote infrastructure.
         </p>
     ];
 
     const localH2 = [
         <h2 key="0" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            The Support That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">{locationName}</span> Trusts
+            The Remote Support That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">{cityName}</span> Trusts
         </h2>,
         <h2 key="1" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            Exclusive Service For <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B]">{locationName}</span>
+            Exclusive Online Service For <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B]">{cityName}</span>
         </h2>,
         <h2 key="2" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            Cutting-Edge Technology in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF94] to-[#31A8FF]">{locationName}</span>
+            Cutting-Edge Remote Tech in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF94] to-[#31A8FF]">{cityName}</span>
         </h2>
     ];
 
     return (
         <>
             <Header />
-            <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30">
+            <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30 pt-20">
 
-                {/* Background Effects (Matching FAQ/Dúvidas) */}
+                {/* Background Effects */}
                 <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
                 <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
                 <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
 
-                {/* Hero Section - Full Screen (100dvh) */}
-                <section className="min-h-[100dvh] flex flex-col items-center justify-center relative z-10">
+                {/* Hero Section */}
+                <section className="min-h-[90dvh] flex flex-col items-center justify-center relative z-10">
                     <TechFloatingElements />
 
                     <div className="container mx-auto px-4 text-center flex-grow flex flex-col items-center justify-center">
@@ -87,8 +83,8 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                             className="w-full max-w-5xl"
                         >
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-                                <MapPinIcon className="w-4 h-4 text-[#31A8FF]" />
-                                <span className="text-xs sm:text-sm font-bold text-white tracking-widest uppercase">Premium Service in {locationName} - {stateAbbr}</span>
+                                <GlobeAltIcon className="w-4 h-4 text-[#31A8FF]" />
+                                <span className="text-xs sm:text-sm font-bold text-white tracking-widest uppercase">Global Remote Support: {cityName}, {countryName}</span>
                             </div>
 
                             {heroTitles[idx]}
@@ -99,37 +95,35 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                                     href="/services"
                                     className="px-10 py-5 rounded-2xl bg-white text-black font-extrabold text-xl hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center gap-3"
                                 >
-                                    <BoltIcon className="w-6 h-6" /> Solve Now
+                                    <BoltIcon className="w-6 h-6" /> Explore Services
                                 </Link>
                                 <a
-                                    href={`https://wa.me/5511996716235?text=Hello! I am in ${locationName} and I need an IT technician.`}
+                                    href={`https://wa.me/5511996716235?text=Hello! I am looking for remote IT support in ${cityName}.`}
                                     target="_blank"
-                                    className="px-10 py-5 rounded-2xl bg-[#00FF94] text-black font-extrabold text-xl hover:bg-[#00E685] transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,148,0.3)]"
+                                    className="px-10 py-5 rounded-2xl bg-transparent border border-[#31A8FF] text-white font-extrabold text-xl hover:bg-[#31A8FF]/10 transition-all flex items-center justify-center gap-3"
                                 >
-                                    <ChatBubbleLeftRightIcon className="w-6 h-6" /> Direct WhatsApp
+                                    <ChatBubbleLeftRightIcon className="w-6 h-6" /> Contact via WhatsApp
                                 </a>
                             </div>
                         </motion.div>
                     </div>
-
-
                 </section>
 
-                {/* Local Relevance Section */}
+                {/* Remote Relevance Section */}
                 <section className="py-24 px-4 bg-[#0A0A0F]/80 backdrop-blur-xl border-y border-white/5 relative z-10">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
                             {localH2[idx]}
                             <p className="text-slate-400 text-lg leading-relaxed font-light">
-                                We serve all regions of <strong>{locationName}</strong>, including {regionalContext.neighborhoods.slice(0, 4).join(', ')} and surroundings.
-                                We understand the urgency of those working or gaming in {stateAbbr === 'SP' ? 'the largest metropolis in the country' : 'your region'}.
+                                We serve clients globally, bringing our expertise directly to <strong>{cityName}</strong> through highly secure remote connections. 
+                                No physical visits required. We provide immediate assistance, saving you the hassle of commuting to a local repair shop.
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 {[
-                                    { title: "Data Security", desc: "Strict local privacy protocols." },
-                                    { title: "Performance Focus", desc: "Up to 40% faster PCs guaranteed." },
-                                    { title: "No Commuting", desc: "Immediate and safe remote support." },
-                                    { title: "Maximum Approval", desc: "The highest technical rating in " + stateAbbr + "." }
+                                    { title: "Worldwide Availability", desc: "Access top-tier support from anywhere." },
+                                    { title: "No Physical Commute", desc: "100% remote online assistance." },
+                                    { title: "Performance Focus", desc: "Noticeable speed boosts guaranteed." },
+                                    { title: "Secure Connections", desc: "Encrypted remote access protocols." }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-[#31A8FF]/30 transition-all">
                                         <CheckBadgeIcon className="w-6 h-6 text-[#00FF94] shrink-0" />
@@ -144,18 +138,17 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                         <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF]/20 to-[#FF4B6B]/20 blur-[100px] opacity-30 animate-pulse"></div>
                             <div className="relative p-10 rounded-[40px] border border-white/10 bg-[#0D0D15]/80 backdrop-blur-2xl overflow-hidden group">
-                                {/* Static Simulation UI */}
                                 <div className="flex items-center gap-3 mb-8">
                                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                    <span className="text-xs text-slate-500 font-mono ml-2">diagnosing_{locationName.toLowerCase()}.sh</span>
+                                    <span className="text-xs text-slate-500 font-mono ml-2">remote_tunnel_{cityName.toLowerCase().replace(/\s+/g, '_')}.sh</span>
                                 </div>
                                 <div className="space-y-4 font-mono text-sm text-slate-400">
-                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>Scanning local nodes in {locationName}...</span></div>
-                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>State: {stateAbbr} verified via Cloudflare.</span></div>
-                                    <div className="flex items-center gap-2 text-red-400"><span className="text-red-400">!</span> <span>System Latency: CRITICAL</span></div>
-                                    <div className="flex items-center gap-2 text-green-400"><span className="text-green-400">&gt;</span> <span>VOLTRIS Protocol: READY</span></div>
+                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>Establishing secure connection to {cityName}...</span></div>
+                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>Routing through {continentName} nodes.</span></div>
+                                    <div className="flex items-center gap-2 text-green-400"><span className="text-green-400">✓</span> <span>Connection Secured. Latency: 42ms</span></div>
+                                    <div className="flex items-center gap-2 text-[#31A8FF]"><span className="text-[#31A8FF]">&gt;</span> <span>Ready for system diagnostics.</span></div>
                                 </div>
                                 <div className="mt-8 h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
                                     <motion.div
@@ -174,27 +167,27 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                 <section className="py-24 px-4 relative z-10">
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Available Services in {locationName}</h2>
-                            <p className="text-slate-400 max-w-2xl mx-auto font-light">Certified experts meeting all the technological needs of your region.</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Remote Services for {cityName}</h2>
+                            <p className="text-slate-400 max-w-2xl mx-auto font-light">Comprehensive digital solutions designed for performance and security, delivered globally.</p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
                                 {
-                                    title: "Maintenance & Repair",
+                                    title: "System Maintenance",
                                     icon: <Wrench className="w-8 h-8" />,
-                                    desc: "Resolution of critical Windows errors, crashes, and software problems in " + locationName + ".",
+                                    desc: "We diagnose and resolve critical Windows errors and crashes completely online.",
                                     color: "from-blue-500 to-cyan-500"
                                 },
                                 {
                                     title: "Gaming Optimization",
                                     icon: <Gamepad2 className="w-8 h-8" />,
-                                    desc: "Performance engineering to extract every extra FPS from your PC, reducing input lag in competitive games.",
+                                    desc: "Advanced tweaks to maximize FPS and reduce input lag for competitive gamers everywhere.",
                                     color: "from-purple-500 to-pink-500"
                                 },
                                 {
-                                    title: "Networks & Wi-Fi",
-                                    icon: <Cpu className="w-8 h-8" />,
-                                    desc: "Professional router configuration and signal analysis to ensure maximum speed.",
+                                    title: "Malware Removal",
+                                    icon: <Shield className="w-8 h-8" />,
+                                    desc: "Deep system scans and virus removal to protect your digital identity and data.",
                                     color: "from-orange-500 to-red-500"
                                 }
                             ].map((svc, i) => (
@@ -205,33 +198,56 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                                     </div>
                                     <h3 className="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400">{svc.title}</h3>
                                     <p className="text-slate-500 text-sm leading-relaxed font-light flex-grow">{svc.desc}</p>
-                                    <Link href="/servicos" className="mt-8 py-3 rounded-xl border border-white/10 text-white font-bold text-center hover:bg-white hover:text-black transition-all">Learn More</Link>
+                                    <Link href="/services" className="mt-8 py-3 rounded-xl border border-white/10 text-white font-bold text-center hover:bg-white hover:text-black transition-all">Learn More</Link>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Localized Footer Branding */}
+                {/* FAQ Section */}
                 <section className="py-24 px-4 bg-[#05050A] border-t border-white/5 relative z-10">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="p-12 rounded-[48px] bg-gradient-to-b from-[#121218] to-[#0A0A0F] border border-white/5 text-center">
-                            <h3 className="text-2xl font-bold text-white mb-8">Neighborhoods Served in {locationName}</h3>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                {regionalContext.neighborhoods.map((nh, i) => (
-                                    <div key={i} className="text-slate-400 text-sm py-2 px-3 rounded-lg bg-white/[0.02] border border-white/5">
-                                        {nh}
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="mt-12 pt-8 border-t border-white/5">
-                                <Link href="/contact" className="text-[#31A8FF] font-bold hover:underline">Request service in another region →</Link>
-                            </div>
+                    <div className="max-w-4xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+                            <p className="text-slate-400 font-light">Common questions from our clients in {cityName}.</p>
+                        </div>
+                        <div className="space-y-4">
+                            {[
+                                {
+                                    q: `Can I receive support in ${cityName} remotely?`,
+                                    a: "Yes, absolutely! We provide 100% remote services, meaning you don't need to leave your home or office. We connect to your system securely over the internet."
+                                },
+                                {
+                                    q: "How does remote optimization work?",
+                                    a: "You simply download a secure, temporary remote access client. Once connected, our experts perform diagnostics, tune your system, and fix issues while you watch."
+                                },
+                                {
+                                    q: "Is remote PC repair secure?",
+                                    a: "Yes. Our connections use enterprise-grade encryption. We only access your computer with your explicit permission, and you can end the session at any time."
+                                },
+                                {
+                                    q: "Do you support clients internationally?",
+                                    a: "Yes, our services are available worldwide. Regardless of your location, as long as you have a stable internet connection, we can assist you."
+                                }
+                            ].map((faq, i) => (
+                                <details key={i} className="group p-6 rounded-2xl bg-white/[0.02] border border-white/5 [&_summary::-webkit-details-marker]:hidden">
+                                    <summary className="flex items-center justify-between cursor-pointer text-white font-bold">
+                                        {faq.q}
+                                        <span className="transition group-open:rotate-180">
+                                            <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                        </span>
+                                    </summary>
+                                    <p className="mt-4 text-slate-400 font-light leading-relaxed">
+                                        {faq.a}
+                                    </p>
+                                </details>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Final CTA (Bento Style) */}
+                {/* Final CTA */}
                 <section className="py-24 px-4 relative z-10">
                     <div className="container mx-auto max-w-6xl">
                         <motion.div
@@ -244,17 +260,17 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
 
                             <div className="relative z-10">
                                 <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
-                                    Immediate Service <br className="hidden md:block" />
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Without Leaving Home</span>
+                                    Ready to Optimize Your PC?<br className="hidden md:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Anywhere in the World</span>
                                 </h2>
                                 <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-                                    Don't waste time taking your PC in for repairs. We solve everything via safe remote access. The best technical support in <strong>{locationName}</strong> is one click away.
+                                    Don't waste time looking for a local repair shop. We solve everything via safe remote access. The best technical support for <strong>{cityName}</strong> is just one click away.
                                 </p>
                                 <Link
                                     href="/contact"
                                     className="bg-white text-black px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)] inline-block"
                                 >
-                                    Schedule Service
+                                    Get Started Now
                                 </Link>
                             </div>
                         </motion.div>

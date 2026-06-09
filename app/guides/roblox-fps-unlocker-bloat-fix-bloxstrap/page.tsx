@@ -127,7 +127,7 @@ export default function RobloxGuide() {
         <p class="mb-4 text-gray-300">
             Roblox doesn't let you choose servers natively.
             <br/>Use browser extensions like <strong>RoPro</strong> or <strong>BTRoblox</strong>.
-            <br/>They show the server list and the Ping for each. Join a server in your region (e.g., São Paulo or Florida) for low ping.
+            <br/>They show the server list and the Ping for each. Join a server in your region (e.g., New York or London) for low ping.
         </p>
       `
         }

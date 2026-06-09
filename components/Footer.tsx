@@ -28,10 +28,12 @@ export default function Footer() {
       { name: 'Remote Support', path: '/remote-technical-support' },
     ],
     cities: [
-      { name: 'São Paulo', path: '/it-technician-in/sao-paulo' },
-      { name: 'Rio de Janeiro', path: '/it-technician-in/rio-de-janeiro' },
-      { name: 'Belo Horizonte', path: '/it-technician-in/belo-horizonte' },
-      { name: 'Curitiba', path: '/it-technician-in/curitiba' },
+      { name: 'New York', path: '/regions/usa/new-york' },
+      { name: 'London', path: '/regions/uk/london' },
+      { name: 'Berlin', path: '/regions/germany/berlin' },
+      { name: 'Rome', path: '/regions/italy/rome' },
+      { name: 'Tokyo', path: '/regions/japan/tokyo' },
+      { name: 'Dubai', path: '/regions/uae/dubai' },
     ],
     legal: [
       { name: 'Privacy', path: '/privacy-policy' },
@@ -124,7 +126,7 @@ export default function Footer() {
 
           {/* Col 5: Regional SEO */}
           <div className="space-y-6 text-center md:text-left">
-            <h3 className="font-bold text-white text-base">Local Support</h3>
+            <h3 className="font-bold text-white text-base">Remote Support</h3>
             <ul className="space-y-3 flex flex-col items-center md:items-start">
               {links.cities.map(l => (
                 <li key={l.path}>
@@ -151,7 +153,7 @@ export default function Footer() {
               </li>
               <li className="group flex items-center md:items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
                 <FiMapPin className="w-5 h-5 text-[#31A8FF] shrink-0 group-hover:scale-110 transition-transform" />
-                <span>São Paulo, Brazil</span>
+                <span>Worldwide Remote Support</span>
               </li>
               <li className="group flex items-center md:items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
                 <FiClock className="w-5 h-5 text-[#FF4B6B] shrink-0 group-hover:scale-110 transition-transform" />
