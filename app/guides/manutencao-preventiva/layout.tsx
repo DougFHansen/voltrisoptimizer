@@ -11,28 +11,28 @@ export default function ManutencaoPreventivaLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "Manutenção Preventiva de Computadores",
-    "description": "Guia completo sobre rotinas de manutenção preventiva para manter seu computador funcionando perfeitamente.",
+    "name": "Preventive Computer Maintenance",
+    "description": "Complete guide on preventive maintenance routines to keep your computer running perfectly.",
     "image": "https://www.voltrisoptimizer.com/logo.png",
     "totalTime": "PT3H",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Manutenção Semanal",
-        "text": "Verificação rápida de antivírus, limpeza de arquivos temporários e verificação de espaço em disco."
+        "name": "Weekly Maintenance",
+        "text": "Quick antivirus scan, temporary files cleanup, and disk space check."
       },
       {
         "@type": "HowToStep",
         "position": 2,
-        "name": "Manutenção Mensal",
-        "text": "Verificação completa de antivírus, atualizações do sistema, verificação de erros no disco e desfragmentação."
+        "name": "Monthly Maintenance",
+        "text": "Full antivirus scan, system updates, disk error check, and defragmentation."
       },
       {
         "@type": "HowToStep",
         "position": 3,
-        "name": "Manutenção Trimestral",
-        "text": "Limpeza física do computador, verificação de hardware, backup completo e revisão completa de segurança."
+        "name": "Quarterly Maintenance",
+        "text": "Physical cleaning of the computer, hardware check, full backup, and complete security review."
       }
     ]
   };
@@ -40,8 +40,8 @@ export default function ManutencaoPreventivaLayout({
   const articleStructuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Manutenção Preventiva de Computadores",
-    "description": "Guia completo sobre rotinas de manutenção preventiva para manter seu computador funcionando perfeitamente.",
+    "headline": "Preventive Computer Maintenance",
+    "description": "Complete guide on preventive maintenance routines to keep your computer running perfectly.",
     "image": "https://www.voltrisoptimizer.com/logo.png",
     "author": {
       "@type": "Organization",

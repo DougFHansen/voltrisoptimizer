@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
         const supabase = await createClient();
 
-        // SEGURANÇA: Verificar se é admin
+        // SECURITY: Verify if is admin
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
@@ -175,15 +175,15 @@ async function analyzeDeployImpact(
     afterWindow: any
 ) {
     try {
-        // 1. Chamar a função SQL (RPC) no Supabase - Muito mais eficiente!
+        // 1. Call SQL function (RPC) in Supabase - Much more efficient!
         const { data: correlationData, error } = await supabase.rpc('analyze_deploy_impact_rpc', {
             target_deploy_version: deployVersion,
-            hours_window: 24 // Ou parametrizado
+            hours_window: 24 // Or parameterized
         });
 
         if (error) throw error;
 
-        // 2. Enriquecer com dados de adoção de features
+        // 2. Enrich with feature adoption data
         const feature_adoption = await analyzeFeatureAdoption(supabase, beforeWindow, afterWindow);
 
         const correlation = {
@@ -194,7 +194,7 @@ async function analyzeDeployImpact(
             updated_at: new Date().toISOString()
         };
 
-        // 3. Persistir métricas (upsert)
+        // 3. Persist metrics (upsert)
         await supabase.from('deploy_correlation_metrics').upsert(correlation, {
             onConflict: 'deploy_version,analysis_start,analysis_end',
         });

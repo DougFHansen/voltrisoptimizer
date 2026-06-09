@@ -38,7 +38,7 @@ export default function PushNotificationSetup() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           </div>
-          <h2 className="text-xl font-bold text-white">Notificações Push para PWA</h2>
+          <h2 className="text-xl font-bold text-white">Push Notifications for PWA</h2>
         </div>
         
         <div className="text-center py-8">
@@ -47,8 +47,8 @@ export default function PushNotificationSetup() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <p className="text-blue-400 font-medium">Faça login para ativar</p>
-          <p className="text-gray-400 text-sm mt-2">Entre na sua conta para configurar as notificações PWA</p>
+          <p className="text-blue-400 font-medium">Log in to activate</p>
+          <p className="text-gray-400 text-sm mt-2">Log into your account to configure PWA notifications</p>
         </div>
       </div>
     );
@@ -64,16 +64,16 @@ export default function PushNotificationSetup() {
           </svg>
         </div>
         <div className="flex-1">
-          <h2 className="text-xl font-bold text-white">Notificações Push para PWA</h2>
+          <h2 className="text-xl font-bold text-white">Push Notifications for PWA</h2>
           <p className="text-gray-400 text-sm mt-1">
-            Sistema profissional de notificações para {deviceType} ({platform})
+            Professional notification system for {deviceType} ({platform})
           </p>
         </div>
         
         <button
           onClick={() => setShowAdvancedInfo(!showAdvancedInfo)}
           className="text-gray-400 hover:text-white transition-colors"
-          title="Informações técnicas"
+          title="Technical information"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -88,12 +88,12 @@ export default function PushNotificationSetup() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
           </div>
-          <p className="text-red-400 font-medium">Navegador não suportado</p>
-          <p className="text-gray-400 text-sm mt-2">Seu navegador não suporta notificações push PWA</p>
+          <p className="text-red-400 font-medium">Browser not supported</p>
+          <p className="text-gray-400 text-sm mt-2">Your browser doesn't support PWA push notifications</p>
           
           {showAdvancedInfo && (
             <div className="mt-4 p-4 bg-[#1A1A1A]/40 rounded-lg border border-[#8B31FF]/10">
-              <h4 className="text-white font-medium mb-2">Detalhes técnicos:</h4>
+              <h4 className="text-white font-medium mb-2">Technical details:</h4>
               <div className="text-left text-xs text-gray-400 space-y-1">
                 <p>• Service Worker: {typeof navigator.serviceWorker !== 'undefined' ? '✅' : '❌'}</p>
                 <p>• Push Manager: {typeof PushManager !== 'undefined' ? '✅' : '❌'}</p>
@@ -109,28 +109,28 @@ export default function PushNotificationSetup() {
           <div className="bg-[#1A1A1A]/60 rounded-lg p-4 border border-[#8B31FF]/20">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Status da permissão:</p>
+                <p className="text-gray-300 text-sm">Permission status:</p>
                 <div className="flex items-center gap-2 mt-1">
                   {permission === 'granted' ? (
                     <span className="text-green-400 font-medium flex items-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      Permitido
+                      Granted
                     </span>
                   ) : permission === 'denied' ? (
                     <span className="text-red-400 font-medium flex items-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
-                      Negado
+                      Denied
                     </span>
                   ) : (
                     <span className="text-yellow-400 font-medium flex items-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                       </svg>
-                      Não definido
+                      Not defined
                     </span>
                   )}
                 </div>
@@ -145,10 +145,10 @@ export default function PushNotificationSetup() {
                   {loading ? (
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Ativando...
+                      Activating...
                     </div>
                   ) : (
-                    'Ativar Notificações'
+                    'Activate Notifications'
                   )}
                 </button>
               )}
@@ -160,21 +160,21 @@ export default function PushNotificationSetup() {
             <div className="bg-[#1A1A1A]/60 rounded-lg p-4 border border-[#8B31FF]/20">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-300 text-sm">Inscrição push:</p>
+                  <p className="text-gray-300 text-sm">Push subscription:</p>
                   <div className="flex items-center gap-2 mt-1">
                     {isSubscribed ? (
                       <span className="text-green-400 font-medium flex items-center gap-2">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        Ativa
+                        Active
                       </span>
                     ) : (
                       <span className="text-yellow-400 font-medium flex items-center gap-2">
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                         </svg>
-                        Pendente
+                        Pending
                       </span>
                     )}
                   </div>
@@ -191,7 +191,7 @@ export default function PushNotificationSetup() {
                       disabled={loading}
                       className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] hover:from-[#2A8FE6] hover:to-[#7A2AE6] text-white px-3 py-2 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                     >
-                      {loading ? 'Ativando...' : 'Ativar'}
+                      {loading ? 'Activating...' : 'Activate'}
                     </button>
                   )}
                   
@@ -204,7 +204,7 @@ export default function PushNotificationSetup() {
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
-                      Desativar
+                      Deactivate
                     </button>
                   )}
                 </div>
@@ -223,7 +223,7 @@ export default function PushNotificationSetup() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
-                Testar Notificação
+                Test Notification
               </button>
             </div>
           )}
@@ -241,7 +241,7 @@ export default function PushNotificationSetup() {
                     onClick={clearError}
                     className="text-red-300 hover:text-red-200 text-xs mt-2 underline"
                   >
-                    Fechar
+                    Close
                   </button>
                 </div>
               </div>
@@ -251,14 +251,14 @@ export default function PushNotificationSetup() {
           {/* Informações Avançadas */}
           {showAdvancedInfo && (
             <div className="bg-[#1A1A1A]/40 rounded-lg p-4 border border-[#8B31FF]/10">
-              <h4 className="text-white font-medium mb-3">Informações técnicas:</h4>
+              <h4 className="text-white font-medium mb-3">Technical information:</h4>
               <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
                 <div>
-                  <p className="text-gray-400">Dispositivo:</p>
+                  <p className="text-gray-400">Device:</p>
                   <p className="font-medium">{deviceType}</p>
                 </div>
                 <div>
-                  <p className="text-gray-400">Plataforma:</p>
+                  <p className="text-gray-400">Platform:</p>
                   <p className="font-medium">{platform}</p>
                 </div>
                 <div>
@@ -267,7 +267,7 @@ export default function PushNotificationSetup() {
                 </div>
                 <div>
                   <p className="text-gray-400">Status:</p>
-                  <p className="font-medium">{isSubscribed ? 'Ativo' : 'Inativo'}</p>
+                  <p className="font-medium">{isSubscribed ? 'Active' : 'Inactive'}</p>
                 </div>
               </div>
               
@@ -277,7 +277,7 @@ export default function PushNotificationSetup() {
                   disabled={loading}
                   className="text-[#31A8FF] hover:text-[#2A8FE6] text-sm underline disabled:opacity-50"
                 >
-                  Atualizar status
+                  Update status
                 </button>
               </div>
             </div>
@@ -285,27 +285,27 @@ export default function PushNotificationSetup() {
 
           {/* Como Funciona */}
           <div className="bg-[#1A1A1A]/40 rounded-lg p-4 border border-[#8B31FF]/10">
-            <h3 className="text-white font-medium mb-3">Como funciona:</h3>
+            <h3 className="text-white font-medium mb-3">How it works:</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 bg-[#31A8FF] rounded-full mt-2 flex-shrink-0"></span>
-                Sistema inteligente que identifica seu navegador automaticamente
+                Intelligent system that automatically identifies your browser
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 bg-[#8B31FF] rounded-full mt-2 flex-shrink-0"></span>
-                Funciona no PWA instalado no celular e no desktop
+                Works on the PWA installed on mobile and desktop
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 bg-[#FF4B6B] rounded-full mt-2 flex-shrink-0"></span>
-                Receba notificações para novos pedidos, tickets e atualizações
+                Receive notifications for new orders, tickets, and updates
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 bg-[#31A8FF] rounded-full mt-2 flex-shrink-0"></span>
-                Clique na notificação para abrir o site diretamente
+                Click the notification to open the site directly
               </li>
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 bg-[#FFD700] rounded-full mt-2 flex-shrink-0"></span>
-                Sistema profissional que reconhece navegadores já configurados
+                Professional system that recognizes already configured browsers
               </li>
             </ul>
           </div>

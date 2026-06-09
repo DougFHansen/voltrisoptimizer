@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Como Melhorar a Performance do Discord no Windows 11 (2026)',
-  description: 'Seu Discord está lento ou travando durante as streams? Aprenda as melhores configurações para o Discord no Windows 11, como reduzir o consumo de CPU e ganhar mais FPS nos seus jogos.',
-  keywords: ['como acelerar discord windows 11', 'discord com lag na stream fix', 'aumentar fps com discord aberto', 'voltris discord optimizer', 'melhorar performance discord pc fraco', 'configurar discord modo desempenho'],
+  title: 'How to Improve Discord Performance on Windows 11 (2026)',
+  description: 'Is your Discord slow or freezing during streams? Learn the best Discord settings on Windows 11 to reduce CPU usage and gain more FPS in your games.',
+  keywords: ['how to speed up discord windows 11', 'discord lagging on stream fix', 'increase fps with discord open', 'voltris discord optimizer', 'improve discord performance low end pc', 'configure discord performance mode'],
   alternates: {
     canonical: 'https://www.voltrisoptimizer.com/melhorar-performance-do-discord-windows-11',
   },
   openGraph: {
-    title: 'Voz Cristalina e PC Veloz: Otimize seu Discord no Windows 11',
-    description: 'Pare de perder FPS por causa do Discord. Guia definitivo de performance para comunidades e streamers.',
+    title: 'Crystal Clear Voice and Fast PC: Optimize your Discord on Windows 11',
+    description: 'Stop losing FPS because of Discord. Definitive performance guide for communities and streamers.',
     type: 'article',
     url: 'https://www.voltrisoptimizer.com/melhorar-performance-do-discord-windows-11',
     images: [{ url: '/images/og-discord-optimization.jpg' }],

@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Como Otimizar o Windows 11 para Valorant | FPS Máximo e Zero Lag (2026)',
-  description: 'Guia definitivo para aumentar o FPS e reduzir a latência no Valorant. Aprenda configurações de hardware, tweaks de sistema e desative processos inúteis para dominar as ranqueadas.',
-  keywords: ['otimizar windows valorant', 'aumentar fps valorant', 'diminuir input lag valorant', 'voltris optimizer valorant', 'configurações windows 11 gamer'],
+  title: 'How to Optimize Windows 11 for Valorant | Maximum FPS and Zero Lag (2026)',
+  description: 'Definitive guide to increase FPS and reduce latency in Valorant. Learn hardware settings, system tweaks, and disable useless processes to dominate ranked matches.',
+  keywords: ['optimize windows valorant', 'increase fps valorant', 'decrease input lag valorant', 'voltris optimizer valorant', 'gamer windows 11 settings'],
   alternates: {
     canonical: 'https://www.voltrisoptimizer.com/otimizar-windows-11-para-valorant',
   },
   openGraph: {
-    title: 'Valorant no Windows 11: Guia de Performance Máxima',
-    description: 'Transforme seu PC em uma máquina de jogo competitiva. Zero travamentos e FPS estável.',
+    title: 'Valorant on Windows 11: Maximum Performance Guide',
+    description: 'Transform your PC into a competitive gaming machine. Zero stuttering and stable FPS.',
     type: 'article',
     url: 'https://www.voltrisoptimizer.com/otimizar-windows-11-para-valorant',
     images: [{ url: '/images/og-valorant-optimization.jpg' }],

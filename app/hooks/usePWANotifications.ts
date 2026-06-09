@@ -85,7 +85,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
         isInitialized.current = true;
       } catch (error) {
         console.error('❌ Erro ao inicializar sistema PWA:', error);
-        setState(prev => ({ ...prev, error: 'Erro ao inicializar sistema PWA' }));
+        setState(prev => ({ ...prev, error: 'Error initializing PWA system' }));
       }
     };
 
@@ -141,14 +141,14 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
       } else {
         setState(prev => ({ 
           ...prev, 
-          error: 'Permissão negada para notificações. Você pode alterar isso nas configurações do navegador.' 
+          error: 'Permission denied for notifications. You can change this in your browser settings.' 
         }));
       }
     } catch (error) {
       console.error('❌ Erro ao solicitar permissão:', error);
       setState(prev => ({ 
         ...prev, 
-        error: 'Erro ao solicitar permissão para notificações' 
+        error: 'Error requesting permission for notifications' 
       }));
     } finally {
       setState(prev => ({ ...prev, loading: false }));
@@ -159,7 +159,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
   const subscribeToPushNotifications = useCallback(async () => {
     try {
       if (!state.browserFingerprint || !user?.id) {
-        throw new Error('Informações do navegador ou usuário não disponíveis');
+        throw new Error('Browser or user information not available');
       }
 
       setState(prev => ({ ...prev, loading: true, error: null }));
@@ -168,7 +168,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
       
       // Verificar HTTPS
       if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
-        throw new Error('Notificações push só funcionam em HTTPS ou localhost');
+        throw new Error('Push notifications only work on HTTPS or localhost');
       }
       
       // Registrar/obter service worker
@@ -229,7 +229,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
       });
       
       if (!response.ok) {
-        throw new Error('Erro ao salvar inscrição no servidor');
+        throw new Error('Error saving subscription to server');
       }
       
       const result = await response.json();
@@ -246,14 +246,14 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
     } catch (error) {
       console.error('❌ Erro ao inscrever para notificações push:', error);
       
-      let errorMessage = 'Erro ao inscrever para notificações push';
+      let errorMessage = 'Error subscribing to push notifications';
       if (error instanceof Error) {
         if (error.message.includes('HTTPS')) {
-          errorMessage = 'Notificações push só funcionam em HTTPS.';
+          errorMessage = 'Push notifications only work on HTTPS.';
         } else if (error.message.includes('Service Worker')) {
-          errorMessage = 'Erro no Service Worker. Tente recarregar a página.';
+          errorMessage = 'Service Worker error. Try reloading the page.';
         } else if (error.message.includes('Permission')) {
-          errorMessage = 'Permissão negada para notificações.';
+          errorMessage = 'Permission denied for notifications.';
         } else {
           errorMessage = error.message;
         }
@@ -298,7 +298,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
       console.error('❌ Erro ao desinscrever:', error);
       setState(prev => ({ 
         ...prev, 
-        error: 'Erro ao desinscrever das notificações push' 
+        error: 'Error unsubscribing from push notifications' 
       }));
     } finally {
       setState(prev => ({ ...prev, loading: false }));
@@ -309,11 +309,11 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
   const testNotification = useCallback(async () => {
     try {
       if (!serviceWorkerRegistration.current) {
-        throw new Error('Service Worker não registrado');
+        throw new Error('Service Worker not registered');
       }
       
-      await serviceWorkerRegistration.current.showNotification('VOLTRIS - Teste', {
-        body: 'Esta é uma notificação de teste! Seu sistema PWA está funcionando perfeitamente! 🎉',
+      await serviceWorkerRegistration.current.showNotification('VOLTRIS - Test', {
+        body: 'This is a test notification! Your PWA system is working perfectly! 🎉',
         icon: '/logo-v2.webp',
         badge: '/logo-v2.webp',
         tag: 'test-notification',
@@ -321,12 +321,12 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
         actions: [
           {
             action: 'view',
-            title: 'Ver mais',
+            title: 'View more',
             icon: '/logo-v2.webp'
           },
           {
             action: 'close',
-            title: 'Fechar',
+            title: 'Close',
             icon: '/logo-v2.webp'
           }
         ]
@@ -338,7 +338,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
       console.error('❌ Erro ao enviar notificação de teste:', error);
       setState(prev => ({ 
         ...prev, 
-        error: 'Erro ao enviar notificação de teste' 
+        error: 'Error sending test notification' 
       }));
     }
   }, []);

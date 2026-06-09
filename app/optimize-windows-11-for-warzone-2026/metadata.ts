@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Como Otimizar o Windows 11 para Warzone (2026) | Ganhe FPS e Reduza Lag',
-  description: 'Guia definitivo para jogadores de Call of Duty: Warzone. Aprenda a configurar o Windows para evitar micro-travamentos, otimizar memória de vídeo e reduzir o ping para o mínimo possível.',
-  keywords: ['otimizar windows 11 warzone 2026', 'aumentar fps warzone pc fraco', 'reduzir lag warzone windows 11', 'voltris optimizer warzone performance', 'configurações warzone modo competitivo', 'warzone 3 lag fix windows'],
+  title: 'How to Optimize Windows 11 for Warzone (2026) | Gain FPS and Reduce Lag',
+  description: 'Definitive guide for Call of Duty: Warzone players. Learn how to configure Windows to avoid micro-stuttering, optimize video memory, and reduce ping to the minimum possible.',
+  keywords: ['optimize windows 11 warzone 2026', 'increase fps warzone weak pc', 'reduce lag warzone windows 11', 'voltris optimizer warzone performance', 'warzone competitive mode settings', 'warzone 3 lag fix windows'],
   alternates: {
     canonical: 'https://www.voltrisoptimizer.com/otimizar-windows-11-para-warzone-2026',
   },
   openGraph: {
-    title: 'Warzone de Combate: Otimize seu PC para dominar o Rebirth',
-    description: 'FPS estável e latência zero. Transforme seu Windows 11 na melhor plataforma para Call of Duty.',
+    title: 'Combat Warzone: Optimize your PC to dominate Rebirth',
+    description: 'Stable FPS and zero latency. Transform your Windows 11 into the best platform for Call of Duty.',
     type: 'article',
     url: 'https://www.voltrisoptimizer.com/otimizar-windows-11-para-warzone-2026',
     images: [{ url: '/images/og-warzone-optimization.jpg' }],
