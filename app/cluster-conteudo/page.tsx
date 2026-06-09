@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { 
@@ -133,7 +133,7 @@ export default function ContentClusterPage() {
                   {cluster.articles.map((article, idx) => (
                     <Link 
                       key={idx}
-                      href={`/guias/${article.slug}`}
+                      href={`/guides/${article.slug}`}
                       className="flex items-center justify-between p-3 hover:bg-gray-700 rounded-lg transition-all group"
                     >
                       <span className="group-hover:text-blue-400 transition-colors">{article.title}</span>
@@ -176,7 +176,7 @@ export default function ContentClusterPage() {
                 <h3 className="text-xl font-bold mb-3">{article.title}</h3>
                 <p className="text-gray-400 mb-4">{article.excerpt}</p>
                 <Link 
-                  href={`/guias/${article.title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-')}`}
+                  href={`/guides/${article.title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-')}`}
                   className="text-blue-400 hover:text-blue-300 font-medium"
                 >
                   Read full article →

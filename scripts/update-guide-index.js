@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 // Caminho para a pasta de guias
@@ -429,7 +429,7 @@ outputCode += `  ];
                           whileHover={{ y: -5 }}
                           className="group relative h-full"
                         >
-                          <Link href={\`/guias/\${guide.slug}\`} className="block h-full relative z-20 focus:outline-none">
+                          <Link href={\`/guides/\${guide.slug}\`} className="block h-full relative z-20 focus:outline-none">
                             <div className="h-full bg-[#0A0A0F] hover:bg-[#0F0F16] rounded-2xl border border-white/5 hover:border-[#31A8FF]/30 p-8 transition-all duration-300 relative overflow-hidden flex flex-col">
 
                               {/* Subtle Glow Effect on Hover */}

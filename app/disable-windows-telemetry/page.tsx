@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
 import { title, description, keywords } from './metadata';
 
@@ -59,7 +59,7 @@ export default function DesativarTelemetriaWindows() {
     ];
 
     const relatedGuides = [
-        { href: "/guias/privacidade-windows-telemetria", title: "Classic Guide", description: "The old manual privacy guide." },
+        { href: "/guides/privacidade-windows-telemetria", title: "Classic Guide", description: "The old manual privacy guide." },
         { href: "/remover-bloatware-windows-11", title: "Remove Bloatware", description: "Complement your system cleanup." }
     ];
 

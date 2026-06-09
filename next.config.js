@@ -1,4 +1,4 @@
-/** @type {import('next').Config} */
+﻿/** @type {import('next').Config} */
 const nextConfig = {
   // Performance global otimizada
   experimental: {
@@ -137,91 +137,91 @@ const nextConfig = {
       // ============================================================
 
       // Grupo: SSD vs HDD (5 duplicatas → 1 canônico)
-      { source: '/guias/ssd-vs-hd-qual-melhor', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
-      { source: '/guias/hds-vs-ssd-qual-a-diferenca', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
-      { source: '/guias/nvme-vs-sata-vale-a-pena-upgrade', destination: '/guias/ssd-nvme-vs-sata-jogos', permanent: true },
-      { source: '/guias/ssd-nvme-vs-sata-jogos', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
+      { source: '/guides/ssd-vs-hd-qual-melhor', destination: '/guides/ssd-vs-hdd-guia', permanent: true },
+      { source: '/guides/hds-vs-ssd-qual-a-diferenca', destination: '/guides/ssd-vs-hdd-guia', permanent: true },
+      { source: '/guides/nvme-vs-sata-vale-a-pena-upgrade', destination: '/guides/ssd-nvme-vs-sata-jogos', permanent: true },
+      { source: '/guides/ssd-nvme-vs-sata-jogos', destination: '/guides/ssd-vs-hdd-guia', permanent: true },
 
       // Grupo: DNS para Jogos (3 duplicatas → 1 canônico)
-      { source: '/guias/melhor-dns-para-jogos-google-vs-cloudflare', destination: '/guias/melhor-dns-jogos-2026', permanent: true },
-      { source: '/guias/dns-mais-rapido-para-jogos-benchmark', destination: '/guias/melhor-dns-jogos-2026', permanent: true },
+      { source: '/guides/melhor-dns-para-jogos-google-vs-cloudflare', destination: '/guides/melhor-dns-jogos-2026', permanent: true },
+      { source: '/guides/dns-mais-rapido-para-jogos-benchmark', destination: '/guides/melhor-dns-jogos-2026', permanent: true },
 
       // Grupo: Debloat Windows 11 (2 duplicatas → 1 canônico)
-      { source: '/guias/debloating-windows-11', destination: '/guias/debloat-windows-11-otimizacao-powershell', permanent: true },
+      { source: '/guides/debloating-windows-11', destination: '/guides/debloat-windows-11-otimizacao-powershell', permanent: true },
 
       // Grupo: Overwatch 2 (2 duplicatas → 1 canônico)
-      { source: '/guias/overwatch-2-melhores-configuracoes-fps', destination: '/guias/overwatch-2-otimizacao-fps-input-lag-reduce-buffering', permanent: true },
+      { source: '/guides/overwatch-2-melhores-configuracoes-fps', destination: '/guides/overwatch-2-otimizacao-fps-input-lag-reduce-buffering', permanent: true },
 
       // Grupo: RDR2 (2 duplicatas → 1 canônico)
-      { source: '/guias/red-dead-redemption-2-melhores-configuracoes', destination: '/guias/red-dead-redemption-2-melhores-configuracoes-rdr2', permanent: true },
+      { source: '/guides/red-dead-redemption-2-melhores-configuracoes', destination: '/guides/red-dead-redemption-2-melhores-configuracoes-rdr2', permanent: true },
 
       // Grupo: Euro Truck Simulator 2 (2 duplicatas → 1 canônico)
-      { source: '/guias/euro-truck-simulator-2-otimizacao', destination: '/guias/euro-truck-simulator-2-otimizacao-aa-promods', permanent: true },
+      { source: '/guides/euro-truck-simulator-2-otimizacao', destination: '/guides/euro-truck-simulator-2-otimizacao-aa-promods', permanent: true },
 
       // Grupo: Rocket League (2 duplicatas → 1 canônico)
-      { source: '/guias/rocket-league-melhores-configuracoes-camera', destination: '/guias/rocket-league-camera-settings-bakkesmod-air-roll', permanent: true },
+      { source: '/guides/rocket-league-melhores-configuracoes-camera', destination: '/guides/rocket-league-camera-settings-bakkesmod-air-roll', permanent: true },
 
       // Grupo: Manutencao preventiva (2 duplicatas → 1 canônico)
-      { source: '/guias/manutencao-preventiva', destination: '/guias/manutencao-preventiva-computador', permanent: true },
+      { source: '/guides/manutencao-preventiva', destination: '/guides/manutencao-preventiva-computador', permanent: true },
 
       // Grupo: Roblox FPS Unlocker (3 duplicatas → 1 canônico)
-      { source: '/guias/roblox-fps-unlocker-guia', destination: '/guias/roblox-fps-unlocker-bloat-fix-bloxstrap', permanent: true },
-      { source: '/guias/roblox-fps-unlocker-tutorial', destination: '/guias/roblox-fps-unlocker-bloat-fix-bloxstrap', permanent: true },
+      { source: '/guides/roblox-fps-unlocker-guia', destination: '/guides/roblox-fps-unlocker-bloat-fix-bloxstrap', permanent: true },
+      { source: '/guides/roblox-fps-unlocker-tutorial', destination: '/guides/roblox-fps-unlocker-bloat-fix-bloxstrap', permanent: true },
 
       // Grupo: Elden Ring (3 duplicatas → 1 canônico)
-      { source: '/guias/eld-ring-stuttering-fix-dx12', destination: '/guias/elden-ring-fps-unlock-stutter-fix', permanent: true },
-      { source: '/guias/elden-ring-fps-unlock-widescreen-fix-stutter', destination: '/guias/elden-ring-fps-unlock-stutter-fix', permanent: true },
+      { source: '/guides/eld-ring-stuttering-fix-dx12', destination: '/guides/elden-ring-fps-unlock-stutter-fix', permanent: true },
+      { source: '/guides/elden-ring-fps-unlock-widescreen-fix-stutter', destination: '/guides/elden-ring-fps-unlock-stutter-fix', permanent: true },
 
       // Grupo: OBS Studio streaming (3 duplicatas → 1 canônico)
-      { source: '/guias/obs-studio-melhores-configuracoes-stream', destination: '/guias/obs-studio-melhores-configuracoes-stream-2026', permanent: true },
-      { source: '/guias/obs-studio-streaming-twitch-youtube-guia-completo', destination: '/guias/obs-studio-melhores-configuracoes-stream-2026', permanent: true },
+      { source: '/guides/obs-studio-melhores-configuracoes-stream', destination: '/guides/obs-studio-melhores-configuracoes-stream-2026', permanent: true },
+      { source: '/guides/obs-studio-streaming-twitch-youtube-guia-completo', destination: '/guides/obs-studio-melhores-configuracoes-stream-2026', permanent: true },
 
       // Grupo: Cadeiras (2 duplicatas → 1 canônico)
-      { source: '/guias/cadeira-gamer-ergonomia-postura-aim', destination: '/guias/cadeira-gamer-vs-escritorio-ergonomia', permanent: true },
+      { source: '/guides/cadeira-gamer-ergonomia-postura-aim', destination: '/guides/cadeira-gamer-vs-escritorio-ergonomia', permanent: true },
 
       // Grupo: Teclados mecânicos (2 duplicatas → 1 canônico)
-      { source: '/guias/teclados-mecanicos-switches-guia', destination: '/guias/teclados-mecanicos-guia', permanent: true },
+      { source: '/guides/teclados-mecanicos-switches-guia', destination: '/guides/teclados-mecanicos-guia', permanent: true },
 
       // Grupo: Water cooler vs air cooler (2 duplicatas → 1 canônico)
-      { source: '/guias/water-cooler-vs-air-cooler', destination: '/guias/water-cooler-vs-air-cooler-qual-escolher', permanent: true },
+      { source: '/guides/water-cooler-vs-air-cooler', destination: '/guides/water-cooler-vs-air-cooler-qual-escolher', permanent: true },
 
       // Grupo: Periféricos gamer (2 duplicatas → 1 canônico)
-      { source: '/guias/perifericos-gamer-vale-a-pena', destination: '/guias/perifericos-gamer-vale-a-pena-marcas', permanent: true },
+      { source: '/guides/perifericos-gamer-vale-a-pena', destination: '/guides/perifericos-gamer-vale-a-pena-marcas', permanent: true },
 
       // Grupo: Bluestacks (3 duplicatas → 1 canônico)
-      { source: '/guias/bluestacks-ldplayer-otimizacao-free-fire-120fps', destination: '/guias/bluestacks-otimizacao-free-fire-pubg', permanent: true },
-      { source: '/guias/bluestacks-vs-ldplayer-qual-mais-leve', destination: '/guias/bluestacks-otimizacao-free-fire-pubg', permanent: true },
+      { source: '/guides/bluestacks-ldplayer-otimizacao-free-fire-120fps', destination: '/guides/bluestacks-otimizacao-free-fire-pubg', permanent: true },
+      { source: '/guides/bluestacks-vs-ldplayer-qual-mais-leve', destination: '/guides/bluestacks-otimizacao-free-fire-pubg', permanent: true },
 
       // Grupo: VPN para jogos (2 duplicatas → 1 canônico)
-      { source: '/guias/vpn-vale-a-pena-jogos', destination: '/guias/vpn-jogos-exitlag-noping-vale-a-pena', permanent: true },
+      { source: '/guides/vpn-vale-a-pena-jogos', destination: '/guides/vpn-jogos-exitlag-noping-vale-a-pena', permanent: true },
 
       // Grupo: HDR (2 duplicatas → 1 canônico)
-      { source: '/guias/hdr-windows-vale-a-pena-jogos', destination: '/guias/hdr-windows-11-calibracao-jogos', permanent: true },
+      { source: '/guides/hdr-windows-vale-a-pena-jogos', destination: '/guides/hdr-windows-11-calibracao-jogos', permanent: true },
 
       // Grupo: Monitor sync (2 duplicatas → 1 canônico)
-      { source: '/guias/sync-vertical-g-sync-free-sync-explicacao', destination: '/guias/g-sync-freesync-configuracao-correta', permanent: true },
+      { source: '/guides/sync-vertical-g-sync-free-sync-explicacao', destination: '/guides/g-sync-freesync-configuracao-correta', permanent: true },
 
       // Grupo: Reduzir ping (3 duplicatas → 1 canônico)
-      { source: '/guias/reduzir-ping-jogos-online', destination: '/guias/reduzir-ping-regedit-cmd-jogos', permanent: true },
-      { source: '/guias/reduzir-ping-exitlag-noping-dns', destination: '/guias/reduzir-ping-regedit-cmd-jogos', permanent: true },
+      { source: '/guides/reduzir-ping-jogos-online', destination: '/guides/reduzir-ping-regedit-cmd-jogos', permanent: true },
+      { source: '/guides/reduzir-ping-exitlag-noping-dns', destination: '/guides/reduzir-ping-regedit-cmd-jogos', permanent: true },
 
       // Grupo: Backup (2 duplicatas → 1 canônico)
-      { source: '/guias/backup-dados', destination: '/guias/backup-automatico-nuvem', permanent: true },
+      { source: '/guides/backup-dados', destination: '/guides/backup-automatico-nuvem', permanent: true },
 
       // Grupo: The Witcher 3 (2 duplicatas → 1 canônico)
-      { source: '/guias/the-witcher-3-next-gen-performance', destination: '/guias/the-witcher-3-next-gen-otimizacao-ray-tracing', permanent: true },
+      { source: '/guides/the-witcher-3-next-gen-performance', destination: '/guides/the-witcher-3-next-gen-otimizacao-ray-tracing', permanent: true },
 
       // Grupo: Valorant VAN (2 duplicatas → 1 canônico)
-      { source: '/guias/valorant-fix-van-9003-secure-boot', destination: '/guias/valorant-van-9003-secure-boot-tpm-fix', permanent: true },
+      { source: '/guides/valorant-fix-van-9003-secure-boot', destination: '/guides/valorant-van-9003-secure-boot-tpm-fix', permanent: true },
 
       // Grupo: GTA IV (2 duplicatas → 1 canônico)
-      { source: '/guias/gta-iv-complete-edition-lag-fix', destination: '/guias/gta-iv-fix-windows-10-11', permanent: true },
+      { source: '/guides/gta-iv-complete-edition-lag-fix', destination: '/guides/gta-iv-fix-windows-10-11', permanent: true },
 
       // Grupo: Discord otimizar (2 duplicatas → 1 canônico)
-      { source: '/guias/discord-otimizar-para-jogos', destination: '/guias/discord-otimizacao-overlay-lag', permanent: true },
+      { source: '/guides/discord-otimizar-para-jogos', destination: '/guides/discord-otimizacao-overlay-lag', permanent: true },
 
       // Grupo: formatação windows (2 duplicatas → 1 canônico)
-      { source: '/guias/formatacao-windows', destination: '/guias/formatacao-limpa-windows-11-rufus-gpt', permanent: true },
+      { source: '/guides/formatacao-windows', destination: '/guides/formatacao-limpa-windows-11-rufus-gpt', permanent: true },
     ];
   },
   async rewrites() {
