@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -114,17 +114,17 @@ export default function DebloatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize SSD",
             description: "Complement the Debloat with a fast drive."
         },
         {
-            href: "/guias/como-escolher-memoria-ram",
+            href: "/guides/como-escolher-memoria-ram",
             title: "RAM Guide",
             description: "8GB is not enough? See if you need an upgrade."
         },
         {
-            href: "/guias/remocao-virus-malware",
+            href: "/guides/remocao-virus-malware",
             title: "Remove Virus",
             description: "Sometimes slowness is not bloatware, it's malware."
         }

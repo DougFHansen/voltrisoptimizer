@@ -1,4 +1,4 @@
-import { metadata as guideMetadata } from './metadata';
+﻿import { metadata as guideMetadata } from './metadata';
 import Script from 'next/script';
 
 export const metadata = guideMetadata;
@@ -96,7 +96,7 @@ export default function FormatacaoWindowsLayout({
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.voltrisoptimizer.com/guias/formatacao-windows"
+      "@id": "https://www.voltrisoptimizer.com/guides/formatacao-windows"
     }
   };
 

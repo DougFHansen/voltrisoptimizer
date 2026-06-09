@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -137,17 +137,17 @@ export default function PSUGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/como-resolver-tela-azul",
+            href: "/guides/como-resolver-tela-azul",
             title: "Blue Screen",
             description: "Bad PSUs cause instability and resets."
         },
         {
-            href: "/guias/water-cooler-vs-air-cooler",
+            href: "/guides/water-cooler-vs-air-cooler",
             title: "Cooling",
             description: "Cooler components consume less power."
         },
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "GPU Optimization",
             description: "Reduce consumption via Undervolt."
         }

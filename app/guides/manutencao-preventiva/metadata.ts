@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Preventive Computer Maintenance | Complete Guide | VOLTRIS',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Preventive Computer Maintenance | Complete Guide | VOLTRIS',
     description: 'Maintenance routines you can perform regularly to keep your computer running perfectly.',
-    url: 'https://www.voltrisoptimizer.com/guias/manutencao-preventiva',
+    url: 'https://www.voltrisoptimizer.com/guides/manutencao-preventiva',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -54,6 +54,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/manutencao-preventiva',
+    canonical: 'https://www.voltrisoptimizer.com/guides/manutencao-preventiva',
   },
 };

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -423,17 +423,17 @@ export default function SupercellPCGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/google-play-games-pc-beta-vale-a-pena",
+            href: "/guides/google-play-games-pc-beta-vale-a-pena",
             title: "Google Play PC Review",
             description: "Is it worth swapping emulators for the official one?"
         },
         {
-            href: "/guias/jogos-android-no-pc-melhores-emuladores",
+            href: "/guides/jogos-android-no-pc-melhores-emuladores",
             title: "Best Emulators",
             description: "For games not yet on Google Play PC."
         },
         {
-            href: "/guias/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
             title: "BlueStacks vs LDPlayer",
             description: "Emulator comparison for weak PCs."
         }

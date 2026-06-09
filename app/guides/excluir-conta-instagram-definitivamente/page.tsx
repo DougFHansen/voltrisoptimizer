@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -78,17 +78,17 @@ export default function InstagramDeleteGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/autenticacao-dois-fatores",
+            href: "/guides/autenticacao-dois-fatores",
             title: "Protect Accounts",
             description: "Keep your access secure while you decide."
         },
         {
-            href: "/guias/protecao-dados-privacidade",
+            href: "/guides/protecao-dados-privacidade",
             title: "Digital Privacy",
             description: "How social networks use your data in 2026."
         },
         {
-            href: "/guias/seguranca-digital",
+            href: "/guides/seguranca-digital",
             title: "Online Security",
             description: "Extra tips to avoid hackers."
         }

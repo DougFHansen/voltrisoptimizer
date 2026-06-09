@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -175,12 +175,12 @@ export default function DuckStationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/retroarch-guia-completo-cores-shaders-crt",
+            href: "/guides/retroarch-guia-completo-cores-shaders-crt",
             title: "RetroArch Hub",
             description: "The all-in-one alternative for retro enthusiasts."
         },
         {
-            href: "/guias/pcsx2-otimizacao-4k-widescreen-texturas-guia",
+            href: "/guides/pcsx2-otimizacao-4k-widescreen-texturas-guia",
             title: "PCSX2 Optimization",
             description: "Mastering PS2 emulation in 4K."
         }

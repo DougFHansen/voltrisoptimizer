@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -166,17 +166,17 @@ export default function DDUGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/instalacao-limpa-drivers-nvidia-amd",
+            href: "/guides/instalacao-limpa-drivers-nvidia-amd",
             title: "Nvidia/AMD Drivers",
             description: "Control Panel configuration tips."
         },
         {
-            href: "/guias/como-resolver-tela-azul",
+            href: "/guides/como-resolver-tela-azul",
             title: "Blue Screen",
             description: "How to diagnose if the driver was to blame."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize System",
             description: "Improve overall Windows performance."
         }

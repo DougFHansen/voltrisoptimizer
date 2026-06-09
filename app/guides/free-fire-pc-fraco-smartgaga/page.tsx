@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -77,17 +77,17 @@ export default function SmartGaGaFFGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
             title: "Compare Emulators",
             description: "Check out other options for low-end PCs."
         },
         {
-            href: "/guias/otimizacao-performance",
+            href: "/guides/otimizacao-performance",
             title: "Optimize PC",
             description: "Prepare Windows for running emulators."
         },
         {
-            href: "/guias/jogos-android-no-pc-melhores-emuladores",
+            href: "/guides/jogos-android-no-pc-melhores-emuladores",
             title: "Best Emulators",
             description: "General guide for Android apps on PC."
         }

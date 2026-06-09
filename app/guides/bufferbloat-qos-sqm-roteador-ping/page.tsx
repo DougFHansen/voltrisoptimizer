@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -184,12 +184,12 @@ export default function BufferbloatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduzir-ping-exitlag-noping-dns",
             title: "General Ping",
             description: "Software tips."
         },
         {
-            href: "/guias/dns-mais-rapido-para-jogos",
+            href: "/guides/dns-mais-rapido-para-jogos",
             title: "DNS",
             description: "Complementary guide."
         }

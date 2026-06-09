@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -178,12 +178,12 @@ export default function EldenRingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/lossless-scaling-frame-generation-fsr-guia",
+            href: "/guides/lossless-scaling-frame-generation-fsr-guia",
             title: "Frame Generation",
             description: "Doubling your FPS using advanced interpolation."
         },
         {
-            href: "/guias/reshade-guia-instalacao-ray-tracing-rtgi-filtros",
+            href: "/guides/reshade-guia-instalacao-ray-tracing-rtgi-filtros",
             title: "ReShade Setup",
             description: "Enhancing colors and visual clarity."
         }

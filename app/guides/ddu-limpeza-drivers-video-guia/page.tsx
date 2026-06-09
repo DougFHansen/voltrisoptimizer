@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -176,12 +176,12 @@ export default function DDUGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia Config",
             description: "What to do post-DDU."
         },
         {
-            href: "/guias/amd-adrenalin-configuracao-competitiva",
+            href: "/guides/amd-adrenalin-configuracao-competitiva",
             title: "AMD Config",
             description: "What to do post-DDU."
         }

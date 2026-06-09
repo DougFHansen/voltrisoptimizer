@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -856,27 +856,27 @@ Install-UCRTComponents
 
     const relatedGuides = [
         {
-            href: "/guias/corrigir-dll-faltando-vcredist-directx",
+            href: "/guides/corrigir-dll-faltando-vcredist-directx",
             title: "Runtimes Guide",
             description: "Complete base components checklist."
         },
         {
-            href: "/guias/pos-instalacao-windows-11",
+            href: "/guides/pos-instalacao-windows-11",
             title: "Post-Installation",
             description: "What to install to avoid DLL errors."
         },
         {
-            href: "/guias/erro-0xc00007b-aplicativo-nao-inicializou",
+            href: "/guides/erro-0xc00007b-aplicativo-nao-inicializou",
             title: "Error 0xc00007b",
             description: "Another common error linked to C++."
         },
         {
-            href: "/guias/vcruntime140-dll-nao-encontrado",
+            href: "/guides/vcruntime140-dll-nao-encontrado",
             title: "C++ Runtime",
             description: "Another common missing runtime error."
         },
         {
-            href: "/guias/windows-update-corrigir-erros",
+            href: "/guides/windows-update-corrigir-erros",
             title: "Windows Update",
             description: "Fix Windows Update issues."
         }

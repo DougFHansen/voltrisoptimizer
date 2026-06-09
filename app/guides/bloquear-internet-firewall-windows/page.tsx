@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -156,17 +156,17 @@ export default function FirewallBlockGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/antivirus-para-jogos-windows-defender-exclusao",
+      href: "/guides/antivirus-para-jogos-windows-defender-exclusao",
       title: "Windows Defender",
       description: "How to configure exclusions."
     },
     {
-      href: "/guias/privacidade-windows-telemetria",
+      href: "/guides/privacidade-windows-telemetria",
       title: "Windows Privacy",
       description: "Stop Microsoft's tracking."
     },
     {
-      href: "/guias/abrir-portas-roteador-nat-aberto",
+      href: "/guides/abrir-portas-roteador-nat-aberto",
       title: "Open Ports",
       description: "The opposite of blocking."
     }

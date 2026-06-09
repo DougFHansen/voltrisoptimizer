@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -197,17 +197,17 @@ export default function CheatEngineGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-otimizacao-jogos",
             title: "Defender Exclusions",
             description: "To install without errors."
         },
         {
-            href: "/guias/ldplayer-emulador-leve-pc-fraco",
+            href: "/guides/ldplayer-emulador-leve-pc-fraco",
             title: "Emulators",
             description: "CE works well with emulators."
         },
         {
-            href: "/guias/skyrim-mods-otimizacao",
+            href: "/guides/skyrim-mods-otimizacao",
             title: "Skyrim Offline",
             description: "Great game to test this."
         }

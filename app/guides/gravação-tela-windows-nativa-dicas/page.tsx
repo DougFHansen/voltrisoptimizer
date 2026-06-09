@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -210,17 +210,17 @@ export default function NativeRecordingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/como-usar-obs-studio-gravar-tela",
+            href: "/guides/como-usar-obs-studio-gravar-tela",
             title: "Advanced Tutorial: OBS Studio",
             description: "When native tools aren't enough: Streamlabs, Scenes, and Sources."
         },
         {
-            href: "/guias/atalhos-produtividade-windows",
+            href: "/guides/atalhos-produtividade-windows",
             title: "Secret Shortcuts",
             description: "Master your keyboard to work 10x faster."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize Disk",
             description: "Ensure your SSD is at maximum speed for recording."
         }

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -176,12 +176,12 @@ export default function BSODGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/ddu-limpeza-drivers-video-guia",
+            href: "/guides/ddu-limpeza-drivers-video-guia",
             title: "GPU Drivers",
             description: "Fix nvlddmkm.sys."
         },
         {
-            href: "/guias/como-resolver-tela-azul",
+            href: "/guides/como-resolver-tela-azul",
             title: "General Repair",
             description: "SFC/Scannow."
         }

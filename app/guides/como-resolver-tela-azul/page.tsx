@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -753,17 +753,17 @@ export default function BSODGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/como-usar-ddu-driver-uninstaller",
+      href: "/guides/como-usar-ddu-driver-uninstaller",
       title: "DDU Guide",
       description: "Fix BSODs caused by video drivers."
     },
     {
-      href: "/guias/verificar-saude-hd-ssd-crystaldiskinfo",
+      href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
       title: "SSD Health",
       description: "Check if your disk is causing system crashes."
     },
     {
-      href: "/guias/monitorar-temperatura-pc",
+      href: "/guides/monitorar-temperatura-pc",
       title: "Temperatures",
       description: "Monitor heating before the PC shuts down."
     }

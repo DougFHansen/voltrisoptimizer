@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 const title = "How to use OBS Studio for Screen Recording: 2026 Guide";
@@ -67,17 +67,17 @@ export default function OBSStudioGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
+            href: "/guides/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
             title: "Saving Time",
             description: "Recording tips without installing anything."
         },
         {
-            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/aceleracao-hardware-gpu-agendamento",
             title: "GPU Scheduling",
             description: "Improve recording synchronization."
         },
         {
-            href: "/guias/aumentar-volume-microfone-windows",
+            href: "/guides/aumentar-volume-microfone-windows",
             title: "Quality Audio",
             description: "Adjust the sound of your voice in OBS."
         }

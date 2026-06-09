@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -177,17 +177,17 @@ export default function DebloatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-processos-segundo-plano",
+            href: "/guides/otimizacao-processos-segundo-plano",
             title: "Background Processes",
             description: "How to identify what's eating your CPU."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize SSD",
             description: "The perfect pair for a clean system."
         },
         {
-            href: "/guias/privacidade-windows-telemetria",
+            href: "/guides/privacidade-windows-telemetria",
             title: "Disable Telemetry",
             description: "Stop Windows from sending data to Microsoft."
         }

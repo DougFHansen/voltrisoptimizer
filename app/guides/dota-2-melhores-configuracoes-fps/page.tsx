@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -209,17 +209,17 @@ export default function DotaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia Setup",
             description: "Power management for Dota."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD Guide",
             description: "Why an SSD is crucial for Dota."
         },
         {
-            href: "/guias/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduzir-ping-regedit-cmd-jogos",
             title: "Ping Fixes",
             description: "Optimizing network routes."
         }

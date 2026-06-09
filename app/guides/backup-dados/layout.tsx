@@ -1,4 +1,4 @@
-import { metadata as guideMetadata } from './metadata';
+﻿import { metadata as guideMetadata } from './metadata';
 import Script from 'next/script';
 
 export const metadata = guideMetadata;
@@ -78,7 +78,7 @@ export default function BackupDadosLayout({
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.voltrisoptimizer.com/guias/backup-dados"
+      "@id": "https://www.voltrisoptimizer.com/guides/backup-dados"
     }
   };
 

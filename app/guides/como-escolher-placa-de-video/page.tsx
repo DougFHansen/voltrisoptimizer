@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -420,17 +420,17 @@ export default function GPUBuyingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/rtx-4060-vale-a-pena-2026",
+      href: "/guides/rtx-4060-vale-a-pena-2026",
       title: "RTX 4060 Review",
       description: "The most popular graphics card of 2026 under analysis."
     },
     {
-      href: "/guias/atualizacao-drivers-video",
+      href: "/guides/atualizacao-drivers-video",
       title: "Install GPU",
       description: "How to prepare Windows for your new graphics card."
     },
     {
-      href: "/guias/aceleracao-hardware-gpu-agendamento",
+      href: "/guides/aceleracao-hardware-gpu-agendamento",
       title: "Max Performance",
       description: "Squeeze every FPS out of your new GPU."
     }

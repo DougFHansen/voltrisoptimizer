@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -211,17 +211,17 @@ export default function TwoFactorGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-senhas-gerenciadores",
+      href: "/guides/seguranca-senhas-gerenciadores",
       title: "Password Managers",
       description: "Bitwarden vs LastPass: Where to store your passwords."
     },
     {
-      href: "/guias/identificacao-phishing",
+      href: "/guides/identificacao-phishing",
       title: "Identify Scams",
       description: "How to avoid fake sites that steal 2FA."
     },
     {
-      href: "/guias/recuperacao-dados-hd-corrompido",
+      href: "/guides/recuperacao-dados-hd-corrompido",
       title: "Data Backups",
       description: "Protect your files beyond your accounts."
     }

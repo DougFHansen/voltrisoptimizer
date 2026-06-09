@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -210,17 +210,17 @@ export default function ApexGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia Guide",
             description: "Adjust VSync here."
         },
         {
-            href: "/guias/internet-lenta-jogos-lag",
+            href: "/guides/internet-lenta-jogos-lag",
             title: "Network",
             description: "Apex needs a clean route."
         },
         {
-            href: "/guias/como-escolher-mouse-gamer",
+            href: "/guides/como-escolher-mouse-gamer",
             title: "Mouse",
             description: "Tracking is everything in Apex."
         }

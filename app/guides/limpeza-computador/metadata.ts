@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Complete Computer Cleanup | Professional Guide | VOLTRIS',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Complete Computer Cleanup | Professional Guide | VOLTRIS',
     description: 'Professional techniques to clear temporary files, cache, and optimize your computer\'s disk space.',
-    url: 'https://www.voltrisoptimizer.com/guias/limpeza-computador',
+    url: 'https://www.voltrisoptimizer.com/guides/limpeza-computador',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -57,6 +57,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/limpeza-computador',
+    canonical: 'https://www.voltrisoptimizer.com/guides/limpeza-computador',
   },
 };

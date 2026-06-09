@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -185,12 +185,12 @@ export default function AudioGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/discord-nitro-qualidade-voz-krisp",
+            href: "/guides/discord-nitro-qualidade-voz-krisp",
             title: "Discord Settings",
             description: "Improve your mic quality there too."
         },
         {
-            href: "/guias/escape-from-tarkov-otimizacao-fps-ram",
+            href: "/guides/escape-from-tarkov-otimizacao-fps-ram",
             title: "Tarkov Guide",
             description: "Where sound is everything."
         }

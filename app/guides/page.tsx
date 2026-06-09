@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Technical Guides and Tutorials | VOLTRIS',
     description: 'Step-by-step tutorials to solve your computer problems.',
-    url: 'https://www.voltrisoptimizer.com/guias',
+    url: 'https://www.voltrisoptimizer.com/guides',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias',
+    canonical: 'https://www.voltrisoptimizer.com/guides',
   },
 };
 

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -179,12 +179,12 @@ export default function DNSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/bufferbloat-qos-sqm-roteador-ping",
+            href: "/guides/bufferbloat-qos-sqm-roteador-ping",
             title: "Bufferbloat Fix",
             description: "Eliminating lag spikes caused by network congestion."
         },
         {
-            href: "/guias/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduzir-ping-exitlag-noping-dns",
             title: "Ping Reduction Hub",
             description: "The complete guide to gaming network optimization."
         }

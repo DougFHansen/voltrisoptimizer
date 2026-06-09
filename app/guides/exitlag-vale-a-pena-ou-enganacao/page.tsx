@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -74,17 +74,17 @@ export default function ExitLagReviewGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/melhor-dns-jogos-2026",
+            href: "/guides/melhor-dns-jogos-2026",
             title: "Best DNS",
             description: "A free alternative to improve connection."
         },
         {
-            href: "/guias/reduzir-ping-jogos-online",
+            href: "/guides/reduzir-ping-jogos-online",
             title: "Reduce Ping",
             description: "Physical tips to improve internet."
         },
         {
-            href: "/guias/configuracao-roteador-wifi",
+            href: "/guides/configuracao-roteador-wifi",
             title: "Adjust Router",
             description: "Ensure your hardware is not the villain."
         }

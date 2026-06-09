@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -177,12 +177,12 @@ export default function DolphinGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
             title: "Switch Emulation",
             description: "Moving to modern Nintendo hardware optimization."
         },
         {
-            href: "/guias/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
             title: "Controller Overclock",
             description: "Reducing input lag for your gamepad."
         }

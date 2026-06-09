@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -187,12 +187,12 @@ export default function ETS2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guias/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/monitor-ultrawide-jogos-competitivos",
             title: "Ultrawide Guide",
             description: "The ideal setup for truck cabin immersion."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD Speed",
             description: "Fixing long map loading and texture streaming."
         }

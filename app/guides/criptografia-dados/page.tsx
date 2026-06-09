@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -550,37 +550,37 @@ export default function EncryptionGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-senhas-gerenciadores",
+      href: "/guides/seguranca-senhas-gerenciadores",
       title: "Manage Passwords",
       description: "Store your encryption keys securely."
     },
     {
-      href: "/guias/bitlocker-desempenho-jogos-ssd",
+      href: "/guides/bitlocker-desempenho-jogos-ssd",
       title: "BitLocker Impact",
       description: "Understand the performance cost of encryption."
     },
     {
-      href: "/guias/autenticacao-dois-fatores",
+      href: "/guides/autenticacao-dois-fatores",
       title: "2FA Protection",
       description: "Add more layers to your accounts."
     },
     {
-      href: "/guias/backup-dados",
+      href: "/guides/backup-dados",
       title: "Data Backup",
       description: "Learn how to protect backups with encryption."
     },
     {
-      href: "/guias/protecao-ransomware",
+      href: "/guides/protecao-ransomware",
       title: "Ransomware Protection",
       description: "How encryption helps protect against cryptoviruses."
     },
     {
-      href: "/guias/privacidade-windows-telemetria",
+      href: "/guides/privacidade-windows-telemetria",
       title: "Windows Privacy",
       description: "Protect your privacy beyond encryption."
     },
     {
-      href: "/guias/firewall-configuracao",
+      href: "/guides/firewall-configuracao",
       title: "Firewall Setup",
       description: "Add network protection to your encrypted data."
     }

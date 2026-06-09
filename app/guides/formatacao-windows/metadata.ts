@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'How to Format Windows 11/10 | Complete Guide 2026',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Complete Windows Formatting Guide | Step-by-Step Tutorial | VOLTRIS',
     description: 'Learn how to format your Windows computer safely and completely. Professional step-by-step guide.',
-    url: 'https://www.voltrisoptimizer.com/guias/formatacao-windows',
+    url: 'https://www.voltrisoptimizer.com/guides/formatacao-windows',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/formatacao-windows',
+    canonical: 'https://www.voltrisoptimizer.com/guides/formatacao-windows',
   },
   other: {
     'article:published_time': new Date().toISOString(),

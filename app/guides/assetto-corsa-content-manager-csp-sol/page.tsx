@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -189,17 +189,17 @@ export default function ACGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/monitor-ultrawide-jogos-competitivos",
             title: "Ultrawide",
             description: "Full cockpit immersion."
         },
         {
-            href: "/guias/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
             title: "Controller",
             description: "Scripts for mouse steering."
         },
         {
-            href: "/guias/cheat-engine-speedhack-jogos-offline",
+            href: "/guides/cheat-engine-speedhack-jogos-offline",
             title: "Cheat Engine",
             description: "Do not use online!"
         }

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -637,17 +637,17 @@ export default function FormatWindowsGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/criar-pendrive-bootavel",
+      href: "/guides/criar-pendrive-bootavel",
       title: "Create Windows 11 Bootable USB",
       description: "Complete tutorial on how to use Rufus and Media Creation Tool to create an installation USB drive."
     },
     {
-      href: "/guias/pos-instalacao-windows-11",
+      href: "/guides/pos-instalacao-windows-11",
       title: "Windows 11 Post-Installation Guide",
       description: "What to configure immediately after formatting: drivers, essential programs and optimizations."
     },
     {
-      href: "/guias/backup-dados",
+      href: "/guides/backup-dados",
       title: "Complete Data Backup Guide",
       description: "Learn the 3-2-1 rule and never lose important files by forgetting to back up before formatting."
     }

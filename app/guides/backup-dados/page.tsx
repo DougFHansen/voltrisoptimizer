@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -166,22 +166,22 @@ export default function DataBackupGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/backup-automatico-nuvem",
+      href: "/guides/backup-automatico-nuvem",
       title: "Cloud Backup",
       description: "Complement your local backup with the cloud."
     },
     {
-      href: "/guias/protecao-ransomware",
+      href: "/guides/protecao-ransomware",
       title: "Ransomware Security",
       description: "How to avoid being encrypted."
     },
     {
-      href: "/guias/verificar-saude-hd-ssd-crystaldiskinfo",
+      href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
       title: "Disk Health",
       description: "Monitor if your HD is dying."
     },
     {
-      href: "/guias/recuperacao-dados-hd-corrompido",
+      href: "/guides/recuperacao-dados-hd-corrompido",
       title: "Disaster Recovery",
       description: "Try to save data without a backup."
     }

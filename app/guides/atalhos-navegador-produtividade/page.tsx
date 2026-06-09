@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -662,12 +662,12 @@ export default function BrowserShortcutsGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/atalhos-produtividade-windows",
+      href: "/guides/atalhos-produtividade-windows",
       title: "Windows Shortcuts",
       description: "Shortcuts for the OS itself."
     },
     {
-      href: "/guias/otimizacao-chrome-memoria-ram",
+      href: "/guides/otimizacao-chrome-memoria-ram",
       title: "Chrome Optimization",
       description: "Make your browser faster."
     }

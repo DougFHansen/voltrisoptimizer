@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -148,17 +148,17 @@ export default function RouterGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/melhor-dns-jogos-2026",
+      href: "/guides/melhor-dns-jogos-2026",
       title: "Optimized DNS",
       description: "Complete your network setup."
     },
     {
-      href: "/guias/reduzir-ping-regedit-cmd-jogos",
+      href: "/guides/reduzir-ping-regedit-cmd-jogos",
       title: "Network Regedit",
       description: "Adjust Windows to receive packets from the router."
     },
     {
-      href: "/guias/como-limpar-cache-dns-ip-flushdns",
+      href: "/guides/como-limpar-cache-dns-ip-flushdns",
       title: "Reset Network",
       description: "If the configuration goes wrong, reset everything."
     }

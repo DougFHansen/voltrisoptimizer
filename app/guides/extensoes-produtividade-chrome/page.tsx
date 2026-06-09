@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -73,17 +73,17 @@ export default function BrowserExtensionsGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/atalhos-navegador-produtividade",
+      href: "/guides/atalhos-navegador-produtividade",
       title: "Browser Shortcuts",
       description: "Further increase your browsing speed."
     },
     {
-      href: "/guias/seguranca-senhas-gerenciadores",
+      href: "/guides/seguranca-senhas-gerenciadores",
       title: "Password Management",
       description: "Better than Chrome's default saving."
     },
     {
-      href: "/guias/limpar-cache-navegador-chrome-edge",
+      href: "/guides/limpar-cache-navegador-chrome-edge",
       title: "Browser Cleanup",
       description: "Maintenance tips for your browser."
     }

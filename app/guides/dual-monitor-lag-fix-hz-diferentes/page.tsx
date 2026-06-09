@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -181,17 +181,17 @@ export default function DualMonitorGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/monitor-hz-configuracao-correta",
+            href: "/guides/monitor-hz-configuracao-correta",
             title: "Configure Monitor",
             description: "For the primary screen."
         },
         {
-            href: "/guias/google-chrome-consumo-ram-fix",
+            href: "/guides/google-chrome-consumo-ram-fix",
             title: "Chrome",
             description: "Disable acceleration for the 2nd screen."
         },
         {
-            href: "/guias/obs-studio-melhores-configuracoes-stream",
+            href: "/guides/obs-studio-melhores-configuracoes-stream",
             title: "OBS",
             description: "Preview adjustments."
         }

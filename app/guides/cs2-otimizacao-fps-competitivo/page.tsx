@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -269,17 +269,17 @@ export default function CS2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia Panel",
             description: "Configure 4:3 Stretched here."
         },
         {
-            href: "/guias/mouse-dpi-polling-rate-ideal",
+            href: "/guides/mouse-dpi-polling-rate-ideal",
             title: "Mouse Guide",
             description: "Ideal DPI (400 vs 800) for CS2."
         },
         {
-            href: "/guias/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduzir-ping-regedit-cmd-jogos",
             title: "Reduce Ping",
             description: "Optimization of routes and network."
         }

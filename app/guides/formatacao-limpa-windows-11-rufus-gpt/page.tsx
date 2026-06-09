@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -189,12 +189,12 @@ export default function FormatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/ddu-limpeza-drivers-video-guia",
+            href: "/guides/ddu-limpeza-drivers-video-guia",
             title: "DDU Guide",
             description: "Ensuring perfectly clean GPU drivers."
         },
         {
-            href: "/guias/debloat-windows-11-otimizacao",
+            href: "/guides/debloat-windows-11-otimizacao",
             title: "Debloat Tools",
             description: "Stripping Windows to its gaming core."
         }

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -235,17 +235,17 @@ export default function WarzoneGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia Guide",
             description: "Unlimited Cache is crucial for COD."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD Guide",
             description: "The game is 200GB, needs a fast SSD."
         },
         {
-            href: "/guias/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduzir-ping-regedit-cmd-jogos",
             title: "Network",
             description: "Avoid Packet Burst."
         }

@@ -183,7 +183,7 @@ export class ContentGenerator {
     if (template.relatedGuides.length > 0) {
       content += `## Related Guides\n\n`;
       template.relatedGuides.forEach(guide => {
-        content += `- [${guide.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}](/guias/${guide})\n`;
+        content += `- [${guide.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}](/guides/${guide})\n`;
       });
       content += '\n';
     }

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -180,12 +180,12 @@ export default function CitraGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
             title: "Switch",
             description: "The evolution of the 3DS."
         },
         {
-            href: "/guias/dolphin-emulador-wii-gamecube-ubershaders-guia",
+            href: "/guides/dolphin-emulador-wii-gamecube-ubershaders-guia",
             title: "Dolphin",
             description: "Console Zeldas."
         }

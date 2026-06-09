@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -181,17 +181,17 @@ export default function ForzaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD",
             description: "Avoids streaming bandwidth errors."
         },
         {
-            href: "/guias/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
             title: "Controller (Gamepad)",
             description: "For those without a steering wheel."
         },
         {
-            href: "/guias/hdr-windows-11-calibracao-jogos",
+            href: "/guides/hdr-windows-11-calibracao-jogos",
             title: "HDR",
             description: "Forza has near-perfect native HDR."
         }

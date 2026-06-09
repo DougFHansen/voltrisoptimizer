@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -279,17 +279,17 @@ export default function CS2OptimizationGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/valorant-reduzir-input-lag",
+      href: "/guides/valorant-reduzir-input-lag",
       title: "Input Lag in Valorant",
       description: "Latency tips that also apply to CS2."
     },
     {
-      href: "/guias/teclado-mecanico-vs-membrana-qual-o-melhor",
+      href: "/guides/teclado-mecanico-vs-membrana-qual-o-melhor",
       title: "Keyboards for FPS",
       description: "Are Rapid Trigger and Hall Effect worth it?"
     },
     {
-      href: "/guias/monitor-ips-vs-va-vs-tn-jogos",
+      href: "/guides/monitor-ips-vs-va-vs-tn-jogos",
       title: "Best Panel for CS2",
       description: "Why TN and OLED dominate the competitive scene."
     }

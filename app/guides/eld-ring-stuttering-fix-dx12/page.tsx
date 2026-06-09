@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -76,17 +76,17 @@ export default function EldenRingFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/aceleracao-hardware-gpu-agendamento",
             title: "GPU Scheduling",
             description: "Essential for DX12 fluidity."
         },
         {
-            href: "/guias/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limitar-fps-rivatuner-nvidia",
             title: "Limit FPS",
             description: "Maintain perfect frame pacing."
         },
         {
-            href: "/guias/rtx-4060-vale-a-pena-2026",
+            href: "/guides/rtx-4060-vale-a-pena-2026",
             title: "RTX Performance",
             description: "See how modern cards run the game."
         }

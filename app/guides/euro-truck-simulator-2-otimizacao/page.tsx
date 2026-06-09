@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -78,17 +78,17 @@ export default function ETS2OptimizationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-performance",
+            href: "/guides/otimizacao-performance",
             title: "Optimize System",
             description: "Prepare Windows for heavy simulation."
         },
         {
-            href: "/guias/limpar-memoria-ram-windows",
+            href: "/guides/limpar-memoria-ram-windows",
             title: "Free Up RAM",
             description: "Vital tip for those using many map mods."
         },
         {
-            href: "/guias/configuracao-roteador-wifi",
+            href: "/guides/configuracao-roteador-wifi",
             title: "Stable Convoy",
             description: "Avoid lag in TruckersMP multiplayer mode."
         }

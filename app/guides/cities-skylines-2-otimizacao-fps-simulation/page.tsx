@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -177,17 +177,17 @@ export default function CS2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guias/bios-otimizacao-xmp-tpm",
+            href: "/guides/bios-otimizacao-xmp-tpm",
             title: "BIOS",
             description: "XMP is crucial for simulation."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD",
             description: "Pagefile (Virtual Memory)."
         },
         {
-            href: "/guias/notebook-gamer-bateria-otimizacao",
+            href: "/guides/notebook-gamer-bateria-otimizacao",
             title: "Laptop",
             description: "It will run very hot."
         }

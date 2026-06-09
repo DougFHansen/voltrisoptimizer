@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -77,17 +77,17 @@ export default function EpicGamesFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/limpar-cache-dns-ip-flushdns",
+            href: "/guides/limpar-cache-dns-ip-flushdns",
             title: "Increase Speed",
             description: "Improve your network for Epic downloads."
         },
         {
-            href: "/guias/limpar-memoria-ram-windows",
+            href: "/guides/limpar-memoria-ram-windows",
             title: "Free RAM",
             description: "Tips to make Windows run lighter."
         },
         {
-            href: "/guias/atalhos-produtividade-windows",
+            href: "/guides/atalhos-produtividade-windows",
             title: "Useful Shortcuts",
             description: "Navigate Windows 11 faster."
         }

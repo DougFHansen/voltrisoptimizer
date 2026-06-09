@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -871,17 +871,17 @@ start_timer()</pre>
 
     const relatedGuides = [
         {
-            href: "/guias/obs-studio-melhores-configuracoes-stream-2026",
+            href: "/guides/obs-studio-melhores-configuracoes-stream-2026",
             title: "Stream Settings",
             description: "Learn how to stream live on Twitch/YouTube."
         },
         {
-            href: "/guias/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
+            href: "/guides/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
             title: "Native Recorder",
             description: "A quick alternative built into Windows."
         },
         {
-            href: "/guias/atualizacao-drivers-video",
+            href: "/guides/atualizacao-drivers-video",
             title: "Video Drivers",
             description: "Essential for NVENC/AMF to work properly."
         }

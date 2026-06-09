@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -193,17 +193,17 @@ export default function TarkovGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD Optimization",
             description: "Load into raids faster."
         },
         {
-            href: "/guias/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduzir-ping-exitlag-noping-dns",
             title: "Ping Reduction",
             description: "Maximize your Peeker's Advantage."
         },
         {
-            href: "/guias/monitor-hz-configuracao-correta",
+            href: "/guides/monitor-hz-configuracao-correta",
             title: "Monitor Settings",
             description: "Higher refresh rates help your aim."
         }

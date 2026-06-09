@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -482,17 +482,17 @@ export default function PrinterSharingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/instalar-impressora-wifi",
+      href: "/guides/instalar-impressora-wifi",
       title: "Wi-Fi Printer",
       description: "How to set up without needing wires."
     },
     {
-      href: "/guias/atalhos-produtividade-windows",
+      href: "/guides/atalhos-produtividade-windows",
       title: "Productivity",
       description: "Shortcuts to print faster."
     },
     {
-      href: "/guias/seguranca-digital",
+      href: "/guides/seguranca-digital",
       title: "Network Security",
       description: "Protect your sharing against intruders."
     }

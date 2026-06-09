@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -180,12 +180,12 @@ export default function DiscordGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/obs-studio-gravacao-replay-buffer-av1",
+            href: "/guides/obs-studio-gravacao-replay-buffer-av1",
             title: "OBS Studio",
             description: "To separate audio."
         },
         {
-            href: "/guias/bufferbloat-qos-sqm-roteador-ping",
+            href: "/guides/bufferbloat-qos-sqm-roteador-ping",
             title: "Bufferbloat",
             description: "Cause of robotic voice."
         }

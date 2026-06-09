@@ -35,6 +35,9 @@ function getPageRoutes(dir: string, baseUrl: string = ''): string[] {
       const skipDirs = [
         'api', 'components', 'dashboard', 'admin',
         'restricted-area-admin', 'auth', 'private',
+        'debug-commands', 'test-commands', 'debug-link',
+        'login', 'reset-password', 'perfil',
+        'pix-limitation', 'cluster-conteudo', 'process',
         '_', '.'
       ];
 
@@ -59,7 +62,7 @@ function getPageRoutes(dir: string, baseUrl: string = ''): string[] {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const domain = 'https://www.voltrisoptimizer.com'; // Atualizado para o domínio internacional
+  const domain = 'https://www.voltrisoptimizer.com'; // Updated to the international domain
   const appDir = path.join(process.cwd(), 'app');
 
   // Business-Critical Priorities for Google (Siloing Strategy)

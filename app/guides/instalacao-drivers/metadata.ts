@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Driver Installation and Update | Complete Guide | VOLTRIS',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Driver Installation and Update | Complete Guide | VOLTRIS',
     description: 'Learn how to install, update, and manage drivers on your computer to ensure all devices work correctly.',
-    url: 'https://www.voltrisoptimizer.com/guias/instalacao-drivers',
+    url: 'https://www.voltrisoptimizer.com/guides/instalacao-drivers',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -57,6 +57,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/instalacao-drivers',
+    canonical: 'https://www.voltrisoptimizer.com/guides/instalacao-drivers',
   },
 };

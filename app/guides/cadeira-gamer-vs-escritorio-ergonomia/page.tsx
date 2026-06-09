@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -478,17 +478,17 @@ export default function ChairComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/posicionamento-monitor-ergonomia",
+            href: "/guides/posicionamento-monitor-ergonomia",
             title: "Monitor Positioning",
             description: "Avoid neck pain after setting up your chair."
         },
         {
-            href: "/guias/perifericos-gamer-vale-a-pena",
+            href: "/guides/perifericos-gamer-vale-a-pena",
             title: "Gamer Peripherals",
             description: "Improve your overall setup comfort."
         },
         {
-            href: "/guias/montagem-pc-gamer-erros-comuns",
+            href: "/guides/montagem-pc-gamer-erros-comuns",
             title: "Assembly Errors",
             description: "Organize your space correctly."
         }

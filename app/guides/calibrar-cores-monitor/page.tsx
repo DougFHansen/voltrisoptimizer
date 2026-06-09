@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -605,17 +605,17 @@ export default function MonitorCalibrationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/guia-compra-monitores",
+            href: "/guides/guia-compra-monitores",
             title: "Choose a Monitor",
             description: "Differences between IPS, VA, and TN panels."
         },
         {
-            href: "/guias/hdr-windows-vale-a-pena-jogos",
+            href: "/guides/hdr-windows-vale-a-pena-jogos",
             title: "HDR Guide",
             description: "How to enjoy high brightness on your monitor."
         },
         {
-            href: "/guias/segundo-monitor-vertical-configurar",
+            href: "/guides/segundo-monitor-vertical-configurar",
             title: "Vertical Monitor",
             description: "Alignment and color tips across screens."
         }

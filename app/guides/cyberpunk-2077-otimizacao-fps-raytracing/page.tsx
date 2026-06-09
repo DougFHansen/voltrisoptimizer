@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -188,17 +188,17 @@ export default function CyberpunkGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "SSD",
             description: "Mandatory for textures."
         },
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia",
             description: "Always update drivers."
         },
         {
-            href: "/guias/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-otimizacao-jogos",
             title: "Defender",
             description: "Avoid scans during gameplay."
         }

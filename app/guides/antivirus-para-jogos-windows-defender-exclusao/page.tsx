@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -177,12 +177,12 @@ export default function AntivirusGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Windows",
             description: "General optimizations."
         },
         {
-            href: "/guias/cheat-engine-speedhack-jogos-offline",
+            href: "/guides/cheat-engine-speedhack-jogos-offline",
             title: "Cheat Engine",
             description: "Dealing with detections."
         }

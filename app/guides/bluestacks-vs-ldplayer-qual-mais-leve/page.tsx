@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -434,17 +434,17 @@ export default function EmulatorComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/jogos-android-no-pc-melhores-emuladores",
+            href: "/guides/jogos-android-no-pc-melhores-emuladores",
             title: "Other Emulators",
             description: "Check out GameLoop and MuMu Player."
         },
         {
-            href: "/guias/fortnite-modo-performance-pc-fraco",
+            href: "/guides/fortnite-modo-performance-pc-fraco",
             title: "Optimize Games",
             description: "FPS tips for competitive games."
         },
         {
-            href: "/guias/atualizar-bios-seguro",
+            href: "/guides/atualizar-bios-seguro",
             title: "Enable Virtualization",
             description: "How to enter BIOS to enable VT-x."
         }

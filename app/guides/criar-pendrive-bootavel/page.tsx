@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -486,17 +486,17 @@ export default function BootableUSBGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/formatacao-windows",
+      href: "/guides/formatacao-windows",
       title: "Formatting Guide",
       description: "What to do after creating the USB drive."
     },
     {
-      href: "/guias/atualizar-bios-seguro",
+      href: "/guides/atualizar-bios-seguro",
       title: "Configure Boot",
       description: "How to make the PC read the USB drive first."
     },
     {
-      href: "/guias/pos-instalacao-windows-11",
+      href: "/guides/pos-instalacao-windows-11",
       title: "Post-Install Checklist",
       description: "Next steps after Windows opens."
     }

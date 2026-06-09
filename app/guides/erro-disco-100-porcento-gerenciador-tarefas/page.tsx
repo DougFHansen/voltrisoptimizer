@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -78,17 +78,17 @@ export default function Disk100FixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize SSD",
             description: "Tips for those who have already upgraded."
         },
         {
-            href: "/guias/substituicao-ssd",
+            href: "/guides/substituicao-ssd",
             title: "Install SSD",
             description: "Learn how to swap out your old drive."
         },
         {
-            href: "/guias/pos-instalacao-windows-11",
+            href: "/guides/pos-instalacao-windows-11",
             title: "Windows Checklist",
             description: "Keep your system clean from the start."
         }

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -137,17 +137,17 @@ export default function FansGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/water-cooler-vs-air-cooler",
+            href: "/guides/water-cooler-vs-air-cooler",
             title: "Choose Your Cooler",
             description: "Coolers need fresh air to work effectively."
         },
         {
-            href: "/guias/monitorar-temperatura-pc",
+            href: "/guides/monitorar-temperatura-pc",
             title: "Monitoring",
             description: "Verify if your airflow setup is working."
         },
         {
-            href: "/guias/limpeza-fisica-pc-gamer",
+            href: "/guides/limpeza-fisica-pc-gamer",
             title: "Cleaning",
             description: "Clean your filters regularly."
         }

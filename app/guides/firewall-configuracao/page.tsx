@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -76,17 +76,17 @@ export default function FirewallConfigGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/bloquear-internet-firewall-windows",
+      href: "/guides/bloquear-internet-firewall-windows",
       title: "Block Software",
       description: "Prevent an app from connecting to the network."
     },
     {
-      href: "/guias/abrir-portas-roteador-nat-aberto",
+      href: "/guides/abrir-portas-roteador-nat-aberto",
       title: "Open Ports",
       description: "Advanced network configurations."
     },
     {
-      href: "/guias/seguranca-digital",
+      href: "/guides/seguranca-digital",
       title: "Digital Security 2026",
       description: "Learn how to protect yourself from modern threats."
     }

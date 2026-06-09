@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -74,17 +74,17 @@ export default function GenshinFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/atualizacao-drivers-video",
+            href: "/guides/atualizacao-drivers-video",
             title: "Video Drivers",
             description: "Essential for Unity engine performance."
         },
         {
-            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/aceleracao-hardware-gpu-agendamento",
             title: "GPU Scheduling",
             description: "Enable for better stability in Windows 11."
         },
         {
-            href: "/guias/stardew-valley-mods-lag-fix",
+            href: "/guides/stardew-valley-mods-lag-fix",
             title: "Fix Lag Mods",
             description: "Performance tips for Unity games."
         }

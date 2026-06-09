@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'How to Fix Common Windows Errors | Troubleshooting Guide | VOLTRIS',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'How to Fix Common Windows Errors | Troubleshooting Guide | VOLTRIS',
     description: 'Complete guide to diagnose and fix the most frequent Windows errors.',
-    url: 'https://www.voltrisoptimizer.com/guias/resolver-erros-windows',
+    url: 'https://www.voltrisoptimizer.com/guides/resolver-erros-windows',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -57,6 +57,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/resolver-erros-windows',
+    canonical: 'https://www.voltrisoptimizer.com/guides/resolver-erros-windows',
   },
 };

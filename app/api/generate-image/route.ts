@@ -3,7 +3,7 @@ import { createClient as createServerClient } from '@/utils/supabase/server';
 
 export async function POST(request: NextRequest) {
   try {
-    // SEGURANÇA: Exigir autenticação de admin para gerar imagens
+    // SECURITY: Require admin authentication to generate images
     const supabase = await createServerClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -12,11 +12,11 @@ export async function POST(request: NextRequest) {
 
     const { description } = await request.json();
 
-    console.log('Descrição recebida:', description);
+    console.log('Received description:', description);
 
     if (!description) {
       return NextResponse.json(
-        { error: 'Descrição é obrigatória' },
+        { error: 'Description is required' },
         { status: 400 }
       );
     }
@@ -25,12 +25,12 @@ export async function POST(request: NextRequest) {
 
     if (!unsplashAccessKey) {
       return NextResponse.json(
-        { error: 'API key do Unsplash não configurada' },
+        { error: 'Unsplash API key not configured' },
         { status: 500 }
       );
     }
 
-    // Buscar múltiplas imagens no Unsplash
+    // Search multiple images on Unsplash
     const response = await fetch(
       `https://api.unsplash.com/search/photos?query=${encodeURIComponent(description)}&orientation=landscape&per_page=5&client_id=${unsplashAccessKey}`,
       {
@@ -41,24 +41,24 @@ export async function POST(request: NextRequest) {
     );
 
     const data = await response.json();
-    console.log('Resposta da API do Unsplash:', data);
+    console.log('Unsplash API response:', data);
 
     if (!response.ok) {
-      console.error('Erro na API do Unsplash:', data);
+      console.error('Unsplash API error:', data);
       return NextResponse.json(
-        { error: 'Erro ao buscar imagem', details: data },
+        { error: 'Error fetching image', details: data },
         { status: 500 }
       );
     }
 
     if (!data.results || data.results.length === 0) {
       return NextResponse.json(
-        { error: 'Nenhuma imagem encontrada para a descrição fornecida.', details: data },
+        { error: 'No image found for the provided description.', details: data },
         { status: 404 }
       );
     }
 
-    // Montar array de imagens
+    // Build images array
     const images = data.results.map((img: any) => ({
       imageUrl: img.urls.regular,
       thumbUrl: img.urls.thumb,
@@ -70,9 +70,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ images });
 
   } catch (error) {
-    console.error('Erro ao buscar imagem:', error);
+    console.error('Error fetching image:', error);
     return NextResponse.json(
-      { error: 'Erro interno do servidor', details: error instanceof Error ? error.message : error },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : error },
       { status: 500 }
     );
   }

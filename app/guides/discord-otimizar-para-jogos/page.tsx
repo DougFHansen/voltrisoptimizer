@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -827,22 +827,22 @@ export default function DiscordOptimizationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/aumentar-volume-microfone-windows",
+            href: "/guides/aumentar-volume-microfone-windows",
             title: "Adjust Microphone",
             description: "Improve your voice for friends to hear."
         },
         {
-            href: "/guias/limpar-memoria-ram-windows",
+            href: "/guides/limpar-memoria-ram-windows",
             title: "Free Up RAM",
             description: "Reduce Discord's weight on the system."
         },
         {
-            href: "/guias/reduzir-ping-jogos-online",
+            href: "/guides/reduzir-ping-jogos-online",
             title: "Reduce Lag",
             description: "Avoid robots factor in voice and match lag."
         },
         {
-            href: "/guias/otimizacao-performance",
+            href: "/guides/otimizacao-performance",
             title: "Advanced Optimization",
             description: "System optimization techniques."
         }

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -215,17 +215,17 @@ Safety:
 
     const relatedGuides = [
         {
-            href: "/guias/o-que-sao-ai-agents-guia-completo",
+            href: "/guides/o-que-sao-ai-agents-guia-completo",
             title: "AI Agents",
             description: "Take your programming to the next level by creating autonomous agents."
         },
         {
-            href: "/guias/atalhos-navegador-produtividade",
+            href: "/guides/atalhos-navegador-produtividade",
             title: "Real Productivity",
             description: "How to use Arc browser to research docs 2x faster."
         },
         {
-            href: "/guias/debloat-windows-11-otimizacao-powershell",
+            href: "/guides/debloat-windows-11-otimizacao-powershell",
             title: "Fast PC",
             description: "Prepare your Windows to run compilers and Docker without freezing."
         }

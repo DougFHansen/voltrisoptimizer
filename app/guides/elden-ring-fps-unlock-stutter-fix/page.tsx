@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -186,17 +186,17 @@ export default function EldenRingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
             title: "Nvidia",
             description: "Cache settings."
         },
         {
-            href: "/guias/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/monitor-ultrawide-jogos-competitivos",
             title: "Ultrawide",
             description: "Understand the format."
         },
         {
-            href: "/guias/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
             title: "Controller",
             description: "Improve Parry."
         }

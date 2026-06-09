@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Essential Digital Security Guide | Virus and Malware Protection | VOLTRIS',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Essential Digital Security Guide | Virus and Malware Protection | VOLTRIS',
     description: 'Protect your computer against viruses, malware, and cyberattacks. Complete digital security guide.',
-    url: 'https://www.voltrisoptimizer.com/guias/seguranca-digital',
+    url: 'https://www.voltrisoptimizer.com/guides/seguranca-digital',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -57,6 +57,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/seguranca-digital',
+    canonical: 'https://www.voltrisoptimizer.com/guides/seguranca-digital',
   },
 };

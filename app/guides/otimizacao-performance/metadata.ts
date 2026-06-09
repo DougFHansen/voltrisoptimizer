@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '[2026] How to Optimize Your PC\'s Performance - 12 Proven Techniques | VOLTRIS',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'How to Optimize Your PC\'s Performance | Professional Guide | VOLTRIS',
     description: 'Professional techniques to speed up your computer and significantly improve system performance.',
-    url: 'https://www.voltrisoptimizer.com/guias/otimizacao-performance',
+    url: 'https://www.voltrisoptimizer.com/guides/otimizacao-performance',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -54,6 +54,6 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/otimizacao-performance',
+    canonical: 'https://www.voltrisoptimizer.com/guides/otimizacao-performance',
   },
 };

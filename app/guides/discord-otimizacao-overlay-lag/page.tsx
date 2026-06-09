@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -193,17 +193,17 @@ export default function DiscordGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/obs-studio-melhores-configuracoes-stream",
+            href: "/guides/obs-studio-melhores-configuracoes-stream",
             title: "OBS Studio",
             description: "Capture Discord audio separately."
         },
         {
-            href: "/guias/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduzir-ping-regedit-cmd-jogos",
             title: "Network",
             description: "Discord uses UDP, just like games."
         },
         {
-            href: "/guias/mic-chiando-ruido-estatico-fix",
+            href: "/guides/mic-chiando-ruido-estatico-fix",
             title: "Microphone",
             description: "Improve quality before it reaches Discord."
         }

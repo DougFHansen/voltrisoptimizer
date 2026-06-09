@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -78,17 +78,17 @@ export default function ValorantDX11Guide() {
 
     const relatedGuides = [
         {
-            href: "/guias/como-usar-ddu-driver-uninstaller",
+            href: "/guides/como-usar-ddu-driver-uninstaller",
             title: "DDU Guide",
             description: "Clean your drivers to fix DirectX."
         },
         {
-            href: "/guias/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduzir-input-lag",
             title: "Optimize Valorant",
             description: "Improve performance after opening the game."
         },
         {
-            href: "/guias/como-escolher-placa-de-video",
+            href: "/guides/como-escolher-placa-de-video",
             title: "GPU Upgrade",
             description: "Choose a card that supports Valorant in 2026."
         }

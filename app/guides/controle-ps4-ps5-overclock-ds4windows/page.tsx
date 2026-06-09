@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -182,12 +182,12 @@ export default function ControllerGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/cemu-emulador-wii-u-zelda-botw-4k-60fps",
+            href: "/guides/cemu-emulador-wii-u-zelda-botw-4k-60fps",
             title: "Cemu Hub",
             description: "Implementing Gyro controls for Breath of the Wild."
         },
         {
-            href: "/guias/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
             title: "Switch Tuning",
             description: "Setting up motion sensors for modern Nintendo titles."
         }

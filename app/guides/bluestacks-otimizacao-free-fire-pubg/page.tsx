@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -142,17 +142,17 @@ export default function GameConfigGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/bluestacks-ldplayer-otimizacao-free-fire-120fps",
+            href: "/guides/bluestacks-ldplayer-otimizacao-free-fire-120fps",
             title: "Optimize BlueStacks",
             description: "Start here if it's lagging."
         },
         {
-            href: "/guias/reduzir-input-lag-teclado-mouse",
+            href: "/guides/reduzir-input-lag-teclado-mouse",
             title: "Input Lag",
             description: "Reduce click delay."
         },
         {
-            href: "/guias/network-throttling-index-ping-jogos",
+            href: "/guides/network-throttling-index-ping-jogos",
             title: "Low Ping",
             description: "How to improve connection."
         }

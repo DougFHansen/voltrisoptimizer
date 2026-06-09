@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -145,17 +145,17 @@ export default function HAGSGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/modo-de-jogo-windows-atikvar-ou-nao",
+      href: "/guides/modo-de-jogo-windows-atikvar-ou-nao",
       title: "Game Mode",
       description: "Another native Windows setting."
     },
     {
-      href: "/guias/otimizacoes-para-notebook-gamer",
+      href: "/guides/otimizacoes-para-notebook-gamer",
       title: "Notebooks",
       description: "HAGS helps a lot in notebooks with power limits."
     },
     {
-      href: "/guias/atualizacao-drivers-video",
+      href: "/guides/atualizacao-drivers-video",
       title: "Drivers",
       description: "Keep your drivers up to date for HAGS to work."
     }

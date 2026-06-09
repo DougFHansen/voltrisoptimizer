@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -144,17 +144,17 @@ export default function BitLockerGuide() {
 
   const relatedGuides = [
     {
-      href: "/guias/otimizacao-ssd-windows-11",
+      href: "/guides/otimizacao-ssd-windows-11",
       title: "Optimize SSD",
       description: "Other tips for a fast SSD."
     },
     {
-      href: "/guias/atualizar-bios-seguro",
+      href: "/guides/atualizar-bios-seguro",
       title: "Update BIOS",
       description: "Beware of BitLocker here."
     },
     {
-      href: "/guias/debloat-windows-11-otimizacao-powershell",
+      href: "/guides/debloat-windows-11-otimizacao-powershell",
       title: "Windows Debloat",
       description: "Remove useless services."
     }

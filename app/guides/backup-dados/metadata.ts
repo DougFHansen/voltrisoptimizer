@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'How to Backup Your Data | Complete Backup Guide | VOLTRIS',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'How to Backup Your Data | Complete Backup Guide | VOLTRIS',
     description: 'Learn effective methods to perform a full backup of your important files. Complete step-by-step guide.',
-    url: 'https://www.voltrisoptimizer.com/guias/backup-dados',
+    url: 'https://www.voltrisoptimizer.com/guides/backup-dados',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guias/backup-dados',
+    canonical: 'https://www.voltrisoptimizer.com/guides/backup-dados',
   },
 };
 

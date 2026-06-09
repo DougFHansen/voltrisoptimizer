@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -420,17 +420,17 @@ export default function CableManagementGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/limpeza-fisica-pc-gamer",
+            href: "/guides/limpeza-fisica-pc-gamer",
             title: "Physical Cleaning",
             description: "Clean dust while you're organizing."
         },
         {
-            href: "/guias/gabinete-gamer-airflow-importance",
+            href: "/guides/gabinete-gamer-airflow-importance",
             title: "Airflow Guide",
             description: "How cable placement affects heat."
         },
         {
-            href: "/guias/montagem-pc-gamer-erros-comuns",
+            href: "/guides/montagem-pc-gamer-erros-comuns",
             title: "PC Assembly",
             description: "Tips for beginners to stay organized."
         }

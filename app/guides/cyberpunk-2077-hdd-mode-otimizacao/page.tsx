@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -78,17 +78,17 @@ export default function CyberpunkOptimizationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/aceleracao-hardware-gpu-agendamento",
             title: "GPU Scheduling",
             description: "Mandatory for Frame Generation to work."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize SSD",
             description: "Improve read speed for the game."
         },
         {
-            href: "/guias/rtx-4060-vale-a-pena-2026",
+            href: "/guides/rtx-4060-vale-a-pena-2026",
             title: "RTX 4060 Benchmark",
             description: "See how the card performs in Night City."
         }

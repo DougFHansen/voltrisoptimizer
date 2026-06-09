@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -80,17 +80,17 @@ export default function DPCWatchdogGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/como-resolver-tela-azul",
+            href: "/guides/como-resolver-tela-azul",
             title: "Blue Screen Guide",
             description: "General steps for any BSOD error."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
+            href: "/guides/otimizacao-ssd-windows-11",
             title: "Optimize SSD",
             description: "Keep your disk fast and stable."
         },
         {
-            href: "/guias/corrigir-dll-faltando-vcredist-directx",
+            href: "/guides/corrigir-dll-faltando-vcredist-directx",
             title: "Fix DLLs",
             description: "Resolve corrupted library problems."
         }

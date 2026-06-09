@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -800,17 +800,17 @@ export default function BIOSUpdateGuide() {
 
     const relatedGuides = [
         {
-            href: "/guias/como-escolher-processador-2026",
+            href: "/guides/como-escolher-processador-2026",
             title: "Processors",
             description: "Check motherboard compatibility."
         },
         {
-            href: "/guias/montagem-pc-gamer-erros-comuns",
+            href: "/guides/montagem-pc-gamer-erros-comuns",
             title: "PC Build",
             description: "Common hardware mistakes."
         },
         {
-            href: "/guias/otimizacao-performance",
+            href: "/guides/otimizacao-performance",
             title: "Performance",
             description: "General system optimization."
         }

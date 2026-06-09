@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: chatId,
-        text: `🔧 <b>Teste de Diagnóstico Voltris</b>\n\nEste teste foi iniciado via /api/notifications/download/debug.\n\n✅ Se você recebeu isso, as credenciais estão 100% corretas no servidor!`,
+        text: `🔧 <b>Voltris Diagnostic Test</b>\n\nThis test was initiated via /api/notifications/download/debug.\n\n✅ If you received this, the credentials are 100% correct on the server!`,
         parse_mode: 'HTML',
       }),
     });
