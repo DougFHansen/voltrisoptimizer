@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage International -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/" />
+    <image:image>
+      <image:loc>https://www.voltrisoptimizer.com/images/home-og.jpg</image:loc>
+      <image:title>Voltris - PC Optimization Services</image:title>
+      <image:caption>Professional PC optimization and technical support</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Regional Homepages -->
+  <url>
+    <loc>https://www.voltris.com/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/" />
+  </url>
+
+  <url>
+    <loc>https://www.voltris.co.uk/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/" />
+  </url>
+
+  <url>
+    <loc>https://www.voltris.com.br/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/" />
+  </url>
+
+  <url>
+    <loc>https://www.voltris.de/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/" />
+  </url>
+
+  <!-- Services Pages -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/servicos</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/services" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/services" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/servicos" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/dienstleistungen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/servicos" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/otimizacao-pc</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/pc-optimization" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/pc-optimization" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/otimizacao-pc" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/pc-optimierung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/otimizacao-pc" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/voltrisoptimizer</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/voltris-optimizer" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/voltris-optimizer" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/voltrisoptimizer" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/voltris-optimizer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/voltrisoptimizer" />
+  </url>
+
+  <!-- Guides Pages -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias" />
+  </url>
+
+  <!-- Popular Guides with International Versions -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias/valorant-van-9003-secure-boot-tpm-fix</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides/valorant-van-9003-fix" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides/valorant-van-9003-fix" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias/valorant-van-9003" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen/valorant-van-9003-behebung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias/valorant-van-9003-secure-boot-tpm-fix" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias/gta-v-otimizacao-fps-guia-completo</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides/gta-v-fps-optimization" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides/gta-v-fps-optimization" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias/gta-v-otimizacao" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen/gta-v-fps-optimierung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias/gta-v-otimizacao-fps-guia-completo" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias/ssd-vs-hdd-guia</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides/ssd-vs-hdd-guide" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides/ssd-vs-hdd-guide" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias/ssd-vs-hdd" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen/ssd-vs-hdd-vergleich" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias/ssd-vs-hdd-guia" />
+  </url>
+
+  <!-- Company Pages -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/sobre</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/about" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/about" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/sobre" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/uber-uns" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/sobre" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/contato</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/contact" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/contact" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/contato" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/contato" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/faq</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/faq" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/faq" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/faq" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/faq" />
+  </url>
+
+  <!-- Product Pages -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/adquirir-licenca</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/purchase-license" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/purchase-license" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/adquirir-licenca" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/lizenz-kaufen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/adquirir-licenca" />
+  </url>
+
+  <!-- Category Pages -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias?category=gaming</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides?category=gaming" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides?category=gaming" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias?category=gaming" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen?category=gaming" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias?category=gaming" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias?category=hardware</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides?category=hardware" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides?category=hardware" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias?category=hardware" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen?category=hardware" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias?category=hardware" />
+  </url>
+
+  <!-- Additional Important Guides -->
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias/debloat-windows-11-otimizacao-powershell</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides/windows-11-debloat" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides/windows-11-debloat" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias/debloat-windows-11" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen/windows-11-debloat" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias/debloat-windows-11-otimizacao-powershell" />
+  </url>
+
+  <url>
+    <loc>https://www.voltrisoptimizer.com/guias/reduzir-ping-regedit-cmd-jogos</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://www.voltris.com/guides/reduce-ping-gaming" />
+    <xhtml:link rel="alternate" hreflang="en-gb" href="https://www.voltris.co.uk/guides/reduce-ping-gaming" />
+    <xhtml:link rel="alternate" hreflang="pt-br" href="https://www.voltris.com.br/guias/reduzir-ping" />
+    <xhtml:link rel="alternate" hreflang="de-de" href="https://www.voltris.de/anleitungen/ping-reduzieren-gaming" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voltrisoptimizer.com/guias/reduzir-ping-regedit-cmd-jogos" />
+  </url>
+
+</urlset>

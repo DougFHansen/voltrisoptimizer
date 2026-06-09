@@ -1,0 +1,252 @@
+{
+  "common": {
+    "siteName": "VOLTRIS",
+    "tagline": "PC最適化と技術サポート",
+    "downloadButton": "Voltris Optimizerをダウンロード",
+    "freeDownload": "無料ダウンロード",
+    "learnMore": "詳細を見る",
+    "contactUs": "お問い合わせ",
+    "searchPlaceholder": "ガイドとサービスを検索...",
+    "menu": "メニュー",
+    "close": "閉じる",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "readMore": "もっと読む",
+    "viewDetails": "詳細を見る",
+    "getStarted": "開始",
+    "backToTop": "トップに戻る",
+    "share": "共有",
+    "copyLink": "リンクをコピー",
+    "language": "言語"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "services": "サービス",
+    "guides": "ガイド",
+    "optimizer": "Voltris Optimizer",
+    "support": "サポート",
+    "about": "会社概要",
+    "contact": "連絡先",
+    "dashboard": "ダッシュボード",
+    "profile": "プロフィール",
+    "logout": "ログアウト"
+  },
+  "pages": {
+    "home": {
+      "title": "VOLTRIS - PC最適化、ゲーミング性能、技術サポート",
+      "metaDescription": "ブラジルにおけるゲーミング性能とWindows最適化のリーディングオーソリティ。Voltris Optimizerをダウンロードし、300以上のFPSガイドを確認し、専門技術サポートを依頼してください。",
+      "headings": {
+        "hero": "最大ゲーミング性能のための究極PC最適化",
+        "features": "なぜVoltris Optimizerを選ぶのか？",
+        "services": "私たちの専門サービス",
+        "guides": "最大性能のための300以上の技術ガイド",
+        "testimonials": "ユーザーの声",
+        "cta": "PC性能を変革する準備はできましたか？"
+      },
+      "paragraphs": {
+        "hero": "Voltris Optimizerでコンピューターの性能を変革しましょう。Windows用最も包括的な最適化ソリューションです。コンピューター体験を革命した何千人ものゲーマーと専門家に参加してください。",
+        "intro": "300以上の詳細な技術ガイドと最先端の最適化ツールで、VOLTRISはPCの潜在能力を最大化するための決定的リソースです。",
+        "features": "独自の最適化技術がシステム設定を分析し、ゲーミング、生産性、全体的なシステム応答性で測定可能な改善を提供するインテリジェントな調整を適用します。"
+      },
+      "buttons": {
+        "download": "無料版をダウンロード",
+        "premium": "プレミアムにアップグレード",
+        "guides": "すべてのガイドを閲覧",
+        "contact": "技術サポートを受ける"
+      },
+      "lists": {
+        "features": [
+          "ワンクリック実行によるインテリジェントシステム最適化",
+          "リアルタイム性能監視とアラート",
+          "自動ドライバー更新とメンテナンス",
+          "100以上のタイトル向けゲーミング固有の最適化",
+          "プライバシー保護とブロートウェア削除",
+          "認定プロフェッショナルによる24/7技術サポート"
+        ]
+      },
+      "altText": {
+        "hero": "Voltris Optimizerダッシュボード - PC性能最適化ソフトウェア",
+        "features": "Voltris Optimizer機能概要",
+        "guides": "PC最適化技術ガイド"
+      }
+    },
+    "voltris-optimizer": {
+      "title": "Voltris Optimizer - 無料PC性能最適化ソフトウェア",
+      "metaDescription": "Voltris Optimizerを無料でダウンロードし、インテリジェントな最適化、ゲーミング調整、システムメンテナンスツールでPC性能を向上させましょう。",
+      "headings": {
+        "main": "革命的PC性能最適化",
+        "features": "最大性能のための強力な機能",
+        "technical": "技術仕様",
+        "download": "Voltris Optimizerをダウンロード",
+        "requirements": "システム要件",
+        "support": "技術サポートと更新"
+      },
+      "paragraphs": {
+        "intro": "Voltris Optimizerはシステム性能最適化における数年間の研究の集大成です。高度なアルゴリズムが他のツールが見逃す性能ボトルネックを特定し解決します。",
+        "features": "包括的な最適化スイートで前例のないレベルのシステム応答性を体験してください。自動ドライバー更新からゲーミング固有の調整まで、すべての機能が測定可能な結果を提供するように設計されています。",
+        "technical": "最先端技術で構築され、最新ハードウェア用に最適化されたVoltris Optimizerは、システム最適化ソフトウェアの次世代を表しています。"
+      },
+      "buttons": {
+        "downloadFree": "無料版をダウンロード",
+        "downloadPremium": "プレミアムをダウンロード",
+        "viewGuide": "インストールガイドを見る",
+        "checkCompatibility": "互換性を確認"
+      },
+      "lists": {
+        "features": [
+          "ワンクリックシステム最適化",
+          "ゲーミング性能ブースター",
+          "自動ドライバー更新",
+          "システム健康状態監視",
+          "プライバシーとセキュリティツール",
+          "ブロートウェア削除",
+          "スタートアップ最適化",
+          "メモリ管理",
+          "ディスククリーニングと最適化",
+          "ネットワーク最適化"
+        ],
+        "requirements": [
+          "Windows 10（バージョン1903以降）",
+          "Windows 11（すべてのバージョン）",
+          "4GB RAM最小（8GB推奨）",
+          "100MB空きディスク容量",
+          "更新用インターネット接続"
+        ]
+      },
+      "altText": {
+        "main": "Voltris Optimizerインターフェース",
+        "download": "Voltris Optimizerダウンロードボタン",
+        "features": "Voltris Optimizer機能"
+      }
+    },
+    "services": {
+      "title": "専門技術サポートサービス",
+      "metaDescription": "PC最適化、ゲーミング性能、システムメンテナンス向けの専門技術サポートサービス。全国でリモートサポート利用可能。",
+      "headings": {
+        "main": "専門技術サポートサービス",
+        "optimization": "PC最適化サービス",
+        "gaming": "ゲーミング性能最適化",
+        "maintenance": "予防保守",
+        "emergency": "緊急サポート",
+        "pricing": "サービスプランと価格"
+      },
+      "paragraphs": {
+        "intro": "認定技術プロフェッショナルがシステムの性能と信頼性を最大化するように設計された包括的なサポートサービスを提供します。",
+        "optimization": "専門の最適化サービスでコンピューターの性能を変革しましょう。システム設定を分析し、最大結果のための的を絞った最適化を適用します。",
+        "gaming": "ゲーミング固有の最適化サービスで競争上の優位性を得ましょう。お気に入りのゲームで最適性能になるようにシステムを微調整します。"
+      },
+      "buttons": {
+        "scheduleService": "サービスを予約",
+        "getQuote": "見積もりを取得",
+        "emergencySupport": "緊急サポート",
+        "viewPlans": "サービスプランを見る"
+      },
+      "lists": {
+        "services": [
+          "完全なシステム最適化と調整",
+          "ゲーミング性能最適化",
+          "ハードウェアアップグレードコンサルティング",
+          "ウイルスとマルウェア削除",
+          "データバックアップと復旧",
+          "ネットワークセットアップと最適化",
+          "ソフトウェアインストールと設定",
+          "予防保守プログラム"
+        ]
+      },
+      "altText": {
+        "services": "技術サポートサービス概要",
+        "optimization": "PC最適化サービス",
+        "gaming": "ゲーミング性能セットアップ"
+      }
+    },
+    "guides": {
+      "title": "技術ガイド - PC最適化とゲーミング性能",
+      "metaDescription": "PC最適化、ゲーミング性能調整、Windows最適化、ハードウェアメンテナンス向けの300以上の専門技術ガイドを閲覧。",
+      "headings": {
+        "main": "包括的な技術ガイド",
+        "categories": "ガイドカテゴリー",
+        "popular": "最も人気のあるガイド",
+        "recent": "最近の更新",
+        "gaming": "ゲーミング性能ガイド",
+        "windows": "Windows最適化",
+        "hardware": "ハードウェアとメンテナンス"
+      },
+      "paragraphs": {
+        "intro": "PC最適化、ゲーミング性能、システムメンテナンスのあらゆる側面をカバーする技術ガイドの広大なライブラリにアクセスしてください。",
+        "categories": "ガイドは明確なカテゴリーに整理されており、特定の最適化目標に必要なものを正確に見つけやすくなっています。"
+      },
+      "buttons": {
+        "browseAll": "すべてのガイドを閲覧",
+        "searchGuides": "ガイドを検索",
+        "requestGuide": "ガイドをリクエスト"
+      },
+      "lists": {
+        "categories": [
+          "ゲーミング性能最適化",
+          "Windows 10/11最適化",
+          "ハードウェアアップグレードとメンテナンス",
+          "ネットワークとインターネット最適化",
+          "ソフトウェアとアプリ最適化",
+          "トラブルシューティングと修復",
+          "セキュリティとプライバシー",
+          "オーバークロックと高度な調整"
+        ]
+      },
+      "altText": {
+        "guides": "技術ガイドライブラリ",
+        "categories": "ガイドカテゴリー",
+        "popular": "人気の技術ガイド"
+      }
+    }
+  },
+  "seo": {
+    "keywords": {
+      "general": [
+        "pc最適化",
+        "ゲーミング性能",
+        "voltris optimizer",
+        "技術サポート",
+        "windows最適化",
+        "ラグ削減",
+        "fps向上",
+        "システムチューニング",
+        "pcメンテナンス",
+        "性能ソフトウェア"
+      ],
+      "gaming": [
+        "fps向上",
+        "ゲーミング最適化",
+        "インプットラグ削減",
+        "ゲーミングpcセットアップ",
+        "ゲーミング最適設定",
+        "pcゲーミング最適化",
+        "ゲーミング性能向上"
+      ],
+      "technical": [
+        "技術サポート",
+        "pcトラブルシューティング",
+        "システムメンテナンス",
+        "ハードウェア最適化",
+        "ソフトウェア最適化",
+        "ドライバー更新",
+        "システム健康状態チェック"
+      ]
+    }
+  },
+  "footer": {
+    "description": "ブラジルにおけるPC最適化とゲーミング性能のリーディングオーソリティ。専門技術サポートと最先端最適化ソフトウェア。",
+    "quickLinks": "クイックリンク",
+    "services": "サービス",
+    "resources": "リソース",
+    "legal": "法務",
+    "social": "フォローする",
+    "newsletter": "ニュースレター",
+    "newsletterPlaceholder": "ヒントと更新のためメールを入力",
+    "newsletterButton": "購読",
+    "copyright": "© 2026 VOLTRIS. すべての権利予約済み。",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "cookies": "クッキーポリシー"
+  }
+}

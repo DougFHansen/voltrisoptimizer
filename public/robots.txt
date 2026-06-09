@@ -1,0 +1,35 @@
+# robots.txt - Voltris Optimizer
+# Configuração SEO para máximo rastreamento e indexação
+
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /restricted-area-admin/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /tmp/
+Disallow: /*.php
+
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard/
+Disallow: /restricted-area-admin/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /*.php
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap dinâmico gerado automaticamente pelo Next.js
+Sitemap: https://www.voltrisoptimizer.com/sitemap.xml
+
+# IndexNow key location para verificação
+Host: https://www.voltrisoptimizer.com

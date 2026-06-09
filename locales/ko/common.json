@@ -1,0 +1,94 @@
+{
+  "home": {
+    "title": "VOLTRIS - PC 최적화 및 기술 지원",
+    "description": "브라질에서 게이밍 성능 및 Windows 최적화의 최고 권위자. Voltris Optimizer를 다운로드하고, 300개 이상의 FPS 가이드를 확인하며, 전문 기술 지원을 요청하세요.",
+    "services": {
+      "optimizer": {
+        "title": "Voltris Optimizer (SaaS)",
+        "desc": "고성능 소프트웨어를 사용하여 원클릭으로 FPS를 향상시키고, 입력 지연을 줄이며, Windows를 최적화하세요.",
+        "price": "라이선스 9,900원부터"
+      },
+      "advanced": {
+        "title": "고급 게이머 최적화",
+        "desc": "eSports를 위한 RAM 오버클럭, CPU 튜닝, 딥 커널 튜닝을 위한 전문가의 원격 액세스.",
+        "price": "29,900원부터"
+      },
+      "windows": {
+        "title": "Windows 오류 수정",
+        "desc": "시스템 오류, 블루스크린, 시작 실패 및 Windows 성능 문제를 원격으로 해결합니다.",
+        "price": "9,900원부터"
+      },
+      "support": {
+        "title": "익스프레스 기술 지원",
+        "desc": "PC 및 노트북을 위한 바이러스 및 맬웨어 제거, 안전한 백업과 함께 완전 원격 포맷.",
+        "price": "19,900원부터"
+      }
+    },
+    "cta": {
+      "optimize_now": "지금 최적화",
+      "contact_support": "지원 연락",
+      "learn_more": "더 알아보기"
+    },
+    "faq": {
+      "how_increase_fps": "게임에서 FPS를 어떻게 높이나요?",
+      "how_increase_fps_answer": "FPS를 높이려면 Voltris Optimizer를 사용하여 불필요한 Windows 서비스를 비활성화하고, 전원 계획을 최적화하며, 임시 파일을 정리하고, 특정 하드웨어용 시스템 지연을 조정할 수 있습니다.",
+      "remote_formatting": "VOLTRIS가 원격 PC 포맷을 하나요?",
+      "remote_formatting_answer": "네, 데이터 백업과 최대 성능을 위한 최적화된 드라이버 설치로 컴퓨터와 노트북 포맷을 원격으로 안전하게 수행합니다.",
+      "work_performance": "Voltris Optimizer가 작업 성능을 어떻게 향상시키나요?",
+      "work_performance_answer": "소프트웨어는 CPU와 RAM을 소모하는 백그라운드 프로세스를 제거하여, 작업 도구(Office, Adobe, 브라우저)가 최대 하드웨어 우선순위를 갖도록 보장합니다."
+    }
+  },
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공",
+    "cancel": "취소",
+    "save": "저장",
+    "edit": "편집",
+    "delete": "삭제",
+    "login": "로그인",
+    "logout": "로그아웃",
+    "profile": "프로필",
+    "settings": "설정",
+    "home": "홈",
+    "about": "정보",
+    "contact": "연락처",
+    "help": "도움말",
+    "search": "검색",
+    "menu": "메뉴",
+    "back": "뒤로",
+    "next": "다음",
+    "previous": "이전",
+    "close": "닫기",
+    "open": "열기",
+    "yes": "예",
+    "no": "아니오",
+    "ok": "확인",
+    "send": "보내기",
+    "continue": "계속",
+    "submit": "제출"
+  },
+  "navigation": {
+    "home": "홈",
+    "services": "서비스",
+    "optimizer": "최적화기",
+    "support": "지원",
+    "about": "정보",
+    "contact": "연락처",
+    "login": "로그인",
+    "dashboard": "대시보드",
+    "profile": "프로필"
+  },
+  "footer": {
+    "description": "브라질 전역에서 최대 성능을 위한 원격 기술 지원 및 컴퓨터 최적화 전문가.",
+    "services": "서비스",
+    "company": "회사",
+    "resources": "리소스",
+    "legal": "법적 정보",
+    "privacy": "개인정보 보호정책",
+    "terms": "서비스 약관",
+    "contact": "연락처",
+    "social": "팔로우",
+    "copyright": "© 2024 VOLTRIS - 모든 권리 보유."
+  }
+}

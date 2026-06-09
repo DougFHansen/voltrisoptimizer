@@ -1,0 +1,94 @@
+{
+  "home": {
+    "title": "VOLTRIS - PC Optimization and Technical Support",
+    "description": "The leading authority in gaming performance and Windows optimization in Brazil. Download Voltris Optimizer, check our 300+ FPS guides, and request specialized technical support.",
+    "services": {
+      "optimizer": {
+        "title": "Voltris Optimizer (SaaS)",
+        "desc": "Increase FPS, reduce input lag and optimize Windows with just 1 click using our high-performance software.",
+        "price": "License from $9.90"
+      },
+      "advanced": {
+        "title": "Advanced Gamer Optimization",
+        "desc": "Remote access by specialist for RAM overclocking, CPU tuning, and deep kernel optimization for eSports.",
+        "price": "From $29.90"
+      },
+      "windows": {
+        "title": "Windows Error Correction",
+        "desc": "We resolve system errors, blue screens, startup failures, and Windows performance issues remotely.",
+        "price": "From $9.90"
+      },
+      "support": {
+        "title": "Express Technical Support",
+        "desc": "Virus and malware removal, complete remote formatting with secure backup for PCs and notebooks.",
+        "price": "From $19.90"
+      }
+    },
+    "cta": {
+      "optimize_now": "Optimize Now",
+      "contact_support": "Contact Support",
+      "learn_more": "Learn More"
+    },
+    "faq": {
+      "how_increase_fps": "How to increase FPS in games?",
+      "how_increase_fps_answer": "To increase FPS, you can use Voltris Optimizer to disable useless Windows services, optimize power plan, clean temporary files and adjust system latency for your specific hardware.",
+      "remote_formatting": "Does VOLTRIS do remote PC formatting?",
+      "remote_formatting_answer": "Yes, we perform computer and notebook formatting remotely and securely, with data backup and optimized driver installation for maximum performance.",
+      "work_performance": "How does Voltris Optimizer improve work performance?",
+      "work_performance_answer": "The software removes background processes that consume CPU and RAM, ensuring your work tools (Office, Adobe, Browsers) have maximum hardware priority."
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "help": "Help",
+    "search": "Search",
+    "menu": "Menu",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "send": "Send",
+    "continue": "Continue",
+    "submit": "Submit"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "optimizer": "Optimizer",
+    "support": "Support",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "profile": "Profile"
+  },
+  "footer": {
+    "description": "Specialists in remote technical support and computer optimization for maximum performance throughout Brazil.",
+    "services": "Services",
+    "company": "Company",
+    "resources": "Resources",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact",
+    "social": "Follow Us",
+    "copyright": "© 2024 VOLTRIS - All rights reserved."
+  }
+}

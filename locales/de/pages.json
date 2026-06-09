@@ -1,0 +1,252 @@
+{
+  "common": {
+    "siteName": "VOLTRIS",
+    "tagline": "PC-Optimierung und Technischer Support",
+    "downloadButton": "Voltris Optimizer Herunterladen",
+    "freeDownload": "Kostenloser Download",
+    "learnMore": "Mehr Erfahren",
+    "contactUs": "Kontaktiere Uns",
+    "searchPlaceholder": "Anleitungen und Dienstleistungen suchen...",
+    "menu": "Menü",
+    "close": "Schließen",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "readMore": "Mehr Lesen",
+    "viewDetails": "Details Anzeigen",
+    "getStarted": "Loslegen",
+    "backToTop": "Nach Oben",
+    "share": "Teilen",
+    "copyLink": "Link Kopieren",
+    "language": "Sprache"
+  },
+  "navigation": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "guides": "Anleitungen",
+    "optimizer": "Voltris Optimizer",
+    "support": "Support",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "dashboard": "Dashboard",
+    "profile": "Profil",
+    "logout": "Abmelden"
+  },
+  "pages": {
+    "home": {
+      "title": "VOLTRIS - PC-Optimierung, Gaming-Leistung und Technischer Support",
+      "metaDescription": "Die führende Autorität für Gaming-Leistung und Windows-Optimierung in Brasilien. Laden Sie Voltris Optimizer herunter, sehen Sie sich unsere 300+ FPS-Anleitungen an und fordern Sie spezialisierten technischen Support an.",
+      "headings": {
+        "hero": "Ultimative PC-Optimierung für Maximale Gaming-Leistung",
+        "features": "Warum Voltris Optimizer Wählen?",
+        "services": "Unsere Professionellen Dienstleistungen",
+        "guides": "300+ Technische Anleitungen für Maximale Leistung",
+        "testimonials": "Was Unsere Nutzer Sagen",
+        "cta": "Bereit, Ihre PC-Leistung zu Transformieren?"
+      },
+      "paragraphs": {
+        "hero": "Transformieren Sie die Leistung Ihres Computers mit Voltris Optimizer, der umfassendsten Optimierungslösung für Windows. Schließen Sie sich Tausenden von Gamern und Profis an, die ihre Computererfahrung revolutioniert haben.",
+        "intro": "Mit über 300 detaillierten technischen Anleitungen und hochmodernen Optimierungstools ist VOLTRIS die definitive Ressource zur Maximierung des Potenzials Ihres PCs.",
+        "features": "Unsere proprietäre Optimierungstechnologie analysiert Ihre Systemkonfiguration und wendet intelligente Anpassungen an, die messbare Verbesserungen in Gaming, Produktivität und allgemeiner Systemreaktionsfähigkeit liefern."
+      },
+      "buttons": {
+        "download": "Kostenlose Version Herunterladen",
+        "premium": "Auf Premium Upgraden",
+        "guides": "Alle Anleitungen Durchsuchen",
+        "contact": "Technischen Support Erhalten"
+      },
+      "lists": {
+        "features": [
+          "Intelligente Systemoptimierung mit Ein-Klick-Ausführung",
+          "Echtzeit-Leistungsüberwachung und Warnungen",
+          "Automatische Treiber-Updates und Wartung",
+          "Gaming-spezifische Optimierungen für 100+ Titel",
+          "Datenschutz und Bloatware-Entfernung",
+          "24/7 technischer Support von zertifizierten Profis"
+        ]
+      },
+      "altText": {
+        "hero": "Voltris Optimizer Dashboard - PC-Leistungsoptimierungssoftware",
+        "features": "Voltris Optimizer Funktionen Übersicht",
+        "guides": "Technische Anleitungen für PC-Optimierung"
+      }
+    },
+    "voltris-optimizer": {
+      "title": "Voltris Optimizer - Kostenlose PC-Leistungsoptimierungssoftware",
+      "metaDescription": "Laden Sie Voltris Optimizer kostenlos herunter und steigern Sie Ihre PC-Leistung mit intelligenten Optimierungen, Gaming-Tweaks und Systemwartungstools.",
+      "headings": {
+        "main": "Revolutionäre PC-Leistungsoptimierung",
+        "features": "Leistungsstarke Funktionen für Maximale Leistung",
+        "technical": "Technische Spezifikationen",
+        "download": "Voltris Optimizer Herunterladen",
+        "requirements": "Systemanforderungen",
+        "support": "Technischer Support & Updates"
+      },
+      "paragraphs": {
+        "intro": "Voltris Optimizer ist die jahrelange Forschung in der Systemleistungsoptimierung. Unsere fortschrittlichen Algorithmen identifizieren und beheben Leistungsengpässe, die andere Tools übersehen.",
+        "features": "Erleben Sie beispiellose Systemreaktionsfähigkeit mit unserem umfassenden Optimierungssuite. Von automatischen Treiber-Updates bis hin zu gaming-spezifischen Tweaks ist jede Funktion für messbare Ergebnisse konzipiert.",
+        "technical": "Gebaut mit modernster Technologie und optimiert für moderne Hardware, repräsentiert Voltris Optimizer die nächste Generation der Systemoptimierungssoftware."
+      },
+      "buttons": {
+        "downloadFree": "Kostenlose Version Herunterladen",
+        "downloadPremium": "Premium Herunterladen",
+        "viewGuide": "Installationsanleitung Anzeigen",
+        "checkCompatibility": "Kompatibilität Prüfen"
+      },
+      "lists": {
+        "features": [
+          "Ein-Klick-Systemoptimierung",
+          "Gaming-Leistungs-Booster",
+          "Automatische Treiber-Updates",
+          "Systemgesundheitsüberwachung",
+          "Datenschutz- und Sicherheitstools",
+          "Bloatware-Entfernung",
+          "Start-Optimierung",
+          "Speicherverwaltung",
+          "Festplattenbereinigung und -optimierung",
+          "Netzwerkoptimierung"
+        ],
+        "requirements": [
+          "Windows 10 (Version 1903 oder neuer)",
+          "Windows 11 (Alle Versionen)",
+          "4GB RAM Minimum (8GB empfohlen)",
+          "100MB freier Festplattenspeicher",
+          "Internetverbindung für Updates"
+        ]
+      },
+      "altText": {
+        "main": "Voltris Optimizer Schnittstelle",
+        "download": "Voltris Optimizer Download Button",
+        "features": "Voltris Optimizer Funktionen"
+      }
+    },
+    "services": {
+      "title": "Professionelle Technische Support-Dienstleistungen",
+      "metaDescription": "Experten technische Support-Dienstleistungen für PC-Optimierung, Gaming-Leistung und Systemwartung. Remote-Support landesweit verfügbar.",
+      "headings": {
+        "main": "Professionelle Technische Support-Dienstleistungen",
+        "optimization": "PC-Optimierungsdienstleistungen",
+        "gaming": "Gaming-Leistungsoptimierung",
+        "maintenance": "Präventive Wartung",
+        "emergency": "Notfallsupport",
+        "pricing": "Servicepläne und Preise"
+      },
+      "paragraphs": {
+        "intro": "Unsere zertifizierten technischen Profis bieten umfassende Support-Dienstleistungen, die zur Maximierung der Systemleistung und -zuverlässigkeit entwickelt wurden.",
+        "optimization": "Transformieren Sie die Leistung Ihres Computers mit unseren professionellen Optimierungsdienstleistungen. Wir analysieren Ihre Systemkonfiguration und wenden gezielte Optimierungen für maximale Ergebnisse an.",
+        "gaming": "Erhalten Sie einen Wettbewerbsvorteil mit unseren gaming-spezifischen Optimierungsdienstleistungen. Wir stimmen Ihr System für optimale Leistung in Ihren Lieblingsspielen fein ab."
+      },
+      "buttons": {
+        "scheduleService": "Service Planen",
+        "getQuote": "Angebot Erhalten",
+        "emergencySupport": "Notfallsupport",
+        "viewPlans": "Servicepläne Anzeigen"
+      },
+      "lists": {
+        "services": [
+          "Vollständige Systemoptimierung und -abstimmung",
+          "Gaming-Leistungsoptimierung",
+          "Hardware-Upgrade-Beratung",
+          "Virus- und Malware-Entfernung",
+          "Datensicherung und -wiederherstellung",
+          "Netzwerk-Setup und -optimierung",
+          "Software-Installation und -konfiguration",
+          "Präventive Wartungsprogramme"
+        ]
+      },
+      "altText": {
+        "services": "Technische Support-Dienstleistungen Übersicht",
+        "optimization": "PC-Optimierungsdienst",
+        "gaming": "Gaming-Leistungs-Setup"
+      }
+    },
+    "guides": {
+      "title": "Technische Anleitungen - PC-Optimierung und Gaming-Leistung",
+      "metaDescription": "Durchsuchen Sie 300+ technische Expertenanleitungen für PC-Optimierung, Gaming-Leistungs-Tweaks, Windows-Optimierung und Hardware-Wartung.",
+      "headings": {
+        "main": "Umfassende Technische Anleitungen",
+        "categories": "Anleitungskategorien",
+        "popular": "Beliebteste Anleitungen",
+        "recent": "Aktuelle Updates",
+        "gaming": "Gaming-Leistungsanleitungen",
+        "windows": "Windows-Optimierung",
+        "hardware": "Hardware und Wartung"
+      },
+      "paragraphs": {
+        "intro": "Zugreifen auf unsere umfangreiche Bibliothek technischer Anleitungen, die jeden Aspekt der PC-Optimierung, Gaming-Leistung und Systemwartung abdeckt.",
+        "categories": "Unsere Anleitungen sind in klare Kategorien organisiert, wodurch es einfach wird, genau das zu finden, was Sie für Ihre spezifischen Optimierungsziele benötigen."
+      },
+      "buttons": {
+        "browseAll": "Alle Anleitungen Durchsuchen",
+        "searchGuides": "Anleitungen Suchen",
+        "requestGuide": "Anleitung Anfordern"
+      },
+      "lists": {
+        "categories": [
+          "Gaming-Leistungsoptimierung",
+          "Windows 10/11-Optimierung",
+          "Hardware-Upgrades und Wartung",
+          "Netzwerk- und Internet-Optimierung",
+          "Software- und App-Optimierung",
+          "Fehlerbehebung und Reparaturen",
+          "Sicherheit und Datenschutz",
+          "Overclocking und Fortgeschrittene Tweaks"
+        ]
+      },
+      "altText": {
+        "guides": "Technische Anleitungsbibliothek",
+        "categories": "Anleitungskategorien",
+        "popular": "Beliebte Technische Anleitungen"
+      }
+    }
+  },
+  "seo": {
+    "keywords": {
+      "general": [
+        "pc optimierung",
+        "gaming leistung",
+        "voltris optimizer",
+        "technischer support",
+        "windows optimierung",
+        "lag reduzierer",
+        "fps booster",
+        "system tuning",
+        "pc wartung",
+        "leistungssoftware"
+      ],
+      "gaming": [
+        "fps erhöhen",
+        "gaming optimierung",
+        "input lag reduzieren",
+        "gaming pc setup",
+        "beste einstellungen gaming",
+        "pc optimieren gaming",
+        "gaming leistungsboost"
+      ],
+      "technical": [
+        "technischer support",
+        "pc fehlerbehebung",
+        "system wartung",
+        "hardware optimierung",
+        "software optimierung",
+        "treiber updates",
+        "system gesundheitscheck"
+      ]
+    }
+  },
+  "footer": {
+    "description": "Die führende Autorität für PC-Optimierung und Gaming-Leistung in Brasilien. Experte technischer Support und modernste Optimierungssoftware.",
+    "quickLinks": "Schnelllinks",
+    "services": "Dienstleistungen",
+    "resources": "Ressourcen",
+    "legal": "Rechtliches",
+    "social": "Folgen Sie Uns",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "E-Mail eingeben für Tipps und Updates",
+    "newsletterButton": "Abonnieren",
+    "copyright": "© 2026 VOLTRIS. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "cookies": "Cookie-Richtlinie"
+  }
+}
