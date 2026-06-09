@@ -35,7 +35,7 @@ export default function RegionsIndexPage() {
                             Global <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Coverage</span>
                         </h1>
                         <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-                            No matter where you are, our certified experts provide 100% remote computer optimization, maintenance, and repair services via secure connections.
+                            No matter where you are, our certified experts provide 100% remote computer optimization, maintenance, and repair services via secure connections using Anydesk or Teamviewer.
                         </p>
                     </div>
 
