@@ -15,7 +15,7 @@ import {
     FiDatabase,
     FiDownload,
 } from 'react-icons/fi';
-import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
+import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check, Briefcase } from "lucide-react";
 import AnimatedSection from '@/components/AnimatedSection';
 import dynamic from 'next/dynamic';
 
@@ -481,6 +481,61 @@ export default function HomeClient() {
                                     <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
                                         Online Service
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </AnimatedSection>
+
+                <AnimatedSection direction="up" delay={0.2}>
+                    <section className="py-24 px-4 bg-[#050510] relative overflow-hidden border-y border-white/5">
+                        <div className="max-w-5xl mx-auto relative z-10">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Solution</span></h2>
+                                <p className="text-slate-400 max-w-2xl mx-auto">Do you prefer the software to do everything automatically or do you want the intervention and analysis of a human expert?</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {/* Software Option */}
+                                <div className="group relative p-10 rounded-[2.5rem] bg-[#0A0A0F] border border-blue-500/20 hover:border-blue-500/50 transition-all overflow-hidden flex flex-col items-center text-center">
+                                    <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 to-transparent pointer-events-none" />
+                                    <div className="mb-6 p-4 rounded-full bg-blue-500/10 text-blue-400">
+                                        <Rocket className="w-10 h-10" />
+                                    </div>
+                                    <h3 className="text-3xl font-black text-white mb-4">Voltris Optimizer</h3>
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold text-white mb-6">
+                                        DO IT YOURSELF
+                                    </div>
+                                    <p className="text-slate-400 mb-8 leading-relaxed">Smart software for automatic optimization. Install, click, and the system accelerates your Windows and games without needing IT knowledge.</p>
+                                    <ul className="space-y-3 mb-10 w-full text-left text-sm text-slate-300">
+                                        <li className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> License from $9.90</li>
+                                        <li className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> 1-Click optimization</li>
+                                        <li className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> Extreme FPS boost</li>
+                                    </ul>
+                                    <Link href="/voltrisoptimizer" className="mt-auto w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all text-center tracking-wide uppercase text-sm">
+                                        Meet the Software
+                                    </Link>
+                                </div>
+
+                                {/* Service Option */}
+                                <div className="group relative p-10 rounded-[2.5rem] bg-[#0A0A0F] border border-emerald-500/20 hover:border-emerald-500/50 transition-all overflow-hidden flex flex-col items-center text-center">
+                                    <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/5 to-transparent pointer-events-none" />
+                                    <div className="mb-6 p-4 rounded-full bg-emerald-500/10 text-emerald-400">
+                                        <Briefcase className="w-10 h-10" />
+                                    </div>
+                                    <h3 className="text-3xl font-black text-white mb-4">Support & Formatting</h3>
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold text-white mb-6">
+                                        LEAVE IT TO US
+                                    </div>
+                                    <p className="text-slate-400 mb-8 leading-relaxed">Schedule a service. Our technicians take control remotely, format, remove viruses, and optimize your computer from scratch with a warranty.</p>
+                                    <ul className="space-y-3 mb-10 w-full text-left text-sm text-slate-300">
+                                        <li className="flex items-center gap-2"><Check className="text-emerald-500 w-4 h-4" /> Premium human service</li>
+                                        <li className="flex items-center gap-2"><Check className="text-emerald-500 w-4 h-4" /> Deep Formatting and Optimization</li>
+                                        <li className="flex items-center gap-2"><Check className="text-emerald-500 w-4 h-4" /> You do absolutely nothing</li>
+                                    </ul>
+                                    <Link href="/all-services" className="mt-auto w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all text-center tracking-wide uppercase text-sm">
+                                        View Our Services
+                                    </Link>
                                 </div>
                             </div>
                         </div>
