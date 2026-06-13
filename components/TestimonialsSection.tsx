@@ -28,7 +28,7 @@ const testimonials = [
     name: 'John Smith',
     location: 'New York, USA',
     rating: 5,
-    text: 'Best optimization software I\'ve ever used. The one-click optimization feature is amazing. My gaming performance improved significantly.',
+    text: "Best optimization software I've ever used. The one-click optimization feature is amazing. My gaming performance improved significantly.",
     avatar: '🎮'
   },
   {
@@ -49,7 +49,7 @@ const testimonials = [
     name: 'Ahmed Hassan',
     location: 'Dubai, UAE',
     rating: 5,
-    text: 'Excellent software for computer performance optimization. My device\\'s speed has noticeably increased, and the gaming experience has significantly improved.',
+    text: "Excellent software for computer performance optimization. My device's speed has noticeably increased, and the gaming experience has significantly improved.",
     avatar: '💻'
   }
 ];

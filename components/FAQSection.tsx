@@ -46,7 +46,7 @@ export default function FAQSection() {
     },
     {
       question: 'What is the delivery time?',
-      answer: 'It depends on the chosen service, the condition of the machine itself, and the customer\\'s availability to perform the service. We cannot guarantee a fixed deadline, but we will do our best to perform the service as quickly as possible.'
+      answer: "It depends on the chosen service, the condition of the machine itself, and the customer's availability to perform the service. We cannot guarantee a fixed deadline, but we will do our best to perform the service as quickly as possible."
     },
     {
       question: 'Can I exchange or return a product?',

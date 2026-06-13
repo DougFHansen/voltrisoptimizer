@@ -449,7 +449,7 @@ export default function TicketList({
                         {ticket.status === 'Resolvido' || ticket.status === 'Finalizado' ? (
                           'This ticket has been marked as resolved. You cannot send more messages.'
                         ) : (
-                          'Please wait for the administrator\\'s reply before sending a new message.'
+                          "Please wait for the administrator's reply before sending a new message."
                         )}
                       </div>
                     )}
