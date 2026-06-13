@@ -1,9 +1,23 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
+const locales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
+const defaultLocale = 'en';
+
+function getLocale(request: NextRequest): string {
+  const acceptLanguage = request.headers.get('accept-language') || '';
+  const userLang = acceptLanguage.split(',')[0]?.split('-')[0]?.toLowerCase();
+  
+  if (userLang === 'pt') return 'pt-br';
+  
+  if (userLang && locales.includes(userLang)) {
+    return userLang;
+  }
+  return defaultLocale;
+}
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
   const hostname = request.nextUrl.hostname;
-  const path = request.nextUrl.pathname;
-  const searchParams = request.nextUrl.searchParams;
 
   // Forçar canonicalização WWW
   if (hostname === 'voltrisoptimizer.com') {
@@ -12,51 +26,18 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  // Detectar idioma do usuário
-  const acceptLanguage = request.headers.get('accept-language') || '';
-  const userLang = acceptLanguage.split(',')[0]?.split('-')[0]?.toLowerCase() || 'en';
+  // Verificar se o pathname já contém um locale suportado
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (pathnameHasLocale) return NextResponse.next();
+
+  // Redirecionar para a subpasta do locale detectado
+  const locale = getLocale(request);
+  request.nextUrl.pathname = `/${locale}${pathname}`;
   
-  // Determinar se conteúdo é PT ou EN baseado na URL
-  const isPortugueseContent = path.includes('/servicos') || 
-                              path.includes('/guias') || 
-                              path.includes('/sobre') || 
-                              path.includes('/contato') ||
-                              path.includes('/faq') ||
-                              path.includes('/voltrisoptimizer') ||
-                              path.includes('/otimizacao-pc') ||
-                              path.includes('/formatar-windows') ||
-                              path.includes('/erros-jogos') ||
-                              path.includes('/manutencao-computador') ||
-                              path.includes('/suporte-tecnico-remoto') ||
-                              path.includes('/criar-site') ||
-                              path.includes('/adquirir-licenca') ||
-                              path.includes('/exterior');
-
-  // Adicionar headers SEO
-  const response = NextResponse.next();
-  
-  // Hreflang tags CORRIGIDAS - URLs funcionais
-  if (isPortugueseContent) {
-    response.headers.set('link', 
-      `<https://www.voltrisoptimizer.com${path}>; rel="canonical", ` +
-      `<https://www.voltrisoptimizer.com${path}>; rel="alternate"; hreflang="pt-br", ` +
-      `<https://www.voltrisoptimizer.com${path}>; rel="alternate"; hreflang="en", ` +
-      `<https://www.voltrisoptimizer.com${path}>; rel="alternate"; hreflang="x-default"`
-    );
-  } else {
-    response.headers.set('link', 
-      `<https://www.voltrisoptimizer.com${path}>; rel="canonical", ` +
-      `<https://www.voltrisoptimizer.com${path}>; rel="alternate"; hreflang="en", ` +
-      `<https://www.voltrisoptimizer.com${path}>; rel="alternate"; hreflang="pt-br", ` +
-      `<https://www.voltrisoptimizer.com${path}>; rel="alternate"; hreflang="x-default"`
-    );
-  }
-
-  // Language detection header
-  response.headers.set('x-detected-language', userLang);
-  response.headers.set('x-content-language', isPortugueseContent ? 'pt-br' : 'en');
-
-  return response;
+  return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {

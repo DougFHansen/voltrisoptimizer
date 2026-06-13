@@ -41,8 +41,8 @@ export const seoMetadataMap: Record<string, SEOConfig> = {
   },
   '/voltrisoptimizer': {
     title: 'Voltris Optimizer - PC Performance Software with Remote Control',
-    description: 'Professional PC optimization software with web-based remote control. Boost gaming FPS, accelerate business performance, SaaS technology.',
-    keywords: 'PC optimizer, gaming software, performance boost, remote control, SaaS optimization',
+    description: 'Professional PC optimization software with web-based remote control. Boost gaming FPS, accelerate business performance, cloud technology.',
+    keywords: 'PC optimizer, gaming software, performance boost, remote control, cloud optimization',
     type: 'product',
     price: '29.99',
     availability: 'https://schema.org/InStock',

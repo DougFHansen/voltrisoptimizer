@@ -1,10 +1,10 @@
 {
   "home": {
     "title": "VOLTRIS - PC Optimization and Technical Support",
-    "description": "The leading authority in gaming performance and Windows optimization in Brazil. Download Voltris Optimizer, check our 300+ FPS guides, and request specialized technical support.",
+    "description": "The leading global authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our 300+ FPS guides, and request specialized technical support.",
     "services": {
       "optimizer": {
-        "title": "Voltris Optimizer (SaaS)",
+        "title": "Voltris Optimizer",
         "desc": "Increase FPS, reduce input lag and optimize Windows with just 1 click using our high-performance software.",
         "price": "License from $9.90"
       },
@@ -80,7 +80,7 @@
     "profile": "Profile"
   },
   "footer": {
-    "description": "Specialists in remote technical support and computer optimization for maximum performance throughout Brazil.",
+    "description": "Specialists in remote technical support and computer optimization for maximum performance worldwide.",
     "services": "Services",
     "company": "Company",
     "resources": "Resources",

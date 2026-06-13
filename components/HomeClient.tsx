@@ -46,7 +46,7 @@ export default function HomeClient() {
     const services = [
         {
             icon: <Zap className="w-8 h-8" />,
-            title: "Voltris Optimizer (SaaS)",
+            title: "Voltris Optimizer",
             desc: "Increase FPS, reduce input lag, and optimize Windows with just 1 click using our high-performance software.",
             price: "License from $9.90",
             link: "/voltrisoptimizer",
@@ -56,7 +56,7 @@ export default function HomeClient() {
             icon: <Activity className="w-8 h-8" />,
             title: "Advanced Gamer Optimization",
             desc: "Remote access by a specialist for RAM overclocking, CPU tuning, and deep kernel optimization for eSports.",
-            price: "From $29.90",
+            price: "From $97.00",
             link: "/pc-optimization",
             highlight: true
         },
@@ -64,7 +64,7 @@ export default function HomeClient() {
             icon: <FiAlertTriangle className="w-8 h-8" />,
             title: "Windows Error Correction",
             desc: "We resolve system errors, blue screens, startup failures, and Windows performance issues remotely.",
-            price: "From $9.90",
+            price: "From $47.00",
             link: "/windows-support",
             highlight: false
         },
@@ -72,7 +72,7 @@ export default function HomeClient() {
             icon: <FiShield className="w-8 h-8" />,
             title: "Express Technical Support",
             desc: "Virus and malware removal, complete remote formatting with secure backup for PCs and laptops.",
-            price: "From $19.90",
+            price: "From $97.00",
             link: "/format-windows",
             highlight: false
         }
@@ -154,6 +154,7 @@ export default function HomeClient() {
     return (
         <>
             <Header />
+            {/* JSON-LD Schema Markup (SEO Dupla Intenção) */}
             <JsonLd
                 type="SoftwareApplication"
                 data={{
@@ -170,6 +171,25 @@ export default function HomeClient() {
                         "@type": "AggregateRating",
                         "ratingValue": "4.9",
                         "reviewCount": "1250"
+                    }
+                }}
+            />
+            <JsonLd
+                type="Service"
+                data={{
+                    name: "Remote Technical Support and Formatting",
+                    description: "Specialized IT services, Windows formatting, computer optimization, and virus removal with immediate remote support.",
+                    provider: {
+                        "@type": "Organization",
+                        "name": "VOLTRIS",
+                        "url": "https://www.voltrisoptimizer.com"
+                    },
+                    serviceType: "IT Technical Support",
+                    areaServed: { "@type": "Country", "name": "Global" },
+                    offers: {
+                        "@type": "Offer",
+                        "price": "50.00",
+                        "priceCurrency": "USD"
                     }
                 }}
             />
@@ -237,40 +257,42 @@ export default function HomeClient() {
                 >
                     <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-8 h-full relative z-10">
                         {/* Left Content - Typography & CTA */}
-                        <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-4 lg:z-20">
-                            {/* Text Content - Order 1 */}
-                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-2 lg:gap-4 z-20 w-full lg:pb-28">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
-                                    <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                    <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">New Enterprise Plans Available</span>
+                        <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:gap-10 z-20">
+                            {/* Text Content Block */}
+                            <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-6 w-full order-1">
+                                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2 mt-4 lg:mt-0">
+                                    <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Smart Software & Real Experts</span>
                                 </div>
 
-                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans lg:mt-12">
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">PC Optimization Software</span> <br className="hidden lg:block" />
-                                    <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">for Maximum Windows Performance</span>
+                                <h1 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4 text-center lg:text-left">
+                                    <span className="bg-gradient-to-r from-white to-white/70 text-transparent bg-clip-text">Faster PC.</span> <br className="hidden lg:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Zero Complications.</span>
                                 </h1>
 
-                                <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-light">
-                                    Optimize computers for gaming, work, and professional use. More performance, stability, and productivity with <strong className="text-white">Voltris Optimizer</strong>.
+                                <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium px-2 sm:px-0 text-center lg:text-left">
+                                    Increase FPS in games and eliminate lag. Optimize it yourself using our <strong className="text-white">Voltris Optimizer</strong> software, or let our <strong className="text-white">Experts</strong> do everything for you remotely.
                                 </p>
                             </div>
 
-                            {/* Buttons - Order 3 */}
-                            <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:absolute lg:bottom-0 lg:left-0 lg:z-30">
+                            {/* Buttons Block */}
+                            <div className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3">
                                 <a
-                                    href="/all-services"
-                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
+                                    href="/voltrisoptimizer"
+                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(49,168,255,0.4)] overflow-hidden"
                                 >
-                                    <span className="mr-2">View Plans and Prices</span>
-                                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    <span className="relative z-10 flex items-center gap-2 uppercase tracking-widest text-xs">
+                                        Download Optimizer
+                                        <FiDownload className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+                                    </span>
                                 </a>
                                 <a
-                                    href="https://wa.me/5511996716235?text=Hi!%20I'd%20like%20to%20know%20more%20about%20VOLTRIS%20optimization"
+                                    href="https://wa.me/5511996716235?text=Hi!%20I'd%20like%20to%20know%20more%20about%20VOLTRIS%20premium%20remote%20services"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 backdrop-blur-sm hover:border-[#FF4B6B]/50"
                                 >
-                                    <FaWhatsapp className="mr-2 text-lg" />
+                                    <FaWhatsapp className="mr-2 text-lg text-[#00FF94]" />
                                     Talk to a Specialist
                                 </a>
                             </div>
@@ -532,13 +554,13 @@ export default function HomeClient() {
                         <div className="text-center mb-16 max-w-4xl mx-auto">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
                                 <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                <span className="text-xs font-bold text-white tracking-widest uppercase">First SaaS PC Optimization Software with Remote Control</span>
+                                <span className="text-xs font-bold text-white tracking-widest uppercase">First Cloud-Based PC Optimization Software with Remote Control</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                                 <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">OPTIMIZER</span>
                             </h2>
                             <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-4">
-                                PC optimization software with SaaS technology and remote control via web.
+                                PC optimization software with cloud technology and remote control via web.
                                 Increase FPS in games, optimize for streaming, and accelerate enterprise computers.
                             </p>
                             <p className="text-base text-slate-500 leading-relaxed">
@@ -583,7 +605,7 @@ export default function HomeClient() {
                                     </div>
                                     <h3 className="text-xl font-bold text-white mb-3">For Business</h3>
                                     <p className="text-slate-400 text-sm leading-relaxed mb-4">
-                                        Remote performance management via the cloud. Optimize your entire fleet of corporate computers from anywhere through the SaaS web dashboard.
+                                        Remote performance management via the cloud. Optimize your entire fleet of corporate computers from anywhere through the web dashboard.
                                     </p>
                                     <ul className="space-y-2 text-xs text-slate-500">
                                         <li className="flex items-center gap-2">
@@ -684,14 +706,14 @@ export default function HomeClient() {
 
                         <div className="mt-12 bg-[#0A0A0F]/30 backdrop-blur-sm border border-white/5 rounded-2xl p-8 max-w-5xl mx-auto">
                             <h3 className="text-2xl font-bold text-white mb-4 text-center">
-                                The First SaaS Optimization Software with Remote Control
+                                The First Cloud-Based Optimization Software with Remote Control
                             </h3>
                             <p className="text-slate-400 leading-relaxed text-center mb-6">
-                                <strong className="text-white">VOLTRIS OPTIMIZER</strong> is an innovative technology, being the first SaaS platform with <strong className="text-white">remote optimization control via web</strong>. Our platform allows you to execute optimization functions, RAM cleaning, and advanced processing from anywhere in the world through the online dashboard.
+                                <strong className="text-white">VOLTRIS OPTIMIZER</strong> is an innovative technology, being the first cloud-based platform with <strong className="text-white">remote optimization control via web</strong>. Our platform allows you to execute optimization functions, RAM cleaning, and advanced processing from anywhere in the world through the online dashboard.
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                                 <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
-                                    <div className="text-3xl font-bold text-[#31A8FF] mb-2">SaaS</div>
+                                    <div className="text-3xl font-bold text-[#31A8FF] mb-2">Cloud</div>
                                     <div className="text-sm text-slate-400">Cloud Technology</div>
                                 </div>
                                 <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">

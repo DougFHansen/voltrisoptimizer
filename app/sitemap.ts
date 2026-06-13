@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { generateSitemapUrls } from '@/lib/seo';
 import { regionsData } from '@/app/regions/data';
 
 /**
@@ -52,8 +51,8 @@ function getPageRoutes(dir: string, baseUrl: string = ''): string[] {
     } else if (file === 'page.tsx' || file === 'page.js') {
       // Found a valid public page
       const route = baseUrl || '/';
-      // Double check it's not a dynamic bracket route which needs specific params
-      if (!route.includes('[') && !route.includes('blog')) {
+      // Permite [locale], mas ignora outras rotas dinâmicas genéricas com chaves [
+      if ((!route.includes('[') || route.includes('[locale]')) && !route.includes('blog')) {
         results.push(route);
       }
     }
@@ -65,6 +64,9 @@ function getPageRoutes(dir: string, baseUrl: string = ''): string[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const domain = 'https://www.voltrisoptimizer.com'; // Updated to the international domain
   const appDir = path.join(process.cwd(), 'app');
+  
+  // Lista de todos os idiomas suportados pela plataforma internacional
+  const supportedLocales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
 
   // Business-Critical Priorities for Google (Siloing Strategy)
   const priorityMap: Record<string, number> = {
@@ -88,59 +90,61 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/faq': 0.7,
     '/privacy-policy': 0.5,
     '/terms-of-use': 0.5,
-    '/lgpd': 0.5,
-    '/login': 0.3,
-    '/perfil': 0.3,
-    '/reset-password': 0.3,
   };
 
   // 1. Dynamic Discovery of all static pages (including 300+ guides)
   const allRoutes = getPageRoutes(appDir);
 
-  const sitemapEntries = allRoutes.map(route => {
+  const sitemapEntries = allRoutes.flatMap(route => {
+    // Ex: route = '/[locale]/format-windows'
+    const routeWithoutLocale = route.replace('/[locale]', '') || '/';
+    
     // Determine the physical file for modification date
     const relativePath = route === '/' ? 'page.tsx' : `${route}/page.tsx`;
     const filePath = path.join(appDir, relativePath);
 
     // Determine category priority
     let priority = 0.6; // Default
-    if (priorityMap[route]) {
-      priority = priorityMap[route];
-    } else if (route.startsWith('/guides/')) {
+    if (priorityMap[routeWithoutLocale]) {
+      priority = priorityMap[routeWithoutLocale];
+    } else if (routeWithoutLocale.startsWith('/guides/')) {
       priority = 0.7; // Deep content guides
-    } else if (route.startsWith('/it-technician-in/')) {
+    } else if (routeWithoutLocale.startsWith('/it-technician-in/')) {
       priority = 0.8; // High-value regional pages
-    } else if (route.startsWith('/process/')) {
-      priority = 0.5; // Process pages
-    } else if (route.startsWith('/all-services/')) {
+    } else if (routeWithoutLocale.startsWith('/all-services/')) {
       priority = 0.7; // Service subpages
-    } else if (route.startsWith('/optimize-windows-for-')) {
+    } else if (routeWithoutLocale.startsWith('/optimize-windows-for-')) {
       priority = 0.7; // Optimization guides
-    } else if (route.startsWith('/how-to-')) {
+    } else if (routeWithoutLocale.startsWith('/how-to-')) {
       priority = 0.7; // How-to guides
-    } else if (route.startsWith('/improve-')) {
-      priority = 0.7; // Performance guides
     }
 
     const changeFreq = priority >= 0.9 ? 'daily' : (priority >= 0.7 ? 'weekly' : 'monthly');
 
-    return {
-      url: `${domain}${route === '/' ? '' : route}`,
-      lastModified: getLastModified(filePath),
-      changeFrequency: changeFreq as 'daily' | 'weekly' | 'monthly',
-      priority: priority,
-    };
+    // Multiplicar essa rota por todos os idiomas para indexação massiva global
+    return supportedLocales.map(locale => {
+      const localeUrlPath = routeWithoutLocale === '/' ? `/${locale}` : `/${locale}${routeWithoutLocale}`;
+
+      return {
+        url: `${domain}${localeUrlPath}`,
+        lastModified: getLastModified(filePath),
+        changeFrequency: changeFreq as 'daily' | 'weekly' | 'monthly',
+        priority: priority,
+      };
+    });
   });
 
-  // 2. Technical SEO - Regional Coverage (Dynamic Params)
-  const regionalRoutes = regionsData.flatMap(country => 
-    country.cities.map(city => ({
-      url: `${domain}/regions/${country.slug}/${city.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    }))
-  );
+  // 2. Technical SEO - Regional Coverage (Dynamic Params multiplied by Locales)
+  const regionalRoutes = regionsData ? regionsData.flatMap(country => 
+    country.cities.flatMap(city => 
+      supportedLocales.map(locale => ({
+        url: `${domain}/${locale}/regions/${country.slug}/${city.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      }))
+    )
+  ) : [];
 
   // Combine and deduplicate if necessary
   const combined = [...sitemapEntries, ...regionalRoutes];
