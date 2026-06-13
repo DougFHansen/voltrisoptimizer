@@ -180,12 +180,19 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { AuthProvider } from '@/app/context/AuthContext';
+import ClientNotificationProvider from '@/app/components/ClientNotificationProvider';
+
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <DashboardProvider>
-      <DashboardLayoutInner>
-        {children}
-      </DashboardLayoutInner>
-    </DashboardProvider>
+    <AuthProvider>
+      <ClientNotificationProvider>
+        <DashboardProvider>
+          <DashboardLayoutInner>
+            {children}
+          </DashboardLayoutInner>
+        </DashboardProvider>
+      </ClientNotificationProvider>
+    </AuthProvider>
   );
 }
