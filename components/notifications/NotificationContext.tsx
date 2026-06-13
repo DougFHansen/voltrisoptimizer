@@ -170,7 +170,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         .from('user_settings')
         .select('*')
         .eq('user_id', user.id)
-        .single();
+        .maybeSingle();
       settingsData = settingsResp.data;
       settingsError = settingsResp.error;
       if (settingsError || !settingsData) {

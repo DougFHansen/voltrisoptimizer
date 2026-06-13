@@ -57,7 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .from('profiles')
           .select('*')
           .eq('id', user.id)
-          .single();
+          .maybeSingle();
 
         if (error && error.code !== 'PGRST116') {
           console.warn('[AUTH] Erro ao buscar perfil:', error.message);

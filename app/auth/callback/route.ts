@@ -55,11 +55,13 @@ export async function GET(request: NextRequest) {
         if (profileError) {
           console.error('❌ [OAuth Callback] Erro ao buscar perfil:', profileError);
           
-          // Se o perfil não existe, tentar criar manualmente
+          // Se o perfil não existe, tentar criar usando Admin Client (bypassa RLS)
           if (profileError.code === 'PGRST116') {
-            console.log('🔍 [OAuth Callback] Perfil não encontrado, tentando criar manualmente...');
+            console.log('🔍 [OAuth Callback] Perfil não encontrado, tentando criar manualmente via Admin...');
+            const { createAdminClient } = await import('@/utils/supabase/admin');
+            const adminSupabase = createAdminClient();
             
-            const { error: insertError } = await supabase
+            const { error: insertError } = await adminSupabase
               .from('profiles')
               .insert({
                 id: data.user.id,
@@ -69,22 +71,27 @@ export async function GET(request: NextRequest) {
               });
               
             if (insertError) {
-              console.error('❌ [OAuth Callback] Erro ao criar perfil manualmente:', insertError);
-              console.log('🔍 [OAuth Callback] Tentando inserção mínima...');
-              
-              // Tentar inserção mínima
-              const { error: minInsertError } = await supabase
-                .from('profiles')
-                .insert({
-                  id: data.user.id,
-                  full_name: 'Usuário'
-                });
-                
-              if (minInsertError) {
-                console.error('❌ [OAuth Callback] Erro na inserção mínima:', minInsertError);
-                return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao criar perfil do usuário')}`);
+              // Se o erro for Violação de Chave Única (23505), significa que a Trigger do Postgres acabou de criar o perfil! (Race condition resolvida)
+              if (insertError.code === '23505') {
+                console.log('✅ [OAuth Callback] Perfil criado simultaneamente pela Trigger do DB. Prosseguindo...');
               } else {
-                console.log('✅ [OAuth Callback] Perfil criado com inserção mínima');
+                console.error('❌ [OAuth Callback] Erro ao criar perfil manualmente:', insertError);
+                console.log('🔍 [OAuth Callback] Tentando inserção mínima...');
+                
+                // Tentar inserção mínima
+                const { error: minInsertError } = await adminSupabase
+                  .from('profiles')
+                  .insert({
+                    id: data.user.id,
+                    full_name: 'Usuário'
+                  });
+                  
+                if (minInsertError && minInsertError.code !== '23505') {
+                  console.error('❌ [OAuth Callback] Erro na inserção mínima:', minInsertError);
+                  return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao criar perfil do usuário')}`);
+                } else {
+                  console.log('✅ [OAuth Callback] Perfil criado (ou já existia) após inserção mínima');
+                }
               }
             } else {
               console.log('✅ [OAuth Callback] Perfil criado manualmente com sucesso');
