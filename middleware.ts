@@ -36,7 +36,9 @@ export function middleware(request: NextRequest) {
     '/debug-link', 
     '/international', 
     '/regions', 
-    '/services-integration'
+    '/services-integration',
+    '/sitemap',     // Bypasses all sitemaps (sitemap.xml, sitemap-images.xml)
+    '/robots.txt'
   ];
   
   if (bypassPaths.some((path) => pathname.startsWith(path))) {
@@ -59,6 +61,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf|json)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf|json|xml|txt)$).*)',
   ],
 }
