@@ -26,6 +26,23 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
+  // Bypass para rotas não-localizadas da aplicação (Dashboard, Auth, API, etc)
+  const bypassPaths = [
+    '/auth', 
+    '/dashboard', 
+    '/api', 
+    '/debug-commands', 
+    '/test-commands', 
+    '/debug-link', 
+    '/international', 
+    '/regions', 
+    '/services-integration'
+  ];
+  
+  if (bypassPaths.some((path) => pathname.startsWith(path))) {
+    return NextResponse.next();
+  }
+
   // Verificar se o pathname já contém um locale suportado
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -42,6 +59,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf|json)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf|json)$).*)',
   ],
 }

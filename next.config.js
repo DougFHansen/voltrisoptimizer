@@ -1,4 +1,4 @@
-﻿/** @type {import('next').Config} */
+/** @type {import('next').Config} */
 const nextConfig = {
   // Performance global otimizada
   experimental: {
@@ -266,8 +266,8 @@ const nextConfig = {
             "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://pagead2.googlesyndication.com https://adservice.google.com.br https://adservice.google.com https://static.cloudflareinsights.com https://*.adtrafficquality.google",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
-            "img-src 'self' data: blob: https: http:",
-            "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://api.stripe.com https://checkout.stripe.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://static.cloudflareinsights.com",
+            "img-src 'self' data: blob: https: http: https://grainy-gradients.vercel.app",
+            "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://api.stripe.com https://checkout.stripe.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://static.cloudflareinsights.com https://grainy-gradients.vercel.app",
             "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://td.doubleclick.net https://googleads.g.doubleclick.net https://*.adtrafficquality.google https://www.google.com",
             "object-src 'none'",
             "base-uri 'self'",
