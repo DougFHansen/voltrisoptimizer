@@ -19,6 +19,23 @@ import { toast } from 'react-hot-toast';
 
 
 
+export const COUNTRIES = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+  "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+  "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia",
+  "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+  "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+  "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+  "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan",
+  "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+  "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
+  "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway",
+  "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+  "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+  "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+  "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
 export default function LoginPage() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-[#050510]" />}>
@@ -44,6 +61,7 @@ function LoginContent() {
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [country, setCountry] = useState('Brazil');
+  const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isCepLoading, setIsCepLoading] = useState(false);
   const [isCepValid, setIsCepValid] = useState(false);
 
@@ -825,17 +843,38 @@ function LoginContent() {
                       )}
                       {signupStep === 2 && (
                         <div className="space-y-3">
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3">
-                            <Globe className="w-4 h-4 text-slate-500" />
-                            <select value={country} onChange={e => setCountry(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none appearance-none cursor-pointer">
-                                <option value="Brazil">Brazil</option>
-                                <option value="United States">United States</option>
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="Portugal">Portugal</option>
-                                <option value="Canada">Canada</option>
-                                <option value="Australia">Australia</option>
-                                <option value="Other">Other (Global)</option>
-                            </select>
+                          <div className="relative">
+                            <div 
+                              onClick={() => setIsCountryOpen(!isCountryOpen)}
+                              className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center justify-between cursor-pointer focus-within:border-[#31A8FF] transition-all"
+                            >
+                              <div className="flex items-center gap-3">
+                                <Globe className="w-4 h-4 text-slate-500" />
+                                <span className="text-white text-sm">{country}</span>
+                              </div>
+                              <ArrowRight className={`w-4 h-4 text-slate-500 transition-transform ${isCountryOpen ? 'rotate-90' : ''}`} />
+                            </div>
+                            
+                            <AnimatePresence>
+                              {isCountryOpen && (
+                                <motion.div 
+                                  initial={{ opacity: 0, y: -10 }} 
+                                  animate={{ opacity: 1, y: 0 }} 
+                                  exit={{ opacity: 0, y: -10 }}
+                                  className="absolute top-full left-0 right-0 mt-2 bg-[#121218] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 max-h-[250px] overflow-y-auto custom-scrollbar"
+                                >
+                                  {COUNTRIES.map(c => (
+                                    <div 
+                                      key={c}
+                                      onClick={() => { setCountry(c); setIsCountryOpen(false); }}
+                                      className={`px-4 py-3 text-sm cursor-pointer hover:bg-[#31A8FF]/20 transition-colors ${country === c ? 'bg-[#31A8FF]/10 text-[#31A8FF] font-bold' : 'text-slate-300'}`}
+                                    >
+                                      {c}
+                                    </div>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </div>
                           <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-slate-500" /><input type="text" placeholder="Full Name" value={fullName} onChange={e => setFullName(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
                           <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><PhoneIcon className="w-4 h-4 text-slate-500" /><input type="tel" placeholder={country === 'Brazil' ? "WhatsApp/Phone" : "Phone (+ Country Code)"} value={phone} onChange={e => setPhone(formatPhone(e.target.value))} className="bg-transparent w-full text-white text-sm outline-none" /></div>

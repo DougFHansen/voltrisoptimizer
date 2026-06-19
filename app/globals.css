@@ -1269,3 +1269,7 @@ body {
   transform: translateY(0);
   transition: opacity 300ms, transform 300ms;
 }
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #31A8FF40; border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #31A8FF80; }
