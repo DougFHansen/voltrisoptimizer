@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { 
@@ -8,15 +9,19 @@ import {
   FiEdit3, FiSave, FiX, FiShield, FiLock, 
   FiCpu, FiCheckCircle, FiActivity
 } from 'react-icons/fi';
+import { Globe, ArrowRight, Loader2 as LucideLoader2 } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import { useDashboard } from '@/app/context/DashboardContext';
+import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
 
 interface Profile {
   id: string;
   email: string;
   full_name?: string;
+  login?: string;
+  country?: string;
   phone?: string;
   address?: string;
   city?: string;
@@ -29,18 +34,30 @@ interface Profile {
 export default function ProfileClient() {
   const { transparencyMode } = useDashboard();
   const { user } = useAuth();
+  const searchParams = useSearchParams();
+  
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  
+  const isCompletar = searchParams?.get('completar') === '1';
   const [isEditing, setIsEditing] = useState(false);
+  
   const [formData, setFormData] = useState({
     full_name: '',
+    login: '',
+    country: 'Brazil',
     phone: '',
     address: '',
     city: '',
     state: '',
     cep: ''
   });
+
+  const [isCountryOpen, setIsCountryOpen] = useState(false);
+  const [isCepLoading, setIsCepLoading] = useState(false);
+  const [isCepValid, setIsCepValid] = useState(false);
+
   const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
@@ -57,12 +74,21 @@ export default function ProfileClient() {
         setProfile(data);
         setFormData({
           full_name: data.full_name || '',
+          login: data.login || '',
+          country: data.country || 'Brazil',
           phone: data.phone || '',
           address: data.address || '',
           city: data.city || '',
           state: data.state || '',
           cep: data.cep || ''
         });
+
+        if (data.country === 'Brazil' && data.cep && data.city && data.state) {
+            setIsCepValid(true);
+        } else if (data.country && data.country !== 'Brazil') {
+            setIsCepValid(true);
+        }
+
       } catch (error) {
         console.error('Error fetching profile:', error);
       } finally {
@@ -72,8 +98,76 @@ export default function ProfileClient() {
     fetchProfile();
   }, [user, supabase]);
 
+  useEffect(() => {
+    if (isCompletar && !loading) {
+        setIsEditing(true);
+    }
+  }, [isCompletar, loading]);
+
+  const formatPhone = (v: string, c: string) => { 
+    if (c !== 'Brazil') return v;
+    const n = v.replace(/\D/g, ''); return n.length <= 11 ? n.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3') : v; 
+  };
+
+  const formatCEP = (v: string, c: string) => { 
+    if (c !== 'Brazil') return v;
+    const n = v.replace(/\D/g, ''); return n.length <= 8 ? n.replace(/(\d{5})(\d{3})/, '$1-$2') : v; 
+  };
+
+  const handleCepChange = async (v: string) => {
+    const formattedCep = formatCEP(v, formData.country);
+    setFormData(prev => ({ ...prev, cep: formattedCep }));
+
+    if (formData.country !== 'Brazil') {
+      setIsCepValid(true);
+      return;
+    }
+
+    const cleanCep = formattedCep.replace(/\D/g, '');
+    if (cleanCep.length === 8) {
+      setIsCepLoading(true);
+      setIsCepValid(false);
+      
+      try {
+        const response = await fetch('/api/v1/auth/validate-cep', {
+          method: 'POST',
+          body: JSON.stringify({ cep: cleanCep }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const resData = await response.json();
+        
+        if (!resData.valid) {
+          toast.error("This ZIP Code does not exist.");
+          setFormData(prev => ({ ...prev, city: '', state: '', address: '' }));
+          setIsCepValid(false);
+        } else {
+          const { street, neighborhood, city, state } = resData.data;
+          setFormData(prev => ({ 
+             ...prev, 
+             city: city || '', 
+             state: state || '', 
+             address: `${street || ''}${neighborhood ? `, ${neighborhood}` : ''}` 
+          }));
+          setIsCepValid(true);
+        }
+      } catch (err) {
+        toast.error("Network error when validating ZIP code.");
+        setIsCepValid(false);
+      } finally {
+        setIsCepLoading(false);
+      }
+    } else {
+      setIsCepValid(false);
+    }
+  };
+
   const handleSave = async () => {
     if (!user) return;
+    
+    if (!formData.login || !formData.phone || !formData.city || !formData.address) {
+        return toast.error("Please fill in all the required fields.", { icon: '⚠️' });
+    }
+    
     setSaving(true);
     try {
       const { error } = await supabase
@@ -92,14 +186,18 @@ export default function ProfileClient() {
       });
       setIsEditing(false);
       
+      if (isCompletar) {
+        window.history.replaceState({}, '', '/dashboard/profile');
+      }
+      
       const { data: updatedData } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
       setProfile(updatedData);
-    } catch (error) {
-      toast.error('Error saving profile');
+    } catch (error: any) {
+      toast.error(error.message || 'Error saving profile');
     } finally {
       setSaving(false);
     }
@@ -143,10 +241,15 @@ export default function ProfileClient() {
                    <div className="flex items-center gap-3 justify-center md:justify-start">
                       <h1 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-tight break-words">{profile?.full_name || 'Optimization Agent'}</h1>
                    </div>
+                   <p className="text-[#31A8FF] font-bold text-sm uppercase tracking-widest">@{profile?.login || 'username'}</p>
                    <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
+                      <Globe className="w-4 h-4 text-[#FF4B6B]" />
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest">{profile?.country || 'Global'}</span>
+                   </div>
                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
                       <FiCpu className="w-4 h-4 text-[#31A8FF]" />
                       <span className="text-[10px] font-black text-white uppercase tracking-widest">ID: {user?.id.slice(0, 8).toUpperCase()}</span>
@@ -193,39 +296,102 @@ export default function ProfileClient() {
                  </div>
                </div>
 
-               <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Operational Name</label>
-                 {isEditing ? (
-                    <input
-                      type="text"
-                      value={formData.full_name}
-                      onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
-                      placeholder="Agent Identification"
-                    />
-                 ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
-                      {profile?.full_name || 'Pending'}
-                    </div>
-                 )}
+               <div className="grid grid-cols-2 gap-6">
+                 <div className="space-y-3">
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Operational Name</label>
+                   {isEditing ? (
+                      <input
+                        type="text"
+                        value={formData.full_name}
+                        onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
+                        placeholder="Full Name"
+                      />
+                   ) : (
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                        {profile?.full_name || 'Pending'}
+                      </div>
+                   )}
+                 </div>
+                 <div className="space-y-3">
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Username</label>
+                   {isEditing ? (
+                      <input
+                        type="text"
+                        value={formData.login}
+                        onChange={(e) => setFormData({ ...formData, login: e.target.value })}
+                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
+                        placeholder="Username"
+                      />
+                   ) : (
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
+                        {profile?.login || 'Pending'}
+                      </div>
+                   )}
+                 </div>
                </div>
 
-               <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Secure Contact Line</label>
-                 {isEditing ? (
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
-                      placeholder="+00 (00) 00000-0000"
-                    />
-                 ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
-                      {profile?.phone || 'Pending'}
-                    </div>
-                 )}
+               <div className="grid grid-cols-2 gap-6">
+                 <div className="space-y-3">
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Country</label>
+                   {isEditing ? (
+                      <div className="relative">
+                        <div 
+                          onClick={() => setIsCountryOpen(!isCountryOpen)}
+                          className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus-within:border-[#31A8FF] outline-none transition-all flex items-center justify-between cursor-pointer"
+                        >
+                          <span className="text-white text-sm">{formData.country}</span>
+                          <ArrowRight className={`w-4 h-4 text-slate-500 transition-transform ${isCountryOpen ? 'rotate-90' : ''}`} />
+                        </div>
+                        <AnimatePresence>
+                          {isCountryOpen && (
+                            <motion.div 
+                              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
+                              className="absolute top-full left-0 right-0 mt-2 bg-[#121218] border border-[#31A8FF]/20 rounded-xl shadow-2xl overflow-hidden z-50 max-h-[250px] overflow-y-auto custom-scrollbar"
+                            >
+                              {COUNTRIES.map(c => (
+                                <div 
+                                  key={c}
+                                  onClick={() => { setFormData({...formData, country: c}); setIsCountryOpen(false); }}
+                                  className={`px-4 py-3 text-sm cursor-pointer hover:bg-[#31A8FF]/20 transition-colors ${formData.country === c ? 'bg-[#31A8FF]/10 text-[#31A8FF] font-bold' : 'text-slate-300'}`}
+                                >
+                                  {c}
+                                </div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                   ) : (
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
+                        {profile?.country || 'Global'}
+                      </div>
+                   )}
+                 </div>
+
+                 <div className="space-y-3">
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Secure Line</label>
+                   {isEditing ? (
+                      <div className="flex items-center w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus-within:border-[#31A8FF] transition-all">
+                        <span className="text-white/60 font-medium text-sm mr-2 border-r border-white/10 pr-2 whitespace-nowrap">
+                          {DIAL_CODES[formData.country] || '+'}
+                        </span>
+                        <input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value, formData.country) })}
+                          className="bg-transparent w-full text-white outline-none placeholder:text-white/10"
+                          placeholder={formData.country === 'Brazil' ? "(11) 99999-9999" : "Phone"}
+                        />
+                      </div>
+                   ) : (
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
+                        {profile?.phone || 'Pending'}
+                      </div>
+                   )}
+                 </div>
                </div>
+
             </div>
           </motion.div>
 
@@ -244,19 +410,31 @@ export default function ProfileClient() {
 
             <div className="space-y-8">
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Base Address</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">System Zip Code</label>
                  {isEditing ? (
-                    <input
-                      type="text"
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
-                      placeholder="Street, Number, Neighborhood"
-                    />
+                    <div className="flex items-center w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus-within:border-[#8B31FF] transition-all relative">
+                      <input
+                        type="text"
+                        value={formData.cep}
+                        onChange={(e) => handleCepChange(e.target.value)}
+                        className="bg-transparent w-full text-white outline-none placeholder:text-white/10"
+                        placeholder="ZIP Code"
+                      />
+                      {isCepLoading && <LucideLoader2 className="absolute right-5 w-4 h-4 text-[#8B31FF] animate-spin" />}
+                    </div>
                  ) : (
                     <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
-                      {profile?.address || 'Pending'}
+                      {profile?.cep || 'Pending'}
                     </div>
+                 )}
+                 {(isEditing && formData.country === 'Brazil' && isCepValid) && (
+                   <button 
+                     type="button"
+                     onClick={() => { setFormData(p => ({...p, cep: '', city: '', state: '', address: ''})); setIsCepValid(false); }}
+                     className="text-[10px] text-[#FF4B6B] font-bold uppercase tracking-widest hover:underline mt-1 block"
+                   >
+                     Fix ZIP Code / Enter Manually
+                   </button>
                  )}
                </div>
 
@@ -267,11 +445,12 @@ export default function ProfileClient() {
                       <input
                         type="text"
                         value={formData.city}
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                        readOnly={formData.country === 'Brazil' && isCepValid}
+                        onChange={(e) => (!(formData.country === 'Brazil' && isCepValid)) && setFormData({ ...formData, city: e.target.value })}
+                        className={`w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10 ${(formData.country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`}
                       />
                    ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
                         {profile?.city || 'PD'}
                       </div>
                    )}
@@ -282,11 +461,12 @@ export default function ProfileClient() {
                       <input
                         type="text"
                         value={formData.state}
-                        onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                        readOnly={formData.country === 'Brazil' && isCepValid}
+                        onChange={(e) => (!(formData.country === 'Brazil' && isCepValid)) && setFormData({ ...formData, state: formData.country === 'Brazil' ? e.target.value.toUpperCase() : e.target.value })}
+                        className={`w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10 ${(formData.country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`}
                       />
                    ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
                         {profile?.state || 'PD'}
                       </div>
                    )}
@@ -294,20 +474,23 @@ export default function ProfileClient() {
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">System Zip Code</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Base Address</label>
                  {isEditing ? (
                     <input
                       type="text"
-                      value={formData.cep}
-                      onChange={(e) => setFormData({ ...formData, cep: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                      value={formData.address}
+                      readOnly={formData.country === 'Brazil' && isCepValid}
+                      onChange={(e) => (!(formData.country === 'Brazil' && isCepValid)) && setFormData({ ...formData, address: e.target.value })}
+                      className={`w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10 ${(formData.country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`}
+                      placeholder="Street, Number, Neighborhood"
                     />
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
-                      {profile?.cep || 'Pending'}
+                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
+                      {profile?.address || 'Pending'}
                     </div>
                  )}
                </div>
+
             </div>
           </motion.div>
         </div>

@@ -106,8 +106,7 @@ export async function GET(request: NextRequest) {
                 console.error('Erro ao notificar Telegram no callback:', err);
               }
             }
-            
-            return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
+            return NextResponse.redirect(`${origin}/dashboard/profile?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
           }
           
           return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao buscar perfil do usuário')}`);
@@ -120,7 +119,7 @@ export async function GET(request: NextRequest) {
         
         if (missingFields) {
           console.log('🔍 [OAuth Callback] Perfil incompleto, redirecionando para completar cadastro');
-          return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
+          return NextResponse.redirect(`${origin}/dashboard/profile?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
         } else {
           console.log('✅ [OAuth Callback] Perfil completo, redirecionando para:', next);
           // Se next é '/', redirecionar para dashboard como fallback
