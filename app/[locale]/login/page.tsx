@@ -975,13 +975,13 @@ function LoginContent() {
                             <input 
                               type="text" 
                               placeholder="City" 
-                              readOnly={isCepValid}
+                              readOnly={country === 'Brazil' && isCepValid}
                               value={city} 
-                              onChange={e => !isCepValid && setCity(e.target.value)} 
-                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              onChange={e => (!(country === 'Brazil' && isCepValid)) && setCity(e.target.value)} 
+                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${(country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                             />
                           </div>
-                          {isCepValid && (
+                          {(country === 'Brazil' && isCepValid) && (
                             <button 
                               type="button"
                               onClick={() => { setCep(''); setIsCepValid(false); setStreet(''); setNeighborhood(''); setCity(''); setState(''); }}
