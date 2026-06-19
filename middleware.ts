@@ -42,15 +42,19 @@ export function middleware(request: NextRequest) {
   ];
   
   if (bypassPaths.some((path) => pathname.startsWith(path))) {
-    return NextResponse.next();
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-locale', defaultLocale);
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   // Verificar se o pathname já contém um locale suportado
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
+  const localeMatch = locales.find((l) => pathname.startsWith(`/${l}/`) || pathname === `/${l}`);
 
-  if (pathnameHasLocale) return NextResponse.next();
+  if (localeMatch) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-locale', localeMatch);
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
 
   // Redirecionar para a subpasta do locale detectado
   const locale = getLocale(request);

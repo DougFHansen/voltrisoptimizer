@@ -13,7 +13,7 @@ import { notifyPageView } from '@/utils/notifications';
 
 // Icons
 import { FaWhatsapp } from 'react-icons/fa';
-import { Mail, Lock, User, Phone as PhoneIcon, MapPin, ArrowLeft, Loader2, CheckCircle, ArrowRight, Smartphone as FiSmartphone, Key as FiKey } from 'lucide-react';
+import { Mail, Lock, User, Phone as PhoneIcon, MapPin, ArrowLeft, Loader2, CheckCircle, ArrowRight, Smartphone as FiSmartphone, Key as FiKey, Globe } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 
@@ -43,6 +43,7 @@ function LoginContent() {
   const [cep, setCep] = useState('');
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
+  const [country, setCountry] = useState('Brazil');
   const [isCepLoading, setIsCepLoading] = useState(false);
   const [isCepValid, setIsCepValid] = useState(false);
 
@@ -173,7 +174,7 @@ function LoginContent() {
   // --- HELPERS ---
   const translateError = (err: string) => {
     const msg = err.toLowerCase();
-    if (msg.includes('unable to validate email address') || msg.includes('invalid format')) return 'Invalid email format.';
+    if (msg.includes('email_address_invalid') || msg.includes('unable to validate email address') || msg.includes('invalid format')) return 'This email address is invalid or not accepted by our security system. Please use a valid email.';
     if (msg.includes('invalid login credentials')) return 'Invalid Email/Username or password.';
     if (msg.includes('email not confirmed')) return 'Email not confirmed. Check your inbox.';
     if (msg.includes('user not found')) return 'This user was not found.';
@@ -349,17 +350,18 @@ function LoginContent() {
     if (signupStep === 2) {
       if (!fullName) return setError("Please enter your Full Name.");
       if (!phone) return setError("Please enter your WhatsApp/Phone.");
-      if (!validateBrazilianPhone(phone)) {
-        return setError("Invalid WhatsApp/Phone number or non-existent area code.");
+      if (!validateGlobalPhone(phone)) {
+        return setError(country === 'Brazil' ? "Invalid WhatsApp/Phone number or non-existent area code." : "Please enter a valid international phone number.");
       }
 
       setLoading(true);
       setError(null);
       try {
         // Duplicate Phone Validation in System (Step 2)
+        const cleanPhone = phone.replace(/[\s+-]/g, '');
         const availabilityRes = await fetch('/api/v1/auth/check-availability', {
           method: 'POST',
-          body: JSON.stringify({ phone: phone.trim() }),
+          body: JSON.stringify({ phone: cleanPhone }),
           headers: { 'Content-Type': 'application/json' }
         });
         const availability = await availabilityRes.json();
@@ -415,7 +417,8 @@ function LoginContent() {
             state, 
             cep, 
             address: `${street}, ${number}`,
-            login 
+            login,
+            country
           } 
         },
       });
@@ -476,16 +479,23 @@ function LoginContent() {
   };
 
   // Formatters
-  const formatPhone = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 11 ? n.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3') : v; };
-  const formatCEP = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 8 ? n.replace(/(\d{5})(\d{3})/, '$1-$2') : v; };
+  const formatPhone = (v: string) => { 
+    if (country !== 'Brazil') return v;
+    const n = v.replace(/\D/g, ''); return n.length <= 11 ? n.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3') : v; 
+  };
+  const formatCEP = (v: string) => { 
+    if (country !== 'Brazil') return v;
+    const n = v.replace(/\D/g, ''); return n.length <= 8 ? n.replace(/(\d{5})(\d{3})/, '$1-$2') : v; 
+  };
 
-  const validateBrazilianPhone = (v: string) => {
+  const validateGlobalPhone = (v: string) => {
+    if (country !== 'Brazil') {
+      const clean = v.replace(/[\s+-]/g, '');
+      return clean.length >= 7 && clean.length <= 20;
+    }
     const n = v.replace(/\D/g, '');
-    // Check size 11 (DDD + 9 + 8 digits)
     if (n.length !== 11) return false;
-    // The ninth digit (pos 2) must be 9 for mobile phones
     if (n[2] !== '9') return false;
-    // List of valid DDDs in Brazil
     const validDDDs = [
       '11','12','13','14','15','16','17','18','19',
       '21','22','24','27','28','31','32','33','34','35','37','38',
@@ -501,6 +511,12 @@ function LoginContent() {
   const handleCepChange = async (v: string) => {
     const formattedCep = formatCEP(v);
     setCep(formattedCep);
+
+    if (country !== 'Brazil') {
+      setIsCepValid(true);
+      setError(null);
+      return;
+    }
 
     const cleanCep = formattedCep.replace(/\D/g, '');
     if (cleanCep.length === 8) {
@@ -790,8 +806,20 @@ function LoginContent() {
                       )}
                       {signupStep === 2 && (
                         <div className="space-y-3">
+                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3">
+                            <Globe className="w-4 h-4 text-slate-500" />
+                            <select value={country} onChange={e => setCountry(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none appearance-none cursor-pointer">
+                                <option value="Brazil">Brazil</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Other">Other (Global)</option>
+                            </select>
+                          </div>
                           <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-slate-500" /><input type="text" placeholder="Full Name" value={fullName} onChange={e => setFullName(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><PhoneIcon className="w-4 h-4 text-slate-500" /><input type="tel" placeholder="WhatsApp/Phone" value={phone} onChange={e => setPhone(formatPhone(e.target.value))} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><PhoneIcon className="w-4 h-4 text-slate-500" /><input type="tel" placeholder={country === 'Brazil' ? "WhatsApp/Phone" : "Phone (+ Country Code)"} value={phone} onChange={e => setPhone(formatPhone(e.target.value))} className="bg-transparent w-full text-white text-sm outline-none" /></div>
                         </div>
                       )}
                       {signupStep === 3 && (
@@ -811,11 +839,11 @@ function LoginContent() {
                               <input 
                                 type="text" 
                                 placeholder="State" 
-                                maxLength={2} 
-                                readOnly={isCepValid}
+                                maxLength={country === 'Brazil' ? 2 : 50} 
+                                readOnly={country === 'Brazil' && isCepValid}
                                 value={state} 
-                                onChange={e => !isCepValid && setState(e.target.value.toUpperCase())} 
-                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                                onChange={e => (!(country === 'Brazil' && isCepValid)) && setState(country === 'Brazil' ? e.target.value.toUpperCase() : e.target.value)} 
+                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${(country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                               />
                             </div>
                           </div>
@@ -823,21 +851,21 @@ function LoginContent() {
                             <input 
                               type="text" 
                               placeholder="Street / Address" 
-                              readOnly={isCepValid}
+                              readOnly={country === 'Brazil' && isCepValid}
                               value={street} 
-                              onChange={e => !isCepValid && setStreet(e.target.value)} 
-                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              onChange={e => (!(country === 'Brazil' && isCepValid)) && setStreet(e.target.value)} 
+                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${(country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                             />
                           </div>
                           <div className="grid grid-cols-3 gap-3">
                             <div className="col-span-2 bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
                               <input 
                                 type="text" 
-                                placeholder="Neighborhood" 
-                                readOnly={isCepValid}
+                                placeholder={country === 'Brazil' ? "Neighborhood" : "City / Region"} 
+                                readOnly={country === 'Brazil' && isCepValid}
                                 value={neighborhood} 
-                                onChange={e => !isCepValid && setNeighborhood(e.target.value)} 
-                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                                onChange={e => (!(country === 'Brazil' && isCepValid)) && setNeighborhood(e.target.value)} 
+                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${(country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                               />
                             </div>
                             <div className="bg-[#121218] border border-[#31A8FF]/30 rounded-xl px-4 py-3 focus-within:border-[#31A8FF] transition-all bg-gradient-to-br from-[#31A8FF]/5 to-transparent">
