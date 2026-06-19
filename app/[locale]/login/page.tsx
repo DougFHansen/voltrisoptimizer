@@ -217,6 +217,7 @@ function LoginContent() {
     if (msg.includes('password should be at least')) return 'Password must be at least 6 characters.';
     if (msg.includes('user already registered')) return 'This user/email is already registered.';
     if (msg.includes('network error')) return 'Connection error. Check your internet.';
+    if (msg.includes('rate limit') || msg.includes('too many requests')) return 'For security reasons, you have made too many attempts. Please wait a few minutes and try again.';
     return 'A technical error occurred. Try again.';
   };
 
