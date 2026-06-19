@@ -175,9 +175,10 @@ function LoginContent() {
   const translateError = (err: string) => {
     const msg = err.toLowerCase();
     if (msg.includes('email_address_invalid') || msg.includes('unable to validate email address') || msg.includes('invalid format')) return 'This email address is invalid or not accepted by our security system. Please use a valid email.';
+    if (msg.includes('user not found')) return 'This Username does not exist.';
+    if (msg.includes('email not found')) return 'This Email is not registered. Please create an account.';
+    if (msg.includes('incorrect password')) return 'Incorrect password. Please try again.';
     if (msg.includes('invalid login credentials')) return 'Invalid Email/Username or password.';
-    if (msg.includes('email not confirmed')) return 'Email not confirmed. Check your inbox.';
-    if (msg.includes('user not found')) return 'This user was not found.';
     if (msg.includes('password should be at least')) return 'Password must be at least 6 characters.';
     if (msg.includes('user already registered')) return 'This user/email is already registered.';
     if (msg.includes('network error')) return 'Connection error. Check your internet.';
@@ -239,7 +240,23 @@ function LoginContent() {
             throw new Error('User not found');
           }
         } catch (err) {
-          throw new Error('User not found or connection error.');
+          throw new Error('User not found');
+        }
+      } else {
+        // Se for e-mail, vamos verificar se ele existe antes de tentar a senha
+        try {
+          const checkRes = await fetch('/api/v1/auth/check-availability', {
+            method: 'POST',
+            body: JSON.stringify({ email: loginEmail }),
+            headers: { 'Content-Type': 'application/json' }
+          });
+          const checkData = await checkRes.json();
+          // Se available for true, quer dizer que o e-mail não foi usado, ou seja, NÃO EXISTE!
+          if (checkData.available === true) {
+            throw new Error('Email not found');
+          }
+        } catch (err: any) {
+          if (err.message === 'Email not found') throw err;
         }
       }
 
@@ -249,7 +266,9 @@ function LoginContent() {
         password
       });
 
-      if (error || !signInData.user) throw new Error(error?.message || 'Invalid credentials');
+      if (error || !signInData.user) {
+        throw new Error('Incorrect password');
+      }
       console.log('✅ Login successful:', signInData.user.id);
 
       // --- MFA CHECK ---
