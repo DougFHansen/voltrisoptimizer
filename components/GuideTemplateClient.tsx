@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -99,6 +100,24 @@ export function GuideTemplateClient({
     warningNote,
     children
 }: GuideTemplateProps) {
+    const pathname = usePathname();
+    const currentLocale = pathname.split('/')[1] || 'en';
+    const baseUrl = 'https://www.voltrisoptimizer.com';
+    const canonicalUrl = `${baseUrl}${pathname}`;
+
+    const localeLangMap: Record<string, string> = {
+        'en': 'en-US',
+        'pt-br': 'pt-BR',
+        'es': 'es-ES',
+        'de': 'de-DE',
+        'fr': 'fr-FR',
+        'it': 'it-IT',
+        'ja': 'ja-JP',
+        'ko': 'ko-KR',
+        'ar': 'ar-AR'
+    };
+    const languageCode = localeLangMap[currentLocale] || 'en-US';
+
     const hasCustomConclusion = contentSections.some(section =>
         section.title.toLowerCase().includes('conclusão') ||
         section.title.toLowerCase().includes('conclusion') ||
@@ -130,29 +149,33 @@ export function GuideTemplateClient({
         "author": {
             "@type": "Person",
             "name": author,
-            "url": "https://www.voltrisoptimizer.com/sobre",
+            "url": `${baseUrl}/${currentLocale}/about`,
             "jobTitle": "System Optimization Specialist",
             "worksFor": {
                 "@type": "Organization",
                 "name": "Voltris",
-                "url": "https://www.voltrisoptimizer.com"
+                "url": baseUrl
             }
         },
         "publisher": {
             "@type": "Organization",
             "name": "Voltris",
-            "url": "https://www.voltrisoptimizer.com",
+            "url": baseUrl,
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.voltrisoptimizer.com/logo.png"
+                "url": `${baseUrl}/logo.png`
             }
         },
         "dateModified": `${lastUpdated}-01-01`,
         "datePublished": "2025-01-01",
-        "inLanguage": "en-US",
+        "inLanguage": languageCode,
         "learningResourceType": "Tutorial",
         "educationalLevel": normalizedDifficulty,
-        "timeRequired": `PT${readingMinutes}M`
+        "timeRequired": `PT${readingMinutes}M`,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": canonicalUrl
+        }
     };
 
     // JSON-LD HowTo Schema
@@ -164,7 +187,7 @@ export function GuideTemplateClient({
         "totalTime": `PT${readingMinutes}M`,
         "step": contentSections.map((section, idx) => ({
             "@type": "HowToStep",
-            "url": `https://www.voltrisoptimizer.com/guides/${title.toLowerCase().replace(/\s+/g, '-')}/#section-${idx}`,
+            "url": `${baseUrl}${pathname}/#section-${idx}`,
             "name": section.title,
             "itemListElement": [{
                 "@type": "HowToDirection",

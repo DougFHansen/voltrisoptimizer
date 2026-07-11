@@ -1,12 +1,16 @@
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ locale: string }> }
+) {
+  const { locale } = await params;
   const baseUrl = 'https://www.voltrisoptimizer.com';
 
-  // Map pages to images
+  // Map pages to images with the dynamic locale subpath
   const pages = [
     {
-      loc: `${baseUrl}/`,
+      loc: `${baseUrl}/${locale}`,
       images: [
         {
           loc: `${baseUrl}/logo.png`,
@@ -26,7 +30,7 @@ export async function GET() {
       ]
     },
     {
-      loc: `${baseUrl}/about`,
+      loc: `${baseUrl}/${locale}/about`,
       images: [
         {
           loc: `${baseUrl}/about-img.webp`,

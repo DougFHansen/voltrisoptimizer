@@ -86,6 +86,81 @@ export default async function RootLayout({
             }
           }}
         />
+
+        {/* Schema.org Person - Author for E-E-A-T */}
+        <JsonLd
+          type="Person"
+          data={{
+            name: "Douglas Felipe",
+            jobTitle: "CEO & IT Infrastructure Specialist",
+            url: "https://www.voltrisoptimizer.com",
+            description: "Specialist in system performance optimization and IT infrastructure with 10+ years of experience. Authority in remote global support and digital security.",
+            knowsAbout: [
+              "Windows Optimization",
+              "Cybersecurity for Remote Work",
+              "Managed IT Services (MSP)",
+              "Digital Privacy",
+              "Remote Desktop Support"
+            ],
+            worksFor: {
+              "@type": "Organization",
+              name: "VOLTRIS",
+              url: "https://www.voltrisoptimizer.com"
+            },
+            sameAs: [
+              "https://www.linkedin.com/in/dougfhansen",
+              "https://www.instagram.com/voltrisoptimizer.com"
+            ]
+          }}
+        />
+
+        {/* Schema.org WebSite with Global Context */}
+        <JsonLd
+          type="WebSite"
+          data={{
+            name: "VOLTRIS",
+            url: "https://www.voltrisoptimizer.com",
+            description: "The authority in gaming performance, Windows optimization, and remote technical support.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://www.voltrisoptimizer.com/?s={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }}
+        />
+
+        {/* Global Service Schema for AEO/GEO */}
+        <JsonLd 
+          type="Service"
+          data={{
+            name: "Expert Remote Technical Support",
+            description: "High performance remote technical support available globally.",
+            provider: {
+              "@type": "Organization",
+              name: "VOLTRIS",
+              url: "https://www.voltrisoptimizer.com"
+            },
+            areaServed: [
+              { "@type": "Country", name: "US" },
+              { "@type": "Country", name: "BR" },
+              { "@type": "Country", name: "PT" },
+              { "@type": "Country", name: "DE" },
+              { "@type": "Country", name: "FR" },
+              { "@type": "Country", name: "IT" },
+              { "@type": "Country", name: "JP" },
+              { "@type": "Country", name: "KR" },
+              { "@type": "Country", name: "ES" },
+              { "@type": "Country", name: "GB" },
+              { "@type": "Country", name: "CA" },
+              { "@type": "Country", name: "AU" }
+            ],
+            serviceType: "Remote Technical Support",
+            termsOfService: "https://www.voltrisoptimizer.com/terms-of-use"
+          }}
+        />
       </head>
       <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" suppressHydrationWarning>
         {children}
