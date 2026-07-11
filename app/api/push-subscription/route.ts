@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Configuração do Supabase
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+let supabaseClient: ReturnType<typeof createClient> | null = null;
 
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
+function getSupabase() {
+  if (supabaseClient) return supabaseClient;
+  
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Supabase environment variables (NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) are missing');
+  }
+  
+  supabaseClient = createClient(supabaseUrl, supabaseServiceKey);
+  return supabaseClient;
+}
 
 export interface PushSubscriptionData {
   endpoint: string;
@@ -28,6 +38,7 @@ export interface PushSubscriptionRequest {
 
 export async function POST(request: NextRequest) {
   try {
+    const supabase = getSupabase();
     const { subscription, userId, browserInfo }: PushSubscriptionRequest = await request.json();
     
     console.log('📱 Nova inscrição push recebida:', {
@@ -158,6 +169,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
+    const supabase = getSupabase();
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
     const browserFingerprint = searchParams.get('browserFingerprint');
@@ -206,6 +218,7 @@ export async function GET(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const supabase = getSupabase();
     const { subscriptionId, userId, browserFingerprint } = await request.json();
     
     if (!subscriptionId || !userId) {
@@ -271,6 +284,7 @@ export async function DELETE(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
+    const supabase = getSupabase();
     const { subscriptionId, userId, isActive } = await request.json();
     
     if (!subscriptionId || !userId || typeof isActive !== 'boolean') {

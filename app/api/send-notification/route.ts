@@ -3,9 +3,18 @@ import { createClient } from '@supabase/supabase-js';
 import { createClient as createServerClient } from '@/utils/supabase/server';
 import webpush from 'web-push';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
+let supabaseClient: ReturnType<typeof createClient> | null = null;
+
+function getSupabase() {
+  if (supabaseClient) return supabaseClient;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) {
+    throw new Error('Supabase environment variables are missing');
+  }
+  supabaseClient = createClient(url, key);
+  return supabaseClient;
+}
 
 // VAPID keys devem estar em variáveis de ambiente, nunca hardcoded
 const VAPID_PUBLIC = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!;
@@ -30,6 +39,7 @@ export interface NotificationRequest {
 }
 
 export async function POST(request: NextRequest) {
+    const supabase = getSupabase();
     // SEGURANÇA: Exigir autenticação de admin
     const supabaseAuth = await createServerClient();
     const { data: { user } } = await supabaseAuth.auth.getUser();
@@ -121,6 +131,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
+    const supabase = getSupabase();
     // SEGURANÇA: Exigir autenticação de admin
     const supabaseAuth = await createServerClient();
     const { data: { user } } = await supabaseAuth.auth.getUser();

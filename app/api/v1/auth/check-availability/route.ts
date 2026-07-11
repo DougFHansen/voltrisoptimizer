@@ -1,14 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 
-// Service Role for system-level checks (Bypasses RLS)
-const supabaseAdmin = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+let supabaseAdminClient: ReturnType<typeof createClient> | null = null;
+
+function getSupabaseAdmin() {
+    if (supabaseAdminClient) return supabaseAdminClient;
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !key) {
+        throw new Error('Supabase environment variables are missing');
+    }
+    supabaseAdminClient = createClient(url, key);
+    return supabaseAdminClient;
+}
 
 export async function POST(req: Request) {
     try {
+        const supabaseAdmin = getSupabaseAdmin();
         const { email, login, phone } = await req.json();
         const conflicts: string[] = [];
 
