@@ -1,25 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import webpush from 'web-push';
 
-// Configuração do cliente Supabase com Service Role para acesso irrestrito (backend)
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-
-if (!supabaseUrl || !supabaseServiceKey) {
-    console.error('CRITICAL: Supabase keys missing in NotificationService');
-}
-
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-// Configuração Web Push (VAPID)
-if (process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
-    webpush.setVapidDetails(
-        'mailto:admin@voltris.com',
-        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-        process.env.VAPID_PRIVATE_KEY
-    );
-}
-
 export type NotificationType = 'ticket' | 'order' | 'system' | 'profile' | 'newsletter' | 'comment' | 'ticket_status';
 
 export interface TriggerNotificationOptions {
@@ -30,6 +11,37 @@ export interface TriggerNotificationOptions {
     sound?: 'ping' | 'chime' | 'tone';
     data?: Record<string, any>; // Metadados extras (link, id do pedido, etc)
     actionUrl?: string; // URL para redirecionamento ao clicar (push)
+}
+
+let _supabase: any = null;
+
+function getSupabaseClient() {
+    if (_supabase) return _supabase;
+    
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    if (!supabaseUrl || !supabaseServiceKey) {
+        console.error('CRITICAL: Supabase keys missing in NotificationService');
+        throw new Error('Supabase configuration missing. Check NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables.');
+    }
+    
+    _supabase = createClient(supabaseUrl, supabaseServiceKey);
+    return _supabase;
+}
+
+// Configuração Web Push (VAPID) - Lazy initialization
+function initWebPush() {
+    const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+    const privateKey = process.env.VAPID_PRIVATE_KEY;
+    
+    if (publicKey && privateKey) {
+        webpush.setVapidDetails(
+            'mailto:admin@voltris.com',
+            publicKey,
+            privateKey
+        );
+    }
 }
 
 /**
@@ -43,6 +55,9 @@ export const NotificationService = {
      * @param options Opções da notificação
      */
     async notify(options: TriggerNotificationOptions) {
+        const supabase = getSupabaseClient();
+        initWebPush();
+        
         console.log(`🔔 NotificationService: Disparando notificação [${options.type}] para ${options.recipients.length} usuários`);
 
         // 1. Persistir no Banco de Dados (Fonte da Verdade)
@@ -87,6 +102,9 @@ export const NotificationService = {
      * Método interno para gerenciar envio de Push Notifications
      */
     async sendWebPush(options: TriggerNotificationOptions) {
+        const supabase = getSupabaseClient();
+        initWebPush();
+        
         // Buscar inscrições ativas apenas dos destinatários
         const { data: subscriptions, error: subError } = await supabase
             .from('push_subscriptions')
@@ -155,6 +173,8 @@ export const NotificationService = {
      * Helper para notificar Admins
      */
     async notifyAdmins(options: Omit<TriggerNotificationOptions, 'recipients'>) {
+        const supabase = getSupabaseClient();
+        
         // Buscar IDs de todos os admins
         const { data: admins, error } = await supabase
             .from('profiles')
