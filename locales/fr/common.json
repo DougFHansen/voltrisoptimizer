@@ -1,0 +1,94 @@
+{
+  "home": {
+    "title": "VOLTRIS - Optimisation PC et Support Technique",
+    "description": "La référence en matière de performance gaming et d'optimisation Windows au Brésil. Téléchargez Voltris Optimizer, consultez nos 300+ guides FPS et demandez un support technique spécialisé.",
+    "services": {
+      "optimizer": {
+        "title": "Voltris Optimizer",
+        "desc": "Augmentez les FPS, réduisez l'input lag et optimisez Windows en 1 clic avec notre logiciel haute performance.",
+        "price": "Licence à partir de 9,90€"
+      },
+      "advanced": {
+        "title": "Optimisation Gamer Avancée",
+        "desc": "Accès à distance par spécialiste pour overclock RAM, réglage CPU et tunning profond du kernel pour eSports.",
+        "price": "À partir de 29,90€"
+      },
+      "windows": {
+        "title": "Correction des Erreurs Windows",
+        "desc": "Résolution des erreurs système, écrans bleus, échecs de démarrage et problèmes de performance Windows à distance.",
+        "price": "À partir de 9,90€"
+      },
+      "support": {
+        "title": "Support Technique Express",
+        "desc": "Suppression virus et malware, formatage complet à distance avec backup sécurisé pour PCs et notebooks.",
+        "price": "À partir de 19,90€"
+      }
+    },
+    "cta": {
+      "optimize_now": "Optimiser Maintenant",
+      "contact_support": "Contacter le Support",
+      "learn_more": "En Savoir Plus"
+    },
+    "faq": {
+      "how_increase_fps": "Comment augmenter les FPS dans les jeux ?",
+      "how_increase_fps_answer": "Pour augmenter les FPS, vous pouvez utiliser Voltris Optimizer pour désactiver les services Windows inutiles, optimiser le plan d'énergie, nettoyer les fichiers temporaires et ajuster la latence système pour votre matériel spécifique.",
+      "remote_formatting": "VOLTRIS fait-il le formatage PC à distance ?",
+      "remote_formatting_answer": "Oui, nous effectuons le formatage d'ordinateur et notebook à distance et en toute sécurité, avec backup des données et installation de drivers optimisés pour performance maximale.",
+      "work_performance": "Comment Voltris Optimizer améliore-t-il la performance au travail ?",
+      "work_performance_answer": "Le logiciel supprime les processus d'arrière-plan qui consomment CPU et RAM, assurant que vos outils de travail (Office, Adobe, Navigateurs) aient la priorité matérielle maximale."
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "help": "Aide",
+    "search": "Rechercher",
+    "menu": "Menu",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "send": "Envoyer",
+    "continue": "Continuer",
+    "submit": "Soumettre"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "optimizer": "Optimiseur",
+    "support": "Support",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil"
+  },
+  "footer": {
+    "description": "Spécialistes en support technique à distance et optimisation d'ordinateurs pour performance maximale dans tout le Brésil.",
+    "services": "Services",
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "legal": "Légal",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "contact": "Contact",
+    "social": "Suivez-nous",
+    "copyright": "© 2024 VOLTRIS - Tous droits réservés."
+  }
+}

@@ -1,0 +1,595 @@
+'use client';
+
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'react-hot-toast';
+import Link from 'next/link';
+import {
+  FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
+  FiActivity, FiAlertTriangle, FiSearch, FiCopy, FiExternalLink, FiCpu, FiShield,
+  FiMonitor, FiDownload
+} from 'react-icons/fi';
+
+import type { Order } from '@/types/order';
+import { createClient } from '@/utils/supabase/client';
+import { useAuth } from '@/app/hooks/useAuth';
+import AuthGuard from '@/components/AuthGuard';
+import MyComputerPage from './MyComputerPage';
+import SecurityPage from './SecurityPage';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
+import { useDashboard } from '@/app/context/DashboardContext';
+import { notifyPageView } from '@/utils/notifications';
+
+
+// Componente de Card de Estatística Ultra-Moderno
+const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
+  const { transparencyMode } = useDashboard();
+  
+  const colors: any = {
+    blue: 'from-[#31A8FF] to-[#1070FF]',
+    purple: 'from-[#8B31FF] to-[#6010FF]',
+    green: 'from-[#00FF88] to-[#00CC6A]',
+    pink: 'from-[#FF4B6B] to-[#FF2244]',
+  };
+
+  const glowColors: any = {
+    blue: 'rgba(49,168,255,0.4)',
+    purple: 'rgba(139,49,255,0.4)',
+    green: 'rgba(0,255,136,0.4)',
+    pink: 'rgba(255,75,107,0.4)',
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay, type: "spring", stiffness: 100 }}
+      className={`relative group overflow-hidden p-5 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border transition-all duration-500
+        ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}
+        hover:border-white/20 hover:-translate-y-2
+      `}
+    >
+      <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${colors[color]} opacity-5 blur-[60px] group-hover:opacity-15 transition-all duration-700`}></div>
+      
+      <div className="relative z-10 flex flex-col h-full justify-center gap-4 sm:gap-6">
+        <div className="flex justify-between items-start">
+          <div className={`p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${colors[color]} shadow-lg flex items-center justify-center text-white relative`}>
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+            <div className={`absolute inset-0 rounded-2xl blur-lg opacity-40 bg-gradient-to-br ${colors[color]}`}></div>
+          </div>
+          <div className="flex flex-col items-end">
+             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
+             <div className="flex items-center gap-1.5">
+               <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
+               <span className="text-[9px] sm:text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">SYNCED</span>
+             </div>
+          </div>
+        </div>
+
+        <div className="space-y-1">
+           <p className="text-white/40 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
+          <div className="flex items-baseline gap-2">
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{value}</h3>
+          </div>
+        </div>
+
+        {/* Decorative Progress Line */}
+        <div className="relative h-1 w-full bg-white/5 rounded-full overflow-hidden mt-2">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: '100%' }}
+            transition={{ duration: 1.5, delay: delay + 0.3 }}
+            className={`absolute inset-y-0 left-0 bg-gradient-to-r ${colors[color]}`}
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default function DashboardClient() {
+  return (
+    <Suspense fallback={
+      <div className="h-full w-full flex items-center justify-center">
+        <div className="flex flex-col items-center gap-6">
+          <div className="w-20 h-20 border-t-4 border-l-4 border-b-4 border-transparent border-r-4 border-r-[#31A8FF] rounded-full animate-spin"></div>
+          <p className="text-white/40 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Starting Terminal...</p>
+        </div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
+  );
+}
+
+function DashboardContent() {
+  const { user, profile, loading } = useAuth();
+  const { transparencyMode } = useDashboard();
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get('tab') || (searchParams.get('checkout_success') === 'true' ? 'licenses' : 'overview');
+
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [payments, setPayments] = useState<any[]>([]);
+  const [licenses, setLicenses] = useState<any[]>([]);
+  const [installationsCount, setInstallationsCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const supabase = useMemo(() => createClient(), []);
+
+  const fetchData = useCallback(async (showLoading = true) => {
+    if (!user) return;
+    try {
+      if (showLoading) setIsLoading(true);
+
+      const [ordersRes, licensesRes, installationsRes, paymentsRes] = await Promise.all([
+        supabase.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
+        supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false }),
+        supabase.from('installations').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
+        supabase.from('payments').select('*').eq('user_id', user.id).order('created_at', { ascending: false })
+      ]);
+
+      if (ordersRes.error) throw ordersRes.error;
+      setOrders(ordersRes.data || []);
+      setPayments(paymentsRes.data || []);
+      
+      if (!licensesRes.error) {
+        setLicenses(licensesRes.data || []);
+      }
+
+      setInstallationsCount(installationsRes.count || 0);
+
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Error updating dashboard');
+    } finally {
+      if (showLoading) setIsLoading(false);
+    }
+  }, [user?.id, user?.email, supabase]); // Depende apenas do ID e email, não do objeto user inteiro
+
+  // Carregar dados apenas na montagem e quando o ID do usuário mudar de fato
+  const userIdRef = useRef<string | undefined>(undefined);
+  useEffect(() => {
+    // Se o auth terminou de carregar e não temos usuário, paramos o loading local
+    // para permitir que o AuthGuard execute o redirecionamento.
+    if (!loading && !user) {
+      setIsLoading(false);
+      return;
+    }
+
+    if (!user?.id) return;
+    
+    // Só buscar se o ID mudou (evita refetch em token refresh que recria o objeto user)
+    if (userIdRef.current === user.id) return;
+    userIdRef.current = user.id;
+    fetchData();
+  }, [user?.id, loading, fetchData]);
+
+  // Notificar visualização da aba de licenças no Dashboard
+  useEffect(() => {
+    if (activeTab === 'licenses') {
+      notifyPageView("Licenses Tab (Internal Dashboard)");
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    const success = searchParams.get('checkout_success');
+    if (success !== 'true' || loading) return;
+
+    const type = searchParams.get('type');
+    const successMsg = type === 'service' ? 'Service purchased successfully!' : 'Order confirmed! Processing your license...';
+    const successIcon = type === 'service' ? '🛠️' : '💎';
+
+    toast.success(successMsg, {
+      duration: 6000,
+      position: 'top-center',
+      icon: successIcon,
+      style: { 
+        background: 'rgba(10, 10, 15, 0.9)', 
+        color: '#fff',
+        border: '1px solid rgba(49, 168, 255, 0.3)',
+        backdropFilter: 'blur(10px)',
+        borderRadius: '1rem',
+        fontWeight: 'bold'
+      },
+    });
+
+    fetchData(false);
+    const timer = setTimeout(() => fetchData(false), 5000);
+    return () => clearTimeout(timer);
+  }, [searchParams, loading, fetchData]);
+
+  const stats = {
+    totalOrders: orders.length + payments.length,
+    activeLicenses: licenses.filter(l => l.is_active).length,
+    computers: installationsCount
+  };
+
+  const hardwareIDProtection = stats.activeLicenses > 0;
+
+  return (
+    <AuthGuard>
+      {isLoading ? (
+        <div className="h-full w-full flex items-center justify-center min-h-[400px]">
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative">
+              <div className="w-20 h-20 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
+              <div className="absolute inset-0 w-20 h-20 border-t-4 border-[#8B31FF] rounded-full animate-spin-slow"></div>
+            </div>
+            <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing with Supabase Cloud...</p>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-8 w-full max-w-full min-h-screen">
+        {/* Dashboard Header - Premium UI */}
+        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-center lg:text-left">
+          <div className="space-y-1.5 flex-1 min-w-0 flex flex-col items-center lg:items-start w-full">
+            <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
+              <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-3xl font-black text-white tracking-tighter uppercase italic leading-none break-words">Command <span className="text-[#31A8FF] not-italic">Center</span></h1>
+              
+              {/* Hardware ID Protection Status Badge */}
+               <div className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md transition-all duration-500
+                 ${hardwareIDProtection 
+                   ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
+                   : 'bg-red-500/10 border-red-500/20 text-red-400'}
+               `}>
+                 <div className={`w-1.5 h-1.5 rounded-full animate-pulse shadow-lg
+                   ${hardwareIDProtection ? 'bg-emerald-400 shadow-emerald-500/50' : 'bg-red-400 shadow-red-500/50'}
+                 `}></div>
+                 <span className="text-[9px] font-black uppercase tracking-widest leading-none">
+                   PROT HID: {hardwareIDProtection ? 'ACTIVE' : 'OFFLINE'}
+                 </span>
+               </div>
+            </div>
+            <p className="text-white/40 font-bold text-[8px] xs:text-[10px] sm:text-xs tracking-wide uppercase px-2 lg:px-0 opacity-80 line-clamp-1">Tactical operation available for <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USER'}</span></p>
+          </div>
+
+          <div className="flex items-center justify-center lg:justify-end gap-3 px-4 lg:px-0">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => { 
+                setIsRefreshing(true); 
+                fetchData(false)
+                  .then(() => toast.success('Data updated!'))
+                  .finally(() => setIsRefreshing(false)); 
+              }}
+              className={`p-4 rounded-2xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
+            >
+              <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
+            </motion.button>
+            <Link href="/servicos" className="flex-1 lg:flex-none">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(49, 168, 255, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black uppercase italic tracking-[0.15em] rounded-2xl shadow-2xl text-xs"
+              >
+                <FiPlus className="w-4 h-4" />
+                <span>New Order</span>
+              </motion.button>
+            </Link>
+          </div>
+        </header>
+
+        {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
+        <div className="w-full flex items-center justify-start sm:justify-center py-2 sm:py-4 overflow-x-auto scrollbar-hide px-2 sm:px-0">
+          <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all min-w-max sm:min-w-0`}>
+              {[
+                { id: 'overview', label: 'Dashboard', icon: FiActivity, color: '#31A8FF' },
+                { id: 'licenses', label: 'Licenses', icon: FiCheckCircle, color: '#8B31FF' },
+                { id: 'orders', label: 'Orders', icon: FiPackage, color: '#FF4B6B' },
+                { id: 'pc', label: 'Monitor', icon: FiMonitor, color: '#00C9A7' },
+                { id: 'security', label: 'Security', icon: FiShield, color: '#FFD700' }
+              ].map((tab) => (
+                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
+                  <div className={`
+                    flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
+                    ${activeTab === tab.id 
+                      ? 'bg-white text-black' 
+                      : 'text-white/40 hover:text-white hover:bg-white/5'}
+                  `}
+                  style={{ 
+                    boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
+                  }}>
+                    <tab.icon 
+                      className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-colors ${activeTab === tab.id ? '' : 'opacity-60'}`} 
+                      style={{ color: tab.color }}
+                    />
+                    <span className="inline-block" style={{ color: activeTab === tab.id ? 'black' : 'inherit' }}>{tab.label}</span>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
+
+        {/* Tab Content Rendering */}
+        <div className="flex-1 min-h-0 relative">
+          <AnimatePresence mode="wait">
+            {activeTab === 'overview' && (
+              <motion.div 
+                key="overview"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+              >
+                <StatCard title="Services Acquired" value={stats.totalOrders} icon={FiPackage} color="blue" delay={0.1} />
+                <StatCard title="Available Licenses" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
+                <StatCard title="Linked Computers" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
+                   {/* Tactical Billboard */}
+                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+                   <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
+                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
+                     <div className="space-y-4">
+                        <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
+                          <FiDownload className="w-8 h-8 text-[#31A8FF]" />
+                        </div>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Maximum Performance <span className="text-[#31A8FF] not-italic">Unlocked</span></h2>
+                        <p className="text-white/40 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Download Voltris Optimizer now to apply hardware tweaks and eliminate input lag in seconds.</p>
+                     </div>
+                     <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
+                        Download Voltris Optimizer
+                     </Link>
+                   </div>
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'licenses' && (
+              <motion.div 
+                key="licenses"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                className="space-y-6"
+              >
+                {/* Urgent Warning if needed */}
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-[2rem] bg-amber-400/10 border border-amber-400/30 backdrop-blur-xl">
+                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                      <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
+                   </div>
+                   <div className="flex-1 text-center sm:text-left">
+                      <h4 className="font-black text-white uppercase italic tracking-wider text-sm sm:text-base">Payment Synchronization</h4>
+                      <p className="text-amber-200/60 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">If your order did not appear immediately, click the synchronization button.</p>
+                   </div>
+                   <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-amber-400 text-black font-black uppercase italic text-[10px] sm:text-xs rounded-xl shadow-xl hover:scale-105 transition-all">
+                      Sync Now
+                   </button>
+                </div>
+
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                  {licenses.length > 0 ? (
+                    licenses.map((lic, i) => (
+                      <motion.div 
+                        key={lic.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} hover:border-[#31A8FF]/40`}
+                      >
+                        {/* Interactive Background Elements */}
+                        <div className={`absolute -right-20 -bottom-20 w-80 h-80 ${lic.is_active ? 'bg-[#31A8FF]/10' : 'bg-red-500/10'} blur-[100px] rounded-full group-hover:scale-110 transition-transform duration-700`}></div>
+                        
+                        <div className="relative z-10 flex flex-col gap-8">
+                          {/* Card Top */}
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white relative ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF]' : 'bg-white/5 border border-white/10'}`}>
+                                <FiCheckCircle className="w-8 h-8" />
+                                <div className={`absolute inset-0 blur-lg opacity-40 ${lic.is_active ? 'bg-[#31A8FF]' : 'bg-transparent'}`}></div>
+                              </div>
+                              <div className="flex flex-col">
+                                <h4 className="text-xl font-black text-white uppercase italic tracking-tighter">{lic.license_type}</h4>
+                                <span className={`text-[9px] font-black tracking-[0.2em] px-3 py-1 rounded-full uppercase w-fit mt-1 border ${lic.is_active ? 'bg-emerald-400/10 text-emerald-400 border-emerald-400/20' : 'bg-red-400/10 text-red-400 border-red-400/20'}`}>
+                                   {lic.is_active ? 'Active' : 'Expired'}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="hidden sm:flex flex-col items-end">
+                               <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Validity</span>
+                               <span className="text-sm font-black text-white italic">{new Date(lic.expires_at).toLocaleDateString('en-US')}</span>
+                            </div>
+                          </div>
+
+                          {/* Key Section - Dark Box */}
+                          <div className="bg-black/40 rounded-[2rem] p-6 border border-white/5 group-hover:border-[#31A8FF]/20 transition-all">
+                             <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.3em] mb-4 block">Activation Key</span>
+                             <div className="flex items-center justify-between gap-4">
+                                <code className="flex-1 font-mono text-base font-black text-white tracking-widest truncate select-all">{lic.license_key}</code>
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Key copied!'); }}
+                                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
+                                    title="Copy Key"
+                                  >
+                                    <FiCopy className="w-4 h-4" />
+                                  </button>
+                                  <Link href={`/dashboard?tab=pc`} className="p-3 rounded-xl bg-[#31A8FF]/10 hover:bg-[#31A8FF] text-[#31A8FF] hover:text-white transition-all border border-[#31A8FF]/20">
+                                     <FiExternalLink className="w-4 h-4" />
+                                  </Link>
+                                </div>
+                             </div>
+                          </div>
+                          <div>
+                          {/* Footer Info */}
+                          <div className="flex items-center justify-between border-t border-white/5 pt-6">
+                             <div className="flex flex-col">
+                                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Devices</span>
+                                   <span className="text-sm font-black text-white">{lic.devices_in_use}/{lic.max_devices}</span>
+                                </div>
+                                <div className="flex flex-col">
+                                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Hardware ID</span>
+                                   <span className="text-[10px] font-black text-[#00FF88] uppercase tracking-widest">Linked</span>
+                                </div>
+                             </div>
+                              <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
+                                 Download App <FiPlus className="w-3 h-3" />
+                              </Link>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))
+                  ) : (
+                    <div className={`col-span-1 xl:col-span-2 p-20 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A0F]'}`}>
+                       <div className="w-24 h-24 rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center text-white/20">
+                          <FiShield className="w-12 h-12" />
+                       </div>
+                       <div className="space-y-4">
+                         <h3 className="text-4xl font-black text-white uppercase italic tracking-tighter">License Warehouse Empty</h3>
+                         <p className="text-white/30 font-bold max-w-lg mx-auto uppercase tracking-wide text-xs">You do not yet have operational licenses linked to this account. Purchase one now to unlock the Optimizer.</p>
+                       </div>
+                       <Link href="/buy-license">
+                          <button className="px-12 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl">
+                             Explore PRO Plans
+                          </button>
+                       </Link>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'orders' && (
+              <motion.div 
+                key="orders"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                className="space-y-6"
+              >
+                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} shadow-2xl`}>
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-gradient-to-br from-[#31A8FF] to-[#1070FF] rounded-2xl text-white shadow-lg shadow-blue-500/20">
+                        <FiPackage className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-black text-white italic uppercase tracking-tighter">Order History</h2>
+                        <p className="text-white/30 text-[10px] font-black uppercase tracking-widest mt-1">Track all your services and licenses</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr className="border-b border-white/5">
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Service / License</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em] hidden sm:table-cell">Date</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Price</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5">
+                        {/* Mesclagem de Pedidos e Pagamentos */}
+                        {[
+                          ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
+                          ...payments.map(p => {
+                            const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
+                            return { 
+                              ...p, 
+                              display_type: isService ? 'SERVICE' : 'LICENSE', 
+                              display_name: isService ? (p.plan_type?.replace(/_/g, ' ').toUpperCase() || 'SERVICE') : `LICENSE: ${p.plan_type?.toUpperCase()}`, 
+                              display_plan: isService ? 'PROFESSIONAL SERVICE' : 'PRIORITY SUPPORT', 
+                              amount: p.amount 
+                            };
+                          })
+                        ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).length > 0 ? (
+                          [
+                            ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
+                            ...payments.map(p => {
+                              const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
+                              return { 
+                                ...p, 
+                                display_type: isService ? 'SERVICE' : 'LICENSE', 
+                                display_name: isService ? (p.plan_type?.replace(/_/g, ' ').toUpperCase() || 'SERVICE') : `LICENSE: ${p.plan_type?.toUpperCase()}`, 
+                                display_plan: isService ? 'PROFESSIONAL SERVICE' : 'PRIORITY SUPPORT', 
+                                amount: p.amount 
+                              };
+                            })
+                          ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
+                            <tr key={item.id + idx} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
+                              <td className="py-6 px-2">
+                                <div className="flex flex-col">
+                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{item.display_name}</span>
+                                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">
+                                    {item.display_type === 'LICENSE' ? (
+                                      <span className="text-[#31A8FF]">💎 DIGITAL PRODUCT</span>
+                                    ) : item.display_type === 'SERVICE' ? (
+                                      <span className="text-[#8B31FF]">🛠️ TECHNICAL SERVICE</span>
+                                    ) : (
+                                      item.display_plan || 'CUSTOM'
+                                    )}
+                                  </span>
+                                </div>
+                              </td>
+                              <td className="py-6 px-2 hidden sm:table-cell">
+                                <span className="text-xs font-bold text-white/40 uppercase tracking-widest">
+                                  {new Date(item.created_at).toLocaleDateString('en-US')}
+                                </span>
+                              </td>
+                              <td className="py-6 px-2">
+                                <span className="text-xs font-black text-[#00FF88]">
+                                  R$ {(item.amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                                </span>
+                              </td>
+                              <td className="py-6 px-2">
+                                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border w-fit
+                                  ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                                    (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                                    'bg-amber-500/10 border-amber-500/20 text-amber-400'}
+                                `}>
+                                  <div className={`w-1 h-1 rounded-full ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-400' : (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-400' : 'bg-amber-400 animate-pulse'}`}></div>
+                                  <span className="text-[10px] font-black uppercase tracking-widest leading-none">
+                                    {(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'APPROVED' : 
+                                     (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'CANCELLED' : 
+                                     'PROCESSING'}
+                                  </span>
+                                </div>
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td colSpan={4} className="py-20 text-center">
+                              <p className="text-white/20 font-black uppercase tracking-[0.3em] text-[10px]">No orders or payments found.</p>
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'pc' && (
+              <motion.div 
+                key="pc"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                className="h-full"
+              >
+                <MyComputerPage userId={user?.id || ''} />
+              </motion.div>
+            )}
+
+            {activeTab === 'security' && (
+              <motion.div 
+                key="security"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                className="h-full"
+              >
+                <SecurityPage />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        </div>
+      )}
+    </AuthGuard>
+  );
+}

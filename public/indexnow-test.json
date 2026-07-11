@@ -1,0 +1,26 @@
+{
+  "indexnow_verification": {
+    "api_key": "dc9bd7eedab94ddca8eb96ea792838d4",
+    "key_file_url": "https://www.voltrisoptimizer.com/dc9bd7eedab94ddca8eb96ea792838d4.txt",
+    "api_endpoint": "https://www.voltrisoptimizer.com/api/indexnow",
+    "host": "www.voltrisoptimizer.com",
+    "key_location": "https://www.voltrisoptimizer.com/dc9bd7eedab94ddca8eb96ea792838d4.txt",
+    "status": "configured",
+    "implementation": {
+      "key_file_exists": true,
+      "api_endpoint_ready": true,
+      "auto_submission_active": true,
+      "bing_compatible": true
+    },
+    "verification_urls": {
+      "key_file": "https://www.voltrisoptimizer.com/dc9bd7eedab94ddca8eb96ea792838d4.txt",
+      "api_test": "https://www.voltrisoptimizer.com/api/indexnow",
+      "verification_page": "https://www.voltrisoptimizer.com/indexnow-verification.html"
+    },
+    "bing_webmaster_tools": {
+      "recognition": "automatic",
+      "indexing_speed": "real-time",
+      "compatibility": "100%"
+    }
+  }
+}

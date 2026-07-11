@@ -1,0 +1,59 @@
+{
+  "common": {
+    "freeDownload": "Free Download",
+    "siteName": "VOLTRIS",
+    "downloadButton": "Download",
+    "support": "Support"
+  },
+  "home": {
+    "headings": {
+      "hero": "PC Optimization Software for Maximum Windows Performance",
+      "main": "Transform Your PC Performance",
+      "intro": "Advanced PC optimization and remote technical support"
+    },
+    "paragraphs": {
+      "hero": "Optimize computers for gaming, work, and professional use. More performance, stability, and productivity with Voltris Optimizer.",
+      "intro": "Voltris is not just conventional technical support. We are a technology laboratory specializing in extracting maximum performance from your hardware through kernel-level optimizations, deep cleaning, and corporate security."
+    },
+    "buttons": {
+      "download": "Download Now",
+      "learnMore": "Learn More",
+      "getStarted": "Get Started",
+      "browseAll": "Browse All"
+    },
+    "services": {
+      "optimization": "PC Optimization",
+      "paragraphs": {
+        "optimization": "Complete system optimization for maximum performance"
+      },
+      "headings": {
+        "gaming": "Gaming Optimization",
+        "main": "Professional Services",
+        "maintenance": "System Maintenance",
+        "emergency": "Emergency Support"
+      },
+      "paragraphs": {
+        "gaming": "Specialized optimization for competitive gaming",
+        "main": "Complete solutions for businesses and professionals",
+        "maintenance": "Preventive maintenance and system updates",
+        "emergency": "24/7 emergency technical support"
+      }
+    },
+    "categories": {
+      "gaming": "Gaming",
+      "windows": "Windows",
+      "hardware": "Hardware",
+      "optimization": "Optimization"
+    },
+    "guides": {
+      "title": "Technical Guides",
+      "popular": "Popular Guides"
+    },
+    "testimonials": {
+      "title": "Testimonials"
+    },
+    "cta": {
+      "title": "Join thousands of users who have transformed their PC performance with Voltris Optimizer. Start your optimization journey today."
+    }
+  }
+}
