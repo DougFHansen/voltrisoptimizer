@@ -30,6 +30,7 @@ Disallow: /api/
 
 # Sitemap dinâmico gerado automaticamente pelo Next.js
 Sitemap: https://www.voltrisoptimizer.com/sitemap.xml
+Sitemap: https://www.voltrisoptimizer.com/sitemap-images.xml
 
 # IndexNow key location para verificação
 Host: https://www.voltrisoptimizer.com

@@ -1,14 +1,11 @@
 import { NextResponse } from 'next/server';
 
-export async function GET(
-  request: Request,
-  { params }: { params: Promise<{ locale: string }> }
-) {
-  const { locale } = await params;
+export async function GET() {
   const baseUrl = 'https://www.voltrisoptimizer.com';
+  const supportedLocales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
 
-  // Map pages to images with the dynamic locale subpath
-  const pages = [
+  // Map pages to images for all supported locales
+  const pages = supportedLocales.flatMap(locale => [
     {
       loc: `${baseUrl}/${locale}`,
       images: [
@@ -39,7 +36,7 @@ export async function GET(
         }
       ]
     }
-  ];
+  ]);
 
   // Generate XML
   const xmlContent = pages.map(page => `
