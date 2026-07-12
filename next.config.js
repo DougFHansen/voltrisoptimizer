@@ -589,6 +589,14 @@ const nextConfig = {
       ]
     };
   },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap-images.xml',
+        destination: '/api/sitemap-images',
+      },
+    ];
+  },
   headers: async () => [
     {
       source: '/(.*)',
