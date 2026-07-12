@@ -6,39 +6,44 @@ import Image from 'next/image';
 import NewsletterForm from './NewsletterForm';
 import { FiInstagram, FiLinkedin, FiMail, FiMapPin, FiPhone, FiClock } from 'react-icons/fi';
 import { notifyDownload } from '@/utils/notifications';
+import { useParams } from 'next/navigation';
 
 export default function Footer() {
   const [year, setYear] = useState<number | null>(null);
   useEffect(() => setYear(new Date().getFullYear()), []);
 
+  const params = useParams();
+  const currentLocale = params?.locale || 'en';
+
   const links = {
     quick: [
-      { name: 'Home', path: '/' },
-      { name: 'Services', path: '/all-services' },
-      { name: 'Guides', path: '/guides' },
-      { name: 'Gamers', path: '/voltrisoptimizer' },
-      { name: 'Contact', path: '/contact' },
+      { name: 'Home', path: `/${currentLocale}` },
+      { name: 'Services', path: `/${currentLocale}/all-services` },
+      { name: 'Guides', path: `/${currentLocale}/guides` },
+      { name: 'Gamers', path: `/${currentLocale}/voltrisoptimizer` },
+      { name: 'Contact', path: `/${currentLocale}/contact` },
     ],
     services: [
-      { name: 'Windows Formatting', path: '/format-windows' },
-      { name: 'Gaming Optimization', path: '/pc-optimization' },
-      { name: 'Game Errors', path: '/gaming-errors' },
-      { name: 'PC Maintenance', path: '/computer-maintenance' },
-      { name: 'Web Creation', path: '/create-website' },
-      { name: 'Remote Support', path: '/remote-technical-support' },
+      { name: 'Windows Formatting', path: `/${currentLocale}/format-windows` },
+      { name: 'Gaming Optimization', path: `/${currentLocale}/pc-optimization` },
+      { name: 'Game Errors', path: `/${currentLocale}/gaming-errors` },
+      { name: 'PC Maintenance', path: `/${currentLocale}/computer-maintenance` },
+      { name: 'Web Creation', path: `/${currentLocale}/create-website` },
+      { name: 'Remote Support', path: `/${currentLocale}/remote-technical-support` },
     ],
     cities: [
-      { name: 'New York', path: '/regions/usa/new-york' },
-      { name: 'London', path: '/regions/uk/london' },
-      { name: 'Berlin', path: '/regions/germany/berlin' },
-      { name: 'Rome', path: '/regions/italy/rome' },
-      { name: 'Tokyo', path: '/regions/japan/tokyo' },
-      { name: 'Dubai', path: '/regions/uae/dubai' },
+      { name: 'New York', path: `/${currentLocale}/regions/usa/new-york` },
+      { name: 'London', path: `/${currentLocale}/regions/uk/london` },
+      { name: 'Berlin', path: `/${currentLocale}/regions/germany/berlin` },
+      { name: 'Rome', path: `/${currentLocale}/regions/italy/rome` },
+      { name: 'Tokyo', path: `/${currentLocale}/regions/japan/tokyo` },
+      { name: 'Dubai', path: `/${currentLocale}/regions/uae/dubai` },
     ],
     legal: [
-      { name: 'Privacy Policy', path: '/en/privacy-policy' },
-      { name: 'Terms of Use', path: '/en/terms-of-use' },
-      { name: 'Refund Policy', path: '/en/refund-policy' },
+      { name: currentLocale === 'pt-br' ? 'Política de Privacidade' : 'Privacy Policy', path: `/${currentLocale}/privacy-policy` },
+      { name: currentLocale === 'pt-br' ? 'Termos de Uso' : 'Terms of Use', path: `/${currentLocale}/terms-of-use` },
+      { name: 'LGPD', path: `/${currentLocale}/lgpd` },
+      { name: currentLocale === 'pt-br' ? 'Reembolso e Cancelamento' : 'Refund Policy', path: `/${currentLocale}/refund-policy` },
     ]
   };
 
