@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname, useParams } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import NotificationDropdown from './notifications/NotificationDropdown';
@@ -15,6 +15,9 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const { user, isAdmin, loading, signOut } = useAuth();
+
+  const params = useParams();
+  const currentLocale = params?.locale || 'en';
 
   // FAIL-SAFE: Security lock to prevent infinite spinner.
   // If it takes more than 1.8s, we force the visual loading of buttons.
@@ -38,46 +41,46 @@ export default function Header() {
 
   const handleLogout = async () => {
     await signOut();
-    window.location.href = '/login';
+    window.location.href = '/' + currentLocale + '/login';
   };
 
   const mainNavLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Guides', path: '/guides' },
-    { name: 'Global Coverage', path: '/regions' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Home', path: `/${currentLocale}` },
+    { name: 'Services', path: `/${currentLocale}/services` },
+    { name: 'Guides', path: `/${currentLocale}/guides` },
+    { name: 'Global Coverage', path: `/${currentLocale}/regions` },
+    { name: 'About', path: `/${currentLocale}/about` },
+    { name: 'Contact', path: `/${currentLocale}/contact` },
   ];
 
   const servicesNavLinks = [
     {
       category: 'Software Expert',
       items: [
-        { name: 'Voltris Optimizer', path: '/voltrisoptimizer', desc: 'Maximum Performance' },
-        { name: 'Subscribe PRO', path: '/buy-license', desc: 'License Activation' },
+        { name: 'Voltris Optimizer', path: `/${currentLocale}/voltrisoptimizer`, desc: 'Maximum Performance' },
+        { name: 'Subscribe PRO', path: `/${currentLocale}/buy-license`, desc: 'License Activation' },
       ]
     },
     {
       category: 'Gaming Support',
       items: [
-        { name: 'Gaming Optimization', path: '/pc-optimization', desc: 'FPS & Input Lag' },
-        { name: 'Game Errors', path: '/gaming-errors', desc: 'GTA, CS2 and more' },
+        { name: 'Gaming Optimization', path: `/${currentLocale}/pc-optimization`, desc: 'FPS & Input Lag' },
+        { name: 'Game Errors', path: `/${currentLocale}/gaming-errors`, desc: 'GTA, CS2 and more' },
       ]
     },
     {
       category: 'Technical Support',
       items: [
-        { name: 'Windows Formatting', path: '/format-windows', desc: 'Clean System' },
-        { name: 'PC Maintenance', path: '/computer-maintenance', desc: 'Hardware & Cleaning' },
-        { name: 'Remote Support', path: '/remote-technical-support', desc: 'Online Assistance' },
-        { name: 'International', path: '/international', desc: 'Support Abroad' },
+        { name: 'Windows Formatting', path: `/${currentLocale}/format-windows`, desc: 'Clean System' },
+        { name: 'PC Maintenance', path: `/${currentLocale}/computer-maintenance`, desc: 'Hardware & Cleaning' },
+        { name: 'Remote Support', path: `/${currentLocale}/remote-technical-support`, desc: 'Online Assistance' },
+        { name: 'International', path: `/${currentLocale}/international`, desc: 'Support Abroad' },
       ]
     },
     {
       category: 'Web & Design',
       items: [
-        { name: 'Web Creation', path: '/create-website', desc: 'Professional Sites' },
+        { name: 'Web Creation', path: `/${currentLocale}/create-website`, desc: 'Professional Sites' },
       ]
     },
   ];
@@ -104,7 +107,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center gap-4">
 
           {/* ── Logo ─────────────────────────────────── */}
-          <Link href="/" className="flex items-center gap-2 group z-20 relative shrink-0">
+          <Link href={`/${currentLocale}`} className="flex items-center gap-2 group z-20 relative shrink-0">
             <Image
               src="/logo.png"
               alt="Voltris"
@@ -221,7 +224,7 @@ export default function Header() {
                 </div>
                 <div className="mt-8 pt-6 border-t border-white/5">
                   <Link
-                    href="/services"
+                    href={`/${currentLocale}/services`}
                     className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 text-white text-xs font-bold transition-all uppercase tracking-widest"
                   >
                     View All Services <span className="text-[#31A8FF]">→</span>
@@ -240,7 +243,7 @@ export default function Header() {
                 <NotificationDropdown />
                 <div className="flex items-center gap-2 pl-3 border-l border-white/10">
                   <Link
-                    href={isAdmin ? '/restricted-area-admin' : '/dashboard'}
+                    href={isAdmin ? `/${currentLocale}/restricted-area-admin` : `/${currentLocale}/dashboard`}
                     className="flex items-center gap-2 px-3 xl:px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all text-sm font-medium hover:border-[#8B31FF]/30 hover:shadow-[0_0_15px_rgba(139,49,255,0.1)] whitespace-nowrap"
                   >
                     <FiLayout className="w-4 h-4" />
@@ -258,7 +261,7 @@ export default function Header() {
             ) : (
               <div className="flex items-center gap-2">
                 <Link
-                  href="/login"
+                  href={`/${currentLocale}/login`}
                   className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 group overflow-hidden whitespace-nowrap"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#8B31FF]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -268,7 +271,7 @@ export default function Header() {
                   </span>
                 </Link>
                 <Link
-                  href="/login?signup=true"
+                  href={`/${currentLocale}/login?signup=true`}
                   className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-[#FF4B6B]/30 transition-all duration-300 group overflow-hidden whitespace-nowrap"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -365,7 +368,7 @@ export default function Header() {
                 {user ? (
                   <>
                     <Link
-                      href="/dashboard"
+                      href={`/${currentLocale}/dashboard`}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#31A8FF] text-white font-bold shadow-lg shadow-[#31A8FF]/20"
                     >
@@ -381,7 +384,7 @@ export default function Header() {
                 ) : (
                   <>
                     <Link
-                      href="/login"
+                      href={`/${currentLocale}/login`}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 group overflow-hidden"
                     >
@@ -392,7 +395,7 @@ export default function Header() {
                       </span>
                     </Link>
                     <Link
-                      href="/login?signup=true"
+                      href={`/${currentLocale}/login?signup=true`}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-[#FF4B6B]/30 transition-all duration-300 group overflow-hidden"
                     >
