@@ -37,21 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     other: {
       'msvalidate.01': 'B3EA85422343FBF303FC4E7243937093',
     },
-  },
-        alternates: {
-            canonical: `https://www.voltrisoptimizer.com/${locale}`,
-            languages: {
-                'en': `/en`,
-                'es': `/es`,
-                'pt-br': `/pt-br`,
-                'de': `/de`,
-                'fr': `/fr`,
-                'it': `/it`,
-                'ja': `/ja`,
-                'ko': `/ko`,
-                'ar': `/ar`
-            }
-        }
+  }
     };
 }
 

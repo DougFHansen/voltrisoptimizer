@@ -11,14 +11,6 @@
   "headers": [
   ],
   "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap"
-    },
-    {
-      "source": "/sitemap-images.xml",
-      "destination": "/api/sitemap-images"
-    }
   ],
   "redirects": [
     {
