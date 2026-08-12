@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     return {
-        title: `Frequently Asked Questions (FAQ) | VOLTRIS`,
+        title: `Frequently Asked Questions (FAQ)`,
         description: `Find answers to your questions about remote technical support, website creation, payments, security, and more. See answers to common questions.`,
         keywords: [],
         alternates: {

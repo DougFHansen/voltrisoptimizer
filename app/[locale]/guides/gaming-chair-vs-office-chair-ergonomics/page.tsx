@@ -481,7 +481,7 @@ export default function ChairComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/posicionamento-monitor-ergonomia",
+            href: "/guides",
             title: "Monitor Positioning",
             description: "Avoid neck pain after setting up your chair."
         },

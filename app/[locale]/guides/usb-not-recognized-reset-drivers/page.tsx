@@ -93,7 +93,7 @@ export default function USBTroubleshootingGuide() {
             description: "Driver adjustments for a new PC."
         },
         {
-            href: "/guides/gerenciamento-energia-windows-11",
+            href: "/guides",
             title: "Windows Power",
             description: "More settings to avoid hardware suspension."
         }

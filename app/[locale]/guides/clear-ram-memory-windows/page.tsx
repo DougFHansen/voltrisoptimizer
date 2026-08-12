@@ -154,7 +154,7 @@ export default function RAMGuide() {
             description: "Fewer processes = More free RAM."
         },
         {
-            href: "/guides/otimizacao-processos-segundo-plano",
+            href: "/guides",
             title: "Useless Processes",
             description: "Identify what's eating your memory."
         },

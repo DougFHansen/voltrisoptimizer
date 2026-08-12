@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'DLL game error', '0xc000007b fix', 'remote gamer support', 'voltris optimizer games'
   ],
   openGraph: {
-    title: 'Game Error Fixes - Specialized Gamer Technical Support | VOLTRIS',
+    title: 'Game Error Fixes - Specialized Gamer Technical Support',
     description: 'We resolve VAN9003, GTA crashes, VAC Errors, and Roblox 268 remotely in minutes. Get back to gaming now!',
     url: 'https://www.voltrisoptimizer.com/gaming-errors',
     type: 'website',
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Fix Valorant, GTA, CS2, and Roblox Errors Now | VOLTRIS',
+    title: 'Fix Valorant, GTA, CS2, and Roblox Errors Now',
     images: ['/logo-seo-gamer.png']
   },
         alternates: {

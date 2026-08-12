@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'lgpd compliance'
   ],
   openGraph: {
-    title: 'Gestão Avançada de TI para Empresas | VOLTRIS',
+    title: 'Gestão Avançada de TI para Empresas',
     description: 'Aumente a produtividade e reduza o tempo de inatividade com suporte corporativo especializado.',
     url: 'https://www.voltrisoptimizer.com/empresas',
     images: ['/logo.png']

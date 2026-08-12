@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'remote technical assistance'
   ],
   openGraph: {
-    title: 'Professional Remote Technical Support | VOLTRIS',
+    title: 'Professional Remote Technical Support',
     description: 'Specialized remote technical support service for Windows, problem resolution, formatting, and system maintenance.',
     url: 'https://www.voltrisoptimizer.com/remote-technical-support',
     siteName: 'VOLTRIS',
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Professional Remote Technical Support | VOLTRIS',
+    title: 'Professional Remote Technical Support',
     description: 'Specialized remote technical assistance for Windows and system problems.',
     images: ['/remote-technical-support.jpg'],
     creator: '@voltris',

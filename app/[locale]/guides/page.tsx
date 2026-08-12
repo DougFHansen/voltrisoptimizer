@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   description: 'Learn how to format, optimize, remove viruses and solve problems on your PC with our detailed guides written by specialists.',
   keywords: 'guide formatting windows, pc optimization tutorial, remove virus pc, fix slow internet, assemble gaming pc, backup data, digital security',
   openGraph: {
-    title: 'Technical Guides and Tutorials | VOLTRIS',
+    title: 'Technical Guides and Tutorials',
     description: 'Step-by-step tutorials to solve your computer problems.',
     url: `https://www.voltrisoptimizer.com/${locale}/guides`,
     type: 'website',

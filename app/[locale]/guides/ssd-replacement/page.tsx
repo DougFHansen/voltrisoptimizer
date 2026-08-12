@@ -90,7 +90,7 @@ export default function SSDInstallationGuide() {
       description: "Test if your new SSD arrived in perfect condition."
     },
     {
-      href: "/guides/formataçao-windows",
+      href: "/guides",
       title: "Clean Formatting",
       description: "Prefer starting from scratch? Follow this guide."
     }

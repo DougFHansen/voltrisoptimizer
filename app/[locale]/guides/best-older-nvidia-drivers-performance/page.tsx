@@ -90,7 +90,7 @@ export default function NvidiaRollbackGuide() {
             description: "Tips on NVIDIA/AMD brands."
         },
         {
-            href: "/guides/micro-stuttering-em-jogos-causas",
+            href: "/guides",
             title: "Micro-stuttering",
             description: "Understand why drivers cause stuttering."
         }

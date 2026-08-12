@@ -271,7 +271,7 @@ export default function MicrophoneBoostGuide() {
       description: "Compression and noise filters for lives."
     },
     {
-      href: "/guides/solucao-problemas-driver-audio",
+      href: "/guides",
       title: "Audio Drivers",
       description: "Fix issues with Realtek and drivers."
     },

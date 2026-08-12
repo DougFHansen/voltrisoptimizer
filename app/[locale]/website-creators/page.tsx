@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: "Website Creators - Specialized Web Development Team | VOLTRIS",
+  title: "Website Creators - Specialized Web Development Team",
   description: "Professional and specialized website creators. Experienced team in web development, responsive design, and SEO. Sites that convert visitors into customers with guaranteed quality.",
   keywords: [
     "website creators",
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     "SEO website developers"
   ],
   openGraph: {
-    title: "Website Creators - Specialized Web Development Team | VOLTRIS",
+    title: "Website Creators - Specialized Web Development Team",
     description: "Professional and specialized website creators. Experienced team in web development, responsive design, and SEO.",
     url: "https://www.voltrisoptimizer.com/website-creators",
     type: "website",
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Creators - Specialized Web Development Team | VOLTRIS",
+    title: "Website Creators - Specialized Web Development Team",
     description: "Professional and specialized website creators. Experienced team in web development.",
     images: ["/remotebanner.jpg"]
   },

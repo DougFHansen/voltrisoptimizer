@@ -187,7 +187,7 @@ export default function MinecraftGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/roblox-fps-unlocker-bloat-fix",
+            href: "/guides",
             title: "Roblox",
             description: "Another sandbox favorite."
         },

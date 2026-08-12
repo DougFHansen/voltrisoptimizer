@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   ],
   
   openGraph: {
-    title: 'Professional and Optimized Windows Formatting | VOLTRIS',
+    title: 'Professional and Optimized Windows Formatting',
     description: 'Leave your computer like new. Professional formatting with backup and gaming optimization.',
     url: 'https://www.voltrisoptimizer.com/format-windows',
     type: 'website',

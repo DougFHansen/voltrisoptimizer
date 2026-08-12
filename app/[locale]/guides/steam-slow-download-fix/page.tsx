@@ -199,12 +199,12 @@ export default function SteamGuide() {
             description: "Write to disk faster."
         },
         {
-            href: "/guides/internet-lenta-jogos-lag",
+            href: "/guides",
             title: "Network",
             description: "Optimize downloads."
         },
         {
-            href: "/guides/como-escolher-controle-pc",
+            href: "/guides",
             title: "Controller",
             description: "Steam Input explained."
         }

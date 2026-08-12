@@ -230,7 +230,7 @@ export default function FortniteGuide() {
             description: "Edit builds faster."
         },
         {
-            href: "/guides/internet-lenta-jogos-lag",
+            href: "/guides",
             title: "Network",
             description: "0 Ping in Creative."
         }

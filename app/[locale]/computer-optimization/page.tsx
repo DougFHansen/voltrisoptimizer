@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'windows 11 optimization'
   ],
   openGraph: {
-    title: 'Professional Computer Optimization | VOLTRIS',
+    title: 'Professional Computer Optimization',
     description: 'Professional computer optimization service to increase the speed, performance, and stability of your PC or laptop.',
     url: 'https://www.voltrisoptimizer.com/otimizacao-computador',
     siteName: 'VOLTRIS',
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Professional Computer Optimization | VOLTRIS',
+    title: 'Professional Computer Optimization',
     description: 'Speed up your PC with our professional computer optimization service.',
     images: ['/otimizacao-computador.jpg'],
     creator: '@voltris',

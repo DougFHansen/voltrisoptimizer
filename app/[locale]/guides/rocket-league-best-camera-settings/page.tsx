@@ -224,7 +224,7 @@ export default function RocketLeagueGuide() {
             description: "Essential for tracking the ball."
         },
         {
-            href: "/guides/como-escolher-controle-pc",
+            href: "/guides",
             title: "Controller",
             description: "Avoid USB input lag."
         },

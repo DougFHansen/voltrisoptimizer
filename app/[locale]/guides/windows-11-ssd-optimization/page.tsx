@@ -97,12 +97,12 @@ export default function SSDGuide() {
             description: "Fewer processes writing logs to the disk."
         },
         {
-            href: "/guides/como-escolher-memoria-ram",
+            href: "/guides/ram-memory-upgrade",
             title: "RAM Disk",
             description: "How to use RAM to avoid writing to the SSD."
         },
         {
-            href: "/guides/formatacao-limpa-windows-11",
+            href: "/guides/clean-install-windows-11-rufus-gpt",
             title: "Clean Install",
             description: "Start from scratch with aligned partitions."
         }

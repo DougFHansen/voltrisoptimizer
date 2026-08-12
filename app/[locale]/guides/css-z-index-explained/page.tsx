@@ -88,17 +88,17 @@ export default function ZIndexGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/css-grid-vs-flexbox-qual-usar",
+            href: "/guides",
             title: "Grid vs Flexbox",
             description: "Master modern layout."
         },
         {
-            href: "/guides/otimizacao-seo-frontend",
+            href: "/guides",
             title: "SEO for Devs",
             description: "Increase your site's visibility."
         },
         {
-            href: "/guides/melhores-praticas-clean-code-javascript",
+            href: "/guides",
             title: "JS Clean Code",
             description: "Write better code in 2026."
         }

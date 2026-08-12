@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'preventive maintenance', 'internal pc cleaning', 'thermal paste replacement'
   ],
   openGraph: {
-    title: 'Professional Computer Maintenance | VOLTRIS',
+    title: 'Professional Computer Maintenance',
     description: 'Professional computer maintenance service with full diagnosis, internal cleaning, part replacement, and preventive maintenance.',
     url: 'https://www.voltrisoptimizer.com/manutencao-computador',
     siteName: 'VOLTRIS',
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Professional Computer Maintenance | VOLTRIS',
+    title: 'Professional Computer Maintenance',
     description: 'Certified technicians for complete maintenance of your computer.',
     images: ['/remotebanner.jpg'],
     creator: '@voltris',

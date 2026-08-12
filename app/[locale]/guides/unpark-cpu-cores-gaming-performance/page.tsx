@@ -84,7 +84,7 @@ export default function CoreParkingGuide() {
             description: "Combine with Unpark for more FPS."
         },
         {
-            href: "/guides/micro-stuttering-em-jogos-causas",
+            href: "/guides",
             title: "Micro-stuttering",
             description: "Understand other causes of stuttering."
         },

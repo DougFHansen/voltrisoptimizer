@@ -197,7 +197,7 @@ export default function KeyboardGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-escolher-mouse-gamer",
+            href: "/guides",
             title: "Mouse",
             description: "The perfect pair."
         },

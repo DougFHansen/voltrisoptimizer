@@ -14,13 +14,27 @@ import { notFound } from 'next/navigation';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     return {
-        
   title: {
     default: "VOLTRIS - PC Optimization, Gaming Performance and Technical Support",
     template: "%s | VOLTRIS"
   },
   description: "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.",
   metadataBase: new URL('https://www.voltrisoptimizer.com'),
+  alternates: {
+    canonical: `https://www.voltrisoptimizer.com/${locale}`,
+    languages: {
+      'en':    'https://www.voltrisoptimizer.com/en',
+      'es':    'https://www.voltrisoptimizer.com/es',
+      'pt-BR': 'https://www.voltrisoptimizer.com/pt-br',
+      'de':    'https://www.voltrisoptimizer.com/de',
+      'fr':    'https://www.voltrisoptimizer.com/fr',
+      'it':    'https://www.voltrisoptimizer.com/it',
+      'ja':    'https://www.voltrisoptimizer.com/ja',
+      'ko':    'https://www.voltrisoptimizer.com/ko',
+      'ar':    'https://www.voltrisoptimizer.com/ar',
+      'x-default': 'https://www.voltrisoptimizer.com/en',
+    },
+  },
   robots: {
     index: true,
     follow: true,

@@ -150,12 +150,12 @@ export default function GameConfigGuide() {
             description: "Start here if it's lagging."
         },
         {
-            href: "/guides/reduzir-input-lag-teclado-mouse",
+            href: "/guides",
             title: "Input Lag",
             description: "Reduce click delay."
         },
         {
-            href: "/guides/network-throttling-index-ping-jogos",
+            href: "/guides",
             title: "Low Ping",
             description: "How to improve connection."
         }

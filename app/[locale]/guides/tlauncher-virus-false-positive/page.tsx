@@ -346,7 +346,7 @@ export default function TLauncherSecurityGuide() {
             description: "Improve your connection with international servers."
         },
         {
-            href: "/guides/java-instalacao-correta-minecraft",
+            href: "/guides",
             title: "Guide: Java for Minecraft",
             description: "Which version of Java (8, 16, 17, 21) to use for each version of the game?"
         }

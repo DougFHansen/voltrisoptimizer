@@ -595,7 +595,7 @@ export function GuideTemplateClient({
                                             ))}
                                         </div>
                                         <p className="text-slate-400 text-sm leading-relaxed">{authorBio}</p>
-                                        <Link href="/about" className="inline-flex items-center gap-1 text-[#31A8FF] text-sm mt-3 hover:underline">
+                                        <Link href={`/${currentLocale}/about`} className="inline-flex items-center gap-1 text-[#31A8FF] text-sm mt-3 hover:underline">
                                             Meet the Voltris Team <ArrowRight className="w-3 h-3" />
                                         </Link>
                                     </div>
@@ -617,7 +617,7 @@ export function GuideTemplateClient({
                                         If you still have difficulties after following all steps, our expert support team is available for a personalized remote diagnosis. Every system is unique and may require a specific approach.
                                     </p>
                                     <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-                                        <Link href="/all-services" className="flex-1 px-8 py-5 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition text-center shadow-[0_0_20px_rgba(255,255,255,0.1)] text-base">
+                                        <Link href={`/${currentLocale}/all-services`} className="flex-1 px-8 py-5 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition text-center shadow-[0_0_20px_rgba(255,255,255,0.1)] text-base">
                                             View Professional Services
                                         </Link>
                                         <Link href="https://wa.me/5511996716235" target="_blank" rel="noopener noreferrer" className="flex-1 px-8 py-5 bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 font-bold rounded-xl hover:bg-[#31A8FF]/20 transition text-center flex items-center justify-center gap-2">
@@ -688,7 +688,17 @@ export function GuideTemplateClient({
                                     {relatedGuides.map((guide, index) => (
                                         <Link
                                             key={index}
-                                            href={guide.href.startsWith('/') && !guide.href.startsWith('/'+currentLocale) ? `/${currentLocale}${guide.href}` : guide.href}
+                                            href={(() => {
+                                                const h = guide.href;
+                                                // Already has locale prefix
+                                                if (h.startsWith(`/${currentLocale}/`) || h === `/${currentLocale}`) return h;
+                                                // Has /guides/slug format → prepend locale
+                                                if (h.startsWith('/guides/')) return `/${currentLocale}${h}`;
+                                                // Hub /guides
+                                                if (h === '/guides') return `/${currentLocale}/guides`;
+                                                // External or already correct
+                                                return h;
+                                            })()}
                                             className="group bg-[#0A0A0F] p-6 rounded-2xl border border-white/5 hover:border-[#31A8FF]/30 transition-all duration-300 hover:-translate-y-1 block"
                                         >
                                             <div className="flex items-start gap-3">
@@ -719,7 +729,7 @@ export function GuideTemplateClient({
                         className="fixed bottom-8 right-8 z-[100]"
                     >
                         <Link
-                            href="/voltrisoptimizer"
+                            href={`/${currentLocale}/voltrisoptimizer`}
                             onClick={() => notifyDownload(`Floating Link Click - ${title}`)}
                             className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black rounded-full shadow-[0_10px_40px_rgba(49,168,255,0.4)] hover:scale-110 active:scale-95 transition-all text-xs uppercase tracking-widest group"
                         >

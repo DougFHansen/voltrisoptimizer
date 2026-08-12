@@ -206,7 +206,7 @@ export default function DiscordGuide() {
             description: "Discord uses UDP, just like games."
         },
         {
-            href: "/guides/mic-chiando-ruido-estatico-fix",
+            href: "/guides",
             title: "Microphone",
             description: "Improve quality before it reaches Discord."
         }

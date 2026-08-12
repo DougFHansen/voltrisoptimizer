@@ -670,7 +670,7 @@ export default function BrowserShortcutsGuide() {
       description: "Shortcuts for the OS itself."
     },
     {
-      href: "/guides/otimizacao-chrome-memoria-ram",
+      href: "/guides",
       title: "Chrome Optimization",
       description: "Make your browser faster."
     }

@@ -79,7 +79,7 @@ export default function SpatialAudioGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/corrigir-audio-chiado-windows",
+            href: "/guides",
             title: "Fix Audio",
             description: "Solve static and popping problems."
         },

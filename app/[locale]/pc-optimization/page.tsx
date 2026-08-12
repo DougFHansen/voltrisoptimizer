@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   ],
   
   openGraph: {
-    title: 'Professional PC Optimization and Windows Performance | VOLTRIS',
+    title: 'Professional PC Optimization and Windows Performance',
     description: 'Maximum performance for your computer. Gain up to 40% more FPS in your favorite games.',
     url: 'https://www.voltrisoptimizer.com/pc-optimization',
     type: 'website',

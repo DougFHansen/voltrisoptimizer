@@ -428,7 +428,7 @@ export default function CableManagementGuide() {
             description: "Clean dust while you're organizing."
         },
         {
-            href: "/guides/gabinete-gamer-airflow-importance",
+            href: "/guides",
             title: "Airflow Guide",
             description: "How cable placement affects heat."
         },

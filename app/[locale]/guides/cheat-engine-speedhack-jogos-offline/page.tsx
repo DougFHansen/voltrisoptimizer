@@ -210,7 +210,7 @@ export default function CheatEngineGuide() {
             description: "CE works well with emulators."
         },
         {
-            href: "/guides/skyrim-mods-otimizacao",
+            href: "/guides",
             title: "Skyrim Offline",
             description: "Great game to test this."
         }

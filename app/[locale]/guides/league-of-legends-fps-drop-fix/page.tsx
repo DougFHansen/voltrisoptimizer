@@ -220,12 +220,12 @@ export default function LoLGuide() {
             description: "Load matches in 10s."
         },
         {
-            href: "/guides/como-escolher-mouse-gamer",
+            href: "/guides",
             title: "Mouse",
             description: "Avoid failing double-clicks."
         },
         {
-            href: "/guides/internet-lenta-jogos-lag",
+            href: "/guides",
             title: "Ping",
             description: "Reduce lag spikes."
         }

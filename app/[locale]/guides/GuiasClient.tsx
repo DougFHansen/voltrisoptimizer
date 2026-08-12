@@ -373,7 +373,7 @@ export default function GuiasClient({ initialGuides, locale }: GuiasClientProps)
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link
-                href="/services"
+                href={`/${locale}/services`}
                 className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:scale-105"
               >
                 View Specialized Services

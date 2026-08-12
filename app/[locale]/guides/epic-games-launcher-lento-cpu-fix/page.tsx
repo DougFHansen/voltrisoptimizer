@@ -80,7 +80,7 @@ export default function EpicGamesFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpar-cache-dns-ip-flushdns",
+            href: "/guides",
             title: "Increase Speed",
             description: "Improve your network for Epic downloads."
         },

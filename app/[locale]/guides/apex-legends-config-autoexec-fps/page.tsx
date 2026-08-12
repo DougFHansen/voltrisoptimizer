@@ -218,12 +218,12 @@ export default function ApexGuide() {
             description: "Adjust VSync here."
         },
         {
-            href: "/guides/internet-lenta-jogos-lag",
+            href: "/guides",
             title: "Network",
             description: "Apex needs a clean route."
         },
         {
-            href: "/guides/como-escolher-mouse-gamer",
+            href: "/guides",
             title: "Mouse",
             description: "Tracking is everything in Apex."
         }

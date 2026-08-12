@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   description: 'Discover our premium technical support services: formatting, optimization, virus removal, program installation, and web creation. Fast and secure assistance.',
   keywords: 'it services, technical support price, pc formatting cost, pc optimization price, website creation quote, virus cleaning price',
   openGraph: {
-    title: 'All Services | VOLTRIS',
+    title: 'All Services',
     description: 'Complete solutions in remote technical support and web development.',
     url: 'https://www.voltrisoptimizer.com/all-services',
     type: 'website',

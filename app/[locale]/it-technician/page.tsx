@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: "IT Technician - Specialized Remote Support | VOLTRIS",
+  title: "IT Technician - Specialized Remote Support",
   description: "Specialized remote technical support for IT. Solve computer problems, formatting, optimization, and Windows system maintenance safely and efficiently.",
   keywords: [
     "it technician",
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     "windows optimization"
   ],
   openGraph: {
-    title: "IT Technician - Specialized Remote Support | VOLTRIS",
+    title: "IT Technician - Specialized Remote Support",
     description: "Specialized remote technical support for IT. 24/7 service worldwide.",
     url: "https://www.voltrisoptimizer.com/it-technician",
     type: "website",

@@ -122,7 +122,7 @@ export default function DebloatGuide() {
             description: "Complement the Debloat with a fast drive."
         },
         {
-            href: "/guides/como-escolher-memoria-ram",
+            href: "/guides/ram-memory-upgrade",
             title: "RAM Guide",
             description: "8GB is not enough? See if you need an upgrade."
         },

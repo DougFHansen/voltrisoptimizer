@@ -179,7 +179,7 @@ export default function ReShadeGuide() {
             description: "Recover FPS lost to heavy shaders."
         },
         {
-            href: "/guides/sims-4-mods-cc-lags-fix",
+            href: "/guides",
             title: "Sims 4 Mods",
             description: "Commonly used with ReShade."
         }

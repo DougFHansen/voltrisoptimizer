@@ -197,7 +197,7 @@ export default function FormatGuide() {
             description: "Ensuring perfectly clean GPU drivers."
         },
         {
-            href: "/guides/debloat-windows-11-otimizacao",
+            href: "/guides",
             title: "Debloat Tools",
             description: "Stripping Windows to its gaming core."
         }

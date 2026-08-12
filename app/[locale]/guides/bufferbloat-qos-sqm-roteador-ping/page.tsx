@@ -192,7 +192,7 @@ export default function BufferbloatGuide() {
             description: "Software tips."
         },
         {
-            href: "/guides/dns-mais-rapido-para-jogos",
+            href: "/guides",
             title: "DNS",
             description: "Complementary guide."
         }

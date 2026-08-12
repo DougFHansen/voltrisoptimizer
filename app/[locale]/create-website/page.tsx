@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: "Professional Website Creation: Surpassing Wix and WordPress | VOLTRIS",
+  title: "Professional Website Creation: Surpassing Wix and WordPress",
   description: "Create a professional website with performance superior to Wix and WordPress. Ultra-fast Next.js development, native 10/10 SEO, and premium design. The best value for your company.",
   keywords: [
     "create professional website", "high-performance website creation", "premium web development",
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     "voltris website creation", "site optimized for google and bing"
   ],
   openGraph: {
-    title: "Professional Website Creation: Superior High Performance | VOLTRIS",
+    title: "Professional Website Creation: Superior High Performance",
     description: "Your company deserves a site that loads in milliseconds. Forget generic solutions. Go with VOLTRIS.",
     url: "https://www.voltrisoptimizer.com/criar-site",
     type: "website",
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   },
   twitter: {
     card: "summary_large_image",
-    title: "Create a Professional Website Superior to WordPress | VOLTRIS",
+    title: "Create a Professional Website Superior to WordPress",
     images: ["/logo-seo-web.png"]
   },
   alternates: {

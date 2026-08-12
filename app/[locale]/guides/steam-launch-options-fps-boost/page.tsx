@@ -178,7 +178,7 @@ export default function SteamGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/counter-strike-2-fps-boost-config",
+            href: "/guides",
             title: "CS2 config",
             description: "Complete guide."
         },

@@ -33,7 +33,7 @@
   },
   {
     "route": "/[locale]/all-services",
-    "lastModified": "2026-08-02T06:12:27.511Z"
+    "lastModified": "2026-08-12T08:52:23.856Z"
   },
   {
     "route": "/[locale]/all-services/software-installation",
@@ -49,7 +49,7 @@
   },
   {
     "route": "/[locale]/all-services/website-creation",
-    "lastModified": "2026-08-02T06:12:01.419Z"
+    "lastModified": "2026-08-12T08:52:23.863Z"
   },
   {
     "route": "/[locale]/all-services/website-creation/professional-plan",
@@ -85,15 +85,15 @@
   },
   {
     "route": "/[locale]/companies",
-    "lastModified": "2026-08-02T06:12:36.554Z"
+    "lastModified": "2026-08-12T08:52:23.864Z"
   },
   {
     "route": "/[locale]/computer-maintenance",
-    "lastModified": "2026-08-02T06:12:28.081Z"
+    "lastModified": "2026-08-12T08:52:23.864Z"
   },
   {
     "route": "/[locale]/computer-optimization",
-    "lastModified": "2026-08-02T06:13:13.842Z"
+    "lastModified": "2026-08-12T08:52:23.865Z"
   },
   {
     "route": "/[locale]/configure-windows-defender-gaming",
@@ -105,7 +105,7 @@
   },
   {
     "route": "/[locale]/create-website",
-    "lastModified": "2026-06-12T23:36:54.980Z"
+    "lastModified": "2026-08-12T08:52:23.867Z"
   },
   {
     "route": "/[locale]/definitive-privacy-guide-windows-2026",
@@ -141,11 +141,11 @@
   },
   {
     "route": "/[locale]/format-windows",
-    "lastModified": "2026-08-02T06:12:37.163Z"
+    "lastModified": "2026-08-12T08:52:23.869Z"
   },
   {
     "route": "/[locale]/gaming-errors",
-    "lastModified": "2026-08-02T06:13:01.979Z"
+    "lastModified": "2026-08-12T08:52:23.870Z"
   },
   {
     "route": "/[locale]/glossary",
@@ -185,7 +185,7 @@
   },
   {
     "route": "/[locale]/guides/apex-legends-config-autoexec-fps",
-    "lastModified": "2026-08-02T06:09:31.947Z"
+    "lastModified": "2026-08-12T08:45:55.713Z"
   },
   {
     "route": "/[locale]/guides/assetto-corsa-content-manager-csp-sol",
@@ -193,7 +193,7 @@
   },
   {
     "route": "/[locale]/guides/atalhos-navegador-produtividade",
-    "lastModified": "2026-08-02T06:09:31.951Z"
+    "lastModified": "2026-08-12T08:45:55.717Z"
   },
   {
     "route": "/[locale]/guides/atalhos-produtividade-windows",
@@ -217,7 +217,7 @@
   },
   {
     "route": "/[locale]/guides/aumentar-volume-microfone-windows",
-    "lastModified": "2026-08-02T06:09:31.957Z"
+    "lastModified": "2026-08-12T08:45:55.723Z"
   },
   {
     "route": "/[locale]/guides/autenticacao-dois-fatores",
@@ -261,15 +261,15 @@
   },
   {
     "route": "/[locale]/guides/best-older-nvidia-drivers-performance",
-    "lastModified": "2026-08-02T06:09:31.967Z"
+    "lastModified": "2026-08-12T08:45:55.727Z"
   },
   {
     "route": "/[locale]/guides/best-windows-version-for-gaming",
-    "lastModified": "2026-08-02T06:09:31.968Z"
+    "lastModified": "2026-08-12T08:45:55.729Z"
   },
   {
     "route": "/[locale]/guides/bios-otimizacao-xmp-tpm",
-    "lastModified": "2026-08-02T06:09:31.968Z"
+    "lastModified": "2026-08-12T08:45:55.732Z"
   },
   {
     "route": "/[locale]/guides/bitlocker-desempenho-jogos-ssd",
@@ -285,7 +285,7 @@
   },
   {
     "route": "/[locale]/guides/bluestacks-optimization-free-fire-pubg",
-    "lastModified": "2026-08-02T06:09:31.971Z"
+    "lastModified": "2026-08-12T08:45:55.735Z"
   },
   {
     "route": "/[locale]/guides/bluestacks-vs-ldplayer-which-is-lighter",
@@ -309,7 +309,7 @@
   },
   {
     "route": "/[locale]/guides/bufferbloat-qos-sqm-roteador-ping",
-    "lastModified": "2026-08-02T06:09:31.976Z"
+    "lastModified": "2026-08-12T08:45:55.740Z"
   },
   {
     "route": "/[locale]/guides/building-gaming-pc-common-mistakes",
@@ -317,7 +317,7 @@
   },
   {
     "route": "/[locale]/guides/cable-management-organizacao-cabos-pc",
-    "lastModified": "2026-08-02T06:09:31.978Z"
+    "lastModified": "2026-08-12T08:45:55.742Z"
   },
   {
     "route": "/[locale]/guides/cadeira-gamer-ergonomia-postura-aim",
@@ -337,7 +337,7 @@
   },
   {
     "route": "/[locale]/guides/cheat-engine-speedhack-jogos-offline",
-    "lastModified": "2026-08-02T06:09:31.983Z"
+    "lastModified": "2026-08-12T08:45:55.745Z"
   },
   {
     "route": "/[locale]/guides/check-hdd-ssd-health-crystaldiskinfo",
@@ -361,7 +361,7 @@
   },
   {
     "route": "/[locale]/guides/clean-install-windows-11-rufus-gpt",
-    "lastModified": "2026-08-02T06:09:31.990Z"
+    "lastModified": "2026-08-12T08:45:55.747Z"
   },
   {
     "route": "/[locale]/guides/cleaning-peripherals-mousepad-keyboard",
@@ -373,7 +373,7 @@
   },
   {
     "route": "/[locale]/guides/clear-ram-memory-windows",
-    "lastModified": "2026-08-02T06:09:31.994Z"
+    "lastModified": "2026-08-12T08:45:55.750Z"
   },
   {
     "route": "/[locale]/guides/cod-warzone-melhores-configuracoes-graficas",
@@ -417,7 +417,7 @@
   },
   {
     "route": "/[locale]/guides/como-usar-obs-studio-gravar-tela",
-    "lastModified": "2026-08-02T06:09:32.007Z"
+    "lastModified": "2026-08-12T08:45:55.756Z"
   },
   {
     "route": "/[locale]/guides/compartilhamento-impressoras",
@@ -437,7 +437,7 @@
   },
   {
     "route": "/[locale]/guides/configure-windows-spatial-sound",
-    "lastModified": "2026-08-02T06:09:32.012Z"
+    "lastModified": "2026-08-12T08:45:55.759Z"
   },
   {
     "route": "/[locale]/guides/controle-ps4-ps5-overclock-ds4windows",
@@ -489,7 +489,7 @@
   },
   {
     "route": "/[locale]/guides/css-z-index-explained",
-    "lastModified": "2026-08-02T06:09:32.026Z"
+    "lastModified": "2026-08-12T08:45:55.766Z"
   },
   {
     "route": "/[locale]/guides/cyberpunk-2077-hdd-mode-otimizacao",
@@ -517,11 +517,11 @@
   },
   {
     "route": "/[locale]/guides/debloat-windows-11-powershell-optimization",
-    "lastModified": "2026-08-02T06:09:32.033Z"
+    "lastModified": "2026-08-12T08:45:55.769Z"
   },
   {
     "route": "/[locale]/guides/debloating-windows-11",
-    "lastModified": "2026-08-02T06:09:32.034Z"
+    "lastModified": "2026-08-12T08:45:55.770Z"
   },
   {
     "route": "/[locale]/guides/deep-disk-cleanup-temp-files",
@@ -549,7 +549,7 @@
   },
   {
     "route": "/[locale]/guides/discord-otimizacao-overlay-lag",
-    "lastModified": "2026-08-02T06:09:32.040Z"
+    "lastModified": "2026-08-12T08:45:55.775Z"
   },
   {
     "route": "/[locale]/guides/discord-otimizar-para-jogos",
@@ -609,7 +609,7 @@
   },
   {
     "route": "/[locale]/guides/epic-games-launcher-lento-cpu-fix",
-    "lastModified": "2026-08-02T06:09:32.052Z"
+    "lastModified": "2026-08-12T08:45:55.782Z"
   },
   {
     "route": "/[locale]/guides/equalizer-apo-peace-aumentar-passos-fps",
@@ -653,7 +653,7 @@
   },
   {
     "route": "/[locale]/guides/fortnite-performance-mode-low-end-pc",
-    "lastModified": "2026-08-02T06:09:32.060Z"
+    "lastModified": "2026-08-12T08:45:55.788Z"
   },
   {
     "route": "/[locale]/guides/fortnite-textures-not-loading-fix",
@@ -673,7 +673,7 @@
   },
   {
     "route": "/[locale]/guides/gaming-chair-vs-office-chair-ergonomics",
-    "lastModified": "2026-08-02T06:09:32.064Z"
+    "lastModified": "2026-08-12T08:45:55.791Z"
   },
   {
     "route": "/[locale]/guides/gaming-laptop-battery-optimization",
@@ -877,7 +877,7 @@
   },
   {
     "route": "/[locale]/guides/league-of-legends-fps-drop-fix",
-    "lastModified": "2026-08-02T06:09:32.106Z"
+    "lastModified": "2026-08-12T08:45:55.810Z"
   },
   {
     "route": "/[locale]/guides/lethal-company-fps-boost-mods",
@@ -897,11 +897,11 @@
   },
   {
     "route": "/[locale]/guides/lossless-scaling-frame-generation-fsr-guide",
-    "lastModified": "2026-08-02T06:09:32.114Z"
+    "lastModified": "2026-08-12T08:45:55.816Z"
   },
   {
     "route": "/[locale]/guides/mechanical-keyboard-rapid-trigger-snap-tap",
-    "lastModified": "2026-08-02T06:09:32.115Z"
+    "lastModified": "2026-08-12T08:45:55.816Z"
   },
   {
     "route": "/[locale]/guides/mechanical-keyboards-guide",
@@ -929,7 +929,7 @@
   },
   {
     "route": "/[locale]/guides/minecraft-shaders-iris-sodium-fps-optimization",
-    "lastModified": "2026-08-02T06:09:32.122Z"
+    "lastModified": "2026-08-12T08:45:55.820Z"
   },
   {
     "route": "/[locale]/guides/monitor-buying-guide",
@@ -1021,7 +1021,7 @@
   },
   {
     "route": "/[locale]/guides",
-    "lastModified": "2026-08-02T06:13:08.083Z"
+    "lastModified": "2026-08-12T08:52:23.871Z"
   },
   {
     "route": "/[locale]/guides/palworld-server-dlss-optimization",
@@ -1141,7 +1141,7 @@
   },
   {
     "route": "/[locale]/guides/reshade-installation-guide-rtgi-filters",
-    "lastModified": "2026-08-02T06:09:32.167Z"
+    "lastModified": "2026-08-12T08:45:55.847Z"
   },
   {
     "route": "/[locale]/guides/resolve-windows-errors",
@@ -1161,7 +1161,7 @@
   },
   {
     "route": "/[locale]/guides/roblox-fps-unlocker-guide",
-    "lastModified": "2026-08-02T06:09:32.171Z"
+    "lastModified": "2026-08-12T08:45:55.851Z"
   },
   {
     "route": "/[locale]/guides/roblox-fps-unlocker-tutorial",
@@ -1173,7 +1173,7 @@
   },
   {
     "route": "/[locale]/guides/rocket-league-best-camera-settings",
-    "lastModified": "2026-08-02T06:09:32.173Z"
+    "lastModified": "2026-08-12T08:45:55.856Z"
   },
   {
     "route": "/[locale]/guides/rocket-league-camera-settings-bakkesmod",
@@ -1225,7 +1225,7 @@
   },
   {
     "route": "/[locale]/guides/ssd-replacement",
-    "lastModified": "2026-08-02T06:09:32.182Z"
+    "lastModified": "2026-08-12T08:45:55.865Z"
   },
   {
     "route": "/[locale]/guides/ssd-vs-hdd-guide",
@@ -1253,11 +1253,11 @@
   },
   {
     "route": "/[locale]/guides/steam-launch-options-fps-boost",
-    "lastModified": "2026-08-02T06:09:32.189Z"
+    "lastModified": "2026-08-12T08:45:55.868Z"
   },
   {
     "route": "/[locale]/guides/steam-slow-download-fix",
-    "lastModified": "2026-08-02T06:09:32.190Z"
+    "lastModified": "2026-08-12T08:45:55.869Z"
   },
   {
     "route": "/[locale]/guides/streamlabs-vs-obs-which-to-use",
@@ -1301,7 +1301,7 @@
   },
   {
     "route": "/[locale]/guides/tlauncher-virus-false-positive",
-    "lastModified": "2026-08-02T06:09:32.199Z"
+    "lastModified": "2026-08-12T08:45:55.874Z"
   },
   {
     "route": "/[locale]/guides/ultrawide-monitor-competitive-gaming",
@@ -1309,7 +1309,7 @@
   },
   {
     "route": "/[locale]/guides/unpark-cpu-cores-gaming-performance",
-    "lastModified": "2026-08-02T06:09:32.202Z"
+    "lastModified": "2026-08-12T08:45:55.876Z"
   },
   {
     "route": "/[locale]/guides/upgrade-old-pc-worth-it",
@@ -1317,7 +1317,7 @@
   },
   {
     "route": "/[locale]/guides/usb-not-recognized-reset-drivers",
-    "lastModified": "2026-08-02T06:09:32.204Z"
+    "lastModified": "2026-08-12T08:45:55.878Z"
   },
   {
     "route": "/[locale]/guides/valorant-reduce-input-lag",
@@ -1409,7 +1409,7 @@
   },
   {
     "route": "/[locale]/guides/windows-11-ssd-optimization",
-    "lastModified": "2026-08-02T06:09:32.224Z"
+    "lastModified": "2026-08-12T08:45:55.893Z"
   },
   {
     "route": "/[locale]/guides/windows-defender-gaming-optimization",
@@ -1421,7 +1421,7 @@
   },
   {
     "route": "/[locale]/guides/windows-game-mode-on-or-off",
-    "lastModified": "2026-08-02T06:09:32.227Z"
+    "lastModified": "2026-08-12T08:45:55.896Z"
   },
   {
     "route": "/[locale]/guides/windows-privacy-telemetry",
@@ -1569,15 +1569,15 @@
   },
   {
     "route": "/[locale]/it-technician",
-    "lastModified": "2026-06-12T23:36:55.525Z"
+    "lastModified": "2026-08-12T08:52:23.872Z"
   },
   {
     "route": "/[locale]/it-technician-home-visit",
-    "lastModified": "2026-06-12T23:36:55.529Z"
+    "lastModified": "2026-08-12T08:52:23.873Z"
   },
   {
     "route": "/[locale]/it-technician-my-region",
-    "lastModified": "2026-06-12T23:36:55.534Z"
+    "lastModified": "2026-08-12T08:52:23.873Z"
   },
   {
     "route": "/[locale]/lgpd",
@@ -1641,7 +1641,7 @@
   },
   {
     "route": "/[locale]/pc-optimization",
-    "lastModified": "2026-08-02T06:13:01.528Z"
+    "lastModified": "2026-08-12T08:52:23.875Z"
   },
   {
     "route": "/[locale]/privacy-policy",
@@ -1657,7 +1657,7 @@
   },
   {
     "route": "/[locale]/remote-technical-support",
-    "lastModified": "2026-08-02T06:13:13.346Z"
+    "lastModified": "2026-08-12T08:52:23.876Z"
   },
   {
     "route": "/[locale]/remove-bloatware-windows-11",
@@ -1693,6 +1693,6 @@
   },
   {
     "route": "/[locale]/website-creators",
-    "lastModified": "2026-06-12T23:36:55.627Z"
+    "lastModified": "2026-08-12T08:52:23.878Z"
   }
 ]

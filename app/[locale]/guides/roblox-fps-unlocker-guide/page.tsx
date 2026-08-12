@@ -201,12 +201,12 @@ export default function RobloxGuide() {
             description: "Load maps instantly."
         },
         {
-            href: "/guides/como-escolher-mouse-gamer",
+            href: "/guides",
             title: "Gaming Mouse",
             description: "High DPI for competitive play."
         },
         {
-            href: "/guides/internet-lenta-jogos-lag",
+            href: "/guides",
             title: "Network Fix",
             description: "Resolve high ping in Roblox."
         }

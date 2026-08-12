@@ -164,7 +164,7 @@ export default function GameModeGuide() {
             description: "Remove Xbox Game Bar without breaking Game Mode."
         },
         {
-            href: "/guides/otimizacao-registro",
+            href: "/guides",
             title: "Advanced Configuration",
             description: "Manually set CPU priorities."
         }

@@ -874,7 +874,7 @@ start_timer()</pre>
 
     const relatedGuides = [
         {
-            href: "/guides/obs-studio-melhores-configuracoes-stream-2026",
+            href: "/guides",
             title: "Stream Settings",
             description: "Learn how to stream live on Twitch/YouTube."
         },

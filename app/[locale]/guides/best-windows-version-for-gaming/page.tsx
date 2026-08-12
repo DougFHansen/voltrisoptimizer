@@ -85,7 +85,7 @@ export default function BestWindowsForGamingGuide() {
             description: "FPS tweaks for any version."
         },
         {
-            href: "/guides/formataçao-windows",
+            href: "/guides",
             title: "How to Format",
             description: "Guide for a clean installation."
         }

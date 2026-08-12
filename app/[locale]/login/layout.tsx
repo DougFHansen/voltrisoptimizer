@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     return {
-        title: `Sign In to Client Area | VOLTRIS`,
+        title: `Sign In to Client Area`,
         description: `Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.`,
         keywords: [],
         alternates: {

@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   description: 'Professional, fast, and SEO-optimized website development. Boost your sales with a modern and responsive website.',
   keywords: 'web creation, web development, professional website, responsive site, seo site, buy website, virtual store, ecommerce',
   openGraph: {
-    title: 'Professional Web Creation | VOLTRIS',
+    title: 'Professional Web Creation',
     description: 'Modern websites that convert visitors into customers.',
     url: 'https://www.voltrisoptimizer.com/all-services/website-creation',
     type: 'website',

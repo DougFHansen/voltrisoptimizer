@@ -174,7 +174,7 @@ export default function BiosGuide() {
             description: "Safe step-by-step for updating."
         },
         {
-            href: "/guides/como-escolher-memoria-ram",
+            href: "/guides/ram-memory-upgrade",
             title: "RAM Memory",
             description: "Understand latency and frequency."
         },

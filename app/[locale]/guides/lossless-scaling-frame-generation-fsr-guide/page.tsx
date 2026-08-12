@@ -187,7 +187,7 @@ export default function LSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-dlss-vs-fsr-vs-xess-qual-usar",
+            href: "/guides",
             title: "DLSS/FSR",
             description: "Understand Upscaling."
         },

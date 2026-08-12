@@ -180,7 +180,7 @@ export default function DebloatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-processos-segundo-plano",
+            href: "/guides",
             title: "Background Processes",
             description: "How to identify what's eating your CPU."
         },
