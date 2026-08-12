@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('otimizacao-performance', title, description, keywords, locale);
+    return createGuideMetadata('performance-optimization', title, description, keywords, locale);
 }
 
 export default function PerformanceOptimizationGuide() {
@@ -234,7 +234,7 @@ export default function PerformanceOptimizationGuide() {
       description: "Vital tip for Windows 11 and modern cards."
     },
     {
-      href: "/guides/otimizacao-jogos-pc",
+      href: "/guides/pc-gaming-optimization",
       title: "Extreme Gaming Optimization",
       description: "Advanced techniques to maximize FPS and performance."
     }

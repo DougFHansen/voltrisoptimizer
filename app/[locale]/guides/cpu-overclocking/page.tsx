@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overclock-processador', title, description, keywords, locale);
+    return createGuideMetadata('cpu-overclocking', title, description, keywords, locale);
 }
 
 export default function CPUOverclockGuide() {
@@ -77,17 +77,17 @@ export default function CPUOverclockGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/water-cooler-vs-air-cooler-qual-escolher",
+      href: "/guides/water-cooler-vs-air-cooler-which-to-choose",
       title: "Cooling",
       description: "You will need a powerful cooler."
     },
     {
-      href: "/guides/monitorar-temperatura-pc",
+      href: "/guides/monitor-pc-temperature",
       title: "Monitor Heat",
       description: "Don't let the CPU exceed 90°C."
     },
     {
-      href: "/guides/undervolt-cpu-notebook",
+      href: "/guides/laptop-cpu-undervolt",
       title: "Undervolt Guide",
       description: "Learn how to reduce voltage accurately."
     }

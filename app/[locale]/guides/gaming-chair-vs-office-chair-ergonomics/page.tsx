@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('cadeira-gamer-vs-escritorio-ergonomia', title, description, keywords, locale);
+    return createGuideMetadata('gaming-chair-vs-office-chair-ergonomics', title, description, keywords, locale);
 }
 
 export default function ChairComparisonGuide() {
@@ -486,12 +486,12 @@ export default function ChairComparisonGuide() {
             description: "Avoid neck pain after setting up your chair."
         },
         {
-            href: "/guides/perifericos-gamer-vale-a-pena",
+            href: "/guides/gaming-peripherals-worth-it",
             title: "Gamer Peripherals",
             description: "Improve your overall setup comfort."
         },
         {
-            href: "/guides/montagem-pc-gamer-erros-comuns",
+            href: "/guides/building-gaming-pc-common-mistakes",
             title: "Assembly Errors",
             description: "Organize your space correctly."
         }

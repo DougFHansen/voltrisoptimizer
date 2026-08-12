@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('importancia-pasta-termica-pc', title, description, keywords, locale);
+    return createGuideMetadata('thermal-paste-importance-pc', title, description, keywords, locale);
 }
 
 export default function ThermalPasteGuide() {
@@ -75,17 +75,17 @@ export default function ThermalPasteGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Physical Cleaning",
             description: "How to clean the rest of the PC."
         },
         {
-            href: "/guides/gabinete-gamer-airflow-importancia",
+            href: "/guides/gaming-case-airflow-importance",
             title: "Case Airflow",
             description: "Help your thermal paste with fresh air."
         },
         {
-            href: "/guides/diagnostico-hardware",
+            href: "/guides/hardware-diagnostics",
             title: "Diagnostics",
             description: "Find out if the problem is heat or a bad part."
         }

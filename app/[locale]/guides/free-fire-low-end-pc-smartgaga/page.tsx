@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('free-fire-pc-fraco-smartgaga', title, description, keywords, locale);
+    return createGuideMetadata('free-fire-low-end-pc-smartgaga', title, description, keywords, locale);
 }
 
 export default function SmartGaGaFFGuide() {
@@ -80,17 +80,17 @@ export default function SmartGaGaFFGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-which-is-lighter",
             title: "Compare Emulators",
             description: "Check out other options for low-end PCs."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize PC",
             description: "Prepare Windows for running emulators."
         },
         {
-            href: "/guides/jogos-android-no-pc-melhores-emuladores",
+            href: "/guides/best-android-emulators-for-pc",
             title: "Best Emulators",
             description: "General guide for Android apps on PC."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('excluir-conta-instagram-definitivamente', title, description, keywords, locale);
+    return createGuideMetadata('how-to-delete-instagram-account-permanently', title, description, keywords, locale);
 }
 
 export default function InstagramDeleteGuide() {
@@ -86,12 +86,12 @@ export default function InstagramDeleteGuide() {
             description: "Keep your access secure while you decide."
         },
         {
-            href: "/guides/protecao-dados-privacidade",
+            href: "/guides/data-protection-privacy",
             title: "Digital Privacy",
             description: "How social networks use your data in 2026."
         },
         {
-            href: "/guides/seguranca-digital",
+            href: "/guides/digital-security",
             title: "Online Security",
             description: "Extra tips to avoid hackers."
         }

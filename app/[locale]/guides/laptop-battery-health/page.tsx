@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('saude-bateria-notebook', title, description, keywords, locale);
+    return createGuideMetadata('laptop-battery-health', title, description, keywords, locale);
 }
 
 export default function BatteryHealthGuide() {
@@ -85,12 +85,12 @@ export default function BatteryHealthGuide() {
       description: "Learn how to recalibrate if the percentage is wrong."
     },
     {
-      href: "/guides/otimizacoes-para-notebook-gamer",
+      href: "/guides/gaming-laptop-optimizations",
       title: "Optimize Laptop",
       description: "Improve performance while saving power."
     },
     {
-      href: "/guides/monitorar-temperatura-pc",
+      href: "/guides/monitor-pc-temperature",
       title: "Monitor Heat",
       description: "Keep the system cool to preserve parts."
     }

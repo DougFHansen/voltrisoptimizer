@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vpn-vale-a-pena-jogos', title, description, keywords, locale);
+    return createGuideMetadata('vpn-worth-it-for-gaming', title, description, keywords, locale);
 }
 
 export default function GamingVPNGuide() {
@@ -78,17 +78,17 @@ export default function GamingVPNGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Lower Ping",
             description: "Tips without using paid software."
         },
         {
-            href: "/guides/exitlag-vale-a-pena-ou-enganacao",
+            href: "/guides/exitlag-worth-it-or-scam",
             title: "ExitLag Review",
             description: "Deep analysis of the route optimizer."
         },
         {
-            href: "/guides/protecao-dados-privacidade",
+            href: "/guides/data-protection-privacy",
             title: "Digital Privacy",
             description: "Why use a VPN outside of games."
         }

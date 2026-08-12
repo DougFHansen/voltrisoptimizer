@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('roblox-fps-unlocker-bloat-fix-bloxstrap', title, description, keywords, locale);
+    return createGuideMetadata('roblox-fps-unlocker-bloxstrap-guide', title, description, keywords, locale);
 }
 
 export default function RobloxGuide() {
@@ -184,7 +184,7 @@ export default function RobloxGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/minecraft-shaders-iris-sodium-otimizacao-fps",
+            href: "/guides/minecraft-shaders-iris-sodium-fps-optimization",
             title: "Minecraft",
             description: "Similar optimization."
         },

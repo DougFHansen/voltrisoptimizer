@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('league-of-legends-tela-preta-carregamento', title, description, keywords, locale);
+    return createGuideMetadata('league-of-legends-black-screen-loading-fix', title, description, keywords, locale);
 }
 
 export default function LoLBlackScreenGuide() {
@@ -89,7 +89,7 @@ export default function LoLBlackScreenGuide() {
             description: "Commands to reset your network."
         },
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Best DNS",
             description: "Choose the most stable server for LoL."
         }

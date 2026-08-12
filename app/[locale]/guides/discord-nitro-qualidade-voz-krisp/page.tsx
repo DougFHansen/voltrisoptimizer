@@ -183,7 +183,7 @@ export default function DiscordGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/obs-studio-gravacao-replay-buffer-av1",
+            href: "/guides/obs-studio-recording-replay-buffer-av1",
             title: "OBS Studio",
             description: "To separate audio."
         },

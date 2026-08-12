@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitoramento-sistema', title, description, keywords, locale);
+    return createGuideMetadata('system-monitoring', title, description, keywords, locale);
 }
 
 export default function SystemMonitoringGuide() {
@@ -78,17 +78,17 @@ export default function SystemMonitoringGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/monitorar-temperatura-pc",
+      href: "/guides/monitor-pc-temperature",
       title: "Monitor Temperature",
       description: "Dive deeper into thermal control."
     },
     {
-      href: "/guides/overclock-gpu-msi-afterburner",
+      href: "/guides/gpu-overclock-msi-afterburner",
       title: "Use Afterburner",
       description: "Step-by-step setup tutorial."
     },
     {
-      href: "/guides/diagnostico-hardware",
+      href: "/guides/hardware-diagnostics",
       title: "Diagnostics",
       description: "What to do with the collected data."
     }

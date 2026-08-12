@@ -420,17 +420,17 @@ export default function CPUBuyingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/overclock-processador",
+            href: "/guides/cpu-overclocking",
             title: "Overclock CPU",
             description: "Extract more power from your current CPU."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Control Heat",
             description: "Prevent your processor from throttling due to heat."
         },
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "Avoid Bottlenecks",
             description: "Pair your CPU with the correct GPU."
         }

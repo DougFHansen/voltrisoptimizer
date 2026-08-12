@@ -4,14 +4,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Terms of Use - VOLTRIS',
+    title: 'Terms of Use',
     description: 'Terms and conditions for using VOLTRIS services. Read carefully before hiring our technical support and website creation services.',
     keywords: ['terms of use', 'terms and conditions', 'service terms', 'voltris contract', 'legal terms'],
     
     openGraph: {
-        title: 'Terms of Use - VOLTRIS',
+        title: 'Terms of Use',
         description: 'Terms and conditions for using our services.',
-        url: 'https://www.voltrisoptimizer.com/terms-of-use',
+        url: `https://www.voltrisoptimizer.com/${locale}/terms-of-use`,
         type: 'website',
         locale: 'en_US',
         siteName: 'VOLTRIS',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Terms of Use | VOLTRIS',
+        title: 'Terms of Use',
         description: 'Terms and conditions of use.',
         images: ['/logo.png']
     },

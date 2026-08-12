@@ -200,12 +200,12 @@ export default function CheatEngineGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-gaming-optimization",
             title: "Defender Exclusions",
             description: "To install without errors."
         },
         {
-            href: "/guides/ldplayer-emulador-leve-pc-fraco",
+            href: "/guides/ldplayer-lightweight-emulator-low-end-pc",
             title: "Emulators",
             description: "CE works well with emulators."
         },

@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('starfield-otimizacao-dlss-mods', title, description, keywords, locale);
+    return createGuideMetadata('starfield-dlss-mods-optimization', title, description, keywords, locale);
 }
 
 export default function StarfieldGuide() {
@@ -185,7 +185,7 @@ export default function StarfieldGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD",
             description: "Mandatory."
         },
@@ -195,7 +195,7 @@ export default function StarfieldGuide() {
             description: "Fast RAM helps the CPU."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia",
             description: "Cap FPS."
         }

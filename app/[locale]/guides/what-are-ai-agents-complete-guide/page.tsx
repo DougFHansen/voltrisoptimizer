@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('o-que-sao-ai-agents-guia-completo', title, description, keywords, locale);
+    return createGuideMetadata('what-are-ai-agents-complete-guide', title, description, keywords, locale);
 }
 
 export default function AIAgentsGuide() {
@@ -285,12 +285,12 @@ print(result)
             description: "Use IA to write your agents' code 10x faster."
         },
         {
-            href: "/guides/rodar-llm-local-pc-ollama",
+            href: "/guides/run-local-llm-pc-ollama",
             title: "Free Agents (Local)",
             description: "How to run your agent's brain (Llama 3) on your own PC for zero cost."
         },
         {
-            href: "/guides/melhores-navegadores-custo-beneficio",
+            href: "/guides/best-browsers-performance",
             title: "Browser Use",
             description: "Tools for agents to navigate the web (MultiOn, Selenium)."
         }

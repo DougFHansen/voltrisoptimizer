@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('forza-horizon-5-vram-fix-input-lag', title, description, keywords, locale);
+    return createGuideMetadata('forza-horizon-5-vram-input-lag-fix', title, description, keywords, locale);
 }
 
 export default function ForzaGuide() {
@@ -184,7 +184,7 @@ export default function ForzaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD",
             description: "Avoids streaming bandwidth errors."
         },
@@ -194,7 +194,7 @@ export default function ForzaGuide() {
             description: "For those without a steering wheel."
         },
         {
-            href: "/guides/hdr-windows-11-calibracao-jogos",
+            href: "/guides/hdr-windows-11-gaming-calibration",
             title: "HDR",
             description: "Forza has near-perfect native HDR."
         }

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('playnite-launchbox-frontend-organizacao-biblioteca', title, description, keywords, locale);
+    return createGuideMetadata('playnite-launchbox-game-library-frontend', title, description, keywords, locale);
 }
 
 export default function FrontendGuide() {
@@ -190,12 +190,12 @@ export default function FrontendGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/retroarch-guia-completo-cores-shaders-crt",
+            href: "/guides/retroarch-complete-guide-shaders-crt",
             title: "RetroArch",
             description: "Seamless integration."
         },
         {
-            href: "/guides/lossless-scaling-frame-generation-fsr-guia",
+            href: "/guides/lossless-scaling-frame-generation-fsr-guide",
             title: "Tools",
             description: "Useful add-on."
         }

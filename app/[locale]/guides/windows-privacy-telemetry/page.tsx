@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('privacidade-windows-telemetria', title, description, keywords, locale);
+    return createGuideMetadata('windows-privacy-telemetry', title, description, keywords, locale);
 }
 
 export default function PrivacyGuide() {
@@ -84,12 +84,12 @@ export default function PrivacyGuide() {
       description: "Scripts to remove what Windows won't let you."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Optimize Performance",
       description: "Other adjustments for an agile system."
     },
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Digital Security",
       description: "Protect your data beyond Windows."
     }

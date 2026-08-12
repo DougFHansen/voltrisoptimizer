@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hard-reset-fones-bluetooth-fix', title, description, keywords, locale);
+    return createGuideMetadata('hard-reset-bluetooth-headphones-fix', title, description, keywords, locale);
 }
 
 export default function BluetoothResetGuide() {
@@ -89,7 +89,7 @@ export default function BluetoothResetGuide() {
             description: "Update your PC's Bluetooth driver."
         },
         {
-            href: "/guides/diagnostico-hardware",
+            href: "/guides/hardware-diagnostics",
             title: "Diagnosis",
             description: "Find out if your earbud is actually broken."
         }

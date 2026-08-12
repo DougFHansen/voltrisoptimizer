@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('fortnite-texturas-nao-carregam-streaming', title, description, keywords, locale);
+    return createGuideMetadata('fortnite-textures-not-loading-fix', title, description, keywords, locale);
 }
 
 export default function FortniteTexturesFixGuide() {
@@ -81,12 +81,12 @@ export default function FortniteTexturesFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/fortnite-modo-performance-pc-fraco",
+            href: "/guides/fortnite-performance-mode-low-end-pc",
             title: "Performance Mode",
             description: "Improve your FPS after textures load."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Increase the game's read speed."
         },

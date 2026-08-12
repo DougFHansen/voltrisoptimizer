@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('msi-afterburner-overclock-undervolt-guia', title, description, keywords, locale);
+    return createGuideMetadata('msi-afterburner-overclock-undervolt-guide', title, description, keywords, locale);
 }
 
 export default function AfterburnerGuide() {
@@ -194,12 +194,12 @@ export default function AfterburnerGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/notebook-gamer-bateria-otimizacao",
+            href: "/guides/gaming-laptop-battery-optimization",
             title: "Laptop Guide",
             description: "Thermal tips for mobile gaming."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Guide",
             description: "The ideal companion settings."
         }

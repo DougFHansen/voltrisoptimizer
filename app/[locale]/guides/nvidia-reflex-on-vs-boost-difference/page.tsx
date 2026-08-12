@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('nvidia-refelx-on-vs-boost-diferenca', title, description, keywords, locale);
+    return createGuideMetadata('nvidia-reflex-on-vs-boost-difference', title, description, keywords, locale);
 }
 
 export default function NvidiaReflexGuide() {
@@ -79,7 +79,7 @@ export default function NvidiaReflexGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limit-fps-rivatuner-nvidia",
             title: "Limit FPS",
             description: "Combine with Reflex for minimum latency."
         },
@@ -89,7 +89,7 @@ export default function NvidiaReflexGuide() {
             description: "Another way to reduce latency on Windows 11."
         },
         {
-            href: "/guides/mousepad-speed-vs-control",
+            href: "/guides/speed-vs-control-mousepad-gaming",
             title: "Improve Aim",
             description: "Your physical reaction along with the digital one."
         }

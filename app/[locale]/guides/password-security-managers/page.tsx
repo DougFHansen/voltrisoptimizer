@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('seguranca-senhas-gerenciadores', title, description, keywords, locale);
+    return createGuideMetadata('password-security-managers', title, description, keywords, locale);
 }
 
 export default function PasswordManagerGuide() {
@@ -509,17 +509,17 @@ export default function PasswordManagerGuide() {
         description: "The mandatory second layer of defense."
       },
       {
-        href: "/guides/identificacao-phishing",
+        href: "/guides/phishing-identification",
         title: "Avoid Scams",
         description: "Never give your master password to anyone."
       },
       {
-        href: "/guides/protecao-dados-privacidade",
+        href: "/guides/data-protection-privacy",
         title: "Digital Privacy",
         description: "Protect your data beyond passwords."
       },
       {
-        href: "/guides/backup-dados",
+        href: "/guides/data-backup",
         title: "Data Backup",
         description: "Backup your credentials securely."
       },
@@ -529,12 +529,12 @@ export default function PasswordManagerGuide() {
         description: "Understand how encryption protects your passwords."
       },
       {
-        href: "/guides/protecao-ransomware",
+        href: "/guides/ransomware-protection",
         title: "Ransomware Protection",
         description: "Protect your data and passwords from cryptoviruses."
       },
       {
-        href: "/guides/firewall-configuracao",
+        href: "/guides/firewall-configuration",
         title: "Firewall Configuration",
         description: "Block unauthorized access to your manager."
       }

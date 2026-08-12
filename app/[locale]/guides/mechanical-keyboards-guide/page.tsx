@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclados-mecanicos-guia', title, description, keywords, locale);
+    return createGuideMetadata('mechanical-keyboards-guide', title, description, keywords, locale);
 }
 
 export default function MechanicalKeyboardGuide() {
@@ -607,22 +607,22 @@ export default function MechanicalKeyboardGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/teclados-mecanicos-switches-guia",
+            href: "/guides/mechanical-keyboards-switches-guide",
             title: "Switch Guide",
             description: "Learn about switch colors and sounds."
         },
         {
-            href: "/guides/mousepad-speed-vs-control",
+            href: "/guides/speed-vs-control-mousepad-gaming",
             title: "Mousepads",
             description: "Complete your peripheral setup."
         },
         {
-            href: "/guides/teclado-mecanico-vs-membrana-qual-o-melhor",
+            href: "/guides/mechanical-vs-membrane-keyboard",
             title: "Mechanical vs Membrane",
             description: "Understand why mechanical wins."
         },
         {
-            href: "/guides/perifericos-gamer-vale-a-pena-marcas",
+            href: "/guides/gaming-peripherals-worth-it-brands",
             title: "Peripheral Brands",
             description: "Which keyboard brands are worth it."
         }

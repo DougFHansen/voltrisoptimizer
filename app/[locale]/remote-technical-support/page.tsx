@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Professional Remote Technical Support | VOLTRIS - Online Technical Assistance',
+  title: 'Professional Remote Technical Support - Online Technical Assistance',
   description: 'Specialized remote technical support service for Windows, problem resolution, formatting, optimization, and system maintenance. Service provided worldwide.',
   keywords: [
     'remote technical support',

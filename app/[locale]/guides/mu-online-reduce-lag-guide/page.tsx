@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mu-online-reduzir-lag-muvoltris', title, description, keywords, locale);
+    return createGuideMetadata('mu-online-reduce-lag-guide', title, description, keywords, locale);
 }
 
 export default function MuOnlineFixGuide() {
@@ -81,17 +81,17 @@ export default function MuOnlineFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "General tips for competitive games."
         },
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Best DNS",
             description: "Choose the ideal server for Mu."
         },
         {
-            href: "/guides/lineage-2-otimizar-pvp-fps",
+            href: "/guides/lineage-2-pvp-fps-optimization",
             title: "Optimize MMORPG",
             description: "Tips for other classics."
         }

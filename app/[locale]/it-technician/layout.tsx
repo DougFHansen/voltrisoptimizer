@@ -4,7 +4,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Online IT Technician - Specialized Remote Support | VOLTRIS',
+    title: 'Online IT Technician - Specialized Remote Support',
     description: 'Online IT technician for remote technical support worldwide. Specialists in Windows, formatting, optimization, and computer maintenance.',
     keywords: [
         'IT technician',

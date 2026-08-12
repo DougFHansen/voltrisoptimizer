@@ -190,7 +190,7 @@ export default function ControllerGuide() {
             description: "Implementing Gyro controls for Breath of the Wild."
         },
         {
-            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-zelda-mario-60fps-optimization",
             title: "Switch Tuning",
             description: "Setting up motion sensors for modern Nintendo titles."
         }

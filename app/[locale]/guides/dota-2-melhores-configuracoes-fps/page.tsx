@@ -212,17 +212,17 @@ export default function DotaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Setup",
             description: "Power management for Dota."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Guide",
             description: "Why an SSD is crucial for Dota."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Ping Fixes",
             description: "Optimizing network routes."
         }

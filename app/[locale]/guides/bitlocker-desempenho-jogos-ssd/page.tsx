@@ -147,7 +147,7 @@ export default function BitLockerGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/otimizacao-ssd-windows-11",
+      href: "/guides/windows-11-ssd-optimization",
       title: "Optimize SSD",
       description: "Other tips for a fast SSD."
     },
@@ -157,7 +157,7 @@ export default function BitLockerGuide() {
       description: "Beware of BitLocker here."
     },
     {
-      href: "/guides/debloat-windows-11-otimizacao-powershell",
+      href: "/guides/debloat-windows-11-powershell-optimization",
       title: "Windows Debloat",
       description: "Remove useless services."
     }

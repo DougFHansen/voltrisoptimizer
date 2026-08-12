@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('valorant-fix-van-9003-secure-boot', title, description, keywords, locale);
+    return createGuideMetadata('valorant-van-9003-secure-boot-fix', title, description, keywords, locale);
 }
 
 export default function ValorantSecureBootGuide() {
@@ -81,12 +81,12 @@ export default function ValorantSecureBootGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/valorant-van-9003-secure-boot-tpm-fix",
+            href: "/guides/valorant-van-9003-tpm-secure-boot-fix",
             title: "TPM 2.0 Detailed",
             description: "More details about enabling security settings."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Windows 11 Setup",
             description: "Make sure your system is optimized."
         },

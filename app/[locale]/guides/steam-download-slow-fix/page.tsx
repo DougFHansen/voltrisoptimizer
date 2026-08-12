@@ -16,7 +16,7 @@ const keywords = ['steam slow download', 'increase steam download speed', 'clear
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('steam-tarda-baixar-lento-fix', title, description, keywords, locale);
+    return createGuideMetadata('steam-download-slow-fix', title, description, keywords, locale);
 }
 
 export default function SteamLagGuide() {

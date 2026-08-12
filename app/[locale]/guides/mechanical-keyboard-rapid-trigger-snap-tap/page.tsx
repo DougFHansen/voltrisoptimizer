@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-mecanico-rapid-trigger-snap-tap', title, description, keywords, locale);
+    return createGuideMetadata('mechanical-keyboard-rapid-trigger-snap-tap', title, description, keywords, locale);
 }
 
 export default function KeyboardGuide() {
@@ -202,7 +202,7 @@ export default function KeyboardGuide() {
             description: "The perfect pair."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Valorant",
             description: "Where to use Rapid Trigger."
         },

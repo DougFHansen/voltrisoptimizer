@@ -177,12 +177,12 @@ export default function PasteGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/termperatura-pc-fan-control-curva",
+            href: "/guides/pc-temperature-fan-control-curve",
             title: "Fan Control",
             description: "Adjust curves."
         },
         {
-            href: "/guides/msi-afterburner-overclock-undervolt-guia",
+            href: "/guides/msi-afterburner-overclock-undervolt-guide",
             title: "Undervolt",
             description: "Cool down GPU."
         }

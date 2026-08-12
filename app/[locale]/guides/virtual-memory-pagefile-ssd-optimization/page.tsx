@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('memoria-virtual-pagefile-ssd-otimizacao', title, description, keywords, locale);
+    return createGuideMetadata('virtual-memory-pagefile-ssd-optimization', title, description, keywords, locale);
 }
 
 export default function PagefileGuide() {
@@ -175,7 +175,7 @@ export default function PagefileGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Maintenance",
             description: "Keeping your storage drive in top health."
         },

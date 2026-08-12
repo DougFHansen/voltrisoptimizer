@@ -187,7 +187,7 @@ export default function BufferbloatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduce-ping-exitlag-noping-dns",
             title: "General Ping",
             description: "Software tips."
         },

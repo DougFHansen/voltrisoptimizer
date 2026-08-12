@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'IT Services - Technical Support and Web Design | VOLTRIS',
+    title: 'IT Services - Technical Support and Web Design',
     description: 'Discover all our services: remote technical support, formatting, PC optimization, website creation, software installation and much more. Worldwide service.',
     keywords: ['it services', 'technical support', 'web design', 'computer maintenance', 'IT services', 'remote IT', 'pc formatting', 'windows optimization'],
     
     openGraph: {
-        title: 'IT Services - Technical Support and Web Design | VOLTRIS',
+        title: 'IT Services - Technical Support and Web Design',
         description: 'Complete IT Services: remote technical support, formatting, optimization and professional website creation.',
         url: 'https://www.voltrisoptimizer.com/services',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'IT Services | VOLTRIS',
+        title: 'IT Services',
         description: 'Complete IT services and remote technical support.',
         images: ['/logo.png']
     },

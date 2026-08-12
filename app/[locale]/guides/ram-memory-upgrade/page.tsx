@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('upgrade-memoria-ram', title, description, keywords, locale);
+    return createGuideMetadata('ram-memory-upgrade', title, description, keywords, locale);
 }
 
 export default function RAMUpgradeGuide() {
@@ -78,12 +78,12 @@ export default function RAMUpgradeGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/limpar-memoria-ram-windows",
+      href: "/guides/clear-ram-memory-windows",
       title: "Clean RAM",
       description: "Optimize usage before buying more."
     },
     {
-      href: "/guides/tela-azul-memory-management-fix",
+      href: "/guides/bsod-memory-management-fix",
       title: "Memory Error",
       description: "Diagnose faulty sticks."
     },

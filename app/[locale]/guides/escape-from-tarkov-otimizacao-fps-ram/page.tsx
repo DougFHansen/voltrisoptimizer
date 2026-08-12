@@ -196,17 +196,17 @@ export default function TarkovGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Optimization",
             description: "Load into raids faster."
         },
         {
-            href: "/guides/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduce-ping-exitlag-noping-dns",
             title: "Ping Reduction",
             description: "Maximize your Peeker's Advantage."
         },
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Settings",
             description: "Higher refresh rates help your aim."
         }

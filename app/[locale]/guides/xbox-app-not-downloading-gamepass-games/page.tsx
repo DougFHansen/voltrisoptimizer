@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xbox-app-nao-baixa-jogos-gamepass', title, description, keywords, locale);
+    return createGuideMetadata('xbox-app-not-downloading-gamepass-games', title, description, keywords, locale);
 }
 
 export default function XboxAppFixGuide() {
@@ -83,17 +83,17 @@ export default function XboxAppFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/xbox-game-pass-pc-vale-a-pena",
+            href: "/guides/xbox-game-pass-pc-worth-it",
             title: "Is it Worth It?",
             description: "Service review in 2026."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Windows Setup",
             description: "System tweaks for gamers."
         },
         {
-            href: "/guides/windows-update-corrigir-erros",
+            href: "/guides/windows-update-fix-errors",
             title: "Update Errors",
             description: "How to unlock downloads in Windows."
         }

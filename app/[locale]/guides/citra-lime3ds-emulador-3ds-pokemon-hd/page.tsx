@@ -183,7 +183,7 @@ export default function CitraGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-zelda-mario-60fps-optimization",
             title: "Switch",
             description: "The evolution of the 3DS."
         },

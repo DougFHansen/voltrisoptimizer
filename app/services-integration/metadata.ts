@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     'technical service bundles'
   ],
   alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/integracao-servicos'
+    canonical: 'https://www.voltrisoptimizer.com/services-integration'
   },
   openGraph: {
     title: 'Technical Service Integration | Formatting + Optimization + Assistance - VOLTRIS',
     description: 'How our formatting, optimization, and technical assistance services work together to maximize your PC performance. Integrated solutions for complete results.',
-    url: 'https://www.voltrisoptimizer.com/integracao-servicos',
+    url: 'https://www.voltrisoptimizer.com/services-integration',
     type: 'website',
     images: [{
       url: '/service-integration.jpg',

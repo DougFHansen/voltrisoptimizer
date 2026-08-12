@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('otimizacoes-para-notebook-gamer', title, description, keywords, locale);
+    return createGuideMetadata('gaming-laptop-optimizations', title, description, keywords, locale);
 }
 
 export default function LaptopGuide() {
@@ -163,17 +163,17 @@ export default function LaptopGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/undervolt-cpu-notebook",
+            href: "/guides/laptop-cpu-undervolt",
             title: "Undervolt Tutorial",
             description: "Detailed step-by-step for ThrottleStop."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Temperature",
             description: "How to use MSI Afterburner to see degrees in-game."
         },
         {
-            href: "/guides/saude-bateria-notebook",
+            href: "/guides/laptop-battery-health",
             title: "Check Battery",
             description: "Use the Windows battery-report command."
         }

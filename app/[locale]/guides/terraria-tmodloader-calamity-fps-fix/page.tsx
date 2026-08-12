@@ -183,7 +183,7 @@ export default function TerrariaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/minecraft-aumentar-fps-fabric-sodium",
+            href: "/guides/increase-minecraft-fps-fabric-sodium",
             title: "Minecraft",
             description: "Another optimizable sandbox."
         },

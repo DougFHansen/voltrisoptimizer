@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('wifi-desconectando-sozinho-windows', title, description, keywords, locale);
+    return createGuideMetadata('wifi-disconnecting-randomly-windows-fix', title, description, keywords, locale);
 }
 
 export default function WiFiFixGuide() {
@@ -83,17 +83,17 @@ export default function WiFiFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/problemas-conexao-wifi-causa-solucao",
+            href: "/guides/wifi-connection-problems-fix",
             title: "General Wi-Fi Guide",
             description: "Tips for weak signal and range."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Lower Ping",
             description: "Improve your wireless network response."
         },
         {
-            href: "/guides/troubleshooting-internet",
+            href: "/guides/internet-troubleshooting",
             title: "Network Diagnostics",
             description: "What to do if nothing works."
         }

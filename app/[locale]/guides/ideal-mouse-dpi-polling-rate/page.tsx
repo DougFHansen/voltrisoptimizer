@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mouse-dpi-polling-rate-ideal', title, description, keywords, locale);
+    return createGuideMetadata('ideal-mouse-dpi-polling-rate', title, description, keywords, locale);
 }
 
 export default function MouseGuide() {
@@ -245,17 +245,17 @@ export default function MouseGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Guide",
             description: "High Refresh Rate is a must for a good mouse."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Low Latency Mode",
             description: "Ensure the PC processes mouse clicks fast."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Valorant Input Lag",
             description: "Specific guide to optimize aim in Valorant."
         }

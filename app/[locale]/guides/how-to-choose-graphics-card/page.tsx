@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('como-escolher-placa-de-video', title, description, keywords, locale);
+    return createGuideMetadata('how-to-choose-graphics-card', title, description, keywords, locale);
 }
 
 export default function GPUBuyingGuide() {
@@ -423,7 +423,7 @@ export default function GPUBuyingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/rtx-4060-vale-a-pena-2026",
+      href: "/guides/rtx-4060-worth-it-2026",
       title: "RTX 4060 Review",
       description: "The most popular graphics card of 2026 under analysis."
     },

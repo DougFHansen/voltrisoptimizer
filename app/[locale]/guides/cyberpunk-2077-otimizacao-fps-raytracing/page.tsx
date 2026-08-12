@@ -191,17 +191,17 @@ export default function CyberpunkGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD",
             description: "Mandatory for textures."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia",
             description: "Always update drivers."
         },
         {
-            href: "/guides/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-gaming-optimization",
             title: "Defender",
             description: "Avoid scans during gameplay."
         }

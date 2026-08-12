@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('termperatura-pc-fan-control-curva', title, description, keywords, locale);
+    return createGuideMetadata('pc-temperature-fan-control-curve', title, description, keywords, locale);
 }
 
 export default function TempGuide() {
@@ -186,12 +186,12 @@ export default function TempGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/msi-afterburner-overclock-undervolt-guia",
+            href: "/guides/msi-afterburner-overclock-undervolt-guide",
             title: "Afterburner",
             description: "GPU fan curve settings."
         },
         {
-            href: "/guides/notebook-gamer-bateria-otimizacao",
+            href: "/guides/gaming-laptop-battery-optimization",
             title: "Notebook",
             description: "Specific mobile cooling tips."
         }

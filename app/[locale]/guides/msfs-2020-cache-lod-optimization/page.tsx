@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('microsoft-flight-simulator-otimizacao-cache-lod', title, description, keywords, locale);
+    return createGuideMetadata('msfs-2020-cache-lod-optimization', title, description, keywords, locale);
 }
 
 export default function MSFSGuide() {
@@ -184,17 +184,17 @@ export default function MSFSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD",
             description: "Cache Size."
         },
         {
-            href: "/guides/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduce-ping-exitlag-noping-dns",
             title: "Internet",
             description: "Map downloads."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia",
             description: "Frame Gen config."
         }

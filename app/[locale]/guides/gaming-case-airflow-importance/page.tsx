@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gabinete-gamer-airflow-importancia', title, description, keywords, locale);
+    return createGuideMetadata('gaming-case-airflow-importance', title, description, keywords, locale);
 }
 
 export default function AirflowGuide() {
@@ -77,12 +77,12 @@ export default function AirflowGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/importancia-pasta-termica-pc",
+            href: "/guides/thermal-paste-importance-pc",
             title: "Thermal Paste",
             description: "The perfect pair for good airflow."
         },
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Physical Cleaning",
             description: "Remove dust that blocks the air."
         },

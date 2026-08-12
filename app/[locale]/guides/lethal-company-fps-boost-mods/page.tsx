@@ -223,7 +223,7 @@ export default function LethalGuide() {
             description: "Reduce Discord's CPU usage while gaming to free up resources."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Windows Tuning",
             description: "How to prepare your Windows for CPU-bound games like Lethal Company."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mousepad-speed-vs-control', title, description, keywords, locale);
+    return createGuideMetadata('speed-vs-control-mousepad-gaming', title, description, keywords, locale);
 }
 
 export default function MousepadGuide() {
@@ -79,17 +79,17 @@ export default function MousepadGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/perifericos-gamer-vale-a-pena-marcas",
+            href: "/guides/gaming-peripherals-worth-it-brands",
             title: "Gaming Setup",
             description: "Brands making the best pads."
         },
         {
-            href: "/guides/mouse-clique-duplo-falhando-fix",
+            href: "/guides/mouse-double-click-failing-fix",
             title: "Mouse Issues",
             description: "Fix your mouse alongside the pad."
         },
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Maintenance",
             description: "How to wash your gaming mousepad."
         }

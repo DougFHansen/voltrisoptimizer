@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pc-liga-sem-video-diagnostico', title, description, keywords, locale);
+    return createGuideMetadata('pc-turns-on-no-display-fix', title, description, keywords, locale);
 }
 
 export default function NoVideoDiagnosticGuide() {
@@ -80,12 +80,12 @@ export default function NoVideoDiagnosticGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pc-gamer-barato-custo-beneficio-2026",
+            href: "/guides/budget-gaming-pc-build-2026",
             title: "PC Build",
             description: "Tips to avoid common assembly errors."
         },
         {
-            href: "/guides/testar-fonte-pc-multimetro",
+            href: "/guides/test-pc-power-supply-multimeter",
             title: "Test PSU",
             description: "Find out if the PSU has enough power for video."
         },

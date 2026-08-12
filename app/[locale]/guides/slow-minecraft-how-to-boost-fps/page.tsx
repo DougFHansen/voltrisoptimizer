@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('minecraft-lento-como-ganhar-fps', title, description, keywords, locale);
+    return createGuideMetadata('slow-minecraft-how-to-boost-fps', title, description, keywords, locale);
 }
 
 export default function MinecraftSlowFixGuide() {
@@ -634,17 +634,17 @@ export default function MinecraftSlowFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/minecraft-alocar-mais-ram",
+            href: "/guides/allocate-more-ram-minecraft",
             title: "Allocate more RAM",
             description: "Give Java some room to breathe."
         },
         {
-            href: "/guides/minecraft-aumentar-fps-fabric-sodium",
+            href: "/guides/increase-minecraft-fps-fabric-sodium",
             title: "Sodium and Fabric",
             description: "The best performance mods."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize System",
             description: "Tune Windows for demanding games."
         }

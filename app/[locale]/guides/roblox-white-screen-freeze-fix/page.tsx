@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('roblox-tela-branca-travada-fix', title, description, keywords, locale);
+    return createGuideMetadata('roblox-white-screen-freeze-fix', title, description, keywords, locale);
 }
 
 export default function RobloxWhiteScreenGuide() {
@@ -82,7 +82,7 @@ export default function RobloxWhiteScreenGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/roblox-fix-erro-conexao",
+            href: "/guides/roblox-connection-error-fix",
             title: "Connection Errors",
             description: "Solve HTTP and login errors."
         },

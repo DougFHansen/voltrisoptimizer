@@ -608,17 +608,17 @@ export default function MonitorCalibrationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/guia-compra-monitores",
+            href: "/guides/monitor-buying-guide",
             title: "Choose a Monitor",
             description: "Differences between IPS, VA, and TN panels."
         },
         {
-            href: "/guides/hdr-windows-vale-a-pena-jogos",
+            href: "/guides/hdr-windows-gaming-worth-it",
             title: "HDR Guide",
             description: "How to enjoy high brightness on your monitor."
         },
         {
-            href: "/guides/segundo-monitor-vertical-configurar",
+            href: "/guides/setup-second-vertical-monitor",
             title: "Vertical Monitor",
             description: "Alignment and color tips across screens."
         }

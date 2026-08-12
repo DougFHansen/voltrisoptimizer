@@ -16,7 +16,7 @@ const keywords = ["home network", "router", "wi-fi", "extender", "vlan", "networ
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rede-domestica', title, description, keywords, locale);
+    return createGuideMetadata('home-network', title, description, keywords, locale);
 }
 
 export default function RededomesticaGuide() {
@@ -259,17 +259,17 @@ export default function RededomesticaGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/seguranca-digital",
+      href: "/guides/digital-security",
       title: "Digital Security Guide",
       description: "Comprehensive protection against cyber threats."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Performance Optimization",
       description: "Maximize your system's performance."
     },
     {
-      href: "/guides/manutencao-preventiva",
+      href: "/guides/preventive-maintenance",
       title: "Preventive Maintenance",
       description: "Complete strategies for system care."
     }

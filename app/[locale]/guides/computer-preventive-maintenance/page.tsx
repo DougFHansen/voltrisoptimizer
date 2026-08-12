@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('manutencao-preventiva-computador', title, description, keywords, locale);
+    return createGuideMetadata('computer-preventive-maintenance', title, description, keywords, locale);
 }
 
 export default function PreventiveMaintenanceGuide() {
@@ -81,17 +81,17 @@ export default function PreventiveMaintenanceGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Physical Cleaning",
             description: "Learn how to truly clean your hardware."
         },
         {
-            href: "/guides/backup-dados",
+            href: "/guides/data-backup",
             title: "Backup Guide",
             description: "Strategies to never lose anything."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Disk Health",
             description: "How to predict the death of an HDD or SSD."
         }

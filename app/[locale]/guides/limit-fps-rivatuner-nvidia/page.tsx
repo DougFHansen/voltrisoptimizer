@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limitar-fps-rivatuner-nvidia', title, description, keywords, locale);
+    return createGuideMetadata('limit-fps-rivatuner-nvidia', title, description, keywords, locale);
 }
 
 export default function LimitFPSGuide() {
@@ -83,7 +83,7 @@ export default function LimitFPSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/overclock-gpu-msi-afterburner",
+            href: "/guides/gpu-overclock-msi-afterburner",
             title: "MSI Afterburner",
             description: "How to use the FPS monitor alongside RivaTuner."
         },
@@ -93,7 +93,7 @@ export default function LimitFPSGuide() {
             description: "Reduce system input lag."
         },
         {
-            href: "/guides/guia-compra-monitores",
+            href: "/guides/monitor-buying-guide",
             title: "Understand Hertz",
             description: "Learn why limits depend on your monitor."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-desconfigurado-abnt2-ansi', title, description, keywords, locale);
+    return createGuideMetadata('keyboard-layout-fix-abnt2-ansi', title, description, keywords, locale);
 }
 
 export default function KeyboardConfigGuide() {
@@ -169,12 +169,12 @@ export default function KeyboardConfigGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/teclado-mecanico-vs-membrana-qual-o-melhor",
+            href: "/guides/mechanical-vs-membrane-keyboard",
             title: "Keyboard Types",
             description: "Learn about switch technologies."
         },
         {
-            href: "/guides/teclado-notebook-parou-fix",
+            href: "/guides/laptop-keyboard-stopped-working-fix",
             title: "Keyboard Failing",
             description: "Tips if the keyboard has stopped completely."
         },

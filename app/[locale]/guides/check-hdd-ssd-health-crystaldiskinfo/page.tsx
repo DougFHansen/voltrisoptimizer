@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('verificar-saude-hd-ssd-crystaldiskinfo', title, description, keywords, locale);
+    return createGuideMetadata('check-hdd-ssd-health-crystaldiskinfo', title, description, keywords, locale);
 }
 
 export default function DiskHealthGuide() {
@@ -78,17 +78,17 @@ export default function DiskHealthGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/ssd-vs-hd-qual-melhor",
+            href: "/guides/ssd-vs-hdd-which-is-better",
             title: "SSD vs HDD",
             description: "Differences in technology and durability."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Tips to increase lifespan."
         },
         {
-            href: "/guides/recuperacao-dados",
+            href: "/guides/data-recovery",
             title: "Data Recovery",
             description: "What to do if the disk has already failed."
         }

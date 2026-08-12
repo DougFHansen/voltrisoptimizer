@@ -485,7 +485,7 @@ export default function PrinterSharingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/instalar-impressora-wifi",
+      href: "/guides/install-wifi-printer",
       title: "Wi-Fi Printer",
       description: "How to set up without needing wires."
     },
@@ -495,7 +495,7 @@ export default function PrinterSharingGuide() {
       description: "Shortcuts to print faster."
     },
     {
-      href: "/guides/seguranca-digital",
+      href: "/guides/digital-security",
       title: "Network Security",
       description: "Protect your sharing against intruders."
     }

@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('water-cooler-vs-air-cooler', title, description, keywords, locale);
+    return createGuideMetadata('water-cooler-vs-air-cooler-comparison', title, description, keywords, locale);
 }
 
 export default function CoolerGuide() {
@@ -139,12 +139,12 @@ export default function CoolerGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Temperature",
             description: "Know if your cooler is working."
         },
         {
-            href: "/guides/fans-fluxo-de-ar-pc-gamer",
+            href: "/guides/pc-case-airflow-fans-setup",
             title: "Airflow",
             description: "A good cooler is useless in an oven case."
         },

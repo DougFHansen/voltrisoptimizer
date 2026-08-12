@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rodar-llm-local-pc-ollama', title, description, keywords, locale);
+    return createGuideMetadata('run-local-llm-pc-ollama', title, description, keywords, locale);
 }
 
 export default function LocalLLMGuide() {
@@ -193,17 +193,17 @@ SYSTEM "You are Mario Bros. Answer everything with an Italian accent and end wit
 
     const relatedGuides = [
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "GPU Guide",
             description: "Technical analysis of the best budget (RTX 3060 vs 4060) cards for AI."
         },
         {
-            href: "/guides/o-que-sao-ai-agents-guia-completo",
+            href: "/guides/what-are-ai-agents-complete-guide",
             title: "AI Agents",
             description: "Use your local Llama 3 to power autonomous agents without paying for APIs."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Fast SSD",
             description: "Loading 20GB models requires a fast NVMe. See how to optimize."
         }

@@ -272,17 +272,17 @@ export default function CS2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Panel",
             description: "Configure 4:3 Stretched here."
         },
         {
-            href: "/guides/mouse-dpi-polling-rate-ideal",
+            href: "/guides/ideal-mouse-dpi-polling-rate",
             title: "Mouse Guide",
             description: "Ideal DPI (400 vs 800) for CS2."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Reduce Ping",
             description: "Optimization of routes and network."
         }

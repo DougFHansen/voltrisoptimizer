@@ -189,12 +189,12 @@ export default function EldenRingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia",
             description: "Cache settings."
         },
         {
-            href: "/guides/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/ultrawide-monitor-competitive-gaming",
             title: "Ultrawide",
             description: "Understand the format."
         },

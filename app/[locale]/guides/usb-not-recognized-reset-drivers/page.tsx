@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('usb-nao-reconhecido-reset-drivers', title, description, keywords, locale);
+    return createGuideMetadata('usb-not-recognized-reset-drivers', title, description, keywords, locale);
 }
 
 export default function USBTroubleshootingGuide() {
@@ -83,12 +83,12 @@ export default function USBTroubleshootingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/teclado-notebook-parou-fix",
+            href: "/guides/laptop-keyboard-stopped-working-fix",
             title: "Laptop Keyboard",
             description: "Tips if the internal keyboard stopped working."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Post-Installation",
             description: "Driver adjustments for a new PC."
         },

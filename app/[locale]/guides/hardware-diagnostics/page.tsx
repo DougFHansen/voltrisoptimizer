@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('diagnostico-hardware', title, description, keywords, locale);
+    return createGuideMetadata('hardware-diagnostics', title, description, keywords, locale);
 }
 
 export default function HardwareDiagnosticGuide() {
@@ -272,12 +272,12 @@ export default function HardwareDiagnosticGuide() {
             description: "Read .dmp files to find out exactly which driver caused the blue screen."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor PC Temperature",
             description: "How to use HWiNFO and MSI Afterburner to track heat in real-time."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "SSD and HDD Health",
             description: "Complete guide on interpreting CrystalDiskInfo and S.M.A.R.T."
         },

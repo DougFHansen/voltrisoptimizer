@@ -178,12 +178,12 @@ export default function DuckStationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/retroarch-guia-completo-cores-shaders-crt",
+            href: "/guides/retroarch-complete-guide-shaders-crt",
             title: "RetroArch Hub",
             description: "The all-in-one alternative for retro enthusiasts."
         },
         {
-            href: "/guides/pcsx2-otimizacao-4k-widescreen-texturas-guia",
+            href: "/guides/pcsx2-4k-widescreen-textures-optimization",
             title: "PCSX2 Optimization",
             description: "Mastering PS2 emulation in 4K."
         }

@@ -184,17 +184,17 @@ export default function DualMonitorGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Configure Monitor",
             description: "For the primary screen."
         },
         {
-            href: "/guides/google-chrome-consumo-ram-fix",
+            href: "/guides/google-chrome-high-ram-usage-fix",
             title: "Chrome",
             description: "Disable acceleration for the 2nd screen."
         },
         {
-            href: "/guides/obs-studio-melhores-configuracoes-stream",
+            href: "/guides/obs-studio-best-streaming-settings",
             title: "OBS",
             description: "Preview adjustments."
         }

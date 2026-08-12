@@ -81,7 +81,7 @@ export default function SodiumVsOptiFineGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/minecraft-aumentar-fps-fabric-sodium",
+            href: "/guides/increase-minecraft-fps-fabric-sodium",
             title: "Install Sodium",
             description: "Step-by-step installation guide."
         },
@@ -91,7 +91,7 @@ export default function SodiumVsOptiFineGuide() {
             description: "Extra tips for optimizing Minecraft."
         },
         {
-            href: "/guides/minecraft-alocar-mais-ram",
+            href: "/guides/allocate-more-ram-minecraft",
             title: "Allocate RAM",
             description: "Prepare your hardware for heavy mods."
         }

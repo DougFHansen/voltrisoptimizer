@@ -581,7 +581,7 @@ export default function WindowsShortcutsGuide() {
       description: "Combine with Windows shortcuts."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "System Optimization",
       description: "Make your system more responsive."
     }

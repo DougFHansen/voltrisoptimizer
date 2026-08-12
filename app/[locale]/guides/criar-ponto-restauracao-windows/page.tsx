@@ -484,12 +484,12 @@ export default function RestorePointGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Windows Checklist",
             description: "Essential tweaks for a fresh system."
         },
         {
-            href: "/guides/remover-bloatware-windows-powershell",
+            href: "/guides/remove-windows-bloatware-powershell",
             title: "Remove Bloatware",
             description: "Create a restore point before using scripts."
         },

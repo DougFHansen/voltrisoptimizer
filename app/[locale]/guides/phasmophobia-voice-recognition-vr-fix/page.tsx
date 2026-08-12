@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('phasmophobia-reconhecimento-voz-vr', title, description, keywords, locale);
+    return createGuideMetadata('phasmophobia-voice-recognition-vr-fix', title, description, keywords, locale);
 }
 
 export default function PhasmophobiaGuide() {
@@ -188,7 +188,7 @@ export default function PhasmophobiaGuide() {
             description: "Overlays can sometimes conflict with microphones."
         },
         {
-            href: "/guides/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-gaming-optimization",
             title: "Security Settings",
             description: "Ensuring proper microphone permissions."
         }

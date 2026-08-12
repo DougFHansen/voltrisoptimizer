@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('euro-truck-simulator-2-otimizacao-aa-promods', title, description, keywords, locale);
+    return createGuideMetadata('euro-truck-simulator-2-promods-aa-optimization', title, description, keywords, locale);
 }
 
 export default function ETS2Guide() {
@@ -190,12 +190,12 @@ export default function ETS2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/ultrawide-monitor-competitive-gaming",
             title: "Ultrawide Guide",
             description: "The ideal setup for truck cabin immersion."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Speed",
             description: "Fixing long map loading and texture streaming."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pubg-steam-fix-stuttering-travadas', title, description, keywords, locale);
+    return createGuideMetadata('pubg-steam-stuttering-fix', title, description, keywords, locale);
 }
 
 export default function PUBGStutterFixGuide() {
@@ -81,12 +81,12 @@ export default function PUBGStutterFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limit-fps-rivatuner-nvidia",
             title: "Stabilize Frametime",
             description: "Use RivaTuner for smooth gameplay."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve connection on PUBG servers."
         },

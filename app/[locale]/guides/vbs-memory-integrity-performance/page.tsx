@@ -80,17 +80,17 @@ export default function VBSPerformanceGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/modo-de-jogo-windows-atikvar-ou-nao",
+            href: "/guides/windows-game-mode-on-or-off",
             title: "Game Mode",
             description: "Another native tweak for performance."
         },
         {
-            href: "/guides/privacidade-windows-telemetria",
+            href: "/guides/windows-privacy-telemetry",
             title: "Windows Telemetry",
             description: "Reduce background services."
         },
         {
-            href: "/guides/hyper-v-desempenho-jogos",
+            href: "/guides/hyper-v-impact-gaming-performance",
             title: "Hyper-V and Games",
             description: "Understand how virtualization affects FPS."
         }

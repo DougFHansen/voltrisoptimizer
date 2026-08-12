@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pobreza-digital-pc-fraco-produtividade', title, description, keywords, locale);
+    return createGuideMetadata('digital-poverty-low-end-pc-productivity', title, description, keywords, locale);
 }
 
 export default function DigitalPovertyGuide() {
@@ -80,17 +80,17 @@ export default function DigitalPovertyGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Clear RAM",
             description: "Essential for users with 4GB or less."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "The biggest performance upgrade possible."
         },
         {
-            href: "/guides/melhores-navegadores-custo-beneficio",
+            href: "/guides/best-browsers-performance",
             title: "Browsers",
             description: "Choose the one that stutters less on your PC."
         }

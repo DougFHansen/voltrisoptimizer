@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gta-v-err-gfx-d3d-init-crash', title, description, keywords, locale);
+    return createGuideMetadata('gta-v-err-gfx-d3d-init-crash-fix', title, description, keywords, locale);
 }
 
 export default function GTAVCrashGuide() {
@@ -82,7 +82,7 @@ export default function GTAVCrashGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/gta-v-otimizar-fps-pc-fraco",
+            href: "/guides/gta-v-fps-optimization-low-end-pc",
             title: "Optimize GTA V",
             description: "Gain more performance in-game."
         },

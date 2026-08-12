@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('onde-baixar-planilhas-excel-gratis', title, description, keywords, locale);
+    return createGuideMetadata('where-to-download-free-excel-templates', title, description, keywords, locale);
 }
 
 export default function ExcelSheetsGuide() {
@@ -81,12 +81,12 @@ export default function ExcelSheetsGuide() {
             description: "Navigate faster between work windows."
         },
         {
-            href: "/guides/backup-dados",
+            href: "/guides/data-backup",
             title: "Data Backup",
             description: "Don't lose your important spreadsheets."
         },
         {
-            href: "/guides/extensoes-produtividade-chrome",
+            href: "/guides/best-chrome-productivity-extensions",
             title: "Useful Extensions",
             description: "Tools that help with digital organization."
         }

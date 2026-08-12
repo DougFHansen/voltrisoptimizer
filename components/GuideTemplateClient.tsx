@@ -416,7 +416,7 @@ export function GuideTemplateClient({
                         {/* Breadcrumbs */}
                         <Breadcrumbs
                             items={[
-                                { label: 'Guides', href: '/guides' },
+                                { label: 'Guides', href: `/${currentLocale}/guides` },
                                 { label: title.replace(' - Voltris', '').replace(' | VOLTRIS', '').substring(0, 50) }
                             ]}
                         />
@@ -688,7 +688,7 @@ export function GuideTemplateClient({
                                     {relatedGuides.map((guide, index) => (
                                         <Link
                                             key={index}
-                                            href={guide.href}
+                                            href={guide.href.startsWith('/') && !guide.href.startsWith('/'+currentLocale) ? `/${currentLocale}${guide.href}` : guide.href}
                                             className="group bg-[#0A0A0F] p-6 rounded-2xl border border-white/5 hover:border-[#31A8FF]/30 transition-all duration-300 hover:-translate-y-1 block"
                                         >
                                             <div className="flex items-start gap-3">

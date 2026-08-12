@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('seguranca-digital', title, description, keywords, locale);
+    return createGuideMetadata('digital-security', title, description, keywords, locale);
 }
 
 export default function DigitalSecurityGuide() {
@@ -1109,7 +1109,7 @@ export default function DigitalSecurityGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Manage Passwords",
       description: "The base of account protection in 2026."
     },
@@ -1119,7 +1119,7 @@ export default function DigitalSecurityGuide() {
       description: "Learn to use app authenticators."
     },
     {
-      href: "/guides/identificacao-phishing",
+      href: "/guides/phishing-identification",
       title: "Phishing Details",
       description: "How to analyze a suspicious site URL."
     }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hollow-knight-stuttering-fix-mod', title, description, keywords, locale);
+    return createGuideMetadata('hollow-knight-stutter-fix-mod', title, description, keywords, locale);
 }
 
 export default function HollowKnightFixGuide() {
@@ -79,7 +79,7 @@ export default function HollowKnightFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "General Stuttering",
             description: "Causes of stuttering in modern games."
         },
@@ -89,7 +89,7 @@ export default function HollowKnightFixGuide() {
             description: "Make the game's aesthetics even more beautiful."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Windows Performance",
             description: "Tune your system for Unity games."
         }

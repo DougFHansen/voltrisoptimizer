@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('winrar-vs-7zip-qual-melhor', title, description, keywords, locale);
+    return createGuideMetadata('winrar-vs-7zip-which-is-better', title, description, keywords, locale);
 }
 
 export default function CompressorComparisonGuide() {
@@ -78,7 +78,7 @@ export default function CompressorComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/programas-essenciais-windows",
+            href: "/guides/essential-windows-programs",
             title: "Essential Programs",
             description: "See why NanaZip is on our list."
         },
@@ -88,7 +88,7 @@ export default function CompressorComparisonGuide() {
             description: "Shortcuts to manage files fast."
         },
         {
-            href: "/guides/seguranca-senhas-gerenciadores",
+            href: "/guides/password-security-managers",
             title: "File Security",
             description: "Learn how to create strong passwords for your .zips."
         }

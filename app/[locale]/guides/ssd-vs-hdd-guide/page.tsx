@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('ssd-vs-hdd-guia', title, description, keywords, locale);
+    return createGuideMetadata('ssd-vs-hdd-guide', title, description, keywords, locale);
 }
 
 export default function SSDvsHDDGuide() {
@@ -252,17 +252,17 @@ export default function SSDvsHDDGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD in Windows 11",
             description: "Configure TRIM, disable indexing, and get the most out of your NVMe."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Check Disk Health",
             description: "CrystalDiskInfo — how to interpret S.M.A.R.T. attributes."
         },
         {
-            href: "/guides/diagnostico-hardware",
+            href: "/guides/hardware-diagnostics",
             title: "Hardware Diagnostic",
             description: "Tools to test RAM, CPU, GPU, and power supply."
         }

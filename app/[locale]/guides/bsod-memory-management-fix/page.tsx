@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('tela-azul-memory-management-fix', title, description, keywords, locale);
+    return createGuideMetadata('bsod-memory-management-fix', title, description, keywords, locale);
 }
 
 export default function MemoryManagementFixGuide() {
@@ -87,12 +87,12 @@ export default function MemoryManagementFixGuide() {
             description: "Solve other types of system errors."
         },
         {
-            href: "/guides/upgrade-memoria-ram",
+            href: "/guides/ram-memory-upgrade",
             title: "RAM Upgrade",
             description: "How to choose compatible memory sticks."
         },
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Clean RAM",
             description: "Tricks to free up memory without crashing."
         }

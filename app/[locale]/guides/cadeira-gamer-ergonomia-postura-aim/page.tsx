@@ -183,7 +183,7 @@ export default function ErgoGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mouse-otimizacao-windows-precisao",
+            href: "/guides/mouse-precision-optimization-windows",
             title: "Mouse",
             description: "Sensitivity adjustment."
         }

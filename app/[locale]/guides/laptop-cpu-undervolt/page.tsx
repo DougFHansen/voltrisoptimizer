@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('undervolt-cpu-notebook', title, description, keywords, locale);
+    return createGuideMetadata('laptop-cpu-undervolt', title, description, keywords, locale);
 }
 
 export default function UndervoltGuide() {
@@ -79,17 +79,17 @@ export default function UndervoltGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacoes-para-notebook-gamer",
+            href: "/guides/gaming-laptop-optimizations",
             title: "Optimize Laptop",
             description: "MUX Switch and RAM tips."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Heat",
             description: "Track temps while you test."
         },
         {
-            href: "/guides/pasta-windows-winsxs-gigante-como-limpar",
+            href: "/guides/huge-windows-winsxs-folder-how-to-clean",
             title: "System Cleanup",
             description: "Keep the system light for the processor."
         }

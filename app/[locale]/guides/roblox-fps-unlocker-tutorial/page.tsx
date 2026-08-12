@@ -82,17 +82,17 @@ export default function RobloxFPSUnlockerGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/roblox-fix-erro-conexao",
+            href: "/guides/roblox-connection-error-fix",
             title: "Connection Errors",
             description: "Solve problems that prevent you from joining."
         },
         {
-            href: "/guides/monitor-ips-vs-va-vs-tn-jogos",
+            href: "/guides/ips-vs-va-vs-tn-monitor-gaming",
             title: "Monitor Hertz",
             description: "Understand why high FPS needs a good monitor."
         },
         {
-            href: "/guides/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limit-fps-rivatuner-nvidia",
             title: "Limit FPS",
             description: "Stabilize your frames if your FPS fluctuates too much."
         }

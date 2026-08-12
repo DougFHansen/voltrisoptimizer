@@ -79,17 +79,17 @@ export default function BenchmarkGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/diagnostico-hardware",
+            href: "/guides/hardware-diagnostics",
             title: "Full Diagnosis",
             description: "What to do after detecting an error in the benchmark."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Heat",
             description: "Monitor temps while the benchmark is running."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize PC",
             description: "Techniques to boost your test scores."
         }

@@ -426,17 +426,17 @@ export default function SupercellPCGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/google-play-games-pc-beta-vale-a-pena",
+            href: "/guides/google-play-games-pc-beta-worth-it",
             title: "Google Play PC Review",
             description: "Is it worth swapping emulators for the official one?"
         },
         {
-            href: "/guides/jogos-android-no-pc-melhores-emuladores",
+            href: "/guides/best-android-emulators-for-pc",
             title: "Best Emulators",
             description: "For games not yet on Google Play PC."
         },
         {
-            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-which-is-lighter",
             title: "BlueStacks vs LDPlayer",
             description: "Emulator comparison for weak PCs."
         }

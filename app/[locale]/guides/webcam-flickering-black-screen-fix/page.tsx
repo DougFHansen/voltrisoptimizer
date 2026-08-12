@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('webcam-piscando-tela-preta-fix', title, description, keywords, locale);
+    return createGuideMetadata('webcam-flickering-black-screen-fix', title, description, keywords, locale);
 }
 
 export default function WebcamFixGuide() {
@@ -81,7 +81,7 @@ export default function WebcamFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/usb-nao-reconhecido-reset-drivers",
+            href: "/guides/usb-not-recognized-reset-drivers",
             title: "USB Issues",
             description: "Tips if the port stopped working."
         },
@@ -91,7 +91,7 @@ export default function WebcamFixGuide() {
             description: "Improve your webcam image."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Windows Drivers",
             description: "Keep the system up to date."
         }

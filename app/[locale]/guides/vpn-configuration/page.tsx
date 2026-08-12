@@ -23,7 +23,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vpn-configuracao', title, description, keywords, locale);
+    return createGuideMetadata('vpn-configuration', title, description, keywords, locale);
 }
 
 export default function VpnConfiguracaoGuide() {
@@ -394,12 +394,12 @@ export default function VpnConfiguracaoGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/firewall-configuracao",
+      href: "/guides/firewall-configuration",
       title: "Firewall Configuration",
       description: "Full network protection for your system."
     },
     {
-      href: "/guides/seguranca-digital",
+      href: "/guides/digital-security",
       title: "Digital Security",
       description: "Complete protection against cyber threats."
     }

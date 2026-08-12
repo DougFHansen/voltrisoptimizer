@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('exitlag-vale-a-pena-ou-enganacao', title, description, keywords, locale);
+    return createGuideMetadata('exitlag-worth-it-or-scam', title, description, keywords, locale);
 }
 
 export default function ExitLagReviewGuide() {
@@ -77,12 +77,12 @@ export default function ExitLagReviewGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Best DNS",
             description: "A free alternative to improve connection."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Physical tips to improve internet."
         },

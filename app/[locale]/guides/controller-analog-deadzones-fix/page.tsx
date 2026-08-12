@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('zonas-mortas-analogico-controle-fix', title, description, keywords, locale);
+    return createGuideMetadata('controller-analog-deadzones-fix', title, description, keywords, locale);
 }
 
 export default function DeadzoneFixGuide() {
@@ -81,17 +81,17 @@ export default function DeadzoneFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mouse-clique-duplo-falhando-fix",
+            href: "/guides/mouse-double-click-failing-fix",
             title: "Fix Mouse",
             description: "Tips for other types of signal drift."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Controller Drivers",
             description: "Keep your controller firmware updated."
         },
         {
-            href: "/guides/diagnostico-hardware",
+            href: "/guides/hardware-diagnostics",
             title: "Diagnostics",
             description: "Identify failures in other peripherals."
         }

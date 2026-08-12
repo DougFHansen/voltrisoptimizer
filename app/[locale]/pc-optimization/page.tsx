@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'PC Optimization and FPS Boost - Gamer & Professional | VOLTRIS',
+  title: 'PC Optimization and FPS Boost - Gamer & Professional',
   description: 'Boost your Windows PC performance. Professional optimization for games (high FPS), work, and heavy software. Reduction of input lag and stuttering.',
   keywords: [
     'pc optimization', 'boost fps', 'reduce input lag', 'optimize windows for games',

@@ -20,7 +20,7 @@ export function createGuideMetadata(slug: string, title: string, description: st
   });
 
   return {
-    title: `${title} | VOLTRIS`,
+    title,
     description,
     keywords,
     metadataBase: new URL(BASE_URL),
@@ -29,7 +29,7 @@ export function createGuideMetadata(slug: string, title: string, description: st
       languages: languages
     },
     openGraph: {
-      title: `${title} | VOLTRIS`,
+      title,
       description,
       type: "article",
       locale: locale,

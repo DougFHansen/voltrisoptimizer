@@ -151,12 +151,12 @@ export default function RouterGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/melhor-dns-jogos-2026",
+      href: "/guides/best-dns-for-gaming-2026",
       title: "Optimized DNS",
       description: "Complete your network setup."
     },
     {
-      href: "/guides/reduzir-ping-regedit-cmd-jogos",
+      href: "/guides/reduce-ping-regedit-cmd-gaming",
       title: "Network Regedit",
       description: "Adjust Windows to receive packets from the router."
     },

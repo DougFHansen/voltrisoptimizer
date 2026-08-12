@@ -319,17 +319,17 @@ export default function BatteryCalibrationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/saude-bateria-notebook",
+            href: "/guides/laptop-battery-health",
             title: "Check Health",
             description: "Generate the Windows battery report."
         },
         {
-            href: "/guides/otimizacoes-para-notebook-gamer",
+            href: "/guides/gaming-laptop-optimizations",
             title: "Optimize Notebook",
             description: "Tips to make battery last longer daily."
         },
         {
-            href: "/guides/hibernacao-vs-suspensao-qual-o-melhor",
+            href: "/guides/hibernation-vs-sleep-mode-windows",
             title: "Hibernate vs Sleep",
             description: "Understand how to save charge."
         }

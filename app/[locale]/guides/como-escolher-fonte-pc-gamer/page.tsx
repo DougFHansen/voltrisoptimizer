@@ -145,12 +145,12 @@ export default function PSUGuide() {
             description: "Bad PSUs cause instability and resets."
         },
         {
-            href: "/guides/water-cooler-vs-air-cooler",
+            href: "/guides/water-cooler-vs-air-cooler-comparison",
             title: "Cooling",
             description: "Cooler components consume less power."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "GPU Optimization",
             description: "Reduce consumption via Undervolt."
         }

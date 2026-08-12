@@ -209,17 +209,17 @@ export default function GenshinGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Speed Guide",
             description: "Reducing loading times to the minimum."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Control Panel",
             description: "Filters and DSR setup for high-end PCs."
         },
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Hz Calibration",
             description: "Making the most of your 120+ Hz monitor."
         }

@@ -84,12 +84,12 @@ export default function EldenRingFixGuide() {
             description: "Essential for DX12 fluidity."
         },
         {
-            href: "/guides/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limit-fps-rivatuner-nvidia",
             title: "Limit FPS",
             description: "Maintain perfect frame pacing."
         },
         {
-            href: "/guides/rtx-4060-vale-a-pena-2026",
+            href: "/guides/rtx-4060-worth-it-2026",
             title: "RTX Performance",
             description: "See how modern cards run the game."
         }

@@ -16,7 +16,7 @@ const keywords = ['preventive maintenance', 'computer maintenance', 'maintenance
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('manutencao-preventiva', title, description, keywords, locale);
+    return createGuideMetadata('preventive-maintenance', title, description, keywords, locale);
 }
 
 export default function ManutencaoPreventivaGuide() {
@@ -407,12 +407,12 @@ export default function ManutencaoPreventivaGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Performance Optimization",
       description: "Maximize your system's output."
     },
     {
-      href: "/guides/recuperacao-sistema",
+      href: "/guides/system-recovery",
       title: "System Recovery Hub",
       description: "Strategies for critical failure events."
     }

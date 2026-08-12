@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitorar-temperatura-pc', title, description, keywords, locale);
+    return createGuideMetadata('monitor-pc-temperature', title, description, keywords, locale);
 }
 
 export default function TempGuide() {
@@ -164,17 +164,17 @@ export default function TempGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/overclock-gpu-msi-afterburner",
+            href: "/guides/gpu-overclock-msi-afterburner",
             title: "Overclock GPU",
             description: "Since you installed Afterburner, gain some FPS."
         },
         {
-            href: "/guides/otimizacoes-para-notebook-gamer",
+            href: "/guides/gaming-laptop-optimizations",
             title: "Notebooks",
             description: "Thermal control in laptops."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Hardware Health",
             description: "Monitor your disks too."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('formatfactory-vs-handbrake-converter-video', title, description, keywords, locale);
+    return createGuideMetadata('formatfactory-vs-handbrake-video-converter', title, description, keywords, locale);
 }
 
 export default function VideoConverterGuide() {
@@ -90,7 +90,7 @@ export default function VideoConverterGuide() {
             description: "Boost your converter's processing power."
         },
         {
-            href: "/guides/onde-baixar-planilhas-excel-gratis",
+            href: "/guides/where-to-download-free-excel-templates",
             title: "Productivity Tools",
             description: "Other useful tools for daily tasks."
         }

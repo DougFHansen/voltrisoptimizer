@@ -179,7 +179,7 @@ export default function DDUGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Config",
             description: "What to do post-DDU."
         },

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mouse-otimizacao-windows-precisao', title, description, keywords, locale);
+    return createGuideMetadata('mouse-precision-optimization-windows', title, description, keywords, locale);
 }
 
 export default function MouseGuide() {
@@ -179,12 +179,12 @@ export default function MouseGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mouse-acceleration-raw-accel-guia",
+            href: "/guides/mouse-acceleration-raw-accel-guide",
             title: "Raw Accel Setup",
             description: "Implementing customizable mouse acceleration."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Valorant Optimization",
             description: "Combining mouse precision with game performance."
         }

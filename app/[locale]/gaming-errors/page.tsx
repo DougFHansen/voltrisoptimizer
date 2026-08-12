@@ -5,7 +5,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Game Error Fixes: VAN9003, GTA V, CS2, Roblox and + | VOLTRIS',
+  title: 'Game Error Fixes: VAN9003, GTA V, CS2, Roblox and +',
   description: 'Immediate solution for critical errors: VAN9003 (Valorant), GTA V/FiveM crashes, CS2 VAC Errors, Roblox Error 268, and DLL failures. Specialized remote gamer technical support.',
   keywords: [
     'game error fixes', 'VAN9003 fix valorant', 'vanguard secure boot fix',

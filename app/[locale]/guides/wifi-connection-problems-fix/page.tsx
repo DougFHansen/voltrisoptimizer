@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('problemas-conexao-wifi-causa-solucao', title, description, keywords, locale);
+    return createGuideMetadata('wifi-connection-problems-fix', title, description, keywords, locale);
 }
 
 export default function WiFiSolutionsGuide() {
@@ -88,12 +88,12 @@ export default function WiFiSolutionsGuide() {
             description: "Learn how to change the Wi-Fi channel."
         },
         {
-            href: "/guides/troubleshooting-internet",
+            href: "/guides/internet-troubleshooting",
             title: "Internet Troubleshooting",
             description: "Extra tips for ISP issues."
         },
         {
-            href: "/guides/perda-de-pacote-packet-loss-fix",
+            href: "/guides/packet-loss-fix-gaming",
             title: "Packet Loss",
             description: "How to resolve Wi-Fi lag."
         }

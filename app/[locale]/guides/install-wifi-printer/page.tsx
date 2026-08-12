@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('instalar-impressora-wifi', title, description, keywords, locale);
+    return createGuideMetadata('install-wifi-printer', title, description, keywords, locale);
 }
 
 export default function WifiPrinterGuide() {
@@ -92,7 +92,7 @@ export default function WifiPrinterGuide() {
       description: "Differences between 2.4GHz and 5GHz channels."
     },
     {
-      href: "/guides/wifi-desconectando-sozinho-windows",
+      href: "/guides/wifi-disconnecting-randomly-windows-fix",
       title: "Stabilize Wi-Fi",
       description: "Tips if the connection drops during printing."
     }

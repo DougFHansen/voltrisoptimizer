@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('bluestacks-vs-ldplayer-qual-mais-leve', title, description, keywords, locale);
+    return createGuideMetadata('bluestacks-vs-ldplayer-which-is-lighter', title, description, keywords, locale);
 }
 
 export default function EmulatorComparisonGuide() {
@@ -437,12 +437,12 @@ export default function EmulatorComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/jogos-android-no-pc-melhores-emuladores",
+            href: "/guides/best-android-emulators-for-pc",
             title: "Other Emulators",
             description: "Check out GameLoop and MuMu Player."
         },
         {
-            href: "/guides/fortnite-modo-performance-pc-fraco",
+            href: "/guides/fortnite-performance-mode-low-end-pc",
             title: "Optimize Games",
             description: "FPS tips for competitive games."
         },

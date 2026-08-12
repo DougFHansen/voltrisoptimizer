@@ -185,17 +185,17 @@ export default function CloudBackupGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Complete Backup Guide",
       description: "Understand the professional 3-2-1 strategy."
     },
     {
-      href: "/guides/protecao-ransomware",
+      href: "/guides/ransomware-protection",
       title: "Ransomware Protection",
       description: "How to avoid data kidnapping."
     },
     {
-      href: "/guides/recuperacao-dados-hd-corrompido",
+      href: "/guides/corrupted-hdd-data-recovery",
       title: "Data Recovery",
       description: "What to do if backup fails."
     }

@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('nvidia-painel-controle-melhores-configuracoes', title, description, keywords, locale);
+    return createGuideMetadata('nvidia-control-panel-best-settings', title, description, keywords, locale);
 }
 
 export default function NvidiaGuide() {
@@ -249,7 +249,7 @@ export default function NvidiaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Guide",
             description: "The ideal partner for a fast GPU."
         },
@@ -259,7 +259,7 @@ export default function NvidiaGuide() {
             description: "Step 0 before configuring the panel."
         },
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Hz",
             description: "It doesn't help to configure the GPU if the monitor is at 60Hz."
         }

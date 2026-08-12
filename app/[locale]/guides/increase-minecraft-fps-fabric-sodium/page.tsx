@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('minecraft-aumentar-fps-fabric-sodium', title, description, keywords, locale);
+    return createGuideMetadata('increase-minecraft-fps-fabric-sodium', title, description, keywords, locale);
 }
 
 export default function MinecraftGuide() {
@@ -238,12 +238,12 @@ export default function MinecraftGuide() {
             description: "Upgrades for your PC."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Load",
             description: "Load chunks faster."
         },
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor",
             description: "Take advantage of 500 FPS with high Hz."
         }

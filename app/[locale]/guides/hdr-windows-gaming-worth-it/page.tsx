@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hdr-windows-vale-a-pena-jogos', title, description, keywords, locale);
+    return createGuideMetadata('hdr-windows-gaming-worth-it', title, description, keywords, locale);
 }
 
 export default function HDRGuide() {
@@ -83,7 +83,7 @@ export default function HDRGuide() {
             description: "Extra visual fidelity tips."
         },
         {
-            href: "/guides/guia-compra-monitores",
+            href: "/guides/monitor-buying-guide",
             title: "Choose Monitor",
             description: "Look for panels with good HDR."
         },

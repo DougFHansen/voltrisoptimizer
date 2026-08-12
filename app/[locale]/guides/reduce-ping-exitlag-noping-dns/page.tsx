@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('reduzir-ping-exitlag-noping-dns', title, description, keywords, locale);
+    return createGuideMetadata('reduce-ping-exitlag-noping-dns', title, description, keywords, locale);
 }
 
 export default function PingGuide() {
@@ -202,7 +202,7 @@ export default function PingGuide() {
             description: "Optimize bandwidth usage."
         },
         {
-            href: "/guides/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-gaming-optimization",
             title: "Defender",
             description: "Firewall can block games."
         },

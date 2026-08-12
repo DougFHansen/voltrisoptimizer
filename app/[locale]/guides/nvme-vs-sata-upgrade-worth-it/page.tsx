@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('nvme-vs-sata-vale-a-pena-upgrade', title, description, keywords, locale);
+    return createGuideMetadata('nvme-vs-sata-upgrade-worth-it', title, description, keywords, locale);
 }
 
 export default function NVMeVsSATAGuide() {
@@ -77,17 +77,17 @@ export default function NVMeVsSATAGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/hds-vs-ssd-qual-a-diferenca",
+            href: "/guides/hdd-vs-ssd-whats-the-difference",
             title: "HDD vs SSD Difference",
             description: "The technical foundation of storage technology."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Disk Health",
             description: "How to tell if your NVMe is overheating."
         },
         {
-            href: "/guides/formatacao-windows",
+            href: "/guides/windows-formatting",
             title: "Install Windows",
             description: "Step-by-step to format on a new disk."
         }

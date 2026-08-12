@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('reduzir-ping-jogos-online', title, description, keywords, locale);
+    return createGuideMetadata('reduce-ping-online-games', title, description, keywords, locale);
 }
 
 export default function ReducePingGuide() {
@@ -78,17 +78,17 @@ export default function ReducePingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Advanced Tweaks",
             description: "CMD and Regedit commands for networking."
         },
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Best DNS",
             description: "Complete DNS server comparison."
         },
         {
-            href: "/guides/perda-de-pacote-packet-loss-fix",
+            href: "/guides/packet-loss-fix-gaming",
             title: "Packet Loss",
             description: "Fix the lag that makes you teleport."
         }

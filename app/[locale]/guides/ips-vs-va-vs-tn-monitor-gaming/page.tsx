@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-ips-vs-va-vs-tn-jogos', title, description, keywords, locale);
+    return createGuideMetadata('ips-vs-va-vs-tn-monitor-gaming', title, description, keywords, locale);
 }
 
 export default function MonitorPanelGuide() {
@@ -78,7 +78,7 @@ export default function MonitorPanelGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/guia-compra-monitores",
+            href: "/guides/monitor-buying-guide",
             title: "Buying Guide",
             description: "Tips on brands and models for 2026."
         },
@@ -88,7 +88,7 @@ export default function MonitorPanelGuide() {
             description: "Adjust the colors of your new panel."
         },
         {
-            href: "/guides/hdmi-2.1-vs-displayport-1.4-diferencas",
+            href: "/guides/hdmi-21-vs-displayport-14-differences",
             title: "Video Cables",
             description: "Ensure your cable supports your panel's Hertz."
         }

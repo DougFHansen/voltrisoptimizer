@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pc-lento-formatar-vs-limpar', title, description, keywords, locale);
+    return createGuideMetadata('slow-pc-format-vs-clean', title, description, keywords, locale);
 }
 
 export default function FormatVsCleanGuide() {
@@ -80,12 +80,12 @@ export default function FormatVsCleanGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpeza-disco-profunda-arquivos-temporarios",
+            href: "/guides/deep-disk-cleanup-temp-files",
             title: "Cleanup Guide",
             description: "Step-by-step to speed up without formatting."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Post-Formatting",
             description: "What to do after reinstalling Windows."
         },

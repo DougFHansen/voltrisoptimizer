@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('som-espacial-windows-configurar', title, description, keywords, locale);
+    return createGuideMetadata('configure-windows-spatial-sound', title, description, keywords, locale);
 }
 
 export default function SpatialAudioGuide() {
@@ -89,7 +89,7 @@ export default function SpatialAudioGuide() {
             description: "Be heard clearly by your team."
         },
         {
-            href: "/guides/headset-7.1-real-vs-virtual-vale-a-pena",
+            href: "/guides/real-vs-virtual-71-headset-gaming",
             title: "7.1 Headset vs Stereo",
             description: "Understand why stereo with spatial sound is better."
         }

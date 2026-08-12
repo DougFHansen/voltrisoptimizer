@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('instalar-apps-android-windows-11', title, description, keywords, locale);
+    return createGuideMetadata('install-android-apps-windows-11', title, description, keywords, locale);
 }
 
 export default function AndroidOnWindowsGuide() {
@@ -78,12 +78,12 @@ export default function AndroidOnWindowsGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/windows-sandbox-testar-virus",
+            href: "/guides/windows-sandbox-test-viruses",
             title: "Windows Sandbox",
             description: "Another way to run apps in isolation."
         },
         {
-            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-which-is-lighter",
             title: "Classic Emulators",
             description: "If WSA doesn't work on your PC."
         },

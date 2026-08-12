@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teste-velocidade-internet', title, description, keywords, locale);
+    return createGuideMetadata('internet-speed-test', title, description, keywords, locale);
 }
 
 export default function SpeedtestGuide() {
@@ -149,7 +149,7 @@ export default function SpeedtestGuide() {
       description: "Solve bufferbloat by configuring your router."
     },
     {
-      href: "/guides/perda-de-pacote-packet-loss-fix",
+      href: "/guides/packet-loss-fix-gaming",
       title: "Packet Loss",
       description: "In-depth packet loss diagnosis."
     },

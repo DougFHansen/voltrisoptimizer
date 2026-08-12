@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('minecraft-alocar-mais-ram', title, description, keywords, locale);
+    return createGuideMetadata('allocate-more-ram-minecraft', title, description, keywords, locale);
 }
 
 export default function MinecraftRAMGuide() {
@@ -83,17 +83,17 @@ export default function MinecraftRAMGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/minecraft-lento-como-ganhar-fps",
+            href: "/guides/slow-minecraft-how-to-boost-fps",
             title: "Minecraft Slow",
             description: "FPS tips beyond RAM memory."
         },
         {
-            href: "/guides/minecraft-aumentar-fps-fabric-sodium",
+            href: "/guides/increase-minecraft-fps-fabric-sodium",
             title: "Fabric + Sodium",
             description: "The definitive performance combo in 2026."
         },
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Clear RAM",
             description: "Free up space before opening Minecraft."
         }

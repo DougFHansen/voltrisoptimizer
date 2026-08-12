@@ -16,7 +16,7 @@ const keywords = ["wifi security","wpa2 vs wpa3","secure router configuration","
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('seguranca-wifi-avancada', title, description, keywords, locale);
+    return createGuideMetadata('advanced-wifi-security', title, description, keywords, locale);
 }
 
 export default function GuidePage() {
@@ -57,17 +57,17 @@ export default function GuidePage() {
 
   const relatedGuides = [
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Performance Optimization",
       description: "Tips to make your PC faster."
     },
     {
-      href: "/guides/rede-domestica",
+      href: "/guides/home-network",
       title: "Home Networks",
       description: "Improve your WiFi connection."
     },
     {
-      href: "/guides/manutencao-preventiva",
+      href: "/guides/preventive-maintenance",
       title: "Preventive Maintenance",
       description: "Essential hardware care tips."
     }

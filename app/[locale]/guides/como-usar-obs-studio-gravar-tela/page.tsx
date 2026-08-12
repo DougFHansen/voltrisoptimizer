@@ -879,7 +879,7 @@ start_timer()</pre>
             description: "Learn how to stream live on Twitch/YouTube."
         },
         {
-            href: "/guides/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
+            href: "/guides/native-windows-screen-recording-tips",
             title: "Native Recorder",
             description: "A quick alternative built into Windows."
         },

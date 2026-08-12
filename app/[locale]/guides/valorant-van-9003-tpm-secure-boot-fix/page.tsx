@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('valorant-van-9003-secure-boot-tpm-fix', title, description, keywords, locale);
+    return createGuideMetadata('valorant-van-9003-tpm-secure-boot-fix', title, description, keywords, locale);
 }
 
 export default function Van9003Guide() {
@@ -183,12 +183,12 @@ export default function Van9003Guide() {
             description: "Required if the Secure Boot option does not appear."
         },
         {
-            href: "/guides/instalacao-windows-11",
+            href: "/guides/windows-11-installation",
             title: "Format Windows",
             description: "How to install in UEFI/GPT mode from the start."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Optimize Valorant",
             description: "After opening the game, how to gain FPS."
         }

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpar-memoria-ram-windows', title, description, keywords, locale);
+    return createGuideMetadata('clear-ram-memory-windows', title, description, keywords, locale);
 }
 
 export default function RAMGuide() {
@@ -159,7 +159,7 @@ export default function RAMGuide() {
             description: "Identify what's eating your memory."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Pagefile on SSD",
             description: "Ideal virtual memory setup."
         }

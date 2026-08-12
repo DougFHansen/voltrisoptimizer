@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('g-sync-freesync-configuracao-correta', title, description, keywords, locale);
+    return createGuideMetadata('gsync-freesync-correct-setup', title, description, keywords, locale);
 }
 
 export default function SyncGuide() {
@@ -196,17 +196,17 @@ export default function SyncGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Hz Guide",
             description: "G-Sync doesn't work if your Hz is wrong in Windows."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Panel",
             description: "Fine-tune settings to go with G-Sync."
         },
         {
-            href: "/guides/mouse-dpi-polling-rate-ideal",
+            href: "/guides/ideal-mouse-dpi-polling-rate",
             title: "Mouse Lag",
             description: "No use removing video lag if you have mouse lag."
         }

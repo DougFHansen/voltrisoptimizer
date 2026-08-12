@@ -489,7 +489,7 @@ export default function BootableUSBGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/formatacao-windows",
+      href: "/guides/windows-formatting",
       title: "Formatting Guide",
       description: "What to do after creating the USB drive."
     },
@@ -499,7 +499,7 @@ export default function BootableUSBGuide() {
       description: "How to make the PC read the USB drive first."
     },
     {
-      href: "/guides/pos-instalacao-windows-11",
+      href: "/guides/post-installation-windows-11",
       title: "Post-Install Checklist",
       description: "Next steps after Windows opens."
     }

@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-hz-configuracao-correta', title, description, keywords, locale);
+    return createGuideMetadata('correct-monitor-refresh-rate-setup', title, description, keywords, locale);
 }
 
 export default function MonitorGuide() {
@@ -262,17 +262,17 @@ export default function MonitorGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Guide",
             description: "Configure G-Sync in the driver."
         },
         {
-            href: "/guides/g-sync-freesync-configuracao-correta",
+            href: "/guides/gsync-freesync-correct-setup",
             title: "G-Sync Deep Dive",
             description: "Understand the math behind synchrony."
         },
         {
-            href: "/guides/mouse-dpi-polling-rate-ideal",
+            href: "/guides/ideal-mouse-dpi-polling-rate",
             title: "Input Lag",
             description: "The monitor is only half the equation."
         }

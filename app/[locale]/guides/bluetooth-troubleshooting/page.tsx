@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('solucao-problemas-bluetooth', title, description, keywords, locale);
+    return createGuideMetadata('bluetooth-troubleshooting', title, description, keywords, locale);
 }
 
 export default function BluetoothTroubleshootingGuide() {
@@ -79,12 +79,12 @@ export default function BluetoothTroubleshootingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/zonas-mortas-analogico-controle-fix",
+      href: "/guides/controller-analog-deadzones-fix",
       title: "Fix Controller",
       description: "Solve analog stick drift via bluetooth."
     },
     {
-      href: "/guides/hard-reset-fones-bluetooth-fix",
+      href: "/guides/hard-reset-bluetooth-headphones-fix",
       title: "Reset Headphones",
       description: "How to force pairing of stuck headphones."
     },

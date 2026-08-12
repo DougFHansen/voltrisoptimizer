@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('water-cooler-vs-air-cooler-qual-escolher', title, description, keywords, locale);
+    return createGuideMetadata('water-cooler-vs-air-cooler-which-to-choose', title, description, keywords, locale);
 }
 
 export default function CoolingComparisonGuide() {
@@ -83,17 +83,17 @@ export default function CoolingComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/montagem-pc-gamer-erros-comuns",
+            href: "/guides/building-gaming-pc-common-mistakes",
             title: "PC Assembly",
             description: "How to install your cooler correctly."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Heat",
             description: "Track temps after upgrade."
         },
         {
-            href: "/guides/importancia-pasta-termica-pc",
+            href: "/guides/thermal-paste-importance-pc",
             title: "Thermal Paste",
             description: "The secret to heat transfer."
         }

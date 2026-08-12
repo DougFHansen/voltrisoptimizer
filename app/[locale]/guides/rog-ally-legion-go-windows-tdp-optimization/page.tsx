@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rog-ally-legion-go-otimizacao-windows-tdp-guia', title, description, keywords, locale);
+    return createGuideMetadata('rog-ally-legion-go-windows-tdp-optimization', title, description, keywords, locale);
 }
 
 export default function RogAllyGuide() {
@@ -180,12 +180,12 @@ export default function RogAllyGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/steam-deck-otimizacao-cryoutilities-protonge-guia",
+            href: "/guides/steam-deck-cryoutilities-protonge-optimization",
             title: "Steam Deck",
             description: "The Linux-based alternative."
         },
         {
-            href: "/guides/debloat-windows-11-otimizacao-powershell",
+            href: "/guides/debloat-windows-11-powershell-optimization",
             title: "Debloat Guide",
             description: "Essential for freeing up system resources."
         }

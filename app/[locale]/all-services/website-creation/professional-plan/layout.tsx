@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Professional Plan - Advanced Web Creation | VOLTRIS',
+    title: 'Professional Plan - Advanced Web Creation',
     description: 'Professional Plan for website creation. Complete site with advanced features, integrated blog, optimized SEO, and premium support. Ideal for growing businesses.',
     keywords: ['professional website plan', 'business site', 'create complete website', 'site with blog', 'advanced professional site'],
     
     openGraph: {
-        title: 'Professional Plan - Advanced Web Creation | VOLTRIS',
+        title: 'Professional Plan - Advanced Web Creation',
         description: 'Complete site with advanced features and premium support.',
         url: 'https://www.voltrisoptimizer.com/all-services/website-creation/professional-plan',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Professional Plan - Web Creation | VOLTRIS',
+        title: 'Professional Plan - Web Creation',
         description: 'Complete site for growing businesses.',
         images: ['/logo.png']
     },

@@ -169,7 +169,7 @@ export default function BeamNGGuide() {
             description: "Another simulator that requires optimization."
         },
         {
-            href: "/guides/upgrade-memoria-ram",
+            href: "/guides/ram-memory-upgrade",
             title: "RAM Memory",
             description: "Is it worth getting 32GB?"
         }

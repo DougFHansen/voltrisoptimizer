@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('sync-vertical-g-sync-free-sync-explicacao', title, description, keywords, locale);
+    return createGuideMetadata('vsync-gsync-freesync-explained', title, description, keywords, locale);
 }
 
 export default function SyncTechnologyGuide() {
@@ -78,17 +78,17 @@ export default function SyncTechnologyGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-ips-vs-va-vs-tn-jogos",
+            href: "/guides/ips-vs-va-vs-tn-monitor-gaming",
             title: "Choose Monitor",
             description: "Panel differences and response time."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Reduce Input Lag",
             description: "Extreme optimizations for pro-players."
         },
         {
-            href: "/guides/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limit-fps-rivatuner-nvidia",
             title: "Limit FPS",
             description: "Use RTSS to stabilize your fluidity."
         }

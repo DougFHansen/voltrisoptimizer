@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('protecao-dados-privacidade', title, description, keywords, locale);
+    return createGuideMetadata('data-protection-privacy', title, description, keywords, locale);
 }
 
 export default function PrivacyProtectionGuide() {
@@ -218,7 +218,7 @@ export default function PrivacyProtectionGuide() {
     
     const relatedGuides = [
         {
-            href: "/guides/seguranca-senhas-gerenciadores",
+            href: "/guides/password-security-managers",
             title: "Manage Passwords",
             description: "The foundation of account protection."
         },
@@ -228,7 +228,7 @@ export default function PrivacyProtectionGuide() {
             description: "How to use Google Authenticator."
         },
         {
-            href: "/guides/vpn-vale-a-pena-jogos",
+            href: "/guides/vpn-worth-it-for-gaming",
             title: "VPN and Privacy",
             description: "Protect your connection from snoopers."
         }

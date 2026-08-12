@@ -492,7 +492,7 @@ export default function DLLFixGuide() {
             description: "Combine with DirectX for maximum performance."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Windows Checklist",
             description: "Everything you should install on a fresh Windows."
         }

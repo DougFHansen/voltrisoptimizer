@@ -81,17 +81,17 @@ export default function Disk100FixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Tips for those who have already upgraded."
         },
         {
-            href: "/guides/substituicao-ssd",
+            href: "/guides/ssd-replacement",
             title: "Install SSD",
             description: "Learn how to swap out your old drive."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Windows Checklist",
             description: "Keep your system clean from the start."
         }

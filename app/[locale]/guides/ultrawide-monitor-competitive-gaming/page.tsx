@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-ultrawide-jogos-competitivos', title, description, keywords, locale);
+    return createGuideMetadata('ultrawide-monitor-competitive-gaming', title, description, keywords, locale);
 }
 
 export default function UltrawideGuide() {
@@ -188,17 +188,17 @@ export default function UltrawideGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "HZ Setup Guide",
             description: "Ensuring 144Hz works correctly on your display."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Control Panel",
             description: "Correct GPU scaling settings for Ultrawide."
         },
         {
-            href: "/guides/obs-studio-melhores-configuracoes-stream",
+            href: "/guides/obs-studio-best-streaming-settings",
             title: "OBS Studio",
             description: "How to stream professionally in 21:9."
         }

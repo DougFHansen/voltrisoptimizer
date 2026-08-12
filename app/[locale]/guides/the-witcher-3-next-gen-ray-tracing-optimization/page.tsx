@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('the-witcher-3-next-gen-otimizacao-ray-tracing', title, description, keywords, locale);
+    return createGuideMetadata('the-witcher-3-next-gen-ray-tracing-optimization', title, description, keywords, locale);
 }
 
 export default function Witcher3Guide() {
@@ -188,12 +188,12 @@ export default function Witcher3Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia",
             description: "DSR for 4K."
         },
         {
-            href: "/guides/hdr-windows-11-calibracao-jogos",
+            href: "/guides/hdr-windows-11-gaming-calibration",
             title: "HDR",
             description: "Looks beautiful in Toussaint."
         },

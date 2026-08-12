@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rocket-league-melhores-configuracoes-camera', title, description, keywords, locale);
+    return createGuideMetadata('rocket-league-best-camera-settings', title, description, keywords, locale);
 }
 
 export default function RocketLeagueGuide() {
@@ -219,7 +219,7 @@ export default function RocketLeagueGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "144Hz Monitor",
             description: "Essential for tracking the ball."
         },
@@ -229,7 +229,7 @@ export default function RocketLeagueGuide() {
             description: "Avoid USB input lag."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Lag",
             description: "Fix packet loss issues."
         }

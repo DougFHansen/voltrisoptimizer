@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Privacy Policy - VOLTRIS',
+    title: 'Privacy Policy',
     description: 'VOLTRIS Privacy Policy. Learn how we collect, use, and protect your personal information. Transparency and security first.',
     keywords: ['privacy policy', 'voltris privacy', 'personal data protection', 'data usage', 'information security'],
     
     openGraph: {
-        title: 'Privacy Policy - VOLTRIS',
+        title: 'Privacy Policy',
         description: 'How we collect, use, and protect your personal information.',
         url: 'https://www.voltrisoptimizer.com/privacy-policy',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Privacy Policy | VOLTRIS',
+        title: 'Privacy Policy',
         description: 'Protection and privacy of your data.',
         images: ['/logo.png']
     },

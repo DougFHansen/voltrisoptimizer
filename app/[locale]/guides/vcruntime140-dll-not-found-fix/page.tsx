@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vcruntime140-dll-nao-encontrado', title, description, keywords, locale);
+    return createGuideMetadata('vcruntime140-dll-not-found-fix', title, description, keywords, locale);
 }
 
 export default function VCRuntimeFixGuide() {
@@ -83,12 +83,12 @@ export default function VCRuntimeFixGuide() {
             description: "Solve DirectX and .NET errors."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Post-Installation",
             description: "Essential program pack for Windows."
         },
         {
-            href: "/guides/remocao-virus-malware",
+            href: "/guides/virus-malware-removal",
             title: "Virus Cleanup",
             description: "Tips if you've downloaded DLLs from suspicious sites."
         }

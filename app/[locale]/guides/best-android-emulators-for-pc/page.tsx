@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('jogos-android-no-pc-melhores-emuladores', title, description, keywords, locale);
+    return createGuideMetadata('best-android-emulators-for-pc', title, description, keywords, locale);
 }
 
 export default function AndroidEmulatorsGuide() {
@@ -76,17 +76,17 @@ export default function AndroidEmulatorsGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-which-is-lighter",
             title: "Compare Performance",
             description: "A head-to-head comparison between the two biggest names."
         },
         {
-            href: "/guides/free-fire-pc-fraco-smartgaga",
+            href: "/guides/free-fire-low-end-pc-smartgaga",
             title: "SmartGaGa Tutorial",
             description: "The best option for extremely basic PCs."
         },
         {
-            href: "/guides/instalar-apps-android-windows-11",
+            href: "/guides/install-android-apps-windows-11",
             title: "Native Android",
             description: "How to run apps without emulators on Win 11."
         }

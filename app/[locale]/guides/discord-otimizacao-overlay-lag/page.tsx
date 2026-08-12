@@ -196,12 +196,12 @@ export default function DiscordGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/obs-studio-melhores-configuracoes-stream",
+            href: "/guides/obs-studio-best-streaming-settings",
             title: "OBS Studio",
             description: "Capture Discord audio separately."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Network",
             description: "Discord uses UDP, just like games."
         },

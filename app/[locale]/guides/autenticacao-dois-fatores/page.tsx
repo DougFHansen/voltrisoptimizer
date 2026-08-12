@@ -214,17 +214,17 @@ export default function TwoFactorGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Password Managers",
       description: "Bitwarden vs LastPass: Where to store your passwords."
     },
     {
-      href: "/guides/identificacao-phishing",
+      href: "/guides/phishing-identification",
       title: "Identify Scams",
       description: "How to avoid fake sites that steal 2FA."
     },
     {
-      href: "/guides/recuperacao-dados-hd-corrompido",
+      href: "/guides/corrupted-hdd-data-recovery",
       title: "Data Backups",
       description: "Protect your files beyond your accounts."
     }

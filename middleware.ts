@@ -90,7 +90,7 @@ export function middleware(request: NextRequest) {
   const locale = getLocale(request);
   request.nextUrl.pathname = `/${locale}${pathname}`;
   
-  return addSecurityHeaders(NextResponse.redirect(request.nextUrl));
+  return addSecurityHeaders(NextResponse.redirect(request.nextUrl, 301));
 }
 
 export const config = {

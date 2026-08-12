@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('firewall-configuracao', title, description, keywords, locale);
+    return createGuideMetadata('firewall-configuration', title, description, keywords, locale);
 }
 
 export default function FirewallConfigGuide() {
@@ -89,7 +89,7 @@ export default function FirewallConfigGuide() {
       description: "Advanced network configurations."
     },
     {
-      href: "/guides/seguranca-digital",
+      href: "/guides/digital-security",
       title: "Digital Security 2026",
       description: "Learn how to protect yourself from modern threats."
     }

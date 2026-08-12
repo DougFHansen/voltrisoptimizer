@@ -79,17 +79,17 @@ export default function TModLoaderGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Windows Optimization",
             description: "Increase FPS in 2D games."
         },
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Clear RAM",
             description: "Free up memory for your mods."
         },
         {
-            href: "/guides/minecraft-alocar-mais-ram",
+            href: "/guides/allocate-more-ram-minecraft",
             title: "Allocate RAM",
             description: "JVM tips applicable to other games."
         }

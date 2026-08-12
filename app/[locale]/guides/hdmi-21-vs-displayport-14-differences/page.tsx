@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hdmi-2.1-vs-displayport-1.4-diferencas', title, description, keywords, locale);
+    return createGuideMetadata('hdmi-21-vs-displayport-14-differences', title, description, keywords, locale);
 }
 
 export default function CableComparisonGuide() {
@@ -77,7 +77,7 @@ export default function CableComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/guia-compra-monitores",
+            href: "/guides/monitor-buying-guide",
             title: "Monitor Guide",
             description: "Choose a monitor compatible with your cables."
         },
@@ -87,7 +87,7 @@ export default function CableComparisonGuide() {
             description: "Improve the image after connecting."
         },
         {
-            href: "/guides/hdr-windows-vale-a-pena-jogos",
+            href: "/guides/hdr-windows-gaming-worth-it",
             title: "Windows HDR",
             description: "Enable HDR via a certified cable."
         }

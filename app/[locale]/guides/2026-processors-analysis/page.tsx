@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('processadores-2026-analise', title, description, keywords, locale);
+    return createGuideMetadata('2026-processors-analysis', title, description, keywords, locale);
 }
 
 export default function CPUAnalysisGuide() {
@@ -83,12 +83,12 @@ export default function CPUAnalysisGuide() {
             description: "Specific model tips by price point."
         },
         {
-            href: "/guides/overclock-processador",
+            href: "/guides/cpu-overclocking",
             title: "CPU Overclock",
             description: "Learn how to squeeze more power from your CPU."
         },
         {
-            href: "/guides/undervolt-cpu-notebook",
+            href: "/guides/laptop-cpu-undervolt",
             title: "Undervolt",
             description: "Reduce heat without losing performance."
         }

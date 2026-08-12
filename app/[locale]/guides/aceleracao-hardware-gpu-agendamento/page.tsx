@@ -148,12 +148,12 @@ export default function HAGSGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/modo-de-jogo-windows-atikvar-ou-nao",
+      href: "/guides/windows-game-mode-on-or-off",
       title: "Game Mode",
       description: "Another native Windows setting."
     },
     {
-      href: "/guides/otimizacoes-para-notebook-gamer",
+      href: "/guides/gaming-laptop-optimizations",
       title: "Notebooks",
       description: "HAGS helps a lot in notebooks with power limits."
     },

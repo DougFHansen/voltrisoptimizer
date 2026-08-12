@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('roblox-fix-erro-conexao', title, description, keywords, locale);
+    return createGuideMetadata('roblox-connection-error-fix', title, description, keywords, locale);
 }
 
 export default function RobloxConnectionFixGuide() {
@@ -89,12 +89,12 @@ export default function RobloxConnectionFixGuide() {
             description: "Play Roblox above 60 FPS."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve general connection in games."
         },
         {
-            href: "/guides/wifi-desconectando-sozinho-windows",
+            href: "/guides/wifi-disconnecting-randomly-windows-fix",
             title: "Wi-Fi Dropping",
             description: "Fix problems if Wi-Fi disconnects."
         }

@@ -79,12 +79,12 @@ export default function VideoPlayerComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/formatfactory-vs-handbrake-converter-video",
+            href: "/guides/formatfactory-vs-handbrake-video-converter",
             title: "Video Conversion",
             description: "Learn how to change the format of your files."
         },
         {
-            href: "/guides/hdr-windows-vale-a-pena-jogos",
+            href: "/guides/hdr-windows-gaming-worth-it",
             title: "HDR Guide",
             description: "Improve the image of your movies."
         },

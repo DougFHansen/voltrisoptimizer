@@ -553,7 +553,7 @@ export default function EncryptionGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Manage Passwords",
       description: "Store your encryption keys securely."
     },
@@ -568,22 +568,22 @@ export default function EncryptionGuide() {
       description: "Add more layers to your accounts."
     },
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Data Backup",
       description: "Learn how to protect backups with encryption."
     },
     {
-      href: "/guides/protecao-ransomware",
+      href: "/guides/ransomware-protection",
       title: "Ransomware Protection",
       description: "How encryption helps protect against cryptoviruses."
     },
     {
-      href: "/guides/privacidade-windows-telemetria",
+      href: "/guides/windows-privacy-telemetry",
       title: "Windows Privacy",
       description: "Protect your privacy beyond encryption."
     },
     {
-      href: "/guides/firewall-configuracao",
+      href: "/guides/firewall-configuration",
       title: "Firewall Setup",
       description: "Add network protection to your encrypted data."
     }

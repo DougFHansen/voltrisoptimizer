@@ -180,7 +180,7 @@ export default function DolphinGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-zelda-mario-60fps-optimization",
             title: "Switch Emulation",
             description: "Moving to modern Nintendo hardware optimization."
         },

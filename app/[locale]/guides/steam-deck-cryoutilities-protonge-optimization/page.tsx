@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('steam-deck-otimizacao-cryoutilities-protonge-guia', title, description, keywords, locale);
+    return createGuideMetadata('steam-deck-cryoutilities-protonge-optimization', title, description, keywords, locale);
 }
 
 export default function SteamDeckGuide() {
@@ -185,12 +185,12 @@ export default function SteamDeckGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia",
+            href: "/guides/yuzu-ryujinx-zelda-mario-60fps-optimization",
             title: "Switch Emulation",
             description: "Performance on the Deck."
         },
         {
-            href: "/guides/rog-ally-legion-go-otimizacao-windows-tdp-guia",
+            href: "/guides/rog-ally-legion-go-windows-tdp-optimization",
             title: "ROG Ally",
             description: "Comparison."
         }

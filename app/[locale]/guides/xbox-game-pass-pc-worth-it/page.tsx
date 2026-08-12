@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xbox-game-pass-pc-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('xbox-game-pass-pc-worth-it', title, description, keywords, locale);
 }
 
 export default function GamePassValueGuide() {
@@ -76,17 +76,17 @@ export default function GamePassValueGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/xbox-app-nao-baixa-jogos-gamepass",
+            href: "/guides/xbox-app-not-downloading-gamepass-games",
             title: "Fix Xbox App",
             description: "Solve problems if you decide to subscribe."
         },
         {
-            href: "/guides/pc-gamer-barato-custo-beneficio-2026",
+            href: "/guides/budget-gaming-pc-build-2026",
             title: "PC for Games",
             description: "Ideal parts to run the catalog."
         },
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "Choose GPU",
             description: "Save on games to invest in hardware."
         }

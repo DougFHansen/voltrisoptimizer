@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('solucao-problemas-audio', title, description, keywords, locale);
+    return createGuideMetadata('audio-troubleshooting', title, description, keywords, locale);
 }
 
 export default function AudioTroubleshootingGuide() {
@@ -210,7 +210,7 @@ export default function AudioTroubleshootingGuide() {
       description: "Complete tutorial on how to install and configure Peace GUI for perfect bass."
     },
     {
-      href: "/guides/som-espacial-windows-configurar",
+      href: "/guides/configure-windows-spatial-sound",
       title: "Dolby Atmos vs. Windows Sonic",
       description: "Analysis: Is it worth paying for spatial sound in games?"
     },

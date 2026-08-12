@@ -155,17 +155,17 @@ export default function FlushDNSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Best DNS",
             description: "After cleaning, configure 1.1.1.1."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Optimize Ping",
             description: "Advanced TCPNoDelay adjustments."
         },
         {
-            href: "/guides/problemas-conexao-wifi-causa-solucao",
+            href: "/guides/wifi-connection-problems-fix",
             title: "Wi-Fi Dropping",
             description: "Hardware and signal diagnosis."
         }

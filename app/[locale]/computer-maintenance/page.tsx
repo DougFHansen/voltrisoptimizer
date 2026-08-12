@@ -5,7 +5,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Professional Computer Maintenance | VOLTRIS - Cleaning, Parts, and Preventive Maintenance',
+  title: 'Professional Computer Maintenance - Cleaning, Parts, and Preventive Maintenance',
   description: 'Professional computer maintenance service with full diagnosis, internal cleaning, part replacement, and preventive maintenance. Certified technicians with warranty and worldwide service.',
   keywords: [
     'computer maintenance', 'pc cleaning', 'computer part replacement',

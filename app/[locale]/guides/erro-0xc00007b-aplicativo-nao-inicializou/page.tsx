@@ -342,7 +342,7 @@ export default function Error07bFixGuide() {
       description: "Understand why DLLs are important."
     },
     {
-      href: "/guides/pos-instalacao-windows-11",
+      href: "/guides/post-installation-windows-11",
       title: "Windows Checklist",
       description: "Everything you should have installed."
     },

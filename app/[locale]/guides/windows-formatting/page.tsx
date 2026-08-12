@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('formatacao-windows', title, description, keywords, locale);
+    return createGuideMetadata('windows-formatting', title, description, keywords, locale);
 }
 
 export default function FormatWindowsGuide() {
@@ -645,12 +645,12 @@ export default function FormatWindowsGuide() {
       description: "Complete tutorial on how to use Rufus and Media Creation Tool to create an installation USB drive."
     },
     {
-      href: "/guides/pos-instalacao-windows-11",
+      href: "/guides/post-installation-windows-11",
       title: "Windows 11 Post-Installation Guide",
       description: "What to configure immediately after formatting: drivers, essential programs and optimizations."
     },
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Complete Data Backup Guide",
       description: "Learn the 3-2-1 rule and never lose important files by forgetting to back up before formatting."
     }

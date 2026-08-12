@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('notebook-gamer-bateria-otimizacao', title, description, keywords, locale);
+    return createGuideMetadata('gaming-laptop-battery-optimization', title, description, keywords, locale);
 }
 
 export default function BatteryGuide() {
@@ -187,17 +187,17 @@ export default function BatteryGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/google-chrome-consumo-ram-fix",
+            href: "/guides/google-chrome-high-ram-usage-fix",
             title: "Chrome Optimization",
             description: "Less RAM = Less energy draw."
         },
         {
-            href: "/guides/instalacao-windows-11",
+            href: "/guides/windows-11-installation",
             title: "Clean Windows",
             description: "Fewer background processes."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Guide",
             description: "Faster hibernation and resume."
         }

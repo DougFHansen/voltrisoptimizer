@@ -331,17 +331,17 @@ export default function TLauncherSecurityGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/minecraft-lento-como-ganhar-fps",
+            href: "/guides/slow-minecraft-how-to-boost-fps",
             title: "Guide: Minecraft at 300 FPS",
             description: "The definitive optimization tutorial with Sodium, Lithium, and EntityCulling."
         },
         {
-            href: "/guides/remocao-virus-malware",
+            href: "/guides/virus-malware-removal",
             title: "Guide: Virus Removal",
             description: "Learn how to use TronScript and professional cleaning tools."
         },
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Guide: Reduce Ping (DNS)",
             description: "Improve your connection with international servers."
         },

@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hdr-windows-11-calibracao-jogos', title, description, keywords, locale);
+    return createGuideMetadata('hdr-windows-11-gaming-calibration', title, description, keywords, locale);
 }
 
 export default function HDRGuide() {
@@ -193,17 +193,17 @@ export default function HDRGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Setup",
             description: "Ensuring correct colors and refresh rates."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Guide",
             description: "Step-by-step 10-bit color tutorial."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Windows 11 Master",
             description: "The base system required for Auto HDR."
         }

@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('taxa-amostragem-audio-44khz-192khz-bug', title, description, keywords, locale);
+    return createGuideMetadata('audio-sample-rate-44khz-192khz-bug', title, description, keywords, locale);
 }
 
 export default function SampleRateGuide() {
@@ -183,7 +183,7 @@ export default function SampleRateGuide() {
             description: "Improve your sound."
         },
         {
-            href: "/guides/obs-studio-gravacao-replay-buffer-av1",
+            href: "/guides/obs-studio-recording-replay-buffer-av1",
             title: "OBS",
             description: "Audio syncing."
         }

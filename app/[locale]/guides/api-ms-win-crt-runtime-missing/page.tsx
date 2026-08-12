@@ -864,7 +864,7 @@ Install-UCRTComponents
             description: "Complete base components checklist."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Post-Installation",
             description: "What to install to avoid DLL errors."
         },
@@ -874,12 +874,12 @@ Install-UCRTComponents
             description: "Another common error linked to C++."
         },
         {
-            href: "/guides/vcruntime140-dll-nao-encontrado",
+            href: "/guides/vcruntime140-dll-not-found-fix",
             title: "C++ Runtime",
             description: "Another common missing runtime error."
         },
         {
-            href: "/guides/windows-update-corrigir-erros",
+            href: "/guides/windows-update-fix-errors",
             title: "Windows Update",
             description: "Fix Windows Update issues."
         }

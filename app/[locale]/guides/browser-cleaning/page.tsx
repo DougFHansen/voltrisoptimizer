@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpeza-navegadores', title, description, keywords, locale);
+    return createGuideMetadata('browser-cleaning', title, description, keywords, locale);
 }
 
 export default function BrowserCleanGuide() {
@@ -79,12 +79,12 @@ export default function BrowserCleanGuide() {
       description: "Browse like a pro."
     },
     {
-      href: "/guides/extensoes-produtividade-chrome",
+      href: "/guides/best-chrome-productivity-extensions",
       title: "Best Extensions",
       description: "Which extensions are actually worth keeping."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Optimize PC",
       description: "Improve Windows response time to assist your browser."
     }

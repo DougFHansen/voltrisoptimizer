@@ -4,7 +4,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Essential Software Installation | Remote Program Setup | VOLTRIS',
+    title: 'Essential Software Installation | Remote Program Setup',
     description: 'Essential program installation, remote software setup, security, speed, and specialized support. Install Google Chrome, WhatsApp, Zoom, and more!',
     keywords: [
         'software installation',

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hyper-v-desempenho-jogos', title, description, keywords, locale);
+    return createGuideMetadata('hyper-v-impact-gaming-performance', title, description, keywords, locale);
 }
 
 export default function HyperVPerformanceGuide() {
@@ -93,7 +93,7 @@ export default function HyperVPerformanceGuide() {
             description: "How to turn off support in the motherboard."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize Windows",
             description: "Extra performance tips for Windows 11."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('ssd-vs-hd-qual-melhor', title, description, keywords, locale);
+    return createGuideMetadata('ssd-vs-hdd-which-is-better', title, description, keywords, locale);
 }
 
 export default function SSDvsHDGuide() {
@@ -77,17 +77,17 @@ export default function SSDvsHDGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Disk Health",
             description: "Learn to identify failures before losing data."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Extract maximum life from your drive."
         },
         {
-            href: "/guides/recuperacao-dados-hd-corrompido",
+            href: "/guides/corrupted-hdd-data-recovery",
             title: "Data Recovery",
             description: "What to do if your HDD stopped working."
         }

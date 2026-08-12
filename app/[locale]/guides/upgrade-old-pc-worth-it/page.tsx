@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('upgrade-pc-antigo-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('upgrade-old-pc-worth-it', title, description, keywords, locale);
 }
 
 export default function OldPCUpgradeGuide() {
@@ -81,17 +81,17 @@ export default function OldPCUpgradeGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pc-gamer-barato-custo-beneficio-2026",
+            href: "/guides/budget-gaming-pc-build-2026",
             title: "Cheap PC 2026",
             description: "Best parts for a new PC."
         },
         {
-            href: "/guides/ssd-vs-hd-qual-melhor",
+            href: "/guides/ssd-vs-hdd-which-is-better",
             title: "SSD vs HD",
             description: "The first mandatory upgrade."
         },
         {
-            href: "/guides/upgrade-memoria-ram",
+            href: "/guides/ram-memory-upgrade",
             title: "RAM Upgrade",
             description: "Tips for choosing the right frequency."
         }

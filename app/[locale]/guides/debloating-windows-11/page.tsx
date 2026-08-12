@@ -185,12 +185,12 @@ export default function DebloatGuide() {
             description: "How to identify what's eating your CPU."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "The perfect pair for a clean system."
         },
         {
-            href: "/guides/privacidade-windows-telemetria",
+            href: "/guides/windows-privacy-telemetry",
             title: "Disable Telemetry",
             description: "Stop Windows from sending data to Microsoft."
         }

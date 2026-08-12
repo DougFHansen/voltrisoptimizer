@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-mecanico-vs-membrana-qual-o-melhor', title, description, keywords, locale);
+    return createGuideMetadata('mechanical-vs-membrane-keyboard', title, description, keywords, locale);
 }
 
 export default function KeyboardComparisonGuide() {
@@ -651,12 +651,12 @@ export default function KeyboardComparisonGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/teclado-mecanico-rapid-trigger-snap-tap",
+            href: "/guides/mechanical-keyboard-rapid-trigger-snap-tap",
             title: "Rapid Trigger Guide",
             description: "Deep dive into magnetic switch performance."
         },
         {
-            href: "/guides/mouse-dpi-polling-rate-ideal",
+            href: "/guides/ideal-mouse-dpi-polling-rate",
             title: "Mouse Precision",
             description: "Syncing your mouse and keyboard peripherals."
         }

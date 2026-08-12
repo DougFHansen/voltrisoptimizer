@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpeza-disco-profunda-arquivos-temporarios', title, description, keywords, locale);
+    return createGuideMetadata('deep-disk-cleanup-temp-files', title, description, keywords, locale);
 }
 
 export default function DiskCleanupGuide() {
@@ -172,7 +172,7 @@ export default function DiskCleanupGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pasta-windows-winsxs-gigante-como-limpar",
+            href: "/guides/huge-windows-winsxs-folder-how-to-clean",
             title: "WinSxS Guide",
             description: "Deeper dive into cleaning the most complex Windows folder."
         },
@@ -182,7 +182,7 @@ export default function DiskCleanupGuide() {
             description: "Remove apps that take up useless space."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Optimization",
             description: "Maintain performance after cleaning."
         }

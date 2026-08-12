@@ -169,17 +169,17 @@ export default function BG3Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Panel",
             description: "Configure driver for maximum performance."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Ensures your SSD is at maximum speed."
         },
         {
-            href: "/guides/steam-launch-options-comandos-fps-boost",
+            href: "/guides/steam-launch-options-fps-boost",
             title: "Launch Options",
             description: "Secret Steam codes for performance."
         }

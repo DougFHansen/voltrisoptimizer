@@ -16,7 +16,7 @@ const keywords = ['computer cleaning', 'windows cleanup', 'disk optimization', '
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpeza-computador', title, description, keywords, locale);
+    return createGuideMetadata('computer-cleaning', title, description, keywords, locale);
 }
 
 export default function LimpezaComputadorGuide() {
@@ -258,12 +258,12 @@ export default function LimpezaComputadorGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/manutencao-preventiva",
+      href: "/guides/preventive-maintenance",
       title: "Complete Preventive Maintenance",
       description: "Broader hardware and routine care strategies."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Performance Optimization",
       description: "Pushing your system beyond standard limits."
     }

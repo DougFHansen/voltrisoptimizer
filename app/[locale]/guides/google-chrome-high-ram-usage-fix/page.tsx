@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('google-chrome-consumo-ram-fix', title, description, keywords, locale);
+    return createGuideMetadata('google-chrome-high-ram-usage-fix', title, description, keywords, locale);
 }
 
 export default function ChromeGuide() {
@@ -195,7 +195,7 @@ export default function ChromeGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Guide",
             description: "Maintain a fast browser cache."
         },
@@ -205,7 +205,7 @@ export default function ChromeGuide() {
             description: "Another common RAM hog."
         },
         {
-            href: "/guides/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-gaming-optimization",
             title: "Defender Settings",
             description: "Reduce browser-related file scans."
         }

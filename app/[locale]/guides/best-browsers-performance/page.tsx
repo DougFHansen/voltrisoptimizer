@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('melhores-navegadores-custo-beneficio', title, description, keywords, locale);
+    return createGuideMetadata('best-browsers-performance', title, description, keywords, locale);
 }
 
 export default function BrowserGuide() {
@@ -145,12 +145,12 @@ export default function BrowserGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Clear RAM",
             description: "Manage browser memory consumption."
         },
         {
-            href: "/guides/extensoes-produtividade-chrome",
+            href: "/guides/best-chrome-productivity-extensions",
             title: "Useful Extensions",
             description: "Which extensions are worth the weight."
         },

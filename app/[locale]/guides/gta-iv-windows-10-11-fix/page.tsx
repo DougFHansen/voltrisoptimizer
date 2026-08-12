@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gta-iv-fix-windows-10-11', title, description, keywords, locale);
+    return createGuideMetadata('gta-iv-windows-10-11-fix', title, description, keywords, locale);
 }
 
 export default function GTAIVFixGuide() {
@@ -83,7 +83,7 @@ export default function GTAIVFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Windows for Gaming",
             description: "Improve system response before opening GTA."
         },
@@ -93,7 +93,7 @@ export default function GTAIVFixGuide() {
             description: "Avoid DirectX conflicts with old drivers."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "GTA Online Lag",
             description: "Specific tips for multiplayer mode."
         }

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('programas-essenciais-windows', title, description, keywords, locale);
+    return createGuideMetadata('essential-windows-programs', title, description, keywords, locale);
 }
 
 export default function SoftwareGuide() {
@@ -150,7 +150,7 @@ export default function SoftwareGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/winrar-vs-7zip-qual-melhor",
+      href: "/guides/winrar-vs-7zip-which-is-better",
       title: "Archiver Battle",
       description: "Why 7-Zip wins."
     },
@@ -160,7 +160,7 @@ export default function SoftwareGuide() {
       description: "Codec comparison."
     },
     {
-      href: "/guides/instalacao-windows-11",
+      href: "/guides/windows-11-installation",
       title: "Clean Installation",
       description: "The step before this guide."
     }

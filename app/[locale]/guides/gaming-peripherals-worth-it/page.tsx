@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('perifericos-gamer-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('gaming-peripherals-worth-it', title, description, keywords, locale);
 }
 
 export default function GamingPeripheralsGuide() {
@@ -78,17 +78,17 @@ export default function GamingPeripheralsGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mousepad-speed-vs-control",
+            href: "/guides/speed-vs-control-mousepad-gaming",
             title: "Mousepad Guide",
             description: "Control or Speed: What's the difference?"
         },
         {
-            href: "/guides/teclados-mecanicos-switches-guia",
+            href: "/guides/mechanical-keyboards-switches-guide",
             title: "Switch Types",
             description: "Deepen your keyboard knowledge."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Reduce Input Lag",
             description: "Software optimizations for your peripherals."
         }

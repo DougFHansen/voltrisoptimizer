@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('euro-truck-simulator-2-otimizacao', title, description, keywords, locale);
+    return createGuideMetadata('euro-truck-simulator-2-optimization', title, description, keywords, locale);
 }
 
 export default function ETS2OptimizationGuide() {
@@ -81,12 +81,12 @@ export default function ETS2OptimizationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize System",
             description: "Prepare Windows for heavy simulation."
         },
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Free Up RAM",
             description: "Vital tip for those using many map mods."
         },

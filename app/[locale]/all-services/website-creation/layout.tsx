@@ -5,7 +5,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Website Creation - Basic, Professional, and Enterprise Plans | VOLTRIS',
+    title: 'Website Creation - Basic, Professional, and Enterprise Plans',
     description: 'Hire professional website creation: responsive design, SEO, and hosting. Basic, professional, and enterprise plans. Free quotes.',
     keywords: [
         'website creation',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     
     openGraph: {
-        title: 'Website Creation - Basic, Professional, and Enterprise Plans | VOLTRIS',
+        title: 'Website Creation - Basic, Professional, and Enterprise Plans',
         description: 'Professional websites with responsive design, SEO, and hosting. Plans for small businesses and enterprises.',
         url: 'https://www.voltrisoptimizer.com/all-services/website-creation',
         type: 'website',
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Website Creation - Basic, Professional, and Enterprise Plans | VOLTRIS',
+        title: 'Website Creation - Basic, Professional, and Enterprise Plans',
         description: 'Professional websites with responsive design, SEO, and hosting. Plans for all business sizes.',
         images: ['/logo.png'],
     },

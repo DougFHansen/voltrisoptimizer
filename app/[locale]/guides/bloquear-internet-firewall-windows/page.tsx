@@ -164,7 +164,7 @@ export default function FirewallBlockGuide() {
       description: "How to configure exclusions."
     },
     {
-      href: "/guides/privacidade-windows-telemetria",
+      href: "/guides/windows-privacy-telemetry",
       title: "Windows Privacy",
       description: "Stop Microsoft's tracking."
     },

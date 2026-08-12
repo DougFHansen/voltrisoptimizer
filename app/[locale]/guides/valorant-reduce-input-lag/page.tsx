@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('valorant-reduzir-input-lag', title, description, keywords, locale);
+    return createGuideMetadata('valorant-reduce-input-lag', title, description, keywords, locale);
 }
 
 export default function ValorantGuide() {
@@ -259,17 +259,17 @@ export default function ValorantGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Guide",
             description: "Tune the control panel to complement the game."
         },
         {
-            href: "/guides/mouse-dpi-polling-rate-ideal",
+            href: "/guides/ideal-mouse-dpi-polling-rate",
             title: "Mouse Guide",
             description: "800 DPI vs 1600 DPI in Valorant."
         },
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Guide",
             description: "DyAc is perfect for Valorant."
         }

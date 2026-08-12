@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pcsx2-otimizacao-4k-widescreen-texturas-guia', title, description, keywords, locale);
+    return createGuideMetadata('pcsx2-4k-widescreen-textures-optimization', title, description, keywords, locale);
 }
 
 export default function PCSX2Guide() {
@@ -191,7 +191,7 @@ export default function PCSX2Guide() {
             description: "How to use a DualSense or DualShock 4."
         },
         {
-            href: "/guides/rpcs3-otimizacao-configuracao-60fps-patches-guia",
+            href: "/guides/rpcs3-60fps-patches-optimization-guide",
             title: "RPCS3 Setup",
             description: "Optimization for PS3 emulation."
         }

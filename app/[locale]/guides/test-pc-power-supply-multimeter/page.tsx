@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('testar-fonte-pc-multimetro', title, description, keywords, locale);
+    return createGuideMetadata('test-pc-power-supply-multimeter', title, description, keywords, locale);
 }
 
 export default function PowerSupplyTestGuide() {
@@ -82,17 +82,17 @@ export default function PowerSupplyTestGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pc-liga-sem-video-diagnostico",
+            href: "/guides/pc-turns-on-no-display-fix",
             title: "PC No Video",
             description: "The power supply could be the culprit."
         },
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "Choosing a GPU",
             description: "Calculate the required PSU wattage."
         },
         {
-            href: "/guides/manutencao-preventiva-computador",
+            href: "/guides/computer-preventive-maintenance",
             title: "PC Maintenance",
             description: "Prevent dust from burning out your PSU."
         }

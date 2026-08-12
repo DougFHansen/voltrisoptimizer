@@ -32,7 +32,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('resolver-erros-windows', title, description, keywords, locale);
+    return createGuideMetadata('resolve-windows-errors', title, description, keywords, locale);
 }
 
 export default function ResolverErrosWindowsGuide() {
@@ -505,27 +505,27 @@ export default function ResolverErrosWindowsGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/formatacao-windows",
+      href: "/guides/windows-formatting",
       title: "Windows Formatting",
       description: "When errors can't be fixed, formatting might be the solution."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "Performance Optimization",
       description: "Improve performance and avoid many errors with optimization."
     },
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Data Backup",
       description: "Protect your data before attempting complex fixes."
     },
     {
-      href: "/guides/instalacao-limpa-drivers-nvidia-amd",
+      href: "/guides/clean-driver-install-nvidia-amd",
       title: "Driver Installation",
       description: "Learn to install drivers correctly to avoid conflicts."
     },
     {
-      href: "/guides/limpeza-computador",
+      href: "/guides/computer-cleaning",
       title: "Computer Cleaning",
       description: "Keep your system clean for better performance and stability."
     }

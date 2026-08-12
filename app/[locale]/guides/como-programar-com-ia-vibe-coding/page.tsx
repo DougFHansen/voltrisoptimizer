@@ -218,7 +218,7 @@ Safety:
 
     const relatedGuides = [
         {
-            href: "/guides/o-que-sao-ai-agents-guia-completo",
+            href: "/guides/what-are-ai-agents-complete-guide",
             title: "AI Agents",
             description: "Take your programming to the next level by creating autonomous agents."
         },
@@ -228,7 +228,7 @@ Safety:
             description: "How to use Arc browser to research docs 2x faster."
         },
         {
-            href: "/guides/debloat-windows-11-otimizacao-powershell",
+            href: "/guides/debloat-windows-11-powershell-optimization",
             title: "Fast PC",
             description: "Prepare your Windows to run compilers and Docker without freezing."
         }

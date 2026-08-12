@@ -16,7 +16,7 @@ const keywords = ["increase fps", "optimize windows for games", "input lag fix",
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('otimizacao-jogos-pc', title, description, keywords, locale);
+    return createGuideMetadata('pc-gaming-optimization', title, description, keywords, locale);
 }
 
 export default function GuidePage() {
@@ -261,12 +261,12 @@ export default function GuidePage() {
 
   const relatedGuides = [
     {
-      href: "/guides/manutencao-preventiva",
+      href: "/guides/preventive-maintenance",
       title: "Preventive Care",
       description: "Hardware longevity strategies."
     },
     {
-      href: "/guides/otimizacao-performance",
+      href: "/guides/performance-optimization",
       title: "General Optimization",
       description: "System-wide speed improvements."
     }

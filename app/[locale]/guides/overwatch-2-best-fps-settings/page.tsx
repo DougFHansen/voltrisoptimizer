@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overwatch-2-melhores-configuracoes-fps', title, description, keywords, locale);
+    return createGuideMetadata('overwatch-2-best-fps-settings', title, description, keywords, locale);
 }
 
 export default function OverwatchGuide() {
@@ -226,17 +226,17 @@ export default function OverwatchGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Setup",
             description: "240Hz+ is recommended for the best OW2 experience."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Network Latency",
             description: "Avoid rubber-banding when playing high-mobility heroes like Tracer."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Control Panel",
             description: "Optimal 'Ultra' Latency mode settings."
         }

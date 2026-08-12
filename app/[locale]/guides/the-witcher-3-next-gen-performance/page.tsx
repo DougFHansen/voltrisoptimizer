@@ -80,12 +80,12 @@ export default function Witcher3PerformanceGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/red-dead-redemption-2-melhores-configuracoes-rdr2",
+            href: "/guides/red-dead-redemption-2-best-settings-rdr2",
             title: "Optimize RDR2",
             description: "Performance tips for another AAA epic."
         },
         {
-            href: "/guides/hdr-windows-vale-a-pena-jogos",
+            href: "/guides/hdr-windows-gaming-worth-it",
             title: "HDR Witcher 3",
             description: "Improve the sunset colors in Velen."
         },

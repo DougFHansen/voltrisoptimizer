@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('red-dead-redemption-2-melhores-configuracoes-rdr2', title, description, keywords, locale);
+    return createGuideMetadata('red-dead-redemption-2-best-settings-rdr2', title, description, keywords, locale);
 }
 
 export default function RDR2OptimizationGuide() {
@@ -85,12 +85,12 @@ export default function RDR2OptimizationGuide() {
             description: "Essential to avoid texture bugs in RDR2."
         },
         {
-            href: "/guides/limitar-fps-rivatuner-nvidia",
+            href: "/guides/limit-fps-rivatuner-nvidia",
             title: "RivaTuner (RTSS)",
             description: "Stabilize your riding frametimes."
         },
         {
-            href: "/guides/hdr-windows-vale-a-pena-jogos",
+            href: "/guides/hdr-windows-gaming-worth-it",
             title: "HDR on Windows 11",
             description: "Make the RDR2 sunsets truly shine."
         }

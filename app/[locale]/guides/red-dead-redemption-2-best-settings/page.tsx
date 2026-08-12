@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('red-dead-redemption-2-melhores-configuracoes', title, description, keywords, locale);
+    return createGuideMetadata('red-dead-redemption-2-best-settings', title, description, keywords, locale);
 }
 
 export default function RDR2Guide() {
@@ -196,17 +196,17 @@ export default function RDR2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/hdr-windows-11-calibracao-jogos",
+            href: "/guides/hdr-windows-11-gaming-calibration",
             title: "HDR Calibration",
             description: "Essential for the best RDR2 experience."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Settings",
             description: "Apply extra sharpening via the driver."
         },
         {
-            href: "/guides/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/ultrawide-monitor-competitive-gaming",
             title: "Ultrawide Support",
             description: "RDR2 supports 21:9 natively."
         }

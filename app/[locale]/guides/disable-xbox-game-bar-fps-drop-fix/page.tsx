@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xbox-game-bar-desativar-fps-drop', title, description, keywords, locale);
+    return createGuideMetadata('disable-xbox-game-bar-fps-drop-fix', title, description, keywords, locale);
 }
 
 export default function XboxGuide() {
@@ -174,12 +174,12 @@ export default function XboxGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Windows",
             description: "Complete debloat."
         },
         {
-            href: "/guides/obs-studio-gravacao-replay-buffer-av1",
+            href: "/guides/obs-studio-recording-replay-buffer-av1",
             title: "OBS",
             description: "Clipping alternative."
         }

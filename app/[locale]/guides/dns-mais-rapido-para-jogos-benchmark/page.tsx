@@ -187,7 +187,7 @@ export default function DNSGuide() {
             description: "Eliminating lag spikes caused by network congestion."
         },
         {
-            href: "/guides/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduce-ping-exitlag-noping-dns",
             title: "Ping Reduction Hub",
             description: "The complete guide to gaming network optimization."
         }

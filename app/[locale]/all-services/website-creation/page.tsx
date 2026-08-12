@@ -5,7 +5,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Professional Web Creation | VOLTRIS',
+  title: 'Professional Web Creation',
   description: 'Professional, fast, and SEO-optimized website development. Boost your sales with a modern and responsive website.',
   keywords: 'web creation, web development, professional website, responsive site, seo site, buy website, virtual store, ecommerce',
   openGraph: {

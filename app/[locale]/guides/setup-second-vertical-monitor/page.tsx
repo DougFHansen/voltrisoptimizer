@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('segundo-monitor-vertical-configurar', title, description, keywords, locale);
+    return createGuideMetadata('setup-second-vertical-monitor', title, description, keywords, locale);
 }
 
 export default function VerticalMonitorGuide() {
@@ -80,12 +80,12 @@ export default function VerticalMonitorGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/guia-compra-monitores",
+            href: "/guides/monitor-buying-guide",
             title: "Buying Monitors",
             description: "Learn how to choose monitors with good stands."
         },
         {
-            href: "/guides/monitor-ips-vs-va-vs-tn-jogos",
+            href: "/guides/ips-vs-va-vs-tn-monitor-gaming",
             title: "IPS vs VA Panels",
             description: "Why IPS is better for vertical monitors."
         },

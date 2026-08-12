@@ -423,7 +423,7 @@ export default function CableManagementGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Physical Cleaning",
             description: "Clean dust while you're organizing."
         },
@@ -433,7 +433,7 @@ export default function CableManagementGuide() {
             description: "How cable placement affects heat."
         },
         {
-            href: "/guides/montagem-pc-gamer-erros-comuns",
+            href: "/guides/building-gaming-pc-common-mistakes",
             title: "PC Assembly",
             description: "Tips for beginners to stay organized."
         }

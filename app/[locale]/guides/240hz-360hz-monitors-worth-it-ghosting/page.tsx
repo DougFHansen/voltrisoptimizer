@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-240hz-360hz-vale-a-pena-ghosting', title, description, keywords, locale);
+    return createGuideMetadata('240hz-360hz-monitors-worth-it-ghosting', title, description, keywords, locale);
 }
 
 export default function MonitorGuide() {
@@ -182,12 +182,12 @@ export default function MonitorGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Settings",
             description: "G-Sync setup and optimization."
         },
         {
-            href: "/guides/hdr-windows-11-calibracao-jogos",
+            href: "/guides/hdr-windows-11-gaming-calibration",
             title: "HDR Calibration",
             description: "Better colors in Windows."
         }

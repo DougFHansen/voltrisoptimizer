@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'PC Optimization - Make Your Computer Faster | VOLTRIS',
+    title: 'PC Optimization - Make Your Computer Faster',
     description: 'Complete PC optimization. Temporary file cleanup, disabling unnecessary programs, performance tuning, and more. Faster PC in minutes.',
     keywords: ['pc optimization', 'make pc faster', 'optimize windows', 'pc cleanup', 'improve pc performance', 'slow computer', 'accelerate windows'],
     
     openGraph: {
-        title: 'PC Optimization - Make Your Computer Faster | VOLTRIS',
+        title: 'PC Optimization - Make Your Computer Faster',
         description: 'Complete optimization to make your PC faster. Professional remote service.',
         url: 'https://www.voltrisoptimizer.com/pc-optimization',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'PC Optimization | VOLTRIS',
+        title: 'PC Optimization',
         description: 'Make your PC faster with our professional optimization.',
         images: ['/logo.png']
     },

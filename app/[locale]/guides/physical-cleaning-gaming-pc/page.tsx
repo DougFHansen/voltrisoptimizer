@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpeza-fisica-pc-gamer', title, description, keywords, locale);
+    return createGuideMetadata('physical-cleaning-gaming-pc', title, description, keywords, locale);
 }
 
 export default function CleaningGuide() {
@@ -124,17 +124,17 @@ export default function CleaningGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Temperatures",
             description: "Check the 'before and after' of your cleanup."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Part Health",
             description: "Check if heat has damaged any components."
         },
         {
-            href: "/guides/importancia-pasta-termica-pc",
+            href: "/guides/thermal-paste-importance-pc",
             title: "Thermal Paste Guide",
             description: "Silver or Ceramic? Find out what to buy."
         }

@@ -4,7 +4,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Professional Windows Support - Monthly Maintenance Plans | VOLTRIS',
+    title: 'Professional Windows Support - Monthly Maintenance Plans',
     description: 'Keep your Windows always updated and secure with our monthly support plans. Optimization, backup, anti-virus, and 24/7 priority remote support.',
     keywords: [
         'windows support',

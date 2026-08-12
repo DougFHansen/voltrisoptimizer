@@ -78,12 +78,12 @@ export default function ValorantStateGuide() {
             description: "Resolve technical startup issues."
         },
         {
-            href: "/guides/valorant-van-9003-secure-boot-tpm-fix",
+            href: "/guides/valorant-van-9003-tpm-secure-boot-fix",
             title: "VAN 9003 Error",
             description: "Fix for Windows 11."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve your latency in ranked matches."
         }

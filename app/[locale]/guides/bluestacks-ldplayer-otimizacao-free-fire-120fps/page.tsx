@@ -164,7 +164,7 @@ export default function AndroidEmuGuide() {
             description: "BIOS Tutorial."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Fast SSD",
             description: "Load the emulator in 5 seconds."
         },

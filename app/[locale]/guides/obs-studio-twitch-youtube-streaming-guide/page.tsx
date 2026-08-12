@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('obs-studio-streaming-twitch-youtube-guia-completo', title, description, keywords, locale);
+    return createGuideMetadata('obs-studio-twitch-youtube-streaming-guide', title, description, keywords, locale);
 }
 
 export default function OBSStreamGuide() {
@@ -199,7 +199,7 @@ export default function OBSStreamGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/obs-studio-gravacao-replay-buffer-av1",
+            href: "/guides/obs-studio-recording-replay-buffer-av1",
             title: "OBS Recording",
             description: "Optimal settings for high-quality clips."
         },

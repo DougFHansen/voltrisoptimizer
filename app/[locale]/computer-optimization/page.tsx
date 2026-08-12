@@ -4,7 +4,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Professional Computer Optimization | VOLTRIS - Scale Your PC',
+  title: 'Professional Computer Optimization - Scale Your PC',
   description: 'Professional computer optimization service to increase the speed, performance, and stability of your PC or laptop. Advanced cleaning, configuration, and fine-tuning techniques.',
   keywords: [
     'computer optimization',

@@ -835,17 +835,17 @@ export default function DiscordOptimizationGuide() {
             description: "Improve your voice for friends to hear."
         },
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Free Up RAM",
             description: "Reduce Discord's weight on the system."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Lag",
             description: "Avoid robots factor in voice and match lag."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Advanced Optimization",
             description: "System optimization techniques."
         }

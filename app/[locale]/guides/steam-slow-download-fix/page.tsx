@@ -194,7 +194,7 @@ export default function SteamGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD",
             description: "Write to disk faster."
         },

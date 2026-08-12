@@ -77,12 +77,12 @@ export default function StardewLagGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/genshin-impact-stuttering-fix-pc",
+            href: "/guides/genshin-impact-stutter-fix-pc",
             title: "Genshin Stuttering",
             description: "Performance tips for Unity games."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize PC",
             description: "Prepare Windows to run modded games."
         },

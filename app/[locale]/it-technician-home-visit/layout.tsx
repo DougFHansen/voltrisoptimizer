@@ -4,7 +4,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'At-Home IT Technician - Remote & On-Site Support | VOLTRIS',
+    title: 'At-Home IT Technician - Remote & On-Site Support',
     description: 'Looking for an IT technician who does house calls? VOLTRIS offers remote and on-site technical support worldwide. Fix your PC problems without leaving home.',
     keywords: [
         'at home IT technician',
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     
     openGraph: {
-        title: 'At-Home IT Technician | VOLTRIS',
+        title: 'At-Home IT Technician',
         description: 'Technical support for your computer from the comfort of your home. Remote and on-site service worldwide.',
         url: 'https://www.voltrisoptimizer.com/it-technician-home-visit',
         type: 'website',

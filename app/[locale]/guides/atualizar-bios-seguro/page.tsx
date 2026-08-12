@@ -808,12 +808,12 @@ export default function BIOSUpdateGuide() {
             description: "Check motherboard compatibility."
         },
         {
-            href: "/guides/montagem-pc-gamer-erros-comuns",
+            href: "/guides/building-gaming-pc-common-mistakes",
             title: "PC Build",
             description: "Common hardware mistakes."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Performance",
             description: "General system optimization."
         }

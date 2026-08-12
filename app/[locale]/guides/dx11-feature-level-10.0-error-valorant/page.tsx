@@ -86,12 +86,12 @@ export default function ValorantDX11Guide() {
             description: "Clean your drivers to fix DirectX."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Optimize Valorant",
             description: "Improve performance after opening the game."
         },
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "GPU Upgrade",
             description: "Choose a card that supports Valorant in 2026."
         }

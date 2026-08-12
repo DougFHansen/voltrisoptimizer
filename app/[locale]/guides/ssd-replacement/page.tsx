@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('substituicao-ssd', title, description, keywords, locale);
+    return createGuideMetadata('ssd-replacement', title, description, keywords, locale);
 }
 
 export default function SSDInstallationGuide() {
@@ -80,12 +80,12 @@ export default function SSDInstallationGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/otimizacao-ssd-windows-11",
+      href: "/guides/windows-11-ssd-optimization",
       title: "Optimize SSD",
       description: "Performance adjustments after installation."
     },
     {
-      href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+      href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
       title: "Check Health",
       description: "Test if your new SSD arrived in perfect condition."
     },

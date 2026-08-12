@@ -192,7 +192,7 @@ export default function ACGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-ultrawide-jogos-competitivos",
+            href: "/guides/ultrawide-monitor-competitive-gaming",
             title: "Ultrawide",
             description: "Full cockpit immersion."
         },

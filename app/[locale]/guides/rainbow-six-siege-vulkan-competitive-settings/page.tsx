@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rainbow-six-siege-vulkan-fps-configuracao-competitiva', title, description, keywords, locale);
+    return createGuideMetadata('rainbow-six-siege-vulkan-competitive-settings', title, description, keywords, locale);
 }
 
 export default function R6Guide() {
@@ -186,12 +186,12 @@ export default function R6Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/overwatch-2-otimizacao-fps-input-lag-reduce-buffering",
+            href: "/guides/overwatch-2-fps-input-lag-optimization",
             title: "Overwatch 2",
             description: "Competitive FPS optimization."
         },
         {
-            href: "/guides/valorant-reduzir-input-lag",
+            href: "/guides/valorant-reduce-input-lag",
             title: "Valorant Guide",
             description: "Latency and FPS fixes."
         }

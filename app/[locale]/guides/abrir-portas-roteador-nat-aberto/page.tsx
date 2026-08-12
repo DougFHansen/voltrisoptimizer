@@ -1089,27 +1089,27 @@ export default function RouterPortGuide() {
             description: "Access your device's control panel."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve your raw connection quality."
         },
         {
-            href: "/guides/firewall-configuracao",
+            href: "/guides/firewall-configuration",
             title: "Windows Firewall",
             description: "Unblock the game in Windows as well."
         },
         {
-            href: "/guides/teste-velocidade-internet",
+            href: "/guides/internet-speed-test",
             title: "Speed Test",
             description: "Verify your internet connection."
         },
         {
-            href: "/guides/troubleshooting-internet",
+            href: "/guides/internet-troubleshooting",
             title: "Troubleshoot Connection",
             description: "Solutions for unstable connections."
         },
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Optimized DNS",
             description: "Improve latency with fast DNS."
         }

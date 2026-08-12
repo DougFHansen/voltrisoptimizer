@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('linux-gaming-bazzite-nobara-steam-deck-pc', title, description, keywords, locale);
+    return createGuideMetadata('linux-gaming-bazzite-nobara-steam-deck', title, description, keywords, locale);
 }
 
 export default function LinuxGuide() {
@@ -187,12 +187,12 @@ export default function LinuxGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/steam-deck-otimizacao-cryoutilities-protonge-guia",
+            href: "/guides/steam-deck-cryoutilities-protonge-optimization",
             title: "Steam Deck Hub",
             description: "Advanced performance tweaks for handhelds."
         },
         {
-            href: "/guides/formatacao-limpa-windows-11-rufus-gpt",
+            href: "/guides/clean-install-windows-11-rufus-gpt",
             title: "Windows Setup",
             description: "Optimizing the classic Windows experience."
         }

@@ -79,7 +79,7 @@ export default function CoreParkingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/modo-de-jogo-windows-atikvar-ou-nao",
+            href: "/guides/windows-game-mode-on-or-off",
             title: "Game Mode",
             description: "Combine with Unpark for more FPS."
         },
@@ -89,7 +89,7 @@ export default function CoreParkingGuide() {
             description: "Understand other causes of stuttering."
         },
         {
-            href: "/guides/otimizacoes-para-notebook-gamer",
+            href: "/guides/gaming-laptop-optimizations",
             title: "Gaming Laptop",
             description: "Power tips for laptops."
         }

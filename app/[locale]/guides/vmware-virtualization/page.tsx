@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('virtualizacao-vmware', title, description, keywords, locale);
+    return createGuideMetadata('vmware-virtualization', title, description, keywords, locale);
 }
 
 export default function VirtualizationGuide() {
@@ -81,17 +81,17 @@ export default function VirtualizationGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/windows-sandbox-testar-virus",
+      href: "/guides/windows-sandbox-test-viruses",
       title: "Windows Sandbox",
       description: "Microsoft's native alternative."
     },
     {
-      href: "/guides/hyper-v-desempenho-jogos",
+      href: "/guides/hyper-v-impact-gaming-performance",
       title: "Hyper-V and Games",
       description: "How virtualization affects FPS."
     },
     {
-      href: "/guides/jogos-android-no-pc-melhores-emuladores",
+      href: "/guides/best-android-emulators-for-pc",
       title: "Android Emulators",
       description: "Use virtualization to play mobile games on PC."
     }

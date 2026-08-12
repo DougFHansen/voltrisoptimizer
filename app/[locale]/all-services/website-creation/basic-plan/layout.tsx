@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Essential Plan - Professional Web Creation | VOLTRIS',
+    title: 'Essential Plan - Professional Web Creation',
     description: 'Essential Plan for website creation. Professional, responsive, and SEO-optimized site. Ideal for small businesses and freelancers. From $199.90.',
     keywords: ['essential website plan', 'cheap professional site', 'basic website creation', 'small business site', 'freelancer professional site'],
     
     openGraph: {
-        title: 'Essential Plan - Professional Web Creation | VOLTRIS',
+        title: 'Essential Plan - Professional Web Creation',
         description: 'Professional, responsive, and SEO-optimized site. Ideal for small businesses.',
         url: 'https://www.voltrisoptimizer.com/all-services/website-creation/basic-plan',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Essential Plan - Web Creation | VOLTRIS',
+        title: 'Essential Plan - Web Creation',
         description: 'Professional website for small businesses.',
         images: ['/logo.png']
     },

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('otimizacao-registro-windows', title, description, keywords, locale);
+    return createGuideMetadata('registry-optimization', title, description, keywords, locale);
 }
 
 export default function RegistryGuide() {
@@ -167,12 +167,12 @@ export default function RegistryGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/reduzir-ping-regedit-cmd-jogos",
+      href: "/guides/reduce-ping-regedit-cmd-gaming",
       title: "Regedit Network",
       description: "Keys focused on TcpAckFrequency and Nagle."
     },
     {
-      href: "/guides/otimizacao-ssd-windows-11",
+      href: "/guides/windows-11-ssd-optimization",
       title: "SSD Tweaks",
       description: "Registry adjustments for storport."
     },

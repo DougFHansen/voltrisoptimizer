@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('instalacao-windows-11', title, description, keywords, locale);
+    return createGuideMetadata('windows-11-installation', title, description, keywords, locale);
 }
 
 export default function InstallWindowsGuide() {
@@ -185,12 +185,12 @@ export default function InstallWindowsGuide() {
       description: "Learn how to remove the junk that comes with the default installation."
     },
     {
-      href: "/guides/otimizacao-ssd-windows-11",
+      href: "/guides/windows-11-ssd-optimization",
       title: "Optimize SSD",
       description: "Essential settings for your new NVMe."
     },
     {
-      href: "/guides/instalacao-limpa-drivers-nvidia-amd",
+      href: "/guides/clean-driver-install-nvidia-amd",
       title: "Install Drivers Correctly",
       description: "Avoid conflicts by installing GPU drivers the right way."
     }

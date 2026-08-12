@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('reshade-guia-instalacao-ray-tracing-rtgi-filtros', title, description, keywords, locale);
+    return createGuideMetadata('reshade-installation-guide-rtgi-filters', title, description, keywords, locale);
 }
 
 export default function ReShadeGuide() {
@@ -174,7 +174,7 @@ export default function ReShadeGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/lossless-scaling-frame-generation-fsr-guia",
+            href: "/guides/lossless-scaling-frame-generation-fsr-guide",
             title: "Lossless Scaling",
             description: "Recover FPS lost to heavy shaders."
         },

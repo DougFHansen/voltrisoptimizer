@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('google-play-games-pc-beta-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('google-play-games-pc-beta-worth-it', title, description, keywords, locale);
 }
 
 export default function GooglePlayGamesReviewGuide() {
@@ -84,7 +84,7 @@ export default function GooglePlayGamesReviewGuide() {
             description: "Specific tutorial for Supercell games."
         },
         {
-            href: "/guides/bluestacks-vs-ldplayer-qual-mais-leve",
+            href: "/guides/bluestacks-vs-ldplayer-which-is-lighter",
             title: "Best Emulators",
             description: "For games not yet on Google Play PC."
         },

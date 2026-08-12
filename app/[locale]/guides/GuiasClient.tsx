@@ -104,9 +104,10 @@ const CATEGORY_CONFIG = [
 
 interface GuiasClientProps {
   initialGuides: GuideMetadata[];
+  locale: string;
 }
 
-export default function GuiasClient({ initialGuides }: GuiasClientProps) {
+export default function GuiasClient({ initialGuides, locale }: GuiasClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -319,7 +320,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                           whileHover={{ y: -5 }}
                           className="group relative h-full"
                         >
-                          <Link href={`/guides/${guide.id}`} className="block h-full relative z-20 focus:outline-none">
+                          <Link href={`/${locale}/guides/${guide.id}`} className="block h-full relative z-20 focus:outline-none">
                             <div className="h-full bg-[#0A0A0F] hover:bg-[#0F0F16] rounded-2xl border border-white/5 hover:border-[#31A8FF]/30 p-8 transition-all duration-300 relative overflow-hidden flex flex-col">
 
                               {/* Subtle Glow Effect on Hover */}

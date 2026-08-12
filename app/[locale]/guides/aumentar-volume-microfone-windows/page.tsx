@@ -266,7 +266,7 @@ export default function MicrophoneBoostGuide() {
       description: "Optimize your mic specifically for Discord."
     },
     {
-      href: "/guides/obs-studio-melhores-configuracoes-stream",
+      href: "/guides/obs-studio-best-streaming-settings",
       title: "OBS Studio Audio",
       description: "Compression and noise filters for lives."
     },
@@ -276,7 +276,7 @@ export default function MicrophoneBoostGuide() {
       description: "Fix issues with Realtek and drivers."
     },
     {
-      href: "/guides/headset-7.1-real-vs-virtual-vale-a-pena",
+      href: "/guides/real-vs-virtual-71-headset-gaming",
       title: "Gamer Headsets",
       description: "Choose the best hardware for your setup."
     }

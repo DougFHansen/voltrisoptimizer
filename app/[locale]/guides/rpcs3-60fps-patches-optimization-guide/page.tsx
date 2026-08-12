@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rpcs3-otimizacao-configuracao-60fps-patches-guia', title, description, keywords, locale);
+    return createGuideMetadata('rpcs3-60fps-patches-optimization-guide', title, description, keywords, locale);
 }
 
 export default function RPCS3Guide() {
@@ -183,12 +183,12 @@ export default function RPCS3Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pcsx2-otimizacao-4k-widescreen-texturas-guia",
+            href: "/guides/pcsx2-4k-widescreen-textures-optimization",
             title: "PCSX2",
             description: "Guide for PS2 Emulation."
         },
         {
-            href: "/guides/termperatura-pc-fan-control-curva",
+            href: "/guides/pc-temperature-fan-control-curve",
             title: "Temperature",
             description: "Expect high CPU heat during emulation."
         }

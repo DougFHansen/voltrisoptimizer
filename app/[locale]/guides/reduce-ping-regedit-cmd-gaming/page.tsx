@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('reduzir-ping-regedit-cmd-jogos', title, description, keywords, locale);
+    return createGuideMetadata('reduce-ping-regedit-cmd-gaming', title, description, keywords, locale);
 }
 
 export default function NetworkGuide() {
@@ -97,12 +97,12 @@ export default function NetworkGuide() {
             description: "Learn how to activate QoS and UPnP."
         },
         {
-            href: "/guides/wifi-desconectando-sozinho-windows",
+            href: "/guides/wifi-disconnecting-randomly-windows-fix",
             title: "Wi-Fi Dropping",
             description: "Solutions for wireless instability."
         },
         {
-            href: "/guides/debloat-windows-11-otimizacao-powershell",
+            href: "/guides/debloat-windows-11-powershell-optimization",
             title: "Debloat Windows",
             description: "Fewer processes = Less network usage."
         }

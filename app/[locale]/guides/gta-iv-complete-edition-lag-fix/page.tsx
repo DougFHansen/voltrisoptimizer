@@ -77,17 +77,17 @@ export default function GTAIVLagFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/gta-iv-fix-windows-10-11",
+            href: "/guides/gta-iv-windows-10-11-fix",
             title: "GTA IV on Win 11",
             description: "System compatibility tips."
         },
         {
-            href: "/guides/gta-san-andreas-correcao-grafica",
+            href: "/guides/gta-san-andreas-graphics-fix",
             title: "GTA San Andreas",
             description: "Relive the classic with modern graphics."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Tips for Multiplayer mode."
         }

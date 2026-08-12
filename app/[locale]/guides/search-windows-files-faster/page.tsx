@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pesquisar-arquivos-windows-mais-rapido', title, description, keywords, locale);
+    return createGuideMetadata('search-windows-files-faster', title, description, keywords, locale);
 }
 
 export default function FileSearchGuide() {
@@ -83,12 +83,12 @@ export default function FileSearchGuide() {
             description: "Navigate through the system at high speed."
         },
         {
-            href: "/guides/limpeza-disco-profunda-arquivos-temporarios",
+            href: "/guides/deep-disk-cleanup-temp-files",
             title: "Disk Cleanup",
             description: "Remove files that get in the way of searching."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Ensure indexing doesn't degrade your hardware."
         }

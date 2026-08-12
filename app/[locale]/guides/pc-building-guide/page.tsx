@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('guia-montagem-pc', title, description, keywords, locale);
+    return createGuideMetadata('pc-building-guide', title, description, keywords, locale);
 }
 
 export default function AssembleGuide() {

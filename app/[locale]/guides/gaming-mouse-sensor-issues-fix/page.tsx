@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('problemas-mouse-gamer-sensor', title, description, keywords, locale);
+    return createGuideMetadata('gaming-mouse-sensor-issues-fix', title, description, keywords, locale);
 }
 
 export default function MouseSensorGuide() {
@@ -78,17 +78,17 @@ export default function MouseSensorGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mousepad-speed-vs-control",
+            href: "/guides/speed-vs-control-mousepad-gaming",
             title: "Choosing a Mousepad",
             description: "Improve your sensor's reading accuracy."
         },
         {
-            href: "/guides/mouse-clique-duplo-falhando-fix",
+            href: "/guides/mouse-double-click-failing-fix",
             title: "Double Click",
             description: "Resolve button issues."
         },
         {
-            href: "/guides/perifericos-gamer-vale-a-pena-marcas",
+            href: "/guides/gaming-peripherals-worth-it-brands",
             title: "Mouse Brands",
             description: "Which brands have the best sensors."
         }

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('retroarch-guia-completo-cores-shaders-crt', title, description, keywords, locale);
+    return createGuideMetadata('retroarch-complete-guide-shaders-crt', title, description, keywords, locale);
 }
 
 export default function RetroArchGuide() {
@@ -189,7 +189,7 @@ export default function RetroArchGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/pcsx2-otimizacao-4k-widescreen-texturas-guia",
+            href: "/guides/pcsx2-4k-widescreen-textures-optimization",
             title: "PCSX2",
             description: "Better to use Standalone for PS2."
         },

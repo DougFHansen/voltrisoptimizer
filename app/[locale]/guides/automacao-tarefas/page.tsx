@@ -201,12 +201,12 @@ export default function AutomationGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Backup Strategy",
       description: "Automate your backups securely."
     },
     {
-      href: "/guides/debloat-windows-11-otimizacao-powershell",
+      href: "/guides/debloat-windows-11-powershell-optimization",
       title: "Debloat Windows",
       description: "Scripts to clean up Windows."
     },

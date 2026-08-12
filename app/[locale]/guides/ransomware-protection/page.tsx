@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('protecao-ransomware', title, description, keywords, locale);
+    return createGuideMetadata('ransomware-protection', title, description, keywords, locale);
 }
 
 export default function RansomwareProtectionGuide() {
@@ -644,7 +644,7 @@ export default function RansomwareProtectionGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/remocao-virus-malware",
+      href: "/guides/virus-malware-removal",
       title: "Remove Malware",
       description: "Tips for cleaning the system after infection."
     },
@@ -654,12 +654,12 @@ export default function RansomwareProtectionGuide() {
       description: "How to set up automatic backups."
     },
     {
-      href: "/guides/identificacao-phishing",
+      href: "/guides/phishing-identification",
       title: "Identify Phishing",
       description: "Learn how these viruses get into your PC."
     },
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Data Backup",
       description: "The 3-2-1 rule for complete ransomware protection."
     },
@@ -674,12 +674,12 @@ export default function RansomwareProtectionGuide() {
       description: "Extra layer of protection against unauthorized access."
     },
     {
-      href: "/guides/firewall-configuracao",
+      href: "/guides/firewall-configuration",
       title: "Firewall Configuration",
       description: "Block suspicious ransomware communications."
     },
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Password Managers",
       description: "Avoid weak credentials that facilitate intrusions."
     }

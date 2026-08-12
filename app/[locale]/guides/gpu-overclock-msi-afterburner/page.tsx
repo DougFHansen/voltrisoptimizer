@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overclock-gpu-msi-afterburner', title, description, keywords, locale);
+    return createGuideMetadata('gpu-overclock-msi-afterburner', title, description, keywords, locale);
 }
 
 export default function OverclockGuide() {
@@ -245,17 +245,17 @@ export default function OverclockGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitor Temperature",
             description: "How to use RivaTuner to see stats on screen."
         },
         {
-            href: "/guides/upgrade-pc-antigo-vale-a-pena",
+            href: "/guides/upgrade-old-pc-worth-it",
             title: "CPU Bottleneck",
             description: "Is GPU OC worth it if your CPU is weak?"
         },
         {
-            href: "/guides/undervolt-cpu-notebook",
+            href: "/guides/laptop-cpu-undervolt",
             title: "CPU Undervolt",
             description: "The perfect pair for GPU overclocking."
         }

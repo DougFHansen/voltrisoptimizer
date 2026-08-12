@@ -80,12 +80,12 @@ export default function InternetTroubleshootingGuide() {
       description: "Resolve errors with sites that won't open."
     },
     {
-      href: "/guides/problemas-conexao-wifi-causa-solucao",
+      href: "/guides/wifi-connection-problems-fix",
       title: "Wi-Fi Problems",
       description: "Specific tips for wireless signal."
     },
     {
-      href: "/guides/reduzir-ping-jogos-online",
+      href: "/guides/reduce-ping-online-games",
       title: "Reduce Ping",
       description: "Optimize for a faster connection."
     }

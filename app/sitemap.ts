@@ -1,4 +1,6 @@
 import { MetadataRoute } from 'next';
+import fs from 'fs';
+import path from 'path';
 import { regionsData } from '@/app/regions/data';
 import sitemapRoutes from './sitemap-routes.json';
 
@@ -70,16 +72,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 2. Technical SEO - Regional Coverage (Dynamic Params multiplied by Locales)
+  // 2. Technical SEO - Regional Coverage (real routes, no locale prefix)
+  const regionsLastModified = (() => {
+    try {
+      const stat = fs.statSync(path.join(process.cwd(), 'app/regions/data.ts'));
+      return new Date(stat.mtime);
+    } catch {
+      return new Date('2026-01-01');
+    }
+  })();
+
   const regionalRoutes = regionsData ? regionsData.flatMap(country => 
-    country.cities.flatMap(city => 
-      supportedLocales.map(locale => ({
-        url: `${domain}/${locale}/regions/${country.slug}/${city.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
-      }))
-    )
+    country.cities.flatMap(city => ({
+      url: `${domain}/regions/${country.slug}/${city.slug}`,
+      lastModified: regionsLastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }))
   ) : [];
 
   // Combine and deduplicate if necessary

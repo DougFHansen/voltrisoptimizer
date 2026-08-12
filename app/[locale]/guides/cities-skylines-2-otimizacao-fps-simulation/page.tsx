@@ -185,12 +185,12 @@ export default function CS2Guide() {
             description: "XMP is crucial for simulation."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD",
             description: "Pagefile (Virtual Memory)."
         },
         {
-            href: "/guides/notebook-gamer-bateria-otimizacao",
+            href: "/guides/gaming-laptop-battery-optimization",
             title: "Laptop",
             description: "It will run very hot."
         }

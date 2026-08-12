@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Enterprise Plan - High-Level Corporate Sites | VOLTRIS',
+    title: 'Enterprise Plan - High-Level Corporate Sites',
     description: 'Enterprise Plan for website creation. Complete solution for large companies with management systems, integrations, administrative dashboard, and dedicated 24/7 support.',
     keywords: ['enterprise website plan', 'corporate site', 'large company website', 'business portal', 'site with dashboard'],
     
     openGraph: {
-        title: 'Enterprise Plan - High-Level Corporate Sites | VOLTRIS',
+        title: 'Enterprise Plan - High-Level Corporate Sites',
         description: 'Complete solution for large companies with dedicated 24/7 support.',
         url: 'https://www.voltrisoptimizer.com/all-services/website-creation/enterprise-plan',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Enterprise Plan - Corporate Sites | VOLTRIS',
+        title: 'Enterprise Plan - Corporate Sites',
         description: 'Complete solution for large companies.',
         images: ['/logo.png']
     },

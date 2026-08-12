@@ -181,12 +181,12 @@ export default function EldenRingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/lossless-scaling-frame-generation-fsr-guia",
+            href: "/guides/lossless-scaling-frame-generation-fsr-guide",
             title: "Frame Generation",
             description: "Doubling your FPS using advanced interpolation."
         },
         {
-            href: "/guides/reshade-guia-instalacao-ray-tracing-rtgi-filtros",
+            href: "/guides/reshade-installation-guide-rtgi-filters",
             title: "ReShade Setup",
             description: "Enhancing colors and visual clarity."
         }

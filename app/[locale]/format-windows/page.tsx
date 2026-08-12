@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Professional Windows Formatting - Remote Technical Support | VOLTRIS',
+  title: 'Professional Windows Formatting - Remote Technical Support',
   description: 'Specialized Windows 10 and 11 formatting service. Clean installation, data backup, updated drivers, and gaming optimization. 24h secure remote assistance.',
   keywords: [
     'windows formatting', 'remote pc format', 'windows 11 installation', 'windows 10 installation',

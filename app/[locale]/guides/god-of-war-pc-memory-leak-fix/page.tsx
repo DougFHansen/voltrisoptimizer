@@ -90,7 +90,7 @@ export default function GoWMemoryFixGuide() {
             description: "Can help with initial stability."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Windows Performance",
             description: "Prepare the system for heavy AAA games."
         }

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('identificacao-phishing', title, description, keywords, locale);
+    return createGuideMetadata('phishing-identification', title, description, keywords, locale);
 }
 
 export default function PhishingGuide() {
@@ -656,12 +656,12 @@ export default function PhishingGuide() {
       description: "Your final barrier against phishing."
     },
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Manage Passwords",
       description: "Use tools that fill only real sites."
     },
     {
-      href: "/guides/remocao-virus-malware",
+      href: "/guides/virus-malware-removal",
       title: "Virus Cleanup",
       description: "What to do if you clicked the fake link."
     }

@@ -293,12 +293,12 @@ export default function AmdGuide() {
             description: "Crucial for those who migrated from Nvidia to AMD."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Guide",
             description: "Fast texture loading."
         },
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Setup",
             description: "Configure FreeSync on the monitor."
         }

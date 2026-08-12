@@ -83,7 +83,7 @@ export default function MinecraftLagGuide() {
             description: "Minecraft uses OpenGL, updated drivers are vital."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve connection on multiplayer servers."
         },

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('recuperacao-dados-hd-corrompido', title, description, keywords, locale);
+    return createGuideMetadata('corrupted-hdd-data-recovery', title, description, keywords, locale);
 }
 
 export default function DataRecoveryGuide() {
@@ -77,17 +77,17 @@ export default function DataRecoveryGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "Disk Health",
             description: "Find out if your hard drive will fail again."
         },
         {
-            href: "/guides/backup-dados",
+            href: "/guides/data-backup",
             title: "Backup Guide",
             description: "Never need this guide again."
         },
         {
-            href: "/guides/hds-vs-ssd-qual-a-diferenca",
+            href: "/guides/hdd-vs-ssd-whats-the-difference",
             title: "HDD vs SSD",
             description: "Understand the durability of each technology."
         }

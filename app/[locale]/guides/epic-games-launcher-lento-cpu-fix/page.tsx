@@ -85,7 +85,7 @@ export default function EpicGamesFixGuide() {
             description: "Improve your network for Epic downloads."
         },
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Free RAM",
             description: "Tips to make Windows run lighter."
         },

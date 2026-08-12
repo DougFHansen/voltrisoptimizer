@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hard-reset-celular-formatar', title, description, keywords, locale);
+    return createGuideMetadata('hard-reset-format-smartphone', title, description, keywords, locale);
 }
 
 export default function HardResetGuide() {
@@ -81,7 +81,7 @@ export default function HardResetGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/backup-dados",
+            href: "/guides/data-backup",
             title: "Backup Guide",
             description: "How to save your photos before resetting."
         },

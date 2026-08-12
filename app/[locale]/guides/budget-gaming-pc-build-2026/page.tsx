@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pc-gamer-barato-custo-beneficio-2026', title, description, keywords, locale);
+    return createGuideMetadata('budget-gaming-pc-build-2026', title, description, keywords, locale);
 }
 
 export default function BudgetPCGuide() {
@@ -581,7 +581,7 @@ export default function BudgetPCGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "Choosing a GPU",
             description: "Deep dive tips on graphics cards."
         },
@@ -591,7 +591,7 @@ export default function BudgetPCGuide() {
             description: "Differences between cores and threads."
         },
         {
-            href: "/guides/montagem-pc-gamer-erros-comuns",
+            href: "/guides/building-gaming-pc-common-mistakes",
             title: "Assembly Guide",
             description: "Learn to build it yourself and save money."
         }

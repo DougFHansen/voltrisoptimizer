@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('ssd-nvme-vs-sata-jogos', title, description, keywords, locale);
+    return createGuideMetadata('nvme-vs-sata-ssd-for-gaming', title, description, keywords, locale);
 }
 
 export default function SSDTypeGuide() {
@@ -82,17 +82,17 @@ export default function SSDTypeGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/ssd-vs-hd-qual-melhor",
+            href: "/guides/ssd-vs-hdd-which-is-better",
             title: "SSD vs HDD",
             description: "The basic technology differences."
         },
         {
-            href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+            href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
             title: "SSD Health",
             description: "Monitor your chips' wear."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Tweaks for maximum durability."
         }

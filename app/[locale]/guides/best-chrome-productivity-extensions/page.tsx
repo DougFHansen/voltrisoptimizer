@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('extensoes-produtividade-chrome', title, description, keywords, locale);
+    return createGuideMetadata('best-chrome-productivity-extensions', title, description, keywords, locale);
 }
 
 export default function BrowserExtensionsGuide() {
@@ -81,12 +81,12 @@ export default function BrowserExtensionsGuide() {
       description: "Further increase your browsing speed."
     },
     {
-      href: "/guides/seguranca-senhas-gerenciadores",
+      href: "/guides/password-security-managers",
       title: "Password Management",
       description: "Better than Chrome's default saving."
     },
     {
-      href: "/guides/limpar-cache-navegador-chrome-edge",
+      href: "/guides/clear-browser-cache-chrome-edge",
       title: "Browser Cleanup",
       description: "Maintenance tips for your browser."
     }

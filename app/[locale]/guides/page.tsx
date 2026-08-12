@@ -6,13 +6,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Technical Guides and Tutorials | VOLTRIS',
+  title: 'Technical Guides and Tutorials',
   description: 'Learn how to format, optimize, remove viruses and solve problems on your PC with our detailed guides written by specialists.',
   keywords: 'guide formatting windows, pc optimization tutorial, remove virus pc, fix slow internet, assemble gaming pc, backup data, digital security',
   openGraph: {
     title: 'Technical Guides and Tutorials | VOLTRIS',
     description: 'Step-by-step tutorials to solve your computer problems.',
-    url: 'https://www.voltrisoptimizer.com/guides',
+    url: `https://www.voltrisoptimizer.com/${locale}/guides`,
     type: 'website',
   },
         alternates: {
@@ -32,7 +32,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-export default function Guias() {
+export default async function Guias({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const guides = getAllGuides();
-  return <GuiasClient initialGuides={guides} />;
+  return <GuiasClient initialGuides={guides} locale={locale} />;
 }

@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('headset-7.1-real-vs-virtual-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('real-vs-virtual-71-headset-gaming', title, description, keywords, locale);
 }
 
 export default function AudioSurroundGuide() {
@@ -159,7 +159,7 @@ export default function AudioSurroundGuide() {
             description: "Don't be the guy who blows out the team's ears."
         },
         {
-            href: "/guides/solucao-problemas-audio",
+            href: "/guides/audio-troubleshooting",
             title: "Audio Troubleshooting",
             description: "Fix crackling and driver issues."
         },

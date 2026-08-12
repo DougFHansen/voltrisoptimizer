@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('backup-dados', title, description, keywords, locale);
+    return createGuideMetadata('data-backup', title, description, keywords, locale);
 }
 
 export default function DataBackupGuide() {
@@ -174,17 +174,17 @@ export default function DataBackupGuide() {
       description: "Complement your local backup with the cloud."
     },
     {
-      href: "/guides/protecao-ransomware",
+      href: "/guides/ransomware-protection",
       title: "Ransomware Security",
       description: "How to avoid being encrypted."
     },
     {
-      href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+      href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
       title: "Disk Health",
       description: "Monitor if your HD is dying."
     },
     {
-      href: "/guides/recuperacao-dados-hd-corrompido",
+      href: "/guides/corrupted-hdd-data-recovery",
       title: "Disaster Recovery",
       description: "Try to save data without a backup."
     }

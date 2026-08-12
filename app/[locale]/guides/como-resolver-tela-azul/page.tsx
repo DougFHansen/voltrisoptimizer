@@ -761,12 +761,12 @@ export default function BSODGuide() {
       description: "Fix BSODs caused by video drivers."
     },
     {
-      href: "/guides/verificar-saude-hd-ssd-crystaldiskinfo",
+      href: "/guides/check-hdd-ssd-health-crystaldiskinfo",
       title: "SSD Health",
       description: "Check if your disk is causing system crashes."
     },
     {
-      href: "/guides/monitorar-temperatura-pc",
+      href: "/guides/monitor-pc-temperature",
       title: "Temperatures",
       description: "Monitor heating before the PC shuts down."
     }

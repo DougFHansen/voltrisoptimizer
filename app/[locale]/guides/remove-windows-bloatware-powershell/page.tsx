@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('remover-bloatware-windows-powershell', title, description, keywords, locale);
+    return createGuideMetadata('remove-windows-bloatware-powershell', title, description, keywords, locale);
 }
 
 export default function BloatwareRemovalGuide() {
@@ -84,12 +84,12 @@ export default function BloatwareRemovalGuide() {
             description: "Learn how to create a system safeguard."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Extreme Performance",
             description: "Next steps after removing bloatware."
         },
         {
-            href: "/guides/privacidade-windows-telemetria",
+            href: "/guides/windows-privacy-telemetry",
             title: "Telemetry Guide",
             description: "Understand what the script is disabling."
         }

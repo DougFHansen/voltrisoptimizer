@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('lineage-2-otimizar-pvp-fps', title, description, keywords, locale);
+    return createGuideMetadata('lineage-2-pvp-fps-optimization', title, description, keywords, locale);
 }
 
 export default function L2OtimizacaoGuide() {
@@ -78,17 +78,17 @@ export default function L2OtimizacaoGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mu-online-reduzir-lag-muvoltris",
+            href: "/guides/mu-online-reduce-lag-guide",
             title: "Mu Online Fix",
             description: "Tips for other classic MMORPGs."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve skill response time."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "CPU Performance",
             description: "Adjust Windows for single-core games."
         }

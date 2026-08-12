@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('perda-de-pacote-packet-loss-fix', title, description, keywords, locale);
+    return createGuideMetadata('packet-loss-fix-gaming', title, description, keywords, locale);
 }
 
 export default function PacketLossGuide() {
@@ -78,17 +78,17 @@ export default function PacketLossGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Extra connectivity tips."
         },
         {
-            href: "/guides/melhor-dns-jogos-2026",
+            href: "/guides/best-dns-for-gaming-2026",
             title: "Best DNS",
             description: "Help the system find better routes."
         },
         {
-            href: "/guides/troubleshooting-internet",
+            href: "/guides/internet-troubleshooting",
             title: "Network Troubleshooting",
             description: "How to reset buggy network drivers."
         }

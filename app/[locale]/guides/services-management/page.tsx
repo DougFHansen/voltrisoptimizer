@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gestao-servicos', title, description, keywords, locale);
+    return createGuideMetadata('services-management', title, description, keywords, locale);
 }
 
 export default function ServicesManagementGuide() {
@@ -255,7 +255,7 @@ export default function ServicesManagementGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/debloat-windows-11-otimizacao-powershell",
+            href: "/guides/debloat-windows-11-powershell-optimization",
             title: "Debloat Windows 11",
             description: "Remove useless apps with PowerShell for additional RAM gain."
         },
@@ -265,7 +265,7 @@ export default function ServicesManagementGuide() {
             description: "Create a full system backup before making any changes."
         },
         {
-            href: "/guides/memoria-virtual-pagefile-ssd-otimizacao",
+            href: "/guides/virtual-memory-pagefile-ssd-optimization",
             title: "Optimize Virtual Memory",
             description: "Configure the pagefile to maximize available RAM performance."
         }

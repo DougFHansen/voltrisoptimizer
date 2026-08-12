@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('perifericos-gamer-vale-a-pena-marcas', title, description, keywords, locale);
+    return createGuideMetadata('gaming-peripherals-worth-it-brands', title, description, keywords, locale);
 }
 
 export default function GamingBrandsGuide() {
@@ -77,17 +77,17 @@ export default function GamingBrandsGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/mousepad-speed-vs-control",
+            href: "/guides/speed-vs-control-mousepad-gaming",
             title: "Mousepads",
             description: "Pair your new mouse with the right surface."
         },
         {
-            href: "/guides/teclado-mecanico-vs-membrana-qual-o-melhor",
+            href: "/guides/mechanical-vs-membrane-keyboard",
             title: "Keyboard Types",
             description: "Understand why mechanical is superior."
         },
         {
-            href: "/guides/headset-7.1-real-vs-virtual-vale-a-pena",
+            href: "/guides/real-vs-virtual-71-headset-gaming",
             title: "Audio Guide",
             description: "Choose the best sound for your ears."
         }

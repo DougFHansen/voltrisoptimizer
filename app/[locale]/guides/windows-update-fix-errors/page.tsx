@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('windows-update-corrigir-erros', title, description, keywords, locale);
+    return createGuideMetadata('windows-update-fix-errors', title, description, keywords, locale);
 }
 
 export default function WindowsUpdateGuide() {
@@ -176,12 +176,12 @@ export default function WindowsUpdateGuide() {
             description: "SFC and DISM commands explained."
         },
         {
-            href: "/guides/limpeza-disco-profunda-arquivos-temporarios",
+            href: "/guides/deep-disk-cleanup-temp-files",
             title: "Clean Disk",
             description: "How to delete the Windows.old folder."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Improve update installation speed."
         }

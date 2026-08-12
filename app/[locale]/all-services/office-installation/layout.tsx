@@ -4,12 +4,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-    title: 'Microsoft Office Installation - Remote & Professional | VOLTRIS',
+    title: 'Microsoft Office Installation - Remote & Professional',
     description: 'Installation and activation of Microsoft Office (Word, Excel, PowerPoint). Complete configuration, OneDrive synchronization, and technical support. 100% remote service.',
     keywords: ['office installation', 'install microsoft office', 'activate office', 'remote office setup', 'configure office', 'office word excel'],
     
     openGraph: {
-        title: 'Microsoft Office Installation - Remote & Professional | VOLTRIS',
+        title: 'Microsoft Office Installation - Remote & Professional',
         description: 'Installation and activation of Microsoft Office with complete configuration.',
         url: 'https://www.voltrisoptimizer.com/all-services/office-installation',
         type: 'website',
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Microsoft Office Installation | VOLTRIS',
+        title: 'Microsoft Office Installation',
         description: 'Professional Office installation and configuration.',
         images: ['/logo.png']
     },

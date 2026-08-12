@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('god-mode-windows-11-ativar', title, description, keywords, locale);
+    return createGuideMetadata('enable-god-mode-windows-11', title, description, keywords, locale);
 }
 
 export default function GodModeGuide() {
@@ -94,7 +94,7 @@ export default function GodModeGuide() {
             description: "Clean up useless apps that God Mode displays."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Post-Installation",
             description: "Set up your PC with the best tools."
         }

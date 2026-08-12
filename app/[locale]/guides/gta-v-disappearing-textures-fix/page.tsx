@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gta-v-fix-texturas-sumindo', title, description, keywords, locale);
+    return createGuideMetadata('gta-v-disappearing-textures-fix', title, description, keywords, locale);
 }
 
 export default function GTAVTextureFixGuide() {
@@ -79,17 +79,17 @@ export default function GTAVTextureFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/gta-v-otimizar-fps-pc-fraco",
+            href: "/guides/gta-v-fps-optimization-low-end-pc",
             title: "Optimize GTA V",
             description: "Best graphic settings for FPS."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Ensure your drive is at its fastest."
         },
         {
-            href: "/guides/pc-lento-formatar-vs-limpar",
+            href: "/guides/slow-pc-format-vs-clean",
             title: "Slow PC",
             description: "Tips for general system cleanup."
         }

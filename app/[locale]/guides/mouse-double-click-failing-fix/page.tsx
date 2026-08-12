@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mouse-clique-duplo-falhando-fix', title, description, keywords, locale);
+    return createGuideMetadata('mouse-double-click-failing-fix', title, description, keywords, locale);
 }
 
 export default function MouseFixGuide() {
@@ -78,12 +78,12 @@ export default function MouseFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/diagnostico-hardware",
+            href: "/guides/hardware-diagnostics",
             title: "Hardware Diagnosis",
             description: "Find out if it's a driver bug or faulty component."
         },
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Physical Cleaning",
             description: "Other peripheral cleaning tips."
         },

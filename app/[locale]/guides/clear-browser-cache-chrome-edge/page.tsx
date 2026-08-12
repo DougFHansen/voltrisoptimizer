@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpar-cache-navegador-chrome-edge', title, description, keywords, locale);
+    return createGuideMetadata('clear-browser-cache-chrome-edge', title, description, keywords, locale);
 }
 
 export default function BrowserCacheGuide() {
@@ -90,7 +90,7 @@ export default function BrowserCacheGuide() {
             description: "If the site still won't open, the issue might be DNS."
         },
         {
-            href: "/guides/limpeza-disco-profunda-arquivos-temporarios",
+            href: "/guides/deep-disk-cleanup-temp-files",
             title: "Disk Cleanup",
             description: "Clear temporary files from all of Windows."
         }

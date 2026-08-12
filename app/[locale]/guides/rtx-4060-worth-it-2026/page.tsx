@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rtx-4060-vale-a-pena-2026', title, description, keywords, locale);
+    return createGuideMetadata('rtx-4060-worth-it-2026', title, description, keywords, locale);
 }
 
 export default function RTX4060ReviewGuide() {
@@ -75,7 +75,7 @@ export default function RTX4060ReviewGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-escolher-placa-de-video",
+            href: "/guides/how-to-choose-graphics-card",
             title: "GPU Guide",
             description: "Understand technical terms before buying."
         },
@@ -85,7 +85,7 @@ export default function RTX4060ReviewGuide() {
             description: "Mandatory for Frame Gen to work."
         },
         {
-            href: "/guides/pc-gamer-barato-custo-beneficio-2026",
+            href: "/guides/budget-gaming-pc-build-2026",
             title: "Build a Budget PC",
             description: "How to fit the 4060 into your budget."
         }

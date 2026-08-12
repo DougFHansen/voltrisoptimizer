@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('valorant-reduzir-input-lag-fps-boost-config', title, description, keywords, locale);
+    return createGuideMetadata('valorant-reduce-input-lag-fps-boost', title, description, keywords, locale);
 }
 
 export default function ValorantGuide() {
@@ -182,7 +182,7 @@ export default function ValorantGuide() {
             description: "Similar FPS optimization."
         },
         {
-            href: "/guides/mouse-otimizacao-windows-precisao",
+            href: "/guides/mouse-precision-optimization-windows",
             title: "Mouse",
             description: "Fine tuning."
         }

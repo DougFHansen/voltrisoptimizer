@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('palworld-otimizacao-server-dlss', title, description, keywords, locale);
+    return createGuideMetadata('palworld-server-dlss-optimization', title, description, keywords, locale);
 }
 
 export default function PalworldGuide() {
@@ -187,17 +187,17 @@ export default function PalworldGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/reduzir-ping-exitlag-noping-dns",
+            href: "/guides/reduce-ping-exitlag-noping-dns",
             title: "Ping Guide",
             description: "Essential for dedicated server stability."
         },
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "NVIDIA Setup",
             description: "Optimal DLSS and driver configurations."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Optimization",
             description: "Speed up game loading times."
         }

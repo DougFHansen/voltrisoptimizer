@@ -1,6 +1,5 @@
 'use client';
 
-import Script from 'next/script';
 import { generateSoftwareApplicationSchema } from '../utils/seo-structured-data';
 
 interface SoftwareApplicationSchemaProps {
@@ -50,11 +49,10 @@ export default function SoftwareApplicationSchema({
   });
 
   return (
-    <Script
+    <script
       id="software-application-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      strategy="afterInteractive"
     />
   );
 }
@@ -81,11 +79,10 @@ export function FAQSchema({ faqItems }: FAQSchemaProps) {
   };
 
   return (
-    <Script
+    <script
       id="faq-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      strategy="afterInteractive"
     />
   );
 }

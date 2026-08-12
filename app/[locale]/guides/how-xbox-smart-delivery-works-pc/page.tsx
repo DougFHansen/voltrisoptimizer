@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('smart-delivery-xbox-pc-como-funciona', title, description, keywords, locale);
+    return createGuideMetadata('how-xbox-smart-delivery-works-pc', title, description, keywords, locale);
 }
 
 export default function SmartDeliveryGuide() {
@@ -76,17 +76,17 @@ export default function SmartDeliveryGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/xbox-game-pass-pc-vale-a-pena",
+            href: "/guides/xbox-game-pass-pc-worth-it",
             title: "Game Pass Review",
             description: "The best way to try Smart Delivery."
         },
         {
-            href: "/guides/xbox-app-nao-baixa-jogos-gamepass",
+            href: "/guides/xbox-app-not-downloading-gamepass-games",
             title: "Fix Xbox App",
             description: "Resolve download errors on Windows 11."
         },
         {
-            href: "/guides/ssd-nvme-vs-sata-jogos",
+            href: "/guides/nvme-vs-sata-ssd-for-gaming",
             title: "Optimize Load Times",
             description: "Enjoy the maximum speed of your setup."
         }

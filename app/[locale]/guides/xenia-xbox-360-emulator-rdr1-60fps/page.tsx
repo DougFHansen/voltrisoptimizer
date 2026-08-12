@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xenia-emulador-xbox-360-red-dead-redemption-60fps', title, description, keywords, locale);
+    return createGuideMetadata('xenia-xbox-360-emulator-rdr1-60fps', title, description, keywords, locale);
 }
 
 export default function XeniaGuide() {
@@ -182,12 +182,12 @@ export default function XeniaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/rpcs3-otimizacao-configuracao-60fps-patches-guia",
+            href: "/guides/rpcs3-60fps-patches-optimization-guide",
             title: "RPCS3",
             description: "PS3 alternative."
         },
         {
-            href: "/guides/lossless-scaling-frame-generation-fsr-guia",
+            href: "/guides/lossless-scaling-frame-generation-fsr-guide",
             title: "Frame Gen",
             description: "For 60fps."
         }

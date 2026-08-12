@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-notebook-parou-fix', title, description, keywords, locale);
+    return createGuideMetadata('laptop-keyboard-stopped-working-fix', title, description, keywords, locale);
 }
 
 export default function LaptopKeyboardFixGuide() {
@@ -245,17 +245,17 @@ export default function LaptopKeyboardFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/teclado-desconfigurado-abnt2-ansi",
+            href: "/guides/keyboard-layout-fix-abnt2-ansi",
             title: "Setup Layout",
             description: "Fix swapped keys or incorrect characters."
         },
         {
-            href: "/guides/pos-instalacao-windows-11",
+            href: "/guides/post-installation-windows-11",
             title: "Optimize System",
             description: "Ensure your drivers are up to date."
         },
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Clean Keyboard",
             description: "Tips for removing debris between keys."
         }

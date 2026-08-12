@@ -29,7 +29,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rede-corporativa', title, description, keywords, locale);
+    return createGuideMetadata('corporate-network', title, description, keywords, locale);
 }
 
 export default function CorporateNetworkGuide() {
@@ -181,12 +181,12 @@ export default function CorporateNetworkGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/rede-domestica",
+      href: "/guides/home-network",
       title: "Home Network Configuration",
       description: "Set up routers and Wi-Fi extenders for a residential environment."
     },
     {
-      href: "/guides/troubleshooting-internet",
+      href: "/guides/internet-troubleshooting",
       title: "Internet Troubleshooting",
       description: "Solve connectivity and internet speed issues."
     }

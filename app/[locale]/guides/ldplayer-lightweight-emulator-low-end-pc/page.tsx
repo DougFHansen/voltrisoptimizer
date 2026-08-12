@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('ldplayer-emulador-leve-pc-fraco', title, description, keywords, locale);
+    return createGuideMetadata('ldplayer-lightweight-emulator-low-end-pc', title, description, keywords, locale);
 }
 
 export default function LDPlayerGuide() {
@@ -193,17 +193,17 @@ export default function LDPlayerGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Optimization",
             description: "Essential for avoiding stutters."
         },
         {
-            href: "/guides/bluestacks-otimizacao-free-fire-pubg",
+            href: "/guides/bluestacks-optimization-free-fire-pubg",
             title: "BlueStacks",
             description: "The robust alternative."
         },
         {
-            href: "/guides/instalacao-windows-11",
+            href: "/guides/windows-11-installation",
             title: "Clean Windows",
             description: "A fresh OS installation improves results."
         }

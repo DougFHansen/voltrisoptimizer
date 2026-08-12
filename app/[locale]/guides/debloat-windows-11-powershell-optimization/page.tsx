@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('debloat-windows-11-otimizacao-powershell', title, description, keywords, locale);
+    return createGuideMetadata('debloat-windows-11-powershell-optimization', title, description, keywords, locale);
 }
 
 export default function DebloatGuide() {
@@ -117,7 +117,7 @@ export default function DebloatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Complement the Debloat with a fast drive."
         },
@@ -127,7 +127,7 @@ export default function DebloatGuide() {
             description: "8GB is not enough? See if you need an upgrade."
         },
         {
-            href: "/guides/remocao-virus-malware",
+            href: "/guides/virus-malware-removal",
             title: "Remove Virus",
             description: "Sometimes slowness is not bloatware, it's malware."
         }

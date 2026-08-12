@@ -81,12 +81,12 @@ export default function ProjectZomboidGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/limpar-memoria-ram-windows",
+            href: "/guides/clear-ram-memory-windows",
             title: "Clear RAM",
             description: "Free memory before opening Zomboid."
         },
         {
-            href: "/guides/reduzir-ping-jogos-online",
+            href: "/guides/reduce-ping-online-games",
             title: "Reduce Ping",
             description: "Improve your connection on MP servers."
         },

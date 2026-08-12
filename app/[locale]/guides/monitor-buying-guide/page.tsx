@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('guia-compra-monitores', title, description, keywords, locale);
+    return createGuideMetadata('monitor-buying-guide', title, description, keywords, locale);
 }
 
 export default function MonitorBuyingGuide() {
@@ -203,12 +203,12 @@ export default function MonitorBuyingGuide() {
       description: "Adjust colors after purchase for fidelity."
     },
     {
-      href: "/guides/hdr-windows-vale-a-pena-jogos",
+      href: "/guides/hdr-windows-gaming-worth-it",
       title: "HDR Guide",
       description: "How to correctly configure HDR in Windows 11."
     },
     {
-      href: "/guides/g-sync-freesync-configuracao-correta",
+      href: "/guides/gsync-freesync-correct-setup",
       title: "G-Sync and FreeSync",
       description: "How to enable VRR without input lag."
     }

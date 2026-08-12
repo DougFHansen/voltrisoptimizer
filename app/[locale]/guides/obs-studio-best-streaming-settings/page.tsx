@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('obs-studio-melhores-configuracoes-stream', title, description, keywords, locale);
+    return createGuideMetadata('obs-studio-best-streaming-settings', title, description, keywords, locale);
 }
 
 export default function OBSGuide() {
@@ -227,7 +227,7 @@ export default function OBSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Drivers Guide",
             description: "Update display drivers for optimal NVENC performance."
         },
@@ -237,7 +237,7 @@ export default function OBSGuide() {
             description: "Integrate audio without game lag."
         },
         {
-            href: "/guides/reduzir-ping-regedit-cmd-jogos",
+            href: "/guides/reduce-ping-regedit-cmd-gaming",
             title: "Network Stability",
             description: "Optimize for consistent upload speed."
         }

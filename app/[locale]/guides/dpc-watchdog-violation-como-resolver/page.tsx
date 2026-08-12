@@ -88,7 +88,7 @@ export default function DPCWatchdogGuide() {
             description: "General steps for any BSOD error."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize SSD",
             description: "Keep your disk fast and stable."
         },

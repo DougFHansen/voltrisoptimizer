@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('windows-sandbox-testar-virus', title, description, keywords, locale);
+    return createGuideMetadata('windows-sandbox-test-viruses', title, description, keywords, locale);
 }
 
 export default function SandboxGuide() {
@@ -81,17 +81,17 @@ export default function SandboxGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/virtualizacao-vmware",
+            href: "/guides/vmware-virtualization",
             title: "Use VMWare",
             description: "For tests that need to be saved."
         },
         {
-            href: "/guides/remocao-virus-malware",
+            href: "/guides/virus-malware-removal",
             title: "Remove Virus",
             description: "What to do if the virus is out of control."
         },
         {
-            href: "/guides/identificacao-phishing",
+            href: "/guides/phishing-identification",
             title: "Avoid Phishing",
             description: "Learn to identify dangerous files."
         }

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overwatch-2-otimizacao-fps-input-lag-reduce-buffering', title, description, keywords, locale);
+    return createGuideMetadata('overwatch-2-fps-input-lag-optimization', title, description, keywords, locale);
 }
 
 export default function OW2Guide() {
@@ -187,12 +187,12 @@ export default function OW2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/monitor-hz-configuracao-correta",
+            href: "/guides/correct-monitor-refresh-rate-setup",
             title: "Monitor Refresh Rates",
             description: "Optimize for 240Hz/360Hz displays."
         },
         {
-            href: "/guides/mouse-otimizacao-windows-precisao",
+            href: "/guides/mouse-precision-optimization-windows",
             title: "Mouse Latency",
             description: "Further reduce mouse input delay."
         }

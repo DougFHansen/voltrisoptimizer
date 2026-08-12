@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('fans-fluxo-de-ar-pc-gamer', title, description, keywords, locale);
+    return createGuideMetadata('pc-case-airflow-fans-setup', title, description, keywords, locale);
 }
 
 export default function FansGuide() {
@@ -140,17 +140,17 @@ export default function FansGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/water-cooler-vs-air-cooler",
+            href: "/guides/water-cooler-vs-air-cooler-comparison",
             title: "Choose Your Cooler",
             description: "Coolers need fresh air to work effectively."
         },
         {
-            href: "/guides/monitorar-temperatura-pc",
+            href: "/guides/monitor-pc-temperature",
             title: "Monitoring",
             description: "Verify if your airflow setup is working."
         },
         {
-            href: "/guides/limpeza-fisica-pc-gamer",
+            href: "/guides/physical-cleaning-gaming-pc",
             title: "Cleaning",
             description: "Clean your filters regularly."
         }

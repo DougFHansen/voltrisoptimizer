@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpeza-perifericos-mousepad-teclado', title, description, keywords, locale);
+    return createGuideMetadata('cleaning-peripherals-mousepad-keyboard', title, description, keywords, locale);
 }
 
 export default function CleaningGuide() {
@@ -184,7 +184,7 @@ export default function CleaningGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/termperatura-pc-fan-control-curva",
+            href: "/guides/pc-temperature-fan-control-curve",
             title: "Temperature",
             description: "Less dust = Less heat."
         }

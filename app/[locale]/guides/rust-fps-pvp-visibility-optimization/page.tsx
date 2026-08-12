@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rust-otimizacao-fps-pvp-visibility', title, description, keywords, locale);
+    return createGuideMetadata('rust-fps-pvp-visibility-optimization', title, description, keywords, locale);
 }
 
 export default function RustGuide() {
@@ -188,7 +188,7 @@ export default function RustGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "SSD Optimization",
             description: "Asset Warmup loading speed."
         },
@@ -198,7 +198,7 @@ export default function RustGuide() {
             description: "Stable RAM settings."
         },
         {
-            href: "/guides/windows-defender-otimizacao-jogos",
+            href: "/guides/windows-defender-gaming-optimization",
             title: "Defender Settings",
             description: "Steam folder exclusion."
         }

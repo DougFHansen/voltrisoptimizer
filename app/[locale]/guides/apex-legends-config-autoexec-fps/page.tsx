@@ -213,7 +213,7 @@ export default function ApexGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia Guide",
             description: "Adjust VSync here."
         },

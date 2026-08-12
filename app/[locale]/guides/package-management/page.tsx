@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gestao-pacotes', title, description, keywords, locale);
+    return createGuideMetadata('package-management', title, description, keywords, locale);
 }
 
 export default function PackageManagementGuide() {
@@ -79,12 +79,12 @@ export default function PackageManagementGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/pos-instalacao-windows-11",
+      href: "/guides/post-installation-windows-11",
       title: "Post-Installation",
       description: "Use winget to set up your new environment."
     },
     {
-      href: "/guides/remover-bloatware-windows-powershell",
+      href: "/guides/remove-windows-bloatware-powershell",
       title: "Remove Bloatware",
       description: "Winget can also help clean up your system."
     },

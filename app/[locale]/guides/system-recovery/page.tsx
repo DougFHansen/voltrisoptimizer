@@ -23,7 +23,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('recuperacao-sistema', title, description, keywords, locale);
+    return createGuideMetadata('system-recovery', title, description, keywords, locale);
 }
 
 export default function RecuperacaoSistemaGuide() {
@@ -218,12 +218,12 @@ export default function RecuperacaoSistemaGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/formatacao-windows",
+      href: "/guides/windows-formatting",
       title: "Windows Formatting Hub",
       description: "Learn how to perform a clean system wipe correctly."
     },
     {
-      href: "/guides/backup-dados",
+      href: "/guides/data-backup",
       title: "Data Backup Guide",
       description: "Protect your digital life with effective redundancy."
     }

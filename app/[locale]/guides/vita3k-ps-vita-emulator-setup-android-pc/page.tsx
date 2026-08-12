@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vita3k-emulador-ps-vita-configuracao-android-pc', title, description, keywords, locale);
+    return createGuideMetadata('vita3k-ps-vita-emulator-setup-android-pc', title, description, keywords, locale);
 }
 
 export default function VitaGuide() {
@@ -173,12 +173,12 @@ export default function VitaGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/rpcs3-otimizacao-configuracao-60fps-patches-guia",
+            href: "/guides/rpcs3-60fps-patches-optimization-guide",
             title: "RPCS3",
             description: "PS3 and Vita are siblings."
         },
         {
-            href: "/guides/retroarch-guia-completo-cores-shaders-crt",
+            href: "/guides/retroarch-complete-guide-shaders-crt",
             title: "RetroArch",
             description: "For PSP (PPSSPP)."
         }

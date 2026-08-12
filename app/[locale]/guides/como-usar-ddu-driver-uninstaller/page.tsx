@@ -169,7 +169,7 @@ export default function DDUGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/instalacao-limpa-drivers-nvidia-amd",
+            href: "/guides/clean-driver-install-nvidia-amd",
             title: "Nvidia/AMD Drivers",
             description: "Control Panel configuration tips."
         },
@@ -179,7 +179,7 @@ export default function DDUGuide() {
             description: "How to diagnose if the driver was to blame."
         },
         {
-            href: "/guides/otimizacao-ssd-windows-11",
+            href: "/guides/windows-11-ssd-optimization",
             title: "Optimize System",
             description: "Improve overall Windows performance."
         }

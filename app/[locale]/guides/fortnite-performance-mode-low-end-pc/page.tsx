@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('fortnite-modo-performance-pc-fraco', title, description, keywords, locale);
+    return createGuideMetadata('fortnite-performance-mode-low-end-pc', title, description, keywords, locale);
 }
 
 export default function FortniteGuide() {
@@ -220,12 +220,12 @@ export default function FortniteGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/nvidia-painel-controle-melhores-configuracoes",
+            href: "/guides/nvidia-control-panel-best-settings",
             title: "Nvidia",
             description: "Digital Vibrance to see in the storm."
         },
         {
-            href: "/guides/mouse-dpi-polling-rate-ideal",
+            href: "/guides/ideal-mouse-dpi-polling-rate",
             title: "Mouse",
             description: "Edit builds faster."
         },

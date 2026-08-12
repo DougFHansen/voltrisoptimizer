@@ -5,7 +5,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: 'Suporte de TI e Gestão Remota para Empresas - VOLTRIS',
+  title: 'Suporte de TI e Gestão Remota para Empresas',
   description: 'Otimize a infraestrutura de TI da sua empresa. Suporte remoto rápido, segurança cibernética (LGPD) e otimização de performance para máxima produtividade.',
   keywords: [
     'suporte ti empresas',

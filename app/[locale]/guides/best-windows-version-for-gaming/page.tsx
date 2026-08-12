@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('qual-melhor-windows-para-jogos', title, description, keywords, locale);
+    return createGuideMetadata('best-windows-version-for-gaming', title, description, keywords, locale);
 }
 
 export default function BestWindowsForGamingGuide() {
@@ -80,7 +80,7 @@ export default function BestWindowsForGamingGuide() {
             description: "How to clean up official Windows."
         },
         {
-            href: "/guides/otimizacao-performance",
+            href: "/guides/performance-optimization",
             title: "Optimize Performance",
             description: "FPS tweaks for any version."
         },

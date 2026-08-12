@@ -179,7 +179,7 @@ export default function BiosGuide() {
             description: "Understand latency and frequency."
         },
         {
-            href: "/guides/valorant-van-9003-secure-boot-tpm-fix",
+            href: "/guides/valorant-van-9003-tpm-secure-boot-fix",
             title: "VAN 9003 Error",
             description: "Solving the TPM error in Valorant."
         }
