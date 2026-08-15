@@ -58,7 +58,7 @@ export default function DebloatGuide() {
                 Messing with PowerShell can be scary. <strong>Voltris Optimizer</strong> has a "Smart Debloat" module that identifies what is safe to remove and what is vital for the system, cleaning your PC without breaking the Store or Windows Update.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <a href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe" className="px-8 py-3 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
+                <a href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstaller.exe" className="px-8 py-3 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
                     Download Voltris Optimizer (x64)
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -66,7 +66,7 @@ export default function DebloatGuide() {
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                 </a>
-                <a href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe" className="px-8 py-3 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
+                <a href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstallerX86.exe" className="px-8 py-3 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
                     x86 Version
                 </a>
             </div>
