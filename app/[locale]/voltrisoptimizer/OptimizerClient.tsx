@@ -558,7 +558,7 @@ export default function OptimizerClient() {
                                         <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></div>
                                         <div className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></div>
                                     </div>
-                                    <span className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] italic">Free 7 Days Trial</span>
+                                    <span className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] italic">Free</span>
                                     <Sparkles className="w-3 h-3 text-emerald-400 ml-1 group-hover:rotate-12 transition-transform" />
                                 </motion.div>
                             </div>

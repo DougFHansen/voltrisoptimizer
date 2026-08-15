@@ -22,7 +22,7 @@ export default function LicenseExpiredModal({
             case 'trial_expired':
                 return {
                     title: 'Trial Period Expired',
-                    description: 'Your 7-day trial period has ended. To continue using remote commands and all Voltris Optimizer features, you need to activate a license.',
+                    description: 'Your trial period has ended. To continue using remote commands and all Voltris Optimizer features, you need to activate a license.',
                     icon: '⏰'
                 };
             case 'license_expired':

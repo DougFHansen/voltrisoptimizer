@@ -66,7 +66,7 @@ export default function DebloatGuide() {
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                 </a>
-                <a href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstaller.exe" className="px-8 py-3 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
+                <a href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstallerX86.exe" className="px-8 py-3 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
                     x86 Version
                 </a>
             </div>
