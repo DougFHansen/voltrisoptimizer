@@ -581,14 +581,14 @@ export default function OptimizerClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-slate-500 font-medium">Current Version:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.1.5
+                                        v1.0.2.4
                                     </span>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full">
                                     <div className="flex flex-col w-full gap-2">
                                         <a
-                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstaller.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x64)')}
                                             className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                         >
@@ -598,11 +598,11 @@ export default function OptimizerClient() {
                                         <div className="mt-2 text-center">
                                             <span className="text-[10px] sm:text-xs text-slate-500 font-medium flex items-center justify-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
                                                 <ShieldCheck className="w-3 h-3 text-emerald-500" /> 
-                                                7 days trial license included in download
+                                                Free
                                             </span>
                                         </div>
                                         <a
-                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstaller.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x86)')}
                                             className="mt-1 text-[10px] text-slate-600 hover:text-[#31A8FF] transition-colors text-center font-medium block"
                                         >
@@ -1934,12 +1934,12 @@ export default function OptimizerClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-slate-500 font-medium">Current Version:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                    v1.8
+                                    v1.0.2.4
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-2 w-full max-w-sm">
                                 <a
-                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstaller.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x64) - Bottom CTA')}
                                     className="inline-flex items-center gap-4 w-full justify-center px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
                                 >
@@ -1947,7 +1947,7 @@ export default function OptimizerClient() {
                                     DOWNLOAD!
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.4/VoltrisOptimizerInstaller.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x86) - Bottom CTA')}
                                     className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                                 >
