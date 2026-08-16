@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import JsonLd from "@/components/JsonLd";
+import { getLocalizedAlternates } from '@/lib/seo';
 import OptimizerClient from './OptimizerClient';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -112,21 +114,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'max-snippet': -1,
     },
   },
-        alternates: {
-            canonical: `https://www.voltrisoptimizer.com/${locale}/voltrisoptimizer`,
-            languages: {
-                'en': `/en/voltrisoptimizer`,
-                'es': `/es/voltrisoptimizer`,
-                'pt-br': `/pt-br/voltrisoptimizer`,
-                'de': `/de/voltrisoptimizer`,
-                'fr': `/fr/voltrisoptimizer`,
-                'it': `/it/voltrisoptimizer`,
-                'ja': `/ja/voltrisoptimizer`,
-                'ko': `/ko/voltrisoptimizer`,
-                'ar': `/ar/voltrisoptimizer`
-            }
-        }
-    };
+        ...getLocalizedAlternates('/voltrisoptimizer', locale)};
 }
 
 export default function OptimizerPage() {

@@ -14,8 +14,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/dashboard/',
-          '/restricted-area-admin/',
+          '/*/dashboard/',
+          '/*/restricted-area-admin/',
+          '/*/login',
+          
           '/api/',
           '/auth/',
           '/admin/',
@@ -41,8 +43,10 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Googlebot',
         allow: '/',
         disallow: [
-          '/dashboard/',
-          '/restricted-area-admin/',
+          '/*/dashboard/',
+          '/*/restricted-area-admin/',
+          '/*/login',
+          
           '/admin/',
           '/api/',
           '/auth/',

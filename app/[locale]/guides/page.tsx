@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getLocalizedAlternates } from '@/lib/seo';
 import GuiasClient from './GuiasClient';
 import { getAllGuides } from '@/lib/guides';
 
@@ -15,21 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     url: 'https://www.voltrisoptimizer.com/guides',
     type: 'website',
   },
-        alternates: {
-            canonical: `https://www.voltrisoptimizer.com/${locale}/guides`,
-            languages: {
-                'en': `/en/guides`,
-                'es': `/es/guides`,
-                'pt-br': `/pt-br/guides`,
-                'de': `/de/guides`,
-                'fr': `/fr/guides`,
-                'it': `/it/guides`,
-                'ja': `/ja/guides`,
-                'ko': `/ko/guides`,
-                'ar': `/ar/guides`
-            }
-        }
-    };
+        ...getLocalizedAlternates('/guides', locale)};
 }
 
 export default function Guias() {

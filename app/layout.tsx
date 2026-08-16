@@ -68,24 +68,7 @@ export default async function RootLayout({
           }}
         />
 
-        <JsonLd
-          type="SoftwareApplication"
-          data={{
-            name: "Voltris Optimizer",
-            operatingSystem: "Windows 10, Windows 11",
-            applicationCategory: "UtilitiesApplication",
-            offers: {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD"
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "ratingCount": "1250"
-            }
-          }}
-        />
+        
       </head>
       <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" suppressHydrationWarning>
         {children}

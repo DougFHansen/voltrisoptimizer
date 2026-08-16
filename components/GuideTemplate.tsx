@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getLocalizedAlternates } from '@/lib/seo';
 import { GuideTemplateClient, GuideTemplateProps, ContentSection, RelatedGuide, SummaryTableItem } from './GuideTemplateClient';
 
 // Re-export types if needed by consumers (though usually page.tsx doesn't need them explicitely)
@@ -12,22 +13,14 @@ const BASE_URL = 'https://www.voltrisoptimizer.com';
  */
 export function createGuideMetadata(slug: string, title: string, description: string, keywords: string[], locale: string = 'en'): Metadata {
   const canonical = `${BASE_URL}/${locale}/guides/${slug}`;
-  const locales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
   
-  const languages: Record<string, string> = {};
-  locales.forEach(l => {
-    languages[l] = `/${l}/guides/${slug}`;
-  });
 
   return {
     title: `${title} | VOLTRIS`,
     description,
     keywords,
     metadataBase: new URL(BASE_URL),
-    alternates: {
-      canonical: `/${locale}/guides/${slug}`,
-      languages: languages
-    },
+    ...getLocalizedAlternates(`/guides/${slug}`, locale),
     openGraph: {
       title: `${title} | VOLTRIS`,
       description,
@@ -53,5 +46,29 @@ export function createGuideMetadata(slug: string, title: string, description: st
  * Passes all props down to the Client Component which handles the interactive UI.
  */
 export function GuideTemplate(props: GuideTemplateProps) {
-  return <GuideTemplateClient {...props} />;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": props.title,
+    "description": props.description,
+    "author": {
+      "@type": "Organization",
+      "name": "Voltris Experts"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Voltris",
+      "logo": { "@type": "ImageObject", "url": "https://www.voltrisoptimizer.com/logo.png" }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <GuideTemplateClient {...props} />
+    </>
+  );
 }
