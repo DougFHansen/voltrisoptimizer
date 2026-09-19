@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-mecanico-vs-membrana-qual-o-melhor', title, description, keywords, locale);
+    return createGuideMetadata('mechanical-vs-membrane-keyboard', title, description, keywords, locale);
 }
 
 export default function KeyboardComparisonGuide() {

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pcsx2-otimizacao-4k-widescreen-texturas-guia', title, description, keywords, locale);
+    return createGuideMetadata('pcsx2-4k-widescreen-textures-optimization', title, description, keywords, locale);
 }
 
 export default function PCSX2Guide() {

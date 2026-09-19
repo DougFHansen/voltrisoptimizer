@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('melhor-dns-jogos-2026', title, description, keywords, locale);
+    return createGuideMetadata('best-dns-for-gaming-2026', title, description, keywords, locale);
 }
 
 export default function DNSGuide() {

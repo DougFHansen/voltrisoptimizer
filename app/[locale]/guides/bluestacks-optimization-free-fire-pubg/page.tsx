@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('bluestacks-otimizacao-free-fire-pubg', title, description, keywords, locale);
+    return createGuideMetadata('bluestacks-optimization-free-fire-pubg', title, description, keywords, locale);
 }
 
 export default function GameConfigGuide() {

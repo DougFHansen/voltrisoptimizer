@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('cadeira-gamer-vs-escritorio-ergonomia', title, description, keywords, locale);
+    return createGuideMetadata('gaming-chair-vs-office-chair-ergonomics', title, description, keywords, locale);
 }
 
 export default function ChairComparisonGuide() {

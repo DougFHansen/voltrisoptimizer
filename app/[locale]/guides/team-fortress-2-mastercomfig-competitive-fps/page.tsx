@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('team-fortress-2-mastercomfig-fps-competitivo', title, description, keywords, locale);
+    return createGuideMetadata('team-fortress-2-mastercomfig-competitive-fps', title, description, keywords, locale);
 }
 
 export default function TF2Guide() {

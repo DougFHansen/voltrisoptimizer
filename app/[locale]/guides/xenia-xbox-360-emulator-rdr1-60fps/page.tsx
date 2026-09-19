@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xenia-emulador-xbox-360-red-dead-redemption-60fps', title, description, keywords, locale);
+    return createGuideMetadata('xenia-xbox-360-emulator-rdr1-60fps', title, description, keywords, locale);
 }
 
 export default function XeniaGuide() {

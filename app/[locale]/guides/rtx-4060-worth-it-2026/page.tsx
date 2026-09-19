@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rtx-4060-vale-a-pena-2026', title, description, keywords, locale);
+    return createGuideMetadata('rtx-4060-worth-it-2026', title, description, keywords, locale);
 }
 
 export default function RTX4060ReviewGuide() {

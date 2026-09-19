@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overwatch-2-otimizacao-fps-input-lag-reduce-buffering', title, description, keywords, locale);
+    return createGuideMetadata('overwatch-2-fps-input-lag-optimization', title, description, keywords, locale);
 }
 
 export default function OW2Guide() {

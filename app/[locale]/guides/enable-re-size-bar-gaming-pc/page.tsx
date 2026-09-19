@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('re-size-bar-ativar-pc-gamer', title, description, keywords, locale);
+    return createGuideMetadata('enable-re-size-bar-gaming-pc', title, description, keywords, locale);
 }
 
 export default function ResizableBarGuide() {

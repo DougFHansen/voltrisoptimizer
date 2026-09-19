@@ -138,7 +138,7 @@ export default function InternationalHomePage() {
   return (
     <div className="min-h-screen bg-[#050510] relative overflow-x-hidden pt-16 md:pt-20">
       {/* Global Ambient Background Effects (Noise Overlay on Top) */}
-      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+      <div className="fixed inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
 
       {/* Background Gradients (Fixed Behind) */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">

@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('notebook-gamer-bateria-otimizacao', title, description, keywords, locale);
+    return createGuideMetadata('gaming-laptop-battery-optimization', title, description, keywords, locale);
 }
 
 export default function BatteryGuide() {

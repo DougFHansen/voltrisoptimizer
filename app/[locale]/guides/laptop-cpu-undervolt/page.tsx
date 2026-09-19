@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('undervolt-cpu-notebook', title, description, keywords, locale);
+    return createGuideMetadata('laptop-cpu-undervolt', title, description, keywords, locale);
 }
 
 export default function UndervoltGuide() {

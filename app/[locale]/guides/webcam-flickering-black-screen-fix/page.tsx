@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('webcam-piscando-tela-preta-fix', title, description, keywords, locale);
+    return createGuideMetadata('webcam-flickering-black-screen-fix', title, description, keywords, locale);
 }
 
 export default function WebcamFixGuide() {

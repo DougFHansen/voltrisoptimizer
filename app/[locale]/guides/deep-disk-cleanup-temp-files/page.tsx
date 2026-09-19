@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('limpeza-disco-profunda-arquivos-temporarios', title, description, keywords, locale);
+    return createGuideMetadata('deep-disk-cleanup-temp-files', title, description, keywords, locale);
 }
 
 export default function DiskCleanupGuide() {

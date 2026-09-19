@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('som-espacial-windows-configurar', title, description, keywords, locale);
+    return createGuideMetadata('configure-windows-spatial-sound', title, description, keywords, locale);
 }
 
 export default function SpatialAudioGuide() {

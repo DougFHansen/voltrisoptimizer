@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('wifi-desconectando-sozinho-windows', title, description, keywords, locale);
+    return createGuideMetadata('wifi-disconnecting-randomly-windows-fix', title, description, keywords, locale);
 }
 
 export default function WiFiFixGuide() {

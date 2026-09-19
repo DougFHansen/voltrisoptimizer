@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('melhores-drivers-nvidia-antigos', title, description, keywords, locale);
+    return createGuideMetadata('best-older-nvidia-drivers-performance', title, description, keywords, locale);
 }
 
 export default function NvidiaRollbackGuide() {

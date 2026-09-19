@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gta-iv-fix-windows-10-11', title, description, keywords, locale);
+    return createGuideMetadata('gta-iv-windows-10-11-fix', title, description, keywords, locale);
 }
 
 export default function GTAIVFixGuide() {

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('montagem-pc-gamer-erros-comuns', title, description, keywords, locale);
+    return createGuideMetadata('building-gaming-pc-common-mistakes', title, description, keywords, locale);
 }
 
 export default function PCMisteryGuide() {

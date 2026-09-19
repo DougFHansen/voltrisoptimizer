@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('guia-compra-monitores', title, description, keywords, locale);
+    return createGuideMetadata('monitor-buying-guide', title, description, keywords, locale);
 }
 
 export default function MonitorBuyingGuide() {

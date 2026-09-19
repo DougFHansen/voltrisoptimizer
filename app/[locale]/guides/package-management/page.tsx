@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gestao-pacotes', title, description, keywords, locale);
+    return createGuideMetadata('package-management', title, description, keywords, locale);
 }
 
 export default function PackageManagementGuide() {

@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rpcs3-otimizacao-configuracao-60fps-patches-guia', title, description, keywords, locale);
+    return createGuideMetadata('rpcs3-60fps-patches-optimization-guide', title, description, keywords, locale);
 }
 
 export default function RPCS3Guide() {

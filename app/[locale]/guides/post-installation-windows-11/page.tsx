@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pos-instalacao-windows-11', title, description, keywords, locale);
+    return createGuideMetadata('post-installation-windows-11', title, description, keywords, locale);
 }
 
 export default function PostInstallationGuide() {

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('instalar-apps-android-windows-11', title, description, keywords, locale);
+    return createGuideMetadata('install-android-apps-windows-11', title, description, keywords, locale);
 }
 
 export default function AndroidOnWindowsGuide() {

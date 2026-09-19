@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('modo-de-jogo-windows-atikvar-ou-nao', title, description, keywords, locale);
+    return createGuideMetadata('windows-game-mode-on-or-off', title, description, keywords, locale);
 }
 
 export default function GameModeGuide() {

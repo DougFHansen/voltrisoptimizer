@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('reshade-guia-instalacao-ray-tracing-rtgi-filtros', title, description, keywords, locale);
+    return createGuideMetadata('reshade-installation-guide-rtgi-filters', title, description, keywords, locale);
 }
 
 export default function ReShadeGuide() {

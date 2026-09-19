@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('euro-truck-simulator-2-otimizacao', title, description, keywords, locale);
+    return createGuideMetadata('euro-truck-simulator-2-optimization', title, description, keywords, locale);
 }
 
 export default function ETS2OptimizationGuide() {

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('ssd-nvme-vs-sata-jogos', title, description, keywords, locale);
+    return createGuideMetadata('nvme-vs-sata-ssd-for-gaming', title, description, keywords, locale);
 }
 
 export default function SSDTypeGuide() {

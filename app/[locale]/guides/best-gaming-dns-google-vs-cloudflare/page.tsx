@@ -16,7 +16,7 @@ const keywords = ['best dns for gaming 2026', 'dns google vs cloudflare', 'does 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('melhor-dns-para-jogos-google-vs-cloudflare', title, description, keywords, locale);
+    return createGuideMetadata('best-gaming-dns-google-vs-cloudflare', title, description, keywords, locale);
 }
 
 export default function DNSGuide() {

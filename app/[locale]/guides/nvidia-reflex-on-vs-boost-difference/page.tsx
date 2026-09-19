@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('nvidia-refelx-on-vs-boost-diferenca', title, description, keywords, locale);
+    return createGuideMetadata('nvidia-reflex-on-vs-boost-difference', title, description, keywords, locale);
 }
 
 export default function NvidiaReflexGuide() {

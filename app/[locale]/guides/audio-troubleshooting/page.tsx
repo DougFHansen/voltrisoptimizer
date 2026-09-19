@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('solucao-problemas-audio', title, description, keywords, locale);
+    return createGuideMetadata('audio-troubleshooting', title, description, keywords, locale);
 }
 
 export default function AudioTroubleshootingGuide() {

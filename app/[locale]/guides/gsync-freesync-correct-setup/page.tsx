@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('g-sync-freesync-configuracao-correta', title, description, keywords, locale);
+    return createGuideMetadata('gsync-freesync-correct-setup', title, description, keywords, locale);
 }
 
 export default function SyncGuide() {

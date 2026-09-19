@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gabinete-gamer-airflow-importancia', title, description, keywords, locale);
+    return createGuideMetadata('gaming-case-airflow-importance', title, description, keywords, locale);
 }
 
 export default function AirflowGuide() {

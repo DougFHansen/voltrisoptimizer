@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('protecao-dados-privacidade', title, description, keywords, locale);
+    return createGuideMetadata('data-protection-privacy', title, description, keywords, locale);
 }
 
 export default function PrivacyProtectionGuide() {

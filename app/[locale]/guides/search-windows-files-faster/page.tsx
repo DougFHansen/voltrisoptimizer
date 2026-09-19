@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pesquisar-arquivos-windows-mais-rapido', title, description, keywords, locale);
+    return createGuideMetadata('search-windows-files-faster', title, description, keywords, locale);
 }
 
 export default function FileSearchGuide() {

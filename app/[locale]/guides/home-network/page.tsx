@@ -16,7 +16,7 @@ const keywords = ["home network", "router", "wi-fi", "extender", "vlan", "networ
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rede-domestica', title, description, keywords, locale);
+    return createGuideMetadata('home-network', title, description, keywords, locale);
 }
 
 export default function RededomesticaGuide() {

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('recuperacao-dados-hd-corrompido', title, description, keywords, locale);
+    return createGuideMetadata('corrupted-hdd-data-recovery', title, description, keywords, locale);
 }
 
 export default function DataRecoveryGuide() {

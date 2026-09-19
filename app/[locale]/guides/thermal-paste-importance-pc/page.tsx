@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('importancia-pasta-termica-pc', title, description, keywords, locale);
+    return createGuideMetadata('thermal-paste-importance-pc', title, description, keywords, locale);
 }
 
 export default function ThermalPasteGuide() {

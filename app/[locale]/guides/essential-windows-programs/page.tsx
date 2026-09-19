@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('programas-essenciais-windows', title, description, keywords, locale);
+    return createGuideMetadata('essential-windows-programs', title, description, keywords, locale);
 }
 
 export default function SoftwareGuide() {

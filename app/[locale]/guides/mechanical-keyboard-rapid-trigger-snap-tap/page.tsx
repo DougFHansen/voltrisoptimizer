@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-mecanico-rapid-trigger-snap-tap', title, description, keywords, locale);
+    return createGuideMetadata('mechanical-keyboard-rapid-trigger-snap-tap', title, description, keywords, locale);
 }
 
 export default function KeyboardGuide() {

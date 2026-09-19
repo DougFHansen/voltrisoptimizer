@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('roblox-fps-unlocker-guia', title, description, keywords, locale);
+    return createGuideMetadata('roblox-fps-unlocker-guide', title, description, keywords, locale);
 }
 
 export default function RobloxGuide() {

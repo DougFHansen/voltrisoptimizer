@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('formatacao-windows', title, description, keywords, locale);
+    return createGuideMetadata('windows-formatting', title, description, keywords, locale);
 }
 
 export default function FormatWindowsGuide() {

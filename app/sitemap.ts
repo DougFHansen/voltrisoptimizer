@@ -57,6 +57,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const changeFreq = priority >= 0.9 ? 'daily' : (priority >= 0.7 ? 'weekly' : 'monthly');
 
+    // Rotas servidas SEM prefixo de locale (páginas fixas globais). Todas as
+    // variantes sob /{locale}/... dessas rotas retornam 404 — nunca multiplicar
+    // por locale, nem emitir versão localizada.
+    const fixedNonLocalized = ['/international', '/regions', '/services-integration'];
+    const isFixedRoute = fixedNonLocalized.some(r => routeWithoutLocale === r || routeWithoutLocale.startsWith(r + '/'));
+
+    if (isFixedRoute) {
+      return {
+        url: `${domain}${routeWithoutLocale}`,
+        lastModified: new Date(entry.lastModified),
+        changeFrequency: changeFreq as 'daily' | 'weekly' | 'monthly',
+        priority: priority,
+      };
+    }
+
     // Multiplicar essa rota por todos os idiomas para indexação massiva global
     return supportedLocales.map(locale => {
       const localeUrlPath = routeWithoutLocale === '/' ? `/${locale}` : `/${locale}${routeWithoutLocale}`;
@@ -70,16 +85,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 2. Technical SEO - Regional Coverage (Dynamic Params multiplied by Locales)
+  // 2. Technical SEO - Regional Coverage. As páginas de região são servidas
+  // SEM prefixo de locale (route group /app/regions). Todas as variantes sob
+  // /{locale}/regions/... retornam 404 — emitir a URL real única por país/cidade.
   const regionalRoutes = regionsData ? regionsData.flatMap(country => 
-    country.cities.flatMap(city => 
-      supportedLocales.map(locale => ({
-        url: `${domain}/${locale}/regions/${country.slug}/${city.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
-      }))
-    )
+    country.cities.map(city => ({
+      url: `${domain}/regions/${country.slug}/${city.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }))
   ) : [];
 
   // Combine and deduplicate if necessary

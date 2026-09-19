@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-ips-vs-va-vs-tn-jogos', title, description, keywords, locale);
+    return createGuideMetadata('ips-vs-va-vs-tn-monitor-gaming', title, description, keywords, locale);
 }
 
 export default function MonitorPanelGuide() {

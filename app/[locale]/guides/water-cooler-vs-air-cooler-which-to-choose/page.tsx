@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('water-cooler-vs-air-cooler-qual-escolher', title, description, keywords, locale);
+    return createGuideMetadata('water-cooler-vs-air-cooler-which-to-choose', title, description, keywords, locale);
 }
 
 export default function CoolingComparisonGuide() {

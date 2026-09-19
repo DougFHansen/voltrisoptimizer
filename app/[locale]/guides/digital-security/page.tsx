@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('seguranca-digital', title, description, keywords, locale);
+    return createGuideMetadata('digital-security', title, description, keywords, locale);
 }
 
 export default function DigitalSecurityGuide() {

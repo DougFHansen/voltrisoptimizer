@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('lossless-scaling-frame-generation-fsr-guia', title, description, keywords, locale);
+    return createGuideMetadata('lossless-scaling-frame-generation-fsr-guide', title, description, keywords, locale);
 }
 
 export default function LSGuide() {

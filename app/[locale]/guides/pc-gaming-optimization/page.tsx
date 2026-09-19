@@ -16,7 +16,7 @@ const keywords = ["increase fps", "optimize windows for games", "input lag fix",
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('otimizacao-jogos-pc', title, description, keywords, locale);
+    return createGuideMetadata('pc-gaming-optimization', title, description, keywords, locale);
 }
 
 export default function GuidePage() {

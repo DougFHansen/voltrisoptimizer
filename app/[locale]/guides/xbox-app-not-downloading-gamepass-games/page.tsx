@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xbox-app-nao-baixa-jogos-gamepass', title, description, keywords, locale);
+    return createGuideMetadata('xbox-app-not-downloading-gamepass-games', title, description, keywords, locale);
 }
 
 export default function XboxAppFixGuide() {

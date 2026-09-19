@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('exitlag-vale-a-pena-ou-enganacao', title, description, keywords, locale);
+    return createGuideMetadata('exitlag-worth-it-or-scam', title, description, keywords, locale);
 }
 
 export default function ExitLagReviewGuide() {

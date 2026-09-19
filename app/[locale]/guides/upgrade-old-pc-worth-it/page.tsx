@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('upgrade-pc-antigo-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('upgrade-old-pc-worth-it', title, description, keywords, locale);
 }
 
 export default function OldPCUpgradeGuide() {

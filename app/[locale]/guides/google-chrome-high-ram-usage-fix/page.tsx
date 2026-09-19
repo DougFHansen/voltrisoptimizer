@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('google-chrome-consumo-ram-fix', title, description, keywords, locale);
+    return createGuideMetadata('google-chrome-high-ram-usage-fix', title, description, keywords, locale);
 }
 
 export default function ChromeGuide() {

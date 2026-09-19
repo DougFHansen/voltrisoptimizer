@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('termperatura-pc-fan-control-curva', title, description, keywords, locale);
+    return createGuideMetadata('pc-temperature-fan-control-curve', title, description, keywords, locale);
 }
 
 export default function TempGuide() {

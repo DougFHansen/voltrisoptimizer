@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vpn-vale-a-pena-jogos', title, description, keywords, locale);
+    return createGuideMetadata('vpn-worth-it-for-gaming', title, description, keywords, locale);
 }
 
 export default function GamingVPNGuide() {

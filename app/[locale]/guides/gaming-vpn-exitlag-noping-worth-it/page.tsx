@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vpn-jogos-exitlag-noping-vale-a-pena', title, description, keywords, locale);
+    return createGuideMetadata('gaming-vpn-exitlag-noping-worth-it', title, description, keywords, locale);
 }
 
 export default function VPNGuide() {

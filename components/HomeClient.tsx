@@ -226,7 +226,7 @@ export default function HomeClient() {
             />
             <main className="relative">
                 {/* Global Ambient Background Effects (Noise Overlay on Top) */}
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+                <div className="fixed inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
 
                 {/* Background Gradients (Fixed Behind) */}
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -308,7 +308,7 @@ export default function HomeClient() {
 
                 <AnimatedSection direction="up" delay={0.2}>
                     <section id="about" className="relative py-20 lg:py-32 bg-[#050510] overflow-hidden">
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
                         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#31A8FF]/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
                         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#8B31FF]/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
 
@@ -383,7 +383,7 @@ export default function HomeClient() {
                                         </div>
 
                                         <div className="p-6 font-mono text-xs sm:text-sm text-slate-300 space-y-4 flex-1 overflow-hidden relative">
-                                            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+                                            <div className="absolute inset-0 bg-grainy opacity-5 pointer-events-none"></div>
 
                                             <motion.div
                                                 initial={{ opacity: 0, x: -10 }}
@@ -447,7 +447,7 @@ export default function HomeClient() {
 
                 <AnimatedSection direction="up" delay={0.2}>
                     <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden bg-[#050510] relative">
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
                         <div className="max-w-6xl mx-auto relative z-10">
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
                                 <div className="text-center">
@@ -601,7 +601,7 @@ export default function HomeClient() {
                 </AnimatedSection>
 
                 <section id="optimizer" className="relative py-20 lg:py-32 bg-[#050510] overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
                     <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
                     <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
 
@@ -786,7 +786,7 @@ export default function HomeClient() {
 
                 <AnimatedSection direction="up" delay={0.2}>
                     <section className="relative py-20 lg:py-32 bg-[#050510] overflow-hidden">
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#31A8FF]/5 blur-[120px] rounded-full pointer-events-none"></div>
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

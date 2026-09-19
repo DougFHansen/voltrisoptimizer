@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('roblox-fix-erro-conexao', title, description, keywords, locale);
+    return createGuideMetadata('roblox-connection-error-fix', title, description, keywords, locale);
 }
 
 export default function RobloxConnectionFixGuide() {

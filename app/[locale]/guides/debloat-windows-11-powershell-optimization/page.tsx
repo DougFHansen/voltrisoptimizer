@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('debloat-windows-11-otimizacao-powershell', title, description, keywords, locale);
+    return createGuideMetadata('debloat-windows-11-powershell-optimization', title, description, keywords, locale);
 }
 
 export default function DebloatGuide() {

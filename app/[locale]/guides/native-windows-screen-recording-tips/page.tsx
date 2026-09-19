@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gravação-tela-windows-nativa-dicas', title, description, keywords, locale);
+    return createGuideMetadata('native-windows-screen-recording-tips', title, description, keywords, locale);
 }
 
 export default function NativeRecordingGuide() {

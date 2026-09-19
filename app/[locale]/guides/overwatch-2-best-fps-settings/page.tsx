@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overwatch-2-melhores-configuracoes-fps', title, description, keywords, locale);
+    return createGuideMetadata('overwatch-2-best-fps-settings', title, description, keywords, locale);
 }
 
 export default function OverwatchGuide() {

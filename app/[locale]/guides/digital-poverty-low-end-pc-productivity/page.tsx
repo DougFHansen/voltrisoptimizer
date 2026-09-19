@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pobreza-digital-pc-fraco-produtividade', title, description, keywords, locale);
+    return createGuideMetadata('digital-poverty-low-end-pc-productivity', title, description, keywords, locale);
 }
 
 export default function DigitalPovertyGuide() {

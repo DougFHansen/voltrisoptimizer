@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rainbow-six-siege-vulkan-fps-configuracao-competitiva', title, description, keywords, locale);
+    return createGuideMetadata('rainbow-six-siege-vulkan-competitive-settings', title, description, keywords, locale);
 }
 
 export default function R6Guide() {

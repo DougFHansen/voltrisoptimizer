@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('saude-bateria-notebook', title, description, keywords, locale);
+    return createGuideMetadata('laptop-battery-health', title, description, keywords, locale);
 }
 
 export default function BatteryHealthGuide() {

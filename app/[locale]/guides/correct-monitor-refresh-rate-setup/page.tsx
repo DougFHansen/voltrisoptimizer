@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-hz-configuracao-correta', title, description, keywords, locale);
+    return createGuideMetadata('correct-monitor-refresh-rate-setup', title, description, keywords, locale);
 }
 
 export default function MonitorGuide() {

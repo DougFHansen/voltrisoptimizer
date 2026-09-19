@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('hdmi-2.1-vs-displayport-1.4-diferencas', title, description, keywords, locale);
+    return createGuideMetadata('hdmi-21-vs-displayport-14-differences', title, description, keywords, locale);
 }
 
 export default function CableComparisonGuide() {

@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('o-que-sao-ai-agents-guia-completo', title, description, keywords, locale);
+    return createGuideMetadata('what-are-ai-agents-complete-guide', title, description, keywords, locale);
 }
 
 export default function AIAgentsGuide() {

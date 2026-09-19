@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('minecraft-lento-como-ganhar-fps', title, description, keywords, locale);
+    return createGuideMetadata('slow-minecraft-how-to-boost-fps', title, description, keywords, locale);
 }
 
 export default function MinecraftSlowFixGuide() {

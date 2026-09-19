@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('perifericos-gamer-vale-a-pena-marcas', title, description, keywords, locale);
+    return createGuideMetadata('gaming-peripherals-worth-it-brands', title, description, keywords, locale);
 }
 
 export default function GamingBrandsGuide() {

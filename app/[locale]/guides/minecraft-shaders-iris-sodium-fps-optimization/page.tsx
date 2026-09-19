@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('minecraft-shaders-iris-sodium-otimizacao-fps', title, description, keywords, locale);
+    return createGuideMetadata('minecraft-shaders-iris-sodium-fps-optimization', title, description, keywords, locale);
 }
 
 export default function MinecraftGuide() {

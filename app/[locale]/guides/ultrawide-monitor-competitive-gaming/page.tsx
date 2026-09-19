@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('monitor-ultrawide-jogos-competitivos', title, description, keywords, locale);
+    return createGuideMetadata('ultrawide-monitor-competitive-gaming', title, description, keywords, locale);
 }
 
 export default function UltrawideGuide() {

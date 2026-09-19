@@ -16,7 +16,7 @@ const keywords = ['streamlabs vs obs studio', 'which streaming software is light
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('streamlabs-vs-obs-qual-usar', title, description, keywords, locale);
+    return createGuideMetadata('streamlabs-vs-obs-which-to-use', title, description, keywords, locale);
 }
 
 export default function OBSvsSLBSGuide() {

@@ -29,7 +29,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rede-corporativa', title, description, keywords, locale);
+    return createGuideMetadata('corporate-network', title, description, keywords, locale);
 }
 
 export default function CorporateNetworkGuide() {

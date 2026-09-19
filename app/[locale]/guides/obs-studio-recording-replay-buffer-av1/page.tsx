@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('obs-studio-gravacao-replay-buffer-av1', title, description, keywords, locale);
+    return createGuideMetadata('obs-studio-recording-replay-buffer-av1', title, description, keywords, locale);
 }
 
 export default function OBSGuide() {

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('lineage-2-otimizar-pvp-fps', title, description, keywords, locale);
+    return createGuideMetadata('lineage-2-pvp-fps-optimization', title, description, keywords, locale);
 }
 
 export default function L2OtimizacaoGuide() {

@@ -23,7 +23,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vpn-configuracao', title, description, keywords, locale);
+    return createGuideMetadata('vpn-configuration', title, description, keywords, locale);
 }
 
 export default function VpnConfiguracaoGuide() {

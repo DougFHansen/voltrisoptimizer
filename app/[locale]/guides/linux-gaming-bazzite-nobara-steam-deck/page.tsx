@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('linux-gaming-bazzite-nobara-steam-deck-pc', title, description, keywords, locale);
+    return createGuideMetadata('linux-gaming-bazzite-nobara-steam-deck', title, description, keywords, locale);
 }
 
 export default function LinuxGuide() {

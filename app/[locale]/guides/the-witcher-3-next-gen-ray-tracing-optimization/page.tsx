@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('the-witcher-3-next-gen-otimizacao-ray-tracing', title, description, keywords, locale);
+    return createGuideMetadata('the-witcher-3-next-gen-ray-tracing-optimization', title, description, keywords, locale);
 }
 
 export default function Witcher3Guide() {

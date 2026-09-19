@@ -39,7 +39,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
       {/* BACKGROUND LAYER - Ultra-Premium Ambient Decor */}
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         {/* Grain Noise Overlay */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.08] mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-grainy opacity-[0.08] mix-blend-overlay"></div>
         
         {/* Dynamic Bloom Orbs */}
         <motion.div 

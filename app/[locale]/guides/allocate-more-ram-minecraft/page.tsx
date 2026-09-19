@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('minecraft-alocar-mais-ram', title, description, keywords, locale);
+    return createGuideMetadata('allocate-more-ram-minecraft', title, description, keywords, locale);
 }
 
 export default function MinecraftRAMGuide() {

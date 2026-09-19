@@ -24,7 +24,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('fans-fluxo-de-ar-pc-gamer', title, description, keywords, locale);
+    return createGuideMetadata('pc-case-airflow-fans-setup', title, description, keywords, locale);
 }
 
 export default function FansGuide() {

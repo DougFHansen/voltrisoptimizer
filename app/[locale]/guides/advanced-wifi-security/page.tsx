@@ -16,7 +16,7 @@ const keywords = ["wifi security","wpa2 vs wpa3","secure router configuration","
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('seguranca-wifi-avancada', title, description, keywords, locale);
+    return createGuideMetadata('advanced-wifi-security', title, description, keywords, locale);
 }
 
 export default function GuidePage() {

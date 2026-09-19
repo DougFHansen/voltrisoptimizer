@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('winrar-vs-7zip-qual-melhor', title, description, keywords, locale);
+    return createGuideMetadata('winrar-vs-7zip-which-is-better', title, description, keywords, locale);
 }
 
 export default function CompressorComparisonGuide() {

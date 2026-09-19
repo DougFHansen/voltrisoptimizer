@@ -10,7 +10,7 @@ export interface GuideMetadata {
     time: string;
 }
 
-const guidesDir = path.join(process.cwd(), 'app/guides');
+const guidesDir = path.join(process.cwd(), 'app/[locale]/guides');
 
 /**
  * Reads all guide directories and extracts the metadata exported in page.tsx.

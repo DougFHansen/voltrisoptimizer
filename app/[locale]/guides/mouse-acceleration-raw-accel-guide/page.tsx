@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mouse-acceleration-raw-accel-guia', title, description, keywords, locale);
+    return createGuideMetadata('mouse-acceleration-raw-accel-guide', title, description, keywords, locale);
 }
 
 export default function RawAccelGuide() {

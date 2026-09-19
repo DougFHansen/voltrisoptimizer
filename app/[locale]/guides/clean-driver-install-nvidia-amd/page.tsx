@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('instalacao-limpa-drivers-nvidia-amd', title, description, keywords, locale);
+    return createGuideMetadata('clean-driver-install-nvidia-amd', title, description, keywords, locale);
 }
 
 export default function CleanDriverInstallGuide() {

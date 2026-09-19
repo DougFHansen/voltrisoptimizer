@@ -25,7 +25,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('ssd-vs-hdd-guia', title, description, keywords, locale);
+    return createGuideMetadata('ssd-vs-hdd-guide', title, description, keywords, locale);
 }
 
 export default function SSDvsHDDGuide() {

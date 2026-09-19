@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('rog-ally-legion-go-otimizacao-windows-tdp-guia', title, description, keywords, locale);
+    return createGuideMetadata('rog-ally-legion-go-windows-tdp-optimization', title, description, keywords, locale);
 }
 
 export default function RogAllyGuide() {

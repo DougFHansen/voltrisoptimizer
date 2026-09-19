@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('pasta-windows-winsxs-gigante-como-limpar', title, description, keywords, locale);
+    return createGuideMetadata('huge-windows-winsxs-folder-how-to-clean', title, description, keywords, locale);
 }
 
 export default function WinSxSCleanGuide() {

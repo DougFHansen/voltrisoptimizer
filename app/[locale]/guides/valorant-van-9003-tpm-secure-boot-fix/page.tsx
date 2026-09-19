@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('valorant-van-9003-secure-boot-tpm-fix', title, description, keywords, locale);
+    return createGuideMetadata('valorant-van-9003-tpm-secure-boot-fix', title, description, keywords, locale);
 }
 
 export default function Van9003Guide() {

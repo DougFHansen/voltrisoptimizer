@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('xbox-game-bar-desativar-fps-drop', title, description, keywords, locale);
+    return createGuideMetadata('disable-xbox-game-bar-fps-drop-fix', title, description, keywords, locale);
 }
 
 export default function XboxGuide() {

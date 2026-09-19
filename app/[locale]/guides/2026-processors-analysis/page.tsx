@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('processadores-2026-analise', title, description, keywords, locale);
+    return createGuideMetadata('2026-processors-analysis', title, description, keywords, locale);
 }
 
 export default function CPUAnalysisGuide() {

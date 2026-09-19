@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('vcruntime140-dll-nao-encontrado', title, description, keywords, locale);
+    return createGuideMetadata('vcruntime140-dll-not-found-fix', title, description, keywords, locale);
 }
 
 export default function VCRuntimeFixGuide() {

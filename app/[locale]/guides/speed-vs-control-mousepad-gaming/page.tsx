@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mousepad-speed-vs-control', title, description, keywords, locale);
+    return createGuideMetadata('speed-vs-control-mousepad-gaming', title, description, keywords, locale);
 }
 
 export default function MousepadGuide() {

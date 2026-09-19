@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('mouse-dpi-polling-rate-ideal', title, description, keywords, locale);
+    return createGuideMetadata('ideal-mouse-dpi-polling-rate', title, description, keywords, locale);
 }
 
 export default function MouseGuide() {

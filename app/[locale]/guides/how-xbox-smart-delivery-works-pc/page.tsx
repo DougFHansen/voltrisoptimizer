@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('smart-delivery-xbox-pc-como-funciona', title, description, keywords, locale);
+    return createGuideMetadata('how-xbox-smart-delivery-works-pc', title, description, keywords, locale);
 }
 
 export default function SmartDeliveryGuide() {

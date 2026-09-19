@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('formatacao-limpa-windows-11-rufus-gpt', title, description, keywords, locale);
+    return createGuideMetadata('clean-install-windows-11-rufus-gpt', title, description, keywords, locale);
 }
 
 export default function FormatGuide() {

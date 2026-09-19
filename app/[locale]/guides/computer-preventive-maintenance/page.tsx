@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('manutencao-preventiva-computador', title, description, keywords, locale);
+    return createGuideMetadata('computer-preventive-maintenance', title, description, keywords, locale);
 }
 
 export default function PreventiveMaintenanceGuide() {

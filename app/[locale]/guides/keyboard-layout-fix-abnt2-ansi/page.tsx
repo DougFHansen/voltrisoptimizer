@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('teclado-desconfigurado-abnt2-ansi', title, description, keywords, locale);
+    return createGuideMetadata('keyboard-layout-fix-abnt2-ansi', title, description, keywords, locale);
 }
 
 export default function KeyboardConfigGuide() {

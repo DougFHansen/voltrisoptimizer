@@ -12,15 +12,14 @@ const BASE_URL = 'https://www.voltrisoptimizer.com';
  * slug: path segment of the guide (e.g. 'formatacao-windows') — used for canonical to fix indexation.
  */
 export function createGuideMetadata(slug: string, title: string, description: string, keywords: string[], locale: string = 'en'): Metadata {
-  const canonical = `${BASE_URL}/${locale}/guides/${slug}`;
-  
+  const { canonical, languages } = getLocalizedAlternates(`/guides/${slug}`, locale);
 
   return {
     title: `${title} | VOLTRIS`,
     description,
     keywords,
     metadataBase: new URL(BASE_URL),
-    ...getLocalizedAlternates(`/guides/${slug}`, locale),
+    alternates: { canonical, languages },
     openGraph: {
       title: `${title} | VOLTRIS`,
       description,

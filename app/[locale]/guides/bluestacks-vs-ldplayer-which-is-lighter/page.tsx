@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('bluestacks-vs-ldplayer-qual-mais-leve', title, description, keywords, locale);
+    return createGuideMetadata('bluestacks-vs-ldplayer-which-is-lighter', title, description, keywords, locale);
 }
 
 export default function EmulatorComparisonGuide() {

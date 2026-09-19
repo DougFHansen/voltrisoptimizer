@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('yuzu-ryujinx-otimizacao-zelda-mario-60fps-guia', title, description, keywords, locale);
+    return createGuideMetadata('yuzu-ryujinx-zelda-mario-60fps-optimization', title, description, keywords, locale);
 }
 
 export default function YuzuGuide() {

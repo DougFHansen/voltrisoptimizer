@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('overclock-gpu-msi-afterburner', title, description, keywords, locale);
+    return createGuideMetadata('gpu-overclock-msi-afterburner', title, description, keywords, locale);
 }
 
 export default function OverclockGuide() {

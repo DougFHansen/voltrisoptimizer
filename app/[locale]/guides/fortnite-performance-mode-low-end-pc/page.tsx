@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('fortnite-modo-performance-pc-fraco', title, description, keywords, locale);
+    return createGuideMetadata('fortnite-performance-mode-low-end-pc', title, description, keywords, locale);
 }
 
 export default function FortniteGuide() {

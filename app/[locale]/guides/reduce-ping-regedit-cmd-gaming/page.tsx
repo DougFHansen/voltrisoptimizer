@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('reduzir-ping-regedit-cmd-jogos', title, description, keywords, locale);
+    return createGuideMetadata('reduce-ping-regedit-cmd-gaming', title, description, keywords, locale);
 }
 
 export default function NetworkGuide() {

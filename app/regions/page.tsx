@@ -20,7 +20,7 @@ export default function RegionsIndexPage() {
         <>
             <Header />
             <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30 pt-24 pb-24">
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+                <div className="fixed inset-0 bg-grainy opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
                 <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
 
                 <TechFloatingElements />

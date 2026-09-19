@@ -26,7 +26,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('obs-studio-streaming-twitch-youtube-guia-completo', title, description, keywords, locale);
+    return createGuideMetadata('obs-studio-twitch-youtube-streaming-guide', title, description, keywords, locale);
 }
 
 export default function OBSStreamGuide() {

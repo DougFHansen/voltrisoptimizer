@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('gta-v-otimizar-fps-pc-fraco', title, description, keywords, locale);
+    return createGuideMetadata('gta-v-fps-optimization-low-end-pc', title, description, keywords, locale);
 }
 
 export default function GTAGuide() {

@@ -16,7 +16,7 @@ const keywords = ['how to install drivers windows 11', 'install drivers step by 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('instalacao-drivers', title, description, keywords, locale);
+    return createGuideMetadata('driver-installation', title, description, keywords, locale);
 }
 
 export default function InstalacaoDriversGuide() {

@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('geometry-dash-4gb-patch-lag', title, description, keywords, locale);
+    return createGuideMetadata('geometry-dash-4gb-patch-lag-fix', title, description, keywords, locale);
 }
 
 export default function GeometryDashPatchGuide() {

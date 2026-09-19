@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('microsoft-flight-simulator-otimizacao-cache-lod', title, description, keywords, locale);
+    return createGuideMetadata('msfs-2020-cache-lod-optimization', title, description, keywords, locale);
 }
 
 export default function MSFSGuide() {

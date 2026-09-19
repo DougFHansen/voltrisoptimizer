@@ -94,7 +94,7 @@ function LinkDeviceContent() {
     return (
         <div className="min-h-screen w-full bg-[#050510] relative overflow-hidden flex flex-col items-center justify-center p-4 selection:bg-[#31A8FF]/30">
             {/* Background Decorativo */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-grainy opacity-20 pointer-events-none"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full animate-pulse"></div>
             
             <motion.div 

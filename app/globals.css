@@ -6,6 +6,12 @@
   transition: transform 0.5s ease-in-out;
 }
 
+/* Grain noise overlay (remote SVG; kept out of Tailwind arbitrary values to
+   avoid css-loader html-entity escaping breaking optimized builds) */
+.bg-grainy {
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
 .logo-rotate:hover {
   transform: rotate(180deg);
 }

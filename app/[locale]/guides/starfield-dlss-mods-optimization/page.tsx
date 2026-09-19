@@ -28,7 +28,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('starfield-otimizacao-dlss-mods', title, description, keywords, locale);
+    return createGuideMetadata('starfield-dlss-mods-optimization', title, description, keywords, locale);
 }
 
 export default function StarfieldGuide() {

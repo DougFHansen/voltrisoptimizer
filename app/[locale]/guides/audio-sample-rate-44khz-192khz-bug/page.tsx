@@ -27,7 +27,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('taxa-amostragem-audio-44khz-192khz-bug', title, description, keywords, locale);
+    return createGuideMetadata('audio-sample-rate-44khz-192khz-bug', title, description, keywords, locale);
 }
 
 export default function SampleRateGuide() {

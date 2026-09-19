@@ -22,7 +22,7 @@ const keywords = [
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return createGuideMetadata('red-dead-redemption-2-melhores-configuracoes-rdr2', title, description, keywords, locale);
+    return createGuideMetadata('red-dead-redemption-2-best-settings-rdr2', title, description, keywords, locale);
 }
 
 export default function RDR2OptimizationGuide() {
