@@ -1,7 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const GEMINI_API_KEY = "AIzaSyC6NiLNs8qm-PSrC_if9E6yH_v9hlHgFQI";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY;
+if (!GEMINI_API_KEY) {
+  console.error('ERRO: defina GEMINI_API_KEY no ambiente (ou .env.local). Nao usar chave hardcoded.');
+  process.exit(1);
+}
 const PT_REGEX = /(?<!\/\/.*|>)[a-zá-ü]+\s+(para|com|você|que|mais|como|sobre|atendimento|contato)\s+[a-zá-ü]+/i;
 
 function getFiles(dir, filesList = []) {
