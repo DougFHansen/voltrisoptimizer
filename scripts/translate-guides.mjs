@@ -19,7 +19,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'lib/guides-i18n/data');
 const STRINGS = path.join(ROOT, 'lib/guides-i18n/strings.en.json');
-const MODEL = process.env.GEMINI_MODEL || 'gemini-flash-lite-latest';
+const MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite';
 const LANG_NAMES = {
   es: 'Spanish', 'pt-br': 'Brazilian Portuguese', de: 'German', fr: 'French',
   it: 'Italian', ja: 'Japanese', ko: 'Korean', ar: 'Arabic',
@@ -40,6 +40,7 @@ const getArg = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] :
 const langArg = getArg('--lang') || 'all';
 const LIMIT = parseInt(getArg('--limit') || '0', 10) || Infinity;
 let BATCH = parseInt(getArg('--batch') || '20', 10);
+const CONC = parseInt(getArg('--concurrency') || '3', 10);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Atomic JSON write (temp + rename) so git/build never sees a half-written file.
@@ -140,15 +141,18 @@ async function runLang(lang) {
   if (!todo.length) { console.log(`nada a fazer. (${lang}: ${Object.keys(dict).length} traduzidas)`); return; }
 
   let done = 0, failed = 0, processed = 0;
-  for (let i = 0; i < todo.length; i += BATCH) {
-    const batch = todo.slice(i, i + BATCH);
-    const results = await translateItems(batch, langName);
-    for (const r of results) { if (r.ok) { dict[r.src] = r.tr; done++; } else { failed++; } }
+  const window = BATCH * CONC;
+  for (let i = 0; i < todo.length; i += window) {
+    const slice = todo.slice(i, i + window);
+    const chunks = [];
+    for (let j = 0; j < slice.length; j += BATCH) chunks.push(slice.slice(j, j + BATCH));
+    const groups = await Promise.all(chunks.map((c) => translateItems(c, langName)));
+    for (const results of groups) for (const r of results) { if (r.ok) { dict[r.src] = r.tr; done++; } else { failed++; } }
     saveJson(dictPath, dict);
-    processed += batch.length;
+    processed += slice.length;
     const pct = Math.min(100, Math.round((processed / todo.length) * 100));
     process.stdout.write(`\r  ${String(pct).padStart(3)}% | ok=${done} falhas=${failed} | ${processed}/${todo.length} strings   `);
-    await sleep(700);
+    await sleep(300);
   }
   console.log(`\n  -> ${lang}: ${Object.keys(dict).length}/${sources.length} traduzidas (${failed} falhas de integridade, re-tentaveis).`);
 }
