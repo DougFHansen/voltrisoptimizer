@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'Professional computer maintenance service with full diagnosis, internal cleaning, part replacement, and preventive maintenance.',
     url: 'https://www.voltrisoptimizer.com/manutencao-computador',
     siteName: 'VOLTRIS',
-    images: [{ url: '/remotebanner.jpg', width: 1200, height: 630, alt: 'Professional Computer Maintenance VOLTRIS' }],
+    images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'Professional Computer Maintenance VOLTRIS' }],
     locale: 'en_US',
     type: 'website',
   },
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     card: 'summary_large_image',
     title: 'Professional Computer Maintenance | VOLTRIS',
     description: 'Certified technicians for complete maintenance of your computer.',
-    images: ['/remotebanner.jpg'],
+    images: ['/logo.png'],
     creator: '@voltris',
   },
   

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return {
         title: 'Global Service Areas | VOLTRIS',
         description: 'Find Voltris Optimizer services and technical support in your region.',
-        ...getLocalizedAlternates('/regions', locale)
+        alternates: getLocalizedAlternates('/regions', locale)
     };
 }
 

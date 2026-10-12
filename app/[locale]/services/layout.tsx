@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             url: `https://www.voltrisoptimizer.com/${locale}/services`,
             type: 'website',
         },
-        ...getLocalizedAlternates('/services', locale)
+        alternates: getLocalizedAlternates('/services', locale)
     };
 }
 

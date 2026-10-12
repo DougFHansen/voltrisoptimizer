@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/remotebanner.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "VOLTRIS - Remote Technical Support and Website Creation"
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VOLTRIS - Remote Technical Support and Professional Website Creation",
     description: "Specialized remote technical support for Windows and professional website creation.",
-    images: ["/remotebanner.jpg"]
+    images: ["/logo.png"]
   },
   alternates: {
     canonical: "https://www.voltrisoptimizer.com"

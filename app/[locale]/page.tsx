@@ -56,6 +56,25 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
         'x-default': '/en',
       },
     },
+    openGraph: {
+      title: titles[safeLocale],
+      description: descriptions[safeLocale],
+      url: `https://www.voltrisoptimizer.com/${safeLocale}`,
+      siteName: 'VOLTRIS',
+      type: 'website',
+      images: [{
+        url: 'https://www.voltrisoptimizer.com/logo.png',
+        width: 1200,
+        height: 630,
+        alt: titles[safeLocale],
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[safeLocale],
+      description: descriptions[safeLocale],
+      images: ['https://www.voltrisoptimizer.com/logo.png'],
+    },
   };
 }
 

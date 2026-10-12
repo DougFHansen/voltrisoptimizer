@@ -15,10 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const { locale } = await params;
     return {
         
-  title: {
-    default: "VOLTRIS - PC Optimization, Gaming Performance and Technical Support",
-    template: "%s | VOLTRIS"
-  },
+  title: "VOLTRIS - PC Optimization, Gaming Performance and Technical Support",
   description: "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.",
   metadataBase: new URL('https://www.voltrisoptimizer.com'),
   robots: {

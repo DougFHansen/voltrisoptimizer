@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: { country: string, 
             description: `Get elite online computer maintenance and gaming optimization right in ${city.name}, ${country.name}. 100% remote.`,
             url: `https://www.voltrisoptimizer.com/regions/${country.slug}/${city.slug}`,
             type: 'website',
-            images: [{ url: '/remotebanner.jpg', width: 1200, height: 630 }]
+            images: [{ url: '/logo.png', width: 1200, height: 630 }]
         }
     };
 }

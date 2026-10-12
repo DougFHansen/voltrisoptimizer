@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Specialized remote technical support for IT. 24/7 service worldwide.",
     url: "https://www.voltrisoptimizer.com/it-technician",
     type: "website",
-    images: [{ url: "/remotebanner.jpg", width: 1200, height: 630 }]
+    images: [{ url: "/logo.png", width: 1200, height: 630 }]
   },
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/it-technician`,

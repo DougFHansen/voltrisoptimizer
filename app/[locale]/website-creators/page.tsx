@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import { getLocalizedAlternates } from '@/lib/seo';
 import WebsiteCreatorsClient from './WebsiteCreatorsClient';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -33,11 +34,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   openGraph: {
     title: "Website Creators - Specialized Web Development Team | VOLTRIS",
     description: "Professional and specialized website creators. Experienced team in web development, responsive design, and SEO.",
-    url: "https://www.voltrisoptimizer.com/website-creators",
+    url: `https://www.voltrisoptimizer.com/${locale}/website-creators`,
     type: "website",
     images: [
       {
-        url: "/remotebanner.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "Website Creators - Specialized VOLTRIS Team"
@@ -48,25 +49,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     card: "summary_large_image",
     title: "Website Creators - Specialized Web Development Team | VOLTRIS",
     description: "Professional and specialized website creators. Experienced team in web development.",
-    images: ["/remotebanner.jpg"]
+    images: ["/logo.png"]
   },
-  alternates: {
-    
-  },
-        alternates: {
-            canonical: `https://www.voltrisoptimizer.com/${locale}/website-creators`,
-            languages: {
-                'en': `/en/website-creators`,
-                'es': `/es/website-creators`,
-                'pt-br': `/pt-br/website-creators`,
-                'de': `/de/website-creators`,
-                'fr': `/fr/website-creators`,
-                'it': `/it/website-creators`,
-                'ja': `/ja/website-creators`,
-                'ko': `/ko/website-creators`,
-                'ar': `/ar/website-creators`
-            }
-        }
+  alternates: getLocalizedAlternates('/website-creators', locale)
     };
 }
 

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Worldwide service with immediate remote support. The closest technician to you is one click away.",
     url: "https://www.voltrisoptimizer.com/it-technician-my-region",
     type: "website",
-    images: [{ url: "/remotebanner.jpg", width: 1200, height: 630 }]
+    images: [{ url: "/logo.png", width: 1200, height: 630 }]
   },
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/it-technician-my-region`,

@@ -114,7 +114,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'max-snippet': -1,
     },
   },
-        ...getLocalizedAlternates('/voltrisoptimizer', locale)};
+        alternates: getLocalizedAlternates('/voltrisoptimizer', locale)};
 }
 
 export default function OptimizerPage() {

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: "Solve your computer problems without leaving home with our elite remote technical support.",
     url: "https://www.voltrisoptimizer.com/it-technician-home-visit",
     type: "website",
-    images: [{ url: "/remotebanner.jpg", width: 1200, height: 630 }]
+    images: [{ url: "/logo.png", width: 1200, height: 630 }]
   },
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/it-technician-home-visit`,
