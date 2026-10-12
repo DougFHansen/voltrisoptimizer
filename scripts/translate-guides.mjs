@@ -127,8 +127,9 @@ async function callOpenAICompat(prompt, retries = 6) {
       if (res.status >= 500) { console.log(`\n  HTTP ${res.status} (servidor), retry ${attempt + 1}...`); await sleep(3000 * (attempt + 1)); continue; }
       if (!res.ok) { const j = await res.json().catch(() => ({})); throw new Error(`HTTP ${res.status}: ${(j.error && (j.error.message || j.error.code)) || ''}`.slice(0, 160)); }
       const j = await res.json();
-      const out = j.choices?.[0]?.message?.content;
-      if (!out) throw new Error('resposta vazia');
+      const msg = j.choices?.[0]?.message;
+      const out = msg?.content?.trim() || msg?.reasoning || '';
+      if (!out) throw new Error('resposta vazia (content e reasoning)');
       return out;
     } catch (e) {
       if (attempt === retries) throw e;
@@ -211,5 +212,14 @@ async function runLang(lang) {
 (async () => {
   const langs = langArg === 'all' ? ALL_LANGS : [langArg];
   for (const l of langs) { await runLang(l); }
+  // Summary line for the loop (remaining = total - translated per lang, summed)
+  const srcs = JSON.parse(fs.readFileSync(STRINGS, 'utf8'));
+  let totalResum = 0;
+  for (const l of langs) {
+    const dp = path.join(DATA_DIR, `${l}.json`);
+    const d = fs.existsSync(dp) ? JSON.parse(fs.readFileSync(dp, 'utf8')) : {};
+    totalResum += srcs.filter((s) => !(s in d)).length;
+  }
+  console.log(`TOTAL_RESUM=${totalResum}`);
   console.log('\nCONCLUIDO.');
 })().catch((e) => { console.error('\nFATAL:', e.message); process.exit(1); });
