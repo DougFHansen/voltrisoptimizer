@@ -91,7 +91,7 @@ export default function ProjectZomboidGuide() {
             description: "Improve your connection on MP servers."
         },
         {
-            href: "/guides/como-escolher-processador-2026",
+            href: "/guides/how-to-choose-cpu-for-gaming",
             title: "CPU Upgrade",
             description: "Why high clock speed helps in Project Zomboid."
         }

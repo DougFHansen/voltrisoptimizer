@@ -192,7 +192,7 @@ export default function FormatGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/ddu-limpeza-drivers-video-guia",
+            href: "/guides/ddu-clean-gpu-drivers-guide",
             title: "DDU Guide",
             description: "Ensuring perfectly clean GPU drivers."
         },

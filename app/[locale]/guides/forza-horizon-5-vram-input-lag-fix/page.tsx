@@ -189,7 +189,7 @@ export default function ForzaGuide() {
             description: "Avoids streaming bandwidth errors."
         },
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller (Gamepad)",
             description: "For those without a steering wheel."
         },

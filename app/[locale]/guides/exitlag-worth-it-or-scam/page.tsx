@@ -87,7 +87,7 @@ export default function ExitLagReviewGuide() {
             description: "Physical tips to improve internet."
         },
         {
-            href: "/guides/configuracao-roteador-wifi",
+            href: "/guides/router-configuration-for-gaming",
             title: "Adjust Router",
             description: "Ensure your hardware is not the villain."
         }

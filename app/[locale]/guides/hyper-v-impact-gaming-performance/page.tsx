@@ -88,7 +88,7 @@ export default function HyperVPerformanceGuide() {
             description: "Deep dive into this feature."
         },
         {
-            href: "/guides/atualizar-bios-seguro",
+            href: "/guides/how-to-safely-update-bios",
             title: "BIOS Virtualization",
             description: "How to turn off support in the motherboard."
         },

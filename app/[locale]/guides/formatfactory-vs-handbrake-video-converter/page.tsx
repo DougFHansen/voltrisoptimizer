@@ -80,12 +80,12 @@ export default function VideoConverterGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-usar-obs-studio-gravar-tela",
+            href: "/guides/how-to-record-screen-obs-studio",
             title: "Record Videos",
             description: "Learn how to create content before converting."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "Speed Up Conversion",
             description: "Boost your converter's processing power."
         },

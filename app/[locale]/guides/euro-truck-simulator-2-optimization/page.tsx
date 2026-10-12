@@ -91,7 +91,7 @@ export default function ETS2OptimizationGuide() {
             description: "Vital tip for those using many map mods."
         },
         {
-            href: "/guides/configuracao-roteador-wifi",
+            href: "/guides/router-configuration-for-gaming",
             title: "Stable Convoy",
             description: "Avoid lag in TruckersMP multiplayer mode."
         }

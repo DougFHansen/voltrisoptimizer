@@ -87,7 +87,7 @@ export default function AirflowGuide() {
             description: "Remove dust that blocks the air."
         },
         {
-            href: "/guides/cable-management-organizacao-cabos-pc",
+            href: "/guides/pc-cable-management-organization",
             title: "Cable Management",
             description: "Get cables out of the way of the airflow."
         }

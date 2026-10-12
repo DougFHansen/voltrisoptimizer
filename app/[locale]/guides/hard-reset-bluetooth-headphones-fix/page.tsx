@@ -79,12 +79,12 @@ export default function BluetoothResetGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/aumentar-volume-microfone-windows",
+            href: "/guides/increase-microphone-volume-windows",
             title: "Microphone Volume",
             description: "System audio adjustments."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "System Drivers",
             description: "Update your PC's Bluetooth driver."
         },

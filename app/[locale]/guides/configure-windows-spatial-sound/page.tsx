@@ -84,7 +84,7 @@ export default function SpatialAudioGuide() {
             description: "Solve static and popping problems."
         },
         {
-            href: "/guides/aumentar-volume-microfone-windows",
+            href: "/guides/increase-microphone-volume-windows",
             title: "Microphone Volume",
             description: "Be heard clearly by your team."
         },

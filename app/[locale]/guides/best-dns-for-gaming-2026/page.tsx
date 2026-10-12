@@ -166,7 +166,7 @@ export default function DNSGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-limpar-cache-dns-ip-flushdns",
+            href: "/guides/cmd-network-commands-flushdns-winsock",
             title: "Network CMD Commands",
             description: "Learn how to use ipconfig, release, renew, and flushdns."
         },
@@ -176,7 +176,7 @@ export default function DNSGuide() {
             description: "Registry optimizations that actually work."
         },
         {
-            href: "/guides/configuracao-roteador-wifi",
+            href: "/guides/router-configuration-for-gaming",
             title: "Configure Router",
             description: "DMZ, UPnP, and Port Forwarding explained."
         }

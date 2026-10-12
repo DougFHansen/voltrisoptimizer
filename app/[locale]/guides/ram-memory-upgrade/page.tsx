@@ -88,7 +88,7 @@ export default function RAMUpgradeGuide() {
       description: "Diagnose faulty sticks."
     },
     {
-      href: "/guides/como-escolher-processador-2026",
+      href: "/guides/how-to-choose-cpu-for-gaming",
       title: "Choose CPU",
       description: "See which processors support DDR5."
     }

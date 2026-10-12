@@ -611,7 +611,7 @@ export default function OptimizerClient() {
                                     </div>
 
                                     <Link
-                                        href="/voltrisoptimizer/como-funciona"
+                                        href="/voltrisoptimizer/how-it-works"
                                         className="w-full px-6 py-3 bg-white/[0.03] text-white font-medium text-base rounded-lg border border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-all flex items-center justify-center backdrop-blur-md"
                                     >
                                         How it Works
@@ -1363,7 +1363,7 @@ export default function OptimizerClient() {
                                     Security and Performance are not opposites. Voltris acts on deep Windows layers (Registry, Services, Kernel) to safely unlock dormant hardware.
                                 </p>
                             </div>
-                            <Link href="/voltrisoptimizer/documentacao" className="text-[#31A8FF] font-bold hover:text-white transition-colors flex items-center gap-2">
+                            <Link href="/voltrisoptimizer/documentation" className="text-[#31A8FF] font-bold hover:text-white transition-colors flex items-center gap-2">
                                 Technical Documentation <ChevronDown className="-rotate-90 w-4 h-4" />
                             </Link>
                         </div>

@@ -87,7 +87,7 @@ export default function StardewLagGuide() {
             description: "Prepare Windows to run modded games."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "Tune your GPU for better colors in pixel art."
         }

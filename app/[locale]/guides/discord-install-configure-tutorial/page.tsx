@@ -83,12 +83,12 @@ export default function DiscordGuide() {
             description: "Advanced performance tips for FPS."
         },
         {
-            href: "/guides/autenticacao-dois-fatores",
+            href: "/guides/two-factor-authentication-guide",
             title: "2FA Guide",
             description: "Understand why you should protect your accounts."
         },
         {
-            href: "/guides/aumentar-volume-microfone-windows",
+            href: "/guides/increase-microphone-volume-windows",
             title: "Windows Microphone",
             description: "Adjust system volume for Discord."
         }

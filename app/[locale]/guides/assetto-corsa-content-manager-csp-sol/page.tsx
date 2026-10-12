@@ -197,12 +197,12 @@ export default function ACGuide() {
             description: "Full cockpit immersion."
         },
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller",
             description: "Scripts for mouse steering."
         },
         {
-            href: "/guides/cheat-engine-speedhack-jogos-offline",
+            href: "/guides/cheat-engine-speedhack-offline-games",
             title: "Cheat Engine",
             description: "Do not use online!"
         }

@@ -81,17 +81,17 @@ export default function ResizableBarGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "You need the latest drivers for BAR support."
         },
         {
-            href: "/guides/atualizar-bios-seguro",
+            href: "/guides/how-to-safely-update-bios",
             title: "Update BIOS",
             description: "If the option doesn't appear, your BIOS might be outdated."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Scheduling",
             description: "Combine with HAGS for maximum performance."
         }

@@ -233,7 +233,7 @@ export default function MinecraftGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-escolher-fonte-pc-gamer",
+            href: "/guides/how-to-choose-pc-power-supply-psu",
             title: "Hardware",
             description: "Upgrades for your PC."
         },

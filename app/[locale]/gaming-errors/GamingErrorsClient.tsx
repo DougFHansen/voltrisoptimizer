@@ -301,7 +301,7 @@ export default function GamingErrorsClient() {
                             {[
                                 { t: "How to fix VAN9003 in Valorant", l: "/guides/valorant-van-9003-secure-boot-tpm-fix", c: "VALORANT" },
                                 { t: "GTA V stopped working (D3D Init)", l: "/guides/gta-v-err-gfx-d3d-init-crash", c: "GTA V" },
-                                { t: "CS2: VAC unable to verify session", l: "/guides/cs2-otimizacao-fps-competitivo", c: "CS2" },
+                                { t: "CS2: VAC unable to verify session", l: "/guides/cs2-competitive-fps-optimization", c: "CS2" },
                                 { t: "Roblox Error: Connection Lost", l: "/guides/roblox-fix-erro-conexao", c: "ROBLOX" },
                                 { t: "Minecraft: OpenGL Error Fix", l: "/guides/minecraft-lag-fix-optifine-fabric", c: "MINECRAFT" },
                                 { t: "Fortnite: Textures not loading", l: "/guides/fortnite-texturas-nao-carregam-streaming", c: "FORTNITE" },

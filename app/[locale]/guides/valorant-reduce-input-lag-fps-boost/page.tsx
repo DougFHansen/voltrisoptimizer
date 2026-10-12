@@ -177,7 +177,7 @@ export default function ValorantGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/cs2-melhores-comandos-console-fps",
+            href: "/guides/cs2-console-commands-fps",
             title: "CS2",
             description: "Similar FPS optimization."
         },

@@ -178,7 +178,7 @@ export default function SampleRateGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/equalizer-apo-peace-aumentar-passos-fps",
+            href: "/guides/equalizer-apo-peace-footstep-boost",
             title: "Equalizer",
             description: "Improve your sound."
         },

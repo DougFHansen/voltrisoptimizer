@@ -190,7 +190,7 @@ export default function StarfieldGuide() {
             description: "Mandatory."
         },
         {
-            href: "/guides/bios-otimizacao-xmp-tpm",
+            href: "/guides/bios-uefi-guide-xmp-pbo-resize-bar",
             title: "BIOS",
             description: "Fast RAM helps the CPU."
         },

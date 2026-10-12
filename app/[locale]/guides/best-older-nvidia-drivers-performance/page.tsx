@@ -80,12 +80,12 @@ export default function NvidiaRollbackGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-usar-ddu-driver-uninstaller",
+            href: "/guides/how-to-use-ddu-driver-uninstaller",
             title: "DDU Guide",
             description: "Learn how to deeply clean drivers."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Official Drivers",
             description: "Tips on NVIDIA/AMD brands."
         },

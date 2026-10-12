@@ -74,7 +74,7 @@ export default function BrowserCleanGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/atalhos-navegador-produtividade",
+      href: "/guides/browser-shortcuts-productivity",
       title: "Chrome Shortcuts",
       description: "Browse like a pro."
     },

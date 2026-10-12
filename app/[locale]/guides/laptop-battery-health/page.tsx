@@ -80,7 +80,7 @@ export default function BatteryHealthGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/calibrar-bateria-notebook",
+      href: "/guides/how-to-calibrate-laptop-battery",
       title: "Calibrate Battery",
       description: "Learn how to recalibrate if the percentage is wrong."
     },

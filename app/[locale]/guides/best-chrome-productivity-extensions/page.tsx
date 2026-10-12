@@ -76,7 +76,7 @@ export default function BrowserExtensionsGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/atalhos-navegador-produtividade",
+      href: "/guides/browser-shortcuts-productivity",
       title: "Browser Shortcuts",
       description: "Further increase your browsing speed."
     },

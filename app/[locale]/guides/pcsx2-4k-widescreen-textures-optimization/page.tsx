@@ -186,7 +186,7 @@ export default function PCSX2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller Guide",
             description: "How to use a DualSense or DualShock 4."
         },

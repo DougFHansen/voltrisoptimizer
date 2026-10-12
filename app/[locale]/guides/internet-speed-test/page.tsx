@@ -144,7 +144,7 @@ export default function SpeedtestGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/configuracao-roteador-wifi",
+      href: "/guides/router-configuration-for-gaming",
       title: "Configure QoS",
       description: "Solve bufferbloat by configuring your router."
     },
@@ -154,7 +154,7 @@ export default function SpeedtestGuide() {
       description: "In-depth packet loss diagnosis."
     },
     {
-      href: "/guides/como-limpar-cache-dns-ip-flushdns",
+      href: "/guides/cmd-network-commands-flushdns-winsock",
       title: "Reset Connection",
       description: "If tests fail, try resetting your connection."
     }

@@ -179,7 +179,7 @@ export default function KeyboardConfigGuide() {
             description: "Tips if the keyboard has stopped completely."
         },
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Windows Shortcuts",
             description: "More key combos for daily productivity."
         }

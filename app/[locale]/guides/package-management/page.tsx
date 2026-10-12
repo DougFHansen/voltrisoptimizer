@@ -89,7 +89,7 @@ export default function PackageManagementGuide() {
       description: "Winget can also help clean up your system."
     },
     {
-      href: "/guides/automacao-tarefas",
+      href: "/guides/windows-task-automation-power-automate",
       title: "Automations",
       description: "Schedule app updates via winget."
     }

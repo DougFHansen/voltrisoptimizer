@@ -223,7 +223,7 @@ export default function PrivacyProtectionGuide() {
             description: "The foundation of account protection."
         },
         {
-            href: "/guides/autenticacao-dois-fatores",
+            href: "/guides/two-factor-authentication-guide",
             title: "2FA Guide",
             description: "How to use Google Authenticator."
         },

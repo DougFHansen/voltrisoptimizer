@@ -171,7 +171,7 @@ export default function WindowsUpdateGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-resolver-tela-azul",
+            href: "/guides/blue-screen-bsod-fix-guide",
             title: "Repair System",
             description: "SFC and DISM commands explained."
         },

@@ -229,7 +229,7 @@ export default function PerformanceOptimizationGuide() {
       description: "Deepen your cleanup with scripts."
     },
     {
-      href: "/guides/aceleracao-hardware-gpu-agendamento",
+      href: "/guides/gpu-hardware-scheduling-hags",
       title: "GPU Scheduling",
       description: "Vital tip for Windows 11 and modern cards."
     },

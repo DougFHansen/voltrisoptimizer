@@ -82,7 +82,7 @@ export default function CableComparisonGuide() {
             description: "Choose a monitor compatible with your cables."
         },
         {
-            href: "/guides/calibrar-cores-monitor",
+            href: "/guides/how-to-calibrate-monitor-colors",
             title: "Color Calibration",
             description: "Improve the image after connecting."
         },

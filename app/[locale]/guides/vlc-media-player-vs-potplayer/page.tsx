@@ -89,7 +89,7 @@ export default function VideoPlayerComparisonGuide() {
             description: "Improve the image of your movies."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Acceleration",
             description: "Make your players run smoother."
         }

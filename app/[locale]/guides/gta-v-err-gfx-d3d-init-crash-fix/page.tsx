@@ -87,12 +87,12 @@ export default function GTAVCrashGuide() {
             description: "Gain more performance in-game."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "Fix driver failures for NVIDIA/AMD."
         },
         {
-            href: "/guides/como-resolver-tela-azul",
+            href: "/guides/blue-screen-bsod-fix-guide",
             title: "Blue Screen",
             description: "Resolve severe system issues."
         }

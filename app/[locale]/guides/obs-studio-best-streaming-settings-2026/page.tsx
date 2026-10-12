@@ -2,6 +2,14 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 const title = "OBS Studio: Best Live Stream Settings (2026)";
+export const guideMetadata = {
+  id: 'obs-studio-best-streaming-settings-2026',
+  title: "OBS Studio: Best Live Stream Settings (2026)",
+  description: "Want to stream on Twitch or YouTube without lag? Learn how to configure bitrate, encoder, and resolution in OBS Studio for a professional broadcast.",
+  category: 'software',
+  difficulty: 'Intermediate',
+  time: '20 min'
+};
 const description = "Want to stream on Twitch or YouTube without lag? Learn how to configure bitrate, encoder, and resolution in OBS Studio for a professional broadcast.";
 const keywords = [
     'best obs studio settings for stream 2026',
@@ -836,7 +844,7 @@ start_timer()</pre>
 
     const relatedGuides = [
         {
-            href: "/guides/como-usar-obs-studio-gravar-tela",
+            href: "/guides/how-to-record-screen-obs-studio",
             title: "Screen Recording",
             description: "Tips for offline high-quality videos."
         },
@@ -846,7 +854,7 @@ start_timer()</pre>
             description: "Tips to improve your upload connection."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Performance",
             description: "Help OBS capture games smoothly."
         }

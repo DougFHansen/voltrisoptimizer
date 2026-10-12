@@ -78,7 +78,7 @@ export default function FileSearchGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Windows Shortcuts",
             description: "Navigate through the system at high speed."
         },

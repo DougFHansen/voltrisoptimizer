@@ -73,7 +73,7 @@ export default function ValorantStateGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/dx11-feature-level-10.0-error-valorant",
+            href: "/guides/dx11-feature-level-10-0-valorant-fix",
             title: "Valorant DirectX Error",
             description: "Resolve technical startup issues."
         },

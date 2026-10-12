@@ -232,7 +232,7 @@ export default function GTAGuide() {
       description: "Configure V-Sync and Shader Cache correctly."
     },
     {
-      href: "/guides/como-escolher-fonte-pc-gamer",
+      href: "/guides/how-to-choose-pc-power-supply-psu",
       title: "Hardware Tips",
       description: "GTA V can be a significant draw on GPU power."
     }

@@ -1114,7 +1114,7 @@ export default function DigitalSecurityGuide() {
       description: "The base of account protection in 2026."
     },
     {
-      href: "/guides/autenticacao-dois-fatores",
+      href: "/guides/two-factor-authentication-guide",
       title: "2FA Guide",
       description: "Learn to use app authenticators."
     },

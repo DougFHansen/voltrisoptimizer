@@ -586,7 +586,7 @@ export default function BudgetPCGuide() {
             description: "Deep dive tips on graphics cards."
         },
         {
-            href: "/guides/como-escolher-processador-2026",
+            href: "/guides/how-to-choose-cpu-for-gaming",
             title: "Choosing a CPU",
             description: "Differences between cores and threads."
         },

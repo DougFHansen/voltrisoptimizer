@@ -79,7 +79,7 @@ export default function BloatwareRemovalGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/criar-ponto-restauracao-windows",
+            href: "/guides/how-to-create-restore-point-windows-11",
             title: "Restore Point",
             description: "Learn how to create a system safeguard."
         },

@@ -188,7 +188,7 @@ export default function TF2Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/cs2-otimizacao-fps-competitivo",
+            href: "/guides/cs2-competitive-fps-optimization",
             title: "CS2",
             description: "Same Source engine (evolved)."
         },

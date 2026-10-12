@@ -78,7 +78,7 @@ export default function VCRuntimeFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/corrigir-dll-faltando-vcredist-directx",
+            href: "/guides/fix-missing-dll-vcredist-directx",
             title: "General DLL Guide",
             description: "Solve DirectX and .NET errors."
         },

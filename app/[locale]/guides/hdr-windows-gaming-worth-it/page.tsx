@@ -78,7 +78,7 @@ export default function HDRGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/calibrar-cores-monitor",
+            href: "/guides/how-to-calibrate-monitor-colors",
             title: "Calibrate Monitor",
             description: "Extra visual fidelity tips."
         },
@@ -88,7 +88,7 @@ export default function HDRGuide() {
             description: "Look for panels with good HDR."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Performance",
             description: "Ensure your card supports HDR processing."
         }

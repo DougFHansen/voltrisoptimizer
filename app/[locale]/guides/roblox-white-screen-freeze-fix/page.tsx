@@ -87,12 +87,12 @@ export default function RobloxWhiteScreenGuide() {
             description: "Solve HTTP and login errors."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Update Drivers",
             description: "Ensure your GPU supports the Roblox engine."
         },
         {
-            href: "/guides/como-limpar-cache-dns-ip-flushdns",
+            href: "/guides/cmd-network-commands-flushdns-winsock",
             title: "Clear DNS Cache",
             description: "Resolve hidden network issues."
         }

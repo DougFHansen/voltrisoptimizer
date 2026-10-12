@@ -80,7 +80,7 @@ export default function ProductivityAppGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/automacao-tarefas",
+            href: "/guides/windows-task-automation-power-automate",
             title: "Automation",
             description: "Connect your notes apps to other software."
         },
@@ -90,7 +90,7 @@ export default function ProductivityAppGuide() {
             description: "Protect your Obsidian files."
         },
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Windows Shortcuts",
             description: "Get faster at navigating your PC."
         }

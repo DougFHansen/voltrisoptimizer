@@ -260,7 +260,7 @@ export default function ServicesManagementGuide() {
             description: "Remove useless apps with PowerShell for additional RAM gain."
         },
         {
-            href: "/guides/criar-ponto-restauracao-windows",
+            href: "/guides/how-to-create-restore-point-windows-11",
             title: "Restore Point",
             description: "Create a full system backup before making any changes."
         },

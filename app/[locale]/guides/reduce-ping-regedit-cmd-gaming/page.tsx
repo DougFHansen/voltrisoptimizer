@@ -92,7 +92,7 @@ export default function NetworkGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/configuracao-roteador-wifi",
+            href: "/guides/router-configuration-for-gaming",
             title: "Configure Router",
             description: "Learn how to activate QoS and UPnP."
         },

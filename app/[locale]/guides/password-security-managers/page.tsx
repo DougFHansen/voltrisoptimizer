@@ -504,7 +504,7 @@ export default function PasswordManagerGuide() {
 
     const relatedGuides = [
       {
-        href: "/guides/autenticacao-dois-fatores",
+        href: "/guides/two-factor-authentication-guide",
         title: "Enable 2FA",
         description: "The mandatory second layer of defense."
       },
@@ -524,7 +524,7 @@ export default function PasswordManagerGuide() {
         description: "Backup your credentials securely."
       },
       {
-        href: "/guides/criptografia-dados",
+        href: "/guides/data-encryption-protect-files",
         title: "Data Encryption",
         description: "Understand how encryption protects your passwords."
       },

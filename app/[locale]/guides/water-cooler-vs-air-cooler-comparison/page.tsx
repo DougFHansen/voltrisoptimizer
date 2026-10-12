@@ -149,7 +149,7 @@ export default function CoolerGuide() {
             description: "A good cooler is useless in an oven case."
         },
         {
-            href: "/guides/como-escolher-fonte-pc-gamer",
+            href: "/guides/how-to-choose-pc-power-supply-psu",
             title: "Power Supply",
             description: "Fans and pumps consume power."
         }

@@ -88,7 +88,7 @@ export default function AndroidOnWindowsGuide() {
             description: "If WSA doesn't work on your PC."
         },
         {
-            href: "/guides/atualizar-bios-seguro",
+            href: "/guides/how-to-safely-update-bios",
             title: "Enable Virtualization",
             description: "Guide to entering the BIOS."
         }

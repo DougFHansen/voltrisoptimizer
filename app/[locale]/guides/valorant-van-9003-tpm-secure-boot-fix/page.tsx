@@ -178,7 +178,7 @@ export default function Van9003Guide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atualizar-bios-seguro",
+            href: "/guides/how-to-safely-update-bios",
             title: "Update BIOS",
             description: "Required if the Secure Boot option does not appear."
         },

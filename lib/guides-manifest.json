@@ -16,22 +16,6 @@
     "time": "20 min"
   },
   {
-    "id": "abrir-portas-roteador-nat-aberto",
-    "title": "How to Open Router Ports and Get Open NAT: 2026 Guide",
-    "description": "Suffering from Restricted NAT in Warzone, GTA, FIFA, or online games? Learn the complete step-by-step to configure Port Forwarding, UPnP, and DMZ on your router...",
-    "category": "rede-seguranca",
-    "difficulty": "Advanced",
-    "time": "60 min"
-  },
-  {
-    "id": "aceleracao-hardware-gpu-agendamento",
-    "title": "GPU Hardware Scheduling (HAGS): Enable or Not in 2026?",
-    "description": "Does Hardware-Accelerated GPU Scheduling improve FPS or cause bugs? Understand the vital role it plays for DLSS 3 and Frame Gen, and when it should be left off.",
-    "category": "otimizacao",
-    "difficulty": "Intermediate",
-    "time": "12 min"
-  },
-  {
     "id": "advanced-wifi-security",
     "title": "Wi-Fi Security: How to Protect Your Home Network from Intruders",
     "description": "Is your Wi-Fi secure? Learn to configure WPA3, disable WPS, hide the SSID, and create a guest network to isolate IoT devices.",
@@ -48,7 +32,7 @@
     "time": "10 min"
   },
   {
-    "id": "amd-adrenalin-configuracao-competitiva",
+    "id": "amd-adrenalin-competitive-settings",
     "title": "AMD Radeon Software 2026: The Ultimate Optimization and Undervolt Guide",
     "description": "Own an RX 6000 or 7000? Discover how to configure Radeon Anti-Lag 2, Radeon Super Resolution (RSR), perform a safe Undervolt, and fix Shader Cache stutters.",
     "category": "otimizacao",
@@ -56,7 +40,7 @@
     "time": "50 min"
   },
   {
-    "id": "antivirus-para-jogos-windows-defender-exclusao",
+    "id": "antivirus-for-gaming-windows-defender-exclusions",
     "title": "Antivirus for Gamers (2026): Optimized Windows Defender",
     "description": "Don",
     "category": "windows-geral",
@@ -64,7 +48,7 @@
     "time": "10 min"
   },
   {
-    "id": "apex-legends-config-autoexec-fps",
+    "id": "apex-legends-config-autoexec-superglide",
     "title": "Apex Legends (2026): Config, Autoexec, and Superglide",
     "description": "Optimize Apex Legends to avoid drops at Jumpmaster. Configuration for videocfg.txt, autoexec to remove shadows, and FPS capping for stability.",
     "category": "games-fix",
@@ -72,7 +56,7 @@
     "time": "50 min"
   },
   {
-    "id": "api-ms-win-crt-runtime-missing",
+    "id": "api-ms-win-crt-runtime-dll-missing",
     "title": "api-ms-win-crt-runtime-l1-1-0.dll Missing: Ultimate Guide 2026",
     "description": "Does your program/game not open and show the error ",
     "category": "windows-geral",
@@ -86,38 +70,6 @@
     "category": "games-fix",
     "difficulty": "Advanced",
     "time": "50 min"
-  },
-  {
-    "id": "atalhos-navegador-produtividade",
-    "title": "Browser Shortcuts: The Complete Productivity Manual 2026",
-    "description": "Do you still use the mouse to close tabs? Learn the 50+ essential keyboard shortcuts for Chrome, Edge, Brave, and Firefox that will TRIPLE your productivity and save hours of your day.",
-    "category": "software",
-    "difficulty": "Intermediate",
-    "time": "35 min"
-  },
-  {
-    "id": "atalhos-produtividade-windows",
-    "title": "Windows Shortcuts: The Complete Productivity Manual 2026",
-    "description": "Master Windows 11 with 60+ of the most useful keyboard shortcuts for productivity. Learn to manage windows, virtual desktops, hidden tools, and more.",
-    "category": "software",
-    "difficulty": "Intermediate",
-    "time": "60 min"
-  },
-  {
-    "id": "atualizacao-drivers-video",
-    "title": "How to Update Video Drivers (NVIDIA, AMD, and Intel) in 2026: Complete Guide",
-    "description": "Is your game crashing, lagging, or showing artifacts? Learn the 7 definitive ways to keep your video drivers (NVIDIA, AMD, Intel Arc) updated.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "45 min"
-  },
-  {
-    "id": "atualizar-bios-seguro",
-    "title": "How to Securely Update BIOS in 2026: Complete and Definitive Guide",
-    "description": "Scared of updating BIOS? Learn how to update your motherboard safely, what Q-Flash, M-Flash, BIOS Flashback are, how to avoid risks...",
-    "category": "hardware",
-    "difficulty": "Advanced",
-    "time": "45 min"
   },
   {
     "id": "audio-sample-rate-44khz-192khz-bug",
@@ -136,30 +88,6 @@
     "time": "50 min"
   },
   {
-    "id": "aumentar-volume-microfone-windows",
-    "title": "Low Microphone? The Ultimate Windows Audio Guide (2026)",
-    "description": "Is your microphone too quiet or has static? Learn to configure gain, use Equalizer APO, NVIDIA Broadcast, and transform your amateur audio into studio quality.",
-    "category": "software",
-    "difficulty": "Intermediate",
-    "time": "40 min"
-  },
-  {
-    "id": "autenticacao-dois-fatores",
-    "title": "Two-Factor Authentication (2FA): The Ultimate Security Guide (2026)",
-    "description": "Your password has already leaked. Learn how to shield your Instagram, Steam, Google, and Discord accounts with 2FA. Discover why SMS is insecure and which apps to use.",
-    "category": "rede-seguranca",
-    "difficulty": "Beginner",
-    "time": "30 min"
-  },
-  {
-    "id": "automacao-tarefas",
-    "title": "Automation in Windows 11: Power Automate & Scripts (2026)",
-    "description": "Tired of repetitive tasks? Learn to use Power Automate Desktop, Task Scheduler, Batch, and PowerShell to create a PC that works on its own.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "45 min"
-  },
-  {
     "id": "backup-automatico-nuvem",
     "title": "Automatic Cloud Backup: The Ultimate Windows Guide (2026)",
     "description": "Your hard drive will fail. The only question is when. Learn how to set up Google Drive, OneDrive, and iCloud to save your files in real-time and never lose anything again.",
@@ -168,7 +96,7 @@
     "time": "35 min"
   },
   {
-    "id": "baldurs-gate-3-otimizacao-ato-3-fps",
+    "id": "baldurs-gate-3-act-3-fps-optimization",
     "title": "Baldur",
     "description": "Did you reach the Lower City and your FPS dropped by half? Learn how to optimize your CPU, configure DLSS/FSR correctly, and use essential Mods to stabilize the game.",
     "category": "games-fix",
@@ -176,7 +104,7 @@
     "time": "30 min"
   },
   {
-    "id": "beamng-drive-otimizacao-cpu-traffic",
+    "id": "beamng-drive-cpu-traffic-optimization",
     "title": "BeamNG.drive: Ultimate Physics and Traffic Optimization (2026)",
     "description": "BeamNG is a CPU devourer. Learn how to configure Vulkan mode, optimize AI traffic, and gain 50% more FPS without losing realistic physics.",
     "category": "games-fix",
@@ -240,7 +168,7 @@
     "time": "15 min"
   },
   {
-    "id": "bios-otimizacao-xmp-tpm",
+    "id": "bios-uefi-guide-xmp-pbo-resize-bar",
     "title": "The Ultimate BIOS (UEFI) Guide 2026: XMP, PBO, and Re-Size BAR",
     "description": "Your Gamer PC is running with the handbrake on. Learn how to enter the BIOS and enable RAM XMP, GPU Re-Size BAR, and configure TPM 2.0 for Valorant.",
     "category": "hardware",
@@ -248,7 +176,7 @@
     "time": "45 min"
   },
   {
-    "id": "bitlocker-desempenho-jogos-ssd",
+    "id": "bitlocker-fps-impact-ssd",
     "title": "Does BitLocker Kill FPS? The Impact on SSD (2026)",
     "description": "Windows 11 encryption protects your data but costs performance. Check benchmarks of NVMe SSDs with BitLocker on vs. off and decide if it",
     "category": "otimizacao",
@@ -256,20 +184,12 @@
     "time": "20 min"
   },
   {
-    "id": "bloquear-internet-firewall-windows",
-    "title": "How to Block a Program",
-    "description": "Want to play offline or stop annoying updates? Learn how to use Windows Firewall to block any app",
-    "category": "software",
-    "difficulty": "Beginner",
-    "time": "15 min"
-  },
-  {
-    "id": "bluestacks-ldplayer-otimizacao-free-fire-120fps",
-    "title": "Android on PC (2026): The Ultimate Optimization Guide (120 FPS)",
-    "description": "Want to run Free Fire, PUBG, or Ragnarok smoothly on PC? Learn how to configure BlueStacks and LDPlayer, enable Virtualization (VT-x), and debloat the emulator.",
-    "category": "windows-geral",
+    "id": "blue-screen-bsod-fix-guide",
+    "title": "Blue Screen of Death (BSOD): Complete Forensic Guide 2026",
+    "description": "Learn how to analyze memory dumps, identify problematic drivers, diagnose faulty hardware, and permanently resolve BSODs. Professional guide based on 15 years of experience.",
+    "category": "windows-erros",
     "difficulty": "Intermediate",
-    "time": "30 min"
+    "time": "45 min"
   },
   {
     "id": "bluestacks-optimization-free-fire-pubg",
@@ -304,6 +224,14 @@
     "time": "5 min"
   },
   {
+    "id": "browser-shortcuts-productivity",
+    "title": "Browser Shortcuts: The Complete Productivity Manual 2026",
+    "description": "Do you still use the mouse to close tabs? Learn the 50+ essential keyboard shortcuts for Chrome, Edge, Brave, and Firefox that will TRIPLE your productivity and save hours of your day.",
+    "category": "software",
+    "difficulty": "Intermediate",
+    "time": "35 min"
+  },
+  {
     "id": "bsod-memory-management-fix",
     "title": "MEMORY_MANAGEMENT Blue Screen: How to Fix (2026)",
     "description": "Is your Windows 11 crashing with the MEMORY MANAGEMENT error? Learn how to test your RAM and fix system errors to end this BSOD in 2026.",
@@ -320,7 +248,7 @@
     "time": "30 min"
   },
   {
-    "id": "bufferbloat-qos-sqm-roteador-ping",
+    "id": "bufferbloat-qos-sqm-lag",
     "title": "Bufferbloat and QoS (2026): The Real Cause of Lag",
     "description": "Does your ping spike when someone watches Netflix? That",
     "category": "rede-seguranca",
@@ -336,39 +264,7 @@
     "time": "1 hour"
   },
   {
-    "id": "cable-management-organizacao-cabos-pc",
-    "title": "Cable Management: How to Organize PC Cables (2026)",
-    "description": "Does the inside of your PC look like a bird",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "1 hour"
-  },
-  {
-    "id": "cadeira-gamer-ergonomia-postura-aim",
-    "title": "Setup Ergonomics (2026): Posture, Chair, and Aiming",
-    "description": "Back and wrist pain destroys your aim. Learn how to adjust chair height, monitor, and desk to play for hours without injury (RSI).",
-    "category": "hardware",
-    "difficulty": "Beginner",
-    "time": "15 min"
-  },
-  {
-    "id": "calibrar-bateria-notebook",
-    "title": "How to Calibrate Notebook Battery in 2026 (Fix Percentage)",
-    "description": "Does your laptop turn off suddenly even while showing 20%? Learn how to calibrate the battery for an accurate reading of how much charge you have left.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "6 hours"
-  },
-  {
-    "id": "calibrar-cores-monitor",
-    "title": "How to Calibrate Monitor Colors in 2026 (Complete Guide)",
-    "description": "Do your monitor colors feel ",
-    "category": "windows-geral",
-    "difficulty": "Beginner",
-    "time": "20 min"
-  },
-  {
-    "id": "cemu-emulador-wii-u-zelda-botw-4k-60fps",
+    "id": "cemu-zelda-botw-4k-60fps",
     "title": "Cemu (2026): Zelda Breath of the Wild in 4K 60FPS (FPS++)",
     "description": "The definitive Cemu 2.0 guide. How to install Graphics Packs, FPS++ mods, Vulkan shaders, and play online with Cemu accounts.",
     "category": "windows-geral",
@@ -376,7 +272,7 @@
     "time": "30 min"
   },
   {
-    "id": "cheat-engine-speedhack-jogos-offline",
+    "id": "cheat-engine-speedhack-offline-games",
     "title": "Cheat Engine (2026): Speedhack and RPG Optimization (Offline)",
     "description": "Speed up slow dialogues, skip unskippable cutscenes, and eliminate grind in Singleplayer games. An ethical and safe guide for offline use.",
     "category": "software",
@@ -392,7 +288,7 @@
     "time": "15 min"
   },
   {
-    "id": "cities-skylines-2-otimizacao-fps-simulation",
+    "id": "cities-skylines-2-fps-optimization",
     "title": "Cities: Skylines II (2026): Settings for Stable 30 FPS",
     "description": "CS2 is notoriously heavy. Learn how to disable volumetrics, reduce citizen teeth simulation, and use DLSS to make giant cities playable.",
     "category": "games-fix",
@@ -400,7 +296,7 @@
     "time": "30 min"
   },
   {
-    "id": "citra-lime3ds-emulador-3ds-pokemon-hd",
+    "id": "citra-lime3ds-pokemon-3ds-4k",
     "title": "Citra / Lime3DS (2026): Pokémon and Zelda 3DS in 4K",
     "description": "Citra is gone, long live Lime3DS. Complete guide to running Pokémon X/Y, Omega Ruby, and Zelda Link Between Worlds with HD graphics and no lag.",
     "category": "windows-geral",
@@ -408,7 +304,7 @@
     "time": "20 min"
   },
   {
-    "id": "clash-royale-clash-of-clans-pc-oficial",
+    "id": "clash-royale-clash-of-clans-on-pc",
     "title": "How to run Clash Royale and Clash of Clans on PC Officially (2026)",
     "description": "No more slow emulators! Learn how to play Clash Royale and Clash of Clans on your computer using the official Google Play Games in 2026.",
     "category": "windows-geral",
@@ -456,39 +352,7 @@
     "time": "15 min"
   },
   {
-    "id": "cod-warzone-melhores-configuracoes-graficas",
-    "title": "Call of Duty: Warzone & MW3 (2026) - The Definitive FPS Guide",
-    "description": "Warzone stuttering? Learn how to configure Spot Cache Ultra, fix VRAM usage, choose between DLSS or FidelityFX CAS and tweak Aim Assist like a Pro.",
-    "category": "games-fix",
-    "difficulty": "Advanced",
-    "time": "60 min"
-  },
-  {
-    "id": "como-analisar-tela-azul-bsod-dmp-guia",
-    "title": "Blue Screen (BSOD): How to Read .DMP Files and Discover the Error",
-    "description": "Learn how to diagnose the ",
-    "category": "windows-geral",
-    "difficulty": "Advanced",
-    "time": "25 min"
-  },
-  {
-    "id": "como-escolher-fonte-pc-gamer",
-    "title": "PSU Guide 2026: Tier List, 80 Plus, and Real Wattage",
-    "description": "Don",
-    "category": "hardware",
-    "difficulty": "Intermediate",
-    "time": "20 min"
-  },
-  {
-    "id": "como-escolher-processador-2026",
-    "title": "How to Choose a Processor (CPU) in 2026: Gamer",
-    "description": "Ryzen or Intel? Learn how to choose the best processor for gaming and productivity in 2026, avoiding bottlenecks in your Gaming PC.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "20 min"
-  },
-  {
-    "id": "como-limpar-cache-dns-ip-flushdns",
+    "id": "cmd-network-commands-flushdns-winsock",
     "title": "CMD Network Commands: FlushDNS, Release, Renew, and Winsock (2026)",
     "description": "Slow internet or sites not loading? Learn the 5 sacred CMD commands (ipconfig, netsh winsock reset) to reset your connection and fix DNS errors.",
     "category": "rede-seguranca",
@@ -496,52 +360,12 @@
     "time": "10 min"
   },
   {
-    "id": "como-programar-com-ia-vibe-coding",
-    "title": "Vibe Coding: The Future of Programming with Intent and AI (2026 Dossier)",
-    "description": "Forget the syntax battle. Learn the ",
-    "category": "windows-geral",
-    "difficulty": "Beginner",
-    "time": "35 min"
-  },
-  {
-    "id": "como-resolver-tela-azul",
-    "title": "Blue Screen of Death (BSOD): Complete Forensic Guide 2026",
-    "description": "Learn how to analyze memory dumps, identify problematic drivers, diagnose faulty hardware, and permanently resolve BSODs. Professional guide based on 15 years of experience.",
-    "category": "windows-erros",
-    "difficulty": "Intermediate",
-    "time": "45 min"
-  },
-  {
-    "id": "como-trocar-pasta-termica-cpu-gpu-guia",
-    "title": "Thermal Paste Replacement (CPU/GPU): Safe Maintenance Guide",
-    "description": "Is your PC overheating? Learn how to open your processor and graphics card to change thermal paste correctly. Pea, X, or Spread method?",
-    "category": "hardware",
+    "id": "cod-warzone-best-settings-fps",
+    "title": "Call of Duty: Warzone & MW3 (2026) - The Definitive FPS Guide",
+    "description": "Warzone stuttering? Learn how to configure Spot Cache Ultra, fix VRAM usage, choose between DLSS or FidelityFX CAS and tweak Aim Assist like a Pro.",
+    "category": "games-fix",
     "difficulty": "Advanced",
-    "time": "40 min"
-  },
-  {
-    "id": "como-usar-ddu-driver-uninstaller",
-    "title": "How to Use DDU (Display Driver Uninstaller): Safe Guide (2026)",
-    "description": "Corrupted video drivers cause blue screens and FPS drops. Learn how to use DDU to completely remove Nvidia/AMD/Intel drivers and perform a clean installation.",
-    "category": "software",
-    "difficulty": "Advanced",
-    "time": "20 min"
-  },
-  {
-    "id": "como-usar-obs-studio-gravar-tela",
-    "title": "How to Use OBS Studio to Record Your Screen (Complete Tutorial)",
-    "description": "Want to record your matches or tutorials with professional quality? Learn how to configure OBS Studio for lightweight, lag-free screen recording in 2026.",
-    "category": "software",
-    "difficulty": "Intermediate",
-    "time": "20 min"
-  },
-  {
-    "id": "compartilhamento-impressoras",
-    "title": "How to Share Printers on a Windows Network (2026)",
-    "description": "Want to print from any PC in the house? Learn how to set up printer sharing on Windows 11 simply and securely in 2026.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "15 min"
+    "time": "60 min"
   },
   {
     "id": "computer-cleaning",
@@ -560,28 +384,12 @@
     "time": "20 min"
   },
   {
-    "id": "configuracao-roteador-wifi",
-    "title": "Router Configuration for Gaming: Optimizing Wi-Fi and Ports (2026)",
-    "description": "Wi-Fi Lag? Learn how to choose the best channel (1, 6, 11), separate 2.4GHz/5GHz networks, and configure QoS to prioritize your PC or Console on the home network.",
-    "category": "rede-seguranca",
-    "difficulty": "Intermediate",
-    "time": "30 min"
-  },
-  {
     "id": "configure-windows-spatial-sound",
     "title": "Spatial Sound in Windows 11: How to Enable and Setup (2026)",
     "description": "Want to hear footsteps accurately in games? Learn how to enable Windows Sonic, Dolby Atmos, and DTS:X to have spatial sound in 2026.",
     "category": "software",
     "difficulty": "Beginner",
     "time": "10 min"
-  },
-  {
-    "id": "controle-ps4-ps5-overclock-ds4windows",
-    "title": "DualSense on PC (2026): DS4Windows and 1000Hz Overclocking",
-    "description": "Use your PS4/PS5 controller on PC with full functionality. Comprehensive guide for DS4Windows, input lag reduction (Overclocking), and high-precision gyro configuration.",
-    "category": "hardware",
-    "difficulty": "Intermediate",
-    "time": "15 min"
   },
   {
     "id": "controller-analog-deadzones-fix",
@@ -608,14 +416,6 @@
     "time": "40 min"
   },
   {
-    "id": "corrigir-dll-faltando-vcredist-directx",
-    "title": "How to Fix Missing DLLs: VCRedist and DirectX (2026 Guide)",
-    "description": "Your game won",
-    "category": "windows-geral",
-    "difficulty": "Beginner",
-    "time": "15 min"
-  },
-  {
     "id": "corrupted-hdd-data-recovery",
     "title": "Data Recovery: How to Save Files from a Corrupted HDD",
     "description": "Has your hard drive stopped appearing in Windows or is it asking to format? Learn photo and document recovery techniques using professional tools (without paying anything).",
@@ -632,44 +432,20 @@
     "time": "60 min"
   },
   {
-    "id": "criar-pendrive-bootavel",
-    "title": "How to Create a Windows 11 Bootable USB Drive (2026)",
-    "description": "Need to format your PC? Learn how to create an official Windows 11 bootable USB using Microsoft",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "30 min"
-  },
-  {
-    "id": "criar-ponto-restauracao-windows",
-    "title": "How to Create a Restore Point in Windows 11 (2026)",
-    "description": "Are you going to install a new driver or tweak the registry? Learn how to create a Restore Point to protect your Windows from errors in 2026.",
-    "category": "software",
-    "difficulty": "Beginner",
-    "time": "5 min"
-  },
-  {
-    "id": "criptografia-dados",
-    "title": "Data Encryption: How to Protect Your Files in 2026",
-    "description": "Want to keep your private documents safe from prying eyes? Learn the best encryption tools for Windows 11 in 2026.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "40 min"
-  },
-  {
-    "id": "cs2-melhores-comandos-console-fps",
-    "title": "CS2: Ultimate Commands List and FPS Optimization Guide (2026)",
-    "description": "Counter-Strike 2 demands more from your PC. Discover console commands that actually work, configure Sub-Tick, disable telemetry, and optimize the Source 2 engine.",
-    "category": "otimizacao",
-    "difficulty": "Advanced",
-    "time": "30 min"
-  },
-  {
-    "id": "cs2-otimizacao-fps-competitivo",
+    "id": "cs2-competitive-fps-optimization",
     "title": "Counter-Strike 2 (CS2) 2026: The Ultimate Optimization and FPS Guide",
     "description": "The CS2 optimization bible. Console commands, autoexec, launch options that actually work, sound settings for footsteps, and Nvidia Reflex.",
     "category": "games-fix",
     "difficulty": "Advanced",
     "time": "60 min"
+  },
+  {
+    "id": "cs2-console-commands-fps",
+    "title": "CS2: Ultimate Commands List and FPS Optimization Guide (2026)",
+    "description": "Counter-Strike 2 demands more from your PC. Discover console commands that actually work, configure Sub-Tick, disable telemetry, and optimize the Source 2 engine.",
+    "category": "otimizacao",
+    "difficulty": "Advanced",
+    "time": "30 min"
   },
   {
     "id": "css-z-index-explained",
@@ -680,20 +456,20 @@
     "time": "15 min"
   },
   {
-    "id": "cyberpunk-2077-hdd-mode-otimizacao",
-    "title": "Cyberpunk 2077: HDD Mode and FPS Optimization in Windows 11 (2026)",
-    "description": "Suffering from stuttering in Cyberpunk 2077? Learn how to configure HDD Mode, DLSS 3.5, and how to gain frames in Night City in 2026.",
-    "category": "otimizacao",
-    "difficulty": "Intermediate",
-    "time": "25 min"
-  },
-  {
-    "id": "cyberpunk-2077-otimizacao-fps-raytracing",
+    "id": "cyberpunk-2077-fps-ray-tracing-optimization",
     "title": "Cyberpunk 2077 (2026): Definitive Optimization, Ray Tracing, and HDD Mode",
     "description": "Night City is heavy. Learn to double your FPS using DLSS/FSR, configure Crowd Density, and use HDD Mode to prevent textures from disappearing.",
     "category": "games-fix",
     "difficulty": "Advanced",
     "time": "35 min"
+  },
+  {
+    "id": "cyberpunk-2077-hdd-mode-optimization",
+    "title": "Cyberpunk 2077: HDD Mode and FPS Optimization in Windows 11 (2026)",
+    "description": "Suffering from stuttering in Cyberpunk 2077? Learn how to configure HDD Mode, DLSS 3.5, and how to gain frames in Night City in 2026.",
+    "category": "otimizacao",
+    "difficulty": "Intermediate",
+    "time": "25 min"
   },
   {
     "id": "data-backup",
@@ -702,6 +478,14 @@
     "category": "rede-seguranca",
     "difficulty": "Intermediate",
     "time": "50 min"
+  },
+  {
+    "id": "data-encryption-protect-files",
+    "title": "Data Encryption: How to Protect Your Files in 2026",
+    "description": "Want to keep your private documents safe from prying eyes? Learn the best encryption tools for Windows 11 in 2026.",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "40 min"
   },
   {
     "id": "data-protection-privacy",
@@ -720,7 +504,7 @@
     "time": "40 min"
   },
   {
-    "id": "ddu-limpeza-drivers-video-guia",
+    "id": "ddu-clean-gpu-drivers-guide",
     "title": "DDU (Display Driver Uninstaller): How to Use and Clean Drivers",
     "description": "Corrupted drivers cause blue screens and lag. Learn how to use DDU in Safe Mode for a clean Nvidia/AMD installation.",
     "category": "hardware",
@@ -734,14 +518,6 @@
     "category": "otimizacao",
     "difficulty": "Advanced",
     "time": "45 min"
-  },
-  {
-    "id": "debloating-windows-11",
-    "title": "Debloating Windows 11: Remove Junk and Gain Performance (2026)",
-    "description": "Windows 11 comes full of bloatware (TikTok, OneDrive, Xbox) that consumes RAM. Learn how to use PowerShell to clean your system and make it as light as Windows 7.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "30 min"
   },
   {
     "id": "deep-disk-cleanup-temp-files",
@@ -784,14 +560,6 @@
     "time": "20 min"
   },
   {
-    "id": "discord-nitro-qualidade-voz-krisp",
-    "title": "Discord (2026): Voice Quality & Streaming Optimization",
-    "description": "Does your mic cut out or game sound leak into Discord? Learn how to configure Echo Cancellation (Krisp), high Bitrate, and correct Hardware Acceleration.",
-    "category": "software",
-    "difficulty": "Beginner",
-    "time": "15 min"
-  },
-  {
     "id": "discord-otimizacao-overlay-lag",
     "title": "Discord (2026): Optimization, Overlay, and CPU Usage Reduction",
     "description": "Is Discord consuming 20% of your CPU? Learn how to correctly disable Hardware Acceleration, configure the Overlay to prevent in-game lag, and improve audio quality.",
@@ -800,23 +568,15 @@
     "time": "20 min"
   },
   {
-    "id": "discord-otimizar-para-jogos",
-    "title": "How to Optimize Discord for Online Gaming (2026)",
-    "description": "Is Discord causing lag in your games? Learn how to configure hardware acceleration and overlays to gain FPS in 2026.",
-    "category": "otimizacao",
-    "difficulty": "Beginner",
-    "time": "10 min"
-  },
-  {
-    "id": "dns-mais-rapido-para-jogos-benchmark",
-    "title": "Gaming DNS (2026): Benchmark and Selection Guide",
-    "description": "Cloudflare (1.1.1.1) or Google (8.8.8.8)? Learn how to use DNS Benchmark tools to find the fastest server for your specific region and reduce initial resolution latency.",
-    "category": "rede-seguranca",
+    "id": "discord-voice-quality-streaming-optimization",
+    "title": "Discord (2026): Voice Quality & Streaming Optimization",
+    "description": "Does your mic cut out or game sound leak into Discord? Learn how to configure Echo Cancellation (Krisp), high Bitrate, and correct Hardware Acceleration.",
+    "category": "software",
     "difficulty": "Beginner",
     "time": "15 min"
   },
   {
-    "id": "dolphin-emulador-wii-gamecube-ubershaders-guia",
+    "id": "dolphin-wii-gamecube-setup-guide",
     "title": "Dolphin (2026): The Perfect Setup for Wii and GameCube Emulation",
     "description": "Play Super Mario Galaxy and Metroid Prime at 4K resolution without stutters. Comprehensive guide for Ubershaders (Stutter Fix), emulated motion controls, and HD textures.",
     "category": "windows-geral",
@@ -824,20 +584,12 @@
     "time": "25 min"
   },
   {
-    "id": "dota-2-melhores-configuracoes-fps",
+    "id": "dota-2-fps-vulkan-dx11-settings",
     "title": "Dota 2 (2026): FPS Guide, Vulkan vs. DX11, and Console Commands",
     "description": "Optimize Dota 2 for intense teamfights. Learn network console commands, how to choose the correct graphics API, FidelityFX Super Resolution settings, and more.",
     "category": "games-fix",
     "difficulty": "Advanced",
     "time": "45 min"
-  },
-  {
-    "id": "dpc-watchdog-violation-como-resolver",
-    "title": "How to Fix DPC_WATCHDOG_VIOLATION Error (2026)",
-    "description": "Did your Windows 11 crash with the DPC Watchdog blue screen error? Learn how to identify the causes and how to fix it in 2026.",
-    "category": "windows-geral",
-    "difficulty": "Advanced",
-    "time": "25 min"
   },
   {
     "id": "driver-installation",
@@ -848,7 +600,7 @@
     "time": "45 minutes"
   },
   {
-    "id": "dual-monitor-lag-fix-hz-diferentes",
+    "id": "dual-monitor-144hz-60hz-lag-fix",
     "title": "Dual Monitor (2026): Fixing 144Hz + 60Hz Lag",
     "description": "Does your 144Hz game lag when you watch a video on your second 60Hz monitor? Understand the Windows DWM bug and learn 3 definitive solutions.",
     "category": "windows-geral",
@@ -856,7 +608,15 @@
     "time": "15 min"
   },
   {
-    "id": "duckstation-emulador-ps1-graficos-melhorados-pgxp",
+    "id": "dualsense-ds4windows-1000hz-pc",
+    "title": "DualSense on PC (2026): DS4Windows and 1000Hz Overclocking",
+    "description": "Use your PS4/PS5 controller on PC with full functionality. Comprehensive guide for DS4Windows, input lag reduction (Overclocking), and high-precision gyro configuration.",
+    "category": "hardware",
+    "difficulty": "Intermediate",
+    "time": "15 min"
+  },
+  {
+    "id": "duckstation-ps1-4k-pgxp-guide",
     "title": "DuckStation (2026): The Ultimate PS1 Emulator Guide (4K + PGXP)",
     "description": "Forget ePSXe. DuckStation fixes PS1",
     "category": "windows-geral",
@@ -864,20 +624,12 @@
     "time": "15 min"
   },
   {
-    "id": "dx11-feature-level-10.0-error-valorant",
+    "id": "dx11-feature-level-10-0-valorant-fix",
     "title": "DX11 Feature Level 10.0 Error in Valorant: How to Fix (2026)",
     "description": "Is your Valorant not opening with a Feature Level 10.0 error? Learn how to fix DirectX errors and run the game on Windows 11 in 2026.",
     "category": "otimizacao",
     "difficulty": "Intermediate",
     "time": "15 min"
-  },
-  {
-    "id": "eld-ring-stuttering-fix-dx12",
-    "title": "Elden Ring: How to Fix Stuttering and Lag (DX12 Fix 2026)",
-    "description": "Suffering from stuttering in the Lands Between? Learn how to fix Elden Ring stuttering on DirectX 12 and gain stability in 2026.",
-    "category": "games-fix",
-    "difficulty": "Intermediate",
-    "time": "20 min"
   },
   {
     "id": "elden-ring-fps-unlock-stutter-fix",
@@ -886,14 +638,6 @@
     "category": "games-fix",
     "difficulty": "Advanced",
     "time": "30 min"
-  },
-  {
-    "id": "elden-ring-fps-unlock-widescreen-fix-stutter",
-    "title": "Elden Ring (2026): FPS Unlock, Ultrawide, and Stutter Fix Guide",
-    "description": "Experience Elden Ring beyond the 60 FPS limit and in native Ultrawide. Complete guide for Flawless Widescreen, micro-stutter corrections (DXVK), and optimized Ray Tracing.",
-    "category": "games-fix",
-    "difficulty": "Advanced",
-    "time": "20 min"
   },
   {
     "id": "enable-god-mode-windows-11",
@@ -912,7 +656,7 @@
     "time": "20 min"
   },
   {
-    "id": "epic-games-launcher-lento-cpu-fix",
+    "id": "epic-games-launcher-high-cpu-fix",
     "title": "Epic Games Launcher Slow or High CPU Usage? How to Fix (2026)",
     "description": "Is the Epic Games launcher freezing your PC or consuming too much CPU at idle? Learn how to optimize the Epic Launcher on Windows 11 in 2026.",
     "category": "games-fix",
@@ -920,7 +664,7 @@
     "time": "10 min"
   },
   {
-    "id": "equalizer-apo-peace-aumentar-passos-fps",
+    "id": "equalizer-apo-peace-footstep-boost",
     "title": "Equalizer APO + Peace (2026): Boost Footstep Volume (FPS)",
     "description": "Don",
     "category": "windows-geral",
@@ -928,23 +672,7 @@
     "time": "30 min"
   },
   {
-    "id": "erro-0xc00007b-aplicativo-nao-inicializou",
-    "title": "How to Fix Error 0xc00007b: Definitive Guide (2026)",
-    "description": "Your game or program won",
-    "category": "games-fix",
-    "difficulty": "Intermediate",
-    "time": "20 min"
-  },
-  {
-    "id": "erro-disco-100-porcento-gerenciador-tarefas",
-    "title": "How to Fix 100% Disk Usage Error in Windows 11 (2026)",
-    "description": "Is your PC slow or freezing with 100% Disk usage in Task Manager? Learn how to resolve this performance-killing error in 2026.",
-    "category": "games-fix",
-    "difficulty": "Intermediate",
-    "time": "20 min"
-  },
-  {
-    "id": "escape-from-tarkov-otimizacao-fps-ram",
+    "id": "escape-from-tarkov-fps-ram-optimization",
     "title": "Escape from Tarkov (2026): Optimization, RAM Cleaner, and PostFX Guide",
     "description": "Tarkov is virtually unplayable with 16GB of RAM without proper tweaks. Learn about the Auto RAM Cleaner, PostFX for better visibility in dark areas, and Nvidia Reflex.",
     "category": "games-fix",
@@ -989,6 +717,38 @@
     "description": "Want to protect your PC from intrusions? Learn how to properly configure Windows 11 Firewall for gaming and security in 2026.",
     "category": "rede-seguranca",
     "difficulty": "Intermediate",
+    "time": "15 min"
+  },
+  {
+    "id": "fix-100-disk-usage-windows-11",
+    "title": "How to Fix 100% Disk Usage Error in Windows 11 (2026)",
+    "description": "Is your PC slow or freezing with 100% Disk usage in Task Manager? Learn how to resolve this performance-killing error in 2026.",
+    "category": "games-fix",
+    "difficulty": "Intermediate",
+    "time": "20 min"
+  },
+  {
+    "id": "fix-dpc-watchdog-violation",
+    "title": "How to Fix DPC_WATCHDOG_VIOLATION Error (2026)",
+    "description": "Did your Windows 11 crash with the DPC Watchdog blue screen error? Learn how to identify the causes and how to fix it in 2026.",
+    "category": "windows-geral",
+    "difficulty": "Advanced",
+    "time": "25 min"
+  },
+  {
+    "id": "fix-error-0xc00007b",
+    "title": "How to Fix Error 0xc00007b: Definitive Guide (2026)",
+    "description": "Your game or program won",
+    "category": "games-fix",
+    "difficulty": "Intermediate",
+    "time": "20 min"
+  },
+  {
+    "id": "fix-missing-dll-vcredist-directx",
+    "title": "How to Fix Missing DLLs: VCRedist and DirectX (2026 Guide)",
+    "description": "Your game won",
+    "category": "windows-geral",
+    "difficulty": "Beginner",
     "time": "15 min"
   },
   {
@@ -1144,6 +904,14 @@
     "time": "10 min"
   },
   {
+    "id": "gpu-hardware-scheduling-hags",
+    "title": "GPU Hardware Scheduling (HAGS): Enable or Not in 2026?",
+    "description": "Does Hardware-Accelerated GPU Scheduling improve FPS or cause bugs? Understand the vital role it plays for DLSS 3 and Frame Gen, and when it should be left off.",
+    "category": "otimizacao",
+    "difficulty": "Intermediate",
+    "time": "12 min"
+  },
+  {
     "id": "gpu-overclock-msi-afterburner",
     "title": "Safe GPU Overclocking: Definitive MSI Afterburner Guide (2026)",
     "description": "Get 15% free performance. Learn how to overclock your graphics card (Nvidia/AMD) using MSI Afterburner, test stability with Kombustor, and perform Undervolting.",
@@ -1157,14 +925,6 @@
     "description": "The ultimate guide to VRR. Understand the difference between G-Sync Compatible, Native, and why you MUST enable V-Sync in the control panel (but not in-game).",
     "category": "windows-geral",
     "difficulty": "Advanced",
-    "time": "30 min"
-  },
-  {
-    "id": "gta-iv-complete-edition-lag-fix",
-    "title": "GTA IV: How to Fix Lag and Stuttering (Complete Edition 2026)",
-    "description": "Is GTA 4 running poorly on your powerful PC? Learn how to use DXVK and FusionFix to transform this poorly optimized port into a smooth and modern game.",
-    "category": "games-fix",
-    "difficulty": "Intermediate",
     "time": "30 min"
   },
   {
@@ -1296,6 +1056,38 @@
     "time": "80 minutes"
   },
   {
+    "id": "how-to-block-program-internet-firewall",
+    "title": "How to Block a Program",
+    "description": "Want to play offline or stop annoying updates? Learn how to use Windows Firewall to block any app",
+    "category": "software",
+    "difficulty": "Beginner",
+    "time": "15 min"
+  },
+  {
+    "id": "how-to-calibrate-laptop-battery",
+    "title": "How to Calibrate Notebook Battery in 2026 (Fix Percentage)",
+    "description": "Does your laptop turn off suddenly even while showing 20%? Learn how to calibrate the battery for an accurate reading of how much charge you have left.",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "6 hours"
+  },
+  {
+    "id": "how-to-calibrate-monitor-colors",
+    "title": "How to Calibrate Monitor Colors in 2026 (Complete Guide)",
+    "description": "Do your monitor colors feel ",
+    "category": "windows-geral",
+    "difficulty": "Beginner",
+    "time": "20 min"
+  },
+  {
+    "id": "how-to-choose-cpu-for-gaming",
+    "title": "How to Choose a Processor (CPU) in 2026: Gamer",
+    "description": "Ryzen or Intel? Learn how to choose the best processor for gaming and productivity in 2026, avoiding bottlenecks in your Gaming PC.",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "20 min"
+  },
+  {
     "id": "how-to-choose-graphics-card",
     "title": "How to Choose the Ideal Graphics Card in 2026",
     "description": "RTX, RX or Arc? Learn how to choose the best graphics card for your budget, monitor and goals in a PC Gamer in 2026.",
@@ -1304,12 +1096,100 @@
     "time": "25 min"
   },
   {
+    "id": "how-to-choose-pc-power-supply-psu",
+    "title": "PSU Guide 2026: Tier List, 80 Plus, and Real Wattage",
+    "description": "Don",
+    "category": "hardware",
+    "difficulty": "Intermediate",
+    "time": "20 min"
+  },
+  {
+    "id": "how-to-create-bootable-usb-windows-11",
+    "title": "How to Create a Windows 11 Bootable USB Drive (2026)",
+    "description": "Need to format your PC? Learn how to create an official Windows 11 bootable USB using Microsoft",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "30 min"
+  },
+  {
+    "id": "how-to-create-restore-point-windows-11",
+    "title": "How to Create a Restore Point in Windows 11 (2026)",
+    "description": "Are you going to install a new driver or tweak the registry? Learn how to create a Restore Point to protect your Windows from errors in 2026.",
+    "category": "software",
+    "difficulty": "Beginner",
+    "time": "5 min"
+  },
+  {
     "id": "how-to-delete-instagram-account-permanently",
     "title": "How to Permanently Delete Your Instagram Account (2026)",
     "description": "Tired of Reels? Learn how to delete or temporarily deactivate your Instagram account via mobile or PC in this updated 2026 guide.",
     "category": "windows-geral",
     "difficulty": "Beginner",
     "time": "10 min"
+  },
+  {
+    "id": "how-to-open-router-ports-open-nat",
+    "title": "How to Open Router Ports and Get Open NAT: 2026 Guide",
+    "description": "Suffering from Restricted NAT in Warzone, GTA, FIFA, or online games? Learn the complete step-by-step to configure Port Forwarding, UPnP, and DMZ on your router...",
+    "category": "rede-seguranca",
+    "difficulty": "Advanced",
+    "time": "60 min"
+  },
+  {
+    "id": "how-to-read-bsod-dmp-files",
+    "title": "Blue Screen (BSOD): How to Read .DMP Files and Discover the Error",
+    "description": "Learn how to diagnose the ",
+    "category": "windows-geral",
+    "difficulty": "Advanced",
+    "time": "25 min"
+  },
+  {
+    "id": "how-to-record-screen-obs-studio",
+    "title": "How to Use OBS Studio to Record Your Screen (Complete Tutorial)",
+    "description": "Want to record your matches or tutorials with professional quality? Learn how to configure OBS Studio for lightweight, lag-free screen recording in 2026.",
+    "category": "software",
+    "difficulty": "Intermediate",
+    "time": "20 min"
+  },
+  {
+    "id": "how-to-replace-thermal-paste-cpu-gpu",
+    "title": "Thermal Paste Replacement (CPU/GPU): Safe Maintenance Guide",
+    "description": "Is your PC overheating? Learn how to open your processor and graphics card to change thermal paste correctly. Pea, X, or Spread method?",
+    "category": "hardware",
+    "difficulty": "Advanced",
+    "time": "40 min"
+  },
+  {
+    "id": "how-to-safely-update-bios",
+    "title": "How to Securely Update BIOS in 2026: Complete and Definitive Guide",
+    "description": "Scared of updating BIOS? Learn how to update your motherboard safely, what Q-Flash, M-Flash, BIOS Flashback are, how to avoid risks...",
+    "category": "hardware",
+    "difficulty": "Advanced",
+    "time": "45 min"
+  },
+  {
+    "id": "how-to-share-printers-windows-network",
+    "title": "How to Share Printers on a Windows Network (2026)",
+    "description": "Want to print from any PC in the house? Learn how to set up printer sharing on Windows 11 simply and securely in 2026.",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "15 min"
+  },
+  {
+    "id": "how-to-update-gpu-drivers",
+    "title": "How to Update Video Drivers (NVIDIA, AMD, and Intel) in 2026: Complete Guide",
+    "description": "Is your game crashing, lagging, or showing artifacts? Learn the 7 definitive ways to keep your video drivers (NVIDIA, AMD, Intel Arc) updated.",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "45 min"
+  },
+  {
+    "id": "how-to-use-ddu-driver-uninstaller",
+    "title": "How to Use DDU (Display Driver Uninstaller): Safe Guide (2026)",
+    "description": "Corrupted video drivers cause blue screens and FPS drops. Learn how to use DDU to completely remove Nvidia/AMD/Intel drivers and perform a clean installation.",
+    "category": "software",
+    "difficulty": "Advanced",
+    "time": "20 min"
   },
   {
     "id": "how-xbox-smart-delivery-works-pc",
@@ -1342,6 +1222,14 @@
     "category": "windows-geral",
     "difficulty": "Intermediate",
     "time": "25 min"
+  },
+  {
+    "id": "increase-microphone-volume-windows",
+    "title": "Low Microphone? The Ultimate Windows Audio Guide (2026)",
+    "description": "Is your microphone too quiet or has static? Learn to configure gain, use Equalizer APO, NVIDIA Broadcast, and transform your amateur audio into studio quality.",
+    "category": "software",
+    "difficulty": "Intermediate",
+    "time": "40 min"
   },
   {
     "id": "increase-minecraft-fps-fabric-sodium",
@@ -1528,6 +1416,14 @@
     "time": "15 min"
   },
   {
+    "id": "micro-stuttering-in-games-causes",
+    "title": "Micro Stuttering in Games: Causes and Solutions (2026)",
+    "description": "Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques.",
+    "category": "games-fix",
+    "difficulty": "Intermediate",
+    "time": "15 min"
+  },
+  {
     "id": "minecraft-lag-fix-optifine-fabric",
     "title": "Minecraft Lag Fix: OptiFine vs Fabric (Sodium) in 2026",
     "description": "Is your Minecraft stuttering? Learn how to install OptiFine or Fabric with Sodium to gain a lot of FPS and run shaders even on a low-end PC.",
@@ -1672,6 +1568,14 @@
     "time": "60 min"
   },
   {
+    "id": "obs-studio-best-streaming-settings-2026",
+    "title": "OBS Studio: Best Live Stream Settings (2026)",
+    "description": "Want to stream on Twitch or YouTube without lag? Learn how to configure bitrate, encoder, and resolution in OBS Studio for a professional broadcast.",
+    "category": "software",
+    "difficulty": "Intermediate",
+    "time": "20 min"
+  },
+  {
     "id": "obs-studio-recording-replay-buffer-av1",
     "title": "OBS Studio (2026): Replay Buffer, AV1 & No-Lag Recording",
     "description": "Replace heavy ShadowPlay with optimized OBS Studio. Learn how to use Replay Buffer in RAM and the AV1 codec to clip plays with maximum quality.",
@@ -1742,6 +1646,14 @@
     "category": "hardware",
     "difficulty": "Advanced",
     "time": "2 hours"
+  },
+  {
+    "id": "pc-cable-management-organization",
+    "title": "Cable Management: How to Organize PC Cables (2026)",
+    "description": "Does the inside of your PC look like a bird",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "1 hour"
   },
   {
     "id": "pc-case-airflow-fans-setup",
@@ -2000,14 +1912,6 @@
     "time": "25 min"
   },
   {
-    "id": "roblox-fps-unlocker-tutorial",
-    "title": "Roblox FPS Unlocker: How to play above 60 FPS (2026)",
-    "description": "Tired of playing Roblox locked at 60 FPS? Learn how to use the FPS Unlocker and the new native Roblox features to get more fluidity in 2026.",
-    "category": "otimizacao",
-    "difficulty": "Beginner",
-    "time": "10 min"
-  },
-  {
     "id": "roblox-white-screen-freeze-fix",
     "title": "Roblox White Screen: How to fix the startup error (2026)",
     "description": "Does your Roblox open but get stuck on a white or grey screen? Learn how to solve rendering and compatibility issues in Roblox in 2026.",
@@ -2036,6 +1940,14 @@
     "title": "ROG Ally & Legion Go (2026): Windows Optimization and Battery Life",
     "description": "Windows 11 isn",
     "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "30 min"
+  },
+  {
+    "id": "router-configuration-for-gaming",
+    "title": "Router Configuration for Gaming: Optimizing Wi-Fi and Ports (2026)",
+    "description": "Wi-Fi Lag? Learn how to choose the best channel (1, 6, 11), separate 2.4GHz/5GHz networks, and configure QoS to prioritize your PC or Console on the home network.",
+    "category": "rede-seguranca",
     "difficulty": "Intermediate",
     "time": "30 min"
   },
@@ -2248,14 +2160,6 @@
     "time": "30 min"
   },
   {
-    "id": "the-witcher-3-next-gen-performance",
-    "title": "The Witcher 3 Next Gen: PC Performance Guide (2026)",
-    "description": "Want to run The Witcher 3 with Ray Tracing and stable FPS? Learn the best settings for the Next Gen version and how to avoid stuttering in 2026.",
-    "category": "windows-geral",
-    "difficulty": "Intermediate",
-    "time": "25 min"
-  },
-  {
     "id": "the-witcher-3-next-gen-ray-tracing-optimization",
     "title": "The Witcher 3 Next-Gen (2026): DX11 vs DX12, Ray Tracing, and Mods",
     "description": "The Next-Gen update made the game significantly heavier. Learn how to run it with Ray Tracing enabled or play the classic DX11 version for maximum performance.",
@@ -2278,6 +2182,14 @@
     "category": "windows-geral",
     "difficulty": "Beginner",
     "time": "45 min"
+  },
+  {
+    "id": "two-factor-authentication-guide",
+    "title": "Two-Factor Authentication (2FA): The Ultimate Security Guide (2026)",
+    "description": "Your password has already leaked. Learn how to shield your Instagram, Steam, Google, and Discord accounts with 2FA. Discover why SMS is insecure and which apps to use.",
+    "category": "rede-seguranca",
+    "difficulty": "Beginner",
+    "time": "30 min"
   },
   {
     "id": "ultrawide-monitor-competitive-gaming",
@@ -2358,6 +2270,14 @@
     "category": "windows-geral",
     "difficulty": "Beginner",
     "time": "10 min"
+  },
+  {
+    "id": "vibe-coding-ai-programming",
+    "title": "Vibe Coding: The Future of Programming with Intent and AI (2026 Dossier)",
+    "description": "Forget the syntax battle. Learn the ",
+    "category": "windows-geral",
+    "difficulty": "Beginner",
+    "time": "35 min"
   },
   {
     "id": "virtual-memory-pagefile-ssd-optimization",
@@ -2520,6 +2440,14 @@
     "time": "10 min"
   },
   {
+    "id": "windows-keyboard-shortcuts-productivity",
+    "title": "Windows Shortcuts: The Complete Productivity Manual 2026",
+    "description": "Master Windows 11 with 60+ of the most useful keyboard shortcuts for productivity. Learn to manage windows, virtual desktops, hidden tools, and more.",
+    "category": "software",
+    "difficulty": "Intermediate",
+    "time": "60 min"
+  },
+  {
     "id": "windows-privacy-telemetry",
     "title": "Privacy in Windows 11: How to Disable Telemetry (2026)",
     "description": "Does Windows 11 collect too much data? Learn how to disable Microsoft telemetry, ads and tracking for more privacy and performance in 2026.",
@@ -2534,6 +2462,14 @@
     "category": "software",
     "difficulty": "Beginner",
     "time": "15 min"
+  },
+  {
+    "id": "windows-task-automation-power-automate",
+    "title": "Automation in Windows 11: Power Automate & Scripts (2026)",
+    "description": "Tired of repetitive tasks? Learn to use Power Automate Desktop, Task Scheduler, Batch, and PowerShell to create a PC that works on its own.",
+    "category": "windows-geral",
+    "difficulty": "Intermediate",
+    "time": "45 min"
   },
   {
     "id": "windows-update-fix-errors",

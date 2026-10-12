@@ -193,7 +193,7 @@ export default function RustGuide() {
             description: "Asset Warmup loading speed."
         },
         {
-            href: "/guides/bios-otimizacao-xmp-tpm",
+            href: "/guides/bios-uefi-guide-xmp-pbo-resize-bar",
             title: "BIOS Optimization",
             description: "Stable RAM settings."
         },

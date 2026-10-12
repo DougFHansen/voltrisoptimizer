@@ -320,12 +320,12 @@ export default function GTASAFixGuide() {
             description: "How to maintain stable 60 FPS with ultra graphics."
         },
         {
-            href: "/guides/erro-0xc00007b-aplicativo-nao-inicializou",
+            href: "/guides/fix-error-0xc00007b",
             title: "Error 0xc00007b",
             description: "If the game doesn't even open, start here."
         },
         {
-            href: "/guides/calibrar-cores-monitor",
+            href: "/guides/how-to-calibrate-monitor-colors",
             title: "Calibrate Monitor",
             description: "Ensure SkyGfx fidelity."
         }

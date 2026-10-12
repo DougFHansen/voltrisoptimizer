@@ -83,7 +83,7 @@ export default function MonitorPanelGuide() {
             description: "Tips on brands and models for 2026."
         },
         {
-            href: "/guides/calibrar-cores-monitor",
+            href: "/guides/how-to-calibrate-monitor-colors",
             title: "Calibrate Monitor",
             description: "Adjust the colors of your new panel."
         },

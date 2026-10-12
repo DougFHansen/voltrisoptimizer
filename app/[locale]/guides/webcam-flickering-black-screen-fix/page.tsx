@@ -86,7 +86,7 @@ export default function WebcamFixGuide() {
             description: "Tips if the port stopped working."
         },
         {
-            href: "/guides/como-usar-obs-studio-gravar-tela",
+            href: "/guides/how-to-record-screen-obs-studio",
             title: "Configure OBS",
             description: "Improve your webcam image."
         },

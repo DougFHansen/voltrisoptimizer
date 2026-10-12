@@ -84,7 +84,7 @@ export default function LoLBlackScreenGuide() {
             description: "Improve performance after entering the game."
         },
         {
-            href: "/guides/como-limpar-cache-dns-ip-flushdns",
+            href: "/guides/cmd-network-commands-flushdns-winsock",
             title: "Clear DNS",
             description: "Commands to reset your network."
         },

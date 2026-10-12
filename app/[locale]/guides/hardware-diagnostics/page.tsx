@@ -234,7 +234,7 @@ export default function HardwareDiagnosticGuide() {
                 <p class="text-gray-400 text-sm">Problematic driver. Use DDU to remove and reinstall the video driver or any other recently installed driver.</p>
             </div>
         </div>
-        <p class="text-gray-300 text-sm">For in-depth BSOD diagnostics, visit our <a href="/guides/como-analisar-tela-azul-bsod-dmp-guia" class="text-[#31A8FF] hover:underline">BSOD Dump Analysis Guide</a> where we teach how to open .dmp files and identify exactly which driver file caused the blue screen.</p>
+        <p class="text-gray-300 text-sm">For in-depth BSOD diagnostics, visit our <a href="/guides/how-to-read-bsod-dmp-files" class="text-[#31A8FF] hover:underline">BSOD Dump Analysis Guide</a> where we teach how to open .dmp files and identify exactly which driver file caused the blue screen.</p>
       `
         }
     ];
@@ -267,7 +267,7 @@ export default function HardwareDiagnosticGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-analisar-tela-azul-bsod-dmp-guia",
+            href: "/guides/how-to-read-bsod-dmp-files",
             title: "Analyze BSOD Dumps",
             description: "Read .dmp files to find out exactly which driver caused the blue screen."
         },
@@ -282,7 +282,7 @@ export default function HardwareDiagnosticGuide() {
             description: "Complete guide on interpreting CrystalDiskInfo and S.M.A.R.T."
         },
         {
-            href: "/guides/como-trocar-pasta-termica-cpu-gpu-guia",
+            href: "/guides/how-to-replace-thermal-paste-cpu-gpu",
             title: "Change Thermal Paste",
             description: "If the problem is high temperature, thermal paste might be the solution."
         }

@@ -82,12 +82,12 @@ export default function WifiPrinterGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/compartilhamento-impressoras",
+      href: "/guides/how-to-share-printers-windows-network",
       title: "Share Network",
       description: "Use the printer on multiple PCs at the same time."
     },
     {
-      href: "/guides/configuracao-roteador-wifi",
+      href: "/guides/router-configuration-for-gaming",
       title: "Configure Router",
       description: "Differences between 2.4GHz and 5GHz channels."
     },

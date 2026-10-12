@@ -78,7 +78,7 @@ export default function MinecraftLagGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "Minecraft uses OpenGL, updated drivers are vital."
         },
@@ -88,7 +88,7 @@ export default function MinecraftLagGuide() {
             description: "Improve connection on multiplayer servers."
         },
         {
-            href: "/guides/automacao-tarefas",
+            href: "/guides/windows-task-automation-power-automate",
             title: "World Backups",
             description: "Don't lose your survival world to disk errors."
         }

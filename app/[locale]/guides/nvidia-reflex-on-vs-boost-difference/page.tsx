@@ -84,7 +84,7 @@ export default function NvidiaReflexGuide() {
             description: "Combine with Reflex for minimum latency."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Scheduling",
             description: "Another way to reduce latency on Windows 11."
         },

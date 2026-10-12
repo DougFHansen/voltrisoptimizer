@@ -84,7 +84,7 @@ export default function GodModeGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Windows Shortcuts",
             description: "More ways to navigate the system quickly."
         },

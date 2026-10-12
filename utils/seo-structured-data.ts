@@ -146,7 +146,7 @@ export function generateSoftwareApplicationSchema({
     },
     softwareHelp: {
       '@type': 'CreativeWork',
-      url: 'https://www.voltrisoptimizer.com/voltrisoptimizer/documentacao'
+      url: 'https://www.voltrisoptimizer.com/en/voltrisoptimizer/documentation'
     },
     softwareRequirements: [
       'Windows 10',

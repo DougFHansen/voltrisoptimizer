@@ -154,7 +154,7 @@ export default function AudioSurroundGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/aumentar-volume-microfone-windows",
+            href: "/guides/increase-microphone-volume-windows",
             title: "Configure Microphone",
             description: "Don't be the guy who blows out the team's ears."
         },
@@ -164,7 +164,7 @@ export default function AudioSurroundGuide() {
             description: "Fix crackling and driver issues."
         },
         {
-            href: "/guides/equalizer-apo-peace-aumentar-passos-fps",
+            href: "/guides/equalizer-apo-peace-footstep-boost",
             title: "Equalizer APO Guide",
             description: "Step-by-step tutorial to install EQ on Windows."
         }

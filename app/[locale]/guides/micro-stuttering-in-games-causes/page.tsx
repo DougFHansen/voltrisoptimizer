@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   keywords: ['micro stuttering', 'game performance', 'fps drops', 'pc optimization', 'gaming'],
 }
 
+export const guideMetadata = {
+  id: 'micro-stuttering-in-games-causes',
+  title: 'Micro Stuttering in Games: Causes and Solutions (2026)',
+  description: 'Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques.',
+  category: 'games-fix',
+  difficulty: 'Intermediate',
+  time: '15 min'
+};
+
 export default function MicroStutteringGuide() {
   const contentSections = [
     {

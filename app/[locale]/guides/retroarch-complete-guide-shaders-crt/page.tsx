@@ -194,7 +194,7 @@ export default function RetroArchGuide() {
             description: "Better to use Standalone for PS2."
         },
         {
-            href: "/guides/dolphin-emulador-wii-gamecube-ubershaders-guia",
+            href: "/guides/dolphin-wii-gamecube-setup-guide",
             title: "Dolphin",
             description: "Better to use Standalone for Wii/GameCube."
         }

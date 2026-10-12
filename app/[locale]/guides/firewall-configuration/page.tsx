@@ -79,12 +79,12 @@ export default function FirewallConfigGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/bloquear-internet-firewall-windows",
+      href: "/guides/how-to-block-program-internet-firewall",
       title: "Block Software",
       description: "Prevent an app from connecting to the network."
     },
     {
-      href: "/guides/abrir-portas-roteador-nat-aberto",
+      href: "/guides/how-to-open-router-ports-open-nat",
       title: "Open Ports",
       description: "Advanced network configurations."
     },

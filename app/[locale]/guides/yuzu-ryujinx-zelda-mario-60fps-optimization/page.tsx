@@ -187,7 +187,7 @@ export default function YuzuGuide() {
             description: "Avoid crash in Zelda."
         },
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller",
             description: "Configure Motion."
         }

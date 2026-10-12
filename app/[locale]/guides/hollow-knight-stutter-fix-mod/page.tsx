@@ -84,7 +84,7 @@ export default function HollowKnightFixGuide() {
             description: "Causes of stuttering in modern games."
         },
         {
-            href: "/guides/calibrar-cores-monitor",
+            href: "/guides/how-to-calibrate-monitor-colors",
             title: "Calibrate Monitor",
             description: "Make the game's aesthetics even more beautiful."
         },

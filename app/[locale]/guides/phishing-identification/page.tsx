@@ -651,7 +651,7 @@ export default function PhishingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/autenticacao-dois-fatores",
+      href: "/guides/two-factor-authentication-guide",
       title: "Enable 2FA",
       description: "Your final barrier against phishing."
     },

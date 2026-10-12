@@ -82,7 +82,7 @@ export default function MemoryManagementFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-resolver-tela-azul",
+            href: "/guides/blue-screen-bsod-fix-guide",
             title: "General BSOD Guide",
             description: "Solve other types of system errors."
         },

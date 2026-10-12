@@ -447,7 +447,7 @@ export default function EmulatorComparisonGuide() {
             description: "FPS tips for competitive games."
         },
         {
-            href: "/guides/atualizar-bios-seguro",
+            href: "/guides/how-to-safely-update-bios",
             title: "Enable Virtualization",
             description: "How to enter BIOS to enable VT-x."
         }

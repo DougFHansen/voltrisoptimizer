@@ -87,7 +87,7 @@ export default function GeometryDashPatchGuide() {
             description: "Similar tips for Roblox."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "Ensure your GPU supports the new 2.2 effects."
         }

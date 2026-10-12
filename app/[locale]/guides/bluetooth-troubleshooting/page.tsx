@@ -89,7 +89,7 @@ export default function BluetoothTroubleshootingGuide() {
       description: "How to force pairing of stuck headphones."
     },
     {
-      href: "/guides/atualizacao-drivers-video",
+      href: "/guides/how-to-update-gpu-drivers",
       title: "Update Drivers",
       description: "Tips on chipset and I/O drivers."
     }

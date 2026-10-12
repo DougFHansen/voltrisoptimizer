@@ -183,7 +183,7 @@ export default function SteamGuide() {
             description: "Complete guide."
         },
         {
-            href: "/guides/apex-legends-config-autoexec-fps",
+            href: "/guides/apex-legends-config-autoexec-superglide",
             title: "Apex config",
             description: "Autoexec guide."
         }

@@ -91,7 +91,7 @@ export default function ValorantSecureBootGuide() {
             description: "Make sure your system is optimized."
         },
         {
-            href: "/guides/como-resolver-tela-azul",
+            href: "/guides/blue-screen-bsod-fix-guide",
             title: "Boot Error",
             description: "What to do if the PC won't start after enabling Secure Boot."
         }

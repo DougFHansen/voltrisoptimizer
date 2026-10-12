@@ -428,12 +428,12 @@ export default function GPUBuyingGuide() {
       description: "The most popular graphics card of 2026 under analysis."
     },
     {
-      href: "/guides/atualizacao-drivers-video",
+      href: "/guides/how-to-update-gpu-drivers",
       title: "Install GPU",
       description: "How to prepare Windows for your new graphics card."
     },
     {
-      href: "/guides/aceleracao-hardware-gpu-agendamento",
+      href: "/guides/gpu-hardware-scheduling-hags",
       title: "Max Performance",
       description: "Squeeze every FPS out of your new GPU."
     }

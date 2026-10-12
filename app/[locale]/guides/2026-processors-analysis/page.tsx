@@ -78,7 +78,7 @@ export default function CPUAnalysisGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-escolher-processador-2026",
+            href: "/guides/how-to-choose-cpu-for-gaming",
             title: "Buying Guide",
             description: "Specific model tips by price point."
         },

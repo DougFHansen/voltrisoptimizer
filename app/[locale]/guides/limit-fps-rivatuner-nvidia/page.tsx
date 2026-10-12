@@ -88,7 +88,7 @@ export default function LimitFPSGuide() {
             description: "How to use the FPS monitor alongside RivaTuner."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "Latency Fix",
             description: "Reduce system input lag."
         },

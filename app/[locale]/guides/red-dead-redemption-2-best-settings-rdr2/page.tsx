@@ -80,7 +80,7 @@ export default function RDR2OptimizationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "Essential to avoid texture bugs in RDR2."
         },

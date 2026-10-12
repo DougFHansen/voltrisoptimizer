@@ -156,17 +156,17 @@ export default function AssembleGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/criar-pendrive-bootavel",
+      href: "/guides/how-to-create-bootable-usb-windows-11",
       title: "Install Windows",
       description: "How to create the USB drive to format the PC."
     },
     {
-      href: "/guides/cable-management-organizacao-cabos-pc",
+      href: "/guides/pc-cable-management-organization",
       title: "Cable Management",
       description: "Make your PC look good and improve airflow."
     },
     {
-      href: "/guides/como-escolher-fonte-pc-gamer",
+      href: "/guides/how-to-choose-pc-power-supply-psu",
       title: "Power Supply",
       description: "Ensure you connected the right modular cables."
     }

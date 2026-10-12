@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'smart-delivery-xbox-pc-como-funciona',
+  id: 'smart-delivery-xbox-pc-how-it-works',
   title: "Xbox Smart Delivery: How it works on PC and Console (2026)",
   description: "Understand what Microsoft's Smart Delivery is and how it ensures you always have the best version of the game on your PC or Xbox in 2026.",
   category: 'windows-general',

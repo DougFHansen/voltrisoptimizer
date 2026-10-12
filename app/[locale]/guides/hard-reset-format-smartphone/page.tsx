@@ -86,12 +86,12 @@ export default function HardResetGuide() {
             description: "How to save your photos before resetting."
         },
         {
-            href: "/guides/autenticacao-dois-fatores",
+            href: "/guides/two-factor-authentication-guide",
             title: "Account Security",
             description: "Don't lose access to your 2FA after the reset."
         },
         {
-            href: "/guides/calibrar-bateria-notebook",
+            href: "/guides/how-to-calibrate-laptop-battery",
             title: "Battery Care",
             description: "Keep your phone always charged."
         }

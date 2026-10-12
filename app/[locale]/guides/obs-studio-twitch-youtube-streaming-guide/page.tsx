@@ -204,7 +204,7 @@ export default function OBSStreamGuide() {
             description: "Optimal settings for high-quality clips."
         },
         {
-            href: "/guides/discord-nitro-qualidade-voz-krisp",
+            href: "/guides/discord-voice-quality-streaming-optimization",
             title: "Microphone Optimization",
             description: "Advanced audio cleaning tips."
         }

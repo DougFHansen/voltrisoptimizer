@@ -79,7 +79,7 @@ export default function GooglePlayGamesReviewGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/clash-royale-clash-of-clans-pc-oficial",
+            href: "/guides/clash-royale-clash-of-clans-on-pc",
             title: "Clash on PC Guide",
             description: "Specific tutorial for Supercell games."
         },
@@ -89,7 +89,7 @@ export default function GooglePlayGamesReviewGuide() {
             description: "For games not yet on Google Play PC."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Performance",
             description: "Improve Android gaming performance."
         }

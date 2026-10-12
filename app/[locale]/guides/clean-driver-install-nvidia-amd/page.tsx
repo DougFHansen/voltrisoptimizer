@@ -78,17 +78,17 @@ export default function CleanDriverInstallGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-usar-ddu-driver-uninstaller",
+            href: "/guides/how-to-use-ddu-driver-uninstaller",
             title: "DDU Guide",
             description: "The definitive method for removing drivers."
         },
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Official Drivers",
             description: "Where to download the correct 2026 versions."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Performance",
             description: "Adjust after clean installation."
         }

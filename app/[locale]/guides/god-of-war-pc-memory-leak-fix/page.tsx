@@ -80,12 +80,12 @@ export default function GoWMemoryFixGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "NVIDIA released specific drivers for GoW."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Scheduling",
             description: "Can help with initial stability."
         },

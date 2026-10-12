@@ -80,12 +80,12 @@ export default function BrowserCacheGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atalhos-navegador-produtividade",
+            href: "/guides/browser-shortcuts-productivity",
             title: "Browser Shortcuts",
             description: "Learn to browse like a pro."
         },
         {
-            href: "/guides/como-limpar-cache-dns-ip-flushdns",
+            href: "/guides/cmd-network-commands-flushdns-winsock",
             title: "Flush DNS",
             description: "If the site still won't open, the issue might be DNS."
         },

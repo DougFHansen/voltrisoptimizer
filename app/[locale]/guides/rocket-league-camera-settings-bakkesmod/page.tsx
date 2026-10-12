@@ -178,7 +178,7 @@ export default function RLGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller Overclock",
             description: "Reducing input lag."
         },

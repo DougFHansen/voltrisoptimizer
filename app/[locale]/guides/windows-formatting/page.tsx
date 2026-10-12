@@ -640,7 +640,7 @@ export default function FormatWindowsGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/criar-pendrive-bootavel",
+      href: "/guides/how-to-create-bootable-usb-windows-11",
       title: "Create Windows 11 Bootable USB",
       description: "Complete tutorial on how to use Rufus and Media Creation Tool to create an installation USB drive."
     },

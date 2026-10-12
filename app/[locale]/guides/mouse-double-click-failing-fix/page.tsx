@@ -88,7 +88,7 @@ export default function MouseFixGuide() {
             description: "Other peripheral cleaning tips."
         },
         {
-            href: "/guides/cs2-melhores-comandos-console-fps",
+            href: "/guides/cs2-console-commands-fps",
             title: "CS2 Performance",
             description: "Double click can ruin your spray in CS."
         }

@@ -83,7 +83,7 @@ export default function CompressorComparisonGuide() {
             description: "See why NanaZip is on our list."
         },
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Productivity",
             description: "Shortcuts to manage files fast."
         },

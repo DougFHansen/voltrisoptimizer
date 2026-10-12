@@ -81,12 +81,12 @@ export default function PostInstallationGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atualizacao-drivers-video",
+            href: "/guides/how-to-update-gpu-drivers",
             title: "Video Drivers",
             description: "How to perform a clean installation."
         },
         {
-            href: "/guides/corrigir-dll-faltando-vcredist-directx",
+            href: "/guides/fix-missing-dll-vcredist-directx",
             title: "Fix DLLs",
             description: "Install the necessary runtimes for games."
         },

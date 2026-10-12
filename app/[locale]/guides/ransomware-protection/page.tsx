@@ -664,12 +664,12 @@ export default function RansomwareProtectionGuide() {
       description: "The 3-2-1 rule for complete ransomware protection."
     },
     {
-      href: "/guides/criptografia-dados",
+      href: "/guides/data-encryption-protect-files",
       title: "Data Encryption",
       description: "How encryption can help and hinder protection."
     },
     {
-      href: "/guides/autenticacao-dois-fatores",
+      href: "/guides/two-factor-authentication-guide",
       title: "Two-Factor Authentication",
       description: "Extra layer of protection against unauthorized access."
     },

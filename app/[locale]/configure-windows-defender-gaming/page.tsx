@@ -87,7 +87,7 @@ export default function ConfigurarWindowsDefenderJogos() {
     ];
 
     const relatedGuides = [
-        { href: "/guides/antivirus-para-jogos-windows-defender-exclusao", title: "Classic Guide", description: "The old manual exclusions guide." },
+        { href: "/guides/antivirus-for-gaming-windows-defender-exclusions", title: "Classic Guide", description: "The old manual exclusions guide." },
         { href: "/seguranca-digital", title: "Digital Security", description: "Security tips for passwords and browsing." }
     ];
 

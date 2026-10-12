@@ -83,7 +83,7 @@ export default function WiFiSolutionsGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/configuracao-roteador-wifi",
+            href: "/guides/router-configuration-for-gaming",
             title: "Configure Router",
             description: "Learn how to change the Wi-Fi channel."
         },

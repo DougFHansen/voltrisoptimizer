@@ -205,7 +205,7 @@ export default function AudioTroubleshootingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/aumentar-volume-microfone-windows",
+      href: "/guides/increase-microphone-volume-windows",
       title: "Equalizer APO Guide",
       description: "Complete tutorial on how to install and configure Peace GUI for perfect bass."
     },
@@ -215,7 +215,7 @@ export default function AudioTroubleshootingGuide() {
       description: "Analysis: Is it worth paying for spatial sound in games?"
     },
     {
-      href: "/guides/atualizacao-drivers-video",
+      href: "/guides/how-to-update-gpu-drivers",
       title: "DDU Guide",
       description: "How to use Display Driver Uninstaller to clean out GPU audio drivers."
     }

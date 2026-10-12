@@ -155,7 +155,7 @@ export default function BrowserGuide() {
             description: "Which extensions are worth the weight."
         },
         {
-            href: "/guides/atalhos-navegador-produtividade",
+            href: "/guides/browser-shortcuts-productivity",
             title: "Shortcuts",
             description: "Navigate faster."
         }

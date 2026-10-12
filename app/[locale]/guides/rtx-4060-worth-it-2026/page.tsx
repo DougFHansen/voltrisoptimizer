@@ -80,7 +80,7 @@ export default function RTX4060ReviewGuide() {
             description: "Understand technical terms before buying."
         },
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "Enable HAGS",
             description: "Mandatory for Frame Gen to work."
         },

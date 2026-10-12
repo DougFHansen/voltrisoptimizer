@@ -188,7 +188,7 @@ export default function TerrariaGuide() {
             description: "Another optimizable sandbox."
         },
         {
-            href: "/guides/cheat-engine-speedhack-jogos-offline",
+            href: "/guides/cheat-engine-speedhack-offline-games",
             title: "Cheat Engine",
             description: "Skip the night."
         }

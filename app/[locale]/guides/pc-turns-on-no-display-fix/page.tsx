@@ -90,7 +90,7 @@ export default function NoVideoDiagnosticGuide() {
             description: "Find out if the PSU has enough power for video."
         },
         {
-            href: "/guides/atualizar-bios-seguro",
+            href: "/guides/how-to-safely-update-bios",
             title: "Update BIOS",
             description: "Necessary for new CPUs on old boards."
         }

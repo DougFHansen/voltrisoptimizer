@@ -76,7 +76,7 @@ export default function ExcelSheetsGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Windows Shortcuts",
             description: "Navigate faster between work windows."
         },

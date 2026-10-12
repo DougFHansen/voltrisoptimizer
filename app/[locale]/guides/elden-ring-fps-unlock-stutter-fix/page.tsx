@@ -199,7 +199,7 @@ export default function EldenRingGuide() {
             description: "Understand the format."
         },
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller",
             description: "Improve Parry."
         }

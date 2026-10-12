@@ -81,7 +81,7 @@ export default function InstagramDeleteGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/autenticacao-dois-fatores",
+            href: "/guides/two-factor-authentication-guide",
             title: "Protect Accounts",
             description: "Keep your access secure while you decide."
         },

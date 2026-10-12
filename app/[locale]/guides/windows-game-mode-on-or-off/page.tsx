@@ -154,7 +154,7 @@ export default function GameModeGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/aceleracao-hardware-gpu-agendamento",
+            href: "/guides/gpu-hardware-scheduling-hags",
             title: "GPU Scheduling",
             description: "Understand HAGS in detail."
         },

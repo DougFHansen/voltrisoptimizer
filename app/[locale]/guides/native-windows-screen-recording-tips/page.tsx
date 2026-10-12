@@ -213,12 +213,12 @@ export default function NativeRecordingGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/como-usar-obs-studio-gravar-tela",
+            href: "/guides/how-to-record-screen-obs-studio",
             title: "Advanced Tutorial: OBS Studio",
             description: "When native tools aren't enough: Streamlabs, Scenes, and Sources."
         },
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Secret Shortcuts",
             description: "Master your keyboard to work 10x faster."
         },

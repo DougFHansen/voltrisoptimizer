@@ -198,7 +198,7 @@ export default function MonitorBuyingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/calibrar-cores-monitor",
+      href: "/guides/how-to-calibrate-monitor-colors",
       title: "Calibrate Monitor",
       description: "Adjust colors after purchase for fidelity."
     },

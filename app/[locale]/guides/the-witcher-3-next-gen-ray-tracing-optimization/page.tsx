@@ -198,7 +198,7 @@ export default function Witcher3Guide() {
             description: "Looks beautiful in Toussaint."
         },
         {
-            href: "/guides/controle-ps4-ps5-overclock-ds4windows",
+            href: "/guides/dualsense-ds4windows-1000hz-pc",
             title: "Controller",
             description: "Fluid gameplay."
         }

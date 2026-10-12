@@ -280,7 +280,7 @@ print(result)
 
     const relatedGuides = [
         {
-            href: "/guides/como-programar-com-ia-vibe-coding",
+            href: "/guides/vibe-coding-ai-programming",
             title: "Vibe Coding",
             description: "Use IA to write your agents' code 10x faster."
         },

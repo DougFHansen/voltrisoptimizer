@@ -75,7 +75,7 @@ export default function InternetTroubleshootingGuide() {
 
   const relatedGuides = [
     {
-      href: "/guides/como-limpar-cache-dns-ip-flushdns",
+      href: "/guides/cmd-network-commands-flushdns-winsock",
       title: "Clear DNS Cache",
       description: "Resolve errors with sites that won't open."
     },

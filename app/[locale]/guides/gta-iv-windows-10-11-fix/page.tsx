@@ -88,7 +88,7 @@ export default function GTAIVFixGuide() {
             description: "Improve system response before opening GTA."
         },
         {
-            href: "/guides/como-usar-ddu-driver-uninstaller",
+            href: "/guides/how-to-use-ddu-driver-uninstaller",
             title: "Driver Cleanup",
             description: "Avoid DirectX conflicts with old drivers."
         },

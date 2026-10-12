@@ -91,7 +91,7 @@ export default function FortniteTexturesFixGuide() {
             description: "Increase the game's read speed."
         },
         {
-            href: "/guides/erro-disco-100-porcento-gerenciador-tarefas",
+            href: "/guides/fix-100-disk-usage-windows-11",
             title: "100% Disk Usage",
             description: "Find out if your HDD is the real culprit."
         }

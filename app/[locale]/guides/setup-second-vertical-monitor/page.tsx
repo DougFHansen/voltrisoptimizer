@@ -90,7 +90,7 @@ export default function VerticalMonitorGuide() {
             description: "Why IPS is better for vertical monitors."
         },
         {
-            href: "/guides/atalhos-produtividade-windows",
+            href: "/guides/windows-keyboard-shortcuts-productivity",
             title: "Windows Productivity",
             description: "Shortcuts for moving windows between monitors."
         }

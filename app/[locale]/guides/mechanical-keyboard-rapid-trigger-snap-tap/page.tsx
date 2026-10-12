@@ -207,7 +207,7 @@ export default function KeyboardGuide() {
             description: "Where to use Rapid Trigger."
         },
         {
-            href: "/guides/cs2-otimizacao-fps-competitivo",
+            href: "/guides/cs2-competitive-fps-optimization",
             title: "CS2",
             description: "Counter-Strafing guide."
         }

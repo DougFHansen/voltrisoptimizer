@@ -180,7 +180,7 @@ export default function VPNGuide() {
 
     const relatedGuides = [
         {
-            href: "/guides/bufferbloat-qos-sqm-roteador-ping",
+            href: "/guides/bufferbloat-qos-sqm-lag",
             title: "Bufferbloat",
             description: "If the problem is local."
         },

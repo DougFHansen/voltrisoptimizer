@@ -97,7 +97,7 @@
   },
   {
     "route": "/[locale]/configure-windows-defender-gaming",
-    "lastModified": "2026-06-12T23:58:10.353Z"
+    "lastModified": "2026-10-12T04:53:35.093Z"
   },
   {
     "route": "/[locale]/contact",
@@ -153,19 +153,11 @@
   },
   {
     "route": "/[locale]/guides/2026-processors-analysis",
-    "lastModified": "2026-09-19T11:29:39.690Z"
+    "lastModified": "2026-10-12T04:53:35.107Z"
   },
   {
     "route": "/[locale]/guides/240hz-360hz-monitors-worth-it-ghosting",
     "lastModified": "2026-09-19T11:29:39.696Z"
-  },
-  {
-    "route": "/[locale]/guides/abrir-portas-roteador-nat-aberto",
-    "lastModified": "2026-08-15T23:32:54.799Z"
-  },
-  {
-    "route": "/[locale]/guides/aceleracao-hardware-gpu-agendamento",
-    "lastModified": "2026-08-15T23:32:54.801Z"
   },
   {
     "route": "/[locale]/guides/advanced-wifi-security",
@@ -176,68 +168,40 @@
     "lastModified": "2026-09-19T11:29:39.715Z"
   },
   {
-    "route": "/[locale]/guides/amd-adrenalin-configuracao-competitiva",
-    "lastModified": "2026-08-15T23:32:54.804Z"
+    "route": "/[locale]/guides/amd-adrenalin-competitive-settings",
+    "lastModified": "2026-10-12T04:53:35.111Z"
   },
   {
-    "route": "/[locale]/guides/antivirus-para-jogos-windows-defender-exclusao",
-    "lastModified": "2026-08-15T23:32:54.811Z"
+    "route": "/[locale]/guides/antivirus-for-gaming-windows-defender-exclusions",
+    "lastModified": "2026-10-12T04:53:35.112Z"
   },
   {
-    "route": "/[locale]/guides/apex-legends-config-autoexec-fps",
-    "lastModified": "2026-08-15T23:32:54.811Z"
+    "route": "/[locale]/guides/apex-legends-config-autoexec-superglide",
+    "lastModified": "2026-10-12T04:53:35.114Z"
   },
   {
     "route": "/[locale]/guides/assetto-corsa-content-manager-csp-sol",
-    "lastModified": "2026-08-15T23:32:54.816Z"
-  },
-  {
-    "route": "/[locale]/guides/atalhos-navegador-produtividade",
-    "lastModified": "2026-08-15T23:32:54.820Z"
-  },
-  {
-    "route": "/[locale]/guides/atalhos-produtividade-windows",
-    "lastModified": "2026-08-15T23:32:54.821Z"
-  },
-  {
-    "route": "/[locale]/guides/atualizacao-drivers-video",
-    "lastModified": "2026-08-02T06:09:31.954Z"
-  },
-  {
-    "route": "/[locale]/guides/atualizar-bios-seguro",
-    "lastModified": "2026-08-15T23:32:54.824Z"
+    "lastModified": "2026-10-12T04:53:35.120Z"
   },
   {
     "route": "/[locale]/guides/audio-sample-rate-44khz-192khz-bug",
-    "lastModified": "2026-09-19T11:29:39.750Z"
+    "lastModified": "2026-10-12T04:53:35.121Z"
   },
   {
     "route": "/[locale]/guides/audio-troubleshooting",
-    "lastModified": "2026-09-19T11:29:39.753Z"
-  },
-  {
-    "route": "/[locale]/guides/aumentar-volume-microfone-windows",
-    "lastModified": "2026-08-15T23:32:54.830Z"
-  },
-  {
-    "route": "/[locale]/guides/autenticacao-dois-fatores",
-    "lastModified": "2026-08-15T23:32:54.832Z"
-  },
-  {
-    "route": "/[locale]/guides/automacao-tarefas",
-    "lastModified": "2026-08-15T23:32:54.833Z"
+    "lastModified": "2026-10-12T04:53:35.122Z"
   },
   {
     "route": "/[locale]/guides/backup-automatico-nuvem",
     "lastModified": "2026-08-15T23:32:54.834Z"
   },
   {
-    "route": "/[locale]/guides/baldurs-gate-3-otimizacao-ato-3-fps",
-    "lastModified": "2026-08-15T23:32:54.835Z"
+    "route": "/[locale]/guides/baldurs-gate-3-act-3-fps-optimization",
+    "lastModified": "2026-10-12T04:53:35.124Z"
   },
   {
-    "route": "/[locale]/guides/beamng-drive-otimizacao-cpu-traffic",
-    "lastModified": "2026-08-15T23:32:54.836Z"
+    "route": "/[locale]/guides/beamng-drive-cpu-traffic-optimization",
+    "lastModified": "2026-10-12T04:53:35.126Z"
   },
   {
     "route": "/[locale]/guides/best-android-emulators-for-pc",
@@ -245,15 +209,15 @@
   },
   {
     "route": "/[locale]/guides/best-browsers-performance",
-    "lastModified": "2026-09-19T11:29:39.770Z"
+    "lastModified": "2026-10-12T04:53:35.127Z"
   },
   {
     "route": "/[locale]/guides/best-chrome-productivity-extensions",
-    "lastModified": "2026-09-19T11:29:39.775Z"
+    "lastModified": "2026-10-12T04:53:35.128Z"
   },
   {
     "route": "/[locale]/guides/best-dns-for-gaming-2026",
-    "lastModified": "2026-09-19T11:29:39.791Z"
+    "lastModified": "2026-10-12T04:53:35.130Z"
   },
   {
     "route": "/[locale]/guides/best-gaming-dns-google-vs-cloudflare",
@@ -261,27 +225,23 @@
   },
   {
     "route": "/[locale]/guides/best-older-nvidia-drivers-performance",
-    "lastModified": "2026-09-19T11:29:39.798Z"
+    "lastModified": "2026-10-12T04:53:35.131Z"
   },
   {
     "route": "/[locale]/guides/best-windows-version-for-gaming",
     "lastModified": "2026-09-19T11:29:39.802Z"
   },
   {
-    "route": "/[locale]/guides/bios-otimizacao-xmp-tpm",
-    "lastModified": "2026-08-15T23:32:54.843Z"
+    "route": "/[locale]/guides/bios-uefi-guide-xmp-pbo-resize-bar",
+    "lastModified": "2026-10-12T04:53:35.132Z"
   },
   {
-    "route": "/[locale]/guides/bitlocker-desempenho-jogos-ssd",
-    "lastModified": "2026-08-15T23:32:54.844Z"
+    "route": "/[locale]/guides/bitlocker-fps-impact-ssd",
+    "lastModified": "2026-10-12T04:53:35.133Z"
   },
   {
-    "route": "/[locale]/guides/bloquear-internet-firewall-windows",
-    "lastModified": "2026-08-15T23:32:54.845Z"
-  },
-  {
-    "route": "/[locale]/guides/bluestacks-ldplayer-otimizacao-free-fire-120fps",
-    "lastModified": "2026-08-15T23:32:54.845Z"
+    "route": "/[locale]/guides/blue-screen-bsod-fix-guide",
+    "lastModified": "2026-10-12T04:53:35.138Z"
   },
   {
     "route": "/[locale]/guides/bluestacks-optimization-free-fire-pubg",
@@ -289,79 +249,67 @@
   },
   {
     "route": "/[locale]/guides/bluestacks-vs-ldplayer-which-is-lighter",
-    "lastModified": "2026-09-19T11:29:39.830Z"
+    "lastModified": "2026-10-12T04:53:35.138Z"
   },
   {
     "route": "/[locale]/guides/bluetooth-troubleshooting",
-    "lastModified": "2026-09-19T11:29:39.835Z"
+    "lastModified": "2026-10-12T04:53:35.144Z"
   },
   {
     "route": "/[locale]/guides/browser-cleaning",
-    "lastModified": "2026-09-19T11:29:39.839Z"
+    "lastModified": "2026-10-12T04:53:35.144Z"
+  },
+  {
+    "route": "/[locale]/guides/browser-shortcuts-productivity",
+    "lastModified": "2026-10-12T04:53:35.147Z"
   },
   {
     "route": "/[locale]/guides/bsod-memory-management-fix",
-    "lastModified": "2026-09-19T11:29:39.842Z"
+    "lastModified": "2026-10-12T04:53:35.148Z"
   },
   {
     "route": "/[locale]/guides/budget-gaming-pc-build-2026",
-    "lastModified": "2026-09-19T11:29:39.851Z"
+    "lastModified": "2026-10-12T04:53:35.152Z"
   },
   {
-    "route": "/[locale]/guides/bufferbloat-qos-sqm-roteador-ping",
-    "lastModified": "2026-08-15T23:32:54.853Z"
+    "route": "/[locale]/guides/bufferbloat-qos-sqm-lag",
+    "lastModified": "2026-10-12T04:53:35.154Z"
   },
   {
     "route": "/[locale]/guides/building-gaming-pc-common-mistakes",
     "lastModified": "2026-09-19T11:29:39.870Z"
   },
   {
-    "route": "/[locale]/guides/cable-management-organizacao-cabos-pc",
-    "lastModified": "2026-08-15T23:32:54.855Z"
+    "route": "/[locale]/guides/cemu-zelda-botw-4k-60fps",
+    "lastModified": "2026-10-12T04:53:35.156Z"
   },
   {
-    "route": "/[locale]/guides/cadeira-gamer-ergonomia-postura-aim",
-    "lastModified": "2026-08-15T23:32:54.855Z"
-  },
-  {
-    "route": "/[locale]/guides/calibrar-bateria-notebook",
-    "lastModified": "2026-08-15T23:32:54.856Z"
-  },
-  {
-    "route": "/[locale]/guides/calibrar-cores-monitor",
-    "lastModified": "2026-08-15T23:32:54.858Z"
-  },
-  {
-    "route": "/[locale]/guides/cemu-emulador-wii-u-zelda-botw-4k-60fps",
-    "lastModified": "2026-08-15T23:32:54.859Z"
-  },
-  {
-    "route": "/[locale]/guides/cheat-engine-speedhack-jogos-offline",
-    "lastModified": "2026-08-15T23:32:54.860Z"
+    "route": "/[locale]/guides/cheat-engine-speedhack-offline-games",
+    "lastModified": "2026-10-12T04:53:35.157Z"
   },
   {
     "route": "/[locale]/guides/check-hdd-ssd-health-crystaldiskinfo",
     "lastModified": "2026-09-19T11:29:39.945Z"
   },
   {
-    "route": "/[locale]/guides/cities-skylines-2-otimizacao-fps-simulation",
-    "lastModified": "2026-08-15T23:32:54.862Z"
+    "route": "/[locale]/guides/cities-skylines-2-fps-optimization",
+    "lastModified": "2026-10-12T04:53:35.157Z"
   },
   {
-    "route": "/[locale]/guides/citra-lime3ds-emulador-3ds-pokemon-hd",
-    "lastModified": "2026-08-15T23:32:54.863Z"
+    "route": "/[locale]/guides/citra-lime3ds-pokemon-3ds-4k",
+    "lastModified": "2026-10-12T04:53:35.157Z"
   },
   {
-    "route": "/[locale]/guides/clash-royale-clash-of-clans-pc-oficial",
-    "lastModified": "2026-08-15T23:32:54.864Z"
+    "route": "/[locale]/guides/clash-royale-clash-of-clans-on-pc",
+    "lastModified": "2026-10-12T04:53:35.162Z"
   },
   {
     "route": "/[locale]/guides/clean-driver-install-nvidia-amd",
-    "lastModified": "2026-09-19T11:29:39.958Z"
+    "lastModified": "2026-10-12T04:53:35.164Z"
   },
   {
     "route": "/[locale]/guides/clean-install-windows-11-rufus-gpt",
-    "lastModified": "2026-09-19T11:29:39.961Z"
+    "lastModified": "2026-10-12T04:53:35.165Z"
   },
   {
     "route": "/[locale]/guides/cleaning-peripherals-mousepad-keyboard",
@@ -369,59 +317,19 @@
   },
   {
     "route": "/[locale]/guides/clear-browser-cache-chrome-edge",
-    "lastModified": "2026-09-19T11:29:39.969Z"
+    "lastModified": "2026-10-12T04:53:35.166Z"
   },
   {
     "route": "/[locale]/guides/clear-ram-memory-windows",
     "lastModified": "2026-09-19T11:29:39.988Z"
   },
   {
-    "route": "/[locale]/guides/cod-warzone-melhores-configuracoes-graficas",
-    "lastModified": "2026-08-15T23:32:54.870Z"
+    "route": "/[locale]/guides/cmd-network-commands-flushdns-winsock",
+    "lastModified": "2026-10-12T04:53:35.170Z"
   },
   {
-    "route": "/[locale]/guides/como-analisar-tela-azul-bsod-dmp-guia",
-    "lastModified": "2026-08-02T06:09:31.996Z"
-  },
-  {
-    "route": "/[locale]/guides/como-escolher-fonte-pc-gamer",
-    "lastModified": "2026-08-15T23:32:54.871Z"
-  },
-  {
-    "route": "/[locale]/guides/como-escolher-processador-2026",
-    "lastModified": "2026-08-15T23:32:54.872Z"
-  },
-  {
-    "route": "/[locale]/guides/como-limpar-cache-dns-ip-flushdns",
-    "lastModified": "2026-08-15T23:32:54.873Z"
-  },
-  {
-    "route": "/[locale]/guides/como-programar-com-ia-vibe-coding",
-    "lastModified": "2026-08-15T23:32:54.874Z"
-  },
-  {
-    "route": "/[locale]/guides/como-resolver-tela-azul",
-    "lastModified": "2026-08-15T23:32:54.876Z"
-  },
-  {
-    "route": "/[locale]/guides/como-trocar-pasta-termica-cpu-gpu-guia",
-    "lastModified": "2026-08-15T23:32:54.877Z"
-  },
-  {
-    "route": "/[locale]/guides/como-usar-ddu-driver-uninstaller",
-    "lastModified": "2026-08-15T23:32:54.878Z"
-  },
-  {
-    "route": "/[locale]/guides/como-usar-obs-studio-gravar-tela/como-os-estudio-gravar-tela",
-    "lastModified": "2026-06-12T23:27:20.078Z"
-  },
-  {
-    "route": "/[locale]/guides/como-usar-obs-studio-gravar-tela",
-    "lastModified": "2026-08-15T23:32:54.880Z"
-  },
-  {
-    "route": "/[locale]/guides/compartilhamento-impressoras",
-    "lastModified": "2026-08-15T23:32:54.880Z"
+    "route": "/[locale]/guides/cod-warzone-best-settings-fps",
+    "lastModified": "2026-10-12T04:53:35.171Z"
   },
   {
     "route": "/[locale]/guides/computer-cleaning",
@@ -432,16 +340,8 @@
     "lastModified": "2026-09-19T11:29:40.034Z"
   },
   {
-    "route": "/[locale]/guides/configuracao-roteador-wifi",
-    "lastModified": "2026-08-15T23:32:54.885Z"
-  },
-  {
     "route": "/[locale]/guides/configure-windows-spatial-sound",
-    "lastModified": "2026-09-19T11:29:40.041Z"
-  },
-  {
-    "route": "/[locale]/guides/controle-ps4-ps5-overclock-ds4windows",
-    "lastModified": "2026-08-15T23:32:54.886Z"
+    "lastModified": "2026-10-12T04:53:35.175Z"
   },
   {
     "route": "/[locale]/guides/controller-analog-deadzones-fix",
@@ -456,10 +356,6 @@
     "lastModified": "2026-09-19T11:29:40.070Z"
   },
   {
-    "route": "/[locale]/guides/corrigir-dll-faltando-vcredist-directx",
-    "lastModified": "2026-08-15T23:32:54.890Z"
-  },
-  {
     "route": "/[locale]/guides/corrupted-hdd-data-recovery",
     "lastModified": "2026-09-19T11:29:40.091Z"
   },
@@ -468,60 +364,48 @@
     "lastModified": "2026-09-19T11:29:40.094Z"
   },
   {
-    "route": "/[locale]/guides/criar-pendrive-bootavel",
-    "lastModified": "2026-08-15T23:32:54.893Z"
+    "route": "/[locale]/guides/cs2-competitive-fps-optimization",
+    "lastModified": "2026-10-12T04:53:35.180Z"
   },
   {
-    "route": "/[locale]/guides/criar-ponto-restauracao-windows",
-    "lastModified": "2026-08-15T23:32:54.895Z"
-  },
-  {
-    "route": "/[locale]/guides/criptografia-dados",
-    "lastModified": "2026-08-15T23:32:54.896Z"
-  },
-  {
-    "route": "/[locale]/guides/cs2-melhores-comandos-console-fps",
-    "lastModified": "2026-08-15T23:32:54.897Z"
-  },
-  {
-    "route": "/[locale]/guides/cs2-otimizacao-fps-competitivo",
-    "lastModified": "2026-08-15T23:32:54.898Z"
+    "route": "/[locale]/guides/cs2-console-commands-fps",
+    "lastModified": "2026-10-12T04:53:35.182Z"
   },
   {
     "route": "/[locale]/guides/css-z-index-explained",
     "lastModified": "2026-09-19T11:29:40.149Z"
   },
   {
-    "route": "/[locale]/guides/cyberpunk-2077-hdd-mode-otimizacao",
-    "lastModified": "2026-08-15T23:32:54.900Z"
+    "route": "/[locale]/guides/cyberpunk-2077-fps-ray-tracing-optimization",
+    "lastModified": "2026-10-12T04:53:35.184Z"
   },
   {
-    "route": "/[locale]/guides/cyberpunk-2077-otimizacao-fps-raytracing",
-    "lastModified": "2026-08-15T23:32:54.901Z"
+    "route": "/[locale]/guides/cyberpunk-2077-hdd-mode-optimization",
+    "lastModified": "2026-10-12T04:53:35.185Z"
   },
   {
     "route": "/[locale]/guides/data-backup",
     "lastModified": "2026-09-19T11:29:40.154Z"
   },
   {
+    "route": "/[locale]/guides/data-encryption-protect-files",
+    "lastModified": "2026-10-12T04:53:35.191Z"
+  },
+  {
     "route": "/[locale]/guides/data-protection-privacy",
-    "lastModified": "2026-09-19T11:29:40.157Z"
+    "lastModified": "2026-10-12T04:53:35.192Z"
   },
   {
     "route": "/[locale]/guides/data-recovery",
     "lastModified": "2026-09-19T11:29:40.161Z"
   },
   {
-    "route": "/[locale]/guides/ddu-limpeza-drivers-video-guia",
-    "lastModified": "2026-08-15T23:32:54.905Z"
+    "route": "/[locale]/guides/ddu-clean-gpu-drivers-guide",
+    "lastModified": "2026-10-12T04:53:35.194Z"
   },
   {
     "route": "/[locale]/guides/debloat-windows-11-powershell-optimization",
     "lastModified": "2026-09-19T11:29:40.166Z"
-  },
-  {
-    "route": "/[locale]/guides/debloating-windows-11",
-    "lastModified": "2026-08-15T23:33:29.249Z"
   },
   {
     "route": "/[locale]/guides/deep-disk-cleanup-temp-files",
@@ -533,7 +417,7 @@
   },
   {
     "route": "/[locale]/guides/digital-security",
-    "lastModified": "2026-09-19T11:29:40.190Z"
+    "lastModified": "2026-10-12T04:53:35.203Z"
   },
   {
     "route": "/[locale]/guides/disable-xbox-game-bar-fps-drop-fix",
@@ -541,91 +425,67 @@
   },
   {
     "route": "/[locale]/guides/discord-install-configure-tutorial",
-    "lastModified": "2026-09-19T11:29:40.197Z"
-  },
-  {
-    "route": "/[locale]/guides/discord-nitro-qualidade-voz-krisp",
-    "lastModified": "2026-08-15T23:32:54.997Z"
+    "lastModified": "2026-10-12T04:53:35.204Z"
   },
   {
     "route": "/[locale]/guides/discord-otimizacao-overlay-lag",
     "lastModified": "2026-08-15T23:32:55.000Z"
   },
   {
-    "route": "/[locale]/guides/discord-otimizar-para-jogos",
-    "lastModified": "2026-08-15T23:32:55.000Z"
+    "route": "/[locale]/guides/discord-voice-quality-streaming-optimization",
+    "lastModified": "2026-10-12T04:53:35.210Z"
   },
   {
-    "route": "/[locale]/guides/dns-mais-rapido-para-jogos-benchmark",
-    "lastModified": "2026-08-15T23:32:55.000Z"
+    "route": "/[locale]/guides/dolphin-wii-gamecube-setup-guide",
+    "lastModified": "2026-10-12T04:53:35.213Z"
   },
   {
-    "route": "/[locale]/guides/dolphin-emulador-wii-gamecube-ubershaders-guia",
-    "lastModified": "2026-08-15T23:32:55.000Z"
-  },
-  {
-    "route": "/[locale]/guides/dota-2-melhores-configuracoes-fps",
-    "lastModified": "2026-08-15T23:32:55.000Z"
-  },
-  {
-    "route": "/[locale]/guides/dpc-watchdog-violation-como-resolver",
-    "lastModified": "2026-08-15T23:32:55.000Z"
+    "route": "/[locale]/guides/dota-2-fps-vulkan-dx11-settings",
+    "lastModified": "2026-10-12T04:53:35.214Z"
   },
   {
     "route": "/[locale]/guides/driver-installation",
     "lastModified": "2026-09-19T11:29:40.223Z"
   },
   {
-    "route": "/[locale]/guides/dual-monitor-lag-fix-hz-diferentes",
-    "lastModified": "2026-08-15T23:32:55.009Z"
+    "route": "/[locale]/guides/dual-monitor-144hz-60hz-lag-fix",
+    "lastModified": "2026-10-12T04:53:35.219Z"
   },
   {
-    "route": "/[locale]/guides/duckstation-emulador-ps1-graficos-melhorados-pgxp",
-    "lastModified": "2026-08-15T23:32:55.011Z"
+    "route": "/[locale]/guides/dualsense-ds4windows-1000hz-pc",
+    "lastModified": "2026-10-12T04:53:35.220Z"
   },
   {
-    "route": "/[locale]/guides/dx11-feature-level-10.0-error-valorant",
-    "lastModified": "2026-08-15T23:32:55.013Z"
+    "route": "/[locale]/guides/duckstation-ps1-4k-pgxp-guide",
+    "lastModified": "2026-10-12T04:53:35.220Z"
   },
   {
-    "route": "/[locale]/guides/eld-ring-stuttering-fix-dx12",
-    "lastModified": "2026-08-15T23:32:55.013Z"
+    "route": "/[locale]/guides/dx11-feature-level-10-0-valorant-fix",
+    "lastModified": "2026-10-12T04:53:35.221Z"
   },
   {
     "route": "/[locale]/guides/elden-ring-fps-unlock-stutter-fix",
-    "lastModified": "2026-08-15T23:32:55.016Z"
-  },
-  {
-    "route": "/[locale]/guides/elden-ring-fps-unlock-widescreen-fix-stutter",
-    "lastModified": "2026-08-15T23:32:55.017Z"
+    "lastModified": "2026-10-12T04:53:35.224Z"
   },
   {
     "route": "/[locale]/guides/enable-god-mode-windows-11",
-    "lastModified": "2026-09-19T11:29:40.250Z"
+    "lastModified": "2026-10-12T04:53:35.226Z"
   },
   {
     "route": "/[locale]/guides/enable-re-size-bar-gaming-pc",
-    "lastModified": "2026-09-19T11:29:40.253Z"
+    "lastModified": "2026-10-12T04:53:35.227Z"
   },
   {
-    "route": "/[locale]/guides/epic-games-launcher-lento-cpu-fix",
-    "lastModified": "2026-08-15T23:32:55.020Z"
+    "route": "/[locale]/guides/epic-games-launcher-high-cpu-fix",
+    "lastModified": "2026-10-12T04:53:35.228Z"
   },
   {
-    "route": "/[locale]/guides/equalizer-apo-peace-aumentar-passos-fps",
-    "lastModified": "2026-08-02T06:09:32.053Z"
+    "route": "/[locale]/guides/equalizer-apo-peace-footstep-boost",
+    "lastModified": "2026-10-12T04:53:35.228Z"
   },
   {
-    "route": "/[locale]/guides/erro-0xc00007b-aplicativo-nao-inicializou",
-    "lastModified": "2026-08-15T23:32:55.020Z"
-  },
-  {
-    "route": "/[locale]/guides/erro-disco-100-porcento-gerenciador-tarefas",
-    "lastModified": "2026-08-15T23:32:55.020Z"
-  },
-  {
-    "route": "/[locale]/guides/escape-from-tarkov-otimizacao-fps-ram",
-    "lastModified": "2026-08-15T23:32:55.020Z"
+    "route": "/[locale]/guides/escape-from-tarkov-fps-ram-optimization",
+    "lastModified": "2026-10-12T04:53:35.228Z"
   },
   {
     "route": "/[locale]/guides/essential-windows-programs",
@@ -633,7 +493,7 @@
   },
   {
     "route": "/[locale]/guides/euro-truck-simulator-2-optimization",
-    "lastModified": "2026-09-19T11:29:40.282Z"
+    "lastModified": "2026-10-12T04:53:35.228Z"
   },
   {
     "route": "/[locale]/guides/euro-truck-simulator-2-promods-aa-optimization",
@@ -641,15 +501,31 @@
   },
   {
     "route": "/[locale]/guides/exitlag-worth-it-or-scam",
-    "lastModified": "2026-09-19T11:29:40.298Z"
+    "lastModified": "2026-10-12T04:53:35.235Z"
   },
   {
     "route": "/[locale]/guides/firewall-configuration",
-    "lastModified": "2026-09-19T11:29:40.303Z"
+    "lastModified": "2026-10-12T04:53:35.237Z"
+  },
+  {
+    "route": "/[locale]/guides/fix-100-disk-usage-windows-11",
+    "lastModified": "2026-10-12T04:53:35.237Z"
+  },
+  {
+    "route": "/[locale]/guides/fix-dpc-watchdog-violation",
+    "lastModified": "2026-10-12T04:53:35.237Z"
+  },
+  {
+    "route": "/[locale]/guides/fix-error-0xc00007b",
+    "lastModified": "2026-10-12T04:53:35.237Z"
+  },
+  {
+    "route": "/[locale]/guides/fix-missing-dll-vcredist-directx",
+    "lastModified": "2026-10-12T04:53:35.237Z"
   },
   {
     "route": "/[locale]/guides/formatfactory-vs-handbrake-video-converter",
-    "lastModified": "2026-09-19T11:29:40.317Z"
+    "lastModified": "2026-10-12T04:53:35.237Z"
   },
   {
     "route": "/[locale]/guides/fortnite-performance-mode-low-end-pc",
@@ -657,11 +533,11 @@
   },
   {
     "route": "/[locale]/guides/fortnite-textures-not-loading-fix",
-    "lastModified": "2026-09-19T11:29:40.330Z"
+    "lastModified": "2026-10-12T04:53:35.237Z"
   },
   {
     "route": "/[locale]/guides/forza-horizon-5-vram-input-lag-fix",
-    "lastModified": "2026-09-19T11:29:40.335Z"
+    "lastModified": "2026-10-12T04:53:35.237Z"
   },
   {
     "route": "/[locale]/guides/free-fire-low-end-pc-smartgaga",
@@ -669,7 +545,7 @@
   },
   {
     "route": "/[locale]/guides/gaming-case-airflow-importance",
-    "lastModified": "2026-09-19T11:29:40.344Z"
+    "lastModified": "2026-10-12T04:53:35.237Z"
   },
   {
     "route": "/[locale]/guides/gaming-chair-vs-office-chair-ergonomics",
@@ -697,7 +573,7 @@
   },
   {
     "route": "/[locale]/guides/gaming-vpn-exitlag-noping-worth-it",
-    "lastModified": "2026-09-19T11:29:40.370Z"
+    "lastModified": "2026-10-12T04:53:35.252Z"
   },
   {
     "route": "/[locale]/guides/genshin-impact-fps-unlocker-pc",
@@ -705,15 +581,15 @@
   },
   {
     "route": "/[locale]/guides/genshin-impact-stutter-fix-pc",
-    "lastModified": "2026-09-19T11:29:40.375Z"
+    "lastModified": "2026-10-12T04:53:35.258Z"
   },
   {
     "route": "/[locale]/guides/geometry-dash-4gb-patch-lag-fix",
-    "lastModified": "2026-09-19T11:29:40.378Z"
+    "lastModified": "2026-10-12T04:53:35.258Z"
   },
   {
     "route": "/[locale]/guides/god-of-war-pc-memory-leak-fix",
-    "lastModified": "2026-08-15T23:32:55.045Z"
+    "lastModified": "2026-10-12T04:53:35.258Z"
   },
   {
     "route": "/[locale]/guides/google-chrome-high-ram-usage-fix",
@@ -721,7 +597,11 @@
   },
   {
     "route": "/[locale]/guides/google-play-games-pc-beta-worth-it",
-    "lastModified": "2026-09-19T11:29:40.393Z"
+    "lastModified": "2026-10-12T04:53:35.258Z"
+  },
+  {
+    "route": "/[locale]/guides/gpu-hardware-scheduling-hags",
+    "lastModified": "2026-10-12T04:53:35.258Z"
   },
   {
     "route": "/[locale]/guides/gpu-overclock-msi-afterburner",
@@ -732,16 +612,12 @@
     "lastModified": "2026-09-19T11:29:40.402Z"
   },
   {
-    "route": "/[locale]/guides/gta-iv-complete-edition-lag-fix",
-    "lastModified": "2026-08-15T23:32:55.049Z"
-  },
-  {
     "route": "/[locale]/guides/gta-iv-windows-10-11-fix",
-    "lastModified": "2026-09-19T11:29:40.445Z"
+    "lastModified": "2026-10-12T04:53:35.258Z"
   },
   {
     "route": "/[locale]/guides/gta-san-andreas-graphics-fix",
-    "lastModified": "2026-09-19T11:29:40.449Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/gta-v-disappearing-textures-fix",
@@ -749,23 +625,23 @@
   },
   {
     "route": "/[locale]/guides/gta-v-err-gfx-d3d-init-crash-fix",
-    "lastModified": "2026-09-19T11:29:40.542Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/gta-v-fps-optimization-low-end-pc",
-    "lastModified": "2026-09-19T11:29:40.547Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hard-reset-bluetooth-headphones-fix",
-    "lastModified": "2026-09-19T11:29:40.552Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hard-reset-format-smartphone",
-    "lastModified": "2026-09-19T11:29:40.556Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hardware-diagnostics",
-    "lastModified": "2026-09-19T11:29:40.559Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hdd-vs-ssd-whats-the-difference",
@@ -773,7 +649,7 @@
   },
   {
     "route": "/[locale]/guides/hdmi-21-vs-displayport-14-differences",
-    "lastModified": "2026-09-19T11:29:40.567Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hdr-windows-11-gaming-calibration",
@@ -781,7 +657,7 @@
   },
   {
     "route": "/[locale]/guides/hdr-windows-gaming-worth-it",
-    "lastModified": "2026-09-19T11:29:40.582Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hibernation-vs-sleep-mode-windows",
@@ -789,27 +665,87 @@
   },
   {
     "route": "/[locale]/guides/hogwarts-legacy-stutter-fix-ram",
-    "lastModified": "2026-08-15T23:32:55.062Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/hollow-knight-stutter-fix-mod",
-    "lastModified": "2026-09-19T11:29:40.597Z"
+    "lastModified": "2026-10-12T04:53:35.268Z"
   },
   {
     "route": "/[locale]/guides/home-network",
     "lastModified": "2026-09-19T11:29:40.601Z"
   },
   {
+    "route": "/[locale]/guides/how-to-block-program-internet-firewall",
+    "lastModified": "2026-10-12T04:53:35.285Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-calibrate-laptop-battery",
+    "lastModified": "2026-10-12T04:53:35.286Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-calibrate-monitor-colors",
+    "lastModified": "2026-10-12T04:53:35.289Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-choose-cpu-for-gaming",
+    "lastModified": "2026-10-12T04:53:35.291Z"
+  },
+  {
     "route": "/[locale]/guides/how-to-choose-graphics-card",
-    "lastModified": "2026-09-19T11:29:40.605Z"
+    "lastModified": "2026-10-12T04:53:35.293Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-choose-pc-power-supply-psu",
+    "lastModified": "2026-10-12T04:53:35.293Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-create-bootable-usb-windows-11",
+    "lastModified": "2026-10-12T04:53:35.293Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-create-restore-point-windows-11",
+    "lastModified": "2026-10-12T04:53:35.293Z"
   },
   {
     "route": "/[locale]/guides/how-to-delete-instagram-account-permanently",
-    "lastModified": "2026-09-19T11:29:40.609Z"
+    "lastModified": "2026-10-12T04:53:35.302Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-open-router-ports-open-nat",
+    "lastModified": "2026-10-12T04:53:35.302Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-read-bsod-dmp-files",
+    "lastModified": "2026-10-12T04:53:35.302Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-record-screen-obs-studio",
+    "lastModified": "2026-10-12T04:53:35.302Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-replace-thermal-paste-cpu-gpu",
+    "lastModified": "2026-10-12T04:53:35.302Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-safely-update-bios",
+    "lastModified": "2026-10-12T04:53:35.318Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-share-printers-windows-network",
+    "lastModified": "2026-10-12T04:53:35.321Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-update-gpu-drivers",
+    "lastModified": "2026-10-12T04:53:35.322Z"
+  },
+  {
+    "route": "/[locale]/guides/how-to-use-ddu-driver-uninstaller",
+    "lastModified": "2026-10-12T04:53:35.324Z"
   },
   {
     "route": "/[locale]/guides/how-xbox-smart-delivery-works-pc",
-    "lastModified": "2026-09-19T11:29:40.612Z"
+    "lastModified": "2026-10-12T04:53:35.325Z"
   },
   {
     "route": "/[locale]/guides/huge-windows-winsxs-folder-how-to-clean",
@@ -817,47 +753,51 @@
   },
   {
     "route": "/[locale]/guides/hyper-v-impact-gaming-performance",
-    "lastModified": "2026-09-19T11:29:40.620Z"
+    "lastModified": "2026-10-12T04:53:35.326Z"
   },
   {
     "route": "/[locale]/guides/ideal-mouse-dpi-polling-rate",
     "lastModified": "2026-09-19T11:29:40.623Z"
   },
   {
+    "route": "/[locale]/guides/increase-microphone-volume-windows",
+    "lastModified": "2026-10-12T04:53:35.329Z"
+  },
+  {
     "route": "/[locale]/guides/increase-minecraft-fps-fabric-sodium",
-    "lastModified": "2026-09-19T11:29:40.628Z"
+    "lastModified": "2026-10-12T04:53:35.330Z"
   },
   {
     "route": "/[locale]/guides/install-android-apps-windows-11",
-    "lastModified": "2026-09-19T11:29:40.632Z"
+    "lastModified": "2026-10-12T04:53:35.331Z"
   },
   {
     "route": "/[locale]/guides/install-wifi-printer",
-    "lastModified": "2026-09-19T11:29:40.636Z"
+    "lastModified": "2026-10-12T04:53:35.332Z"
   },
   {
     "route": "/[locale]/guides/internet-speed-test",
-    "lastModified": "2026-09-19T11:29:40.641Z"
+    "lastModified": "2026-10-12T04:53:35.333Z"
   },
   {
     "route": "/[locale]/guides/internet-troubleshooting",
-    "lastModified": "2026-08-15T23:32:55.076Z"
+    "lastModified": "2026-10-12T04:53:35.336Z"
   },
   {
     "route": "/[locale]/guides/ips-vs-va-vs-tn-monitor-gaming",
-    "lastModified": "2026-09-19T11:29:40.653Z"
+    "lastModified": "2026-10-12T04:53:35.337Z"
   },
   {
     "route": "/[locale]/guides/is-valorant-dying-state-of-game",
-    "lastModified": "2026-08-15T23:32:55.078Z"
+    "lastModified": "2026-10-12T04:53:35.338Z"
   },
   {
     "route": "/[locale]/guides/keyboard-layout-fix-abnt2-ansi",
-    "lastModified": "2026-09-19T11:29:40.658Z"
+    "lastModified": "2026-10-12T04:53:35.339Z"
   },
   {
     "route": "/[locale]/guides/laptop-battery-health",
-    "lastModified": "2026-09-19T11:29:40.717Z"
+    "lastModified": "2026-10-12T04:53:35.340Z"
   },
   {
     "route": "/[locale]/guides/laptop-cpu-undervolt",
@@ -873,7 +813,7 @@
   },
   {
     "route": "/[locale]/guides/league-of-legends-black-screen-loading-fix",
-    "lastModified": "2026-09-19T11:29:40.735Z"
+    "lastModified": "2026-10-12T04:53:35.343Z"
   },
   {
     "route": "/[locale]/guides/league-of-legends-fps-drop-fix",
@@ -885,7 +825,7 @@
   },
   {
     "route": "/[locale]/guides/limit-fps-rivatuner-nvidia",
-    "lastModified": "2026-09-19T11:29:40.746Z"
+    "lastModified": "2026-10-12T04:53:35.346Z"
   },
   {
     "route": "/[locale]/guides/lineage-2-pvp-fps-optimization",
@@ -901,7 +841,7 @@
   },
   {
     "route": "/[locale]/guides/mechanical-keyboard-rapid-trigger-snap-tap",
-    "lastModified": "2026-09-19T11:29:40.769Z"
+    "lastModified": "2026-10-12T04:53:35.348Z"
   },
   {
     "route": "/[locale]/guides/mechanical-keyboards-guide",
@@ -917,11 +857,11 @@
   },
   {
     "route": "/[locale]/guides/micro-stuttering-in-games-causes",
-    "lastModified": "2026-06-09T04:18:39.050Z"
+    "lastModified": "2026-10-12T05:23:24.142Z"
   },
   {
     "route": "/[locale]/guides/minecraft-lag-fix-optifine-fabric",
-    "lastModified": "2026-08-15T23:32:55.097Z"
+    "lastModified": "2026-10-12T04:53:35.352Z"
   },
   {
     "route": "/[locale]/guides/minecraft-optifine-vs-sodium-fabric",
@@ -933,7 +873,7 @@
   },
   {
     "route": "/[locale]/guides/monitor-buying-guide",
-    "lastModified": "2026-09-19T11:29:40.817Z"
+    "lastModified": "2026-10-12T04:53:35.352Z"
   },
   {
     "route": "/[locale]/guides/monitor-pc-temperature",
@@ -945,7 +885,7 @@
   },
   {
     "route": "/[locale]/guides/mouse-double-click-failing-fix",
-    "lastModified": "2026-09-19T11:29:40.843Z"
+    "lastModified": "2026-10-12T04:53:35.352Z"
   },
   {
     "route": "/[locale]/guides/mouse-precision-optimization-windows",
@@ -965,19 +905,19 @@
   },
   {
     "route": "/[locale]/guides/native-windows-screen-recording-tips",
-    "lastModified": "2026-09-19T11:29:40.922Z"
+    "lastModified": "2026-10-12T04:53:35.365Z"
   },
   {
     "route": "/[locale]/guides/notion-vs-obsidian-productivity",
-    "lastModified": "2026-09-19T11:29:40.932Z"
+    "lastModified": "2026-10-12T04:53:35.366Z"
   },
   {
     "route": "/[locale]/guides/nvidia-control-panel-best-settings",
-    "lastModified": "2026-09-19T11:29:40.942Z"
+    "lastModified": "2026-10-12T04:53:35.369Z"
   },
   {
     "route": "/[locale]/guides/nvidia-reflex-on-vs-boost-difference",
-    "lastModified": "2026-09-19T11:29:40.954Z"
+    "lastModified": "2026-10-12T04:53:35.371Z"
   },
   {
     "route": "/[locale]/guides/nvme-vs-sata-ssd-for-gaming",
@@ -993,7 +933,7 @@
   },
   {
     "route": "/[locale]/guides/obs-studio-best-streaming-settings-2026",
-    "lastModified": "2026-09-19T11:29:40.971Z"
+    "lastModified": "2026-10-12T05:23:10.126Z"
   },
   {
     "route": "/[locale]/guides/obs-studio-recording-replay-buffer-av1",
@@ -1001,7 +941,7 @@
   },
   {
     "route": "/[locale]/guides/obs-studio-twitch-youtube-streaming-guide",
-    "lastModified": "2026-09-19T11:29:41.026Z"
+    "lastModified": "2026-10-12T04:53:35.379Z"
   },
   {
     "route": "/[locale]/guides/overwatch-2-best-fps-settings",
@@ -1013,7 +953,7 @@
   },
   {
     "route": "/[locale]/guides/package-management",
-    "lastModified": "2026-09-19T11:29:41.048Z"
+    "lastModified": "2026-10-12T04:53:35.379Z"
   },
   {
     "route": "/[locale]/guides/packet-loss-fix-gaming",
@@ -1029,11 +969,15 @@
   },
   {
     "route": "/[locale]/guides/password-security-managers",
-    "lastModified": "2026-09-19T11:29:41.062Z"
+    "lastModified": "2026-10-12T04:53:35.388Z"
   },
   {
     "route": "/[locale]/guides/pc-building-guide",
-    "lastModified": "2026-09-19T11:29:41.068Z"
+    "lastModified": "2026-10-12T04:53:35.389Z"
+  },
+  {
+    "route": "/[locale]/guides/pc-cable-management-organization",
+    "lastModified": "2026-10-12T04:53:35.392Z"
   },
   {
     "route": "/[locale]/guides/pc-case-airflow-fans-setup",
@@ -1049,11 +993,11 @@
   },
   {
     "route": "/[locale]/guides/pc-turns-on-no-display-fix",
-    "lastModified": "2026-09-19T11:29:41.128Z"
+    "lastModified": "2026-10-12T04:53:35.396Z"
   },
   {
     "route": "/[locale]/guides/pcsx2-4k-widescreen-textures-optimization",
-    "lastModified": "2026-09-19T11:29:41.132Z"
+    "lastModified": "2026-10-12T04:53:35.397Z"
   },
   {
     "route": "/[locale]/guides/performance-monitor-v2",
@@ -1061,7 +1005,7 @@
   },
   {
     "route": "/[locale]/guides/performance-optimization",
-    "lastModified": "2026-09-19T11:29:41.140Z"
+    "lastModified": "2026-10-12T04:53:35.400Z"
   },
   {
     "route": "/[locale]/guides/phasmophobia-voice-recognition-vr-fix",
@@ -1069,7 +1013,7 @@
   },
   {
     "route": "/[locale]/guides/phishing-identification",
-    "lastModified": "2026-09-19T11:29:41.150Z"
+    "lastModified": "2026-10-12T04:53:35.404Z"
   },
   {
     "route": "/[locale]/guides/physical-cleaning-gaming-pc",
@@ -1081,7 +1025,7 @@
   },
   {
     "route": "/[locale]/guides/post-installation-windows-11",
-    "lastModified": "2026-09-19T11:29:41.171Z"
+    "lastModified": "2026-10-12T04:53:35.407Z"
   },
   {
     "route": "/[locale]/guides/preventive-maintenance",
@@ -1089,11 +1033,11 @@
   },
   {
     "route": "/[locale]/guides/project-zomboid-fps-boost",
-    "lastModified": "2026-08-15T23:32:55.226Z"
+    "lastModified": "2026-10-12T04:53:35.410Z"
   },
   {
     "route": "/[locale]/guides/pubg-steam-stuttering-fix",
-    "lastModified": "2026-09-19T11:29:41.187Z"
+    "lastModified": "2026-10-12T04:53:35.411Z"
   },
   {
     "route": "/[locale]/guides/rainbow-six-siege-vulkan-competitive-settings",
@@ -1101,15 +1045,15 @@
   },
   {
     "route": "/[locale]/guides/ram-memory-upgrade",
-    "lastModified": "2026-09-19T11:29:41.217Z"
+    "lastModified": "2026-10-12T04:53:35.413Z"
   },
   {
     "route": "/[locale]/guides/ransomware-protection",
-    "lastModified": "2026-09-19T11:29:41.224Z"
+    "lastModified": "2026-10-12T04:53:35.416Z"
   },
   {
     "route": "/[locale]/guides/real-vs-virtual-71-headset-gaming",
-    "lastModified": "2026-09-19T11:29:41.228Z"
+    "lastModified": "2026-10-12T04:53:35.418Z"
   },
   {
     "route": "/[locale]/guides/red-dead-redemption-2-best-settings",
@@ -1117,7 +1061,7 @@
   },
   {
     "route": "/[locale]/guides/red-dead-redemption-2-best-settings-rdr2",
-    "lastModified": "2026-09-19T11:29:41.240Z"
+    "lastModified": "2026-10-12T04:53:35.420Z"
   },
   {
     "route": "/[locale]/guides/reduce-ping-exitlag-noping-dns",
@@ -1129,7 +1073,7 @@
   },
   {
     "route": "/[locale]/guides/reduce-ping-regedit-cmd-gaming",
-    "lastModified": "2026-09-19T11:29:41.258Z"
+    "lastModified": "2026-10-12T04:53:35.422Z"
   },
   {
     "route": "/[locale]/guides/registry-optimization",
@@ -1137,7 +1081,7 @@
   },
   {
     "route": "/[locale]/guides/remove-windows-bloatware-powershell",
-    "lastModified": "2026-09-19T11:29:41.265Z"
+    "lastModified": "2026-10-12T04:53:35.424Z"
   },
   {
     "route": "/[locale]/guides/reshade-installation-guide-rtgi-filters",
@@ -1149,7 +1093,7 @@
   },
   {
     "route": "/[locale]/guides/retroarch-complete-guide-shaders-crt",
-    "lastModified": "2026-09-19T11:29:41.308Z"
+    "lastModified": "2026-10-12T04:53:35.428Z"
   },
   {
     "route": "/[locale]/guides/roblox-connection-error-fix",
@@ -1164,12 +1108,8 @@
     "lastModified": "2026-09-19T11:29:41.323Z"
   },
   {
-    "route": "/[locale]/guides/roblox-fps-unlocker-tutorial",
-    "lastModified": "2026-08-15T23:32:55.247Z"
-  },
-  {
     "route": "/[locale]/guides/roblox-white-screen-freeze-fix",
-    "lastModified": "2026-09-19T11:29:41.341Z"
+    "lastModified": "2026-10-12T04:53:35.432Z"
   },
   {
     "route": "/[locale]/guides/rocket-league-best-camera-settings",
@@ -1177,11 +1117,15 @@
   },
   {
     "route": "/[locale]/guides/rocket-league-camera-settings-bakkesmod",
-    "lastModified": "2026-09-19T11:29:41.353Z"
+    "lastModified": "2026-10-12T04:53:35.435Z"
   },
   {
     "route": "/[locale]/guides/rog-ally-legion-go-windows-tdp-optimization",
     "lastModified": "2026-09-19T11:29:41.358Z"
+  },
+  {
+    "route": "/[locale]/guides/router-configuration-for-gaming",
+    "lastModified": "2026-10-12T04:53:35.438Z"
   },
   {
     "route": "/[locale]/guides/rpcs3-60fps-patches-optimization-guide",
@@ -1189,7 +1133,7 @@
   },
   {
     "route": "/[locale]/guides/rtx-4060-worth-it-2026",
-    "lastModified": "2026-09-19T11:29:41.373Z"
+    "lastModified": "2026-10-12T04:53:35.439Z"
   },
   {
     "route": "/[locale]/guides/run-local-llm-pc-ollama",
@@ -1197,19 +1141,19 @@
   },
   {
     "route": "/[locale]/guides/rust-fps-pvp-visibility-optimization",
-    "lastModified": "2026-09-19T11:29:41.380Z"
+    "lastModified": "2026-10-12T04:53:35.441Z"
   },
   {
     "route": "/[locale]/guides/search-windows-files-faster",
-    "lastModified": "2026-09-19T11:29:41.383Z"
+    "lastModified": "2026-10-12T04:53:35.442Z"
   },
   {
     "route": "/[locale]/guides/services-management",
-    "lastModified": "2026-09-19T11:29:41.387Z"
+    "lastModified": "2026-10-12T04:53:35.444Z"
   },
   {
     "route": "/[locale]/guides/setup-second-vertical-monitor",
-    "lastModified": "2026-09-19T11:29:41.390Z"
+    "lastModified": "2026-10-12T04:53:35.445Z"
   },
   {
     "route": "/[locale]/guides/slow-minecraft-how-to-boost-fps",
@@ -1217,7 +1161,7 @@
   },
   {
     "route": "/[locale]/guides/slow-pc-format-vs-clean",
-    "lastModified": "2026-09-19T11:29:41.399Z"
+    "lastModified": "2026-10-12T04:53:35.448Z"
   },
   {
     "route": "/[locale]/guides/speed-vs-control-mousepad-gaming",
@@ -1237,11 +1181,11 @@
   },
   {
     "route": "/[locale]/guides/stardew-valley-mods-lag-fix",
-    "lastModified": "2026-08-15T23:32:55.266Z"
+    "lastModified": "2026-10-12T04:53:35.451Z"
   },
   {
     "route": "/[locale]/guides/starfield-dlss-mods-optimization",
-    "lastModified": "2026-09-19T11:29:41.486Z"
+    "lastModified": "2026-10-12T04:53:35.452Z"
   },
   {
     "route": "/[locale]/guides/steam-deck-cryoutilities-protonge-optimization",
@@ -1253,7 +1197,7 @@
   },
   {
     "route": "/[locale]/guides/steam-launch-options-fps-boost",
-    "lastModified": "2026-09-19T11:29:41.506Z"
+    "lastModified": "2026-10-12T04:53:35.455Z"
   },
   {
     "route": "/[locale]/guides/steam-slow-download-fix",
@@ -1273,7 +1217,7 @@
   },
   {
     "route": "/[locale]/guides/team-fortress-2-mastercomfig-competitive-fps",
-    "lastModified": "2026-09-19T11:29:41.525Z"
+    "lastModified": "2026-10-12T04:53:35.458Z"
   },
   {
     "route": "/[locale]/guides/terraria-tmodloader-64bit-fix",
@@ -1281,19 +1225,15 @@
   },
   {
     "route": "/[locale]/guides/terraria-tmodloader-calamity-fps-fix",
-    "lastModified": "2026-08-15T23:32:55.277Z"
+    "lastModified": "2026-10-12T04:53:35.460Z"
   },
   {
     "route": "/[locale]/guides/test-pc-power-supply-multimeter",
     "lastModified": "2026-09-19T11:29:41.534Z"
   },
   {
-    "route": "/[locale]/guides/the-witcher-3-next-gen-performance",
-    "lastModified": "2026-08-15T23:32:55.280Z"
-  },
-  {
     "route": "/[locale]/guides/the-witcher-3-next-gen-ray-tracing-optimization",
-    "lastModified": "2026-09-19T11:29:41.548Z"
+    "lastModified": "2026-10-12T04:53:35.462Z"
   },
   {
     "route": "/[locale]/guides/thermal-paste-importance-pc",
@@ -1302,6 +1242,10 @@
   {
     "route": "/[locale]/guides/tlauncher-virus-false-positive",
     "lastModified": "2026-08-15T23:32:55.294Z"
+  },
+  {
+    "route": "/[locale]/guides/two-factor-authentication-guide",
+    "lastModified": "2026-10-12T04:53:35.466Z"
   },
   {
     "route": "/[locale]/guides/ultrawide-monitor-competitive-gaming",
@@ -1325,15 +1269,15 @@
   },
   {
     "route": "/[locale]/guides/valorant-reduce-input-lag-fps-boost",
-    "lastModified": "2026-09-19T11:29:41.738Z"
+    "lastModified": "2026-10-12T04:53:35.470Z"
   },
   {
     "route": "/[locale]/guides/valorant-van-9003-secure-boot-fix",
-    "lastModified": "2026-09-19T11:29:41.742Z"
+    "lastModified": "2026-10-12T04:53:35.471Z"
   },
   {
     "route": "/[locale]/guides/valorant-van-9003-tpm-secure-boot-fix",
-    "lastModified": "2026-09-19T11:29:41.745Z"
+    "lastModified": "2026-10-12T04:53:35.472Z"
   },
   {
     "route": "/[locale]/guides/vbs-memory-integrity-performance",
@@ -1341,11 +1285,15 @@
   },
   {
     "route": "/[locale]/guides/vcruntime140-dll-not-found-fix",
-    "lastModified": "2026-09-19T11:29:41.752Z"
+    "lastModified": "2026-10-12T04:53:35.474Z"
+  },
+  {
+    "route": "/[locale]/guides/vibe-coding-ai-programming",
+    "lastModified": "2026-10-12T04:53:35.475Z"
   },
   {
     "route": "/[locale]/guides/virtual-memory-pagefile-ssd-optimization",
-    "lastModified": "2026-09-19T11:29:41.758Z"
+    "lastModified": "2026-10-12T04:53:35.476Z"
   },
   {
     "route": "/[locale]/guides/virus-malware-removal",
@@ -1357,7 +1305,7 @@
   },
   {
     "route": "/[locale]/guides/vlc-media-player-vs-potplayer",
-    "lastModified": "2026-08-15T23:32:55.318Z"
+    "lastModified": "2026-10-12T04:53:35.478Z"
   },
   {
     "route": "/[locale]/guides/vmware-virtualization",
@@ -1377,7 +1325,7 @@
   },
   {
     "route": "/[locale]/guides/water-cooler-vs-air-cooler-comparison",
-    "lastModified": "2026-09-19T11:29:41.801Z"
+    "lastModified": "2026-10-12T04:53:35.482Z"
   },
   {
     "route": "/[locale]/guides/water-cooler-vs-air-cooler-which-to-choose",
@@ -1385,19 +1333,19 @@
   },
   {
     "route": "/[locale]/guides/webcam-flickering-black-screen-fix",
-    "lastModified": "2026-09-19T11:29:41.812Z"
+    "lastModified": "2026-10-12T04:53:35.483Z"
   },
   {
     "route": "/[locale]/guides/what-are-ai-agents-complete-guide",
-    "lastModified": "2026-09-19T11:29:41.816Z"
+    "lastModified": "2026-10-12T04:53:35.486Z"
   },
   {
     "route": "/[locale]/guides/where-to-download-free-excel-templates",
-    "lastModified": "2026-09-19T11:29:41.820Z"
+    "lastModified": "2026-10-12T04:53:35.487Z"
   },
   {
     "route": "/[locale]/guides/wifi-connection-problems-fix",
-    "lastModified": "2026-09-19T11:29:41.823Z"
+    "lastModified": "2026-10-12T04:53:35.487Z"
   },
   {
     "route": "/[locale]/guides/wifi-disconnecting-randomly-windows-fix",
@@ -1417,11 +1365,15 @@
   },
   {
     "route": "/[locale]/guides/windows-formatting",
-    "lastModified": "2026-09-19T11:29:41.868Z"
+    "lastModified": "2026-10-12T04:53:35.494Z"
   },
   {
     "route": "/[locale]/guides/windows-game-mode-on-or-off",
-    "lastModified": "2026-09-19T11:29:41.872Z"
+    "lastModified": "2026-10-12T04:53:35.496Z"
+  },
+  {
+    "route": "/[locale]/guides/windows-keyboard-shortcuts-productivity",
+    "lastModified": "2026-10-12T04:53:35.499Z"
   },
   {
     "route": "/[locale]/guides/windows-privacy-telemetry",
@@ -1432,12 +1384,16 @@
     "lastModified": "2026-09-19T11:29:41.883Z"
   },
   {
+    "route": "/[locale]/guides/windows-task-automation-power-automate",
+    "lastModified": "2026-10-12T04:53:35.501Z"
+  },
+  {
     "route": "/[locale]/guides/windows-update-fix-errors",
-    "lastModified": "2026-09-19T11:29:41.888Z"
+    "lastModified": "2026-10-12T04:53:35.503Z"
   },
   {
     "route": "/[locale]/guides/winrar-vs-7zip-which-is-better",
-    "lastModified": "2026-09-19T11:29:41.891Z"
+    "lastModified": "2026-10-12T04:53:35.504Z"
   },
   {
     "route": "/[locale]/guides/xbox-app-not-downloading-gamepass-games",
@@ -1453,7 +1409,7 @@
   },
   {
     "route": "/[locale]/guides/yuzu-ryujinx-zelda-mario-60fps-optimization",
-    "lastModified": "2026-09-19T11:29:41.908Z"
+    "lastModified": "2026-10-12T04:53:35.506Z"
   },
   {
     "route": "/[locale]/hardware-diagnostics-pc-temperature",
@@ -1676,12 +1632,12 @@
     "lastModified": "2026-06-12T23:34:27.004Z"
   },
   {
-    "route": "/[locale]/voltrisoptimizer/como-funciona",
-    "lastModified": "2026-06-12T23:36:55.623Z"
+    "route": "/[locale]/voltrisoptimizer/documentation",
+    "lastModified": "2026-10-12T05:32:08.792Z"
   },
   {
-    "route": "/[locale]/voltrisoptimizer/documentacao",
-    "lastModified": "2026-06-12T23:36:29.506Z"
+    "route": "/[locale]/voltrisoptimizer/how-it-works",
+    "lastModified": "2026-10-12T04:53:35.567Z"
   },
   {
     "route": "/[locale]/voltrisoptimizer",

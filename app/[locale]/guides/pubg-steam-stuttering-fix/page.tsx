@@ -91,7 +91,7 @@ export default function PUBGStutterFixGuide() {
             description: "Improve connection on PUBG servers."
         },
         {
-            href: "/guides/como-usar-ddu-driver-uninstaller",
+            href: "/guides/how-to-use-ddu-driver-uninstaller",
             title: "Driver Cleanup",
             description: "If your FPS dropped after a driver update."
         }

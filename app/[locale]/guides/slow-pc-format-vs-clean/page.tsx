@@ -90,7 +90,7 @@ export default function FormatVsCleanGuide() {
             description: "What to do after reinstalling Windows."
         },
         {
-            href: "/guides/criar-ponto-restauracao-windows",
+            href: "/guides/how-to-create-restore-point-windows-11",
             title: "Restore Point",
             description: "Avoid formatting by saving the system state."
         }

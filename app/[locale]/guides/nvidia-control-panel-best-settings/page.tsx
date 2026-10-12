@@ -254,7 +254,7 @@ export default function NvidiaGuide() {
             description: "The ideal partner for a fast GPU."
         },
         {
-            href: "/guides/como-usar-ddu-driver-uninstaller",
+            href: "/guides/how-to-use-ddu-driver-uninstaller",
             title: "Clean DDU",
             description: "Step 0 before configuring the panel."
         },

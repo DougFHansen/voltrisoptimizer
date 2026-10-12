@@ -180,7 +180,7 @@ export default function PagefileGuide() {
             description: "Keeping your storage drive in top health."
         },
         {
-            href: "/guides/escape-from-tarkov-otimizacao-fps-ram",
+            href: "/guides/escape-from-tarkov-fps-ram-optimization",
             title: "Tarkov Optimization",
             description: "The game that benefits most from correct paging."
         }
