@@ -19,7 +19,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  serverExternalPackages: ['sharp'],
+  serverExternalPackages: ['sharp', 'jsdom', 'isomorphic-dompurify'],
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [320, 420, 640, 768, 1024, 1280, 1600],

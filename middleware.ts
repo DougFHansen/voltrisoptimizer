@@ -56,11 +56,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
-  // Redirecionar para a subpasta do locale detectado
+  // Redirecionar para a subpasta do locale detectado.
+  // 308 (permanente) em vez de 307 (temporario): sinaliza ao Google que o
+  // roteamento de idioma e definitivo, evitando "Pagina com redirecionamento".
   const locale = getLocale(request);
   request.nextUrl.pathname = `/${locale}${pathname}`;
-  
-  return NextResponse.redirect(request.nextUrl);
+
+  return NextResponse.redirect(request.nextUrl, 308);
 }
 
 export const config = {

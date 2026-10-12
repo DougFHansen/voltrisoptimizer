@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Support Technical Guides and Tutorials | VOLTRIS',
     description: 'Learn professional technical support, optimization, and computer maintenance techniques with our complete and detailed guides.',
-    url: 'https://www.voltrisoptimizer.com/guides',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -52,8 +51,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: 'https://www.voltrisoptimizer.com/guides',
-  },
+  // NOTE: No `alternates.canonical` here on purpose. This object is used as the
+  // layout-level metadata for /guides, and a canonical defined on a layout
+  // leaks to every child guide page whose own generateMetadata fails — which
+  // made Google treat all 325 guides as duplicates of /guides. Each page sets
+  // its own self-referential canonical instead.
 };
 

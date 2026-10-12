@@ -10,7 +10,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { Clock, ArrowRight, BookOpen, User, Calendar, Award, CheckCircle, AlertTriangle, Star, ExternalLink, ChevronRight, Lightbulb, Target } from 'lucide-react';
 
 import { notifyDownload } from '@/utils/notifications';
-import DOMPurify from 'isomorphic-dompurify';
+import SanitizedHtml from '@/components/SanitizedHtml';
 import OptimizerMockup from '@/components/OptimizerMockup';
 import { Download, Zap } from 'lucide-react';
 
@@ -454,9 +454,9 @@ export function GuideTemplateClient({
                                             {section.title}
                                         </h2>
 
-                                        <div
+                                        <SanitizedHtml
                                             className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#31A8FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
-                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                            html={section.content}
                                         />
 
                                         {section.subsections && (
@@ -467,9 +467,9 @@ export function GuideTemplateClient({
                                                             <span className="w-2 h-2 rounded-full bg-[#FF4B6B]"></span>
                                                             {subsection.subtitle}
                                                         </h3>
-                                                        <div
+                                                        <SanitizedHtml
                                                             className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
-                                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(subsection.content) }}
+                                                            html={subsection.content}
                                                         />
                                                     </div>
                                                 ))}
@@ -504,9 +504,9 @@ export function GuideTemplateClient({
                                                 <span className="text-[#8B31FF] text-xl opacity-50 font-mono mt-1">A{sectionIndex + 1}.</span>
                                                 {section.title}
                                             </h2>
-                                            <div
+                                            <SanitizedHtml
                                                 className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#8B31FF] prose-strong:text-white"
-                                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                                html={section.content}
                                             />
                                         </motion.div>
                                     ))}
@@ -534,9 +534,9 @@ export function GuideTemplateClient({
                                             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
                                                 {section.title}
                                             </h2>
-                                            <div
+                                            <SanitizedHtml
                                                 className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white"
-                                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                                html={section.content}
                                             />
                                         </motion.div>
                                     ))}
@@ -648,7 +648,7 @@ export function GuideTemplateClient({
                                                 <span className="text-[#31A8FF] mt-1 font-mono text-sm">Q{index + 1}.</span>
                                                 {item.question}
                                             </h3>
-                                            <div className="text-slate-400 text-sm leading-relaxed pl-8 border-l border-white/5 ml-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.answer) }} />
+                                            <SanitizedHtml className="text-slate-400 text-sm leading-relaxed pl-8 border-l border-white/5 ml-4" html={item.answer} />
                                         </motion.div>
                                     ))}
                                 </div>
