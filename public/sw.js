@@ -1,15 +1,15 @@
-const CACHE_NAME = 'voltris-v1.0.0';
-const STATIC_CACHE = 'voltris-static-v1.0.0';
-const DYNAMIC_CACHE = 'voltris-dynamic-v1.0.0';
+const CACHE_NAME = 'voltris-v1.0.1';
+const STATIC_CACHE = 'voltris-static-v1.0.1';
+const DYNAMIC_CACHE = 'voltris-dynamic-v1.0.1';
 
 // Recursos para cache estático
+// Obs: '/' e '/sitemap.xml' foram removidos de proposito para nunca servir
+// homepage/sitemap obsoletos apos um deploy (evita "client-side exception").
 const STATIC_ASSETS = [
-  '/',
   '/manifest.json',
   '/logo.webp',
   '/favicon.ico',
   '/robots.txt',
-  '/sitemap.xml',
 ];
 
 // Recursos para cache dinâmico
@@ -100,6 +100,14 @@ self.addEventListener('fetch', (event) => {
   if (url.hostname.includes('google-analytics') || 
       url.hostname.includes('googletagmanager') ||
       url.hostname.includes('googlesyndication')) {
+    return;
+  }
+  
+  // Navegacoes (HTML de paginas): SEMPRE pela rede, nunca do cache.
+  // Isso evita que um shell HTML antigo (de um build anterior) seja servido e
+  // referencie chunks JS que ja nao existem -> quebrava a pagina no navegador.
+  if (request.mode === 'navigate') {
+    event.respondWith(fetch(request));
     return;
   }
   
