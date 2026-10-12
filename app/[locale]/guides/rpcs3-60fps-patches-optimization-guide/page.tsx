@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rpcs3-60fps-patches-optimization-guide', title, description, keywords, locale);
 }
 
-export default function RPCS3Guide() {
+export default async function RPCS3Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Required CPU", value: "8 Cores (AVX-512 recommended)" },
         { label: "Renderer", value: "Vulkan" },
@@ -196,6 +197,8 @@ export default function RPCS3Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rpcs3-60fps-patches-optimization-guide"
             title={title}
             description={description}
             keywords={keywords}

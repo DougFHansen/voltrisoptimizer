@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('reshade-installation-guide-rtgi-filters', title, description, keywords, locale);
 }
 
-export default function ReShadeGuide() {
+export default async function ReShadeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "ReShade 6.0+" },
         { label: "Add-on", value: "Full Add-on Support (Opt)" },
@@ -187,6 +188,8 @@ export default function ReShadeGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="reshade-installation-guide-rtgi-filters"
             title={title}
             description={description}
             keywords={keywords}

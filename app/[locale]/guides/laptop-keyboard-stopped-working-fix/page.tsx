@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('laptop-keyboard-stopped-working-fix', title, description, keywords, locale);
 }
 
-export default function LaptopKeyboardFixGuide() {
+export default async function LaptopKeyboardFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software Cause", value: "Corrupted 'HID Keyboard' driver" },
         { label: "Hardware Cause", value: "Loose Flat Cable or oxidation" },
@@ -265,6 +266,8 @@ export default function LaptopKeyboardFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="laptop-keyboard-stopped-working-fix"
             title={title}
             description={description}
             keywords={keywords}

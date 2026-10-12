@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-defender-gaming-optimization', title, description, keywords, locale);
 }
 
-export default function DefenderGuide() {
+export default async function DefenderGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Exclusions", value: "Game Folders (Steam)" },
         { label: "Real Time", value: "On (With exclusions)" },
@@ -215,6 +216,8 @@ export default function DefenderGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="windows-defender-gaming-optimization"
             title={title}
             description={description}
             keywords={keywords}

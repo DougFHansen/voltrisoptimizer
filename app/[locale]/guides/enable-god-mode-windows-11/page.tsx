@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('enable-god-mode-windows-11', title, description, keywords, locale);
 }
 
-export default function GodModeGuide() {
+export default async function GodModeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Access to 200+ settings in one folder" },
         { label: "Folder Name", value: "GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}" },
@@ -102,6 +103,8 @@ export default function GodModeGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="enable-god-mode-windows-11"
             title={title}
             description={description}
             keywords={keywords}

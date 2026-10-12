@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('dota-2-fps-vulkan-dx11-settings', title, description, keywords, locale);
 }
 
-export default function DotaGuide() {
+export default async function DotaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "API", value: "DX11 (Nvidia) / Vulkan (AMD)" },
         { label: "Render Quality", value: "100% (No Upscale)" },
@@ -230,6 +231,8 @@ export default function DotaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="dota-2-fps-vulkan-dx11-settings"
             title={title}
             description={description}
             keywords={keywords}

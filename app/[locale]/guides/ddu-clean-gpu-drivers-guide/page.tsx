@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ddu-clean-gpu-drivers-guide', title, description, keywords, locale);
 }
 
-export default function DDUGuide() {
+export default async function DDUGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "DDU (Wagnardsoft)" },
         { label: "Mode", value: "Safe Mode (Required)" },
@@ -192,6 +193,8 @@ export default function DDUGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ddu-clean-gpu-drivers-guide"
             title={title}
             description={description}
             keywords={keywords}

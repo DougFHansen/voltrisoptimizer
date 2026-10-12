@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-xbox-smart-delivery-works-pc', title, description, keywords, locale);
 }
 
-export default function SmartDeliveryGuide() {
+export default async function SmartDeliveryGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Buy once, play the best version everywhere" },
         { label: "Platforms", value: "Xbox One, Series S/X and Windows 10/11" },
@@ -94,6 +95,8 @@ export default function SmartDeliveryGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-xbox-smart-delivery-works-pc"
             title={title}
             description={description}
             keywords={keywords}

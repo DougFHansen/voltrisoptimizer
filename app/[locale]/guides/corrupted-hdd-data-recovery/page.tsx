@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('corrupted-hdd-data-recovery', title, description, keywords, locale);
 }
 
-export default function DataRecoveryGuide() {
+export default async function DataRecoveryGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool #1", value: "Recuva (Ease of use)" },
         { label: "Tool #2", value: "PhotoRec (Power / Open Source)" },
@@ -95,6 +96,8 @@ export default function DataRecoveryGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="corrupted-hdd-data-recovery"
             title={title}
             description={description}
             keywords={keywords}

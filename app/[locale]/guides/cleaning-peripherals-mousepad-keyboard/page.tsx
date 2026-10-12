@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cleaning-peripherals-mousepad-keyboard', title, description, keywords, locale);
 }
 
-export default function CleaningGuide() {
+export default async function CleaningGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Mousepad", value: "Warm water + Neutral Soap" },
         { label: "Keyboard", value: "Brush + Compressed Air" },
@@ -192,6 +193,8 @@ export default function CleaningGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cleaning-peripherals-mousepad-keyboard"
             title={title}
             description={description}
             keywords={keywords}

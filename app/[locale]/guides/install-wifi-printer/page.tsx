@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('install-wifi-printer', title, description, keywords, locale);
 }
 
-export default function WifiPrinterGuide() {
+export default async function WifiPrinterGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Connection Modes", value: "WPS, LCD Panel or USB Cable (Setup)" },
     { label: "Recommended App (HP)", value: "HP Smart" },
@@ -100,6 +101,8 @@ export default function WifiPrinterGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="install-wifi-printer"
       title={title}
       description={description}
       keywords={keywords}

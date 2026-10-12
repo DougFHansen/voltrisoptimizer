@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('2026-processors-analysis', title, description, keywords, locale);
 }
 
-export default function CPUAnalysisGuide() {
+export default async function CPUAnalysisGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Gaming Leader", value: "AMD Ryzen with 3D V-Cache" },
         { label: "Multitasking Leader", value: "Intel Core Ultra (Hybrid Architecture)" },
@@ -96,6 +97,8 @@ export default function CPUAnalysisGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="2026-processors-analysis"
             title={title}
             description={description}
             keywords={keywords}

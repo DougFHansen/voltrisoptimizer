@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bios-uefi-guide-xmp-pbo-resize-bar', title, description, keywords, locale);
 }
 
-export default function BiosGuide() {
+export default async function BiosGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "RAM Speed", value: "XMP / DOCP / EXPO (Enable)" },
         { label: "GPU Boost", value: "Re-Size BAR (Enable)" },
@@ -187,6 +188,8 @@ export default function BiosGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="bios-uefi-guide-xmp-pbo-resize-bar"
             title={title}
             description={description}
             keywords={keywords}

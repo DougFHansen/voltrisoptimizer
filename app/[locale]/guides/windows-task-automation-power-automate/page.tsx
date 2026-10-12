@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-task-automation-power-automate', title, description, keywords, locale);
 }
 
-export default function AutomationGuide() {
+export default async function AutomationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Visual Tool", value: "Power Automate Desktop (Free)" },
     { label: "Native", value: "Task Scheduler" },
@@ -219,6 +220,8 @@ export default function AutomationGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="windows-task-automation-power-automate"
       title={title}
       description={description}
       keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('huge-windows-winsxs-folder-how-to-clean', title, description, keywords, locale);
 }
 
-export default function WinSxSCleanGuide() {
+export default async function WinSxSCleanGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What it is", value: "Storage for old components and drivers" },
         { label: "Risk", value: "NEVER delete files manually in this folder" },
@@ -96,6 +97,8 @@ export default function WinSxSCleanGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="huge-windows-winsxs-folder-how-to-clean"
             title={title}
             description={description}
             keywords={keywords}

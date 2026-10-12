@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hdmi-21-vs-displayport-14-differences', title, description, keywords, locale);
 }
 
-export default function CableComparisonGuide() {
+export default async function CableComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "HDMI 2.1", value: "Best for Consoles (PS5/Xbox) and 4K TVs" },
         { label: "DisplayPort 1.4/2.1", value: "Best for PCs / Full G-Sync Support" },
@@ -95,6 +96,8 @@ export default function CableComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hdmi-21-vs-displayport-14-differences"
             title={title}
             description={description}
             keywords={keywords}

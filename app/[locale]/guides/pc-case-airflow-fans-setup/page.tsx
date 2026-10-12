@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pc-case-airflow-fans-setup', title, description, keywords, locale);
 }
 
-export default function FansGuide() {
+export default async function FansGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Front", value: "Intake" },
         { label: "Back", value: "Exhaust" },
@@ -158,6 +159,8 @@ export default function FansGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="pc-case-airflow-fans-setup"
             title={title}
             description={description}
             keywords={keywords}

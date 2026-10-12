@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ldplayer-lightweight-emulator-low-end-pc', title, description, keywords, locale);
 }
 
-export default function LDPlayerGuide() {
+export default async function LDPlayerGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Version", value: "LDPlayer 9 (Android 9)" },
         { label: "CPU", value: "2 Cores" },
@@ -211,6 +212,8 @@ export default function LDPlayerGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ldplayer-lightweight-emulator-low-end-pc"
             title={title}
             description={description}
             keywords={keywords}

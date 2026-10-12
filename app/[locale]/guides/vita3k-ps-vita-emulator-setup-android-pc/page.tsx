@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vita3k-ps-vita-emulator-setup-android-pc', title, description, keywords, locale);
 }
 
-export default function VitaGuide() {
+export default async function VitaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Renderer", value: "Vulkan" },
         { label: "Backend", value: "OpenGL (Test if Vulkan fails)" },
@@ -186,6 +187,8 @@ export default function VitaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vita3k-ps-vita-emulator-setup-android-pc"
             title={title}
             description={description}
             keywords={keywords}

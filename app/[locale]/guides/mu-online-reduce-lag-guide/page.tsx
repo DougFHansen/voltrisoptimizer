@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mu-online-reduce-lag-guide', title, description, keywords, locale);
 }
 
-export default function MuOnlineFixGuide() {
+export default async function MuOnlineFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Graphics Engine", value: "Old OpenGL (Single Core)" },
         { label: "Solution #1", value: "Disable Dynamic Effects (F9/F10)" },
@@ -99,6 +100,8 @@ export default function MuOnlineFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mu-online-reduce-lag-guide"
             title={title}
             description={description}
             keywords={keywords}

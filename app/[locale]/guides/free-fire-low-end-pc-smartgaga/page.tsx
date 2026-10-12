@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('free-fire-low-end-pc-smartgaga', title, description, keywords, locale);
 }
 
-export default function SmartGaGaFFGuide() {
+export default async function SmartGaGaFFGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Recommended RAM", value: "2GB to 4GB" },
         { label: "Android Version", value: "KitKat (4.4) or Nougat (7.1)" },
@@ -98,6 +99,8 @@ export default function SmartGaGaFFGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="free-fire-low-end-pc-smartgaga"
             title={title}
             description={description}
             keywords={keywords}

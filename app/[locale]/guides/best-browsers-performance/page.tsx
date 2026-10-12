@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('best-browsers-performance', title, description, keywords, locale);
 }
 
-export default function BrowserGuide() {
+export default async function BrowserGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Fastest", value: "Thorium (Chromium Based)" },
         { label: "Lightest", value: "Microsoft Edge (Efficiency Mode)" },
@@ -163,6 +164,8 @@ export default function BrowserGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="best-browsers-performance"
             title={title}
             description={description}
             keywords={keywords}

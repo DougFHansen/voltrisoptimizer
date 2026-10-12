@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('citra-lime3ds-pokemon-3ds-4k', title, description, keywords, locale);
 }
 
-export default function CitraGuide() {
+export default async function CitraGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Emulator", value: "Lime3DS / PabloMK7" },
         { label: "Graphics API", value: "Vulkan" },
@@ -196,6 +197,8 @@ export default function CitraGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="citra-lime3ds-pokemon-3ds-4k"
             title={title}
             description={description}
             keywords={keywords}

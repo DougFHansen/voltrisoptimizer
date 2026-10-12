@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('system-recovery', title, description, keywords, locale);
 }
 
-export default function RecuperacaoSistemaGuide() {
+export default async function RecuperacaoSistemaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "When and Why to Perform a System Recovery",
@@ -231,6 +232,8 @@ export default function RecuperacaoSistemaGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="system-recovery"
       title={title}
       description={description}
       keywords={keywords}

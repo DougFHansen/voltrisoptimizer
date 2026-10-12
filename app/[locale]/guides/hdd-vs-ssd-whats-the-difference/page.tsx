@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hdd-vs-ssd-whats-the-difference', title, description, keywords, locale);
 }
 
-export default function StorageGuide() {
+export default async function StorageGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Mechanical HDD", value: "100 MB/s (Slow / Files Only)" },
         { label: "SATA SSD", value: "500 MB/s (Good / Value)" },
@@ -165,6 +166,8 @@ export default function StorageGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hdd-vs-ssd-whats-the-difference"
             title={title}
             description={description}
             keywords={keywords}

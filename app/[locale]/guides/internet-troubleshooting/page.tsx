@@ -22,7 +22,8 @@ const keywords = [
   'reset windows 11 network settings tutorial'
 ];
 
-export default function InternetTroubleshootingGuide() {
+export default async function InternetTroubleshootingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "First Step", value: "Restart Router (30 seconds off)" },
     { label: "Physical Check", value: "CAT6 Ethernet Cable or Higher" },
@@ -93,6 +94,8 @@ export default function InternetTroubleshootingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="internet-troubleshooting"
       title={title}
       description={description}
       keywords={keywords}

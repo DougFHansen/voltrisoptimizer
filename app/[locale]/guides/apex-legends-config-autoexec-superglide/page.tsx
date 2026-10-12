@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('apex-legends-config-autoexec-superglide', title, description, keywords, locale);
 }
 
-export default function ApexGuide() {
+export default async function ApexGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Texture Stream", value: "None/Very Low" },
         { label: "Model Detail", value: "Low" },
@@ -231,6 +232,8 @@ export default function ApexGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="apex-legends-config-autoexec-superglide"
             title={title}
             description={description}
             keywords={keywords}

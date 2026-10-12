@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('fortnite-performance-mode-low-end-pc', title, description, keywords, locale);
 }
 
-export default function FortniteGuide() {
+export default async function FortniteGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Rendering", value: "Performance (Alpha)" },
         { label: "Meshes", value: "Low (FPS) / High (Vision)" },
@@ -238,6 +239,8 @@ export default function FortniteGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="fortnite-performance-mode-low-end-pc"
             title={title}
             description={description}
             keywords={keywords}

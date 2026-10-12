@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('minecraft-shaders-iris-sodium-fps-optimization', title, description, keywords, locale);
 }
 
-export default function MinecraftGuide() {
+export default async function MinecraftGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Modloader", value: "Fabric (Lightweight)" },
         { label: "Engine", value: "Sodium (FPS Boost)" },
@@ -200,6 +201,8 @@ export default function MinecraftGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="minecraft-shaders-iris-sodium-fps-optimization"
             title={title}
             description={description}
             keywords={keywords}

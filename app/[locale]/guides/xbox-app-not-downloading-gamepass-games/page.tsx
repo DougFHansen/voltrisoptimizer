@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('xbox-app-not-downloading-gamepass-games', title, description, keywords, locale);
 }
 
-export default function XboxAppFixGuide() {
+export default async function XboxAppFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Common Error", value: "Download at 0% / Preparing..." },
         { label: "Culprit", value: "Gaming Services" },
@@ -101,6 +102,8 @@ export default function XboxAppFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="xbox-app-not-downloading-gamepass-games"
             title={title}
             description={description}
             keywords={keywords}

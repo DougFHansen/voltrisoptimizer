@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('roblox-white-screen-freeze-fix', title, description, keywords, locale);
 }
 
-export default function RobloxWhiteScreenGuide() {
+export default async function RobloxWhiteScreenGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Symptom", value: "Window opens but does not show the game image" },
         { label: "Cause #1", value: "Outdated or buggy Video Driver" },
@@ -100,6 +101,8 @@ export default function RobloxWhiteScreenGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="roblox-white-screen-freeze-fix"
             title={title}
             description={description}
             keywords={keywords}

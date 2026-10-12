@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('preventive-maintenance', title, description, keywords, locale);
 }
 
-export default function ManutencaoPreventivaGuide() {
+export default async function ManutencaoPreventivaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Recommended Frequency", value: "Monthly for full routines" },
     { label: "Estimated Time", value: "90-120 minutes (Full)" },
@@ -420,6 +421,8 @@ export default function ManutencaoPreventivaGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="preventive-maintenance"
       title={title}
       description={description}
       keywords={keywords}

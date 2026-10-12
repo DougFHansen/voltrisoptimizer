@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('laptop-cpu-undervolt', title, description, keywords, locale);
 }
 
-export default function UndervoltGuide() {
+export default async function UndervoltGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Reducing voltage without reducing speed" },
         { label: "Benefit #1", value: "Temperature Reduction (up to 15°C)" },
@@ -97,6 +98,8 @@ export default function UndervoltGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="laptop-cpu-undervolt"
             title={title}
             description={description}
             keywords={keywords}

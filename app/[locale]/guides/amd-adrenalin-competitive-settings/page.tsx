@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('amd-adrenalin-competitive-settings', title, description, keywords, locale);
 }
 
-export default function AmdGuide() {
+export default async function AmdGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "Adrenalin 24.x+" },
         { label: "Anti-Lag", value: "On (Level 2 in CS2)" },
@@ -306,6 +307,8 @@ export default function AmdGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="amd-adrenalin-competitive-settings"
             title={title}
             description={description}
             keywords={keywords}

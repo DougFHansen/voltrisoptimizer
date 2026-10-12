@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('equalizer-apo-peace-footstep-boost', title, description, keywords, locale);
 }
 
-export default function AudioGuide() {
+export default async function AudioGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "Equalizer APO (Driver)" },
         { label: "Interface", value: "Peace GUI (Skin)" },
@@ -201,6 +202,8 @@ export default function AudioGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="equalizer-apo-peace-footstep-boost"
             title={title}
             description={description}
             keywords={keywords}

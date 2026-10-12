@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('clean-driver-install-nvidia-amd', title, description, keywords, locale);
 }
 
-export default function CleanDriverInstallGuide() {
+export default async function CleanDriverInstallGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Total removal of old profiles and files" },
         { label: "NVIDIA Method", value: "check 'Perform a clean installation'" },
@@ -96,6 +97,8 @@ export default function CleanDriverInstallGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="clean-driver-install-nvidia-amd"
             title={title}
             description={description}
             keywords={keywords}

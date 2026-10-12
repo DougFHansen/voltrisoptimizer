@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bluestacks-optimization-free-fire-pubg', title, description, keywords, locale);
 }
 
-export default function GameConfigGuide() {
+export default async function GameConfigGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Game", value: "Free Fire / PUBG Mobile" },
         { label: "Target FPS", value: "90 (Smooth)" },
@@ -163,6 +164,8 @@ export default function GameConfigGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="bluestacks-optimization-free-fire-pubg"
             title={title}
             description={description}
             keywords={keywords}

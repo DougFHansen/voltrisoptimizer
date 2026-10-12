@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('computer-preventive-maintenance', title, description, keywords, locale);
 }
 
-export default function PreventiveMaintenanceGuide() {
+export default async function PreventiveMaintenanceGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Hardware", value: "Physical cleaning every 6 months" },
         { label: "Software", value: "Monthly disk cleanup" },
@@ -99,6 +100,8 @@ export default function PreventiveMaintenanceGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="computer-preventive-maintenance"
             title={title}
             description={description}
             keywords={keywords}

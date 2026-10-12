@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-create-bootable-usb-windows-11', title, description, keywords, locale);
 }
 
-export default function BootableUSBGuide() {
+export default async function BootableUSBGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Minimum Capacity", value: "8GB or more" },
     { label: "Required Format", value: "GPT (For UEFI) / MBR (For Legacy/Old)" },
@@ -509,6 +510,8 @@ export default function BootableUSBGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="how-to-create-bootable-usb-windows-11"
       title={title}
       description={description}
       keywords={keywords}

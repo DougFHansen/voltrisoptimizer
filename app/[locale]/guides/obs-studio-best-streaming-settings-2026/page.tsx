@@ -24,7 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('obs-studio-best-streaming-settings-2026', title, description, keywords, locale);
 }
 
-export default function OBSStreamGuide() {
+export default async function OBSStreamGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Bitrate (1080p 60fps)", value: "6,000 to 8,000 Kbps" },
         { label: "Encoder", value: "NVIDIA NVENC H.264 (CBR)" },
@@ -862,6 +863,8 @@ start_timer()</pre>
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="obs-studio-best-streaming-settings-2026"
             title={title}
             description={description}
             keywords={keywords}

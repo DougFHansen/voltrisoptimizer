@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ssd-vs-hdd-guide', title, description, keywords, locale);
 }
 
-export default function SSDvsHDDGuide() {
+export default async function SSDvsHDDGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "NVMe M.2 (speed)", value: "3,500 – 7,000 MB/s (read)" },
         { label: "SATA SSD (balance)", value: "500 – 560 MB/s (read)" },
@@ -270,6 +271,8 @@ export default function SSDvsHDDGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ssd-vs-hdd-guide"
             title={title}
             description={description}
             keywords={keywords}

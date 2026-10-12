@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('google-chrome-high-ram-usage-fix', title, description, keywords, locale);
 }
 
-export default function ChromeGuide() {
+export default async function ChromeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Memory Saver", value: "ON (Aggressive)" },
         { label: "Background Apps", value: "OFF (Crucial)" },
@@ -213,6 +214,8 @@ export default function ChromeGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="google-chrome-high-ram-usage-fix"
             title={title}
             description={description}
             keywords={keywords}

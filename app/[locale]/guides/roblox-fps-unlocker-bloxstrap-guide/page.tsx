@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('roblox-fps-unlocker-bloxstrap-guide', title, description, keywords, locale);
 }
 
-export default function RobloxGuide() {
+export default async function RobloxGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Launcher", value: "Bloxstrap (GitHub)" },
         { label: "FPS Cap", value: "9999 (Unlimited)" },
@@ -197,6 +198,8 @@ export default function RobloxGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="roblox-fps-unlocker-bloxstrap-guide"
             title={title}
             description={description}
             keywords={keywords}

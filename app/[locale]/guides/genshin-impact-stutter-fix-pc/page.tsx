@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('genshin-impact-stutter-fix-pc', title, description, keywords, locale);
 }
 
-export default function GenshinFixGuide() {
+export default async function GenshinFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Check #1", value: "Shader Cache (Unlimited in GPU)" },
         { label: "Check #2", value: "V-Sync (Disabled in Game)" },
@@ -95,6 +96,8 @@ export default function GenshinFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="genshin-impact-stutter-fix-pc"
             title={title}
             description={description}
             keywords={keywords}

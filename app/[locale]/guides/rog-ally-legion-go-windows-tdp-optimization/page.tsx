@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rog-ally-legion-go-windows-tdp-optimization', title, description, keywords, locale);
 }
 
-export default function RogAllyGuide() {
+export default async function RogAllyGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "VRAM Buffer", value: "6GB (Best Balance)" },
         { label: "Core Isolation", value: "OFF (FPS Boost)" },
@@ -193,6 +194,8 @@ export default function RogAllyGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rog-ally-legion-go-windows-tdp-optimization"
             title={title}
             description={description}
             keywords={keywords}

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('obs-studio-twitch-youtube-streaming-guide', title, description, keywords, locale);
 }
 
-export default function OBSStreamGuide() {
+export default async function OBSStreamGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Encoder", value: "NVIDIA NVENC H.264 (New)" },
         { label: "Rate Control", value: "CBR (Constant Bitrate)" },
@@ -212,6 +213,8 @@ export default function OBSStreamGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="obs-studio-twitch-youtube-streaming-guide"
             title={title}
             description={description}
             keywords={keywords}

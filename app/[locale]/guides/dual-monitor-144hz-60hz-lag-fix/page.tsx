@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('dual-monitor-144hz-60hz-lag-fix', title, description, keywords, locale);
 }
 
-export default function DualMonitorGuide() {
+export default async function DualMonitorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "GPU Sched", value: "ON (Windows 11)" },
         { label: "IGPU", value: "Use for 2nd screen" },
@@ -202,6 +203,8 @@ export default function DualMonitorGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="dual-monitor-144hz-60hz-lag-fix"
             title={title}
             description={description}
             keywords={keywords}

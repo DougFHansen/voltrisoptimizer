@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('search-windows-files-faster', title, description, keywords, locale);
 }
 
-export default function FileSearchGuide() {
+export default async function FileSearchGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Recommended Tool", value: "Everything (voidtools)" },
         { label: "Everything Speed", value: "Instant (Milliseconds)" },
@@ -96,6 +97,8 @@ export default function FileSearchGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="search-windows-files-faster"
             title={title}
             description={description}
             keywords={keywords}

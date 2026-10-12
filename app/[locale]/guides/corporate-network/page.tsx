@@ -32,7 +32,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('corporate-network', title, description, keywords, locale);
 }
 
-export default function CorporateNetworkGuide() {
+export default async function CorporateNetworkGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "Corporate Network Fundamentals",
@@ -194,6 +195,8 @@ export default function CorporateNetworkGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="corporate-network"
       title={title}
       description={description}
       keywords={keywords}

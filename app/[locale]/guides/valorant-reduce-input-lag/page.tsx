@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('valorant-reduce-input-lag', title, description, keywords, locale);
 }
 
-export default function ValorantGuide() {
+export default async function ValorantGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Reflex", value: "On + Boost" },
         { label: "Raw Input", value: "On (Mouse 8KHz)" },
@@ -277,6 +278,8 @@ export default function ValorantGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="valorant-reduce-input-lag"
             title={title}
             description={description}
             keywords={keywords}

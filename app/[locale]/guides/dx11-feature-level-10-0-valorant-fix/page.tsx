@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('dx11-feature-level-10-0-valorant-fix', title, description, keywords, locale);
 }
 
-export default function ValorantDX11Guide() {
+export default async function ValorantDX11Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Cause #1", value: "GPU doesn't natively support DirectX 11" },
         { label: "Cause #2", value: "Corrupted or generic video driver" },
@@ -99,6 +100,8 @@ export default function ValorantDX11Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="dx11-feature-level-10-0-valorant-fix"
             title={title}
             description={description}
             keywords={keywords}

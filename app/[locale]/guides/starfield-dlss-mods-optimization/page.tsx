@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('starfield-dlss-mods-optimization', title, description, keywords, locale);
 }
 
-export default function StarfieldGuide() {
+export default async function StarfieldGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Upscaling", value: "DLSS / FSR 3" },
         { label: "Shadows", value: "Medium" },
@@ -203,6 +204,8 @@ export default function StarfieldGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="starfield-dlss-mods-optimization"
             title={title}
             description={description}
             keywords={keywords}

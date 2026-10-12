@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('fix-100-disk-usage-windows-11', title, description, keywords, locale);
 }
 
-export default function Disk100FixGuide() {
+export default async function Disk100FixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Primary Cause", value: "Indexing Services (SysMain) on HDDs" },
         { label: "Secondary Cause", value: "Antivirus background scanning" },
@@ -99,6 +100,8 @@ export default function Disk100FixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="fix-100-disk-usage-windows-11"
             title={title}
             description={description}
             keywords={keywords}

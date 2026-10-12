@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('forza-horizon-5-vram-input-lag-fix', title, description, keywords, locale);
 }
 
-export default function ForzaGuide() {
+export default async function ForzaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Environment Textures", value: "High (NOT Extreme)" },
         { label: "Geometry", value: "High" },
@@ -202,6 +203,8 @@ export default function ForzaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="forza-horizon-5-vram-input-lag-fix"
             title={title}
             description={description}
             keywords={keywords}

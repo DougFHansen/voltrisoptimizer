@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pc-gaming-optimization', title, description, keywords, locale);
 }
 
-export default function GuidePage() {
+export default async function GuidePage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "Introduction and Infrastructure Overview",
@@ -348,6 +349,8 @@ export default function GuidePage() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="pc-gaming-optimization"
       title={title}
       description={description}
       keywords={keywords}

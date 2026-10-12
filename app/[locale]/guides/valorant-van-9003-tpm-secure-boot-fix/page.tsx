@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('valorant-van-9003-tpm-secure-boot-fix', title, description, keywords, locale);
 }
 
-export default function Van9003Guide() {
+export default async function Van9003Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Error", value: "VAN 9003 / VAN 1067" },
         { label: "Cause", value: "Secure Boot or TPM Disabled" },
@@ -196,6 +197,8 @@ export default function Van9003Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="valorant-van-9003-tpm-secure-boot-fix"
             title={title}
             description={description}
             keywords={keywords}

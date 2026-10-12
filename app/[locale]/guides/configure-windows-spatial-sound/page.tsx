@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('configure-windows-spatial-sound', title, description, keywords, locale);
 }
 
-export default function SpatialAudioGuide() {
+export default async function SpatialAudioGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Native (Free)", value: "Windows Sonic for Headphones" },
         { label: "Premium (Paid)", value: "Dolby Atmos / DTS Sound Unbound" },
@@ -97,6 +98,8 @@ export default function SpatialAudioGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="configure-windows-spatial-sound"
             title={title}
             description={description}
             keywords={keywords}

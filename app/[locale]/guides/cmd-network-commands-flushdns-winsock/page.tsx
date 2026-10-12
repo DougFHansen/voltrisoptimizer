@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cmd-network-commands-flushdns-winsock', title, description, keywords, locale);
 }
 
-export default function FlushDNSGuide() {
+export default async function FlushDNSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "CMD (Administrator)" },
         { label: "Command 1", value: "ipconfig /flushdns" },
@@ -173,6 +174,8 @@ export default function FlushDNSGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cmd-network-commands-flushdns-winsock"
             title={title}
             description={description}
             keywords={keywords}

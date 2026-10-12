@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('firewall-configuration', title, description, keywords, locale);
 }
 
-export default function FirewallConfigGuide() {
+export default async function FirewallConfigGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Recommended Status", value: "Always Enabled" },
     { label: "Main Function", value: "Block unauthorized traffic" },
@@ -97,6 +98,8 @@ export default function FirewallConfigGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="firewall-configuration"
       title={title}
       description={description}
       keywords={keywords}

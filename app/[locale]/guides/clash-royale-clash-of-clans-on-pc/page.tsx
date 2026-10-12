@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('clash-royale-clash-of-clans-on-pc', title, description, keywords, locale);
 }
 
-export default function SupercellPCGuide() {
+export default async function SupercellPCGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Method", value: "Google Play Games for PC (Beta/Official)" },
         { label: "Advantage", value: "Native Performance / No Viruses" },
@@ -446,6 +447,8 @@ export default function SupercellPCGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="clash-royale-clash-of-clans-on-pc"
             title={title}
             description={description}
             keywords={keywords}

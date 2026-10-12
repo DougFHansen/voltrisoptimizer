@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('increase-minecraft-fps-fabric-sodium', title, description, keywords, locale);
 }
 
-export default function MinecraftGuide() {
+export default async function MinecraftGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Loader", value: "Fabric (Lightweight)" },
         { label: "Render", value: "Sodium (Mandatory)" },
@@ -251,6 +252,8 @@ export default function MinecraftGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="increase-minecraft-fps-fabric-sodium"
             title={title}
             description={description}
             keywords={keywords}

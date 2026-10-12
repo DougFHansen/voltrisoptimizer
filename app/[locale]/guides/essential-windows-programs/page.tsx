@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('essential-windows-programs', title, description, keywords, locale);
 }
 
-export default function SoftwareGuide() {
+export default async function SoftwareGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Installer", value: "Ninite (Automatic)" },
     { label: "Archiver", value: "7-Zip (Open Source)" },
@@ -168,6 +169,8 @@ export default function SoftwareGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="essential-windows-programs"
       title={title}
       description={description}
       keywords={keywords}

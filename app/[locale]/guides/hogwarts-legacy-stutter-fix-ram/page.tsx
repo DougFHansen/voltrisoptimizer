@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hogwarts-legacy-stutter-fix-ram', title, description, keywords, locale);
 }
 
-export default function HogwartsGuide() {
+export default async function HogwartsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Texture Quality", value: "High (If 8GB+ VRAM)" },
         { label: "Fog Quality", value: "Medium" },
@@ -206,6 +207,8 @@ export default function HogwartsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hogwarts-legacy-stutter-fix-ram"
             title={title}
             description={description}
             keywords={keywords}

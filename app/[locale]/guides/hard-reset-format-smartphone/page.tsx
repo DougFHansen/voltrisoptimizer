@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hard-reset-format-smartphone', title, description, keywords, locale);
 }
 
-export default function HardResetGuide() {
+export default async function HardResetGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is deleted", value: "Photos, Contacts, Apps and Passwords" },
         { label: "Minimum Battery", value: "60% (Recommended)" },
@@ -99,6 +100,8 @@ export default function HardResetGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hard-reset-format-smartphone"
             title={title}
             description={description}
             keywords={keywords}

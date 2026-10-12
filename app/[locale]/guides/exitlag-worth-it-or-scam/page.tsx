@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('exitlag-worth-it-or-scam', title, description, keywords, locale);
 }
 
-export default function ExitLagReviewGuide() {
+export default async function ExitLagReviewGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Route optimization software (Gaming-focused VPN)" },
         { label: "Does it work for everyone?", value: "No, it depends on the quality of your current route" },
@@ -95,6 +96,8 @@ export default function ExitLagReviewGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="exitlag-worth-it-or-scam"
             title={title}
             description={description}
             keywords={keywords}

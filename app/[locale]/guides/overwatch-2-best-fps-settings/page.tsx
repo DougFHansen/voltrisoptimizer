@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('overwatch-2-best-fps-settings', title, description, keywords, locale);
 }
 
-export default function OverwatchGuide() {
+export default async function OverwatchGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Render Scale", value: "Custom (75% or 100%)" },
         { label: "Dynamic Render", value: "Off" },
@@ -244,6 +245,8 @@ export default function OverwatchGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="overwatch-2-best-fps-settings"
             title={title}
             description={description}
             keywords={keywords}

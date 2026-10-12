@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('escape-from-tarkov-fps-ram-optimization', title, description, keywords, locale);
 }
 
-export default function TarkovGuide() {
+export default async function TarkovGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "RAM Cleaner", value: "ON (Game Settings)" },
         { label: "Textures", value: "Medium (for 16GB RAM)" },
@@ -214,6 +215,8 @@ export default function TarkovGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="escape-from-tarkov-fps-ram-optimization"
             title={title}
             description={description}
             keywords={keywords}

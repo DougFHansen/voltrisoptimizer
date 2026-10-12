@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('router-configuration-for-gaming', title, description, keywords, locale);
 }
 
-export default function RouterGuide() {
+export default async function RouterGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Frequency", value: "5GHz (Mandatory for gaming)" },
     { label: "2.4GHz Channel", value: "Use only 1, 6 or 11" },
@@ -169,6 +170,8 @@ export default function RouterGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="router-configuration-for-gaming"
       title={title}
       description={description}
       keywords={keywords}

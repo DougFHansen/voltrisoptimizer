@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('clear-ram-memory-windows', title, description, keywords, locale);
 }
 
-export default function RAMGuide() {
+export default async function RAMGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Problem", value: "Standby List Cache" },
         { label: "Symptom", value: "Game stutters after 1 hour" },
@@ -167,6 +168,8 @@ export default function RAMGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="clear-ram-memory-windows"
             title={title}
             description={description}
             keywords={keywords}

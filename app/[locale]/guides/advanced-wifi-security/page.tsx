@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('advanced-wifi-security', title, description, keywords, locale);
 }
 
-export default function GuidePage() {
+export default async function GuidePage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
 
     {
@@ -75,6 +76,8 @@ export default function GuidePage() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="advanced-wifi-security"
       title={title}
       description={description}
       keywords={keywords}

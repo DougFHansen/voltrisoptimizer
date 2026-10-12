@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('lineage-2-pvp-fps-optimization', title, description, keywords, locale);
 }
 
-export default function L2OtimizacaoGuide() {
+export default async function L2OtimizacaoGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Graphic Engine", value: "Unreal Engine 2.5 (Highly CPU-bound)" },
         { label: "Solution #1", value: "Disable Names and Titles (Alt + L)" },
@@ -96,6 +97,8 @@ export default function L2OtimizacaoGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="lineage-2-pvp-fps-optimization"
             title={title}
             description={description}
             keywords={keywords}

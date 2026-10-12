@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('building-gaming-pc-common-mistakes', title, description, keywords, locale);
 }
 
-export default function PCMisteryGuide() {
+export default async function PCMisteryGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Mistake #1", value: "Protective plastic on the heatsink" },
         { label: "Mistake #2", value: "RAM in wrong slot (Single Channel)" },
@@ -100,6 +101,8 @@ export default function PCMisteryGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="building-gaming-pc-common-mistakes"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-11-ssd-optimization', title, description, keywords, locale);
 }
 
-export default function SSDGuide() {
+export default async function SSDGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Vital Command", value: "TRIM" },
         { label: "Key Setting", value: "Write Caching (On)" },
@@ -110,6 +111,8 @@ export default function SSDGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="windows-11-ssd-optimization"
             title={title}
             description={description}
             keywords={keywords}

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pcsx2-4k-widescreen-textures-optimization', title, description, keywords, locale);
 }
 
-export default function PCSX2Guide() {
+export default async function PCSX2Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Version", value: "Nightly (Latest)" },
         { label: "Renderer", value: "Vulkan / DX11" },
@@ -199,6 +200,8 @@ export default function PCSX2Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="pcsx2-4k-widescreen-textures-optimization"
             title={title}
             description={description}
             keywords={keywords}

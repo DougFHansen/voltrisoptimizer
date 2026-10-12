@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('reduce-ping-regedit-cmd-gaming', title, description, keywords, locale);
 }
 
-export default function NetworkGuide() {
+export default async function NetworkGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Enemy", value: "Bufferbloat (Queueing Delay)" },
         { label: "Ideal Hardware", value: "CAT6 Ethernet Cable" },
@@ -110,6 +111,8 @@ export default function NetworkGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="reduce-ping-regedit-cmd-gaming"
             title={title}
             description={description}
             keywords={keywords}

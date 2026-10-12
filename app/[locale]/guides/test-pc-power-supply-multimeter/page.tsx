@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('test-pc-power-supply-multimeter', title, description, keywords, locale);
 }
 
-export default function PowerSupplyTestGuide() {
+export default async function PowerSupplyTestGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Critical Rail", value: "12V (Yellow) - Powers GPU/CPU" },
         { label: "Data Rail", value: "5V (Red) - Peripherals/SSD" },
@@ -100,6 +101,8 @@ export default function PowerSupplyTestGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="test-pc-power-supply-multimeter"
             title={title}
             description={description}
             keywords={keywords}

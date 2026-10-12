@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('check-hdd-ssd-health-crystaldiskinfo', title, description, keywords, locale);
 }
 
-export default function DiskHealthGuide() {
+export default async function DiskHealthGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Status 'Healthy'", value: "Everything is fine with your disk" },
         { label: "Status 'Caution'", value: "Back up IMMEDIATELY" },
@@ -96,6 +97,8 @@ export default function DiskHealthGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="check-hdd-ssd-health-crystaldiskinfo"
             title={title}
             description={description}
             keywords={keywords}

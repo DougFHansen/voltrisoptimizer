@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-update-fix-errors', title, description, keywords, locale);
 }
 
-export default function WindowsUpdateGuide() {
+export default async function WindowsUpdateGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "CMD (Admin)" },
         { label: "Target Folder", value: "C:\\Windows\\SoftwareDistribution" },
@@ -189,6 +190,8 @@ export default function WindowsUpdateGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="windows-update-fix-errors"
             title={title}
             description={description}
             keywords={keywords}

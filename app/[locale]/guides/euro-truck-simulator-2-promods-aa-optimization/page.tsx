@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('euro-truck-simulator-2-promods-aa-optimization', title, description, keywords, locale);
 }
 
-export default function ETS2Guide() {
+export default async function ETS2Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Anti-Aliasing", value: "Snowymoon TAA (Plugin)" },
         { label: "Scaling (With TAA)", value: "100%" },
@@ -203,6 +204,8 @@ export default function ETS2Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="euro-truck-simulator-2-promods-aa-optimization"
             title={title}
             description={description}
             keywords={keywords}

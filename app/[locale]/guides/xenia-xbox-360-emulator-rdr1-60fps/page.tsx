@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('xenia-xbox-360-emulator-rdr1-60fps', title, description, keywords, locale);
 }
 
-export default function XeniaGuide() {
+export default async function XeniaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Version", value: "Canary (GitHub)" },
         { label: "Renderer", value: "Vulkan / D3D12" },
@@ -195,6 +196,8 @@ export default function XeniaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="xenia-xbox-360-emulator-rdr1-60fps"
             title={title}
             description={description}
             keywords={keywords}

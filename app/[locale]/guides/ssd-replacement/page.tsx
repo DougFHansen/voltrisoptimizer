@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ssd-replacement', title, description, keywords, locale);
 }
 
-export default function SSDInstallationGuide() {
+export default async function SSDInstallationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Formats", value: "2.5\" SATA or M.2 NVMe" },
     { label: "Cloning Software", value: "Macrium Reflect / Clonezilla" },
@@ -98,6 +99,8 @@ export default function SSDInstallationGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="ssd-replacement"
       title={title}
       description={description}
       keywords={keywords}

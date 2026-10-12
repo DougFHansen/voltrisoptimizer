@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-formatting', title, description, keywords, locale);
 }
 
-export default function FormatWindowsGuide() {
+export default async function FormatWindowsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Mandatory Backup", value: "Personal Files + Activation Key" },
     { label: "Required Hardware", value: "8GB+ USB Drive (will be erased)" },
@@ -664,6 +665,8 @@ export default function FormatWindowsGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="windows-formatting"
       title={title}
       description={description}
       keywords={keywords}

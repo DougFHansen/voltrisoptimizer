@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('wifi-disconnecting-randomly-windows-fix', title, description, keywords, locale);
 }
 
-export default function WiFiFixGuide() {
+export default async function WiFiFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Cause", value: "Adapter Power Management" },
         { label: "Quick Fix", value: "Reset TCP/IP Stack in CMD" },
@@ -101,6 +102,8 @@ export default function WiFiFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="wifi-disconnecting-randomly-windows-fix"
             title={title}
             description={description}
             keywords={keywords}

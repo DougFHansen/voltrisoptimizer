@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('team-fortress-2-mastercomfig-competitive-fps', title, description, keywords, locale);
 }
 
-export default function TF2Guide() {
+export default async function TF2Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Config", value: "Mastercomfig Low/Medium" },
         { label: "DirectX", value: "DX 8.1 (Max FPS)" },
@@ -206,6 +207,8 @@ export default function TF2Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="team-fortress-2-mastercomfig-competitive-fps"
             title={title}
             description={description}
             keywords={keywords}

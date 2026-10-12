@@ -67,6 +67,10 @@ export interface GuideTemplateProps {
     keyPoints?: string[];
     /** Important warnings as alerts */
     warningNote?: string;
+    /** i18n: current request locale (used by the server wrapper to translate). */
+    locale?: string;
+    /** i18n: guide slug (folder name), used to pick the per-slug dictionary. */
+    slug?: string;
     children?: React.ReactNode;
 }
 

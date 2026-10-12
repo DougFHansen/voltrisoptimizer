@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('internet-speed-test', title, description, keywords, locale);
 }
 
-export default function SpeedtestGuide() {
+export default async function SpeedtestGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Standard Site", value: "Speedtest.net" },
     { label: "Advanced Site", value: "Waveform Bufferbloat" },
@@ -162,6 +163,8 @@ export default function SpeedtestGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="internet-speed-test"
       title={title}
       description={description}
       keywords={keywords}

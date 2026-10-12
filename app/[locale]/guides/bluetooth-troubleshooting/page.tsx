@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bluetooth-troubleshooting', title, description, keywords, locale);
 }
 
-export default function BluetoothTroubleshootingGuide() {
+export default async function BluetoothTroubleshootingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Symptom", value: "Audio delay (Lag) or Drops" },
     { label: "Common Cause", value: "Power saving or poorly positioned Antenna" },
@@ -97,6 +98,8 @@ export default function BluetoothTroubleshootingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="bluetooth-troubleshooting"
       title={title}
       description={description}
       keywords={keywords}

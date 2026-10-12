@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('best-gaming-dns-google-vs-cloudflare', title, description, keywords, locale);
 }
 
-export default function DNSGuide() {
+export default async function DNSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Fastest", value: "Cloudflare (1.1.1.1)" },
         { label: "Most Stable", value: "Google (8.8.8.8)" },
@@ -89,6 +90,8 @@ export default function DNSGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="best-gaming-dns-google-vs-cloudflare"
             title={title}
             description={description}
             keywords={keywords}

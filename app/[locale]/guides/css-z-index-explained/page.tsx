@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('css-z-index-explained', title, description, keywords, locale);
 }
 
-export default function ZIndexGuide() {
+export default async function ZIndexGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Requirement", value: "Element must have 'position' (relative, absolute, etc)" },
         { label: "The Villain", value: "Stacking Context" },
@@ -106,6 +107,8 @@ export default function ZIndexGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="css-z-index-explained"
             title={title}
             description={description}
             keywords={keywords}

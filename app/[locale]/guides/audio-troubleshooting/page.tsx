@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('audio-troubleshooting', title, description, keywords, locale);
 }
 
-export default function AudioTroubleshootingGuide() {
+export default async function AudioTroubleshootingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Essential Tool", value: "LatencyMon + DDU" },
     { label: "Critical Error", value: "Stuck Audio Service" },
@@ -223,6 +224,8 @@ export default function AudioTroubleshootingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="audio-troubleshooting"
       title={title}
       description={description}
       keywords={keywords}

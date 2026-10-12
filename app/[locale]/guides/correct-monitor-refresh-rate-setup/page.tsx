@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('correct-monitor-refresh-rate-setup', title, description, keywords, locale);
 }
 
-export default function MonitorGuide() {
+export default async function MonitorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tools", value: "UFO Test / CRU" },
         { label: "Cable", value: "DisplayPort (Always)" },
@@ -280,6 +281,8 @@ export default function MonitorGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="correct-monitor-refresh-rate-setup"
             title={title}
             description={description}
             keywords={keywords}

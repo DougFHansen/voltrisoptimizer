@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('nvidia-control-panel-best-settings', title, description, keywords, locale);
 }
 
-export default function NvidiaGuide() {
+export default async function NvidiaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Chapters", value: "10 (Complete)" },
         { label: "Technical Level", value: "Extreme" },
@@ -267,6 +268,8 @@ export default function NvidiaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="nvidia-control-panel-best-settings"
             title={title}
             description={description}
             keywords={keywords}

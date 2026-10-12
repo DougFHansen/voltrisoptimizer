@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('keyboard-layout-fix-abnt2-ansi', title, description, keywords, locale);
 }
 
-export default function KeyboardConfigGuide() {
+export default async function KeyboardConfigGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "ABNT2 Layout", value: "Features Ç key and AltGr" },
         { label: "ANSI Layout (US)", value: "No Ç / @ is on '2' key" },
@@ -187,6 +188,8 @@ export default function KeyboardConfigGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="keyboard-layout-fix-abnt2-ansi"
             title={title}
             description={description}
             keywords={keywords}

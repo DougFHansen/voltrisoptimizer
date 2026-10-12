@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('services-management', title, description, keywords, locale);
 }
 
-export default function ServicesManagementGuide() {
+export default async function ServicesManagementGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Shortcut to open", value: "Win + R -> services.msc" },
         { label: "Maximum risk", value: "Medium (create restore point first)" },
@@ -273,6 +274,8 @@ export default function ServicesManagementGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="services-management"
             title={title}
             description={description}
             keywords={keywords}

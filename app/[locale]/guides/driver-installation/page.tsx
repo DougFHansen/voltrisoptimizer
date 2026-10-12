@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('driver-installation', title, description, keywords, locale);
 }
 
-export default function InstalacaoDriversGuide() {
+export default async function InstalacaoDriversGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "Introduction and Core Concepts",
@@ -182,6 +183,8 @@ export default function InstalacaoDriversGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="driver-installation"
       title={title}
       description={description}
       keywords={keywords}

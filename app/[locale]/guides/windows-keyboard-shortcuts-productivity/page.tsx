@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-keyboard-shortcuts-productivity', title, description, keywords, locale);
 }
 
-export default function WindowsShortcutsGuide() {
+export default async function WindowsShortcutsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Switch Window", value: "Alt + Tab (standard) or Win + Tab (advanced)" },
     { label: "Open Explorer", value: "Win + E" },
@@ -589,6 +590,8 @@ export default function WindowsShortcutsGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="windows-keyboard-shortcuts-productivity"
       title={title}
       description={description}
       keywords={keywords}

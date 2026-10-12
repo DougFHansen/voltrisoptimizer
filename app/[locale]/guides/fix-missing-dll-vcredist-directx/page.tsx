@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('fix-missing-dll-vcredist-directx', title, description, keywords, locale);
 }
 
-export default function DLLFixGuide() {
+export default async function DLLFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What they are", value: "Essential code libraries (Runtimes)" },
         { label: "Culprit #1", value: "Visual C++ Redistributable (VCRedist)" },
@@ -502,6 +503,8 @@ export default function DLLFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="fix-missing-dll-vcredist-directx"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rtx-4060-worth-it-2026', title, description, keywords, locale);
 }
 
-export default function RTX4060ReviewGuide() {
+export default async function RTX4060ReviewGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Strength", value: "Power efficiency and Frame Gen (DLSS)" },
         { label: "Weakness", value: "Only 8GB of VRAM" },
@@ -93,6 +94,8 @@ export default function RTX4060ReviewGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rtx-4060-worth-it-2026"
             title={title}
             description={description}
             keywords={keywords}

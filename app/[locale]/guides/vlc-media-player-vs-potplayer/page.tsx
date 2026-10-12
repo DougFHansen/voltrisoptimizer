@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vlc-media-player-vs-potplayer', title, description, keywords, locale);
 }
 
-export default function VideoPlayerComparisonGuide() {
+export default async function VideoPlayerComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "VLC", value: "Simple, Open Source, Runs Everything" },
         { label: "PotPlayer", value: "Extremely Fast, Customizable, Great HDR" },
@@ -97,6 +98,8 @@ export default function VideoPlayerComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vlc-media-player-vs-potplayer"
             title={title}
             description={description}
             keywords={keywords}

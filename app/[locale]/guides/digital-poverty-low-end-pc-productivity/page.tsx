@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('digital-poverty-low-end-pc-productivity', title, description, keywords, locale);
 }
 
-export default function DigitalPovertyGuide() {
+export default async function DigitalPovertyGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Focus", value: "Efficiency over aesthetics" },
         { label: "Browser", value: "Brave or Edge (Efficiency Mode)" },
@@ -98,6 +99,8 @@ export default function DigitalPovertyGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="digital-poverty-low-end-pc-productivity"
             title={title}
             description={description}
             keywords={keywords}

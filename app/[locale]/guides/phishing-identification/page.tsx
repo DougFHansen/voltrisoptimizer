@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('phishing-identification', title, description, keywords, locale);
 }
 
-export default function PhishingGuide() {
+export default async function PhishingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "What it is", value: "Social engineering to steal passwords" },
     { label: "Alert Signal #1", value: "Urgency or threat of blocking account" },
@@ -669,6 +670,8 @@ export default function PhishingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="phishing-identification"
       title={title}
       description={description}
       keywords={keywords}

@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('data-backup', title, description, keywords, locale);
 }
 
-export default function DataBackupGuide() {
+export default async function DataBackupGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "The Golden Rule", value: "3-2-1 (3 Copies, 2 Locations, 1 Offsite)" },
     { label: "Best Free Software", value: "Hasleo Backup Suite / Veeam Agent" },
@@ -192,6 +193,8 @@ export default function DataBackupGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="data-backup"
       title={title}
       description={description}
       keywords={keywords}

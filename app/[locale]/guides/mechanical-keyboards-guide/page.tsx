@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mechanical-keyboards-guide', title, description, keywords, locale);
 }
 
-export default function MechanicalKeyboardGuide() {
+export default async function MechanicalKeyboardGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Technology of the Year", value: "Magnetic Switches (Hall Effect)" },
         { label: "Essential Feature", value: "Hot-swap (Swap switches without soldering)" },
@@ -630,6 +631,8 @@ export default function MechanicalKeyboardGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mechanical-keyboards-guide"
             title={title}
             description={description}
             keywords={keywords}

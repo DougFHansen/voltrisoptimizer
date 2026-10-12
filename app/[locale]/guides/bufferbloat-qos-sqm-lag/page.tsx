@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bufferbloat-qos-sqm-lag', title, description, keywords, locale);
 }
 
-export default function BufferbloatGuide() {
+export default async function BufferbloatGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Test", value: "Waveform Bufferbloat" },
         { label: "Solution", value: "QoS (Quality of Service)" },
@@ -200,6 +201,8 @@ export default function BufferbloatGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="bufferbloat-qos-sqm-lag"
             title={title}
             description={description}
             keywords={keywords}

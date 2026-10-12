@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pubg-steam-stuttering-fix', title, description, keywords, locale);
 }
 
-export default function PUBGStutterFixGuide() {
+export default async function PUBGStutterFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "DirectX Version", value: "DirectX 11 Enhanced (Recommended)" },
         { label: "Key Setting", value: "Render Scale (100% or less)" },
@@ -99,6 +100,8 @@ export default function PUBGStutterFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="pubg-steam-stuttering-fix"
             title={title}
             description={description}
             keywords={keywords}

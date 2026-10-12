@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('browser-cleaning', title, description, keywords, locale);
 }
 
-export default function BrowserCleanGuide() {
+export default async function BrowserCleanGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Universal Shortcut", value: "Ctrl + Shift + Del" },
     { label: "Frequency", value: "Monthly" },
@@ -92,6 +93,8 @@ export default function BrowserCleanGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="browser-cleaning"
       title={title}
       description={description}
       keywords={keywords}

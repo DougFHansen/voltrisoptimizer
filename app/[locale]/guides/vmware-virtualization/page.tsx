@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vmware-virtualization', title, description, keywords, locale);
 }
 
-export default function VirtualizationGuide() {
+export default async function VirtualizationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Intel Technology", value: "VT-x / Intel Virtualization Technology" },
     { label: "AMD Technology", value: "AMD-V / SVM Mode" },
@@ -99,6 +100,8 @@ export default function VirtualizationGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="vmware-virtualization"
       title={title}
       description={description}
       keywords={keywords}

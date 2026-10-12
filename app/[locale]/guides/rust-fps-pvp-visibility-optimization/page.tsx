@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rust-fps-pvp-visibility-optimization', title, description, keywords, locale);
 }
 
-export default function RustGuide() {
+export default async function RustGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Console", value: "F1 (Commands)" },
         { label: "GC Buffer", value: "2048 or 4096" },
@@ -206,6 +207,8 @@ export default function RustGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rust-fps-pvp-visibility-optimization"
             title={title}
             description={description}
             keywords={keywords}

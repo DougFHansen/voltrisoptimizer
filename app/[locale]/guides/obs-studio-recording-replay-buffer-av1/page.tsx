@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('obs-studio-recording-replay-buffer-av1', title, description, keywords, locale);
 }
 
-export default function OBSGuide() {
+export default async function OBSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Encoder", value: "Nvidia NVENC AV1 / HEVC" },
         { label: "Rate Control", value: "CQP (Quality)" },
@@ -202,6 +203,8 @@ export default function OBSGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="obs-studio-recording-replay-buffer-av1"
             title={title}
             description={description}
             keywords={keywords}

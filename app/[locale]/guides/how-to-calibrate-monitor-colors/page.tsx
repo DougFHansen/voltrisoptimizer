@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-calibrate-monitor-colors', title, description, keywords, locale);
 }
 
-export default function MonitorCalibrationGuide() {
+export default async function MonitorCalibrationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Native Tool", value: "Windows Color Calibration (dccw)" },
         { label: "Vital Check", value: "Gamma and Contrast Adjustment" },
@@ -627,6 +628,8 @@ export default function MonitorCalibrationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-calibrate-monitor-colors"
             title={title}
             description={description}
             keywords={keywords}

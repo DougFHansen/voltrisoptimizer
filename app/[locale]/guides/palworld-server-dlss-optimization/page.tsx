@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('palworld-server-dlss-optimization', title, description, keywords, locale);
 }
 
-export default function PalworldGuide() {
+export default async function PalworldGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "DLSS Mod", value: "PureDark implementation" },
         { label: "View Distance", value: "Medium" },
@@ -205,6 +206,8 @@ export default function PalworldGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="palworld-server-dlss-optimization"
             title={title}
             description={description}
             keywords={keywords}

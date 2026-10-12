@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cod-warzone-best-settings-fps', title, description, keywords, locale);
 }
 
-export default function WarzoneGuide() {
+export default async function WarzoneGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Upscaling", value: "FidelityFX CAS (Sharpness)" },
         { label: "Texture Res", value: "Low/Normal" },
@@ -256,6 +257,8 @@ export default function WarzoneGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cod-warzone-best-settings-fps"
             title={title}
             description={description}
             keywords={keywords}

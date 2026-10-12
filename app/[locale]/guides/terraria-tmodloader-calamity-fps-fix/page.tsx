@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('terraria-tmodloader-calamity-fps-fix', title, description, keywords, locale);
 }
 
-export default function TerrariaGuide() {
+export default async function TerrariaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Frame Skip", value: "ON (Fix Slowmo)" },
         { label: "Lighting", value: "Retro / White" },
@@ -196,6 +197,8 @@ export default function TerrariaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="terraria-tmodloader-calamity-fps-fix"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('password-security-managers', title, description, keywords, locale);
 }
 
-export default function PasswordManagerGuide() {
+export default async function PasswordManagerGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Security Gold", value: "Bitwarden (Open Source / Free)" },
         { label: "What to Avoid", value: "Passwords on Post-its or Notepad" },
@@ -542,6 +543,8 @@ export default function PasswordManagerGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="password-security-managers"
             title={title}
             description={description}
             keywords={keywords}

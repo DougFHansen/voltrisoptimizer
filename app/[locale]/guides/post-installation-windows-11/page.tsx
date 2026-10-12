@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('post-installation-windows-11', title, description, keywords, locale);
 }
 
-export default function PostInstallationGuide() {
+export default async function PostInstallationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Priority #1", value: "Chipset and GPU Drivers" },
         { label: "Browsing", value: "Brave or Edge (Avoid Bloatware)" },
@@ -99,6 +100,8 @@ export default function PostInstallationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="post-installation-windows-11"
             title={title}
             description={description}
             keywords={keywords}

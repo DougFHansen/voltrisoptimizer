@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('budget-gaming-pc-build-2026', title, description, keywords, locale);
 }
 
-export default function BudgetPCGuide() {
+export default async function BudgetPCGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Processor", value: "Ryzen 5 5600 / Core i5-12400F" },
         { label: "Graphics Card", value: "RX 6600 / RTX 3050 (or used)" },
@@ -599,6 +600,8 @@ export default function BudgetPCGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="budget-gaming-pc-build-2026"
             title={title}
             description={description}
             keywords={keywords}

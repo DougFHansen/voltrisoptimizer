@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('nvme-vs-sata-ssd-for-gaming', title, description, keywords, locale);
 }
 
-export default function SSDTypeGuide() {
+export default async function SSDTypeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "SATA Speed", value: "Up to 560 MB/s (Cable limit)" },
         { label: "NVMe Speed (Gen4)", value: "Up to 7,500 MB/s" },
@@ -100,6 +101,8 @@ export default function SSDTypeGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="nvme-vs-sata-ssd-for-gaming"
             title={title}
             description={description}
             keywords={keywords}

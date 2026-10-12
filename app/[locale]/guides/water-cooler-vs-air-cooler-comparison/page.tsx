@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('water-cooler-vs-air-cooler-comparison', title, description, keywords, locale);
 }
 
-export default function CoolerGuide() {
+export default async function CoolerGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Cost-Benefit", value: "Air Cooler" },
         { label: "Aesthetics", value: "Water Cooler" },
@@ -157,6 +158,8 @@ export default function CoolerGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="water-cooler-vs-air-cooler-comparison"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pc-cable-management-organization', title, description, keywords, locale);
 }
 
-export default function CableManagementGuide() {
+export default async function CableManagementGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Benefit #1", value: "Better Airflow" },
         { label: "Benefit #2", value: "Easier Cleaning" },
@@ -443,6 +444,8 @@ export default function CableManagementGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="pc-cable-management-organization"
             title={title}
             description={description}
             keywords={keywords}

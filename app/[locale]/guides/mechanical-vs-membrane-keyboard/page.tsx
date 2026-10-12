@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mechanical-vs-membrane-keyboard', title, description, keywords, locale);
 }
 
-export default function KeyboardComparisonGuide() {
+export default async function KeyboardComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Mechanical", value: "Durable, Fast, Highly Customizable" },
         { label: "Membrane", value: "Affordable, Silent, Less Durable" },
@@ -664,6 +665,8 @@ export default function KeyboardComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mechanical-vs-membrane-keyboard"
             title={title}
             description={description}
             keywords={keywords}

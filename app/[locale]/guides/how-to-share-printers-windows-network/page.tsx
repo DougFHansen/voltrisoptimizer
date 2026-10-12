@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-share-printers-windows-network', title, description, keywords, locale);
 }
 
-export default function PrinterSharingGuide() {
+export default async function PrinterSharingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Main Method", value: "Windows Network Sharing (SMB)" },
     { label: "Security Tip", value: "Disable password-protected sharing (if trusted)" },
@@ -505,6 +506,8 @@ export default function PrinterSharingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="how-to-share-printers-windows-network"
       title={title}
       description={description}
       keywords={keywords}

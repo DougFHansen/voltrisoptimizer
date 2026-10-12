@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gta-v-disappearing-textures-fix', title, description, keywords, locale);
 }
 
-export default function GTAVTextureFixGuide() {
+export default async function GTAVTextureFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Cause", value: "CPU or Disk Bottleneck" },
         { label: "Hardware Check", value: "The game MUST be on an SSD" },
@@ -97,6 +98,8 @@ export default function GTAVTextureFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gta-v-disappearing-textures-fix"
             title={title}
             description={description}
             keywords={keywords}

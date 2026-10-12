@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-peripherals-worth-it', title, description, keywords, locale);
 }
 
-export default function GamingPeripheralsGuide() {
+export default async function GamingPeripheralsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Biggest Impact", value: "Mouse (Sensor and Weight)" },
         { label: "Technical Advantage", value: "Rapid Trigger Keyboards (Hall Effect)" },
@@ -96,6 +97,8 @@ export default function GamingPeripheralsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-peripherals-worth-it"
             title={title}
             description={description}
             keywords={keywords}

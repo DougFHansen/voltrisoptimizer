@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-record-screen-obs-studio', title, description, keywords, locale);
 }
 
-export default function OBSRecordingGuide() {
+export default async function OBSRecordingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "File Format", value: "MKV (Safer) or MP4" },
         { label: "Recommended Encoder", value: "NVIDIA NVENC / AMD AMF" },
@@ -894,6 +895,8 @@ start_timer()</pre>
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-record-screen-obs-studio"
             title={title}
             description={description}
             keywords={keywords}

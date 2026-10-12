@@ -25,7 +25,8 @@ const keywords = [
     'java runtime environment modified malware'
 ];
 
-export default function TLauncherSecurityGuide() {
+export default async function TLauncherSecurityGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Security Verdict", value: "CRITICAL (Confirmed Spyware)" },
         { label: "Main Risk", value: "HTTPS Interception and Modified JVM" },
@@ -354,6 +355,8 @@ export default function TLauncherSecurityGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="tlauncher-virus-false-positive"
             title={title}
             description={description}
             keywords={keywords}

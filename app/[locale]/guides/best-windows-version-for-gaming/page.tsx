@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('best-windows-version-for-gaming', title, description, keywords, locale);
 }
 
-export default function BestWindowsForGamingGuide() {
+export default async function BestWindowsForGamingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Windows 11", value: "Best for Intel CPUs (Hybrid) and new GPUs" },
         { label: "Windows 10", value: "More stable for older hardware (pre-2018)" },
@@ -93,6 +94,8 @@ export default function BestWindowsForGamingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="best-windows-version-for-gaming"
             title={title}
             description={description}
             keywords={keywords}

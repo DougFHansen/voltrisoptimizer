@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('phasmophobia-voice-recognition-vr-fix', title, description, keywords, locale);
 }
 
-export default function PhasmophobiaGuide() {
+export default async function PhasmophobiaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Voice Engine", value: "Vosk (English) / Windows (Regional)" },
         { label: "Shadows", value: "Hard (Better Performance)" },
@@ -196,6 +197,8 @@ export default function PhasmophobiaGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="phasmophobia-voice-recognition-vr-fix"
             title={title}
             description={description}
             keywords={keywords}

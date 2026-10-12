@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('discord-otimizacao-overlay-lag', title, description, keywords, locale);
 }
 
-export default function DiscordGuide() {
+export default async function DiscordGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Hardware Accel", value: "OFF (If weak GPU)" },
         { label: "Overlay", value: "OFF (Recommended)" },
@@ -214,6 +215,8 @@ export default function DiscordGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="discord-otimizacao-overlay-lag"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('performance-optimization', title, description, keywords, locale);
 }
 
-export default function PerformanceOptimizationGuide() {
+export default async function PerformanceOptimizationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Check #1", value: "Disable Background Apps" },
     { label: "Check #2", value: "Adjust Visual Effects (Best Performance)" },
@@ -247,6 +248,8 @@ export default function PerformanceOptimizationGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="performance-optimization"
       title={title}
       description={description}
       keywords={keywords}

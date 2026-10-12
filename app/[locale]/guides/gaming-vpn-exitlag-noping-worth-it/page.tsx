@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-vpn-exitlag-noping-worth-it', title, description, keywords, locale);
 }
 
-export default function VPNGuide() {
+export default async function VPNGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Technology", value: "GPN (Gamers Private Network)" },
         { label: "Protocol", value: "UDP / TCP Syn" },
@@ -193,6 +194,8 @@ export default function VPNGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-vpn-exitlag-noping-worth-it"
             title={title}
             description={description}
             keywords={keywords}

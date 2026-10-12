@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('yuzu-ryujinx-zelda-mario-60fps-optimization', title, description, keywords, locale);
 }
 
-export default function YuzuGuide() {
+export default async function YuzuGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "API", value: "Vulkan (Always)" },
         { label: "CPU", value: "Accuracy: Auto" },
@@ -195,6 +196,8 @@ export default function YuzuGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="yuzu-ryujinx-zelda-mario-60fps-optimization"
             title={title}
             description={description}
             keywords={keywords}

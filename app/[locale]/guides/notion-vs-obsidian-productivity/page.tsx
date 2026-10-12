@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('notion-vs-obsidian-productivity', title, description, keywords, locale);
 }
 
-export default function ProductivityAppGuide() {
+export default async function ProductivityAppGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Notion", value: "Online / Collaborative / Database-driven" },
         { label: "Obsidian", value: "Local / Ultra-fast / Markdown-driven" },
@@ -98,6 +99,8 @@ export default function ProductivityAppGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="notion-vs-obsidian-productivity"
             title={title}
             description={description}
             keywords={keywords}

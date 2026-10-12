@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('antivirus-for-gaming-windows-defender-exclusions', title, description, keywords, locale);
 }
 
-export default function AntivirusGuide() {
+export default async function AntivirusGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "Windows Defender (Native)" },
         { label: "Steam Folder", value: "Add Exclusion" },
@@ -193,6 +194,8 @@ export default function AntivirusGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="antivirus-for-gaming-windows-defender-exclusions"
             title={title}
             description={description}
             keywords={keywords}

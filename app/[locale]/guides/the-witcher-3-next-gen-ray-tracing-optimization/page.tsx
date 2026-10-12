@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('the-witcher-3-next-gen-ray-tracing-optimization', title, description, keywords, locale);
 }
 
-export default function Witcher3Guide() {
+export default async function Witcher3Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "API", value: "DX12 (For RT)" },
         { label: "API", value: "DX11 (Performance)" },
@@ -206,6 +207,8 @@ export default function Witcher3Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="the-witcher-3-next-gen-ray-tracing-optimization"
             title={title}
             description={description}
             keywords={keywords}

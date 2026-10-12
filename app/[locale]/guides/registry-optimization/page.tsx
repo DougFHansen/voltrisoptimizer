@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('registry-optimization', title, description, keywords, locale);
 }
 
-export default function RegistryGuide() {
+export default async function RegistryGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Tool", value: "Registry Editor (Regedit)" },
     { label: "Risk", value: "High (Make a Backup!)" },
@@ -185,6 +186,8 @@ export default function RegistryGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="registry-optimization"
       title={title}
       description={description}
       keywords={keywords}

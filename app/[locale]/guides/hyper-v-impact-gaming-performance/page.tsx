@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hyper-v-impact-gaming-performance', title, description, keywords, locale);
 }
 
-export default function HyperVPerformanceGuide() {
+export default async function HyperVPerformanceGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Microsoft Virtualization Technology" },
         { label: "FPS Impact", value: "Can reduce by 5% to 25% in older games" },
@@ -101,6 +102,8 @@ export default function HyperVPerformanceGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hyper-v-impact-gaming-performance"
             title={title}
             description={description}
             keywords={keywords}

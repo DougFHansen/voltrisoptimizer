@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('discord-voice-quality-streaming-optimization', title, description, keywords, locale);
 }
 
-export default function DiscordGuide() {
+export default async function DiscordGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Hardware Accel", value: "OFF (If weak GPU)" },
         { label: "Hardware Accel", value: "ON (If using Live)" },
@@ -196,6 +197,8 @@ export default function DiscordGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="discord-voice-quality-streaming-optimization"
             title={title}
             description={description}
             keywords={keywords}

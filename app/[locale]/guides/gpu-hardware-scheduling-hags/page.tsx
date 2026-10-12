@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gpu-hardware-scheduling-hags', title, description, keywords, locale);
 }
 
-export default function HAGSGuide() {
+export default async function HAGSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "RTX 4000/3000 Cards", value: "ENABLE (Required for DLSS 3)" },
     { label: "GTX 10/16 Cards", value: "TEST (May cause lag)" },
@@ -166,6 +167,8 @@ export default function HAGSGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="gpu-hardware-scheduling-hags"
       title={title}
       description={description}
       keywords={keywords}

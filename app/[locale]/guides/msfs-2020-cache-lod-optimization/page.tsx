@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('msfs-2020-cache-lod-optimization', title, description, keywords, locale);
 }
 
-export default function MSFSGuide() {
+export default async function MSFSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Rolling Cache", value: "32GB (SSD)" },
         { label: "Terrain LOD", value: "100 (Ground) / 200 (High)" },
@@ -202,6 +203,8 @@ export default function MSFSGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="msfs-2020-cache-lod-optimization"
             title={title}
             description={description}
             keywords={keywords}

@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cyberpunk-2077-fps-ray-tracing-optimization', title, description, keywords, locale);
 }
 
-export default function CyberpunkGuide() {
+export default async function CyberpunkGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Crowd Density", value: "Low / Medium" },
         { label: "DLSS / FSR", value: "Quality (Mandatory)" },
@@ -209,6 +210,8 @@ export default function CyberpunkGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cyberpunk-2077-fps-ray-tracing-optimization"
             title={title}
             description={description}
             keywords={keywords}

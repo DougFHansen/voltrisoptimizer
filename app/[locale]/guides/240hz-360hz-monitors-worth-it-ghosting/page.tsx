@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('240hz-360hz-monitors-worth-it-ghosting', title, description, keywords, locale);
 }
 
-export default function MonitorGuide() {
+export default async function MonitorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Windows Hz", value: "Verify (Advanced Display)" },
         { label: "Overdrive", value: "Normal / Fast (Never Extreme)" },
@@ -195,6 +196,8 @@ export default function MonitorGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="240hz-360hz-monitors-worth-it-ghosting"
             title={title}
             description={description}
             keywords={keywords}

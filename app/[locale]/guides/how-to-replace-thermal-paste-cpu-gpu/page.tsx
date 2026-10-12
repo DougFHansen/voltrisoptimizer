@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-replace-thermal-paste-cpu-gpu', title, description, keywords, locale);
 }
 
-export default function PasteGuide() {
+export default async function PasteGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Material 1", value: "Silver/Ceramic Thermal Paste" },
         { label: "Material 2", value: "99% Isopropyl Alcohol" },
@@ -190,6 +191,8 @@ export default function PasteGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-replace-thermal-paste-cpu-gpu"
             title={title}
             description={description}
             keywords={keywords}

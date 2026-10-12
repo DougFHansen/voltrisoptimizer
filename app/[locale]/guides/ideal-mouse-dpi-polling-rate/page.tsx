@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ideal-mouse-dpi-polling-rate', title, description, keywords, locale);
 }
 
-export default function MouseGuide() {
+export default async function MouseGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Ideal DPI", value: "1600 (Low Latency)" },
         { label: "Polling Rate", value: "1000Hz (Safe) / 4000Hz (High-End)" },
@@ -263,6 +264,8 @@ export default function MouseGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ideal-mouse-dpi-polling-rate"
             title={title}
             description={description}
             keywords={keywords}

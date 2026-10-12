@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rocket-league-camera-settings-bakkesmod', title, description, keywords, locale);
 }
 
-export default function RLGuide() {
+export default async function RLGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "FOV", value: "110 (Max)" },
         { label: "Distance", value: "260 - 280" },
@@ -191,6 +192,8 @@ export default function RLGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rocket-league-camera-settings-bakkesmod"
             title={title}
             description={description}
             keywords={keywords}

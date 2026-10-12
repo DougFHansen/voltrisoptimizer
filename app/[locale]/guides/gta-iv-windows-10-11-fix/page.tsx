@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gta-iv-windows-10-11-fix', title, description, keywords, locale);
 }
 
-export default function GTAIVFixGuide() {
+export default async function GTAIVFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Problem", value: "Poor DirectX 9 optimization" },
         { label: "Key Solution", value: "DXVK (Vulkan)" },
@@ -101,6 +102,8 @@ export default function GTAIVFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gta-iv-windows-10-11-fix"
             title={title}
             description={description}
             keywords={keywords}

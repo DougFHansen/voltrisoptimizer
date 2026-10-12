@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('steam-deck-cryoutilities-protonge-optimization', title, description, keywords, locale);
 }
 
-export default function SteamDeckGuide() {
+export default async function SteamDeckGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "CryoUtilities 2.0" },
         { label: "VRAM (BIOS)", value: "4GB (UMA Frame Buffer)" },
@@ -198,6 +199,8 @@ export default function SteamDeckGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="steam-deck-cryoutilities-protonge-optimization"
             title={title}
             description={description}
             keywords={keywords}

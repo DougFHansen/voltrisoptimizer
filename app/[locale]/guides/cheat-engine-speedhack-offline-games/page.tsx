@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cheat-engine-speedhack-offline-games', title, description, keywords, locale);
 }
 
-export default function CheatEngineGuide() {
+export default async function CheatEngineGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Function", value: "Speedhack / Memory Edit" },
         { label: "Usage", value: "Singleplayer Only" },
@@ -218,6 +219,8 @@ export default function CheatEngineGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cheat-engine-speedhack-offline-games"
             title={title}
             description={description}
             keywords={keywords}

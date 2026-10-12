@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-block-program-internet-firewall', title, description, keywords, locale);
 }
 
-export default function FirewallBlockGuide() {
+export default async function FirewallBlockGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Tool", value: "Windows Firewall (Native)" },
     { label: "Action", value: "Outbound Rule" },
@@ -177,6 +178,8 @@ export default function FirewallBlockGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="how-to-block-program-internet-firewall"
       title={title}
       description={description}
       keywords={keywords}

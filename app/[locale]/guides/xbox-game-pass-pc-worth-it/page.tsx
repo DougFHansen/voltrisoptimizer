@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('xbox-game-pass-pc-worth-it', title, description, keywords, locale);
 }
 
-export default function GamePassValueGuide() {
+export default async function GamePassValueGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Average Price", value: "R$ 49.99 to R$ 59.99 (Ultimate)" },
         { label: "Catalog", value: "+400 games (Including Day One releases)" },
@@ -94,6 +95,8 @@ export default function GamePassValueGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="xbox-game-pass-pc-worth-it"
             title={title}
             description={description}
             keywords={keywords}

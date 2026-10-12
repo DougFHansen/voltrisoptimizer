@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('project-zomboid-fps-boost', title, description, keywords, locale);
 }
 
-export default function ProjectZomboidGuide() {
+export default async function ProjectZomboidGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Key Setting", value: "Allocated RAM (JSON Edit)" },
         { label: "FPS Villain", value: "Blood decals on ground / Distant Zoom" },
@@ -99,6 +100,8 @@ export default function ProjectZomboidGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="project-zomboid-fps-boost"
             title={title}
             description={description}
             keywords={keywords}

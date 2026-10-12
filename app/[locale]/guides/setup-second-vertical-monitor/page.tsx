@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('setup-second-vertical-monitor', title, description, keywords, locale);
 }
 
-export default function VerticalMonitorGuide() {
+export default async function VerticalMonitorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Ideal Use", value: "Stream Chat, Code, Discord, News" },
         { label: "Advantage", value: "Less scrolling / Desk space optimization" },
@@ -98,6 +99,8 @@ export default function VerticalMonitorGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="setup-second-vertical-monitor"
             title={title}
             description={description}
             keywords={keywords}

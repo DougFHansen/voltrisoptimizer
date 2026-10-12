@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vbs-memory-integrity-performance', title, description, keywords, locale);
 }
 
-export default function VBSPerformanceGuide() {
+export default async function VBSPerformanceGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is VBS", value: "Hardware-isolated security layer" },
         { label: "FPS Impact", value: "Can reduce between 5% to 25% (depending on CPU)" },
@@ -98,6 +99,8 @@ export default function VBSPerformanceGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vbs-memory-integrity-performance"
             title={title}
             description={description}
             keywords={keywords}

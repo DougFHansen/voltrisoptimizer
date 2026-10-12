@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('two-factor-authentication-guide', title, description, keywords, locale);
 }
 
-export default function TwoFactorGuide() {
+export default async function TwoFactorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Security Level", value: "Critical (Mandatory)" },
     { label: "SMS", value: "Insecure (Avoid)" },
@@ -232,6 +233,8 @@ export default function TwoFactorGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="two-factor-authentication-guide"
       title={title}
       description={description}
       keywords={keywords}

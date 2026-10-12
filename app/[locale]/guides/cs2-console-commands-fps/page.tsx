@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cs2-console-commands-fps', title, description, keywords, locale);
 }
 
-export default function CS2OptimizationGuide() {
+export default async function CS2OptimizationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Engine", value: "Source 2" },
     { label: "Architecture", value: "Sub-Tick (Server) + 64-bit" },
@@ -300,6 +301,8 @@ export default function CS2OptimizationGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="cs2-console-commands-fps"
       title={title}
       description={description}
       keywords={keywords}

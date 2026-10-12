@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-choose-pc-power-supply-psu', title, description, keywords, locale);
 }
 
-export default function PSUGuide() {
+export default async function PSUGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Minimum Badge", value: "80 Plus Bronze" },
         { label: "Trust", value: "PSU Tier List (Tier C+)" },
@@ -158,6 +159,8 @@ export default function PSUGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-choose-pc-power-supply-psu"
             title={title}
             description={description}
             keywords={keywords}

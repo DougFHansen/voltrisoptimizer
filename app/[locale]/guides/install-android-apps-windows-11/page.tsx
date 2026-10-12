@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('install-android-apps-windows-11', title, description, keywords, locale);
 }
 
-export default function AndroidOnWindowsGuide() {
+export default async function AndroidOnWindowsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Feature", value: "WSA (Windows Subsystem for Android)" },
         { label: "RAM Requirement", value: "8GB (Recommended 16GB)" },
@@ -96,6 +97,8 @@ export default function AndroidOnWindowsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="install-android-apps-windows-11"
             title={title}
             description={description}
             keywords={keywords}

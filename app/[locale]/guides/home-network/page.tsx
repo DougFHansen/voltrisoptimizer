@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('home-network', title, description, keywords, locale);
 }
 
-export default function RededomesticaGuide() {
+export default async function RededomesticaGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "Planning and Structuring Your Home Network",
@@ -277,6 +278,8 @@ export default function RededomesticaGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="home-network"
       title={title}
       description={description}
       keywords={keywords}

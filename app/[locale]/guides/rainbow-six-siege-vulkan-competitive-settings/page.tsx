@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rainbow-six-siege-vulkan-competitive-settings', title, description, keywords, locale);
 }
 
-export default function R6Guide() {
+export default async function R6Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "API", value: "Vulkan (Less stuttering)" },
         { label: "Anti-Aliasing", value: "T-AA (Required)" },
@@ -199,6 +200,8 @@ export default function R6Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rainbow-six-siege-vulkan-competitive-settings"
             title={title}
             description={description}
             keywords={keywords}

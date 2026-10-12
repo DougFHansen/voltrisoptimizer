@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('lossless-scaling-frame-generation-fsr-guide', title, description, keywords, locale);
 }
 
-export default function LSGuide() {
+export default async function LSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "Lossless Scaling (Steam)" },
         { label: "Window Mode", value: "Windowed / Borderless" },
@@ -200,6 +201,8 @@ export default function LSGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="lossless-scaling-frame-generation-fsr-guide"
             title={title}
             description={description}
             keywords={keywords}

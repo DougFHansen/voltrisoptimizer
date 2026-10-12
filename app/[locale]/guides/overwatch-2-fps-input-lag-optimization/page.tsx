@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('overwatch-2-fps-input-lag-optimization', title, description, keywords, locale);
 }
 
-export default function OW2Guide() {
+export default async function OW2Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Render Scale", value: "75% (1080p) / Dynamic Off" },
         { label: "Texture Quality", value: "Medium (Best Clarity)" },
@@ -200,6 +201,8 @@ export default function OW2Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="overwatch-2-fps-input-lag-optimization"
             title={title}
             description={description}
             keywords={keywords}

@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('steam-launch-options-fps-boost', title, description, keywords, locale);
 }
 
-export default function SteamGuide() {
+export default async function SteamGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Useful", value: "-novid (Skips intro)" },
         { label: "Useful", value: "-freq 240 (Forces Hz)" },
@@ -191,6 +192,8 @@ export default function SteamGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="steam-launch-options-fps-boost"
             title={title}
             description={description}
             keywords={keywords}

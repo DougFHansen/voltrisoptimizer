@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('slow-pc-format-vs-clean', title, description, keywords, locale);
 }
 
-export default function FormatVsCleanGuide() {
+export default async function FormatVsCleanGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Clean Up", value: "Fast / Keeps files / Solves 70% of slowdowns" },
         { label: "Format", value: "Time-consuming / Removes everything / Solves 100% of software errors" },
@@ -98,6 +99,8 @@ export default function FormatVsCleanGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="slow-pc-format-vs-clean"
             title={title}
             description={description}
             keywords={keywords}

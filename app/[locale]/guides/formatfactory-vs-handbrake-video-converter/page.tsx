@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('formatfactory-vs-handbrake-video-converter', title, description, keywords, locale);
 }
 
-export default function VideoConverterGuide() {
+export default async function VideoConverterGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Handbrake", value: "Focused on Professional Video / High Compression" },
         { label: "Format Factory", value: "Multi-purpose (Photos, Music, PDFs) / Easy" },
@@ -98,6 +99,8 @@ export default function VideoConverterGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="formatfactory-vs-handbrake-video-converter"
             title={title}
             description={description}
             keywords={keywords}

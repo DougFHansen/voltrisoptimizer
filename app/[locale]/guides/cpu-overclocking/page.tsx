@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cpu-overclocking', title, description, keywords, locale);
 }
 
-export default function CPUOverclockGuide() {
+export default async function CPUOverclockGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "AMD", value: "Ryzen Master / PBO (Precision Boost Overdrive)" },
     { label: "Intel", value: "Extreme Tuning Utility (XTU) / Manual in BIOS" },
@@ -95,6 +96,8 @@ export default function CPUOverclockGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="cpu-overclocking"
       title={title}
       description={description}
       keywords={keywords}

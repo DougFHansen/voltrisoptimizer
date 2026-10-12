@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('epic-games-launcher-high-cpu-fix', title, description, keywords, locale);
 }
 
-export default function EpicGamesFixGuide() {
+export default async function EpicGamesFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Issue #1", value: "High CPU usage in background (Webview)" },
         { label: "Issue #2", value: "Slow download even with fiber" },
@@ -98,6 +99,8 @@ export default function EpicGamesFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="epic-games-launcher-high-cpu-fix"
             title={title}
             description={description}
             keywords={keywords}

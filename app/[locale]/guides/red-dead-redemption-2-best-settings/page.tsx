@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('red-dead-redemption-2-best-settings', title, description, keywords, locale);
 }
 
-export default function RDR2Guide() {
+export default async function RDR2Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Textures", value: "Ultra (Always)" },
         { label: "Lighting", value: "Medium" },
@@ -214,6 +215,8 @@ export default function RDR2Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="red-dead-redemption-2-best-settings"
             title={title}
             description={description}
             keywords={keywords}

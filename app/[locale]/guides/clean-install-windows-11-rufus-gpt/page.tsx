@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('clean-install-windows-11-rufus-gpt', title, description, keywords, locale);
 }
 
-export default function FormatGuide() {
+export default async function FormatGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "Rufus + Official ISO" },
         { label: "Partitioning", value: "GPT (UEFI Native)" },
@@ -205,6 +206,8 @@ export default function FormatGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="clean-install-windows-11-rufus-gpt"
             title={title}
             description={description}
             keywords={keywords}

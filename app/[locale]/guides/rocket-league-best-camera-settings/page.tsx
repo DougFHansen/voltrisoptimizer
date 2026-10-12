@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('rocket-league-best-camera-settings', title, description, keywords, locale);
 }
 
-export default function RocketLeagueGuide() {
+export default async function RocketLeagueGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Camera Shake", value: "OFF (A Must)" },
         { label: "FOV", value: "110 (Max)" },
@@ -237,6 +238,8 @@ export default function RocketLeagueGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="rocket-league-best-camera-settings"
             title={title}
             description={description}
             keywords={keywords}

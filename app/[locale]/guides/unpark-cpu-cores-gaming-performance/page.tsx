@@ -22,7 +22,8 @@ const keywords = [
     'cpu cores parking manager tutorial how to use'
 ];
 
-export default function CoreParkingGuide() {
+export default async function CoreParkingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What it is", value: "Energy-saving feature that turns off CPU cores" },
         { label: "Effect on Games", value: "Causes micro-stuttering (stuttering)" },
@@ -97,6 +98,8 @@ export default function CoreParkingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="unpark-cpu-cores-gaming-performance"
             title={title}
             description={description}
             keywords={keywords}

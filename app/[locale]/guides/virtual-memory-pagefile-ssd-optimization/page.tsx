@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('virtual-memory-pagefile-ssd-optimization', title, description, keywords, locale);
 }
 
-export default function PagefileGuide() {
+export default async function PagefileGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Storage Location", value: "SSD (Mandatory)" },
         { label: "Size (16GB RAM)", value: "16GB - 24GB" },
@@ -188,6 +189,8 @@ export default function PagefileGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="virtual-memory-pagefile-ssd-optimization"
             title={title}
             description={description}
             keywords={keywords}

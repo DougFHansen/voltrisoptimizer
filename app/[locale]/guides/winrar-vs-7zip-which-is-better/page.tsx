@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('winrar-vs-7zip-which-is-better', title, description, keywords, locale);
 }
 
-export default function CompressorComparisonGuide() {
+export default async function CompressorComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "WinRAR", value: "Classic Interface / Paid (Eternal trial) / Best .rar format" },
         { label: "7-Zip", value: "Open Source / Free / Best .7z compression" },
@@ -96,6 +97,8 @@ export default function CompressorComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="winrar-vs-7zip-which-is-better"
             title={title}
             description={description}
             keywords={keywords}

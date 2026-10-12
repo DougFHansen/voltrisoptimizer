@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('laptop-battery-health', title, description, keywords, locale);
 }
 
-export default function BatteryHealthGuide() {
+export default async function BatteryHealthGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Key Command", value: "powercfg /batteryreport" },
     { label: "Ideal Charge", value: "Between 20% and 80%" },
@@ -98,6 +99,8 @@ export default function BatteryHealthGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="laptop-battery-health"
       title={title}
       description={description}
       keywords={keywords}

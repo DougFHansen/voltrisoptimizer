@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-safely-update-bios', title, description, keywords, locale);
 }
 
-export default function BIOSUpdateGuide() {
+export default async function BIOSUpdateGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is BIOS", value: "Basic Input/Output System (motherboard firmware)" },
         { label: "When to Update?", value: "New CPU support / Critical fixes / Hardware bugs" },
@@ -828,6 +829,8 @@ export default function BIOSUpdateGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-safely-update-bios"
             title={title}
             description={description}
             keywords={keywords}

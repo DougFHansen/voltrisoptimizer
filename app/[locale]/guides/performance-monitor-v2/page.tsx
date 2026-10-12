@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('performance-monitor-v2', title, description, keywords, locale);
 }
 
-export default function BenchmarkGuide() {
+export default async function BenchmarkGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "CPU Test", value: "Cinebench R23 / 2024" },
         { label: "GPU Test", value: "3DMark / Superposition" },
@@ -97,6 +98,8 @@ export default function BenchmarkGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="performance-monitor-v2"
             title={title}
             description={description}
             keywords={keywords}

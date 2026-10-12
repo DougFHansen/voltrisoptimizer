@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bluestacks-vs-ldplayer-which-is-lighter', title, description, keywords, locale);
 }
 
-export default function EmulatorComparisonGuide() {
+export default async function EmulatorComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "BlueStacks 5", value: "Most compatible / Feature-rich / Medium weight" },
         { label: "LDPlayer 9+", value: "Extremely lightweight / Great for FPS (Free Fire)" },
@@ -459,6 +460,8 @@ export default function EmulatorComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="bluestacks-vs-ldplayer-which-is-lighter"
             title={title}
             description={description}
             keywords={keywords}

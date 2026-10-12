@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mechanical-keyboards-switches-guide', title, description, keywords, locale);
 }
 
-export default function SwitchGuide() {
+export default async function SwitchGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Blue Switch", value: "Clicky (Loud) / Tactile Feedback" },
         { label: "Red Switch", value: "Linear (Silent) / Fast for Gaming" },
@@ -281,6 +282,8 @@ export default function SwitchGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mechanical-keyboards-switches-guide"
             title={title}
             description={description}
             keywords={keywords}

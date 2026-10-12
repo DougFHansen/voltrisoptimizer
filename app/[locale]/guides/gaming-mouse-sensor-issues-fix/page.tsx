@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-mouse-sensor-issues-fix', title, description, keywords, locale);
 }
 
-export default function MouseSensorGuide() {
+export default async function MouseSensorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Cause #1", value: "Dirt or Hair in the Sensor Prism" },
         { label: "Cause #2", value: "Polling Rate too high for the CPU" },
@@ -96,6 +97,8 @@ export default function MouseSensorGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-mouse-sensor-issues-fix"
             title={title}
             description={description}
             keywords={keywords}

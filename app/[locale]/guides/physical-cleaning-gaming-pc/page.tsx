@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('physical-cleaning-gaming-pc', title, description, keywords, locale);
 }
 
-export default function CleaningGuide() {
+export default async function CleaningGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tools", value: "Soft Brush, Compressed Air" },
         { label: "Thermal Paste", value: "Replace every 1-2 years" },
@@ -142,6 +143,8 @@ export default function CleaningGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="physical-cleaning-gaming-pc"
             title={title}
             description={description}
             keywords={keywords}

@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('computer-cleaning', title, description, keywords, locale);
 }
 
-export default function LimpezaComputadorGuide() {
+export default async function LimpezaComputadorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Recommended Frequency", value: "Monthly for deep cleaning" },
     { label: "Estimated Time", value: "60-90 minutes (Full)" },
@@ -271,6 +272,8 @@ export default function LimpezaComputadorGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="computer-cleaning"
       title={title}
       description={description}
       keywords={keywords}

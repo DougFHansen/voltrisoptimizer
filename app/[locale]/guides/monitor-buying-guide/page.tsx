@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('monitor-buying-guide', title, description, keywords, locale);
 }
 
-export default function MonitorBuyingGuide() {
+export default async function MonitorBuyingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Competitive (CS2)", value: "TN/OLED 360Hz+ with DyAc/BFI" },
     { label: "AAA / Immersion", value: "OLED / Mini-LED 4K HDR" },
@@ -231,6 +232,8 @@ export default function MonitorBuyingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="monitor-buying-guide"
       title={title}
       description={description}
       keywords={keywords}

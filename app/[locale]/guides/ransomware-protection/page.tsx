@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ransomware-protection', title, description, keywords, locale);
 }
 
-export default function RansomwareProtectionGuide() {
+export default async function RansomwareProtectionGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "What it is", value: "Virus that kidnaps (encrypts) your files" },
     { label: "Native Solution", value: "Controlled Folder Access (Windows Defender)" },
@@ -687,6 +688,8 @@ export default function RansomwareProtectionGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="ransomware-protection"
       title={title}
       description={description}
       keywords={keywords}

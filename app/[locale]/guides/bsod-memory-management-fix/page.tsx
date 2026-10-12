@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bsod-memory-management-fix', title, description, keywords, locale);
 }
 
-export default function MemoryManagementFixGuide() {
+export default async function MemoryManagementFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Cause #1", value: "Faulty RAM stick (physical defect)" },
         { label: "Cause #2", value: "Corrupted system files" },
@@ -100,6 +101,8 @@ export default function MemoryManagementFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="bsod-memory-management-fix"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('wifi-connection-problems-fix', title, description, keywords, locale);
 }
 
-export default function WiFiSolutionsGuide() {
+export default async function WiFiSolutionsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "2.4GHz Band", value: "Better Range / Lower Speed" },
         { label: "5GHz / 6GHz Band", value: "Lower Range / Very High Speed" },
@@ -101,6 +102,8 @@ export default function WiFiSolutionsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="wifi-connection-problems-fix"
             title={title}
             description={description}
             keywords={keywords}

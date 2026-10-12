@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('monitor-pc-temperature', title, description, keywords, locale);
 }
 
-export default function TempGuide() {
+export default async function TempGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "MSI Afterburner + RTSS" },
         { label: "Ideal CPU Temp", value: "Below 80°C" },
@@ -182,6 +183,8 @@ export default function TempGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="monitor-pc-temperature"
             title={title}
             description={description}
             keywords={keywords}

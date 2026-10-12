@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-choose-graphics-card', title, description, keywords, locale);
 }
 
-export default function GPUBuyingGuide() {
+export default async function GPUBuyingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Usage: 1080p", value: "RTX 4060 / RX 7600 / Arc A750" },
     { label: "Usage: 1440p (2K)", value: "RTX 4070 Super / RX 7800 XT" },
@@ -443,6 +444,8 @@ export default function GPUBuyingGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="how-to-choose-graphics-card"
       title={title}
       description={description}
       keywords={keywords}

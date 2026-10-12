@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-peripherals-worth-it-brands', title, description, keywords, locale);
 }
 
-export default function GamingBrandsGuide() {
+export default async function GamingBrandsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "High-End (Quality)", value: "Logitech G / Wooting (Keyboards)" },
         { label: "Aesthetics & Ecosystem", value: "Razer / Corsair" },
@@ -95,6 +96,8 @@ export default function GamingBrandsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-peripherals-worth-it-brands"
             title={title}
             description={description}
             keywords={keywords}

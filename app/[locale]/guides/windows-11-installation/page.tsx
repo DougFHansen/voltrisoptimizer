@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-11-installation', title, description, keywords, locale);
 }
 
-export default function InstallWindowsGuide() {
+export default async function InstallWindowsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Tool", value: "Rufus or Media Creation Tool" },
     { label: "USB Drive", value: "Minimum 8GB" },
@@ -198,6 +199,8 @@ export default function InstallWindowsGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="windows-11-installation"
       title={title}
       description={description}
       keywords={keywords}

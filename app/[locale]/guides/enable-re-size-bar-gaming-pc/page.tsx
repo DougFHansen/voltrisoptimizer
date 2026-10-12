@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('enable-re-size-bar-gaming-pc', title, description, keywords, locale);
 }
 
-export default function ResizableBarGuide() {
+export default async function ResizableBarGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What it does", value: "Gives CPU full access to GPU memory (VRAM)" },
         { label: "FPS Gains", value: "5% to 12% (In modern games)" },
@@ -99,6 +100,8 @@ export default function ResizableBarGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="enable-re-size-bar-gaming-pc"
             title={title}
             description={description}
             keywords={keywords}

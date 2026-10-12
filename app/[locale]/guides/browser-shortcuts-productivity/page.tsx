@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('browser-shortcuts-productivity', title, description, keywords, locale);
 }
 
-export default function BrowserShortcutsGuide() {
+export default async function BrowserShortcutsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Reopen Last Tab", value: "Ctrl + Shift + T (Lifesaver!)" },
     { label: "New Tab", value: "Ctrl + T" },
@@ -678,6 +679,8 @@ export default function BrowserShortcutsGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="browser-shortcuts-productivity"
       title={title}
       description={description}
       keywords={keywords}

@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pc-temperature-fan-control-curve', title, description, keywords, locale);
 }
 
-export default function TempGuide() {
+export default async function TempGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "FanControl (GitHub)" },
         { label: "Monitor", value: "HWMonitor / HWiNFO" },
@@ -199,6 +200,8 @@ export default function TempGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="pc-temperature-fan-control-curve"
             title={title}
             description={description}
             keywords={keywords}

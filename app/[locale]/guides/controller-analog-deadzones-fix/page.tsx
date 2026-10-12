@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('controller-analog-deadzones-fix', title, description, keywords, locale);
 }
 
-export default function DeadzoneFixGuide() {
+export default async function DeadzoneFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is Drift", value: "Signal reading when the analog stick is resting" },
         { label: "Software Solution", value: "Increase Deadzone" },
@@ -99,6 +100,8 @@ export default function DeadzoneFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="controller-analog-deadzones-fix"
             title={title}
             description={description}
             keywords={keywords}

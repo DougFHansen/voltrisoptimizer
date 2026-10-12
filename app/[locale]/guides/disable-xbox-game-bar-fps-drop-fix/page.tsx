@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('disable-xbox-game-bar-fps-drop-fix', title, description, keywords, locale);
 }
 
-export default function XboxGuide() {
+export default async function XboxGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Game Bar", value: "Disable (General)" },
         { label: "Game Mode", value: "ON (Always)" },
@@ -187,6 +188,8 @@ export default function XboxGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="disable-xbox-game-bar-fps-drop-fix"
             title={title}
             description={description}
             keywords={keywords}

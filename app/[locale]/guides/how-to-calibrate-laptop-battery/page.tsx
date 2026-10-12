@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-calibrate-laptop-battery', title, description, keywords, locale);
 }
 
-export default function BatteryCalibrationGuide() {
+export default async function BatteryCalibrationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Symptom", value: "Sudden shutdown at 10% or 20%" },
         { label: "What it does", value: "Syncs the fuel gauge with real chemistry" },
@@ -339,6 +340,8 @@ export default function BatteryCalibrationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-calibrate-laptop-battery"
             title={title}
             description={description}
             keywords={keywords}

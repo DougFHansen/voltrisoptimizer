@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gsync-freesync-correct-setup', title, description, keywords, locale);
 }
 
-export default function SyncGuide() {
+export default async function SyncGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "V-Sync (NV Panel)", value: "ON (Always)" },
         { label: "V-Sync (In-Game)", value: "OFF (Always)" },
@@ -214,6 +215,8 @@ export default function SyncGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gsync-freesync-correct-setup"
             title={title}
             description={description}
             keywords={keywords}

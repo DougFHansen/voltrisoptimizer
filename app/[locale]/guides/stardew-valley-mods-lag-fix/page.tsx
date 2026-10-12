@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('stardew-valley-mods-lag-fix', title, description, keywords, locale);
 }
 
-export default function StardewLagGuide() {
+export default async function StardewLagGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Check #1", value: "Adjust Mod: SpriteMaster (Reduces draw lag)" },
         { label: "Check #2", value: "Disable automatic 'Zoom Level'" },
@@ -95,6 +96,8 @@ export default function StardewLagGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="stardew-valley-mods-lag-fix"
             title={title}
             description={description}
             keywords={keywords}

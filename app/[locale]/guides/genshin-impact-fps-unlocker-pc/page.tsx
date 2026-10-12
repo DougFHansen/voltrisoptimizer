@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('genshin-impact-fps-unlocker-pc', title, description, keywords, locale);
 }
 
-export default function GenshinGuide() {
+export default async function GenshinGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "FPS Unlock", value: "Verified Tool (120/144)" },
         { label: "Render Res", value: "1.0 or 0.8" },
@@ -227,6 +228,8 @@ export default function GenshinGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="genshin-impact-fps-unlocker-pc"
             title={title}
             description={description}
             keywords={keywords}

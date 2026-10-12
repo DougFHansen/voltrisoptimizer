@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('data-protection-privacy', title, description, keywords, locale);
 }
 
-export default function PrivacyProtectionGuide() {
+export default async function PrivacyProtectionGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool #1", value: "Two-Factor Authentication (2FA)" },
         { label: "Browser", value: "Brave / Tor (For anonymity)" },
@@ -236,6 +237,8 @@ export default function PrivacyProtectionGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="data-protection-privacy"
             title={title}
             description={description}
             keywords={keywords}

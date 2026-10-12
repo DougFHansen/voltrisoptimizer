@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-laptop-optimizations', title, description, keywords, locale);
 }
 
-export default function LaptopGuide() {
+export default async function LaptopGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Biggest Enemy", value: "Heat (Thermal Throttling)" },
         { label: "Power", value: "Always Plugged in while Gaming" },
@@ -181,6 +182,8 @@ export default function LaptopGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-laptop-optimizations"
             title={title}
             description={description}
             keywords={keywords}

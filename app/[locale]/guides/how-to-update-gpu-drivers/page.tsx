@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-update-gpu-drivers', title, description, keywords, locale);
 }
 
-export default function VideoDriverGuide() {
+export default async function VideoDriverGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "NVIDIA", value: "NVIDIA App / GeForce Experience → Game Ready or Studio" },
     { label: "AMD", value: "AMD Software: Adrenalin Edition → WHQL Drivers" },
@@ -210,6 +211,8 @@ export default function VideoDriverGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="how-to-update-gpu-drivers"
       title={title}
       description={description}
       keywords={keywords}

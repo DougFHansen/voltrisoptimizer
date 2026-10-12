@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('minecraft-optifine-vs-sodium-fabric', title, description, keywords, locale);
 }
 
-export default function SodiumVsOptiFineGuide() {
+export default async function SodiumVsOptiFineGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "OptiFine", value: "Easy to install / All-in-one / Closed Source" },
         { label: "Sodium", value: "Extreme Performance / Modular / Open Source" },
@@ -99,6 +100,8 @@ export default function SodiumVsOptiFineGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="minecraft-optifine-vs-sodium-fabric"
             title={title}
             description={description}
             keywords={keywords}

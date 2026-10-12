@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hdr-windows-11-gaming-calibration', title, description, keywords, locale);
 }
 
-export default function HDRGuide() {
+export default async function HDRGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Status", value: "ON (For OLED/Mini-LED)" },
         { label: "Status", value: "OFF (For Budget IPS)" },
@@ -211,6 +212,8 @@ export default function HDRGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hdr-windows-11-gaming-calibration"
             title={title}
             description={description}
             keywords={keywords}

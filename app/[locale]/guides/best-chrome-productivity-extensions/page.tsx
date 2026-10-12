@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('best-chrome-productivity-extensions', title, description, keywords, locale);
 }
 
-export default function BrowserExtensionsGuide() {
+export default async function BrowserExtensionsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Category: Ads", value: "uBlock Origin (The best and lightest)" },
     { label: "Category: Passwords", value: "Bitwarden / 1Password" },
@@ -94,6 +95,8 @@ export default function BrowserExtensionsGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="best-chrome-productivity-extensions"
       title={title}
       description={description}
       keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hdr-windows-gaming-worth-it', title, description, keywords, locale);
 }
 
-export default function HDRGuide() {
+export default async function HDRGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Minimum Hardware", value: "Monitor with VESA DisplayHDR certification" },
         { label: "System Check", value: "Windows 11 (Mandatory for Auto HDR)" },
@@ -96,6 +97,8 @@ export default function HDRGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hdr-windows-gaming-worth-it"
             title={title}
             description={description}
             keywords={keywords}

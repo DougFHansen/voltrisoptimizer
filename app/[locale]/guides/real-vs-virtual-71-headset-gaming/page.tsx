@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('real-vs-virtual-71-headset-gaming', title, description, keywords, locale);
 }
 
-export default function AudioSurroundGuide() {
+export default async function AudioSurroundGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Best Soundstage", value: "Open-Back Headphones (Sennheiser/Audio-Technica)" },
         { label: "Best Isolation/Focus", value: "IEMs (In-Ear Monitors)" },
@@ -187,6 +188,8 @@ export default function AudioSurroundGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="real-vs-virtual-71-headset-gaming"
             title={title}
             description={description}
             keywords={keywords}

@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('streamlabs-vs-obs-which-to-use', title, description, keywords, locale);
 }
 
-export default function OBSvsSLBSGuide() {
+export default async function OBSvsSLBSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Lighter", value: "OBS Studio" },
     { label: "Easier", value: "Streamlabs" },
@@ -175,6 +176,8 @@ export default function OBSvsSLBSGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="streamlabs-vs-obs-which-to-use"
       title={title}
       description={description}
       keywords={keywords}

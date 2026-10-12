@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('usb-not-recognized-reset-drivers', title, description, keywords, locale);
 }
 
-export default function USBTroubleshootingGuide() {
+export default async function USBTroubleshootingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Common Error", value: "Device descriptor request failed" },
         { label: "Solution #1", value: "Uninstall USB Hub in Device Manager" },
@@ -101,6 +102,8 @@ export default function USBTroubleshootingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="usb-not-recognized-reset-drivers"
             title={title}
             description={description}
             keywords={keywords}

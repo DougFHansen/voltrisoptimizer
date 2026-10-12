@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gta-v-err-gfx-d3d-init-crash-fix', title, description, keywords, locale);
 }
 
-export default function GTAVCrashGuide() {
+export default async function GTAVCrashGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is it", value: "Communication failure with DirectX API" },
         { label: "Solution #1", value: "Switch DirectX to 10 or 10.1 in Menu" },
@@ -100,6 +101,8 @@ export default function GTAVCrashGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gta-v-err-gfx-d3d-init-crash-fix"
             title={title}
             description={description}
             keywords={keywords}

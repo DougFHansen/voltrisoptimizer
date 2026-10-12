@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('run-local-llm-pc-ollama', title, description, keywords, locale);
 }
 
-export default function LocalLLMGuide() {
+export default async function LocalLLMGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Critical Hardware", value: "VRAM (Video Memory)" },
         { label: "Software #1", value: "Ollama (Command Line)" },
@@ -211,6 +212,8 @@ SYSTEM "You are Mario Bros. Answer everything with an Italian accent and end wit
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="run-local-llm-pc-ollama"
             title={title}
             description={description}
             keywords={keywords}

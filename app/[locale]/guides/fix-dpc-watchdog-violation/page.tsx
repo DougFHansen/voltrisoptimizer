@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('fix-dpc-watchdog-violation', title, description, keywords, locale);
 }
 
-export default function DPCWatchdogGuide() {
+export default async function DPCWatchdogGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Cause", value: "Incompatible disk drivers (SSD/SATA)" },
         { label: "Suggestion #1", value: "Replace AHCI controller driver" },
@@ -101,6 +102,8 @@ export default function DPCWatchdogGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="fix-dpc-watchdog-violation"
             title={title}
             description={description}
             keywords={keywords}

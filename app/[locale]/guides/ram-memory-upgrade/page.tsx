@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ram-memory-upgrade', title, description, keywords, locale);
 }
 
-export default function RAMUpgradeGuide() {
+export default async function RAMUpgradeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Current Standard", value: "DDR5 (New PCs) / DDR4 (Old/Budget PCs)" },
     { label: "Dual Channel", value: "Always use 2 identical sticks (e.g., 2x16GB)" },
@@ -96,6 +97,8 @@ export default function RAMUpgradeGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="ram-memory-upgrade"
       title={title}
       description={description}
       keywords={keywords}

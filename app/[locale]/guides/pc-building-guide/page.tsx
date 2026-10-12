@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pc-building-guide', title, description, keywords, locale);
 }
 
-export default function AssembleGuide() {
+export default async function AssembleGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Tool #1", value: "Philips #2 Screwdriver (Long and Magnetic)" },
     { label: "Critical Item", value: "Windows USB Drive (Create BEFORE)" },
@@ -189,6 +190,8 @@ export default function AssembleGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="pc-building-guide"
       title={title}
       description={description}
       keywords={keywords}

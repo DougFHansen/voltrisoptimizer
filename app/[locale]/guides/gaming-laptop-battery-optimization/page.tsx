@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-laptop-battery-optimization', title, description, keywords, locale);
 }
 
-export default function BatteryGuide() {
+export default async function BatteryGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Refresh Rate", value: "60Hz (On Battery)" },
         { label: "GPU Mode", value: "Eco / iGPU Only" },
@@ -205,6 +206,8 @@ export default function BatteryGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-laptop-battery-optimization"
             title={title}
             description={description}
             keywords={keywords}

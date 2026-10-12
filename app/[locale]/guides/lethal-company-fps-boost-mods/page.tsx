@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('lethal-company-fps-boost-mods', title, description, keywords, locale);
 }
 
-export default function LethalGuide() {
+export default async function LethalGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Mod Manager", value: "R2Modman / Thunderstore" },
         { label: "Performance", value: "HDLethalCompany (Mod)" },
@@ -231,6 +232,8 @@ export default function LethalGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="lethal-company-fps-boost-mods"
             title={title}
             description={description}
             keywords={keywords}

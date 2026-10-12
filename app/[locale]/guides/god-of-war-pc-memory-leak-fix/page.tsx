@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('god-of-war-pc-memory-leak-fix', title, description, keywords, locale);
 }
 
-export default function GoWMemoryFixGuide() {
+export default async function GoWMemoryFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Cause", value: "Memory Leak" },
         { label: "Key Solution", value: "Adjust Virtual Memory (Paging File)" },
@@ -98,6 +99,8 @@ export default function GoWMemoryFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="god-of-war-pc-memory-leak-fix"
             title={title}
             description={description}
             keywords={keywords}

@@ -35,7 +35,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('resolve-windows-errors', title, description, keywords, locale);
 }
 
-export default function ResolverErrosWindowsGuide() {
+export default async function ResolverErrosWindowsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "Understanding Windows Errors",
@@ -533,6 +534,8 @@ export default function ResolverErrosWindowsGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="resolve-windows-errors"
       title={title}
       description={description}
       keywords={keywords}

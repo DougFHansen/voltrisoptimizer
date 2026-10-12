@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vpn-configuration', title, description, keywords, locale);
 }
 
-export default function VpnConfiguracaoGuide() {
+export default async function VpnConfiguracaoGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const contentSections = [
     {
       title: "What is a VPN and Why Use It?",
@@ -407,6 +408,8 @@ export default function VpnConfiguracaoGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="vpn-configuration"
       title={title}
       description={description}
       keywords={keywords}

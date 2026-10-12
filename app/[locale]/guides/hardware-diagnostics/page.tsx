@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hardware-diagnostics', title, description, keywords, locale);
 }
 
-export default function HardwareDiagnosticGuide() {
+export default async function HardwareDiagnosticGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "RAM Test", value: "TestMem5 (Windows) / MemTest86+ (boot)" },
         { label: "SSD/HDD Test", value: "CrystalDiskInfo (S.M.A.R.T. health)" },
@@ -290,6 +291,8 @@ export default function HardwareDiagnosticGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hardware-diagnostics"
             title={title}
             description={description}
             keywords={keywords}

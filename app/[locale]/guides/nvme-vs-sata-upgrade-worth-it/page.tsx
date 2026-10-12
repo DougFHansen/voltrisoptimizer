@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('nvme-vs-sata-upgrade-worth-it', title, description, keywords, locale);
 }
 
-export default function NVMeVsSATAGuide() {
+export default async function NVMeVsSATAGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "SATA Speed", value: "Max 560 MB/s" },
         { label: "NVMe Speed", value: "3,500 to 7,500 MB/s" },
@@ -95,6 +96,8 @@ export default function NVMeVsSATAGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="nvme-vs-sata-upgrade-worth-it"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('speed-vs-control-mousepad-gaming', title, description, keywords, locale);
 }
 
-export default function MousepadGuide() {
+export default async function MousepadGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Speed", value: "Less friction / Ultra-fast glide" },
         { label: "Control", value: "More friction / Precise stopping power" },
@@ -97,6 +98,8 @@ export default function MousepadGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="speed-vs-control-mousepad-gaming"
             title={title}
             description={description}
             keywords={keywords}

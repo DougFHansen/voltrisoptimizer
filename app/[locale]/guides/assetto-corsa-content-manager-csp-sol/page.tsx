@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('assetto-corsa-content-manager-csp-sol', title, description, keywords, locale);
 }
 
-export default function ACGuide() {
+export default async function ACGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Launcher", value: "Content Manager (CM)" },
         { label: "Engine", value: "CSP (Custom Shaders)" },
@@ -210,6 +211,8 @@ export default function ACGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="assetto-corsa-content-manager-csp-sol"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('allocate-more-ram-minecraft', title, description, keywords, locale);
 }
 
-export default function MinecraftRAMGuide() {
+export default async function MinecraftRAMGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Where to change", value: "JVM Arguments (Launcher)" },
         { label: "Recommended Value", value: "4GB to 8GB (Depends on Mods)" },
@@ -101,6 +102,8 @@ export default function MinecraftRAMGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="allocate-more-ram-minecraft"
             title={title}
             description={description}
             keywords={keywords}

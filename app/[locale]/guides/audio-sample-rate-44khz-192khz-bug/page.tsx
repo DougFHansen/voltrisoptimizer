@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('audio-sample-rate-44khz-192khz-bug', title, description, keywords, locale);
 }
 
-export default function SampleRateGuide() {
+export default async function SampleRateGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Default", value: "24-bit / 48000 Hz" },
         { label: "CD Quality", value: "16-bit / 44100 Hz" },
@@ -191,6 +192,8 @@ export default function SampleRateGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="audio-sample-rate-44khz-192khz-bug"
             title={title}
             description={description}
             keywords={keywords}

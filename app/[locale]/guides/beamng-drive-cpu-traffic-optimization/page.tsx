@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('beamng-drive-cpu-traffic-optimization', title, description, keywords, locale);
 }
 
-export default function BeamNGGuide() {
+export default async function BeamNGGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "The Bottleneck", value: "CPU (Single-Core per Car)" },
         { label: "API", value: "Vulkan (Experimental) - Use it!" },
@@ -177,6 +178,8 @@ export default function BeamNGGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="beamng-drive-cpu-traffic-optimization"
             title={title}
             description={description}
             keywords={keywords}

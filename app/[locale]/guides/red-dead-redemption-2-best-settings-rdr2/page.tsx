@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('red-dead-redemption-2-best-settings-rdr2', title, description, keywords, locale);
 }
 
-export default function RDR2OptimizationGuide() {
+export default async function RDR2OptimizationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Recommended API", value: "Vulkan (More FPS) / DX12 (More stability)" },
         { label: "Key Setting", value: "Textures (Always Ultra)" },
@@ -98,6 +99,8 @@ export default function RDR2OptimizationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="red-dead-redemption-2-best-settings-rdr2"
             title={title}
             description={description}
             keywords={keywords}

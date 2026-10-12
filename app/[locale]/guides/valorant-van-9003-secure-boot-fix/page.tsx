@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('valorant-van-9003-secure-boot-fix', title, description, keywords, locale);
 }
 
-export default function ValorantSecureBootGuide() {
+export default async function ValorantSecureBootGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Error", value: "VAN 9003 (Vanguard requirement on Win 11)" },
         { label: "Requirement #1", value: "Secure Boot: Enabled" },
@@ -99,6 +100,8 @@ export default function ValorantSecureBootGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="valorant-van-9003-secure-boot-fix"
             title={title}
             description={description}
             keywords={keywords}

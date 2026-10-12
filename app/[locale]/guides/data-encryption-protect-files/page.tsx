@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('data-encryption-protect-files', title, description, keywords, locale);
 }
 
-export default function EncryptionGuide() {
+export default async function EncryptionGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Basic Level", value: "Windows Encrypting File System (EFS)" },
     { label: "Medium Level", value: "BitLocker (Windows Pro versions)" },
@@ -591,6 +592,8 @@ export default function EncryptionGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="data-encryption-protect-files"
       title={title}
       description={description}
       keywords={keywords}

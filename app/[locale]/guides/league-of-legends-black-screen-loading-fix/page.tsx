@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('league-of-legends-black-screen-loading-fix', title, description, keywords, locale);
 }
 
-export default function LoLBlackScreenGuide() {
+export default async function LoLBlackScreenGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Symptom", value: "Black screen after Champion Select" },
         { label: "Cause #1", value: "Resolution conflict (Alt + Enter)" },
@@ -97,6 +98,8 @@ export default function LoLBlackScreenGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="league-of-legends-black-screen-loading-fix"
             title={title}
             description={description}
             keywords={keywords}

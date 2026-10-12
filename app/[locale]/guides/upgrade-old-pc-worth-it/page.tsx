@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('upgrade-old-pc-worth-it', title, description, keywords, locale);
 }
 
-export default function OldPCUpgradeGuide() {
+export default async function OldPCUpgradeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Vital Upgrade", value: "SSD (Leaving HD behind is mandatory)" },
         { label: "Cheap Upgrade", value: "RAM Memory (Minimum 16GB)" },
@@ -99,6 +100,8 @@ export default function OldPCUpgradeGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="upgrade-old-pc-worth-it"
             title={title}
             description={description}
             keywords={keywords}

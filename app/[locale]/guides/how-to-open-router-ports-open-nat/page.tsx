@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-open-router-ports-open-nat', title, description, keywords, locale);
 }
 
-export default function RouterPortGuide() {
+export default async function RouterPortGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What is NAT", value: "Network Address Translation (IP translation system)" },
         { label: "NAT Type 1 (Open)", value: "Ideal - no restrictions, lower lag" },
@@ -1117,6 +1118,8 @@ export default function RouterPortGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-open-router-ports-open-nat"
             title={title}
             description={description}
             keywords={keywords}

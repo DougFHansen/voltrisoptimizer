@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-privacy-telemetry', title, description, keywords, locale);
 }
 
-export default function PrivacyGuide() {
+export default async function PrivacyGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Default Status", value: "Active Monitoring (Telemetry)" },
     { label: "Impact", value: "CPU and Network usage in background" },
@@ -97,6 +98,8 @@ export default function PrivacyGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="windows-privacy-telemetry"
       title={title}
       description={description}
       keywords={keywords}

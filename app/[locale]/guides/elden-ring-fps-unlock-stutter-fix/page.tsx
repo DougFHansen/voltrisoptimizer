@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('elden-ring-fps-unlock-stutter-fix', title, description, keywords, locale);
 }
 
-export default function EldenRingGuide() {
+export default async function EldenRingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "FPS Lock", value: "Mod (Unlock it)" },
         { label: "Anti-Cheat", value: "Offline (For Mods)" },
@@ -207,6 +208,8 @@ export default function EldenRingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="elden-ring-fps-unlock-stutter-fix"
             title={title}
             description={description}
             keywords={keywords}

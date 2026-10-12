@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cyberpunk-2077-hdd-mode-optimization', title, description, keywords, locale);
 }
 
-export default function CyberpunkOptimizationGuide() {
+export default async function CyberpunkOptimizationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Upscaling", value: "DLSS 3.5 Path Tracing / FSR 3.0 Frame Gen" },
         { label: "Vital Mode", value: "HDD Mode (Enable if no NVMe Gen4+)" },
@@ -99,6 +100,8 @@ export default function CyberpunkOptimizationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cyberpunk-2077-hdd-mode-optimization"
             title={title}
             description={description}
             keywords={keywords}

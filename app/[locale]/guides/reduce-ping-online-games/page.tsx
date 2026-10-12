@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('reduce-ping-online-games', title, description, keywords, locale);
 }
 
-export default function ReducePingGuide() {
+export default async function ReducePingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Connection", value: "Always Ethernet Cable (CAT6+)" },
         { label: "Recommended DNS", value: "Cloudflare (1.1.1.1)" },
@@ -96,6 +97,8 @@ export default function ReducePingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="reduce-ping-online-games"
             title={title}
             description={description}
             keywords={keywords}

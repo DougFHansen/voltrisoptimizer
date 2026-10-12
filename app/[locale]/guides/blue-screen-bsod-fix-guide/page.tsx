@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('blue-screen-bsod-fix-guide', title, description, keywords, locale);
 }
 
-export default function BSODGuide() {
+export default async function BSODGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Main Tool", value: "BlueScreenView + WinDbg" },
     { label: "Hardware Test", value: "MemTest86 + Prime95" },
@@ -774,6 +775,8 @@ export default function BSODGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="blue-screen-bsod-fix-guide"
       title={title}
       description={description}
       keywords={keywords}

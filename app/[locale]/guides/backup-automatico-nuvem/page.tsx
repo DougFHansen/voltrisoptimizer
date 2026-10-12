@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('backup-automatico-nuvem', title, description, keywords, locale);
 }
 
-export default function CloudBackupGuide() {
+export default async function CloudBackupGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Best Integration", value: "OneDrive (Native)" },
     { label: "Best Price", value: "Google One (Drive)" },
@@ -203,6 +204,8 @@ export default function CloudBackupGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="backup-automatico-nuvem"
       title={title}
       description={description}
       keywords={keywords}

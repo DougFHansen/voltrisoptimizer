@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('packet-loss-fix-gaming', title, description, keywords, locale);
 }
 
-export default function PacketLossGuide() {
+export default async function PacketLossGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What it is", value: "Data that 'disappears' between your PC and the Server" },
         { label: "Symptom", value: "Teleportation, unresponsive actions" },
@@ -96,6 +97,8 @@ export default function PacketLossGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="packet-loss-fix-gaming"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('nvidia-reflex-on-vs-boost-difference', title, description, keywords, locale);
 }
 
-export default function NvidiaReflexGuide() {
+export default async function NvidiaReflexGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Reflex OFF", value: "Default / Larger render queue" },
         { label: "Reflex ON", value: "CPU-GPU Sync / Lower latency" },
@@ -97,6 +98,8 @@ export default function NvidiaReflexGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="nvidia-reflex-on-vs-boost-difference"
             title={title}
             description={description}
             keywords={keywords}

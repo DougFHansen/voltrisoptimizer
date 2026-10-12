@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hibernation-vs-sleep-mode-windows', title, description, keywords, locale);
 }
 
-export default function HibernationGuide() {
+export default async function HibernationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Sleep", value: "Fast / Keeps data in RAM / Uses little energy" },
         { label: "Hibernate", value: "Slower / Saves data to disk / Uses zero energy" },
@@ -97,6 +98,8 @@ export default function HibernationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hibernation-vs-sleep-mode-windows"
             title={title}
             description={description}
             keywords={keywords}

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-use-ddu-driver-uninstaller', title, description, keywords, locale);
 }
 
-export default function DDUGuide() {
+export default async function DDUGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "DDU (Wagnardsoft)" },
         { label: "Mandatory Mode", value: "Safe Mode" },
@@ -187,6 +188,8 @@ export default function DDUGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-use-ddu-driver-uninstaller"
             title={title}
             description={description}
             keywords={keywords}

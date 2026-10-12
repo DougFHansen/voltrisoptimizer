@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('webcam-flickering-black-screen-fix', title, description, keywords, locale);
 }
 
-export default function WebcamFixGuide() {
+export default async function WebcamFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Cause #1", value: "Windows Privacy Settings" },
         { label: "Cause #2", value: "Saturated USB bandwidth (Too many devices)" },
@@ -99,6 +100,8 @@ export default function WebcamFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="webcam-flickering-black-screen-fix"
             title={title}
             description={description}
             keywords={keywords}

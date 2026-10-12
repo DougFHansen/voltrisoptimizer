@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('bitlocker-fps-impact-ssd', title, description, keywords, locale);
 }
 
-export default function BitLockerGuide() {
+export default async function BitLockerGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Security", value: "High (Protects against physical theft)" },
     { label: "Performance", value: "10-20% loss on SSD (Random 4K write)" },
@@ -165,6 +166,8 @@ export default function BitLockerGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="bitlocker-fps-impact-ssd"
       title={title}
       description={description}
       keywords={keywords}

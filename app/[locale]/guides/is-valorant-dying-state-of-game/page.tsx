@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('is-valorant-dying-state-of-game', title, description, keywords, locale);
 }
 
-export default function ValorantStateGuide() {
+export default async function ValorantStateGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Active Players", value: "Approx. 20 Million/Month" },
         { label: "Growth", value: "Stable (Focus on Consoles)" },
@@ -91,6 +92,8 @@ export default function ValorantStateGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="is-valorant-dying-state-of-game"
             title={title}
             description={description}
             keywords={keywords}

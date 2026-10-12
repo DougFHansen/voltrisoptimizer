@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ips-vs-va-vs-tn-monitor-gaming', title, description, keywords, locale);
 }
 
-export default function MonitorPanelGuide() {
+export default async function MonitorPanelGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "TN Panel", value: "Maximum speed / Poor colors" },
         { label: "VA Panel", value: "Excellent contrast / Black smearing (Ghosting)" },
@@ -96,6 +97,8 @@ export default function MonitorPanelGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ips-vs-va-vs-tn-monitor-gaming"
             title={title}
             description={description}
             keywords={keywords}

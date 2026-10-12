@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hollow-knight-stutter-fix-mod', title, description, keywords, locale);
 }
 
-export default function HollowKnightFixGuide() {
+export default async function HollowKnightFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Probable Cause", value: "Unity Engine / FPS Management" },
         { label: "Fix #1", value: "Disable V-Sync in Game / Enable in Driver" },
@@ -97,6 +98,8 @@ export default function HollowKnightFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hollow-knight-stutter-fix-mod"
             title={title}
             description={description}
             keywords={keywords}

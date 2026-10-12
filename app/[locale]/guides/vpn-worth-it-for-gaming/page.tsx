@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vpn-worth-it-for-gaming', title, description, keywords, locale);
 }
 
-export default function GamingVPNGuide() {
+export default async function GamingVPNGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Regular VPN", value: "Focus on Privacy / Usually increases Ping" },
         { label: "Gamer VPN (ExitLag)", value: "Focus on Routing / Usually lowers Ping" },
@@ -96,6 +97,8 @@ export default function GamingVPNGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vpn-worth-it-for-gaming"
             title={title}
             description={description}
             keywords={keywords}

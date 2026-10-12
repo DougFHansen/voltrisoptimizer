@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-choose-cpu-for-gaming', title, description, keywords, locale);
 }
 
-export default function CPUBuyingGuide() {
+export default async function CPUBuyingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Usage: Gaming", value: "Ryzen 5 / Core i5 (6 to 8 cores)" },
         { label: "Usage: Stream/Editing", value: "Ryzen 7 / Core i7 (8+ cores)" },
@@ -440,6 +441,8 @@ export default function CPUBuyingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-choose-cpu-for-gaming"
             title={title}
             description={description}
             keywords={keywords}

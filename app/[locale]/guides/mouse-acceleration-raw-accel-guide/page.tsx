@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mouse-acceleration-raw-accel-guide', title, description, keywords, locale);
 }
 
-export default function RawAccelGuide() {
+export default async function RawAccelGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Driver", value: "Raw Accel (Kernel-Level)" },
         { label: "Curve Type", value: "Linear / Natural / Motivity" },
@@ -223,6 +224,8 @@ export default function RawAccelGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mouse-acceleration-raw-accel-guide"
             title={title}
             description={description}
             keywords={keywords}

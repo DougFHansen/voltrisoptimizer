@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gta-v-fps-optimization-low-end-pc', title, description, keywords, locale);
 }
 
-export default function GTAGuide() {
+export default async function GTAGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Textures", value: "Normal/High" },
     { label: "Shadows", value: "Sharp" },
@@ -240,6 +241,8 @@ export default function GTAGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="gta-v-fps-optimization-low-end-pc"
       title={title}
       description={description}
       keywords={keywords}

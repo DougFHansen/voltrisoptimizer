@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gpu-overclock-msi-afterburner', title, description, keywords, locale);
 }
 
-export default function OverclockGuide() {
+export default async function OverclockGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "MSI Afterburner (Free)" },
         { label: "Risk", value: "Low (If Voltage is not altered)" },
@@ -263,6 +264,8 @@ export default function OverclockGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gpu-overclock-msi-afterburner"
             title={title}
             description={description}
             keywords={keywords}

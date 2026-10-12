@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mouse-double-click-failing-fix', title, description, keywords, locale);
 }
 
-export default function MouseFixGuide() {
+export default async function MouseFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Cause", value: "Switch Oxidation or Wear" },
         { label: "Software Fix", value: "Increase Debounce Time" },
@@ -96,6 +97,8 @@ export default function MouseFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mouse-double-click-failing-fix"
             title={title}
             description={description}
             keywords={keywords}

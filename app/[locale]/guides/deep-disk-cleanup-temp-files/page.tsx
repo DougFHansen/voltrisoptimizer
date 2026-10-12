@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('deep-disk-cleanup-temp-files', title, description, keywords, locale);
 }
 
-export default function DiskCleanupGuide() {
+export default async function DiskCleanupGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Basic Tool", value: "Disk Cleanup (Cleanmgr)" },
         { label: "Visual Tool", value: "WizTree (Better than WinDirStat)" },
@@ -190,6 +191,8 @@ export default function DiskCleanupGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="deep-disk-cleanup-temp-files"
             title={title}
             description={description}
             keywords={keywords}

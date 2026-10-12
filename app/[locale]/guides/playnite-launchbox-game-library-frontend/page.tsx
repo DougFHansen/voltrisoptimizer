@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('playnite-launchbox-game-library-frontend', title, description, keywords, locale);
 }
 
-export default function FrontendGuide() {
+export default async function FrontendGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "Playnite (Free)" },
         { label: "Alternative", value: "LaunchBox (Paid/Free)" },
@@ -203,6 +204,8 @@ export default function FrontendGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="playnite-launchbox-game-library-frontend"
             title={title}
             description={description}
             keywords={keywords}

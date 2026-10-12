@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('where-to-download-free-excel-templates', title, description, keywords, locale);
 }
 
-export default function ExcelSheetsGuide() {
+export default async function ExcelSheetsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Best Source", value: "Microsoft Create (Official)" },
         { label: "Formats", value: ".xlsx / .xltx" },
@@ -94,6 +95,8 @@ export default function ExcelSheetsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="where-to-download-free-excel-templates"
             title={title}
             description={description}
             keywords={keywords}

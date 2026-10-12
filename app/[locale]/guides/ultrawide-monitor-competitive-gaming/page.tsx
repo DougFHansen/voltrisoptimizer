@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ultrawide-monitor-competitive-gaming', title, description, keywords, locale);
 }
 
-export default function UltrawideGuide() {
+export default async function UltrawideGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Valorant", value: "Black Bars (Mandatory)" },
         { label: "CS2", value: "21:9 Support (Advantage)" },
@@ -206,6 +207,8 @@ export default function UltrawideGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ultrawide-monitor-competitive-gaming"
             title={title}
             description={description}
             keywords={keywords}

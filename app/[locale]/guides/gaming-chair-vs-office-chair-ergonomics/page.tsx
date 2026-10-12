@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-chair-vs-office-chair-ergonomics', title, description, keywords, locale);
 }
 
-export default function ChairComparisonGuide() {
+export default async function ChairComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Gamer Chair", value: "Sporty style / Excessive tilt adjustments" },
         { label: "Office Chair", value: "Breathability focus (Mesh) / Precise Lumbar Support" },
@@ -500,6 +501,8 @@ export default function ChairComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-chair-vs-office-chair-ergonomics"
             title={title}
             description={description}
             keywords={keywords}

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('linux-gaming-bazzite-nobara-steam-deck', title, description, keywords, locale);
 }
 
-export default function LinuxGuide() {
+export default async function LinuxGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Distro (Handheld)", value: "Bazzite (Fedora Atomic)" },
         { label: "Distro (Desktop)", value: "Nobara (Fedora Mod)" },
@@ -200,6 +201,8 @@ export default function LinuxGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="linux-gaming-bazzite-nobara-steam-deck"
             title={title}
             description={description}
             keywords={keywords}

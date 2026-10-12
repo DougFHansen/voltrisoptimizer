@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('google-play-games-pc-beta-worth-it', title, description, keywords, locale);
 }
 
-export default function GooglePlayGamesReviewGuide() {
+export default async function GooglePlayGamesReviewGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Performance", value: "Excellent (Native Windows Integration)" },
         { label: "Library", value: "Limited to Google-approved apps" },
@@ -97,6 +98,8 @@ export default function GooglePlayGamesReviewGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="google-play-games-pc-beta-worth-it"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-delete-instagram-account-permanently', title, description, keywords, locale);
 }
 
-export default function InstagramDeleteGuide() {
+export default async function InstagramDeleteGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Waiting Period", value: "30 days for full deletion" },
         { label: "Reversible Option", value: "Temporary Deactivation" },
@@ -99,6 +100,8 @@ export default function InstagramDeleteGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-delete-instagram-account-permanently"
             title={title}
             description={description}
             keywords={keywords}

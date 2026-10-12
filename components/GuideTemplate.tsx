@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getLocalizedAlternates } from '@/lib/seo';
+import { localizeGuideProps } from '@/lib/guides-i18n';
 import { GuideTemplateClient, GuideTemplateProps, ContentSection, RelatedGuide, SummaryTableItem } from './GuideTemplateClient';
 
 // Re-export types if needed by consumers (though usually page.tsx doesn't need them explicitely)
@@ -44,12 +45,17 @@ export function createGuideMetadata(slug: string, title: string, description: st
  * Server Component wrapper for the Guide Template.
  * Passes all props down to the Client Component which handles the interactive UI.
  */
-export function GuideTemplate(props: GuideTemplateProps) {
+export async function GuideTemplate(props: GuideTemplateProps) {
+  // Translate guide content for the request locale (English fallback when no
+  // dictionary exists). locale/slug come from the page via <GuideTemplate>.
+  const { locale = 'en', slug = '' } = props;
+  const localized = await localizeGuideProps(props, locale, slug);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    "headline": props.title,
-    "description": props.description,
+    "headline": localized.title,
+    "description": localized.description,
     "author": {
       "@type": "Organization",
       "name": "Voltris Experts"
@@ -67,7 +73,7 @@ export function GuideTemplate(props: GuideTemplateProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <GuideTemplateClient {...props} />
+      <GuideTemplateClient {...localized} />
     </>
   );
 }

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('increase-microphone-volume-windows', title, description, keywords, locale);
 }
 
-export default function MicrophoneBoostGuide() {
+export default async function MicrophoneBoostGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Ideal Volume", value: "90-100% in Windows" },
     { label: "Microphone Boost", value: "+10dB to +20dB (Max)" },
@@ -284,6 +285,8 @@ export default function MicrophoneBoostGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="increase-microphone-volume-windows"
       title={title}
       description={description}
       keywords={keywords}

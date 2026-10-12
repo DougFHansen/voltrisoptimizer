@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('data-recovery', title, description, keywords, locale);
 }
 
-export default function GeneralDataRecoveryGuide() {
+export default async function GeneralDataRecoveryGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Free Software #1", value: "Recuva (Beginner)" },
     { label: "Free Software #2", value: "PhotoRec (Professional/CLI)" },
@@ -96,6 +97,8 @@ export default function GeneralDataRecoveryGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="data-recovery"
       title={title}
       description={description}
       keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('system-monitoring', title, description, keywords, locale);
 }
 
-export default function SystemMonitoringGuide() {
+export default async function SystemMonitoringGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "MSI Afterburner", value: "Best for FPS and GPU usage in games" },
     { label: "HWiNFO64", value: "Best for detailed sensors (Voltage, Hotspot)" },
@@ -96,6 +97,8 @@ export default function SystemMonitoringGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="system-monitoring"
       title={title}
       description={description}
       keywords={keywords}

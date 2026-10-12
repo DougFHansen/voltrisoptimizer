@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('package-management', title, description, keywords, locale);
 }
 
-export default function PackageManagementGuide() {
+export default async function PackageManagementGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Tool", value: "Winget (Native to Windows)" },
     { label: "Install Command", value: "winget install [name]" },
@@ -97,6 +98,8 @@ export default function PackageManagementGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="package-management"
       title={title}
       description={description}
       keywords={keywords}

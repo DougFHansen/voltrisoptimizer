@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('pc-turns-on-no-display-fix', title, description, keywords, locale);
 }
 
-export default function NoVideoDiagnosticGuide() {
+export default async function NoVideoDiagnosticGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Common Culprit #1", value: "Dirty or Improperly Seated RAM" },
         { label: "Common Culprit #2", value: "CPU Socket / Outdated BIOS" },
@@ -98,6 +99,8 @@ export default function NoVideoDiagnosticGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="pc-turns-on-no-display-fix"
             title={title}
             description={description}
             keywords={keywords}

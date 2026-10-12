@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('digital-security', title, description, keywords, locale);
 }
 
-export default function DigitalSecurityGuide() {
+export default async function DigitalSecurityGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "The Weakest Link", value: "The User (Social Engineering)" },
     { label: "Vital Measure", value: "Two-Factor Authentication (2FA)" },
@@ -1127,6 +1128,8 @@ export default function DigitalSecurityGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="digital-security"
       title={title}
       description={description}
       keywords={keywords}

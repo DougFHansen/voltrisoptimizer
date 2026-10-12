@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('reduce-ping-exitlag-noping-dns', title, description, keywords, locale);
 }
 
-export default function PingGuide() {
+export default async function PingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "DNS", value: "1.1.1.1 or 8.8.8.8" },
         { label: "ExitLag", value: "Useful (Poor routes)" },
@@ -215,6 +216,8 @@ export default function PingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="reduce-ping-exitlag-noping-dns"
             title={title}
             description={description}
             keywords={keywords}

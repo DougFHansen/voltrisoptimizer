@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('baldurs-gate-3-act-3-fps-optimization', title, description, keywords, locale);
 }
 
-export default function BG3Guide() {
+export default async function BG3Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "The Villain", value: "CPU (AI/NPC Bottleneck)" },
         { label: "Recommended API", value: "DX11 (NVIDIA) / Vulkan (AMD)" },
@@ -187,6 +188,8 @@ export default function BG3Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="baldurs-gate-3-act-3-fps-optimization"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('geometry-dash-4gb-patch-lag-fix', title, description, keywords, locale);
 }
 
-export default function GeometryDashPatchGuide() {
+export default async function GeometryDashPatchGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Application", value: "GeometryDash.exe" },
         { label: "What it Does", value: "Allows using 4GB of RAM (up from 2GB)" },
@@ -95,6 +96,8 @@ export default function GeometryDashPatchGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="geometry-dash-4gb-patch-lag-fix"
             title={title}
             description={description}
             keywords={keywords}

@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('native-windows-screen-recording-tips', title, description, keywords, locale);
 }
 
-export default function NativeRecordingGuide() {
+export default async function NativeRecordingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Gamer Method (Clips)", value: "Win + Alt + R (Game Bar)" },
         { label: "Work Method (Meetings)", value: "Win + Shift + S (Snipping Tool)" },
@@ -231,6 +232,8 @@ export default function NativeRecordingGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="native-windows-screen-recording-tips"
             title={title}
             description={description}
             keywords={keywords}

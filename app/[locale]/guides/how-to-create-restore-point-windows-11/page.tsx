@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-create-restore-point-windows-11', title, description, keywords, locale);
 }
 
-export default function RestorePointGuide() {
+export default async function RestorePointGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "What it does", value: "Takes a 'snapshot' of Windows settings" },
         { label: "Frequency", value: "Always before installing mods or new drivers" },
@@ -504,6 +505,8 @@ export default function RestorePointGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-create-restore-point-windows-11"
             title={title}
             description={description}
             keywords={keywords}

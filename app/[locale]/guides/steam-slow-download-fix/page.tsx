@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('steam-slow-download-fix', title, description, keywords, locale);
 }
 
-export default function SteamGuide() {
+export default async function SteamGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Download Region", value: "Closest (Test)" },
         { label: "Shader Cache", value: "Enable (DX12)" },
@@ -212,6 +213,8 @@ export default function SteamGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="steam-slow-download-fix"
             title={title}
             description={description}
             keywords={keywords}

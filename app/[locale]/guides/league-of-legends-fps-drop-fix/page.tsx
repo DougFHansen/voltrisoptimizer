@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('league-of-legends-fps-drop-fix', title, description, keywords, locale);
 }
 
-export default function LoLGuide() {
+export default async function LoLGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Shadows", value: "Disabled" },
         { label: "Character", value: "Medium/High" },
@@ -233,6 +234,8 @@ export default function LoLGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="league-of-legends-fps-drop-fix"
             title={title}
             description={description}
             keywords={keywords}

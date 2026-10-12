@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('thermal-paste-importance-pc', title, description, keywords, locale);
 }
 
-export default function ThermalPasteGuide() {
+export default async function ThermalPasteGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Change Frequency", value: "1 to 2 years (Gaming use)" },
         { label: "Best Brands", value: "Arctic, Noctua, Thermal Grizzly" },
@@ -93,6 +94,8 @@ export default function ThermalPasteGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="thermal-paste-importance-pc"
             title={title}
             description={description}
             keywords={keywords}

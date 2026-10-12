@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('best-older-nvidia-drivers-performance', title, description, keywords, locale);
 }
 
-export default function NvidiaRollbackGuide() {
+export default async function NvidiaRollbackGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main reason", value: "Bugs in new 'Game Ready' versions" },
         { label: "Where to download", value: "NVIDIA Advanced Driver Search" },
@@ -98,6 +99,8 @@ export default function NvidiaRollbackGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="best-older-nvidia-drivers-performance"
             title={title}
             description={description}
             keywords={keywords}

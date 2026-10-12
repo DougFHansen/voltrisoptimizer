@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vcruntime140-dll-not-found-fix', title, description, keywords, locale);
 }
 
-export default function VCRuntimeFixGuide() {
+export default async function VCRuntimeFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Cause", value: "Missing Microsoft Visual C++ Redistributable" },
         { label: "Correct Solution", value: "Official Microsoft Installer" },
@@ -96,6 +97,8 @@ export default function VCRuntimeFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vcruntime140-dll-not-found-fix"
             title={title}
             description={description}
             keywords={keywords}

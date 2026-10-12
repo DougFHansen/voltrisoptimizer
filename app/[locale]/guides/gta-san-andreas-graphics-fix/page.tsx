@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gta-san-andreas-graphics-fix', title, description, keywords, locale);
 }
 
-export default function GTASAFixGuide() {
+export default async function GTASAFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Base Version", value: "GTA SA v1.0 US (Hoodlum Executable)" },
         { label: "API", value: "DirectX 9.0c (Wrappers Supported)" },
@@ -335,6 +336,8 @@ export default function GTASAFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gta-san-andreas-graphics-fix"
             title={title}
             description={description}
             keywords={keywords}

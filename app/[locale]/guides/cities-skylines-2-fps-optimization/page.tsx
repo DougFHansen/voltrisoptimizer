@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cities-skylines-2-fps-optimization', title, description, keywords, locale);
 }
 
-export default function CS2Guide() {
+export default async function CS2Guide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Volumetrics", value: "Disabled (High Gain)" },
         { label: "DOF", value: "Disabled (Tilt Shift)" },
@@ -198,6 +199,8 @@ export default function CS2Guide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cities-skylines-2-fps-optimization"
             title={title}
             description={description}
             keywords={keywords}

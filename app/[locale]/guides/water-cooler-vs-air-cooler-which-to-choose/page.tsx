@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('water-cooler-vs-air-cooler-which-to-choose', title, description, keywords, locale);
 }
 
-export default function CoolingComparisonGuide() {
+export default async function CoolingComparisonGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Air Cooler", value: "Cheap, Durable (almost eternal), Safe" },
         { label: "Water Cooler", value: "More Expensive, Aesthetic, Better for Noise Reduction" },
@@ -101,6 +102,8 @@ export default function CoolingComparisonGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="water-cooler-vs-air-cooler-which-to-choose"
             title={title}
             description={description}
             keywords={keywords}

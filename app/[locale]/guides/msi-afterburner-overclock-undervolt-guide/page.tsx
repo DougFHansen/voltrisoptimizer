@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('msi-afterburner-overclock-undervolt-guide', title, description, keywords, locale);
 }
 
-export default function AfterburnerGuide() {
+export default async function AfterburnerGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "MSI Afterburner" },
         { label: "Stress Test", value: "Kombustor / Heaven" },
@@ -207,6 +208,8 @@ export default function AfterburnerGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="msi-afterburner-overclock-undervolt-guide"
             title={title}
             description={description}
             keywords={keywords}

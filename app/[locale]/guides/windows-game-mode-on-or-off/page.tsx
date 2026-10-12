@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-game-mode-on-or-off', title, description, keywords, locale);
 }
 
-export default function GameModeGuide() {
+export default async function GameModeGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "2026 Verdict", value: "ENABLE (For 95% of cases)" },
         { label: "Low-end PC", value: "Great Benefit (Stability)" },
@@ -172,6 +173,8 @@ export default function GameModeGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="windows-game-mode-on-or-off"
             title={title}
             description={description}
             keywords={keywords}

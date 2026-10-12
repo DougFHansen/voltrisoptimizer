@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('hard-reset-bluetooth-headphones-fix', title, description, keywords, locale);
 }
 
-export default function BluetoothResetGuide() {
+export default async function BluetoothResetGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Common Cause", value: "Desynchronization between earbuds" },
         { label: "Solution", value: "Touch Button (Hold 10-15 sec)" },
@@ -97,6 +98,8 @@ export default function BluetoothResetGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="hard-reset-bluetooth-headphones-fix"
             title={title}
             description={description}
             keywords={keywords}

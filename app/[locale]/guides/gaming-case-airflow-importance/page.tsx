@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('gaming-case-airflow-importance', title, description, keywords, locale);
 }
 
-export default function AirflowGuide() {
+export default async function AirflowGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Check #1", value: "Cold air enters from front/bottom" },
         { label: "Check #2", value: "Hot air leaves from back/top" },
@@ -95,6 +96,8 @@ export default function AirflowGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="gaming-case-airflow-importance"
             title={title}
             description={description}
             keywords={keywords}

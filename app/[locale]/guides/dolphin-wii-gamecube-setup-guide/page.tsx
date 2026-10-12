@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('dolphin-wii-gamecube-setup-guide', title, description, keywords, locale);
 }
 
-export default function DolphinGuide() {
+export default async function DolphinGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Rendering Backend", value: "Vulkan (Recommended)" },
         { label: "Shader Compilation", value: "Hybrid Ubershaders" },
@@ -193,6 +194,8 @@ export default function DolphinGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="dolphin-wii-gamecube-setup-guide"
             title={title}
             description={description}
             keywords={keywords}

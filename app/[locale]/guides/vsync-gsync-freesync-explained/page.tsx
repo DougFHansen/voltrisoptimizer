@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vsync-gsync-freesync-explained', title, description, keywords, locale);
 }
 
-export default function SyncTechnologyGuide() {
+export default async function SyncTechnologyGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "V-Sync", value: "Old / Causes High Input Lag" },
         { label: "G-Sync (NVIDIA)", value: "Excellent / Requires NVIDIA GPU" },
@@ -96,6 +97,8 @@ export default function SyncTechnologyGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vsync-gsync-freesync-explained"
             title={title}
             description={description}
             keywords={keywords}

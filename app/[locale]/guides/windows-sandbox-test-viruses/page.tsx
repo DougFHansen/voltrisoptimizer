@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('windows-sandbox-test-viruses', title, description, keywords, locale);
 }
 
-export default function SandboxGuide() {
+export default async function SandboxGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Requirement #1", value: "Windows 10/11 Pro or Enterprise" },
         { label: "Requirement #2", value: "Virtualization enabled in BIOS" },
@@ -99,6 +100,8 @@ export default function SandboxGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="windows-sandbox-test-viruses"
             title={title}
             description={description}
             keywords={keywords}

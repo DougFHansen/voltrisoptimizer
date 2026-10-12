@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('what-are-ai-agents-complete-guide', title, description, keywords, locale);
 }
 
-export default function AIAgentsGuide() {
+export default async function AIAgentsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Base Technology", value: "LLMs (GPT-4o, Claude 3.5)" },
         { label: "Lead Framework", value: "CrewAI (Orchestration)" },
@@ -298,6 +299,8 @@ print(result)
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="what-are-ai-agents-complete-guide"
             title={title}
             description={description}
             keywords={keywords}

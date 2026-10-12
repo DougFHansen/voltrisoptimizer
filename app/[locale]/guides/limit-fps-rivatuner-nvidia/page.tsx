@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('limit-fps-rivatuner-nvidia', title, description, keywords, locale);
 }
 
-export default function LimitFPSGuide() {
+export default async function LimitFPSGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "RivaTuner (RTSS)", value: "Best for stable Frametime" },
         { label: "NVIDIA Panel", value: "Lower Input Lag / More convenient" },
@@ -101,6 +102,8 @@ export default function LimitFPSGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="limit-fps-rivatuner-nvidia"
             title={title}
             description={description}
             keywords={keywords}

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('cemu-zelda-botw-4k-60fps', title, description, keywords, locale);
 }
 
-export default function CemuGuide() {
+export default async function CemuGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Version", value: "Cemu 2.0 (Open Source)" },
         { label: "API", value: "Vulkan (Async Required)" },
@@ -196,6 +197,8 @@ export default function CemuGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="cemu-zelda-botw-4k-60fps"
             title={title}
             description={description}
             keywords={keywords}

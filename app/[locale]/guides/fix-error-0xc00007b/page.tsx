@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('fix-error-0xc00007b', title, description, keywords, locale);
 }
 
-export default function Error07bFixGuide() {
+export default async function Error07bFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
   const summaryTable = [
     { label: "Error Code", value: "0xc00007b (STATUS_INVALID_IMAGE_FORMAT)" },
     { label: "Technical Meaning", value: "32-bit vs 64-bit DLL Incompatibility" },
@@ -355,6 +356,8 @@ export default function Error07bFixGuide() {
 
   return (
     <GuideTemplate
+            locale={locale}
+            slug="fix-error-0xc00007b"
       title={title}
       description={description}
       keywords={keywords}

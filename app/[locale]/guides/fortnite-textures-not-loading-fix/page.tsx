@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('fortnite-textures-not-loading-fix', title, description, keywords, locale);
 }
 
-export default function FortniteTexturesFixGuide() {
+export default async function FortniteTexturesFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Main Cause", value: "Real-time texture streaming via internet" },
         { label: "Key Solution", value: "Pre-download assets in Epic Launcher" },
@@ -99,6 +100,8 @@ export default function FortniteTexturesFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="fortnite-textures-not-loading-fix"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('euro-truck-simulator-2-optimization', title, description, keywords, locale);
 }
 
-export default function ETS2OptimizationGuide() {
+export default async function ETS2OptimizationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Upscaling", value: "FSR 2.0 (In-game Native)" },
         { label: "Main Performance Killer", value: "Scaling above 200%" },
@@ -99,6 +100,8 @@ export default function ETS2OptimizationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="euro-truck-simulator-2-optimization"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('clear-browser-cache-chrome-edge', title, description, keywords, locale);
 }
 
-export default function BrowserCacheGuide() {
+export default async function BrowserCacheGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Universal Shortcut", value: "Ctrl + Shift + Del" },
         { label: "What to clear", value: "Cached images and files" },
@@ -98,6 +99,8 @@ export default function BrowserCacheGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="clear-browser-cache-chrome-edge"
             title={title}
             description={description}
             keywords={keywords}

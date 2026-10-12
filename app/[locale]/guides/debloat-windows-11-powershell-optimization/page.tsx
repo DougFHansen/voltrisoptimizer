@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('debloat-windows-11-powershell-optimization', title, description, keywords, locale);
 }
 
-export default function DebloatGuide() {
+export default async function DebloatGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Risk", value: "Medium (Create Restore Point)" },
         { label: "Tool", value: "PowerShell (Admin)" },
@@ -135,6 +136,8 @@ export default function DebloatGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="debloat-windows-11-powershell-optimization"
             title={title}
             description={description}
             keywords={keywords}

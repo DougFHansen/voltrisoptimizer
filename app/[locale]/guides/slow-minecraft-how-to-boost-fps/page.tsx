@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('slow-minecraft-how-to-boost-fps', title, description, keywords, locale);
 }
 
-export default function MinecraftSlowFixGuide() {
+export default async function MinecraftSlowFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Java Priority", value: "High (Task Manager)" },
         { label: "Render Distance", value: "6-8 Chunks (Ideal for Low-end PCs)" },
@@ -652,6 +653,8 @@ export default function MinecraftSlowFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="slow-minecraft-how-to-boost-fps"
             title={title}
             description={description}
             keywords={keywords}

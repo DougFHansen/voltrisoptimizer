@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('vibe-coding-ai-programming', title, description, keywords, locale);
 }
 
-export default function VibeCodingGuide() {
+export default async function VibeCodingGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Core Tool", value: "Cursor (VS Code Fork)" },
         { label: "Brain Model", value: "Claude 3.5 Sonnet (Anthropic)" },
@@ -236,6 +237,8 @@ Safety:
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="vibe-coding-ai-programming"
             title={title}
             description={description}
             keywords={keywords}

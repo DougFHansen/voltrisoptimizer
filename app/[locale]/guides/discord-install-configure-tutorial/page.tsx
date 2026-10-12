@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('discord-install-configure-tutorial', title, description, keywords, locale);
 }
 
-export default function DiscordGuide() {
+export default async function DiscordGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Check #1", value: "Activate Krisp (Noise Suppression)" },
         { label: "Check #2", value: "Configure Push-to-Talk" },
@@ -96,6 +97,8 @@ export default function DiscordGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="discord-install-configure-tutorial"
             title={title}
             description={description}
             keywords={keywords}

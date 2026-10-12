@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('minecraft-lag-fix-optifine-fabric', title, description, keywords, locale);
 }
 
-export default function MinecraftLagGuide() {
+export default async function MinecraftLagGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Best Performance", value: "Fabric + Sodium" },
         { label: "Most Practical", value: "OptiFine" },
@@ -96,6 +97,8 @@ export default function MinecraftLagGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="minecraft-lag-fix-optifine-fabric"
             title={title}
             description={description}
             keywords={keywords}

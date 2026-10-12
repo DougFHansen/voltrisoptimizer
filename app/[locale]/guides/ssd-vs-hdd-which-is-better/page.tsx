@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('ssd-vs-hdd-which-is-better', title, description, keywords, locale);
 }
 
-export default function SSDvsHDGuide() {
+export default async function SSDvsHDGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Read Speed", value: "HDD: 150 MB/s | SSD: 3,500+ MB/s" },
         { label: "Gaming Usage", value: "HDD: Stuttering / SSD: Total Fluidity" },
@@ -95,6 +96,8 @@ export default function SSDvsHDGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="ssd-vs-hdd-which-is-better"
             title={title}
             description={description}
             keywords={keywords}

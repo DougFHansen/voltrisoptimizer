@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('terraria-tmodloader-64bit-fix', title, description, keywords, locale);
 }
 
-export default function TModLoaderGuide() {
+export default async function TModLoaderGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Current Version (1.4+)", value: "Native 64-bit (Steam)" },
         { label: "Legacy Version (1.3)", value: "Requires Third-Party Patch" },
@@ -97,6 +98,8 @@ export default function TModLoaderGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="terraria-tmodloader-64bit-fix"
             title={title}
             description={description}
             keywords={keywords}

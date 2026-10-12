@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mechanical-keyboard-rapid-trigger-snap-tap', title, description, keywords, locale);
 }
 
-export default function KeyboardGuide() {
+export default async function KeyboardGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Switch", value: "Magnetic (Hall Effect)" },
         { label: "Actuation", value: "0.1mm to 4.0mm" },
@@ -215,6 +216,8 @@ export default function KeyboardGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mechanical-keyboard-rapid-trigger-snap-tap"
             title={title}
             description={description}
             keywords={keywords}

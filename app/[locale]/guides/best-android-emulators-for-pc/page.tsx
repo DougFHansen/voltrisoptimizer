@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('best-android-emulators-for-pc', title, description, keywords, locale);
 }
 
-export default function AndroidEmulatorsGuide() {
+export default async function AndroidEmulatorsGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Best Performance", value: "LDPlayer 9" },
         { label: "Most Compatible", value: "BlueStacks 5" },
@@ -94,6 +95,8 @@ export default function AndroidEmulatorsGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="best-android-emulators-for-pc"
             title={title}
             description={description}
             keywords={keywords}

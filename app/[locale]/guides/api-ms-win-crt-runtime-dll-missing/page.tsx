@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('api-ms-win-crt-runtime-dll-missing', title, description, keywords, locale);
 }
 
-export default function CRTRuntimeErrorGuide() {
+export default async function CRTRuntimeErrorGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Full Error", value: "'The program cannot be started because api-ms-win-crt-runtime-l1-1-0.dll is missing'" },
         { label: "Main Cause", value: "Lack of Universal C Runtime (part of Visual C++ 2015-2022)" },
@@ -889,6 +890,8 @@ Install-UCRTComponents
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="api-ms-win-crt-runtime-dll-missing"
             title={title}
             description={description}
             keywords={keywords}

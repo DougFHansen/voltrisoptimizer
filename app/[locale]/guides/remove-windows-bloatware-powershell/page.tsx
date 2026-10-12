@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('remove-windows-bloatware-powershell', title, description, keywords, locale);
 }
 
-export default function BloatwareRemovalGuide() {
+export default async function BloatwareRemovalGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool", value: "PowerShell (Admin)" },
         { label: "What it removes", value: "Native Apps, Telemetry, Widgets" },
@@ -97,6 +98,8 @@ export default function BloatwareRemovalGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="remove-windows-bloatware-powershell"
             title={title}
             description={description}
             keywords={keywords}

@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('roblox-connection-error-fix', title, description, keywords, locale);
 }
 
-export default function RobloxConnectionFixGuide() {
+export default async function RobloxConnectionFixGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Error 277", value: "Unexpected drop (Server or Internet)" },
         { label: "Error 279", value: "Failed to enter map (Firewall/DNS)" },
@@ -102,6 +103,8 @@ export default function RobloxConnectionFixGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="roblox-connection-error-fix"
             title={title}
             description={description}
             keywords={keywords}

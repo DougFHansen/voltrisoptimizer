@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('mouse-precision-optimization-windows', title, description, keywords, locale);
 }
 
-export default function MouseGuide() {
+export default async function MouseGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Enhance Precision", value: "DISABLE (OFF)" },
         { label: "Pointer Speed", value: "6/11 (Middle Notch)" },
@@ -192,6 +193,8 @@ export default function MouseGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="mouse-precision-optimization-windows"
             title={title}
             description={description}
             keywords={keywords}

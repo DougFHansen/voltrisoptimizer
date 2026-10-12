@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('how-to-read-bsod-dmp-files', title, description, keywords, locale);
 }
 
-export default function BSODGuide() {
+export default async function BSODGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Tool 1", value: "BlueScreenView (Fast)" },
         { label: "Tool 2", value: "WhoCrashed (Explanatory)" },
@@ -192,6 +193,8 @@ export default function BSODGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="how-to-read-bsod-dmp-files"
             title={title}
             description={description}
             keywords={keywords}

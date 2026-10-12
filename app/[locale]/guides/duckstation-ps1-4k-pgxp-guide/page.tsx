@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('duckstation-ps1-4k-pgxp-guide', title, description, keywords, locale);
 }
 
-export default function DuckStationGuide() {
+export default async function DuckStationGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Renderer", value: "Vulkan / D3D11" },
         { label: "Internal Res", value: "4x (1080p) to 9x (4K)" },
@@ -191,6 +192,8 @@ export default function DuckStationGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="duckstation-ps1-4k-pgxp-guide"
             title={title}
             description={description}
             keywords={keywords}

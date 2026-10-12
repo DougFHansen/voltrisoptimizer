@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('dualsense-ds4windows-1000hz-pc', title, description, keywords, locale);
 }
 
-export default function ControllerGuide() {
+export default async function ControllerGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Software", value: "DS4Windows (Ryochan7 Build)" },
         { label: "Driver", value: "ViGEmBus (Required)" },
@@ -198,6 +199,8 @@ export default function ControllerGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="dualsense-ds4windows-1000hz-pc"
             title={title}
             description={description}
             keywords={keywords}

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return createGuideMetadata('retroarch-complete-guide-shaders-crt', title, description, keywords, locale);
 }
 
-export default function RetroArchGuide() {
+export default async function RetroArchGuide({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const summaryTable = [
         { label: "Video Driver", value: "Vulkan / Glcore" },
         { label: "Menu Driver", value: "Ozone (Default) / XMB" },
@@ -202,6 +203,8 @@ export default function RetroArchGuide() {
 
     return (
         <GuideTemplate
+            locale={locale}
+            slug="retroarch-complete-guide-shaders-crt"
             title={title}
             description={description}
             keywords={keywords}
