@@ -19,21 +19,38 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'lib/guides-i18n/data');
 const STRINGS = path.join(ROOT, 'lib/guides-i18n/strings.en.json');
-const MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite';
 const LANG_NAMES = {
   es: 'Spanish', 'pt-br': 'Brazilian Portuguese', de: 'German', fr: 'French',
   it: 'Italian', ja: 'Japanese', ko: 'Korean', ar: 'Arabic',
 };
 const ALL_LANGS = Object.keys(LANG_NAMES);
 
-function apiKey() {
-  for (const line of fs.readFileSync(path.join(ROOT, '.env.local'), 'utf8').split(/\r?\n/)) {
-    const m = line.match(/^\s*GEMINI_API_KEY\s*=\s*(.+?)\s*$/);
-    if (m) return m[1].replace(/^"|"$/g, '');
+// ---- Provider config (gemini | groq | openai | nvidia | custom) ----
+// Provider-agnostic: gemini uses its native endpoint; the others use an
+// OpenAI-compatible /chat/completions endpoint (Groq, NVIDIA, OpenAI, ...).
+function readEnv(name) {
+  const p = process.env[name];
+  if (p) return p;
+  const envPath = path.join(ROOT, '.env.local');
+  if (fs.existsSync(envPath)) {
+    for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+      const m = line.match(new RegExp(`^\\s*${name}\\s*=\\s*(.+?)\\s*$`));
+      if (m) return m[1].replace(/^"|"$/g, '');
+    }
   }
-  throw new Error('GEMINI_API_KEY ausente no .env.local');
+  return null;
 }
-const KEY = apiKey();
+const argv = process.argv.slice(2);
+const arg = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : null; };
+const PROVIDER = (arg('--provider') || process.env.TRANSLATE_PROVIDER || 'gemini').toLowerCase();
+const KEY_ENV = { groq: 'GROQ_API_KEY', openai: 'OPENAI_API_KEY', nvidia: 'NVIDIA_API_KEY', gemini: 'GEMINI_API_KEY' }[PROVIDER] || 'TRANSLATE_API_KEY';
+const BASE_URL_DEFAULT = { groq: 'https://api.groq.com/openai/v1', openai: 'https://api.openai.com/v1', nvidia: 'https://integrate.api.nvidia.com/v1' }[PROVIDER] || null;
+const BASE_URL = (arg('--base-url') || process.env.TRANSLATE_BASE_URL || BASE_URL_DEFAULT || '').replace(/\/+$/, '');
+const KEY = arg('--api-key') || readEnv(KEY_ENV);
+const MODEL = arg('--model') || process.env.TRANSLATE_MODEL || (PROVIDER === 'gemini' ? 'gemini-3.1-flash-lite' : PROVIDER === 'groq' ? 'llama-3.3-70b-versatile' : PROVIDER === 'nvidia' ? 'meta/llama-3.1-8b-instruct' : 'gpt-4o-mini');
+if (!KEY) throw new Error(`API key ausente (${KEY_ENV})`);
+if (PROVIDER !== 'gemini' && !BASE_URL) throw new Error(`--base-url obrigatorio para provider=${PROVIDER}`);
+console.log(`[provider=${PROVIDER} model=${MODEL} key=${(KEY || '').slice(0, 6)}... len=${(KEY || '').length}]`);
 
 const args = process.argv.slice(2);
 const getArg = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : null; };
@@ -64,7 +81,7 @@ function parseArray(text) {
   return JSON.parse(cleaned.slice(start, end + 1));
 }
 
-async function callGeminiRaw(prompt, retries = 5) {
+async function callGemini(prompt, retries = 6) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${KEY}`;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -91,6 +108,40 @@ async function callGeminiRaw(prompt, retries = 5) {
   throw new Error('retries esgotados');
 }
 
+// OpenAI-compatible /chat/completions (Groq, NVIDIA, OpenAI, ...).
+async function callOpenAICompat(prompt, retries = 6) {
+  const url = `${BASE_URL}/chat/completions`;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: MODEL,
+          messages: [{ role: 'user', content: prompt }],
+          temperature: 0,
+          max_tokens: 8000,
+        }),
+      });
+      if (res.status === 429) { const w = Math.min(120000, 8000 * (attempt + 1) + Math.random() * 5000); console.log(`\n  429 rate-limit (groq/openai), aguardando ${(w / 1000) | 0}s...`); await sleep(w); continue; }
+      if (res.status >= 500) { console.log(`\n  HTTP ${res.status} (servidor), retry ${attempt + 1}...`); await sleep(3000 * (attempt + 1)); continue; }
+      if (!res.ok) { const j = await res.json().catch(() => ({})); throw new Error(`HTTP ${res.status}: ${(j.error && (j.error.message || j.error.code)) || ''}`.slice(0, 160)); }
+      const j = await res.json();
+      const out = j.choices?.[0]?.message?.content;
+      if (!out) throw new Error('resposta vazia');
+      return out;
+    } catch (e) {
+      if (attempt === retries) throw e;
+      await sleep(2500 * (attempt + 1));
+    }
+  }
+  throw new Error('retries esgotados');
+}
+
+async function callLLM(prompt) {
+  return PROVIDER === 'gemini' ? callGemini(prompt) : callOpenAICompat(prompt);
+}
+
 function makePrompt(sources, langName) {
   return `You are a professional software/tech localizer. Translate each of the following ${sources.length} English strings into ${langName}.
 STRICT RULES:
@@ -115,7 +166,7 @@ function check(src, tr) {
 async function translateItems(sources, langName, depth = 0) {
   let parsed;
   try {
-    parsed = parseArray(await callGeminiRaw(makePrompt(sources, langName)));
+    parsed = parseArray(await callLLM(makePrompt(sources, langName)));
     if (!Array.isArray(parsed) || parsed.length !== sources.length) throw new Error(`len ${Array.isArray(parsed) ? parsed.length : typeof parsed} != ${sources.length}`);
   } catch (e) {
     if (sources.length > 1 && depth < 6) {
