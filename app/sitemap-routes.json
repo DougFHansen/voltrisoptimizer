@@ -17,7 +17,7 @@
   },
   {
     "route": "/regions",
-    "lastModified": "2026-10-13T16:41:28.458Z"
+    "lastModified": "2026-10-13T21:30:57.156Z"
   },
   {
     "route": "/services-integration",
@@ -1602,10 +1602,6 @@
   {
     "route": "/[locale]/reduce-network-latency-online-games",
     "lastModified": "2026-10-13T12:02:57.167Z"
-  },
-  {
-    "route": "/[locale]/regions",
-    "lastModified": "2026-10-13T09:36:06.938Z"
   },
   {
     "route": "/[locale]/remote-technical-support",

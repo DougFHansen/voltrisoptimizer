@@ -26,6 +26,16 @@ export default function ClientLocaleI18n({ children }: { children: React.ReactNo
     const m = document.cookie.match(/(?:^|;\s*)voltris-locale=([^;]+)/);
     if (m) setLocale(decodeURIComponent(m[1]));
   }, []);
+
+  // Sincroniza o atributo lang (e dir p/ RTL) do <html> com o idioma efetivo.
+  // Rotas de bypass são renderizadas pelo layout raiz com lang="en", então
+  // ajustamos no cliente para refletir o idioma escolhido (bom p/ SEO/acesso).
+  useEffect(() => {
+    const html = document.documentElement;
+    if (!html) return;
+    html.lang = locale;
+    html.dir = locale === 'ar' ? 'rtl' : 'ltr';
+  }, [locale]);
   return (
     <SiteTProvider locale={locale}>
       {children}

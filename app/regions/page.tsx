@@ -1,19 +1,27 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { cookies } from 'next/headers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { regionsData } from './data';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 import TechFloatingElements from '@/components/TechFloatingElements';
+import { localizeMetadata } from '@/lib/site-i18n';
 
-export const metadata: Metadata = {
-    title: 'Global Remote IT Support Coverage | VOLTRIS',
-    description: 'We provide elite remote IT support, PC optimization, and virus removal to major cities around the globe. See our full coverage.',
-    keywords: ['global IT support', 'remote pc repair', 'international tech support'],
-    alternates: {
-        canonical: 'https://www.voltrisoptimizer.com/regions'
-    }
-};
+export async function generateMetadata(): Promise<Metadata> {
+    // /regions é rota de bypass (serve todos os idiomas sem prefixo na URL), então
+    // o idioma vem do cookie escolhido — traduzimos title/description no servidor.
+    const store = await cookies();
+    const locale = store.get('voltris-locale')?.value || 'en';
+    return await localizeMetadata(locale, {
+        title: 'Global Remote IT Support Coverage | VOLTRIS',
+        description: 'We provide elite remote IT support, PC optimization, and virus removal to major cities around the globe. See our full coverage.',
+        keywords: ['global IT support', 'remote pc repair', 'international tech support'],
+        alternates: {
+            canonical: 'https://www.voltrisoptimizer.com/regions'
+        }
+    });
+}
 
 export default function RegionsIndexPage() {
     return (
@@ -31,8 +39,8 @@ export default function RegionsIndexPage() {
                             <GlobeAltIcon className="w-4 h-4 text-[#31A8FF]" />
                             <span className="text-xs sm:text-sm font-bold text-white tracking-widest uppercase">Worldwide Availability</span>
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter">
-                            Global <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Coverage</span>
+                        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
+                            Global Coverage
                         </h1>
                         <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
                             No matter where you are, our certified experts provide 100% remote computer optimization, maintenance, and repair services via secure connections using Anydesk or Teamviewer.

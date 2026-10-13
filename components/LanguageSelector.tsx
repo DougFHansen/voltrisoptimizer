@@ -41,6 +41,17 @@ const CODE: Record<Locale, string> = {
   'ru': 'RU', 'zh-cn': 'ZH', 'vi': 'VI', 'tr': 'TR', 'id': 'ID', 'pl': 'PL',
 };
 
+// Rotas de "bypass" do middleware: servem uma única página rica para TODOS os
+// idiomas (traduzida por cookie) e NÃO usam prefixo de idioma na URL.
+const BYPASS_ROUTES = ['regions', 'international'];
+
+function readLocaleCookie(): Locale | null {
+  if (typeof document === 'undefined') return null;
+  const m = document.cookie.match(/(?:^|;\s*)voltris-locale=([^;]+)/);
+  const v = m ? decodeURIComponent(m[1]).trim() : '';
+  return v && isValidLocale(v) ? (v as Locale) : null;
+}
+
 // ── Flags (20×14 viewBox, inline SVG, rounded by clipPath) ──────────────────
 function Clip({ id }: { id: string }) {
   return (
@@ -186,9 +197,18 @@ export default function LanguageSelector({ inDrawer = false }: { inDrawer?: bool
   const ref = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Locale derivado SOMENTE da URL (determinístico SSR/client, sem "flash").
+  // Em rotas normais o idioma vem SOMENTE da URL (determinístico SSR/client, sem
+  // "flash"). Nas rotas de bypass (/regions, /international) não há prefixo, então
+  // lemos o cookie — apenas após a montagem, para evitar divergência de hidratação.
   const segments = (pathname || '/').split('/').filter(Boolean);
-  const current: Locale = segments.length > 0 && isValidLocale(segments[0]) ? (segments[0] as Locale) : 'en';
+  const isBypass = BYPASS_ROUTES.includes(segments[0]);
+  const urlLocale: Locale =
+    segments.length > 0 && isValidLocale(segments[0]) ? (segments[0] as Locale) : 'en';
+  const [cookieLocale, setCookieLocale] = useState<Locale | null>(null);
+  useEffect(() => {
+    if (isBypass) setCookieLocale(readLocaleCookie());
+  }, [isBypass, pathname]);
+  const current: Locale = isBypass ? (cookieLocale ?? 'en') : urlLocale;
 
   useEffect(() => {
     const onClickAway = (e: MouseEvent) => {
@@ -206,16 +226,30 @@ export default function LanguageSelector({ inDrawer = false }: { inDrawer?: bool
   }, []);
 
   const switchTo = (next: Locale) => {
-    if (next === current) {
-      setOpen(false);
-      return;
-    }
     try {
       // Persiste a escolha para o middleware (1 ano). SameSite=Lax: enviado em
       // navegações normais, suficiente para detecção server-side.
       document.cookie = `voltris-locale=${next};path=/;max-age=31536000;SameSite=Lax`;
     } catch {
       /* ignore */
+    }
+
+    // Rotas de bypass (/regions, /international) NÃO têm prefixo de idioma: a
+    // mesma página rica serve todos os idiomas e é traduzida pelo provedor por
+    // cookie. Então apenas recarregamos a URL atual — prefixar cairia numa rota
+    // diferente (página feia duplicada) ou quebrada (404).
+    if (isBypass) {
+      if (next === current) {
+        setOpen(false);
+        return;
+      }
+      window.location.reload();
+      return;
+    }
+
+    if (next === urlLocale) {
+      setOpen(false);
+      return;
     }
     // Troca o segmento de locale preservando o restante do caminho E a query.
     const rest = segments.length > 0 && isValidLocale(segments[0]) ? segments.slice(1) : segments;
