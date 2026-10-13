@@ -11,3 +11,8 @@ node_modules/
 # Cloudflare Worker proxy (projeto separado, não faz parte do build Next.js)
 pagbank-proxy/node_modules/
 pagbank-proxy/.wrangler/
+finish_build.ps1
+google_loop.ps1
+groq_loop.ps1
+screenshot-es-hero.png
+screenshot-es-home.png

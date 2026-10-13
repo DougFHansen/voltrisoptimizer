@@ -75,6 +75,7 @@ export default function SiteTextTranslator({ locale }: { locale: string }) {
   useEffect(() => {
     let cancelled = false;
     let observer: MutationObserver | null = null;
+    const timers: ReturnType<typeof setTimeout>[] = [];
 
     const translateText = (node: Text) => {
       if (shouldSkip(node) || !dictRef.current) return;
@@ -124,11 +125,20 @@ export default function SiteTextTranslator({ locale }: { locale: string }) {
         }
       });
       observer.observe(document.body, { childList: true, subtree: true });
+
+      // Catch-all re-walks for content injected after first paint but not via a
+      // childList we can see cleanly (e.g. next/script JSON-LD, delayed reveals,
+      // the cookie banner). walk() is idempotent and only ever rewrites nodes
+      // whose ORIGINAL English still matches a key, so this is safe to repeat.
+      const t1 = setTimeout(() => { if (!cancelled) walk(document.body); }, 900);
+      const t2 = setTimeout(() => { if (!cancelled) walk(document.body); }, 2500);
+      timers.push(t1, t2);
     });
 
     return () => {
       cancelled = true;
       if (observer) observer.disconnect();
+      timers.forEach(clearTimeout);
     };
   }, [locale]);
 
