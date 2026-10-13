@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import { getLocalizedAlternates } from '@/lib/seo';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: 'Services & Technical Support | VOLTRIS',
         description: 'Expert PC optimization, format, virus removal, and error correction services. Remote technical support for maximum performance.',
         keywords: 'pc optimization services, format computer, remote technical support, virus removal, fix windows errors, gaming pc optimization',
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
             type: 'website',
         },
         alternates: getLocalizedAlternates('/services', locale)
-    };
+    });
 }
 
 export default function ServicesLayout({

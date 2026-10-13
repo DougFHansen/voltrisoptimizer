@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import Script from 'next/script';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'Website Creation - Basic, Professional, and Enterprise Plans | VOLTRIS',
     description: 'Hire professional website creation: responsive design, SEO, and hosting. Basic, professional, and enterprise plans. Free quotes.',
@@ -52,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services/website-creation`
             }
         }
-    };
+    });
 }
 
 export default function CriacaoSitesLayout({

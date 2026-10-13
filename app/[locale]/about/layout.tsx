@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import Script from 'next/script';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `About Voltris | System Optimization and Technical Support Specialists`,
         description: `Learn about the history of Voltris, our founder Douglas Felipe Moraes Gonçalves, our mission, and the technical methodology that sets our Windows system optimization support apart.`,
         keywords: [],
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/about`
             }
         }
-    };
+    });
 }
 
 export default function AboutLayout({

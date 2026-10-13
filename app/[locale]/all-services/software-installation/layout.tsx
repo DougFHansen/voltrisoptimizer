@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'Essential Software Installation | Remote Program Setup | VOLTRIS',
     description: 'Essential program installation, remote software setup, security, speed, and specialized support. Install Google Chrome, WhatsApp, Zoom, and more!',
@@ -52,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services/software-installation`
             }
         }
-    };
+    });
 }
 
 export default function InstalacaoProgramasLayout({

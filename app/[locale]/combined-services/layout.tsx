@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `Technical Service Bundles | Formatting + Optimization + Assistance - VOLTRIS`,
         description: `Combined technical service bundles: Windows formatting, PC optimization, technical assistance, and optimization software. Save and get the best performance.`,
         keywords: [],
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/combined-services`
             }
         }
-    };
+    });
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }

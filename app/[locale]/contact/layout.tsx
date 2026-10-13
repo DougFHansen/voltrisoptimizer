@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `Contact | Talk to Us | VOLTRIS`,
         description: `Contact VOLTRIS. Remote technical support, website creation, and technology solutions. Phone, WhatsApp, email, and service hours.`,
         keywords: [],
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/contact`
             }
         }
-    };
+    });
 }
 
 export default function ContatoLayout({

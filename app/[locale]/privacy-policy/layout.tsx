@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'Privacy Policy - VOLTRIS',
     description: 'VOLTRIS Privacy Policy. Learn how we collect, use, and protect your personal information. Transparency and security first.',
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/privacy-policy`
             }
         }
-    };
+    });
 }
 
 export default function PoliticaPrivacidadeLayout({ children }: { children: React.ReactNode }) {

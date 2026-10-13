@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'At-Home IT Technician - Remote & On-Site Support | VOLTRIS',
     description: 'Looking for an IT technician who does house calls? VOLTRIS offers remote and on-site technical support worldwide. Fix your PC problems without leaving home.',
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/it-technician-home-visit`
             }
         }
-    };
+    });
 }
 
 export default function TecnicoAtendeCasaLayout({

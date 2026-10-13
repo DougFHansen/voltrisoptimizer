@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'Online IT Technician - Specialized Remote Support | VOLTRIS',
     description: 'Online IT technician for remote technical support worldwide. Specialists in Windows, formatting, optimization, and computer maintenance.',
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/it-technician`
             }
         }
-    };
+    });
 }
 
 export default function TecnicoInformaticaLayout({

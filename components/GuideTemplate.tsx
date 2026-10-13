@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { localizeGuideProps } from '@/lib/guides-i18n';
+import { loadSiteDict, makeT } from '@/lib/site-i18n';
 import { GuideTemplateClient, GuideTemplateProps, ContentSection, RelatedGuide, SummaryTableItem } from './GuideTemplateClient';
 
 // Re-export types if needed by consumers (though usually page.tsx doesn't need them explicitely)
@@ -12,26 +13,30 @@ const BASE_URL = 'https://www.voltrisoptimizer.com';
  * Generates metadata for the guide pages.
  * slug: path segment of the guide (e.g. 'formatacao-windows') — used for canonical to fix indexation.
  */
-export function createGuideMetadata(slug: string, title: string, description: string, keywords: string[], locale: string = 'en'): Metadata {
+export async function createGuideMetadata(slug: string, title: string, description: string, keywords: string[], locale: string = 'en'): Promise<Metadata> {
   const { canonical, languages } = getLocalizedAlternates(`/guides/${slug}`, locale);
+  // Localize the metadata strings through the shared English-keyed dictionary.
+  // Untranslated strings fall back to English, so SEO tags are never blanked.
+  const t = makeT(await loadSiteDict(locale));
+  const k = (keywords || []).map((s) => t(s));
 
   return {
-    title: `${title} | VOLTRIS`,
-    description,
-    keywords,
+    title: `${t(title)} | VOLTRIS`,
+    description: t(description),
+    keywords: k,
     metadataBase: new URL(BASE_URL),
     alternates: { canonical, languages },
     openGraph: {
-      title: `${title} | VOLTRIS`,
-      description,
+      title: `${t(title)} | VOLTRIS`,
+      description: t(description),
       type: "article",
       locale: locale,
       url: canonical,
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description
+      title: t(title),
+      description: t(description)
     },
     robots: {
       index: true,

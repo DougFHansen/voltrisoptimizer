@@ -857,7 +857,7 @@
   },
   {
     "route": "/[locale]/guides/micro-stuttering-in-games-causes",
-    "lastModified": "2026-10-12T05:23:24.142Z"
+    "lastModified": "2026-10-13T01:09:40.050Z"
   },
   {
     "route": "/[locale]/guides/minecraft-lag-fix-optifine-fabric",
@@ -933,7 +933,7 @@
   },
   {
     "route": "/[locale]/guides/obs-studio-best-streaming-settings-2026",
-    "lastModified": "2026-10-12T06:26:59.697Z"
+    "lastModified": "2026-10-13T01:09:39.930Z"
   },
   {
     "route": "/[locale]/guides/obs-studio-recording-replay-buffer-av1",
@@ -961,7 +961,7 @@
   },
   {
     "route": "/[locale]/guides",
-    "lastModified": "2026-09-19T11:38:34.294Z"
+    "lastModified": "2026-10-13T01:22:34.428Z"
   },
   {
     "route": "/[locale]/guides/palworld-server-dlss-optimization",
@@ -1589,7 +1589,7 @@
   },
   {
     "route": "/[locale]",
-    "lastModified": "2026-10-12T04:09:10.801Z"
+    "lastModified": "2026-10-13T01:09:39.206Z"
   },
   {
     "route": "/[locale]/pc-optimization",
@@ -1605,7 +1605,7 @@
   },
   {
     "route": "/[locale]/regions",
-    "lastModified": "2026-10-12T04:02:24.912Z"
+    "lastModified": "2026-10-13T01:09:38.884Z"
   },
   {
     "route": "/[locale]/remote-technical-support",
@@ -1633,7 +1633,7 @@
   },
   {
     "route": "/[locale]/voltrisoptimizer/documentation",
-    "lastModified": "2026-10-12T05:32:08.792Z"
+    "lastModified": "2026-10-13T01:09:40.273Z"
   },
   {
     "route": "/[locale]/voltrisoptimizer/how-it-works",
@@ -1641,10 +1641,10 @@
   },
   {
     "route": "/[locale]/voltrisoptimizer",
-    "lastModified": "2026-10-12T04:02:24.834Z"
+    "lastModified": "2026-10-13T01:09:38.740Z"
   },
   {
     "route": "/[locale]/website-creators",
-    "lastModified": "2026-10-12T04:17:47.291Z"
+    "lastModified": "2026-10-13T01:09:39.282Z"
   }
 ]

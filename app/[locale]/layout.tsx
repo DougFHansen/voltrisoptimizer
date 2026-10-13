@@ -10,13 +10,17 @@ import { AuthProvider } from '@/app/context/AuthContext';
 import I18nClientProvider from '@/components/I18nClientProvider';
 import { Locale, isValidLocale } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
+import { getSiteT } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
+    // Localize the site-wide fallback metadata (used by every page that does not
+    // define its own). Untranslated strings fall back to English safely.
+    const { t } = await getSiteT(locale);
     return {
         
-  title: "VOLTRIS - PC Optimization, Gaming Performance and Technical Support",
-  description: "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.",
+  title: t("VOLTRIS - PC Optimization, Gaming Performance and Technical Support"),
+  description: t("The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support."),
   metadataBase: new URL('https://www.voltrisoptimizer.com'),
   robots: {
     index: true,

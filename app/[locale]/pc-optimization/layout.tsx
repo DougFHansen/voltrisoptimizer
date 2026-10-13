@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'PC Optimization - Make Your Computer Faster | VOLTRIS',
     description: 'Complete PC optimization. Temporary file cleanup, disabling unnecessary programs, performance tuning, and more. Faster PC in minutes.',
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/pc-optimization`
             }
         }
-    };
+    });
 }
 
 export default function OtimizacaoPcLayout({ children }: { children: React.ReactNode }) {

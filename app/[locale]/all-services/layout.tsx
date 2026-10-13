@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'All Support and Development Services | VOLTRIS',
     description: 'Check out all VOLTRIS services: Remote technical support, website creation, Windows optimization, virus removal, network installation and more. Complete 100% online solutions.',
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services`
             }
         }
-    };
+    });
 }
 
 export default function AllServicesLayout({

@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `Download Voltris Optimizer 2025/2026 | Boost FPS & Gaming Performance`,
         description: `The best PC optimization software. Gain up to 30% more FPS in Valorant, CS2, and Fortnite. Real Input Lag reduction in 1 click. Download the 2025/2026 version for free!`,
         keywords: [],
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/voltris-optimizer`
             }
         }
-    };
+    });
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }

@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'Enterprise Plan - High-Level Corporate Sites | VOLTRIS',
     description: 'Enterprise Plan for website creation. Complete solution for large companies with management systems, integrations, administrative dashboard, and dedicated 24/7 support.',
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services/website-creation/enterprise-plan`
             }
         }
-    };
+    });
 }
 
 export default function PlanoEmpresarialLayout({ children }: { children: React.ReactNode }) {

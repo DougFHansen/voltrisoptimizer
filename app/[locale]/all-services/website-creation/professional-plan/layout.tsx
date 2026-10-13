@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'Professional Plan - Advanced Web Creation | VOLTRIS',
     description: 'Professional Plan for website creation. Complete site with advanced features, integrated blog, optimized SEO, and premium support. Ideal for growing businesses.',
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services/website-creation/professional-plan`
             }
         }
-    };
+    });
 }
 
 export default function PlanoProfissionalLayout({ children }: { children: React.ReactNode }) {
