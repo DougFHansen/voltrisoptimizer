@@ -247,7 +247,7 @@ export default function LanguageSelector({ inDrawer = false }: { inDrawer?: bool
 
       {/* Dropdown */}
       <div
-        className={`absolute z-[120] ${inDrawer ? 'left-0 top-full mt-2' : 'right-0 top-full mt-2'} w-60 origin-top rounded-2xl border border-white/10 bg-[#0A0A14]/95 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] py-2 transition-all duration-200 ${
+        className={`absolute z-[120] ${inDrawer ? 'left-0 top-full mt-2' : 'right-0 top-full mt-2'} w-60 origin-top rounded-2xl border border-white/10 bg-[#0A0A14]/95 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] py-2 transition-all duration-200 max-h-[min(70dvh,520px)] overflow-y-auto overscroll-contain [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.15)_transparent] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/10 hover:[&::-webkit-scrollbar-thumb]:bg-white/20 ${
           open ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-[0.97]'
         }`}
         role="listbox"

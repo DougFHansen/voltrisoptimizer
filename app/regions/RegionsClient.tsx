@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { useSiteT } from '@/lib/site-i18n/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -24,41 +25,34 @@ interface RegionsClientProps {
 
 export default function RegionsClient({ cityName, countryName, continentName }: RegionsClientProps) {
     const idx = (cityName.length) % 3;
+    const t = useSiteT();
 
     const heroTitles = [
-        <h1 key="0" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-            Remote IT <span className="inline-block py-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Services in {cityName}</span>
-        </h1>,
-        <h1 key="1" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-            Professional PC <span className="inline-block py-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text italic">Optimization for {cityName}</span>
-        </h1>,
-        <h1 key="2" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-            Premium IT <span className="inline-block py-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Support in {cityName}</span>
-        </h1>
+        `Remote IT Services in ${cityName}`,
+        `Professional PC Optimization for ${cityName}`,
+        `Premium IT Support in ${cityName}`,
+    ];
+    const heroTitleGradients = [
+        'from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]',
+        'from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]',
+        'from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B]',
     ];
 
     const heroDescriptions = [
-        <p key="0" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Computer maintenance, gaming PC optimization, and elite remote technical support. The best technology service for clients in <strong>{cityName}</strong>, {countryName}, available worldwide.
-        </p>,
-        <p key="1" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Unleash the highest performance for your computer in <strong>{cityName}</strong>. 100% remote service for Windows formatting, virus removal, and FPS boost.
-        </p>,
-        <p key="2" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Hardware and software diagnosis specialists providing online solutions directly to <strong>{cityName}</strong> through our secure remote infrastructure.
-        </p>
+        `Computer maintenance, gaming PC optimization, and elite remote technical support. The best technology service for clients in ${cityName}, ${countryName}, available worldwide.`,
+        `Unleash the highest performance for your computer in ${cityName}. 100% remote service for Windows formatting, virus removal, and FPS boost.`,
+        `Hardware and software diagnosis specialists providing online solutions directly to ${cityName} through our secure remote infrastructure.`,
     ];
 
     const localH2 = [
-        <h2 key="0" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            The Remote Support That <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">{cityName}</span> Trusts
-        </h2>,
-        <h2 key="1" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            Exclusive Online Service For <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B]">{cityName}</span>
-        </h2>,
-        <h2 key="2" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-            Cutting-Edge Remote Tech in <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF94] to-[#31A8FF]">{cityName}</span>
-        </h2>
+        `The Remote Support That ${cityName} Trusts`,
+        `Exclusive Online Service For ${cityName}`,
+        `Cutting-Edge Remote Tech in ${cityName}`,
+    ];
+    const localH2Gradients = [
+        'from-[#31A8FF] to-[#8B31FF]',
+        'from-[#8B31FF] to-[#FF4B6B]',
+        'from-[#00FF94] to-[#31A8FF]',
     ];
 
     return (
@@ -84,11 +78,15 @@ export default function RegionsClient({ cityName, countryName, continentName }: 
                         >
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
                                 <GlobeAltIcon className="w-4 h-4 text-[#31A8FF]" />
-                                <span className="text-xs sm:text-sm font-bold text-white tracking-widest uppercase">Global Remote Support: {cityName}, {countryName}</span>
+                                <span className="text-xs sm:text-sm font-bold text-white tracking-widest uppercase">{t(`Global Remote Support: ${cityName}, ${countryName}`)}</span>
                             </div>
 
-                            {heroTitles[idx]}
-                            {heroDescriptions[idx]}
+                            <h1 className={`text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-[1.1] px-2 italic bg-gradient-to-r ${heroTitleGradients[idx]} text-transparent bg-clip-text`}>
+                                {t(heroTitles[idx])}
+                            </h1>
+                            <p className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                                {t(heroDescriptions[idx])}
+                            </p>
 
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
                                 <Link
@@ -113,10 +111,11 @@ export default function RegionsClient({ cityName, countryName, continentName }: 
                 <section className="py-24 px-4 bg-[#0A0A0F]/80 backdrop-blur-xl border-y border-white/5 relative z-10">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
-                            {localH2[idx]}
+                            <h2 className={`text-3xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${localH2Gradients[idx]}`}>
+                                {t(localH2[idx])}
+                            </h2>
                             <p className="text-slate-400 text-lg leading-relaxed font-light">
-                                We serve clients globally, bringing our expertise directly to <strong>{cityName}</strong> through highly secure remote connections. 
-                                No physical visits required. We provide immediate assistance, saving you the hassle of commuting to a local repair shop.
+                                {t(`We serve clients globally, bringing our expertise directly to ${cityName} through highly secure remote connections. No physical visits required. We provide immediate assistance, saving you the hassle of commuting to a local repair shop.`)}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 {[
@@ -145,8 +144,8 @@ export default function RegionsClient({ cityName, countryName, continentName }: 
                                     <span className="text-xs text-slate-500 font-mono ml-2">remote_tunnel_{cityName.toLowerCase().replace(/\s+/g, '_')}.sh</span>
                                 </div>
                                 <div className="space-y-4 font-mono text-sm text-slate-400">
-                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>Establishing secure connection to {cityName}...</span></div>
-                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>Routing through {continentName} nodes.</span></div>
+                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>{t(`Establishing secure connection to ${cityName}...`)}</span></div>
+                                    <div className="flex items-center gap-2 transition-colors duration-300 group-hover:text-white"><span className="text-[#31A8FF]">&gt;</span> <span>{t(`Routing through ${continentName} nodes.`)}</span></div>
                                     <div className="flex items-center gap-2 text-green-400"><span className="text-green-400">✓</span> <span>Connection Secured. Latency: 42ms</span></div>
                                     <div className="flex items-center gap-2 text-[#31A8FF]"><span className="text-[#31A8FF]">&gt;</span> <span>Ready for system diagnostics.</span></div>
                                 </div>
@@ -167,7 +166,7 @@ export default function RegionsClient({ cityName, countryName, continentName }: 
                 <section className="py-24 px-4 relative z-10">
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Remote Services for {cityName}</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">{t(`Our Remote Services for ${cityName}`)}</h2>
                             <p className="text-slate-400 max-w-2xl mx-auto font-light">Comprehensive digital solutions designed for performance and security, delivered globally.</p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -210,12 +209,12 @@ export default function RegionsClient({ cityName, countryName, continentName }: 
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Frequently Asked Questions</h2>
-                            <p className="text-slate-400 font-light">Common questions from our clients in {cityName}.</p>
+                            <p className="text-slate-400 font-light">{t(`Common questions from our clients in ${cityName}.`)}</p>
                         </div>
                         <div className="space-y-4">
                             {[
                                 {
-                                    q: `Can I receive support in ${cityName} remotely?`,
+                                    q: t(`Can I receive support in ${cityName} remotely?`),
                                     a: "Yes, absolutely! We provide 100% remote services, meaning you don't need to leave your home or office. We connect to your system securely over the internet."
                                 },
                                 {
@@ -264,7 +263,7 @@ export default function RegionsClient({ cityName, countryName, continentName }: 
                                     <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Anywhere in the World</span>
                                 </h2>
                                 <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-                                    Don't waste time looking for a local repair shop. We solve everything via safe remote access. The best technical support for <strong>{cityName}</strong> is just one click away.
+                                    {t(`Don't waste time looking for a local repair shop. We solve everything via safe remote access. The best technical support for ${cityName} is just one click away.`)}
                                 </p>
                                 <Link
                                     href="/contact"

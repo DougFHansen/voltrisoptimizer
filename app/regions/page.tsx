@@ -52,7 +52,7 @@ export default function RegionsIndexPage() {
                                                 className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 group"
                                             >
                                                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-[#8B31FF] transition-colors"></span>
-                                                Remote Support in {city.name}
+                                                {`Remote Support in ${city.name}`}
                                             </Link>
                                         </li>
                                     ))}

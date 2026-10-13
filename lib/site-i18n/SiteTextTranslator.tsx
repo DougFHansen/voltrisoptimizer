@@ -39,6 +39,12 @@ const SKIP_SELECTOR = 'script,style,code,pre,textarea,noscript';
 // their native script by design and must never be machine-translated).
 const NO_TRANS_ATTR = 'data-notrans';
 const cache = new WeakMap<Node, string | null>(); // original English captured per node
+// Visible text also lives in a handful of attributes (search placeholders, icon
+// tooltips, accessible labels, image alts). We translate the same exact-match
+// way as text nodes, capturing the original English per element+attribute so
+// re-walks never double-translate.
+const TRANSLATE_ATTRS = ['placeholder', 'aria-label', 'title', 'alt'] as const;
+const attrCache = new WeakMap<Element, Record<string, string>>();
 const dictCache: Record<string, Dict | null> = {};
 // Per-deploy cache-busting token. `__webpack_hash__` is the compilation hash,
 // unique per build and inlined by webpack on both server and client, so a new
@@ -100,10 +106,35 @@ export default function SiteTextTranslator({ locale }: { locale: string }) {
       }
     };
 
+    const translateAttrs = (el: Element) => {
+      if (shouldSkip(el) || !dictRef.current) return;
+      let store = attrCache.get(el);
+      if (!store) {
+        store = {};
+        for (const a of TRANSLATE_ATTRS) {
+          const v = el.getAttribute(a);
+          if (v != null) store[a] = v;
+        }
+        attrCache.set(el, store);
+      }
+      for (const a of TRANSLATE_ATTRS) {
+        const orig = store[a];
+        if (orig == null) continue;
+        const key = normalized(orig);
+        if (!key) continue;
+        const tr = dictRef.current[key];
+        if (tr && tr !== el.getAttribute(a)) el.setAttribute(a, tr);
+      }
+    };
+
     const walk = (root: Node) => {
-      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
       let tn: Node | null;
       while ((tn = walker.nextNode())) {
+        if (tn.nodeType === 1) {
+          translateAttrs(tn as Element);
+          continue;
+        }
         if (!(tn as any).__vt) {
           cache.set(tn, (tn as Text).nodeValue);
           (tn as any).__vt = true;

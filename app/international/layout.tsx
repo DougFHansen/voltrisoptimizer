@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import ClientLocaleI18n from "@/components/ClientLocaleI18n";
 
 export const metadata: Metadata = {
   title: {
@@ -70,5 +71,9 @@ export default function InternationalLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  // /international is a middleware "bypass" route (no [locale] segment), so the
+  // localized layout's i18n context/DOM translator never runs here. Wrap the
+  // tree in the cookie-driven locale provider so the visible text follows the
+  // user's chosen language.
+  return <ClientLocaleI18n>{children}</ClientLocaleI18n>;
 }

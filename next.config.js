@@ -2,7 +2,9 @@
 const nextConfig = {
   // Performance global otimizada
   experimental: {
-    optimizeCss: true,
+    // optimizeCss desativado: em producao o experimental `optimizeCss` (cssnano) corrompia
+    // o graph de modulos do server e causava 500 (webpack-runtime 'reading call') em /en e /regions.
+    optimizeCss: false,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',
