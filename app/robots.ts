@@ -63,11 +63,27 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
       {
+        // Bing recebe exatamente as mesmas proteções do Google/`*` — assim o
+        // bingbot não passa a rastrear dashboard/login/auth/_next que os outros
+        // já bloqueiam (regra profissional e consistente entre buscadores).
         userAgent: 'bingbot',
         allow: '/',
         disallow: [
+          '/*/dashboard/',
+          '/*/restricted-area-admin/',
+          '/*/login',
+      
           '/admin/',
           '/api/',
+          '/auth/',
+          '/debug-commands',
+          '/test-commands',
+          '/debug-link',
+          '/login',
+          '/reset-password',
+          '/perfil',
+          '/_next/',
+          '*.php',
         ],
       }
     ],

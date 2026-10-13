@@ -1416,14 +1416,6 @@
     "time": "15 min"
   },
   {
-    "id": "micro-stuttering-in-games-causes",
-    "title": "Micro Stuttering in Games: Causes and Solutions (2026)",
-    "description": "Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques.",
-    "category": "games-fix",
-    "difficulty": "Intermediate",
-    "time": "15 min"
-  },
-  {
     "id": "minecraft-lag-fix-optifine-fabric",
     "title": "Minecraft Lag Fix: OptiFine vs Fabric (Sodium) in 2026",
     "description": "Is your Minecraft stuttering? Learn how to install OptiFine or Fabric with Sodium to gain a lot of FPS and run shaders even on a low-end PC.",

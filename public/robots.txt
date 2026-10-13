@@ -1,35 +1,73 @@
-# robots.txt - Voltris Optimizer
-# Configuração SEO para máximo rastreamento e indexação
+# robots.txt - VOLTRIS Optimizer
+# Configuração SEO: máximo rastreamento do conteúdo público e bloqueio
+# estrito das áreas de aplicação/admin. As regras são idênticas para todos os
+# user-agents (inclusive o Bing), para não deixar o bingbot rastrear páginas
+# internas (dashboard, login, auth, /_next) que o Google já bloqueia.
 
 User-agent: *
 Allow: /
 Disallow: /dashboard/
 Disallow: /restricted-area-admin/
-Disallow: /api/
-Disallow: /auth/
 Disallow: /admin/
 Disallow: /private/
+Disallow: /api/
+Disallow: /auth/
+Disallow: /debug-commands
+Disallow: /test-commands
+Disallow: /debug-link
 Disallow: /_next/
 Disallow: /static/
 Disallow: /tmp/
 Disallow: /*.php
+Disallow: /login
+Disallow: /*/login
+Disallow: /reset-password
+Disallow: /*/reset-password
+Disallow: /perfil
+Disallow: /*/perfil
 
 User-agent: Googlebot
 Allow: /
 Disallow: /dashboard/
 Disallow: /restricted-area-admin/
 Disallow: /admin/
+Disallow: /private/
 Disallow: /api/
 Disallow: /auth/
+Disallow: /debug-commands
+Disallow: /test-commands
+Disallow: /debug-link
+Disallow: /_next/
+Disallow: /static/
+Disallow: /tmp/
 Disallow: /*.php
+Disallow: /login
+Disallow: /*/login
+Disallow: /reset-password
+Disallow: /*/reset-password
 
-User-agent: Bingbot
+User-agent: bingbot
 Allow: /
+Disallow: /dashboard/
+Disallow: /restricted-area-admin/
 Disallow: /admin/
+Disallow: /private/
 Disallow: /api/
+Disallow: /auth/
+Disallow: /debug-commands
+Disallow: /test-commands
+Disallow: /debug-link
+Disallow: /_next/
+Disallow: /static/
+Disallow: /tmp/
+Disallow: /*.php
+Disallow: /login
+Disallow: /*/login
+Disallow: /reset-password
+Disallow: /*/reset-password
 
-# Sitemap dinâmico gerado automaticamente pelo Next.js
+# Sitemap dinâmico gerado automaticamente pelo Next.js (app/sitemap.ts)
 Sitemap: https://www.voltrisoptimizer.com/sitemap.xml
 
-# IndexNow key location para verificação
+# Host canônico
 Host: https://www.voltrisoptimizer.com

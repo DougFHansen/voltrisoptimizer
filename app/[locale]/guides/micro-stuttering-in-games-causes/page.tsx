@@ -1,22 +1,28 @@
 import { Metadata } from 'next'
-import { GuideTemplateClient } from '@/components/GuideTemplateClient'
+import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate'
 
-export const metadata: Metadata = {
-  title: 'Micro Stuttering in Games - Causes and Solutions | Voltris Optimizer',
-  description: 'Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques.',
-  keywords: ['micro stuttering', 'game performance', 'fps drops', 'pc optimization', 'gaming'],
+const title = 'Micro Stuttering in Games: Causes and Solutions (2026)';
+const description = 'Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques.';
+const keywords = ['micro stuttering', 'game performance', 'fps drops', 'pc optimization', 'gaming'];
+
+// Padrão profissional das demais guias: metadata localizada + hreflang/canonical
+// por idioma (createGuideMetadata usa getLocalizedAlternates internamente).
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return createGuideMetadata('micro-stuttering-in-games-causes', title, description, keywords, locale);
 }
 
 export const guideMetadata = {
   id: 'micro-stuttering-in-games-causes',
-  title: 'Micro Stuttering in Games: Causes and Solutions (2026)',
-  description: 'Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques.',
+  title,
+  description,
   category: 'games-fix',
   difficulty: 'Intermediate',
   time: '15 min'
 };
 
-export default function MicroStutteringGuide() {
+export default async function MicroStutteringGuide({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const contentSections = [
     {
       title: "What is Micro Stuttering?",
@@ -66,10 +72,12 @@ export default function MicroStutteringGuide() {
   ]
 
   return (
-    <GuideTemplateClient
-      title="Micro Stuttering in Games"
-      description="Complete guide to understanding and fixing micro stuttering in PC games. Learn about causes, diagnostics, and optimization techniques."
-      keywords={['micro stuttering', 'game performance', 'fps drops', 'pc optimization', 'gaming']}
+    <GuideTemplate
+      locale={locale}
+      slug="micro-stuttering-in-games-causes"
+      title={title}
+      description={description}
+      keywords={keywords}
       estimatedTime="15 minutes"
       difficultyLevel="Intermediate"
       contentSections={contentSections}
