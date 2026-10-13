@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: `Como Melhorar a Performance da Steam no Windows 11 (2026)`,
-        description: `A Steam está lenta para abrir ou travando ao baixar jogos? Aprenda a otimizar o launcher da Steam no Windows 11, limpar caches de download e reduzir o consumo de RAM.`,
+    return await localizeMetadata(locale, {
+        title: `How to Improve Steam Performance on Windows 11 (2026)`,
+        description: `Is Steam slow to open or stuttering while downloading games? Learn how to optimize the Steam launcher and reduce its resource usage on Windows 11.`,
         keywords: ['como acelerar steam windows 11', 'steam lenta para abrir fix', 'melhorar download steam windows 11', 'voltris optimizer steam', 'limpar cache steam windows 11', 'steam consumindo ram solução'],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/improve-steam-performance-windows-11`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-steam-performance-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function SteamPerformance() {

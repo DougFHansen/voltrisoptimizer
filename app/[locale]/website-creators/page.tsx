@@ -2,10 +2,11 @@ import React from 'react';
 import { Metadata } from 'next';
 import { getLocalizedAlternates } from '@/lib/seo';
 import WebsiteCreatorsClient from './WebsiteCreatorsClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: "Website Creators - Specialized Web Development Team | VOLTRIS",
   description: "Professional and specialized website creators. Experienced team in web development, responsive design, and SEO. Sites that convert visitors into customers with guaranteed quality.",
@@ -52,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     images: ["/logo.png"]
   },
   alternates: getLocalizedAlternates('/website-creators', locale)
-    };
+    });
 }
 
 export default function WebsiteCreatorsPage() {

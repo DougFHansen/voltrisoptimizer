@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Disable Background Apps on Windows 11 (2026)`,
         description: `Is your PC running out of RAM? Learn how to disable hidden background apps on Windows 11. Complete guide on privacy settings and background process optimization.`,
         keywords: ['disable background apps windows 11', 'how to save ram windows 11', 'block background apps windows', 'voltris app cleaner', 'remove useless processes windows', 'how to speed up windows 11 apps'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/disable-background-apps-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function DesativarAppsFundo() {

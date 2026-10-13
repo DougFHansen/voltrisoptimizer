@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Warzone (2026) | Gain FPS and Reduce Lag`,
         description: `Definitive guide for Call of Duty: Warzone players. Learn how to configure Windows to avoid micro-stuttering, optimize video memory, and reduce ping to the minimum possible.`,
         keywords: ['optimize windows 11 warzone 2026', 'increase fps warzone weak pc', 'reduce lag warzone windows 11', 'voltris optimizer warzone performance', 'warzone competitive mode settings', 'warzone 3 lag fix windows'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-11-for-warzone-2026`
             }
         }
-    };
+    });
 }
 
 export default function WarzoneFPS() {

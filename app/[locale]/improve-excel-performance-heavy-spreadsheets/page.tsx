@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Improve Excel Performance for Large Spreadsheets (2026)`,
         description: `Is Excel crashing or `,
         keywords: ['how to speed up excel large spreadsheets', 'excel crashing slow pc solution', 'optimize excel data calculations', 'voltris optimizer office tweaks', 'improve excel performance windows 11', 'excel not responding fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-excel-performance-heavy-spreadsheets`
             }
         }
-    };
+    });
 }
 
 export default function ExcelPerformance() {

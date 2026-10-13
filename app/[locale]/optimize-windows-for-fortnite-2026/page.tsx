@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows for Fortnite (2026) | Maximum FPS and Zero Lag`,
         description: `The definitive guide for competitive Fortnite players. Learn how to configure Performance Mode, disable telemetry logs, and optimize Windows 11 for the lowest possible response time.`,
         keywords: ['optimize windows fortnite 2026', 'increase fps fortnite pc', 'reduce input lag fortnite windows 11', 'voltris optimizer fortnite performance', 'fortnite performance mode settings', 'fortnite directx 12 vs performance mode'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-fortnite-2026`
             }
         }
-    };
+    });
 }
 
 export default function FortniteFPS() {

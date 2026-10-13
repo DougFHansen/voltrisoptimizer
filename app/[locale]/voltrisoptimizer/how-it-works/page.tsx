@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import HowItWorksClient from './HowItWorksClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
     title: 'How Voltris Optimizer Works | Performance Science (Kernel & AI)',
     description: 'Understand the technology behind Voltris Optimizer. Thread optimization, system latency reduction, and intelligent debloat for Gamers, Streamers, and Businesses.',
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/voltrisoptimizer/how-it-works`
             }
         }
-    };
+    });
 }
 
 export default function HowItWorksPage() {

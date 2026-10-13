@@ -3,6 +3,7 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import GuiasClient from './GuiasClient';
 import { getAllGuides } from '@/lib/guides';
 import { getSiteT, loadSiteDict, applySiteDict } from '@/lib/site-i18n';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     // Route every user-facing string through the locale dictionary (English-keyed).
     // Any string not yet translated falls back to the original English safely.
     const { t } = await getSiteT(locale);
-    return {
+    return await localizeMetadata(locale, {
 
   title: t('Technical Guides and Tutorials | VOLTRIS'),
   description: t('Learn how to format, optimize, remove viruses and solve problems on your PC with our detailed guides written by specialists.'),
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('Step-by-step tutorials to solve your computer problems.'),
     url: canonical,
     type: 'website',
-  }};
+  }});
 }
 
 export default async function Guias({ params }: { params: Promise<{ locale: string }> }) {

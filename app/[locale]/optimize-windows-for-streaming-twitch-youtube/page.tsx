@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Streaming (Twitch/YouTube) (2026)`,
         description: `Is your live stream freezing? Learn how to configure Windows 11 for smooth streaming, optimize OBS Studio, and guarantee zero frame drops during your live broadcasts.`,
         keywords: ['optimize windows 11 for twitch streaming', 'eliminate lag obs studio windows', 'improve encoder performance pc', 'voltris optimizer streamer build', 'configure pc for lag-free streaming', 'windows 11 settings youtube streaming'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-streaming-twitch-youtube`
             }
         }
-    };
+    });
 }
 
 export default function StreamingPerformance() {

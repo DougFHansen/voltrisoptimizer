@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: `Como Melhorar a Performance do Spotify no Windows 11 (2026)`,
-        description: `O Spotify está pesando no seu PC durante os jogos? Aprenda a reduzir o consumo de RAM e CPU do Spotify no Windows 11, sem precisar fechar o app para ouvir música enquanto joga.`,
+    return await localizeMetadata(locale, {
+        title: `How to Improve Spotify Performance on Windows 11 (2026)`,
+        description: `Is Spotify slowing down your PC during games? Learn how to cut its RAM and CPU usage and make Spotify run lighter and smoother on Windows 11.`,
         keywords: ['como reduzir consumo spotify windows 11', 'spotify pesando no pc durante jogo', 'melhorar performance spotify windows', 'voltris optimizer spotify ram', 'spotify lento cpu windows fix', 'ouvir spotify sem lag nos jogos'],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/improve-spotify-performance-windows-11`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-spotify-performance-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function SpotifyPerformance() {

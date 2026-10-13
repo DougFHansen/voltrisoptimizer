@@ -2,10 +2,11 @@ import { Metadata } from 'next';
 import JsonLd from "@/components/JsonLd";
 import { getLocalizedAlternates } from '@/lib/seo';
 import OptimizerClient from './OptimizerClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Voltris Optimizer | PC Optimizer for Gaming and Business (Free Trial)',
   description: 'Increase your FPS by up to 40% and eliminate Windows lag. Voltris Optimizer uses kernel engineering to accelerate your PC and optimize the system automatically. Safe and Professional.',
@@ -114,7 +115,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'max-snippet': -1,
     },
   },
-        alternates: getLocalizedAlternates('/voltrisoptimizer', locale)};
+        alternates: getLocalizedAlternates('/voltrisoptimizer', locale)});
 }
 
 export default function OptimizerPage() {

@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Improve Discord Performance on Windows 11 (2026)`,
         description: `Is your Discord slow or freezing during streams? Learn the best Discord settings on Windows 11 to reduce CPU usage and gain more FPS in your games.`,
         keywords: ['how to speed up discord windows 11', 'discord lagging on stream fix', 'increase fps with discord open', 'voltris discord optimizer', 'improve discord performance low end pc', 'configure discord performance mode'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-discord-performance-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function DiscordPerformance() {

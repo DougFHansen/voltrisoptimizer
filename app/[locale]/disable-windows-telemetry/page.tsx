@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 ﻿import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: ``,
-        description: ``,
+    return await localizeMetadata(locale, {
+        title: `How to Disable Windows 11 Telemetry and Data Collection (2026)`,
+        description: `Stop Windows 11 from tracking your activity. Step-by-step guide to disable telemetry and diagnostic data via Settings, Group Policy and privacy tools.`,
         keywords: [],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/disable-windows-telemetry`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/disable-windows-telemetry`
             }
         }
-    };
+    });
 }
 
 export default function DesativarTelemetriaWindows() {

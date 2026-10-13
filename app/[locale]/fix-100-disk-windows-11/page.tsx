@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Fix 100% Disk Usage Error on Windows 11 (Definitive Guide 2026)`,
         description: `Is your PC freezing with 100% Disk usage in Task Manager? Learn how to fix extreme slowness by disabling SysMain, fixing AHCI drivers, and cleaning corrupted files.`,
         keywords: ['how to fix 100% disk usage windows 11', '100% disk usage fix', 'slow hard drive windows fix', 'voltris ultra cleaner disk 100', 'disable sysmain windows 11', '100% disk usage bug fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/fix-100-disk-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function FixDisk100() {

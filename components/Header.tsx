@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import NotificationDropdown from './notifications/NotificationDropdown';
+import LanguageSelector from './LanguageSelector';
 import { useAuth } from '@/app/hooks/useAuth';
 import { FiMenu, FiX, FiLogOut, FiLayout, FiLoader, FiUser, FiUserPlus } from 'react-icons/fi';
 import Image from 'next/image';
@@ -233,6 +234,7 @@ export default function Header() {
 
           {/* ── Actions Desktop (lg+) ─────────────────── */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-3 z-20 relative shrink-0">
+            <LanguageSelector />
             {loading && !user && !forceLoaded ? (
               <FiLoader className="w-5 h-5 animate-spin text-slate-500" />
             ) : user ? (
@@ -302,6 +304,9 @@ export default function Header() {
             className="fixed inset-0 z-[90] bg-[#050510]/98 backdrop-blur-xl lg:hidden pt-16"
           >
             <div className="flex flex-col h-full overflow-y-auto">
+              <div className="px-6 pt-4">
+                <LanguageSelector inDrawer />
+              </div>
               <nav className="flex flex-col gap-1 px-6 pt-4">
                 {mainNavLinks.map((link) => (
                   <Link

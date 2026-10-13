@@ -4,14 +4,15 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getLocalizedAlternates } from '@/lib/seo';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: 'Global Service Areas | VOLTRIS',
         description: 'Find Voltris Optimizer services and technical support in your region.',
         alternates: getLocalizedAlternates('/regions', locale)
-    };
+    });
 }
 
 export default async function RegionsPage({ params }: { params: Promise<{ locale: string }> }) {

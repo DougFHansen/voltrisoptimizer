@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: ``,
-        description: ``,
+    return await localizeMetadata(locale, {
+        title: `PC Temperature and Hardware Diagnostics Guide (2026)`,
+        description: `Learn how to monitor CPU and GPU temperatures and diagnose overheating or overloaded hardware on Windows 11. Detect thermal throttling and keep your PC stable.`,
         keywords: [],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/hardware-diagnostics-pc-temperature`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/hardware-diagnostics-pc-temperature`
             }
         }
-    };
+    });
 }
 
 export default function DiagnosticoHardwareTemperatura() {

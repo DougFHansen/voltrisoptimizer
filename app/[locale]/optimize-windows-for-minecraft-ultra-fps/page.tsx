@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows for Minecraft | Ultra FPS and Zero Lag (2026)`,
         description: `Is your Minecraft lagging? Learn how to optimize Windows 11 for more FPS in Minecraft Java and Bedrock, configure memory arguments, and reduce input lag.`,
         keywords: ['how to increase fps minecraft windows 11', 'improve minecraft performance low end pc', 'optimize minecraft java edition', 'voltris optimizer minecraft ultra fps', 'minecraft java memory arguments', 'minecraft ultra fps settings'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-minecraft-ultra-fps`
             }
         }
-    };
+    });
 }
 
 export default function MinecraftFPS() {

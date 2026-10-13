@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Clear DirectX Cache on Windows 11 (2026)`,
         description: `Are your games stuttering for no reason? Learn how to clear the DirectX shader cache (DX11/DX12) on Windows 11 to eliminate stuttering and improve graphics stability.`,
         keywords: ['how to clear directx cache windows 11', 'clear directx 12 shaders windows', 'fix game stuttering windows 11', 'voltris ultra cleaner directx', 'delete graphics cache windows', 'reset directx shader cache'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-clean-directx-cache-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function LimparDirectX() {

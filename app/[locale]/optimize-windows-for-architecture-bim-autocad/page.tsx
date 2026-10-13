@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Architecture & Engineering (AutoCAD/BIM) 2026`,
         description: `Speed up your workflow in AutoCAD, Revit, SketchUp, and Lumion. Complete guide for architects and engineers to optimize GPU and render time on Windows 11.`,
         keywords: ['optimize windows for autocad revit', 'speed up 3d render windows 11', 'sketchup performance slow pc fix', 'voltris optimizer workstation architecture', 'improve lumion vray speed', 'configure pc for bim engineering'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-architecture-bim-autocad`
             }
         }
-    };
+    });
 }
 
 export default function OtimizarArquitetura() {

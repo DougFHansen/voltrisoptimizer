@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Counter-Strike 2 (CS2) | Maximum FPS 2026`,
         description: `Definitive guide for CS2 players. Learn how to optimize Windows 11 to achieve high and stable FPS in Counter-Strike 2, reduce input lag, and eliminate stuttering in competitive maps.`,
         keywords: ['optimize windows 11 counter strike 2', 'increase fps cs2 windows 11', 'how to remove lag cs2 pc', 'voltris optimizer cs2 performance', 'competitive cs2 windows settings', 'cs2 stuttering fix windows 11'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-counter-strike-2-cs2`
             }
         }
-    };
+    });
 }
 
 export default function CS2Performance() {

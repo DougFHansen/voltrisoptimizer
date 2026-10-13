@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `Top 10 Best Tweaks to Improve Windows 11 Performance (2026)`,
         description: `Discover the definitive adjustments that actually work. From registry to GPU acceleration, this guide shows you how to transform your slow PC into a high-performance machine.`,
         keywords: ['best tweaks windows 11 2026', 'speed up pc tweaks', 'registry tweaks performance windows', 'voltris dna tweaks', 'optimize windows 11 gaming', 'secret windows 11 tricks'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/best-performance-tweaks-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function MelhoresTweaks() {

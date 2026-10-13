@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Clear NVIDIA Cache on Windows 11 (Shader Cache 2026)`,
         description: `Are your games experiencing micro-stutters? Learn how to clear the NVIDIA Shader Cache to fix performance issues and ensure smooth gameplay after new driver updates.`,
         keywords: ['how to clear nvidia cache windows 11', 'shader cache nvidia reset', 'clear dxcache nvidia', 'voltris ultra cleaner nvidia', 'fix stuttering nvidia windows 11', 'delete video driver cache'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-clean-nvidia-cache-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function LimparCacheNvidia() {

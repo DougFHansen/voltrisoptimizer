@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: `Como Otimizar o Windows 11 para Edição de Vídeo (2026)`,
-        description: `Acelere seu fluxo de trabalho no Premiere Pro, After Effects e DaVinci Resolve. Guia completo para otimizar a RAM, o uso de SSDs para cache e prioridade de renderização no Windows 11.`,
+    return await localizeMetadata(locale, {
+        title: `How to Optimize Windows 11 for Video Editing (2026)`,
+        description: `Speed up your Premiere Pro workflow. Learn how to optimize Windows 11 for video editing with better RAM, cache and hardware settings for smooth timelines.`,
         keywords: ['otimizar windows para edição de vídeo', 'acelerar premiere pro windows 11', 'pc lento after effects solução', 'voltris optimizer workstation', 'configurar windows 11 para renderização', 'melhorar performance davinci resolve'],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/optimize-windows-for-video-editing`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-video-editing`
             }
         }
-    };
+    });
 }
 
 export default function OtimizarVideo() {

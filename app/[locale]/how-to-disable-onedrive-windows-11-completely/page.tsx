@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Disable and Remove OneDrive from Windows 11 Completely (2026)`,
         description: `Is OneDrive slowing down your PC? Learn how to disable auto-sync, remove the OneDrive icon from File Explorer, and completely uninstall OneDrive from Windows 11.`,
         keywords: ['how to disable onedrive windows 11 completely', 'remove onedrive from explorer permanently', 'uninstall microsoft onedrive completely', 'voltris optimizer onedrive blocker', 'stop onedrive sync windows 11', 'remove onedrive from sidebar'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-disable-onedrive-windows-11-completely`
             }
         }
-    };
+    });
 }
 
 export default function DesativarOneDrive() {

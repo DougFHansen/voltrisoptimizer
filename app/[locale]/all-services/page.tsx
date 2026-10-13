@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import ServicosClient from './ServicosClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'All Services | VOLTRIS - Remote Technical Support',
   description: 'Discover our premium technical support services: formatting, optimization, virus removal, program installation, and web creation. Fast and secure assistance.',
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services`
             }
         }
-    };
+    });
 }
 
 export default function ServicosPage() {

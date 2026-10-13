@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Make Windows 11 Start Faster | Boot Speed Guide 2026`,
         description: `Does your PC take too long to start? Learn how to optimize Windows 11 startup, disable background apps, and reduce boot time to just a few seconds.`,
         keywords: ['how to make windows 11 start faster', 'improve pc boot speed', 'speed up windows startup', 'voltris boot optimizer', 'clean startup apps windows 11', 'how to boot pc fast windows 11'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-windows-11-boot-speed`
             }
         }
-    };
+    });
 }
 
 export default function VelocidadeBoot() {

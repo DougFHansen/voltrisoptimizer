@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Check Processes Consuming Most CPU in Windows 11 (2026)`,
         description: `Is your PC slow for no reason? Learn how to identify and eliminate processes that are unnecessarily consuming CPU in Windows 11, using Task Manager and advanced tools.`,
         keywords: ['check high cpu processes windows 11', 'how to see what consumes cpu windows', 'process consuming 100 cpu windows 11', 'voltris diagnostic deep scan', 'identify heavy process windows', 'task using too much cpu solution'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/check-processes-consuming-most-cpu-windows`
             }
         }
-    };
+    });
 }
 
 export default function CpuDiagnostic() {

@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Remove Duplicate Files on Windows 11 (Guide 2026)`,
         description: `Is your hard drive full of duplicate files? Learn how to safely locate and delete duplicate photos, videos, and documents automatically on Windows 11.`,
         keywords: ['how to remove duplicate files windows 11', 'tool to find duplicate photos pc', 'free disk space removing duplicates', 'voltris ultra cleaner duplicates', 'auto delete duplicate files', 'how to free up hard drive space duplicates'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-remove-duplicate-files-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function RemoverDuplicados() {

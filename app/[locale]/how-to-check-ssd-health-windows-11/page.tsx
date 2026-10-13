@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Check SSD Health on Windows 11 (TBW & Lifespan 2026)`,
         description: `Is your SSD slow or failing? Learn how to check disk health, monitor temperature, and guarantee maximum SSD performance on Windows 11.`,
         keywords: ['how to check ssd health windows 11', 'slow ssd windows 11 fix', 'disk health check windows 11', 'voltris smart disk scan ssd', 'check ssd lifespan tbw', 'ssd overheating pc fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-check-ssd-health-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function SSDHealth() {

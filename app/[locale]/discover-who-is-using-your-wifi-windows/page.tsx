@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Find Out Who Is Using Your Wi-Fi on Windows 11 (2026)`,
         description: `Is your internet slow? Learn how to identify devices connected to your Wi-Fi network using Windows. Complete guide on network security, network commands, and DNS protection.`,
         keywords: ['find out who is using your wifi', 'see devices connected to network windows', 'slow internet wifi intruder', 'voltris network security', 'wifi network security windows 11', 'how to kick someone off wifi'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/discover-who-is-using-your-wifi-windows`
             }
         }
-    };
+    });
 }
 
 export default function WifiSecurity() {

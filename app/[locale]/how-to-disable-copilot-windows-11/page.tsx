@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Disable and Remove Copilot from Windows 11 (2026)`,
         description: `Is Copilot consuming your RAM? Learn how to completely disable Microsoft AI, remove the taskbar icon, and block AI telemetry processes on Windows 11.`,
         keywords: ['how to disable copilot windows 11', 'remove copilot from taskbar', 'disable microsoft ai windows', 'voltris optimizer privacy shield', 'block microsoft copilot telemetry', 'how to remove copilot from windows'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-disable-copilot-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function DesativarCopilot() {

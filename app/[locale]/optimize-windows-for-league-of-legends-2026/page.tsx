@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for League of Legends (2026) | Maximum FPS`,
         description: `Is your LoL game lagging? Learn how to optimize Windows 11 for stable FPS in League of Legends, reduce ping, and eliminate client stuttering.`,
         keywords: ['optimize windows 11 league of legends', 'increase fps lol 2026 windows', 'how to remove lag league of legends pc', 'voltris optimizer lol performance', 'best settings league of legends windows', 'league of legends client slow fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-league-of-legends-2026`
             }
         }
-    };
+    });
 }
 
 export default function LoLPerformance() {

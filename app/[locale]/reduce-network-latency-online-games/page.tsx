@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Reduce Network Latency (Ping) in Online Games on Windows 11 (2026)`,
         description: `Professional guide to stabilize your network signal. Learn how to disable Nagle`,
         keywords: ['reduce network latency online games', 'how to lower ping windows 11', 'optimize gaming network', 'voltris network optimizer', 'disable nagles algorithm windows', 'tcp ack frequency tweak'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/reduce-network-latency-online-games`
             }
         }
-    };
+    });
 }
 
 export default function LatenciaRede() {

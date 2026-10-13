@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `Which Services to Disable on Windows 11 to Improve Performance (2026)`,
         description: `Complete and safe guide on Windows services. Learn which processes to disable to free up RAM and CPU without compromising system stability.`,
         keywords: ['disable unnecessary services windows 11', 'safe services to disable windows 11', 'optimize windows 11 through services', 'voltris optimizer service manager', 'improve pc speed services', 'windows 11 services guide'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/disable-unnecessary-services-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function DesativarServicos() {

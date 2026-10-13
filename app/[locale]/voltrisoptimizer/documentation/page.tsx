@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import DocumentationClient from './DocumentationClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Technical Documentation | Voltris Optimizer',
   description: 'Detailed analysis of the engineering behind Voltris Optimizer. Learn how we optimize the Windows Kernel, Services, and Networks.',
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/voltrisoptimizer/documentation`
             }
         }
-    };
+    });
 }
 
 export default function DocumentationPage() {

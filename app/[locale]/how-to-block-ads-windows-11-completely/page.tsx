@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Block All Ads on Windows 11 | Definitive Guide 2026`,
         description: `Is Windows 11 full of ads? Learn how to permanently remove ads from the Start Menu, File Explorer, and Lock Screen for free.`,
         keywords: ['block windows 11 start menu ads', 'remove windows 11 ads permanently', 'disable explorer ads windows 11', 'voltris optimizer adblocker', 'clean windows 11 ads', 'how to remove microsoft app suggestions'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-block-ads-windows-11-completely`
             }
         }
-    };
+    });
 }
 
 export default function BloquearAnuncios() {

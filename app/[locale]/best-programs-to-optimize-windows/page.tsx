@@ -1,15 +1,16 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 // We import the metadata from the local file
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: ``,
-        description: ``,
+    return await localizeMetadata(locale, {
+        title: `Best Programs to Optimize Windows in 2026 (Tested and Compared)`,
+        description: `A detailed comparison of the best Windows optimization tools in 2026. Find out which program really speeds up your PC and which ones to avoid.`,
         keywords: [],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/best-programs-to-optimize-windows`,
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/best-programs-to-optimize-windows`
             }
         }
-    };
+    });
 }
 
 export default function MelhoresProgramasOtimizarWindows() {

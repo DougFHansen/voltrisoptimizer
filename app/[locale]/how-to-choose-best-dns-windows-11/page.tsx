@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Choose the Best DNS for Windows 11 in 2026 | Gamer Guide`,
         description: `Stop browsing slowly. Learn how to choose and configure the best DNS for gaming and browsing on Windows 11. Discover how to reduce ping and get faster responses.`,
         keywords: ['best dns for gaming windows 11', 'how to change dns windows 11', 'fastest dns for gamers', 'voltris dns optimizer', 'cloudflare vs google dns windows', 'improve internet speed dns'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-choose-best-dns-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function EscolherDNS() {

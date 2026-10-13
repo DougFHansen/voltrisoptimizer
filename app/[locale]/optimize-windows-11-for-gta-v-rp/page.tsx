@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for GTA V RP (FiveM) | FPS & Stability`,
         description: `Is your GTA RP lagging? Learn how to optimize Windows to gain more FPS in FiveM, reduce stuttering in heavy city servers, and improve texture loading times.`,
         keywords: ['optimize windows 11 gta v rp', 'increase fps fivem low end pc', 'how to remove lag gta rp windows', 'voltris optimizer fivem performance', 'improve texture loading gta rp', 'gta rp performance mode settings'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-11-for-gta-v-rp`
             }
         }
-    };
+    });
 }
 
 export default function GtaRpPerformance() {

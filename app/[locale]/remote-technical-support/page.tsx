@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Professional Remote Technical Support | VOLTRIS - Online Technical Assistance',
   description: 'Specialized remote technical support service for Windows, problem resolution, formatting, optimization, and system maintenance. Service provided worldwide.',
@@ -75,7 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/remote-technical-support`
             }
         }
-    };
+    });
 }
 
 export default function SuporteTecnicoRemotoPage() {

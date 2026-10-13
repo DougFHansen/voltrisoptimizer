@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: `Como Otimizar o Windows 11 para Photoshop e Lightroom (2026)`,
-        description: `Seu Photoshop está lento? Aprenda a configurar o disco de scratch, a GPU e a RAM para acelerar a edição de fotos no Windows 11 com o Adobe Photoshop e Lightroom Classic.`,
+    return await localizeMetadata(locale, {
+        title: `How to Optimize Windows 11 for Photoshop and Lightroom (2026)`,
+        description: `Is your Photoshop slow or crashing? Learn how to configure scratch disks, RAM and drivers to make Windows 11 run Photoshop and Lightroom faster.`,
         keywords: ['otimizar windows 11 photoshop', 'acelerar lightroom classic windows', 'configurar scratch disk photoshop', 'voltris optimizer adobe photoshop', 'ram gpu photoshop windows 11', 'photoshop lento travando fix'],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/optimize-windows-for-photo-editing-photoshop`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-photo-editing-photoshop`
             }
         }
-    };
+    });
 }
 
 export default function PhotoshopPerformance() {

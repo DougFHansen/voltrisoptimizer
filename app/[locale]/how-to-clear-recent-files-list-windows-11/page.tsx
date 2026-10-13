@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Clear the Recent Files List on Windows 11 (Privacy 2026)`,
         description: `Worried about who can see your recently opened files? Learn how to clear and disable recent file history on Windows 11 via Explorer, Start Menu, and Taskbar.`,
         keywords: ['clear recent files windows 11', 'disable file history windows 11', 'remove recent files list explorer', 'voltris privacy shield files', 'how to hide opened files windows', 'delete document history windows'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-clear-recent-files-list-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function LimparRecentes() {

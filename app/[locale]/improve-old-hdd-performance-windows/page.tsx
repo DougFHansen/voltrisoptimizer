@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Improve Old HD Performance in Windows 11 (2026)`,
         description: `Is your loading slow? Learn how to breathe life into your conventional HD. Guide on defragmentation, read optimization, and how to reduce disk access time in Windows 11.`,
         keywords: ['improve old hd performance', 'how to speed up hd in windows 11', 'slow conventional hd solution', 'voltris optimizer smart disk', 'optimize hard disk reading', 'old slow pc hd fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-old-hdd-performance-windows`
             }
         }
-    };
+    });
 }
 
 export default function PerformanceHD() {

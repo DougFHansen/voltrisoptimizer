@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Speed Up Google Chrome on Windows 11 | Less RAM & More Speed`,
         description: `Is your Google Chrome slow or freezing? Learn how to optimize Windows 11 to improve browser performance, reduce RAM usage, and load websites instantly.`,
         keywords: ['how to speed up google chrome windows 11', 'chrome using too much ram fix', 'improve chrome performance low end pc', 'voltris optimizer chrome ram', 'optimize google chrome windows', 'chrome slow on windows 11 fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-google-chrome-performance-windows`
             }
         }
-    };
+    });
 }
 
 export default function ChromePerformance() {

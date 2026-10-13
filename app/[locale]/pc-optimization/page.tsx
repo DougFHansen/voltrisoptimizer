@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import OtimizacaoPcClient from './OtimizacaoPcClient';
 import JsonLd from '@/components/JsonLd';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'PC Optimization and FPS Boost - Gamer & Professional | VOLTRIS',
   description: 'Boost your Windows PC performance. Professional optimization for games (high FPS), work, and heavy software. Reduction of input lag and stuttering.',
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/pc-optimization`
             }
         }
-    };
+    });
 }
 
 export default function PcOptimizationPage() {

@@ -33,7 +33,7 @@
   },
   {
     "route": "/[locale]/all-services",
-    "lastModified": "2026-08-15T23:32:54.757Z"
+    "lastModified": "2026-10-13T09:36:06.848Z"
   },
   {
     "route": "/[locale]/all-services/software-installation",
@@ -49,7 +49,7 @@
   },
   {
     "route": "/[locale]/all-services/website-creation",
-    "lastModified": "2026-08-15T23:32:54.762Z"
+    "lastModified": "2026-10-13T09:36:06.849Z"
   },
   {
     "route": "/[locale]/all-services/website-creation/professional-plan",
@@ -61,15 +61,15 @@
   },
   {
     "route": "/[locale]/best-performance-tweaks-windows-11",
-    "lastModified": "2026-06-12T23:27:19.878Z"
+    "lastModified": "2026-10-13T09:36:06.850Z"
   },
   {
     "route": "/[locale]/best-programs-to-optimize-windows",
-    "lastModified": "2026-06-12T23:58:10.342Z"
+    "lastModified": "2026-10-13T09:52:30.014Z"
   },
   {
     "route": "/[locale]/best-sound-settings-for-gaming-windows",
-    "lastModified": "2026-06-12T23:42:33.630Z"
+    "lastModified": "2026-10-13T09:36:06.852Z"
   },
   {
     "route": "/[locale]/buy-license",
@@ -77,7 +77,7 @@
   },
   {
     "route": "/[locale]/check-processes-consuming-most-cpu-windows",
-    "lastModified": "2026-06-12T23:27:19.893Z"
+    "lastModified": "2026-10-13T09:36:06.853Z"
   },
   {
     "route": "/[locale]/combined-services",
@@ -85,19 +85,19 @@
   },
   {
     "route": "/[locale]/companies",
-    "lastModified": "2026-08-15T23:32:54.764Z"
+    "lastModified": "2026-10-13T09:54:06.198Z"
   },
   {
     "route": "/[locale]/computer-maintenance",
-    "lastModified": "2026-10-12T04:08:46.616Z"
+    "lastModified": "2026-10-13T09:36:06.854Z"
   },
   {
     "route": "/[locale]/computer-optimization",
-    "lastModified": "2026-08-15T23:32:54.765Z"
+    "lastModified": "2026-10-13T09:36:06.854Z"
   },
   {
     "route": "/[locale]/configure-windows-defender-gaming",
-    "lastModified": "2026-10-12T04:53:35.093Z"
+    "lastModified": "2026-10-13T09:52:11.666Z"
   },
   {
     "route": "/[locale]/contact",
@@ -105,27 +105,27 @@
   },
   {
     "route": "/[locale]/create-website",
-    "lastModified": "2026-08-15T23:32:54.767Z"
+    "lastModified": "2026-10-13T09:36:06.855Z"
   },
   {
     "route": "/[locale]/definitive-privacy-guide-windows-2026",
-    "lastModified": "2026-06-12T23:27:19.925Z"
+    "lastModified": "2026-10-13T09:36:06.856Z"
   },
   {
     "route": "/[locale]/disable-background-apps-windows-11",
-    "lastModified": "2026-06-12T23:27:19.928Z"
+    "lastModified": "2026-10-13T09:36:06.856Z"
   },
   {
     "route": "/[locale]/disable-unnecessary-services-windows-11",
-    "lastModified": "2026-06-12T23:27:19.932Z"
+    "lastModified": "2026-10-13T09:36:06.857Z"
   },
   {
     "route": "/[locale]/disable-windows-telemetry",
-    "lastModified": "2026-06-12T23:58:10.355Z"
+    "lastModified": "2026-10-13T09:51:50.125Z"
   },
   {
     "route": "/[locale]/discover-who-is-using-your-wifi-windows",
-    "lastModified": "2026-06-12T23:27:19.939Z"
+    "lastModified": "2026-10-13T09:36:06.858Z"
   },
   {
     "route": "/[locale]/faq",
@@ -133,19 +133,19 @@
   },
   {
     "route": "/[locale]/fix-100-disk-windows-11",
-    "lastModified": "2026-06-12T23:27:19.946Z"
+    "lastModified": "2026-10-13T09:36:06.858Z"
   },
   {
     "route": "/[locale]/fix-intermittent-keyboard-lag-windows",
-    "lastModified": "2026-06-12T23:27:19.951Z"
+    "lastModified": "2026-10-13T09:36:06.859Z"
   },
   {
     "route": "/[locale]/format-windows",
-    "lastModified": "2026-08-15T23:32:54.769Z"
+    "lastModified": "2026-10-13T09:36:06.859Z"
   },
   {
     "route": "/[locale]/gaming-errors",
-    "lastModified": "2026-08-15T23:32:54.771Z"
+    "lastModified": "2026-10-13T09:36:06.860Z"
   },
   {
     "route": "/[locale]/glossary",
@@ -961,7 +961,7 @@
   },
   {
     "route": "/[locale]/guides",
-    "lastModified": "2026-10-13T01:22:34.428Z"
+    "lastModified": "2026-10-13T09:36:06.892Z"
   },
   {
     "route": "/[locale]/guides/palworld-server-dlss-optimization",
@@ -1413,179 +1413,179 @@
   },
   {
     "route": "/[locale]/hardware-diagnostics-pc-temperature",
-    "lastModified": "2026-06-12T23:58:10.356Z"
+    "lastModified": "2026-10-13T09:51:39.675Z"
   },
   {
     "route": "/[locale]/how-to-block-ads-windows-11-completely",
-    "lastModified": "2026-06-12T23:27:20.853Z"
+    "lastModified": "2026-10-13T09:36:06.908Z"
   },
   {
     "route": "/[locale]/how-to-check-ssd-health-windows-11",
-    "lastModified": "2026-06-12T23:27:20.857Z"
+    "lastModified": "2026-10-13T09:36:06.908Z"
   },
   {
     "route": "/[locale]/how-to-choose-best-dns-windows-11",
-    "lastModified": "2026-06-12T23:27:20.862Z"
+    "lastModified": "2026-10-13T09:36:06.909Z"
   },
   {
     "route": "/[locale]/how-to-clean-directx-cache-windows-11",
-    "lastModified": "2026-06-12T23:27:20.866Z"
+    "lastModified": "2026-10-13T09:36:06.909Z"
   },
   {
     "route": "/[locale]/how-to-clean-nvidia-cache-windows-11",
-    "lastModified": "2026-06-12T23:27:20.870Z"
+    "lastModified": "2026-10-13T09:36:06.910Z"
   },
   {
     "route": "/[locale]/how-to-clean-temp-files-automatically",
-    "lastModified": "2026-06-12T23:27:20.873Z"
+    "lastModified": "2026-10-13T09:36:06.911Z"
   },
   {
     "route": "/[locale]/how-to-clear-recent-files-list-windows-11",
-    "lastModified": "2026-06-12T23:27:20.876Z"
+    "lastModified": "2026-10-13T09:36:06.911Z"
   },
   {
     "route": "/[locale]/how-to-disable-copilot-windows-11",
-    "lastModified": "2026-06-12T23:27:20.880Z"
+    "lastModified": "2026-10-13T09:36:06.912Z"
   },
   {
     "route": "/[locale]/how-to-disable-onedrive-windows-11-completely",
-    "lastModified": "2026-06-12T23:27:20.884Z"
+    "lastModified": "2026-10-13T09:36:06.912Z"
   },
   {
     "route": "/[locale]/how-to-disable-sticky-keys-permanently",
-    "lastModified": "2026-06-12T23:27:20.887Z"
+    "lastModified": "2026-10-13T09:36:06.913Z"
   },
   {
     "route": "/[locale]/how-to-disable-vbs-windows-11-gamer",
-    "lastModified": "2026-06-12T23:27:20.890Z"
+    "lastModified": "2026-10-13T09:36:06.913Z"
   },
   {
     "route": "/[locale]/how-to-disable-windows-update-permanently",
-    "lastModified": "2026-06-12T23:27:20.895Z"
+    "lastModified": "2026-10-13T09:36:06.914Z"
   },
   {
     "route": "/[locale]/how-to-fix-mouse-accelerating-itself-windows",
-    "lastModified": "2026-06-12T23:27:20.899Z"
+    "lastModified": "2026-10-13T09:36:06.915Z"
   },
   {
     "route": "/[locale]/how-to-fix-wifi-drop-windows-11",
-    "lastModified": "2026-06-12T23:27:20.902Z"
+    "lastModified": "2026-10-13T09:36:06.915Z"
   },
   {
     "route": "/[locale]/how-to-increase-roblox-fps-windows",
-    "lastModified": "2026-06-12T23:27:20.905Z"
+    "lastModified": "2026-10-13T09:36:06.916Z"
   },
   {
     "route": "/[locale]/how-to-reduce-keyboard-mouse-input-lag",
-    "lastModified": "2026-06-12T23:27:20.909Z"
+    "lastModified": "2026-10-13T09:36:06.916Z"
   },
   {
     "route": "/[locale]/how-to-remove-duplicate-files-windows-11",
-    "lastModified": "2026-06-12T23:27:20.912Z"
+    "lastModified": "2026-10-13T09:36:06.917Z"
   },
   {
     "route": "/[locale]/improve-discord-performance-windows-11",
-    "lastModified": "2026-06-12T23:27:20.915Z"
+    "lastModified": "2026-10-13T09:36:06.917Z"
   },
   {
     "route": "/[locale]/improve-excel-performance-heavy-spreadsheets",
-    "lastModified": "2026-06-12T23:27:20.919Z"
+    "lastModified": "2026-10-13T09:36:06.917Z"
   },
   {
     "route": "/[locale]/improve-google-chrome-performance-windows",
-    "lastModified": "2026-06-12T23:27:20.922Z"
+    "lastModified": "2026-10-13T09:36:06.917Z"
   },
   {
     "route": "/[locale]/improve-laptop-battery-health-windows",
-    "lastModified": "2026-06-12T23:27:20.930Z"
+    "lastModified": "2026-10-13T09:36:06.918Z"
   },
   {
     "route": "/[locale]/improve-obs-studio-performance-windows",
-    "lastModified": "2026-06-12T23:27:20.933Z"
+    "lastModified": "2026-10-13T09:36:06.918Z"
   },
   {
     "route": "/[locale]/improve-old-hdd-performance-windows",
-    "lastModified": "2026-06-12T23:27:20.937Z"
+    "lastModified": "2026-10-13T09:36:06.918Z"
   },
   {
     "route": "/[locale]/improve-spotify-performance-windows-11",
-    "lastModified": "2026-06-12T23:27:20.941Z"
+    "lastModified": "2026-10-13T09:52:56.632Z"
   },
   {
     "route": "/[locale]/improve-steam-performance-windows-11",
-    "lastModified": "2026-06-12T23:27:20.945Z"
+    "lastModified": "2026-10-13T09:53:08.142Z"
   },
   {
     "route": "/[locale]/improve-windows-11-boot-speed",
-    "lastModified": "2026-06-12T23:27:20.949Z"
+    "lastModified": "2026-10-13T09:36:06.920Z"
   },
   {
     "route": "/[locale]/increase-android-emulator-performance-windows",
-    "lastModified": "2026-06-12T23:27:20.953Z"
+    "lastModified": "2026-10-13T09:36:06.920Z"
   },
   {
     "route": "/[locale]/it-technician",
-    "lastModified": "2026-10-12T04:08:46.617Z"
+    "lastModified": "2026-10-13T09:36:06.921Z"
   },
   {
     "route": "/[locale]/it-technician-home-visit",
-    "lastModified": "2026-10-12T04:08:46.619Z"
+    "lastModified": "2026-10-13T09:36:06.921Z"
   },
   {
     "route": "/[locale]/it-technician-my-region",
-    "lastModified": "2026-10-12T04:08:46.622Z"
+    "lastModified": "2026-10-13T09:36:06.922Z"
   },
   {
     "route": "/[locale]/optimize-windows-11-for-gta-v-rp",
-    "lastModified": "2026-06-12T23:27:20.977Z"
+    "lastModified": "2026-10-13T09:36:06.923Z"
   },
   {
     "route": "/[locale]/optimize-windows-11-for-valorant",
-    "lastModified": "2026-06-12T23:27:20.980Z"
+    "lastModified": "2026-10-13T09:36:06.926Z"
   },
   {
     "route": "/[locale]/optimize-windows-11-for-warzone-2026",
-    "lastModified": "2026-06-12T23:27:20.984Z"
+    "lastModified": "2026-10-13T09:36:06.927Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-architecture-bim-autocad",
-    "lastModified": "2026-06-12T23:27:20.987Z"
+    "lastModified": "2026-10-13T09:36:06.928Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-counter-strike-2-cs2",
-    "lastModified": "2026-06-12T23:27:20.991Z"
+    "lastModified": "2026-10-13T09:36:06.928Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-fortnite-2026",
-    "lastModified": "2026-06-12T23:27:20.995Z"
+    "lastModified": "2026-10-13T09:36:06.929Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-league-of-legends-2026",
-    "lastModified": "2026-06-12T23:27:20.999Z"
+    "lastModified": "2026-10-13T09:36:06.929Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-minecraft-ultra-fps",
-    "lastModified": "2026-06-12T23:27:21.005Z"
+    "lastModified": "2026-10-13T09:36:06.930Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-photo-editing-photoshop",
-    "lastModified": "2026-06-12T23:27:21.011Z"
+    "lastModified": "2026-10-13T09:53:28.532Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-programming-development",
-    "lastModified": "2026-06-12T23:27:21.015Z"
+    "lastModified": "2026-10-13T09:36:06.931Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-statistics-data-science",
-    "lastModified": "2026-06-12T23:27:21.018Z"
+    "lastModified": "2026-10-13T09:36:06.931Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-streaming-twitch-youtube",
-    "lastModified": "2026-06-12T23:27:21.022Z"
+    "lastModified": "2026-10-13T09:36:06.936Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-video-editing",
-    "lastModified": "2026-06-12T23:27:21.026Z"
+    "lastModified": "2026-10-13T09:53:39.987Z"
   },
   {
     "route": "/[locale]",
@@ -1593,7 +1593,7 @@
   },
   {
     "route": "/[locale]/pc-optimization",
-    "lastModified": "2026-08-15T23:32:55.352Z"
+    "lastModified": "2026-10-13T09:36:06.937Z"
   },
   {
     "route": "/[locale]/privacy-policy",
@@ -1601,19 +1601,19 @@
   },
   {
     "route": "/[locale]/reduce-network-latency-online-games",
-    "lastModified": "2026-06-12T23:42:56.750Z"
+    "lastModified": "2026-10-13T09:36:06.938Z"
   },
   {
     "route": "/[locale]/regions",
-    "lastModified": "2026-10-13T01:09:38.884Z"
+    "lastModified": "2026-10-13T09:36:06.938Z"
   },
   {
     "route": "/[locale]/remote-technical-support",
-    "lastModified": "2026-08-15T23:32:55.353Z"
+    "lastModified": "2026-10-13T09:36:06.941Z"
   },
   {
     "route": "/[locale]/remove-bloatware-windows-11",
-    "lastModified": "2026-06-12T23:58:10.358Z"
+    "lastModified": "2026-10-13T09:51:29.585Z"
   },
   {
     "route": "/[locale]/services",
@@ -1625,7 +1625,7 @@
   },
   {
     "route": "/[locale]/update-drivers-windows-automatically",
-    "lastModified": "2026-06-12T23:58:10.359Z"
+    "lastModified": "2026-10-13T09:52:01.218Z"
   },
   {
     "route": "/[locale]/voltris-optimizer",
@@ -1633,18 +1633,18 @@
   },
   {
     "route": "/[locale]/voltrisoptimizer/documentation",
-    "lastModified": "2026-10-13T01:09:40.273Z"
+    "lastModified": "2026-10-13T09:36:06.944Z"
   },
   {
     "route": "/[locale]/voltrisoptimizer/how-it-works",
-    "lastModified": "2026-10-12T04:53:35.567Z"
+    "lastModified": "2026-10-13T09:36:06.944Z"
   },
   {
     "route": "/[locale]/voltrisoptimizer",
-    "lastModified": "2026-10-13T01:09:38.740Z"
+    "lastModified": "2026-10-13T09:36:06.946Z"
   },
   {
     "route": "/[locale]/website-creators",
-    "lastModified": "2026-10-13T01:09:39.282Z"
+    "lastModified": "2026-10-13T09:36:06.947Z"
   }
 ]

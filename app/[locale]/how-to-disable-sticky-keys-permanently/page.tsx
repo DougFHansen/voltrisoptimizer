@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Permanently Disable Sticky Keys on Windows 11`,
         description: `Does the Sticky Keys popup appear every time you press Shift? Learn how to permanently disable this accessibility feature and never be interrupted during your games again.`,
         keywords: ['how to disable sticky keys windows 11', 'sticky keys appearing in game', 'disable sticky keys windows permanently', 'voltris optimizer gaming tweaks', 'suppress sticky keys windows 11', 'how to remove shift warning windows games'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-disable-sticky-keys-permanently`
             }
         }
-    };
+    });
 }
 
 export default function StickyKeys() {

@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Fix Wi-Fi Dropping on Windows 11 (Disconnection Fix 2026)`,
         description: `Is your Wi-Fi dropping constantly? Learn how to fix automatic disconnections, disable network adapter power saving, and stabilize your wireless signal on Windows 11.`,
         keywords: ['how to fix wifi dropping windows 11', 'wifi disconnecting on its own pc fix', 'boost wifi signal windows 11', 'voltris wireless optimizer wifi fix', 'stabilize wifi internet laptop', 'wifi failing windows 11 fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-fix-wifi-drop-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function WifiFix() {

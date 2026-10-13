@@ -1,12 +1,13 @@
 import { Metadata } from 'next';
 import EmpresasClient from './EmpresasClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
-  title: 'Suporte de TI e Gestão Remota para Empresas - VOLTRIS',
-  description: 'Otimize a infraestrutura de TI da sua empresa. Suporte remoto rápido, segurança cibernética (LGPD) e otimização de performance para máxima produtividade.',
+  title: 'IT Support and Managed Remote Services for Companies - VOLTRIS',
+  description: "Optimize your company's IT infrastructure. Fast remote support, cybersecurity and LGPD-compliant data protection for maximum productivity.",
   keywords: [
     'suporte ti empresas',
     'terceirização de ti',
@@ -16,9 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'lgpd compliance'
   ],
   openGraph: {
-    title: 'Gestão Avançada de TI para Empresas | VOLTRIS',
-    description: 'Aumente a produtividade e reduza o tempo de inatividade com suporte corporativo especializado.',
-    url: 'https://www.voltrisoptimizer.com/empresas',
+    title: 'Advanced IT Management for Companies | VOLTRIS',
+    description: 'Boost productivity and cut downtime with specialized corporate remote IT support.',
+    url: 'https://www.voltrisoptimizer.com/companies',
     images: ['/logo.png']
   },
         alternates: {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/companies`
             }
         }
-    };
+    });
 }
 
 export default function EmpresasPage() {

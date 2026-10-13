@@ -52,8 +52,22 @@ function readJson(p, fallback) {
 }
 function saveJson(p, obj) {
   const tmp = p + '.tmp';
-  fs.writeFileSync(tmp, JSON.stringify(obj));
+  // pretty-print: mantém diffs legíveis e compatíveis com os scripts de reparo
+  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2) + '\n');
   fs.renameSync(tmp, p);
+}
+
+// ── HTML-safe translation ───────────────────────────────────────────────────
+// Google degrades HTML bodies (translates tag names/attributes, e.g. <tbody>
+// -> <corpo>, class="...الرائدة-relaxed..."). For sources containing tags we
+// translate ONLY the TEXT SEGMENTS between tags and re-assemble with the
+// ORIGINAL tag strings, so markup is preserved 100% by construction.
+const TAG_SPLIT = /(<[^>]+>)/g;
+function isHtml(s) { return /<[a-z][^>]*>/i.test(s) && s.indexOf('</') !== -1; }
+function segments(src) {
+  const parts = src.split(TAG_SPLIT);
+  // parts: [text, tag, text, tag, ..., text] — índices pares = texto
+  return parts.map((p, i) => ({ p, isTag: i % 2 === 1 }));
 }
 
 // Extract a single translated string from one Google batchexecute item. The
@@ -103,10 +117,49 @@ async function runLang(lang, sources) {
   for (let i = 0; i < todo.length; i += BATCH) {
     const slice = todo.slice(i, i + BATCH);
     try {
-      const out = await googleBatch(slice, 'en', gLang);
+      // 1) fontes puras (sem HTML): batch simples
+      const plain = slice.filter((s) => !isHtml(s));
+      const outPlain = plain.length ? await googleBatch(plain, 'en', gLang) : [];
+      const plainMap = new Map();
+      plain.forEach((s, k) => plainMap.set(s, (outPlain[k] || '').trim()));
+
+      // 2) fontes HTML: traduz apenas os segmentos de TEXTO, remontando com
+      //    as tags originais (markup preservado por construção)
+      const segTexts = []; // todos os textos a traduzir, achatados
+      const segOwner = []; // índice (em slice) de cada texto
+      slice.forEach((s, si) => {
+        if (isHtml(s)) {
+          segments(s).forEach(({ p, isTag }) => {
+            if (!isTag && p.trim()) { segTexts.push(p.replace(/\s+/g, ' ').trim()); segOwner.push(si); }
+          });
+        }
+      });
+      const outSegs = segTexts.length ? await googleBatch(segTexts, 'en', gLang) : [];
+      const segsByOwner = new Map();
+      segTexts.forEach((_t, k) => {
+        const si = segOwner[k];
+        if (!segsByOwner.has(si)) segsByOwner.set(si, []);
+        segsByOwner.get(si).push((outSegs[k] || '').trim());
+      });
+
       for (let k = 0; k < slice.length; k++) {
         const src = slice[k];
-        const tr = (out[k] || '').trim();
+        let tr;
+        if (isHtml(src)) {
+          const arr = segsByOwner.get(k) || [];
+          let idx = 0, any = false;
+          tr = segments(src)
+            .map(({ p, isTag }) => {
+              if (isTag || !p.trim()) return p;
+              const t = arr[idx++] || '';
+              if (t) any = true;
+              return t || p;
+            })
+            .join('');
+          if (!any) tr = '';
+        } else {
+          tr = plainMap.get(src) || '';
+        }
         if (tr) { dict[src] = tr; done++; } else { failed++; }
       }
     } catch (e) {

@@ -33,6 +33,11 @@ declare const __webpack_hash__: string;
  * into each static page's HTML) and memoized per locale in module scope.
  */
 const SKIP_SELECTOR = 'script,style,code,pre,textarea,noscript';
+// Any element (or ancestor) carrying `data-notrans` is protected from DOM text
+// translation. Used by UI that must always render in its own hand-authored text
+// regardless of locale (e.g. the language selector, whose entries are written in
+// their native script by design and must never be machine-translated).
+const NO_TRANS_ATTR = 'data-notrans';
 const cache = new WeakMap<Node, string | null>(); // original English captured per node
 const dictCache: Record<string, Dict | null> = {};
 // Per-deploy cache-busting token. `__webpack_hash__` is the compilation hash,
@@ -49,6 +54,7 @@ function shouldSkip(node: Node): boolean {
   let p: HTMLElement | null = node.parentElement;
   while (p) {
     if (p.matches(SKIP_SELECTOR)) return true;
+    if (p.hasAttribute(NO_TRANS_ATTR)) return true;
     p = p.parentElement;
   }
   return false;

@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 // import removed
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: ``,
-        description: ``,
+    return await localizeMetadata(locale, {
+        title: `How to Update Windows Drivers Automatically and Safely (2026)`,
+        description: `Keep your PC drivers up to date without risking fake updaters. Learn the safe ways to update Windows 11 drivers automatically for better performance and stability.`,
         keywords: [],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/update-drivers-windows-automatically`,
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/update-drivers-windows-automatically`
             }
         }
-    };
+    });
 }
 
 export default function AtualizarDriversWindowsAutomatico() {

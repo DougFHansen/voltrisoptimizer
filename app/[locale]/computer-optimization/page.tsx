@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Professional Computer Optimization | VOLTRIS - Scale Your PC',
   description: 'Professional computer optimization service to increase the speed, performance, and stability of your PC or laptop. Advanced cleaning, configuration, and fine-tuning techniques.',
@@ -73,7 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/computer-optimization`
             }
         }
-    };
+    });
 }
 
 export default function OtimizacaoComputadorPage() {

@@ -4,6 +4,11 @@ const locales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
 const defaultLocale = 'en';
 
 function getLocale(request: NextRequest): string {
+  // 1) Escolha explícita do usuário (cookie escrito pelo seletor de idioma)
+  const chosen = request.cookies.get('voltris-locale')?.value;
+  if (chosen && locales.includes(chosen)) return chosen;
+
+  // 2) Detecção por Accept-Language do navegador
   const acceptLanguage = request.headers.get('accept-language') || '';
   const userLang = acceptLanguage.split(',')[0]?.split('-')[0]?.toLowerCase();
   

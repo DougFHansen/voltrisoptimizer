@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Fix Mouse Acceleration on Windows 11 (2026)`,
         description: `Is your cursor moving strangely or accelerating out of control? Learn how to disable mouse acceleration on Windows 11 for true 1:1 pointer tracking and better aiming in games.`,
         keywords: ['how to disable mouse acceleration windows 11', 'mouse accelerating on its own fix', 'imprecise mouse pointer windows 11', 'voltris latency optimizer mouse', 'enhance pointer precision off windows', 'configure gaming mouse sensitivity'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-fix-mouse-accelerating-itself-windows`
             }
         }
-    };
+    });
 }
 
 export default function MouseAcceleration() {

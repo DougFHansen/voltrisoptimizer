@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import GamingErrorsClient from './GamingErrorsClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Game Error Fixes: VAN9003, GTA V, CS2, Roblox and + | VOLTRIS',
   description: 'Immediate solution for critical errors: VAN9003 (Valorant), GTA V/FiveM crashes, CS2 VAC Errors, Roblox Error 268, and DLL failures. Specialized remote gamer technical support.',
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/gaming-errors`
             }
         }
-    };
+    });
 }
 
 export default function GamingErrorsPage() {

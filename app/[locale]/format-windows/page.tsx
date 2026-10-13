@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import FormatarWindowsClient from './FormatarWindowsClient';
 import JsonLd from '@/components/JsonLd';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Professional Windows Formatting - Remote Technical Support | VOLTRIS',
   description: 'Specialized Windows 10 and 11 formatting service. Clean installation, data backup, updated drivers, and gaming optimization. 24h secure remote assistance.',
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/format-windows`
             }
         }
-    };
+    });
 }
 
 export default function WindowsFormattingPage() {

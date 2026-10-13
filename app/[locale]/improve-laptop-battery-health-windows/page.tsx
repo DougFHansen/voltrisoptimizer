@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Improve Notebook Battery Health in Windows 11 (2026)`,
         description: `Learn how to make your notebook battery last longer. Complete guide on custom power plans, disabling charge-draining apps, and how to monitor battery wear.`,
         keywords: ['improve notebook battery health', 'make notebook battery last longer', 'save battery windows 11', 'voltris optimizer battery', 'optimize windows notebook power', 'monitor notebook battery wear'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/improve-laptop-battery-health-windows`
             }
         }
-    };
+    });
 }
 
 export default function SaudeBateria() {

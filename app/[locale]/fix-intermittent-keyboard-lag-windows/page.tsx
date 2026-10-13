@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Fix Keyboard Lag on Windows 11 (Typing Delay Fix 2026)`,
         description: `Is your keyboard typing late or skipping keystrokes? Learn how to fix keyboard lag on Windows 11, disable Filter Keys, and optimize the repeat rate for instant response.`,
         keywords: ['how to fix keyboard lag windows 11', 'keyboard typing delay fix', 'repair keyboard driver windows', 'voltris latency optimizer keyboard', 'keyboard response delay fix', 'keyboard freezing on windows 11'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/fix-intermittent-keyboard-lag-windows`
             }
         }
-    };
+    });
 }
 
 export default function KeyboardLag() {

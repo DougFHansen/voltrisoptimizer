@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Programming and Development (2026)`,
         description: `Speed up your workflow in VS Code, Docker, and compilation. The definitive guide for developers to optimize RAM, SSD indexing, and hardware priority on Windows 11.`,
         keywords: ['optimize windows 11 for programming', 'improve vscode performance windows', 'windows 11 for developers setup', 'voltris optimizer dev tweaks', 'speed up compilation windows 11', 'optimize docker windows performance'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-programming-development`
             }
         }
-    };
+    });
 }
 
 export default function OtimizarDev() {

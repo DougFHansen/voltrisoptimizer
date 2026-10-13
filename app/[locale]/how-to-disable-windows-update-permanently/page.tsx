@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Permanently Disable Windows Update on Windows 11 (2026)`,
         description: `Tired of unexpected restarts? Learn how to permanently and safely block automatic Windows 11 updates via Registry and Group Policies.`,
         keywords: ['how to disable windows update permanently', 'block automatic updates windows 11', 'windows update blocker tool', 'voltris optimizer update control', 'stop windows from restarting on its own', 'pause windows updates windows 11'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-disable-windows-update-permanently`
             }
         }
-    };
+    });
 }
 
 export default function DesativarUpdate() {

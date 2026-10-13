@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Valorant | Maximum FPS and Zero Lag (2026)`,
         description: `Definitive guide to increase FPS and reduce latency in Valorant. Learn hardware settings, system tweaks, and disable useless processes to dominate ranked matches.`,
         keywords: ['optimize windows valorant', 'increase fps valorant', 'decrease input lag valorant', 'voltris optimizer valorant', 'gamer windows 11 settings'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-11-for-valorant`
             }
         }
-    };
+    });
 }
 
 export default function OtimizarWindowsValorant() {

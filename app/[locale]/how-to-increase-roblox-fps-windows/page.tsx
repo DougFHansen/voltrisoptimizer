@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Increase FPS in Roblox on Windows 11/10 | Guide 2026`,
         description: `Is your Roblox lagging? Learn how to optimize Windows to get more FPS in Roblox, reduce lag, and eliminate mouse delay for a smooth gaming experience.`,
         keywords: ['increase fps roblox', 'how to remove lag in roblox', 'optimize windows for roblox', 'voltris optimizer roblox', 'roblox fps unlocker windows 11', 'low end pc roblox settings'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-increase-roblox-fps-windows`
             }
         }
-    };
+    });
 }
 
 export default function RobloxFPS() {

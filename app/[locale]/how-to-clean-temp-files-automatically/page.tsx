@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Automatically Clean Temporary Files on Windows 11 (2026)`,
         description: `Step-by-step guide to keep your PC always clean. Learn how to configure Storage Sense, create cleanup scripts via Task Scheduler, and use Voltris Ultra Cleaner for deep removal.`,
         keywords: ['automatically clean temporary files', 'free up disk space windows 11', 'schedule disk cleanup', 'voltris ultra cleaner', 'auto delete temp folder', 'how to speed up slow pc cleanup'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-clean-temp-files-automatically`
             }
         }
-    };
+    });
 }
 
 export default function LimpezaAutomatica() {

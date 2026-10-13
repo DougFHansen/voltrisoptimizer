@@ -1,10 +1,11 @@
 import React from 'react';
 import { Metadata } from 'next';
 import ItTechnicianClient from '../it-technician/ItTechnicianClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: "IT Technician in My Area - Worldwide Remote Support | VOLTRIS",
   description: "IT technician in your area with remote support. Worldwide service, 100% online. Solve computer problems without leaving home.",
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/it-technician-my-region`
             }
         }
-    };
+    });
 }
 
 export default function ItTechnicianMyRegionPage() {

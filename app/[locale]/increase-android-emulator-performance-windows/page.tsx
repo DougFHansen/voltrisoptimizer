@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Boost Android Emulator Performance on Windows 11 (2026)`,
         description: `Is your Bluestacks or LDPlayer lagging? Learn how to optimize Windows to get more FPS in Android emulators, configure virtualization correctly, and reduce RAM usage.`,
         keywords: ['increase fps emulator bluestacks', 'improve android emulator performance pc', 'slow emulator windows 11 fix', 'voltris optimizer emulator', 'configure virtualization windows 11 emulator', 'ldplayer freezing windows fix'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/increase-android-emulator-performance-windows`
             }
         }
-    };
+    });
 }
 
 export default function EmuladorFPS() {

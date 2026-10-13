@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Optimize Windows 11 for Data Science and Statistics (2026)`,
         description: `Speed up your workflow in Python, R, PowerBI, and Excel. Complete guide for data scientists to optimize RAM for large datasets and CPU priority for heavy computations.`,
         keywords: ['optimize windows 11 data science', 'speed up python r windows 11', 'powerbi performance slow pc fix', 'voltris optimizer workstation data science', 'ram management large datasets', 'configure windows 11 for researchers'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/optimize-windows-for-statistics-data-science`
             }
         }
-    };
+    });
 }
 
 export default function OtimizarDataScience() {

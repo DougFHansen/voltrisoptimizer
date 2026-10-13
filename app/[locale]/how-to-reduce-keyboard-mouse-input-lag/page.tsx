@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Reduce Mouse and Keyboard Input Lag on Windows 11 (2026)`,
         description: `Complete guide to reducing peripheral latency. Learn how to adjust Polling Rate, disable mouse acceleration via registry, and optimize keyboard repeat rate for instant response.`,
         keywords: ['reduce mouse input lag', 'remove mouse acceleration windows 11', 'optimize keyboard latency', 'voltris optimizer input lag', 'polling rate 1000hz windows', 'mouse acceleration registry'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-reduce-keyboard-mouse-input-lag`
             }
         }
-    };
+    });
 }
 
 export default function InputLagPerifericos() {

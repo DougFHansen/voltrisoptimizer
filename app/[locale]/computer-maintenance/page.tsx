@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import ManutencaoComputadorClient from './ManutencaoComputadorClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Professional Computer Maintenance | VOLTRIS - Cleaning, Parts, and Preventive Maintenance',
   description: 'Professional computer maintenance service with full diagnosis, internal cleaning, part replacement, and preventive maintenance. Certified technicians with warranty and worldwide service.',
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/computer-maintenance`
             }
         }
-    };
+    });
 }
 
 export default function ManutencaoComputadorPage() {

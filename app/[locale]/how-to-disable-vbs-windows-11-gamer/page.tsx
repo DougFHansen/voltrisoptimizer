@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         title: `How to Disable VBS on Windows 11 to Gain FPS (Gamer Guide 2026)`,
         description: `Learn how to disable Virtualization Based Security (VBS) and Core Isolation (HVCI). Recover up to 25% performance in demanding and competitive games on Windows 11.`,
         keywords: ['how to disable vbs windows 11 gamer', 'vbs vs performance windows 11', 'disable core isolation fps', 'voltris dna vbs bypass', 'improve fps windows 11 virtualization', 'hvci off windows 11 gamer'],
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/how-to-disable-vbs-windows-11-gamer`
             }
         }
-    };
+    });
 }
 
 export default function DesativarVBS() {

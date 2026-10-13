@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 // import removed
 
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
-        title: ``,
-        description: ``,
+    return await localizeMetadata(locale, {
+        title: `How to Remove Bloatware from Windows 11 (Complete 2026 Guide)`,
+        description: `Uninstall pre-installed junk and disable bloatware on Windows 11 using Settings, PowerShell and trusted tools. Free up RAM, storage and speed up your PC safely.`,
         keywords: [],
         alternates: {
             canonical: `https://www.voltrisoptimizer.com/${locale}/remove-bloatware-windows-11`,
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/remove-bloatware-windows-11`
             }
         }
-    };
+    });
 }
 
 export default function RemoverBloatwareWindows() {

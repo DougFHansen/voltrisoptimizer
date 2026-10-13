@@ -1,10 +1,11 @@
 import React from 'react';
 import { Metadata } from 'next';
 import CreateWebsiteClient from './CreateWebsiteClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: "Professional Website Creation: Surpassing Wix and WordPress | VOLTRIS",
   description: "Create a professional website with performance superior to Wix and WordPress. Ultra-fast Next.js development, native 10/10 SEO, and premium design. The best value for your company.",
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/create-website`
             }
         }
-    };
+    });
 }
 
 export default function CreateWebsitePage() {

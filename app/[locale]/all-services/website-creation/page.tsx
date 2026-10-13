@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import WebsiteCreationClient from './WebsiteCreationClient';
+import { localizeMetadata } from '@/lib/site-i18n';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
-    return {
+    return await localizeMetadata(locale, {
         
   title: 'Professional Web Creation | VOLTRIS',
   description: 'Professional, fast, and SEO-optimized website development. Boost your sales with a modern and responsive website.',
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'ar': `/ar/all-services/website-creation`
             }
         }
-    };
+    });
 }
 
 export default function WebsiteCreationPage() {
