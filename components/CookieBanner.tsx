@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSiteT } from "@/lib/site-i18n/client";
 
 export default function CookieBanner() {
+  const t = useSiteT();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -31,15 +33,15 @@ export default function CookieBanner() {
             <svg className="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" /></svg>
           </span>
           <div className="flex-1 min-w-0">
-            <span className="block font-semibold text-base whitespace-normal">This site uses cookies</span>
-            <span className="block text-sm text-white/80 whitespace-normal break-words">We use cookies to improve your experience. By continuing, you agree to our <Link href='/privacy-policy' className='underline hover:text-white transition'>Privacy Policy</Link>.</span>
+            <span className="block font-semibold text-base whitespace-normal">{t("This site uses cookies")}</span>
+            <span className="block text-sm text-white/80 whitespace-normal break-words">{t("We use cookies to improve your experience. By continuing, you agree to our")} <Link href='/privacy-policy' className='underline hover:text-white transition'>{t("Privacy Policy")}</Link>.</span>
           </div>
         </div>
         <button
           onClick={acceptCookies}
           className="bg-white text-[#1c1c1e] font-bold px-5 py-2 rounded-lg shadow hover:bg-white/90 transition-colors text-sm min-w-[100px] border border-[#8B31FF] focus:outline-none focus:ring-2 focus:ring-[#8B31FF]"
         >
-          Accept
+          {t("Accept")}
         </button>
       </div>
     </div>

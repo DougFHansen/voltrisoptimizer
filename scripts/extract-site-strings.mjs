@@ -30,6 +30,22 @@ const STRINGS = path.join(OUT_DIR, 'strings.en.json');
 const META_FIELDS = new Set(['title', 'description', 'summary', 'subtitle']);
 const META_ARRAY_FIELDS = new Set(['keywords']);
 
+// Object property names whose string values are visible UI text in client
+// components (services/testimonials/features cards, CTA buttons, etc.). Only
+// used when scanning non-guide component/page files (display mode).
+const DISPLAY_KEYS = new Set([
+  'title', 'description', 'desc', 'summary', 'subtitle', 'text', 'content',
+  'body', 'label', 'heading', 'question', 'answer', 'cta', 'buttontext',
+  'btntext', 'caption', 'tagline', 'message', 'role', 'location', 'name',
+  'price', 'period', 'feature', 'highlight', 'placeholder', 'helper',
+]);
+
+function isSentence(s) {
+  // sentence-ish UI text: has a space or is a reasonably long word.
+  const t = s.trim();
+  return /\s/.test(t) || t.length >= 8;
+}
+
 function isProse(s) {
   const t = s.trim();
   if (t.length < 2) return false;
@@ -67,7 +83,29 @@ function collectMetaObject(objNode, set) {
   }
 }
 
-function extractFromFile(filePath) {
+function collectDisplayObject(objNode, set) {
+  for (const prop of objNode.properties) {
+    if (!ts.isPropertyAssignment(prop)) continue;
+    const name = prop.name.getText().replace(/^['"]|['"]$/g, '');
+    if (!DISPLAY_KEYS.has(name)) continue;
+    const init = prop.initializer;
+    if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) {
+      add(set, init.text);
+    } else if (ts.isArrayLiteralExpression(init)) {
+      for (const el of init.elements) {
+        if ((ts.isStringLiteral(el) || ts.isNoSubstitutionTemplateLiteral(el)) && isSentence(el.text)) add(set, el.text);
+      }
+    }
+  }
+}
+
+function collectArraySentences(arrNode, set) {
+  for (const el of arrNode.elements) {
+    if ((ts.isStringLiteral(el) || ts.isNoSubstitutionTemplateLiteral(el)) && isSentence(el.text)) add(set, el.text);
+  }
+}
+
+function extractFromFile(filePath, display = false) {
   const set = new Set();
   let src;
   try {
@@ -90,6 +128,11 @@ function extractFromFile(filePath) {
     }
     // JSX text nodes (visible prose)
     if (ts.isJsxText(node)) add(set, node.text);
+    // display-mode: object data cards (services/testimonials/features) + string arrays
+    if (display) {
+      if (ts.isObjectLiteralExpression(node)) collectDisplayObject(node, set);
+      if (ts.isArrayLiteralExpression(node)) collectArraySentences(node, set);
+    }
     // placeholder / aria-label / title attributes with string literals
     if (ts.isJsxAttribute(node)) {
       const an = node.name.getText();
@@ -138,13 +181,13 @@ for (const slug of fs.readdirSync(GUIDES_DIR).filter((f) => fs.statSync(path.joi
 // 2. public pages under [locale] excluding guides
 for (const f of walkTsFiles(LOCALE_DIR)) {
   if (f.startsWith(GUIDES_DIR)) continue;
-  for (const s of extractFromFile(f)) siteSet.add(s);
+  for (const s of extractFromFile(f, true)) siteSet.add(s);
   filesScanned++;
 }
 
 // 3. shared UI components (Header, Footer, sections, etc.)
 for (const f of walkTsFiles(COMPONENTS_DIR)) {
-  for (const s of extractFromFile(f)) siteSet.add(s);
+  for (const s of extractFromFile(f, true)) siteSet.add(s);
   filesScanned++;
 }
 

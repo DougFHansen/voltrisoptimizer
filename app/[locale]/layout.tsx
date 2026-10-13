@@ -11,6 +11,8 @@ import I18nClientProvider from '@/components/I18nClientProvider';
 import { Locale, isValidLocale } from '@/lib/i18n';
 import { notFound } from 'next/navigation';
 import { getSiteT } from '@/lib/site-i18n';
+import { SiteTProvider } from '@/lib/site-i18n/client';
+import SiteTextTranslator from '@/lib/site-i18n/SiteTextTranslator';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
@@ -64,17 +66,27 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   const validLocale = locale as Locale;
 
+  // NOTE: we deliberately do NOT load the site dictionary here and pass it down
+  // as a prop — that would inline the whole (multi-MB) dictionary into every
+  // static page. Metadata above is localized server-side (only title/description
+  // strings), and client components fetch the dictionary lazily from
+  // /api/site-dict/[locale] (SiteTProvider) plus the SiteTextTranslator DOM
+  // walker, both CDN-cacheable and inert for English.
+
   return (
     <AuthProvider>
       <ClientNotificationProvider>
         <ReactQueryProvider>
-          <CookieBanner />
-          <I18nClientProvider initialLocale={validLocale}>
-            {children}
-          </I18nClientProvider>
-          <ClientPWAInstall />
-          <GoogleAnalytics />
-          <IndexNowWrapper />
+          <SiteTProvider locale={locale}>
+            <CookieBanner />
+            <I18nClientProvider initialLocale={validLocale}>
+              {children}
+            </I18nClientProvider>
+            <ClientPWAInstall />
+            <GoogleAnalytics />
+            <IndexNowWrapper />
+            <SiteTextTranslator locale={locale} />
+          </SiteTProvider>
         </ReactQueryProvider>
       </ClientNotificationProvider>
     </AuthProvider>
