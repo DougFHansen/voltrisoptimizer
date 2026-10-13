@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-windows-11-boot-speed`,
                 'ja': `/ja/improve-windows-11-boot-speed`,
                 'ko': `/ko/improve-windows-11-boot-speed`,
-                'ar': `/ar/improve-windows-11-boot-speed`
+                'ar': `/ar/improve-windows-11-boot-speed`,
+                'ru': `/ru/improve-windows-11-boot-speed`,
+                'zh-cn': `/zh-cn/improve-windows-11-boot-speed`,
+                'vi': `/vi/improve-windows-11-boot-speed`,
+                'tr': `/tr/improve-windows-11-boot-speed`,
+                'id': `/id/improve-windows-11-boot-speed`,
+                'pl': `/pl/improve-windows-11-boot-speed`,
+                'x-default': `/en/improve-windows-11-boot-speed`
             }
         }
     });

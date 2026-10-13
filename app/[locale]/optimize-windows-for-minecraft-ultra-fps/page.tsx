@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-minecraft-ultra-fps`,
                 'ja': `/ja/optimize-windows-for-minecraft-ultra-fps`,
                 'ko': `/ko/optimize-windows-for-minecraft-ultra-fps`,
-                'ar': `/ar/optimize-windows-for-minecraft-ultra-fps`
+                'ar': `/ar/optimize-windows-for-minecraft-ultra-fps`,
+                'ru': `/ru/optimize-windows-for-minecraft-ultra-fps`,
+                'zh-cn': `/zh-cn/optimize-windows-for-minecraft-ultra-fps`,
+                'vi': `/vi/optimize-windows-for-minecraft-ultra-fps`,
+                'tr': `/tr/optimize-windows-for-minecraft-ultra-fps`,
+                'id': `/id/optimize-windows-for-minecraft-ultra-fps`,
+                'pl': `/pl/optimize-windows-for-minecraft-ultra-fps`,
+                'x-default': `/en/optimize-windows-for-minecraft-ultra-fps`
             }
         }
     });

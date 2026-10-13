@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/configure-windows-defender-gaming`,
                 'ja': `/ja/configure-windows-defender-gaming`,
                 'ko': `/ko/configure-windows-defender-gaming`,
-                'ar': `/ar/configure-windows-defender-gaming`
+                'ar': `/ar/configure-windows-defender-gaming`,
+                'ru': `/ru/configure-windows-defender-gaming`,
+                'zh-cn': `/zh-cn/configure-windows-defender-gaming`,
+                'vi': `/vi/configure-windows-defender-gaming`,
+                'tr': `/tr/configure-windows-defender-gaming`,
+                'id': `/id/configure-windows-defender-gaming`,
+                'pl': `/pl/configure-windows-defender-gaming`,
+                'x-default': `/en/configure-windows-defender-gaming`
             }
         }
     });

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/best-performance-tweaks-windows-11`,
                 'ja': `/ja/best-performance-tweaks-windows-11`,
                 'ko': `/ko/best-performance-tweaks-windows-11`,
-                'ar': `/ar/best-performance-tweaks-windows-11`
+                'ar': `/ar/best-performance-tweaks-windows-11`,
+                'ru': `/ru/best-performance-tweaks-windows-11`,
+                'zh-cn': `/zh-cn/best-performance-tweaks-windows-11`,
+                'vi': `/vi/best-performance-tweaks-windows-11`,
+                'tr': `/tr/best-performance-tweaks-windows-11`,
+                'id': `/id/best-performance-tweaks-windows-11`,
+                'pl': `/pl/best-performance-tweaks-windows-11`,
+                'x-default': `/en/best-performance-tweaks-windows-11`
             }
         }
     });

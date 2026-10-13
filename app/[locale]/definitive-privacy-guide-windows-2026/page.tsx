@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/definitive-privacy-guide-windows-2026`,
                 'ja': `/ja/definitive-privacy-guide-windows-2026`,
                 'ko': `/ko/definitive-privacy-guide-windows-2026`,
-                'ar': `/ar/definitive-privacy-guide-windows-2026`
+                'ar': `/ar/definitive-privacy-guide-windows-2026`,
+                'ru': `/ru/definitive-privacy-guide-windows-2026`,
+                'zh-cn': `/zh-cn/definitive-privacy-guide-windows-2026`,
+                'vi': `/vi/definitive-privacy-guide-windows-2026`,
+                'tr': `/tr/definitive-privacy-guide-windows-2026`,
+                'id': `/id/definitive-privacy-guide-windows-2026`,
+                'pl': `/pl/definitive-privacy-guide-windows-2026`,
+                'x-default': `/en/definitive-privacy-guide-windows-2026`
             }
         }
     });

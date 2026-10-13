@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-steam-performance-windows-11`,
                 'ja': `/ja/improve-steam-performance-windows-11`,
                 'ko': `/ko/improve-steam-performance-windows-11`,
-                'ar': `/ar/improve-steam-performance-windows-11`
+                'ar': `/ar/improve-steam-performance-windows-11`,
+                'ru': `/ru/improve-steam-performance-windows-11`,
+                'zh-cn': `/zh-cn/improve-steam-performance-windows-11`,
+                'vi': `/vi/improve-steam-performance-windows-11`,
+                'tr': `/tr/improve-steam-performance-windows-11`,
+                'id': `/id/improve-steam-performance-windows-11`,
+                'pl': `/pl/improve-steam-performance-windows-11`,
+                'x-default': `/en/improve-steam-performance-windows-11`
             }
         }
     });

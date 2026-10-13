@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/best-sound-settings-for-gaming-windows`,
                 'ja': `/ja/best-sound-settings-for-gaming-windows`,
                 'ko': `/ko/best-sound-settings-for-gaming-windows`,
-                'ar': `/ar/best-sound-settings-for-gaming-windows`
+                'ar': `/ar/best-sound-settings-for-gaming-windows`,
+                'ru': `/ru/best-sound-settings-for-gaming-windows`,
+                'zh-cn': `/zh-cn/best-sound-settings-for-gaming-windows`,
+                'vi': `/vi/best-sound-settings-for-gaming-windows`,
+                'tr': `/tr/best-sound-settings-for-gaming-windows`,
+                'id': `/id/best-sound-settings-for-gaming-windows`,
+                'pl': `/pl/best-sound-settings-for-gaming-windows`,
+                'x-default': `/en/best-sound-settings-for-gaming-windows`
             }
         }
     });

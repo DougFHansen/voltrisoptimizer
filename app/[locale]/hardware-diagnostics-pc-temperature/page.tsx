@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/hardware-diagnostics-pc-temperature`,
                 'ja': `/ja/hardware-diagnostics-pc-temperature`,
                 'ko': `/ko/hardware-diagnostics-pc-temperature`,
-                'ar': `/ar/hardware-diagnostics-pc-temperature`
+                'ar': `/ar/hardware-diagnostics-pc-temperature`,
+                'ru': `/ru/hardware-diagnostics-pc-temperature`,
+                'zh-cn': `/zh-cn/hardware-diagnostics-pc-temperature`,
+                'vi': `/vi/hardware-diagnostics-pc-temperature`,
+                'tr': `/tr/hardware-diagnostics-pc-temperature`,
+                'id': `/id/hardware-diagnostics-pc-temperature`,
+                'pl': `/pl/hardware-diagnostics-pc-temperature`,
+                'x-default': `/en/hardware-diagnostics-pc-temperature`
             }
         }
     });

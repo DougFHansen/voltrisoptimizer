@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/check-processes-consuming-most-cpu-windows`,
                 'ja': `/ja/check-processes-consuming-most-cpu-windows`,
                 'ko': `/ko/check-processes-consuming-most-cpu-windows`,
-                'ar': `/ar/check-processes-consuming-most-cpu-windows`
+                'ar': `/ar/check-processes-consuming-most-cpu-windows`,
+                'ru': `/ru/check-processes-consuming-most-cpu-windows`,
+                'zh-cn': `/zh-cn/check-processes-consuming-most-cpu-windows`,
+                'vi': `/vi/check-processes-consuming-most-cpu-windows`,
+                'tr': `/tr/check-processes-consuming-most-cpu-windows`,
+                'id': `/id/check-processes-consuming-most-cpu-windows`,
+                'pl': `/pl/check-processes-consuming-most-cpu-windows`,
+                'x-default': `/en/check-processes-consuming-most-cpu-windows`
             }
         }
     });

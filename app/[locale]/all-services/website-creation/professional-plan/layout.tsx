@@ -40,7 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/website-creation/professional-plan`,
                 'ja': `/ja/all-services/website-creation/professional-plan`,
                 'ko': `/ko/all-services/website-creation/professional-plan`,
-                'ar': `/ar/all-services/website-creation/professional-plan`
+                'ar': `/ar/all-services/website-creation/professional-plan`,
+                'ru': `/ru/all-services/website-creation/professional-plan`,
+                'zh-cn': `/zh-cn/all-services/website-creation/professional-plan`,
+                'vi': `/vi/all-services/website-creation/professional-plan`,
+                'tr': `/tr/all-services/website-creation/professional-plan`,
+                'id': `/id/all-services/website-creation/professional-plan`,
+                'pl': `/pl/all-services/website-creation/professional-plan`,
+                'x-default': `/en/all-services/website-creation/professional-plan`
             }
         }
     });

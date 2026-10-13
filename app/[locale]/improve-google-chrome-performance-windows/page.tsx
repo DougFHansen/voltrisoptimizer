@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-google-chrome-performance-windows`,
                 'ja': `/ja/improve-google-chrome-performance-windows`,
                 'ko': `/ko/improve-google-chrome-performance-windows`,
-                'ar': `/ar/improve-google-chrome-performance-windows`
+                'ar': `/ar/improve-google-chrome-performance-windows`,
+                'ru': `/ru/improve-google-chrome-performance-windows`,
+                'zh-cn': `/zh-cn/improve-google-chrome-performance-windows`,
+                'vi': `/vi/improve-google-chrome-performance-windows`,
+                'tr': `/tr/improve-google-chrome-performance-windows`,
+                'id': `/id/improve-google-chrome-performance-windows`,
+                'pl': `/pl/improve-google-chrome-performance-windows`,
+                'x-default': `/en/improve-google-chrome-performance-windows`
             }
         }
     });

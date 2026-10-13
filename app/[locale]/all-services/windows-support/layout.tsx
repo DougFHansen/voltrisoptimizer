@@ -42,7 +42,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/windows-support`,
                 'ja': `/ja/all-services/windows-support`,
                 'ko': `/ko/all-services/windows-support`,
-                'ar': `/ar/all-services/windows-support`
+                'ar': `/ar/all-services/windows-support`,
+                'ru': `/ru/all-services/windows-support`,
+                'zh-cn': `/zh-cn/all-services/windows-support`,
+                'vi': `/vi/all-services/windows-support`,
+                'tr': `/tr/all-services/windows-support`,
+                'id': `/id/all-services/windows-support`,
+                'pl': `/pl/all-services/windows-support`,
+                'x-default': `/en/all-services/windows-support`
             }
         }
     });

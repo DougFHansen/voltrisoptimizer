@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-counter-strike-2-cs2`,
                 'ja': `/ja/optimize-windows-for-counter-strike-2-cs2`,
                 'ko': `/ko/optimize-windows-for-counter-strike-2-cs2`,
-                'ar': `/ar/optimize-windows-for-counter-strike-2-cs2`
+                'ar': `/ar/optimize-windows-for-counter-strike-2-cs2`,
+                'ru': `/ru/optimize-windows-for-counter-strike-2-cs2`,
+                'zh-cn': `/zh-cn/optimize-windows-for-counter-strike-2-cs2`,
+                'vi': `/vi/optimize-windows-for-counter-strike-2-cs2`,
+                'tr': `/tr/optimize-windows-for-counter-strike-2-cs2`,
+                'id': `/id/optimize-windows-for-counter-strike-2-cs2`,
+                'pl': `/pl/optimize-windows-for-counter-strike-2-cs2`,
+                'x-default': `/en/optimize-windows-for-counter-strike-2-cs2`
             }
         }
     });

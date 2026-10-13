@@ -40,7 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/website-creation/basic-plan`,
                 'ja': `/ja/all-services/website-creation/basic-plan`,
                 'ko': `/ko/all-services/website-creation/basic-plan`,
-                'ar': `/ar/all-services/website-creation/basic-plan`
+                'ar': `/ar/all-services/website-creation/basic-plan`,
+                'ru': `/ru/all-services/website-creation/basic-plan`,
+                'zh-cn': `/zh-cn/all-services/website-creation/basic-plan`,
+                'vi': `/vi/all-services/website-creation/basic-plan`,
+                'tr': `/tr/all-services/website-creation/basic-plan`,
+                'id': `/id/all-services/website-creation/basic-plan`,
+                'pl': `/pl/all-services/website-creation/basic-plan`,
+                'x-default': `/en/all-services/website-creation/basic-plan`
             }
         }
     });

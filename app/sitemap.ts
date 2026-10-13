@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const domain = 'https://www.voltrisoptimizer.com'; // Updated to the international domain
   
   // Lista de todos os idiomas suportados pela plataforma internacional
-  const supportedLocales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
+  const supportedLocales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar', 'ru', 'zh-cn', 'vi', 'tr', 'id', 'pl'];
 
   // Business-Critical Priorities for Google (Siloing Strategy)
   const priorityMap: Record<string, number> = {

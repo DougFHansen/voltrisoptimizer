@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/fix-intermittent-keyboard-lag-windows`,
                 'ja': `/ja/fix-intermittent-keyboard-lag-windows`,
                 'ko': `/ko/fix-intermittent-keyboard-lag-windows`,
-                'ar': `/ar/fix-intermittent-keyboard-lag-windows`
+                'ar': `/ar/fix-intermittent-keyboard-lag-windows`,
+                'ru': `/ru/fix-intermittent-keyboard-lag-windows`,
+                'zh-cn': `/zh-cn/fix-intermittent-keyboard-lag-windows`,
+                'vi': `/vi/fix-intermittent-keyboard-lag-windows`,
+                'tr': `/tr/fix-intermittent-keyboard-lag-windows`,
+                'id': `/id/fix-intermittent-keyboard-lag-windows`,
+                'pl': `/pl/fix-intermittent-keyboard-lag-windows`,
+                'x-default': `/en/fix-intermittent-keyboard-lag-windows`
             }
         }
     });

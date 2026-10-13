@@ -49,7 +49,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/create-website`,
                 'ja': `/ja/create-website`,
                 'ko': `/ko/create-website`,
-                'ar': `/ar/create-website`
+                'ar': `/ar/create-website`,
+                'ru': `/ru/create-website`,
+                'zh-cn': `/zh-cn/create-website`,
+                'vi': `/vi/create-website`,
+                'tr': `/tr/create-website`,
+                'id': `/id/create-website`,
+                'pl': `/pl/create-website`,
+                'x-default': `/en/create-website`
             }
         }
     });

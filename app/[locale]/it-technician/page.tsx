@@ -39,7 +39,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/it-technician`,
                 'ja': `/ja/it-technician`,
                 'ko': `/ko/it-technician`,
-                'ar': `/ar/it-technician`
+                'ar': `/ar/it-technician`,
+                'ru': `/ru/it-technician`,
+                'zh-cn': `/zh-cn/it-technician`,
+                'vi': `/vi/it-technician`,
+                'tr': `/tr/it-technician`,
+                'id': `/id/it-technician`,
+                'pl': `/pl/it-technician`,
+                'x-default': `/en/it-technician`
             }
         }
     });

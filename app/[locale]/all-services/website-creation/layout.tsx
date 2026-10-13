@@ -50,7 +50,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/website-creation`,
                 'ja': `/ja/all-services/website-creation`,
                 'ko': `/ko/all-services/website-creation`,
-                'ar': `/ar/all-services/website-creation`
+                'ar': `/ar/all-services/website-creation`,
+                'ru': `/ru/all-services/website-creation`,
+                'zh-cn': `/zh-cn/all-services/website-creation`,
+                'vi': `/vi/all-services/website-creation`,
+                'tr': `/tr/all-services/website-creation`,
+                'id': `/id/all-services/website-creation`,
+                'pl': `/pl/all-services/website-creation`,
+                'x-default': `/en/all-services/website-creation`
             }
         }
     });

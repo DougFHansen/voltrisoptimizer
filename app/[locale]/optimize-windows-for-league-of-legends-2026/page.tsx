@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-league-of-legends-2026`,
                 'ja': `/ja/optimize-windows-for-league-of-legends-2026`,
                 'ko': `/ko/optimize-windows-for-league-of-legends-2026`,
-                'ar': `/ar/optimize-windows-for-league-of-legends-2026`
+                'ar': `/ar/optimize-windows-for-league-of-legends-2026`,
+                'ru': `/ru/optimize-windows-for-league-of-legends-2026`,
+                'zh-cn': `/zh-cn/optimize-windows-for-league-of-legends-2026`,
+                'vi': `/vi/optimize-windows-for-league-of-legends-2026`,
+                'tr': `/tr/optimize-windows-for-league-of-legends-2026`,
+                'id': `/id/optimize-windows-for-league-of-legends-2026`,
+                'pl': `/pl/optimize-windows-for-league-of-legends-2026`,
+                'x-default': `/en/optimize-windows-for-league-of-legends-2026`
             }
         }
     });

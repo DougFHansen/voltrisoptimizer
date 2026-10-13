@@ -40,7 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/privacy-policy`,
                 'ja': `/ja/privacy-policy`,
                 'ko': `/ko/privacy-policy`,
-                'ar': `/ar/privacy-policy`
+                'ar': `/ar/privacy-policy`,
+                'ru': `/ru/privacy-policy`,
+                'zh-cn': `/zh-cn/privacy-policy`,
+                'vi': `/vi/privacy-policy`,
+                'tr': `/tr/privacy-policy`,
+                'id': `/id/privacy-policy`,
+                'pl': `/pl/privacy-policy`,
+                'x-default': `/en/privacy-policy`
             }
         }
     });

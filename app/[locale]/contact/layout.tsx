@@ -19,7 +19,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/contact`,
                 'ja': `/ja/contact`,
                 'ko': `/ko/contact`,
-                'ar': `/ar/contact`
+                'ar': `/ar/contact`,
+                'ru': `/ru/contact`,
+                'zh-cn': `/zh-cn/contact`,
+                'vi': `/vi/contact`,
+                'tr': `/tr/contact`,
+                'id': `/id/contact`,
+                'pl': `/pl/contact`,
+                'x-default': `/en/contact`
             }
         }
     });

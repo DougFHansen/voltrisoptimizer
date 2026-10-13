@@ -48,7 +48,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/computer-maintenance`,
                 'ja': `/ja/computer-maintenance`,
                 'ko': `/ko/computer-maintenance`,
-                'ar': `/ar/computer-maintenance`
+                'ar': `/ar/computer-maintenance`,
+                'ru': `/ru/computer-maintenance`,
+                'zh-cn': `/zh-cn/computer-maintenance`,
+                'vi': `/vi/computer-maintenance`,
+                'tr': `/tr/computer-maintenance`,
+                'id': `/id/computer-maintenance`,
+                'pl': `/pl/computer-maintenance`,
+                'x-default': `/en/computer-maintenance`
             }
         }
     });

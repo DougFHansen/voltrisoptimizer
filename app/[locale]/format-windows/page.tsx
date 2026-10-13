@@ -31,7 +31,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/format-windows`,
                 'ja': `/ja/format-windows`,
                 'ko': `/ko/format-windows`,
-                'ar': `/ar/format-windows`
+                'ar': `/ar/format-windows`,
+                'ru': `/ru/format-windows`,
+                'zh-cn': `/zh-cn/format-windows`,
+                'vi': `/vi/format-windows`,
+                'tr': `/tr/format-windows`,
+                'id': `/id/format-windows`,
+                'pl': `/pl/format-windows`,
+                'x-default': `/en/format-windows`
             }
         }
     });

@@ -27,11 +27,18 @@ const LOCALE_META: Record<Locale, { native: string; country: string }> = {
   'ko':    { native: '한국어',       country: '한국' },
   'ar':    { native: 'العربية',     country: 'السعودية' },
   'pt-br': { native: 'Português',   country: 'Brasil' },
+  'ru':    { native: 'Русский',     country: 'Россия' },
+  'zh-cn': { native: '简体中文',     country: '中国' },
+  'vi':    { native: 'Tiếng Việt',  country: 'Việt Nam' },
+  'tr':    { native: 'Türkçe',      country: 'Türkiye' },
+  'id':    { native: 'Bahasa Indonesia', country: 'Indonesia' },
+  'pl':    { native: 'Polski',      country: 'Polska' },
 };
 
 const CODE: Record<Locale, string> = {
   'en': 'EN', 'es': 'ES', 'fr': 'FR', 'de': 'DE', 'it': 'IT',
   'ja': 'JA', 'ko': 'KO', 'ar': 'AR', 'pt-br': 'PT',
+  'ru': 'RU', 'zh-cn': 'ZH', 'vi': 'VI', 'tr': 'TR', 'id': 'ID', 'pl': 'PL',
 };
 
 // ── Flags (20×14 viewBox, inline SVG, rounded by clipPath) ──────────────────
@@ -121,6 +128,49 @@ export function Flag({ locale, className = 'w-5 h-[14px]' }: { locale: Locale; c
             <path d="M4 9.4 Q10 10.6 15.4 8.6" stroke="#fff" strokeWidth="0.9" fill="none" strokeLinecap="round" />
             <path d="M12.8 10.8 l2.6 -0.6 -0.5 1.9 -2.1 -0.4 Z" fill="#fff" opacity="0" />
             <rect x="12.6" y="9.6" width="3.4" height="0.8" rx="0.4" fill="#fff" transform="rotate(-14 14.3 10)" />
+          </>
+        )}
+        {locale === 'ru' && (
+          <>
+            <rect width="20" height="14" fill="#fff" />
+            <rect y="4.67" width="20" height="4.66" fill="#0039A6" />
+            <rect y="9.33" width="20" height="4.67" fill="#D52B1E" />
+          </>
+        )}
+        {locale === 'zh-cn' && (
+          <>
+            <rect width="20" height="14" fill="#DE2910" />
+            <polygon fill="#FFDE00" points="5,2.2 5.56,3.83 7.28,3.86 5.90,4.89 6.41,6.54 5,5.55 3.59,6.54 4.10,4.89 2.72,3.86 4.44,3.83" />
+            <circle cx="9.6" cy="3.1" r="0.62" fill="#FFDE00" />
+            <circle cx="11.1" cy="4.9" r="0.62" fill="#FFDE00" />
+            <circle cx="11.1" cy="7.1" r="0.62" fill="#FFDE00" />
+            <circle cx="9.6" cy="8.9" r="0.62" fill="#FFDE00" />
+          </>
+        )}
+        {locale === 'vi' && (
+          <>
+            <rect width="20" height="14" fill="#DA251D" />
+            <polygon fill="#FFFF00" points="10,3.6 10.79,5.91 13.23,5.95 11.28,7.42 12.0,9.75 10,8.35 8.0,9.75 8.72,7.42 6.77,5.95 9.21,5.91" />
+          </>
+        )}
+        {locale === 'tr' && (
+          <>
+            <rect width="20" height="14" fill="#E30A17" />
+            <circle cx="8.3" cy="7" r="3.4" fill="#fff" />
+            <circle cx="9.5" cy="7" r="2.7" fill="#E30A17" />
+            <polygon fill="#fff" points="13.2,5.4 13.58,6.48 14.72,6.51 13.81,7.20 14.14,8.29 13.2,7.64 12.26,8.29 12.59,7.20 11.68,6.51 12.82,6.48" />
+          </>
+        )}
+        {locale === 'id' && (
+          <>
+            <rect width="20" height="14" fill="#fff" />
+            <rect width="20" height="7" fill="#CE1126" />
+          </>
+        )}
+        {locale === 'pl' && (
+          <>
+            <rect width="20" height="14" fill="#fff" />
+            <rect y="7" width="20" height="7" fill="#DC143C" />
           </>
         )}
       </g>

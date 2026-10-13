@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-spotify-performance-windows-11`,
                 'ja': `/ja/improve-spotify-performance-windows-11`,
                 'ko': `/ko/improve-spotify-performance-windows-11`,
-                'ar': `/ar/improve-spotify-performance-windows-11`
+                'ar': `/ar/improve-spotify-performance-windows-11`,
+                'ru': `/ru/improve-spotify-performance-windows-11`,
+                'zh-cn': `/zh-cn/improve-spotify-performance-windows-11`,
+                'vi': `/vi/improve-spotify-performance-windows-11`,
+                'tr': `/tr/improve-spotify-performance-windows-11`,
+                'id': `/id/improve-spotify-performance-windows-11`,
+                'pl': `/pl/improve-spotify-performance-windows-11`,
+                'x-default': `/en/improve-spotify-performance-windows-11`
             }
         }
     });

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-disable-windows-update-permanently`,
                 'ja': `/ja/how-to-disable-windows-update-permanently`,
                 'ko': `/ko/how-to-disable-windows-update-permanently`,
-                'ar': `/ar/how-to-disable-windows-update-permanently`
+                'ar': `/ar/how-to-disable-windows-update-permanently`,
+                'ru': `/ru/how-to-disable-windows-update-permanently`,
+                'zh-cn': `/zh-cn/how-to-disable-windows-update-permanently`,
+                'vi': `/vi/how-to-disable-windows-update-permanently`,
+                'tr': `/tr/how-to-disable-windows-update-permanently`,
+                'id': `/id/how-to-disable-windows-update-permanently`,
+                'pl': `/pl/how-to-disable-windows-update-permanently`,
+                'x-default': `/en/how-to-disable-windows-update-permanently`
             }
         }
     });

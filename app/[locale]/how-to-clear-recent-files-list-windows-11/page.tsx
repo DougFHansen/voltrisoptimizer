@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-clear-recent-files-list-windows-11`,
                 'ja': `/ja/how-to-clear-recent-files-list-windows-11`,
                 'ko': `/ko/how-to-clear-recent-files-list-windows-11`,
-                'ar': `/ar/how-to-clear-recent-files-list-windows-11`
+                'ar': `/ar/how-to-clear-recent-files-list-windows-11`,
+                'ru': `/ru/how-to-clear-recent-files-list-windows-11`,
+                'zh-cn': `/zh-cn/how-to-clear-recent-files-list-windows-11`,
+                'vi': `/vi/how-to-clear-recent-files-list-windows-11`,
+                'tr': `/tr/how-to-clear-recent-files-list-windows-11`,
+                'id': `/id/how-to-clear-recent-files-list-windows-11`,
+                'pl': `/pl/how-to-clear-recent-files-list-windows-11`,
+                'x-default': `/en/how-to-clear-recent-files-list-windows-11`
             }
         }
     });

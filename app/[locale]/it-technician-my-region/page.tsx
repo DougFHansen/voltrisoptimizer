@@ -36,7 +36,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/it-technician-my-region`,
                 'ja': `/ja/it-technician-my-region`,
                 'ko': `/ko/it-technician-my-region`,
-                'ar': `/ar/it-technician-my-region`
+                'ar': `/ar/it-technician-my-region`,
+                'ru': `/ru/it-technician-my-region`,
+                'zh-cn': `/zh-cn/it-technician-my-region`,
+                'vi': `/vi/it-technician-my-region`,
+                'tr': `/tr/it-technician-my-region`,
+                'id': `/id/it-technician-my-region`,
+                'pl': `/pl/it-technician-my-region`,
+                'x-default': `/en/it-technician-my-region`
             }
         }
     });

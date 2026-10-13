@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/increase-android-emulator-performance-windows`,
                 'ja': `/ja/increase-android-emulator-performance-windows`,
                 'ko': `/ko/increase-android-emulator-performance-windows`,
-                'ar': `/ar/increase-android-emulator-performance-windows`
+                'ar': `/ar/increase-android-emulator-performance-windows`,
+                'ru': `/ru/increase-android-emulator-performance-windows`,
+                'zh-cn': `/zh-cn/increase-android-emulator-performance-windows`,
+                'vi': `/vi/increase-android-emulator-performance-windows`,
+                'tr': `/tr/increase-android-emulator-performance-windows`,
+                'id': `/id/increase-android-emulator-performance-windows`,
+                'pl': `/pl/increase-android-emulator-performance-windows`,
+                'x-default': `/en/increase-android-emulator-performance-windows`
             }
         }
     });

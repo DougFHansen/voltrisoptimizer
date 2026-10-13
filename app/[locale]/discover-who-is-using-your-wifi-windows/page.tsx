@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/discover-who-is-using-your-wifi-windows`,
                 'ja': `/ja/discover-who-is-using-your-wifi-windows`,
                 'ko': `/ko/discover-who-is-using-your-wifi-windows`,
-                'ar': `/ar/discover-who-is-using-your-wifi-windows`
+                'ar': `/ar/discover-who-is-using-your-wifi-windows`,
+                'ru': `/ru/discover-who-is-using-your-wifi-windows`,
+                'zh-cn': `/zh-cn/discover-who-is-using-your-wifi-windows`,
+                'vi': `/vi/discover-who-is-using-your-wifi-windows`,
+                'tr': `/tr/discover-who-is-using-your-wifi-windows`,
+                'id': `/id/discover-who-is-using-your-wifi-windows`,
+                'pl': `/pl/discover-who-is-using-your-wifi-windows`,
+                'x-default': `/en/discover-who-is-using-your-wifi-windows`
             }
         }
     });

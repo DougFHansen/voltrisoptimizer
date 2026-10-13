@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-obs-studio-performance-windows`,
                 'ja': `/ja/improve-obs-studio-performance-windows`,
                 'ko': `/ko/improve-obs-studio-performance-windows`,
-                'ar': `/ar/improve-obs-studio-performance-windows`
+                'ar': `/ar/improve-obs-studio-performance-windows`,
+                'ru': `/ru/improve-obs-studio-performance-windows`,
+                'zh-cn': `/zh-cn/improve-obs-studio-performance-windows`,
+                'vi': `/vi/improve-obs-studio-performance-windows`,
+                'tr': `/tr/improve-obs-studio-performance-windows`,
+                'id': `/id/improve-obs-studio-performance-windows`,
+                'pl': `/pl/improve-obs-studio-performance-windows`,
+                'x-default': `/en/improve-obs-studio-performance-windows`
             }
         }
     });

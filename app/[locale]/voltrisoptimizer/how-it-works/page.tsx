@@ -45,7 +45,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/voltrisoptimizer/how-it-works`,
                 'ja': `/ja/voltrisoptimizer/how-it-works`,
                 'ko': `/ko/voltrisoptimizer/how-it-works`,
-                'ar': `/ar/voltrisoptimizer/how-it-works`
+                'ar': `/ar/voltrisoptimizer/how-it-works`,
+                'ru': `/ru/voltrisoptimizer/how-it-works`,
+                'zh-cn': `/zh-cn/voltrisoptimizer/how-it-works`,
+                'vi': `/vi/voltrisoptimizer/how-it-works`,
+                'tr': `/tr/voltrisoptimizer/how-it-works`,
+                'id': `/id/voltrisoptimizer/how-it-works`,
+                'pl': `/pl/voltrisoptimizer/how-it-works`,
+                'x-default': `/en/voltrisoptimizer/how-it-works`
             }
         }
     });

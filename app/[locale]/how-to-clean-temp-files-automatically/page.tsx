@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-clean-temp-files-automatically`,
                 'ja': `/ja/how-to-clean-temp-files-automatically`,
                 'ko': `/ko/how-to-clean-temp-files-automatically`,
-                'ar': `/ar/how-to-clean-temp-files-automatically`
+                'ar': `/ar/how-to-clean-temp-files-automatically`,
+                'ru': `/ru/how-to-clean-temp-files-automatically`,
+                'zh-cn': `/zh-cn/how-to-clean-temp-files-automatically`,
+                'vi': `/vi/how-to-clean-temp-files-automatically`,
+                'tr': `/tr/how-to-clean-temp-files-automatically`,
+                'id': `/id/how-to-clean-temp-files-automatically`,
+                'pl': `/pl/how-to-clean-temp-files-automatically`,
+                'x-default': `/en/how-to-clean-temp-files-automatically`
             }
         }
     });

@@ -71,7 +71,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/computer-optimization`,
                 'ja': `/ja/computer-optimization`,
                 'ko': `/ko/computer-optimization`,
-                'ar': `/ar/computer-optimization`
+                'ar': `/ar/computer-optimization`,
+                'ru': `/ru/computer-optimization`,
+                'zh-cn': `/zh-cn/computer-optimization`,
+                'vi': `/vi/computer-optimization`,
+                'tr': `/tr/computer-optimization`,
+                'id': `/id/computer-optimization`,
+                'pl': `/pl/computer-optimization`,
+                'x-default': `/en/computer-optimization`
             }
         }
     });

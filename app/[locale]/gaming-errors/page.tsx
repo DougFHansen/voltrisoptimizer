@@ -37,7 +37,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/gaming-errors`,
                 'ja': `/ja/gaming-errors`,
                 'ko': `/ko/gaming-errors`,
-                'ar': `/ar/gaming-errors`
+                'ar': `/ar/gaming-errors`,
+                'ru': `/ru/gaming-errors`,
+                'zh-cn': `/zh-cn/gaming-errors`,
+                'vi': `/vi/gaming-errors`,
+                'tr': `/tr/gaming-errors`,
+                'id': `/id/gaming-errors`,
+                'pl': `/pl/gaming-errors`,
+                'x-default': `/en/gaming-errors`
             }
         }
     });

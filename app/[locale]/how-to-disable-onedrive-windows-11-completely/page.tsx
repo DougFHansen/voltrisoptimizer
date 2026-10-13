@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-disable-onedrive-windows-11-completely`,
                 'ja': `/ja/how-to-disable-onedrive-windows-11-completely`,
                 'ko': `/ko/how-to-disable-onedrive-windows-11-completely`,
-                'ar': `/ar/how-to-disable-onedrive-windows-11-completely`
+                'ar': `/ar/how-to-disable-onedrive-windows-11-completely`,
+                'ru': `/ru/how-to-disable-onedrive-windows-11-completely`,
+                'zh-cn': `/zh-cn/how-to-disable-onedrive-windows-11-completely`,
+                'vi': `/vi/how-to-disable-onedrive-windows-11-completely`,
+                'tr': `/tr/how-to-disable-onedrive-windows-11-completely`,
+                'id': `/id/how-to-disable-onedrive-windows-11-completely`,
+                'pl': `/pl/how-to-disable-onedrive-windows-11-completely`,
+                'x-default': `/en/how-to-disable-onedrive-windows-11-completely`
             }
         }
     });

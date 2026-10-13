@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-architecture-bim-autocad`,
                 'ja': `/ja/optimize-windows-for-architecture-bim-autocad`,
                 'ko': `/ko/optimize-windows-for-architecture-bim-autocad`,
-                'ar': `/ar/optimize-windows-for-architecture-bim-autocad`
+                'ar': `/ar/optimize-windows-for-architecture-bim-autocad`,
+                'ru': `/ru/optimize-windows-for-architecture-bim-autocad`,
+                'zh-cn': `/zh-cn/optimize-windows-for-architecture-bim-autocad`,
+                'vi': `/vi/optimize-windows-for-architecture-bim-autocad`,
+                'tr': `/tr/optimize-windows-for-architecture-bim-autocad`,
+                'id': `/id/optimize-windows-for-architecture-bim-autocad`,
+                'pl': `/pl/optimize-windows-for-architecture-bim-autocad`,
+                'x-default': `/en/optimize-windows-for-architecture-bim-autocad`
             }
         }
     });

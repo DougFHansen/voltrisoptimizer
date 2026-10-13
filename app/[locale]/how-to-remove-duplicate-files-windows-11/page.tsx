@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-remove-duplicate-files-windows-11`,
                 'ja': `/ja/how-to-remove-duplicate-files-windows-11`,
                 'ko': `/ko/how-to-remove-duplicate-files-windows-11`,
-                'ar': `/ar/how-to-remove-duplicate-files-windows-11`
+                'ar': `/ar/how-to-remove-duplicate-files-windows-11`,
+                'ru': `/ru/how-to-remove-duplicate-files-windows-11`,
+                'zh-cn': `/zh-cn/how-to-remove-duplicate-files-windows-11`,
+                'vi': `/vi/how-to-remove-duplicate-files-windows-11`,
+                'tr': `/tr/how-to-remove-duplicate-files-windows-11`,
+                'id': `/id/how-to-remove-duplicate-files-windows-11`,
+                'pl': `/pl/how-to-remove-duplicate-files-windows-11`,
+                'x-default': `/en/how-to-remove-duplicate-files-windows-11`
             }
         }
     });

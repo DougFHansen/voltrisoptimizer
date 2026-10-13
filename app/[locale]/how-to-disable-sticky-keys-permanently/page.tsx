@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-disable-sticky-keys-permanently`,
                 'ja': `/ja/how-to-disable-sticky-keys-permanently`,
                 'ko': `/ko/how-to-disable-sticky-keys-permanently`,
-                'ar': `/ar/how-to-disable-sticky-keys-permanently`
+                'ar': `/ar/how-to-disable-sticky-keys-permanently`,
+                'ru': `/ru/how-to-disable-sticky-keys-permanently`,
+                'zh-cn': `/zh-cn/how-to-disable-sticky-keys-permanently`,
+                'vi': `/vi/how-to-disable-sticky-keys-permanently`,
+                'tr': `/tr/how-to-disable-sticky-keys-permanently`,
+                'id': `/id/how-to-disable-sticky-keys-permanently`,
+                'pl': `/pl/how-to-disable-sticky-keys-permanently`,
+                'x-default': `/en/how-to-disable-sticky-keys-permanently`
             }
         }
     });

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-discord-performance-windows-11`,
                 'ja': `/ja/improve-discord-performance-windows-11`,
                 'ko': `/ko/improve-discord-performance-windows-11`,
-                'ar': `/ar/improve-discord-performance-windows-11`
+                'ar': `/ar/improve-discord-performance-windows-11`,
+                'ru': `/ru/improve-discord-performance-windows-11`,
+                'zh-cn': `/zh-cn/improve-discord-performance-windows-11`,
+                'vi': `/vi/improve-discord-performance-windows-11`,
+                'tr': `/tr/improve-discord-performance-windows-11`,
+                'id': `/id/improve-discord-performance-windows-11`,
+                'pl': `/pl/improve-discord-performance-windows-11`,
+                'x-default': `/en/improve-discord-performance-windows-11`
             }
         }
     });

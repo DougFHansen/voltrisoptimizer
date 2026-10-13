@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-video-editing`,
                 'ja': `/ja/optimize-windows-for-video-editing`,
                 'ko': `/ko/optimize-windows-for-video-editing`,
-                'ar': `/ar/optimize-windows-for-video-editing`
+                'ar': `/ar/optimize-windows-for-video-editing`,
+                'ru': `/ru/optimize-windows-for-video-editing`,
+                'zh-cn': `/zh-cn/optimize-windows-for-video-editing`,
+                'vi': `/vi/optimize-windows-for-video-editing`,
+                'tr': `/tr/optimize-windows-for-video-editing`,
+                'id': `/id/optimize-windows-for-video-editing`,
+                'pl': `/pl/optimize-windows-for-video-editing`,
+                'x-default': `/en/optimize-windows-for-video-editing`
             }
         }
     });

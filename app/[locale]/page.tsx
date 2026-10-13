@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import HomeClient from '@/components/HomeClient';
 
-const supportedLocales = ['en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'ar', 'pt-br'] as const;
+const supportedLocales = ['en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'ar', 'pt-br', 'ru', 'zh-cn', 'vi', 'tr', 'id', 'pl'] as const;
 type SupportedLocale = typeof supportedLocales[number];
 
 interface HomePageProps {
@@ -20,6 +20,12 @@ const titles: Record<SupportedLocale, string> = {
   'ko':    'VOLTRIS - PC 최적화 및 기술 지원',
   'ar':    'VOLTRIS - تحسين الكمبيوتر والدعم الفني',
   'pt-br': 'VOLTRIS - Otimização de PC e Suporte Técnico',
+  'ru':    'VOLTRIS — Оптимизация ПК и техническая поддержка',
+  'zh-cn': 'VOLTRIS - PC 优化与技术支持',
+  'vi':    'VOLTRIS - Tối ưu hóa PC và Hỗ trợ Kỹ thuật',
+  'tr':    'VOLTRIS - PC Optimizasyonu ve Teknik Destek',
+  'id':    'VOLTRIS - Optimasi PC dan Dukungan Teknis',
+  'pl':    'VOLTRIS - Optymalizacja PC i wsparcie techniczne',
 };
 
 const descriptions: Record<SupportedLocale, string> = {
@@ -32,6 +38,12 @@ const descriptions: Record<SupportedLocale, string> = {
   'ko':    '게이밍 성능 및 Windows 최적화의 최고 권위자. Voltris Optimizer를 다운로드하고 전문 기술 지원을 요청하세요.',
   'ar':    'السلطة الرائدة في أداء الألعاب وتحسين ويندوز. قم بتنزيل Voltris Optimizer واطلب الدعم الفني المتخصص.',
   'pt-br': 'A maior autoridade em performance gamer e otimização de Windows. Baixe o Voltris Optimizer e solicite suporte técnico especializado.',
+  'ru':    'Ведущий авторитет в игровой производительности и оптимизации Windows. Скачайте Voltris Optimizer и запросите специализированную техническую поддержку.',
+  'zh-cn': '游戏性能与 Windows 优化领域的权威。下载 Voltris Optimizer 并获取专业技术支持。',
+  'vi':    'Chuyên gia hàng đầu về hiệu năng game và tối ưu hóa Windows. Tải Voltris Optimizer và yêu cầu hỗ trợ kỹ thuật chuyên nghiệp.',
+  'tr':    'Oyun performansı ve Windows optimizasyonunda öncü otorite. Voltris Optimizer’ı indirin ve uzman teknik destek talep edin.',
+  'id':    'Otoritas terdepan dalam performa gaming dan optimasi Windows. Unduh Voltris Optimizer dan minta dukungan teknis khusus.',
+  'pl':    'Wiodący autorytet w zakresie wydajności w grach i optymalizacji systemu Windows. Pobierz Voltris Optimizer i zamów specjalistyczne wsparcie techniczne.',
 };
 
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
@@ -53,6 +65,12 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
         'ko':      '/ko',
         'ar':      '/ar',
         'pt-br':   '/pt-br',
+        'ru':      '/ru',
+        'zh-cn':   '/zh-cn',
+        'vi':      '/vi',
+        'tr':      '/tr',
+        'id':      '/id',
+        'pl':      '/pl',
         'x-default': '/en',
       },
     },

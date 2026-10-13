@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-reduce-keyboard-mouse-input-lag`,
                 'ja': `/ja/how-to-reduce-keyboard-mouse-input-lag`,
                 'ko': `/ko/how-to-reduce-keyboard-mouse-input-lag`,
-                'ar': `/ar/how-to-reduce-keyboard-mouse-input-lag`
+                'ar': `/ar/how-to-reduce-keyboard-mouse-input-lag`,
+                'ru': `/ru/how-to-reduce-keyboard-mouse-input-lag`,
+                'zh-cn': `/zh-cn/how-to-reduce-keyboard-mouse-input-lag`,
+                'vi': `/vi/how-to-reduce-keyboard-mouse-input-lag`,
+                'tr': `/tr/how-to-reduce-keyboard-mouse-input-lag`,
+                'id': `/id/how-to-reduce-keyboard-mouse-input-lag`,
+                'pl': `/pl/how-to-reduce-keyboard-mouse-input-lag`,
+                'x-default': `/en/how-to-reduce-keyboard-mouse-input-lag`
             }
         }
     });

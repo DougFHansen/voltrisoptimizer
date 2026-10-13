@@ -18,7 +18,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/voltris-optimizer`,
                 'ja': `/ja/voltris-optimizer`,
                 'ko': `/ko/voltris-optimizer`,
-                'ar': `/ar/voltris-optimizer`
+                'ar': `/ar/voltris-optimizer`,
+                'ru': `/ru/voltris-optimizer`,
+                'zh-cn': `/zh-cn/voltris-optimizer`,
+                'vi': `/vi/voltris-optimizer`,
+                'tr': `/tr/voltris-optimizer`,
+                'id': `/id/voltris-optimizer`,
+                'pl': `/pl/voltris-optimizer`,
+                'x-default': `/en/voltris-optimizer`
             }
         }
     });

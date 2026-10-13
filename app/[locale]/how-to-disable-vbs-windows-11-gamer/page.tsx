@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-disable-vbs-windows-11-gamer`,
                 'ja': `/ja/how-to-disable-vbs-windows-11-gamer`,
                 'ko': `/ko/how-to-disable-vbs-windows-11-gamer`,
-                'ar': `/ar/how-to-disable-vbs-windows-11-gamer`
+                'ar': `/ar/how-to-disable-vbs-windows-11-gamer`,
+                'ru': `/ru/how-to-disable-vbs-windows-11-gamer`,
+                'zh-cn': `/zh-cn/how-to-disable-vbs-windows-11-gamer`,
+                'vi': `/vi/how-to-disable-vbs-windows-11-gamer`,
+                'tr': `/tr/how-to-disable-vbs-windows-11-gamer`,
+                'id': `/id/how-to-disable-vbs-windows-11-gamer`,
+                'pl': `/pl/how-to-disable-vbs-windows-11-gamer`,
+                'x-default': `/en/how-to-disable-vbs-windows-11-gamer`
             }
         }
     });

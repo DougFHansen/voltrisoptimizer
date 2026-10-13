@@ -26,7 +26,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services`,
                 'ja': `/ja/all-services`,
                 'ko': `/ko/all-services`,
-                'ar': `/ar/all-services`
+                'ar': `/ar/all-services`,
+                'ru': `/ru/all-services`,
+                'zh-cn': `/zh-cn/all-services`,
+                'vi': `/vi/all-services`,
+                'tr': `/tr/all-services`,
+                'id': `/id/all-services`,
+                'pl': `/pl/all-services`,
+                'x-default': `/en/all-services`
             }
         }
     });

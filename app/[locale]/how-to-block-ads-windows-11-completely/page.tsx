@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-block-ads-windows-11-completely`,
                 'ja': `/ja/how-to-block-ads-windows-11-completely`,
                 'ko': `/ko/how-to-block-ads-windows-11-completely`,
-                'ar': `/ar/how-to-block-ads-windows-11-completely`
+                'ar': `/ar/how-to-block-ads-windows-11-completely`,
+                'ru': `/ru/how-to-block-ads-windows-11-completely`,
+                'zh-cn': `/zh-cn/how-to-block-ads-windows-11-completely`,
+                'vi': `/vi/how-to-block-ads-windows-11-completely`,
+                'tr': `/tr/how-to-block-ads-windows-11-completely`,
+                'id': `/id/how-to-block-ads-windows-11-completely`,
+                'pl': `/pl/how-to-block-ads-windows-11-completely`,
+                'x-default': `/en/how-to-block-ads-windows-11-completely`
             }
         }
     });

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-choose-best-dns-windows-11`,
                 'ja': `/ja/how-to-choose-best-dns-windows-11`,
                 'ko': `/ko/how-to-choose-best-dns-windows-11`,
-                'ar': `/ar/how-to-choose-best-dns-windows-11`
+                'ar': `/ar/how-to-choose-best-dns-windows-11`,
+                'ru': `/ru/how-to-choose-best-dns-windows-11`,
+                'zh-cn': `/zh-cn/how-to-choose-best-dns-windows-11`,
+                'vi': `/vi/how-to-choose-best-dns-windows-11`,
+                'tr': `/tr/how-to-choose-best-dns-windows-11`,
+                'id': `/id/how-to-choose-best-dns-windows-11`,
+                'pl': `/pl/how-to-choose-best-dns-windows-11`,
+                'x-default': `/en/how-to-choose-best-dns-windows-11`
             }
         }
     });

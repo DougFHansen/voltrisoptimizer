@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-clean-directx-cache-windows-11`,
                 'ja': `/ja/how-to-clean-directx-cache-windows-11`,
                 'ko': `/ko/how-to-clean-directx-cache-windows-11`,
-                'ar': `/ar/how-to-clean-directx-cache-windows-11`
+                'ar': `/ar/how-to-clean-directx-cache-windows-11`,
+                'ru': `/ru/how-to-clean-directx-cache-windows-11`,
+                'zh-cn': `/zh-cn/how-to-clean-directx-cache-windows-11`,
+                'vi': `/vi/how-to-clean-directx-cache-windows-11`,
+                'tr': `/tr/how-to-clean-directx-cache-windows-11`,
+                'id': `/id/how-to-clean-directx-cache-windows-11`,
+                'pl': `/pl/how-to-clean-directx-cache-windows-11`,
+                'x-default': `/en/how-to-clean-directx-cache-windows-11`
             }
         }
     });

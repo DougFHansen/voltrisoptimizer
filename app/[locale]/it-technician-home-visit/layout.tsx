@@ -43,7 +43,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/it-technician-home-visit`,
                 'ja': `/ja/it-technician-home-visit`,
                 'ko': `/ko/it-technician-home-visit`,
-                'ar': `/ar/it-technician-home-visit`
+                'ar': `/ar/it-technician-home-visit`,
+                'ru': `/ru/it-technician-home-visit`,
+                'zh-cn': `/zh-cn/it-technician-home-visit`,
+                'vi': `/vi/it-technician-home-visit`,
+                'tr': `/tr/it-technician-home-visit`,
+                'id': `/id/it-technician-home-visit`,
+                'pl': `/pl/it-technician-home-visit`,
+                'x-default': `/en/it-technician-home-visit`
             }
         }
     });

@@ -22,7 +22,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/remove-bloatware-windows-11`,
                 'ja': `/ja/remove-bloatware-windows-11`,
                 'ko': `/ko/remove-bloatware-windows-11`,
-                'ar': `/ar/remove-bloatware-windows-11`
+                'ar': `/ar/remove-bloatware-windows-11`,
+                'ru': `/ru/remove-bloatware-windows-11`,
+                'zh-cn': `/zh-cn/remove-bloatware-windows-11`,
+                'vi': `/vi/remove-bloatware-windows-11`,
+                'tr': `/tr/remove-bloatware-windows-11`,
+                'id': `/id/remove-bloatware-windows-11`,
+                'pl': `/pl/remove-bloatware-windows-11`,
+                'x-default': `/en/remove-bloatware-windows-11`
             }
         }
     });

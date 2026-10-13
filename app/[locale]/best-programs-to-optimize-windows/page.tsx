@@ -23,7 +23,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/best-programs-to-optimize-windows`,
                 'ja': `/ja/best-programs-to-optimize-windows`,
                 'ko': `/ko/best-programs-to-optimize-windows`,
-                'ar': `/ar/best-programs-to-optimize-windows`
+                'ar': `/ar/best-programs-to-optimize-windows`,
+                'ru': `/ru/best-programs-to-optimize-windows`,
+                'zh-cn': `/zh-cn/best-programs-to-optimize-windows`,
+                'vi': `/vi/best-programs-to-optimize-windows`,
+                'tr': `/tr/best-programs-to-optimize-windows`,
+                'id': `/id/best-programs-to-optimize-windows`,
+                'pl': `/pl/best-programs-to-optimize-windows`,
+                'x-default': `/en/best-programs-to-optimize-windows`
             }
         }
     });

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-disable-copilot-windows-11`,
                 'ja': `/ja/how-to-disable-copilot-windows-11`,
                 'ko': `/ko/how-to-disable-copilot-windows-11`,
-                'ar': `/ar/how-to-disable-copilot-windows-11`
+                'ar': `/ar/how-to-disable-copilot-windows-11`,
+                'ru': `/ru/how-to-disable-copilot-windows-11`,
+                'zh-cn': `/zh-cn/how-to-disable-copilot-windows-11`,
+                'vi': `/vi/how-to-disable-copilot-windows-11`,
+                'tr': `/tr/how-to-disable-copilot-windows-11`,
+                'id': `/id/how-to-disable-copilot-windows-11`,
+                'pl': `/pl/how-to-disable-copilot-windows-11`,
+                'x-default': `/en/how-to-disable-copilot-windows-11`
             }
         }
     });

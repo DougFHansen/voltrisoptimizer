@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-increase-roblox-fps-windows`,
                 'ja': `/ja/how-to-increase-roblox-fps-windows`,
                 'ko': `/ko/how-to-increase-roblox-fps-windows`,
-                'ar': `/ar/how-to-increase-roblox-fps-windows`
+                'ar': `/ar/how-to-increase-roblox-fps-windows`,
+                'ru': `/ru/how-to-increase-roblox-fps-windows`,
+                'zh-cn': `/zh-cn/how-to-increase-roblox-fps-windows`,
+                'vi': `/vi/how-to-increase-roblox-fps-windows`,
+                'tr': `/tr/how-to-increase-roblox-fps-windows`,
+                'id': `/id/how-to-increase-roblox-fps-windows`,
+                'pl': `/pl/how-to-increase-roblox-fps-windows`,
+                'x-default': `/en/how-to-increase-roblox-fps-windows`
             }
         }
     });

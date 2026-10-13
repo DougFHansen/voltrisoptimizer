@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-old-hdd-performance-windows`,
                 'ja': `/ja/improve-old-hdd-performance-windows`,
                 'ko': `/ko/improve-old-hdd-performance-windows`,
-                'ar': `/ar/improve-old-hdd-performance-windows`
+                'ar': `/ar/improve-old-hdd-performance-windows`,
+                'ru': `/ru/improve-old-hdd-performance-windows`,
+                'zh-cn': `/zh-cn/improve-old-hdd-performance-windows`,
+                'vi': `/vi/improve-old-hdd-performance-windows`,
+                'tr': `/tr/improve-old-hdd-performance-windows`,
+                'id': `/id/improve-old-hdd-performance-windows`,
+                'pl': `/pl/improve-old-hdd-performance-windows`,
+                'x-default': `/en/improve-old-hdd-performance-windows`
             }
         }
     });

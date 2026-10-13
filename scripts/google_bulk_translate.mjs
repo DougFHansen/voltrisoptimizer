@@ -29,6 +29,7 @@ const DATA_DIR = path.join(ROOT, 'lib/guides-i18n/data');
 const LANG_MAP = {
   es: 'es', 'pt-br': 'pt', de: 'de', fr: 'fr',
   it: 'it', ja: 'ja', ko: 'ko', ar: 'ar',
+  ru: 'ru', 'zh-cn': 'zh-CN', vi: 'vi', tr: 'tr', id: 'id', pl: 'pl',
 };
 const ALL_LANGS = Object.keys(LANG_MAP);
 

@@ -1,5 +1,5 @@
 export function getLocalizedAlternates(currentPath: string, currentLocale: string) {
-    const locales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar'];
+    const locales = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar', 'ru', 'zh-cn', 'vi', 'tr', 'id', 'pl'];
     
     // Ensure path starts with / and clean up locale prefix if present
     const pathWithoutLocale = currentPath.startsWith('/') ? currentPath : `/${currentPath}`;

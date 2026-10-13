@@ -73,7 +73,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/remote-technical-support`,
                 'ja': `/ja/remote-technical-support`,
                 'ko': `/ko/remote-technical-support`,
-                'ar': `/ar/remote-technical-support`
+                'ar': `/ar/remote-technical-support`,
+                'ru': `/ru/remote-technical-support`,
+                'zh-cn': `/zh-cn/remote-technical-support`,
+                'vi': `/vi/remote-technical-support`,
+                'tr': `/tr/remote-technical-support`,
+                'id': `/id/remote-technical-support`,
+                'pl': `/pl/remote-technical-support`,
+                'x-default': `/en/remote-technical-support`
             }
         }
     });

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/how-to-fix-mouse-accelerating-itself-windows`,
                 'ja': `/ja/how-to-fix-mouse-accelerating-itself-windows`,
                 'ko': `/ko/how-to-fix-mouse-accelerating-itself-windows`,
-                'ar': `/ar/how-to-fix-mouse-accelerating-itself-windows`
+                'ar': `/ar/how-to-fix-mouse-accelerating-itself-windows`,
+                'ru': `/ru/how-to-fix-mouse-accelerating-itself-windows`,
+                'zh-cn': `/zh-cn/how-to-fix-mouse-accelerating-itself-windows`,
+                'vi': `/vi/how-to-fix-mouse-accelerating-itself-windows`,
+                'tr': `/tr/how-to-fix-mouse-accelerating-itself-windows`,
+                'id': `/id/how-to-fix-mouse-accelerating-itself-windows`,
+                'pl': `/pl/how-to-fix-mouse-accelerating-itself-windows`,
+                'x-default': `/en/how-to-fix-mouse-accelerating-itself-windows`
             }
         }
     });

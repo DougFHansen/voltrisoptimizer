@@ -40,7 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/office-installation`,
                 'ja': `/ja/all-services/office-installation`,
                 'ko': `/ko/all-services/office-installation`,
-                'ar': `/ar/all-services/office-installation`
+                'ar': `/ar/all-services/office-installation`,
+                'ru': `/ru/all-services/office-installation`,
+                'zh-cn': `/zh-cn/all-services/office-installation`,
+                'vi': `/vi/all-services/office-installation`,
+                'tr': `/tr/all-services/office-installation`,
+                'id': `/id/all-services/office-installation`,
+                'pl': `/pl/all-services/office-installation`,
+                'x-default': `/en/all-services/office-installation`
             }
         }
     });

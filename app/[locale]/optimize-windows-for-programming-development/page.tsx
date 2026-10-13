@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-programming-development`,
                 'ja': `/ja/optimize-windows-for-programming-development`,
                 'ko': `/ko/optimize-windows-for-programming-development`,
-                'ar': `/ar/optimize-windows-for-programming-development`
+                'ar': `/ar/optimize-windows-for-programming-development`,
+                'ru': `/ru/optimize-windows-for-programming-development`,
+                'zh-cn': `/zh-cn/optimize-windows-for-programming-development`,
+                'vi': `/vi/optimize-windows-for-programming-development`,
+                'tr': `/tr/optimize-windows-for-programming-development`,
+                'id': `/id/optimize-windows-for-programming-development`,
+                'pl': `/pl/optimize-windows-for-programming-development`,
+                'x-default': `/en/optimize-windows-for-programming-development`
             }
         }
     });

@@ -22,7 +22,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/update-drivers-windows-automatically`,
                 'ja': `/ja/update-drivers-windows-automatically`,
                 'ko': `/ko/update-drivers-windows-automatically`,
-                'ar': `/ar/update-drivers-windows-automatically`
+                'ar': `/ar/update-drivers-windows-automatically`,
+                'ru': `/ru/update-drivers-windows-automatically`,
+                'zh-cn': `/zh-cn/update-drivers-windows-automatically`,
+                'vi': `/vi/update-drivers-windows-automatically`,
+                'tr': `/tr/update-drivers-windows-automatically`,
+                'id': `/id/update-drivers-windows-automatically`,
+                'pl': `/pl/update-drivers-windows-automatically`,
+                'x-default': `/en/update-drivers-windows-automatically`
             }
         }
     });

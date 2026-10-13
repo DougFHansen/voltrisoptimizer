@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/disable-windows-telemetry`,
                 'ja': `/ja/disable-windows-telemetry`,
                 'ko': `/ko/disable-windows-telemetry`,
-                'ar': `/ar/disable-windows-telemetry`
+                'ar': `/ar/disable-windows-telemetry`,
+                'ru': `/ru/disable-windows-telemetry`,
+                'zh-cn': `/zh-cn/disable-windows-telemetry`,
+                'vi': `/vi/disable-windows-telemetry`,
+                'tr': `/tr/disable-windows-telemetry`,
+                'id': `/id/disable-windows-telemetry`,
+                'pl': `/pl/disable-windows-telemetry`,
+                'x-default': `/en/disable-windows-telemetry`
             }
         }
     });

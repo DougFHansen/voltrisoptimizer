@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/disable-background-apps-windows-11`,
                 'ja': `/ja/disable-background-apps-windows-11`,
                 'ko': `/ko/disable-background-apps-windows-11`,
-                'ar': `/ar/disable-background-apps-windows-11`
+                'ar': `/ar/disable-background-apps-windows-11`,
+                'ru': `/ru/disable-background-apps-windows-11`,
+                'zh-cn': `/zh-cn/disable-background-apps-windows-11`,
+                'vi': `/vi/disable-background-apps-windows-11`,
+                'tr': `/tr/disable-background-apps-windows-11`,
+                'id': `/id/disable-background-apps-windows-11`,
+                'pl': `/pl/disable-background-apps-windows-11`,
+                'x-default': `/en/disable-background-apps-windows-11`
             }
         }
     });

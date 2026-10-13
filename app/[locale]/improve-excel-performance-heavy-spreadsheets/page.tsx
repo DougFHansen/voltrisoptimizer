@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-excel-performance-heavy-spreadsheets`,
                 'ja': `/ja/improve-excel-performance-heavy-spreadsheets`,
                 'ko': `/ko/improve-excel-performance-heavy-spreadsheets`,
-                'ar': `/ar/improve-excel-performance-heavy-spreadsheets`
+                'ar': `/ar/improve-excel-performance-heavy-spreadsheets`,
+                'ru': `/ru/improve-excel-performance-heavy-spreadsheets`,
+                'zh-cn': `/zh-cn/improve-excel-performance-heavy-spreadsheets`,
+                'vi': `/vi/improve-excel-performance-heavy-spreadsheets`,
+                'tr': `/tr/improve-excel-performance-heavy-spreadsheets`,
+                'id': `/id/improve-excel-performance-heavy-spreadsheets`,
+                'pl': `/pl/improve-excel-performance-heavy-spreadsheets`,
+                'x-default': `/en/improve-excel-performance-heavy-spreadsheets`
             }
         }
     });

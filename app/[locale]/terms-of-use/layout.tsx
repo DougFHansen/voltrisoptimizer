@@ -40,7 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/terms-of-use`,
                 'ja': `/ja/terms-of-use`,
                 'ko': `/ko/terms-of-use`,
-                'ar': `/ar/terms-of-use`
+                'ar': `/ar/terms-of-use`,
+                'ru': `/ru/terms-of-use`,
+                'zh-cn': `/zh-cn/terms-of-use`,
+                'vi': `/vi/terms-of-use`,
+                'tr': `/tr/terms-of-use`,
+                'id': `/id/terms-of-use`,
+                'pl': `/pl/terms-of-use`,
+                'x-default': `/en/terms-of-use`
             }
         }
     });

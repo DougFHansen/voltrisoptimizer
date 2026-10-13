@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/reduce-network-latency-online-games`,
                 'ja': `/ja/reduce-network-latency-online-games`,
                 'ko': `/ko/reduce-network-latency-online-games`,
-                'ar': `/ar/reduce-network-latency-online-games`
+                'ar': `/ar/reduce-network-latency-online-games`,
+                'ru': `/ru/reduce-network-latency-online-games`,
+                'zh-cn': `/zh-cn/reduce-network-latency-online-games`,
+                'vi': `/vi/reduce-network-latency-online-games`,
+                'tr': `/tr/reduce-network-latency-online-games`,
+                'id': `/id/reduce-network-latency-online-games`,
+                'pl': `/pl/reduce-network-latency-online-games`,
+                'x-default': `/en/reduce-network-latency-online-games`
             }
         }
     });

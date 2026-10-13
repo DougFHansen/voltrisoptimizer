@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-11-for-gta-v-rp`,
                 'ja': `/ja/optimize-windows-11-for-gta-v-rp`,
                 'ko': `/ko/optimize-windows-11-for-gta-v-rp`,
-                'ar': `/ar/optimize-windows-11-for-gta-v-rp`
+                'ar': `/ar/optimize-windows-11-for-gta-v-rp`,
+                'ru': `/ru/optimize-windows-11-for-gta-v-rp`,
+                'zh-cn': `/zh-cn/optimize-windows-11-for-gta-v-rp`,
+                'vi': `/vi/optimize-windows-11-for-gta-v-rp`,
+                'tr': `/tr/optimize-windows-11-for-gta-v-rp`,
+                'id': `/id/optimize-windows-11-for-gta-v-rp`,
+                'pl': `/pl/optimize-windows-11-for-gta-v-rp`,
+                'x-default': `/en/optimize-windows-11-for-gta-v-rp`
             }
         }
     });

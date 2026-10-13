@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-11-for-warzone-2026`,
                 'ja': `/ja/optimize-windows-11-for-warzone-2026`,
                 'ko': `/ko/optimize-windows-11-for-warzone-2026`,
-                'ar': `/ar/optimize-windows-11-for-warzone-2026`
+                'ar': `/ar/optimize-windows-11-for-warzone-2026`,
+                'ru': `/ru/optimize-windows-11-for-warzone-2026`,
+                'zh-cn': `/zh-cn/optimize-windows-11-for-warzone-2026`,
+                'vi': `/vi/optimize-windows-11-for-warzone-2026`,
+                'tr': `/tr/optimize-windows-11-for-warzone-2026`,
+                'id': `/id/optimize-windows-11-for-warzone-2026`,
+                'pl': `/pl/optimize-windows-11-for-warzone-2026`,
+                'x-default': `/en/optimize-windows-11-for-warzone-2026`
             }
         }
     });

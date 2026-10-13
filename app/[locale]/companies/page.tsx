@@ -33,7 +33,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/companies`,
                 'ja': `/ja/companies`,
                 'ko': `/ko/companies`,
-                'ar': `/ar/companies`
+                'ar': `/ar/companies`,
+                'ru': `/ru/companies`,
+                'zh-cn': `/zh-cn/companies`,
+                'vi': `/vi/companies`,
+                'tr': `/tr/companies`,
+                'id': `/id/companies`,
+                'pl': `/pl/companies`,
+                'x-default': `/en/companies`
             }
         }
     });

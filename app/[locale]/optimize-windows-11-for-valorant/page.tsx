@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-11-for-valorant`,
                 'ja': `/ja/optimize-windows-11-for-valorant`,
                 'ko': `/ko/optimize-windows-11-for-valorant`,
-                'ar': `/ar/optimize-windows-11-for-valorant`
+                'ar': `/ar/optimize-windows-11-for-valorant`,
+                'ru': `/ru/optimize-windows-11-for-valorant`,
+                'zh-cn': `/zh-cn/optimize-windows-11-for-valorant`,
+                'vi': `/vi/optimize-windows-11-for-valorant`,
+                'tr': `/tr/optimize-windows-11-for-valorant`,
+                'id': `/id/optimize-windows-11-for-valorant`,
+                'pl': `/pl/optimize-windows-11-for-valorant`,
+                'x-default': `/en/optimize-windows-11-for-valorant`
             }
         }
     });

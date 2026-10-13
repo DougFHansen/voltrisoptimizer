@@ -20,6 +20,12 @@ const localeHtmlConfig: Record<Locale, { lang: string; dir: 'ltr' | 'rtl' }> = {
   'ko':    { lang: 'ko',    dir: 'ltr' },
   'ar':    { lang: 'ar',    dir: 'rtl' },
   'pt-br': { lang: 'pt-BR', dir: 'ltr' },
+  'ru':    { lang: 'ru',    dir: 'ltr' },
+  'zh-cn': { lang: 'zh-CN', dir: 'ltr' },
+  'vi':    { lang: 'vi',    dir: 'ltr' },
+  'tr':    { lang: 'tr',    dir: 'ltr' },
+  'id':    { lang: 'id',    dir: 'ltr' },
+  'pl':    { lang: 'pl',    dir: 'ltr' },
 };
 
 export default function I18nClientProvider({ children, initialLocale }: I18nClientProviderProps) {

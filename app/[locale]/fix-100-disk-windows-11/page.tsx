@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/fix-100-disk-windows-11`,
                 'ja': `/ja/fix-100-disk-windows-11`,
                 'ko': `/ko/fix-100-disk-windows-11`,
-                'ar': `/ar/fix-100-disk-windows-11`
+                'ar': `/ar/fix-100-disk-windows-11`,
+                'ru': `/ru/fix-100-disk-windows-11`,
+                'zh-cn': `/zh-cn/fix-100-disk-windows-11`,
+                'vi': `/vi/fix-100-disk-windows-11`,
+                'tr': `/tr/fix-100-disk-windows-11`,
+                'id': `/id/fix-100-disk-windows-11`,
+                'pl': `/pl/fix-100-disk-windows-11`,
+                'x-default': `/en/fix-100-disk-windows-11`
             }
         }
     });

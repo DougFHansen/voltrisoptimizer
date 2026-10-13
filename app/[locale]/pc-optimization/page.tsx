@@ -31,7 +31,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/pc-optimization`,
                 'ja': `/ja/pc-optimization`,
                 'ko': `/ko/pc-optimization`,
-                'ar': `/ar/pc-optimization`
+                'ar': `/ar/pc-optimization`,
+                'ru': `/ru/pc-optimization`,
+                'zh-cn': `/zh-cn/pc-optimization`,
+                'vi': `/vi/pc-optimization`,
+                'tr': `/tr/pc-optimization`,
+                'id': `/id/pc-optimization`,
+                'pl': `/pl/pc-optimization`,
+                'x-default': `/en/pc-optimization`
             }
         }
     });

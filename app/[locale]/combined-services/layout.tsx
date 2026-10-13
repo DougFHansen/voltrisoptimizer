@@ -18,7 +18,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/combined-services`,
                 'ja': `/ja/combined-services`,
                 'ko': `/ko/combined-services`,
-                'ar': `/ar/combined-services`
+                'ar': `/ar/combined-services`,
+                'ru': `/ru/combined-services`,
+                'zh-cn': `/zh-cn/combined-services`,
+                'vi': `/vi/combined-services`,
+                'tr': `/tr/combined-services`,
+                'id': `/id/combined-services`,
+                'pl': `/pl/combined-services`,
+                'x-default': `/en/combined-services`
             }
         }
     });

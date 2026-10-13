@@ -50,7 +50,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/software-installation`,
                 'ja': `/ja/all-services/software-installation`,
                 'ko': `/ko/all-services/software-installation`,
-                'ar': `/ar/all-services/software-installation`
+                'ar': `/ar/all-services/software-installation`,
+                'ru': `/ru/all-services/software-installation`,
+                'zh-cn': `/zh-cn/all-services/software-installation`,
+                'vi': `/vi/all-services/software-installation`,
+                'tr': `/tr/all-services/software-installation`,
+                'id': `/id/all-services/software-installation`,
+                'pl': `/pl/all-services/software-installation`,
+                'x-default': `/en/all-services/software-installation`
             }
         }
     });

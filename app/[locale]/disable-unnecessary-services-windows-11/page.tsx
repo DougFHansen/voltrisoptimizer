@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/disable-unnecessary-services-windows-11`,
                 'ja': `/ja/disable-unnecessary-services-windows-11`,
                 'ko': `/ko/disable-unnecessary-services-windows-11`,
-                'ar': `/ar/disable-unnecessary-services-windows-11`
+                'ar': `/ar/disable-unnecessary-services-windows-11`,
+                'ru': `/ru/disable-unnecessary-services-windows-11`,
+                'zh-cn': `/zh-cn/disable-unnecessary-services-windows-11`,
+                'vi': `/vi/disable-unnecessary-services-windows-11`,
+                'tr': `/tr/disable-unnecessary-services-windows-11`,
+                'id': `/id/disable-unnecessary-services-windows-11`,
+                'pl': `/pl/disable-unnecessary-services-windows-11`,
+                'x-default': `/en/disable-unnecessary-services-windows-11`
             }
         }
     });

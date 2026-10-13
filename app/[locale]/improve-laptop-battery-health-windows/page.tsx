@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/improve-laptop-battery-health-windows`,
                 'ja': `/ja/improve-laptop-battery-health-windows`,
                 'ko': `/ko/improve-laptop-battery-health-windows`,
-                'ar': `/ar/improve-laptop-battery-health-windows`
+                'ar': `/ar/improve-laptop-battery-health-windows`,
+                'ru': `/ru/improve-laptop-battery-health-windows`,
+                'zh-cn': `/zh-cn/improve-laptop-battery-health-windows`,
+                'vi': `/vi/improve-laptop-battery-health-windows`,
+                'tr': `/tr/improve-laptop-battery-health-windows`,
+                'id': `/id/improve-laptop-battery-health-windows`,
+                'pl': `/pl/improve-laptop-battery-health-windows`,
+                'x-default': `/en/improve-laptop-battery-health-windows`
             }
         }
     });

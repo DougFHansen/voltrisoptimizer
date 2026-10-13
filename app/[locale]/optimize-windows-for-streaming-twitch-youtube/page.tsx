@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-streaming-twitch-youtube`,
                 'ja': `/ja/optimize-windows-for-streaming-twitch-youtube`,
                 'ko': `/ko/optimize-windows-for-streaming-twitch-youtube`,
-                'ar': `/ar/optimize-windows-for-streaming-twitch-youtube`
+                'ar': `/ar/optimize-windows-for-streaming-twitch-youtube`,
+                'ru': `/ru/optimize-windows-for-streaming-twitch-youtube`,
+                'zh-cn': `/zh-cn/optimize-windows-for-streaming-twitch-youtube`,
+                'vi': `/vi/optimize-windows-for-streaming-twitch-youtube`,
+                'tr': `/tr/optimize-windows-for-streaming-twitch-youtube`,
+                'id': `/id/optimize-windows-for-streaming-twitch-youtube`,
+                'pl': `/pl/optimize-windows-for-streaming-twitch-youtube`,
+                'x-default': `/en/optimize-windows-for-streaming-twitch-youtube`
             }
         }
     });

@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 // Supported Locales
-const supportedLocales: Locale[] = ['en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'ar', 'pt-br'];
+const supportedLocales: Locale[] = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar', 'ru', 'zh-cn', 'vi', 'tr', 'id', 'pl'];
 
 // Generates static parameters for each locale
 export async function generateStaticParams() {

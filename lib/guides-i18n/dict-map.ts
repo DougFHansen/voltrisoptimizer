@@ -12,6 +12,12 @@ import dictIt from './data/it.json';
 import dictJa from './data/ja.json';
 import dictKo from './data/ko.json';
 import dictAr from './data/ar.json';
+import dictRu from './data/ru.json';
+import dictZhcn from './data/zh-cn.json';
+import dictVi from './data/vi.json';
+import dictTr from './data/tr.json';
+import dictId from './data/id.json';
+import dictPl from './data/pl.json';
 
 const DICTS: Record<string, Dict> = {
   es: dictEs as Dict,
@@ -22,6 +28,12 @@ const DICTS: Record<string, Dict> = {
   ja: dictJa as Dict,
   ko: dictKo as Dict,
   ar: dictAr as Dict,
+  ru: dictRu as Dict,
+  'zh-cn': dictZhcn as Dict,
+  vi: dictVi as Dict,
+  tr: dictTr as Dict,
+  id: dictId as Dict,
+  pl: dictPl as Dict,
 };
 
 /**

@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-statistics-data-science`,
                 'ja': `/ja/optimize-windows-for-statistics-data-science`,
                 'ko': `/ko/optimize-windows-for-statistics-data-science`,
-                'ar': `/ar/optimize-windows-for-statistics-data-science`
+                'ar': `/ar/optimize-windows-for-statistics-data-science`,
+                'ru': `/ru/optimize-windows-for-statistics-data-science`,
+                'zh-cn': `/zh-cn/optimize-windows-for-statistics-data-science`,
+                'vi': `/vi/optimize-windows-for-statistics-data-science`,
+                'tr': `/tr/optimize-windows-for-statistics-data-science`,
+                'id': `/id/optimize-windows-for-statistics-data-science`,
+                'pl': `/pl/optimize-windows-for-statistics-data-science`,
+                'x-default': `/en/optimize-windows-for-statistics-data-science`
             }
         }
     });

@@ -11,7 +11,13 @@ export const supportedLocales = [
   'ja',
   'ko',
   'ar',
-  'pt-br'
+  'pt-br',
+  'ru',
+  'zh-cn',
+  'vi',
+  'tr',
+  'id',
+  'pl'
 ] as const;
 
 export type Locale = typeof supportedLocales[number];
@@ -29,7 +35,13 @@ export const localeConfig = {
   'ja': { name: '日本語', region: 'JP', direction: 'ltr' },
   'ko': { name: '한국어', region: 'KR', direction: 'ltr' },
   'ar': { name: 'العربية', region: 'SA', direction: 'rtl' },
-  'pt-br': { name: 'Português', region: 'BR', direction: 'ltr' }
+  'pt-br': { name: 'Português', region: 'BR', direction: 'ltr' },
+  'ru': { name: 'Русский', region: 'RU', direction: 'ltr' },
+  'zh-cn': { name: '简体中文', region: 'CN', direction: 'ltr' },
+  'vi': { name: 'Tiếng Việt', region: 'VN', direction: 'ltr' },
+  'tr': { name: 'Türkçe', region: 'TR', direction: 'ltr' },
+  'id': { name: 'Bahasa Indonesia', region: 'ID', direction: 'ltr' },
+  'pl': { name: 'Polski', region: 'PL', direction: 'ltr' }
 } as const;
 
 // Função para validar se um locale é suportado
@@ -152,7 +164,15 @@ export function getPreferredLocale(acceptLanguage?: string): Locale {
         'ko': 'ko',
         'ar': 'ar',
         'pt': 'pt-br',
-        'pt-br': 'pt-br'
+        'pt-br': 'pt-br',
+        'ru': 'ru',
+        'zh': 'zh-cn',
+        'zh-cn': 'zh-cn',
+        'zh-hans': 'zh-cn',
+        'vi': 'vi',
+        'tr': 'tr',
+        'id': 'id',
+        'pl': 'pl'
       };
       
       return localeMap[lang] || localeMap[lang.split('-')[0]];
@@ -237,6 +257,54 @@ export function getLocalizedSlug(slug: string, locale: Locale): string {
       'servicos': 'servicos',
       'contato': 'contato',
       'sobre': 'sobre'
+    },
+    'ru': {
+      'voltris-optimizer': 'voltris-optimizer',
+      'pc-optimization': 'pc-optimization',
+      'guides': 'guides',
+      'services': 'services',
+      'contact': 'contact',
+      'about': 'about'
+    },
+    'zh-cn': {
+      'voltris-optimizer': 'voltris-optimizer',
+      'pc-optimization': 'pc-optimization',
+      'guides': 'guides',
+      'services': 'services',
+      'contact': 'contact',
+      'about': 'about'
+    },
+    'vi': {
+      'voltris-optimizer': 'voltris-optimizer',
+      'pc-optimization': 'pc-optimization',
+      'guides': 'guides',
+      'services': 'services',
+      'contact': 'contact',
+      'about': 'about'
+    },
+    'tr': {
+      'voltris-optimizer': 'voltris-optimizer',
+      'pc-optimization': 'pc-optimization',
+      'guides': 'guides',
+      'services': 'services',
+      'contact': 'contact',
+      'about': 'about'
+    },
+    'id': {
+      'voltris-optimizer': 'voltris-optimizer',
+      'pc-optimization': 'pc-optimization',
+      'guides': 'guides',
+      'services': 'services',
+      'contact': 'contact',
+      'about': 'about'
+    },
+    'pl': {
+      'voltris-optimizer': 'voltris-optimizer',
+      'pc-optimization': 'pc-optimization',
+      'guides': 'guides',
+      'services': 'services',
+      'contact': 'contact',
+      'about': 'about'
     }
   };
   

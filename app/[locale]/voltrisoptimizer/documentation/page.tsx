@@ -41,7 +41,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/voltrisoptimizer/documentation`,
                 'ja': `/ja/voltrisoptimizer/documentation`,
                 'ko': `/ko/voltrisoptimizer/documentation`,
-                'ar': `/ar/voltrisoptimizer/documentation`
+                'ar': `/ar/voltrisoptimizer/documentation`,
+                'ru': `/ru/voltrisoptimizer/documentation`,
+                'zh-cn': `/zh-cn/voltrisoptimizer/documentation`,
+                'vi': `/vi/voltrisoptimizer/documentation`,
+                'tr': `/tr/voltrisoptimizer/documentation`,
+                'id': `/id/voltrisoptimizer/documentation`,
+                'pl': `/pl/voltrisoptimizer/documentation`,
+                'x-default': `/en/voltrisoptimizer/documentation`
             }
         }
     });

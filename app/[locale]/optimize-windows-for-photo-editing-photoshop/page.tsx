@@ -21,7 +21,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/optimize-windows-for-photo-editing-photoshop`,
                 'ja': `/ja/optimize-windows-for-photo-editing-photoshop`,
                 'ko': `/ko/optimize-windows-for-photo-editing-photoshop`,
-                'ar': `/ar/optimize-windows-for-photo-editing-photoshop`
+                'ar': `/ar/optimize-windows-for-photo-editing-photoshop`,
+                'ru': `/ru/optimize-windows-for-photo-editing-photoshop`,
+                'zh-cn': `/zh-cn/optimize-windows-for-photo-editing-photoshop`,
+                'vi': `/vi/optimize-windows-for-photo-editing-photoshop`,
+                'tr': `/tr/optimize-windows-for-photo-editing-photoshop`,
+                'id': `/id/optimize-windows-for-photo-editing-photoshop`,
+                'pl': `/pl/optimize-windows-for-photo-editing-photoshop`,
+                'x-default': `/en/optimize-windows-for-photo-editing-photoshop`
             }
         }
     });

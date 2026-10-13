@@ -40,7 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
                 'it': `/it/all-services/website-creation/enterprise-plan`,
                 'ja': `/ja/all-services/website-creation/enterprise-plan`,
                 'ko': `/ko/all-services/website-creation/enterprise-plan`,
-                'ar': `/ar/all-services/website-creation/enterprise-plan`
+                'ar': `/ar/all-services/website-creation/enterprise-plan`,
+                'ru': `/ru/all-services/website-creation/enterprise-plan`,
+                'zh-cn': `/zh-cn/all-services/website-creation/enterprise-plan`,
+                'vi': `/vi/all-services/website-creation/enterprise-plan`,
+                'tr': `/tr/all-services/website-creation/enterprise-plan`,
+                'id': `/id/all-services/website-creation/enterprise-plan`,
+                'pl': `/pl/all-services/website-creation/enterprise-plan`,
+                'x-default': `/en/all-services/website-creation/enterprise-plan`
             }
         }
     });
