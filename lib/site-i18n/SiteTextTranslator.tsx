@@ -3,6 +3,9 @@
 import { useEffect, useRef } from 'react';
 import type { Dict } from './apply';
 
+// Webpack compilation hash (unique per build), replaced as a global at bundle time.
+declare const __webpack_hash__: string;
+
 /**
  * Client-side text translator for arbitrary client-component prose (Fase 2 of
  * the "translate the whole site" plan).
@@ -32,6 +35,11 @@ import type { Dict } from './apply';
 const SKIP_SELECTOR = 'script,style,code,pre,textarea,noscript';
 const cache = new WeakMap<Node, string | null>(); // original English captured per node
 const dictCache: Record<string, Dict | null> = {};
+// Per-deploy cache-busting token. `__webpack_hash__` is the compilation hash,
+// unique per build and inlined by webpack on both server and client, so a new
+// deployment (fresh translations) forces the browser to re-fetch the dictionary
+// instead of serving a stale `force-cache` copy from a previous build.
+const BUILD: string = typeof __webpack_hash__ !== 'undefined' ? __webpack_hash__ : 'dev';
 
 function normalized(v: string): string {
   return v.replace(/\s+/g, ' ').trim();
@@ -51,7 +59,7 @@ async function fetchDict(locale: string): Promise<Dict | null> {
   if (l === 'en' || l === 'en-us') return null; // source of truth, nothing to do
   if (l in dictCache) return dictCache[l];
   try {
-    const res = await fetch(`/api/site-dict/${l}`, { cache: 'force-cache' });
+    const res = await fetch(`/api/site-dict/${l}?v=${BUILD}`, { cache: 'force-cache' });
     if (!res.ok) return (dictCache[l] = null);
     const json = (await res.json()) as Dict;
     dictCache[l] = json;

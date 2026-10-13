@@ -133,7 +133,9 @@ function extractFromFile(filePath, display = false) {
       if (ts.isObjectLiteralExpression(node)) collectDisplayObject(node, set);
       if (ts.isArrayLiteralExpression(node)) collectArraySentences(node, set);
     }
-    // placeholder / aria-label / title attributes with string literals
+    // placeholder / aria-label / title / alt attributes with string literals
+    // (visible or screen-reader text; isProse filters non-sentence alts like
+    // logos / decorative empty strings).
     if (ts.isJsxAttribute(node)) {
       const an = node.name.getText();
       if (['placeholder', 'aria-label', 'title', 'alt'].includes(an) && node.initializer && ts.isStringLiteral(node.initializer)) {
@@ -192,21 +194,34 @@ for (const f of walkTsFiles(COMPONENTS_DIR)) {
 }
 
 // ---- Union with existing guide body strings ----
+// SITE-FIRST ORDERING: the translation loop (translate-guides.mjs) walks this
+// file in order and processes languages sequentially (es -> pt-br -> de -> ...),
+// each trying all pending strings before the next language starts. To guarantee
+// that EVERY language covers the high-visibility surfaces (homepage, header,
+// footer, section copy, metadata) EARLY — even if full coverage takes days — we
+// place all site-scanned strings at the FRONT and the pre-existing guide-body
+// corpus (never scanned by this extractor) behind them. Ordering does not affect
+// correctness (dictionaries are keyed by the exact English source), only which
+// strings get translated first.
 const existing = fs.existsSync(STRINGS) ? JSON.parse(fs.readFileSync(STRINGS, 'utf8')) : [];
-const existingSet = new Set(existing);
-const brandNew = [...siteSet].filter((s) => !existingSet.has(s));
-const merged = [...existing, ...brandNew];
+const siteSet2 = new Set(siteSet);
+const guidesOnly = existing.filter((s) => !siteSet2.has(s));
+const siteOrdered = [...siteSet];            // collection order: chrome/UI first
+const merged = [...siteOrdered, ...guidesOnly.filter((s) => !siteSet.has(s))];
+// De-duplicate while preserving the site-first order.
+const mergedSet = new Set();
+const finalArr = [];
+for (const s of merged) { if (!mergedSet.has(s)) { mergedSet.add(s); finalArr.push(s); } }
 
 // ---- Atomic write ----
 const tmp = STRINGS + '.tmp';
-fs.writeFileSync(tmp, JSON.stringify(merged, null, 0));
+fs.writeFileSync(tmp, JSON.stringify(finalArr, null, 0));
 fs.renameSync(tmp, STRINGS);
 
 console.log('==== EXTRATOR DE STRINGS DO SITE (Fase 1) ====');
 console.log('arquivos varridos:', filesScanned);
 console.log('strings candidatas do site (pos-filtro):', siteSet.size);
-console.log('ja existiam (corpo das guias):', existing.length);
-console.log('NOVAS adicionadas:', brandNew.length);
-console.log('TOTAL em strings.en.json:', merged.length);
-console.log('amostra de novas:');
-brandNew.slice(0, 12).forEach((s) => console.log('  -', s.slice(0, 90)));
+console.log('corpo das guias (prefixo, ja existiam):', guidesOnly.length);
+console.log('TOTAL em strings.en.json:', finalArr.length);
+console.log('amostra do TOPO (prioridade = site/UI):');
+finalArr.slice(0, 12).forEach((s) => console.log('  -', s.slice(0, 90)));

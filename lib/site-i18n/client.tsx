@@ -3,6 +3,9 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { Dict } from './apply';
 
+// Webpack compilation hash (unique per build), replaced as a global at bundle time.
+declare const __webpack_hash__: string;
+
 /**
  * Client-side access to the per-locale site dictionary (English-keyed).
  *
@@ -34,13 +37,17 @@ function makeTFromDict(dict?: Dict | null): SiteT {
 
 // Module-scope cache so the dictionary is fetched at most once per locale.
 const dictCache: Record<string, Dict | null> = {};
+// Per-deploy cache-busting token (webpack compilation hash, unique per build)
+// so a new deployment with fresh translations is not shadowed by a stale
+// `force-cache` copy from a previous build.
+const BUILD: string = typeof __webpack_hash__ !== 'undefined' ? __webpack_hash__ : 'dev';
 
 async function fetchDict(locale: string): Promise<Dict | null> {
   const l = (locale || 'en').toLowerCase();
   if (l === 'en' || l === 'en-us') return null; // source of truth, nothing to do
   if (l in dictCache) return dictCache[l];
   try {
-    const res = await fetch(`/api/site-dict/${l}`, { cache: 'force-cache' });
+    const res = await fetch(`/api/site-dict/${l}?v=${BUILD}`, { cache: 'force-cache' });
     if (!res.ok) return (dictCache[l] = null);
     const json = (await res.json()) as Dict;
     dictCache[l] = json;
