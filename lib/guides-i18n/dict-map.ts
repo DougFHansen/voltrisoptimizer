@@ -1,13 +1,17 @@
 import type { Dict } from './apply';
 
-// Carregamento sob demanda por idioma (era import estático dos 14 JSONs).
-// Cada data/{lang}.json tem ~19k chaves; importar TODOS estaticamente fazia o
-// webpack materializar um módulo gigante (~60MB de JSON -> centenas de MB de
-// objetos) no grafo do servidor, estourando a RAM no `next build` da Vercel
-// (OOM / SIGKILL na fase de compilação). Com import() por idioma, cada arquivo
-// vira um chunk assíncrono próprio: o webpack não os mantém unidos na memória e
-// só o idioma realmente usado é carregado (e fica em cache). Caminhos literais
-// preservam a análise do webpack (chunks são rastreados e publicados).
+// Carregamento LAZY por idioma via import() dinâmico.
+//
+// Contexto do OOM na Vercel: antes, 3 páginas de guia estavam marcadas
+// 'use client' e importavam GuideTemplate -> que puxa este módulo. Isso fazia o
+// webpack EMBUTIR OS 14 DICIONÁRIOS INTEIROS (~92MB) NOS CHUNKS DE NAVEGADOR,
+// estourando a RAM na fase de COMPILAÇÃO do `next build` (SIGKILL/OOM). As
+// páginas 'use client' foram corrigidas para servidor, tirando o dict do alvo
+// client. Aqui, import() por idioma ainda mantém o pico menor que o import
+// estático (cada idioma vira um chunk assíncrono próprio, materializado sob
+// demanda) e — crucialmente — os chunks emitidos são RASTREADOS AUTOMATICAMENTE
+// pelo Next/Vercel para dentro das funções, garantindo que o dict exista em
+// runtime SEM depender de outputFileTracingIncludes (frágil p/ rotas dinâmicas).
 const LOADERS: Record<string, () => Promise<any>> = {
   es: () => import('./data/es.json'),
   'pt-br': () => import('./data/pt-br.json'),
@@ -25,19 +29,18 @@ const LOADERS: Record<string, () => Promise<any>> = {
   pl: () => import('./data/pl.json'),
 };
 
-// Cache por processo: cada idioma é lido/re-montado no máximo uma vez.
+// Cache por processo: cada idioma é carregado/montado no máximo uma vez.
 const cache: Record<string, Dict | null> = {};
 
 /**
- * Resolve the translation dictionary for a locale. The dictionary is keyed by
- * the exact English source string, so it is shared across all slugs; a string
- * with no entry simply falls back to English (see applyGuideDict).
- * `slug` is kept in the signature for future per-slug overrides.
+ * Resolve the translation dictionary for a locale. Keyed by the exact English
+ * source string, so it is shared across all slugs; missing entries fall back to
+ * English (see applyGuideDict). `slug` is kept for future per-slug overrides.
  */
 export async function loadGuideDict(locale: string, _slug?: string): Promise<Dict | null> {
   const l = (locale || 'en').toLowerCase();
   const loader = LOADERS[l];
-  if (!loader) return null;
+  if (!loader) return null; // English (source) or unsupported locale
   if (l in cache) return cache[l];
   try {
     const mod = await loader();
