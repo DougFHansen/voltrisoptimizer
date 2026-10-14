@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import RegionsClient from '../../RegionsClient';
-import { getCityData } from '../../data';
+import { regionsData, getCityData } from '../../data';
 import { getSiteT } from '@/lib/site-i18n';
 import { getLocalizedAlternates } from '@/lib/seo';
 
@@ -53,16 +53,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     };
 }
 
-// ISR: cada URL cidade/idioma é renderizada sob demanda e cacheada (1 dia).
-export const revalidate = 86400;
+// Pré-render estático por idioma (locale × país × cidade). O OOM do build era na
+// COMPILAÇÃO (webpack empacotando o dicionário gigante), não aqui; com o dict-map
+// agora carregando cada idioma sob demanda, o pré-render volta a ser barato e as
+// páginas de cidade ficam 100% estáticas (como os guias).
+const LOCALES = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar', 'ru', 'zh-cn', 'vi', 'tr', 'id', 'pl'];
 
-// IMPORTANTE: não pré-renderizar cidade × 15 idiomas (1680 páginas pesadas com
-// RegionsClient estouraram a RAM do build na Vercel = OOM). Como [locale]/layout
-// enumera os 15 idiomas, o conjunto pré-renderizado = 15 × (o que esta função
-// retornar); devolver [] deixa TODAS as cidades em renderização sob demanda.
-// As URLs por idioma continuam válidas, indexáveis e com hreflang/canonical.
 export async function generateStaticParams() {
-    return [];
+    const params: { locale: string; country: string; city: string }[] = [];
+    LOCALES.forEach((locale) => {
+        regionsData.forEach(country => {
+            country.cities.forEach(city => {
+                params.push({ locale, country: country.slug, city: city.slug });
+            });
+        });
+    });
+    return params;
 }
 
 export default async function RegionPage({ params }: { params: Promise<{ locale: string; country: string; city: string }> }) {
