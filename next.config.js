@@ -14,6 +14,10 @@ const nextConfig = {
     // Build otimizado para global
     serverMinification: true,
     serverSourceMaps: false,
+    // Reduz o pico de RAM no pre-render (milhares de paginas pesadas causaram OOM
+    // no build da Vercel). Default do Next e 500; um teto moderado serializa os
+    // renders sem estourar o tempo de build.
+    maxConcurrency: 30,
   },
   eslint: {
     ignoreDuringBuilds: true,
