@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { MetadataRoute } from 'next';
-import { regionsData } from '@/app/regions/data';
+import { regionsData } from '@/app/[locale]/regions/data';
 import sitemapRoutes from './sitemap-routes.json';
 
 /**
@@ -88,10 +88,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const changeFreq = priority >= 0.9 ? 'daily' : (priority >= 0.7 ? 'weekly' : 'monthly');
 
-    // Rotas servidas SEM prefixo de locale (páginas fixas globais). Todas as
-    // variantes sob /{locale}/... dessas rotas retornam 404 — nunca multiplicar
-    // por locale, nem emitir versão localizada.
-    const fixedNonLocalized = ['/international', '/regions', '/services-integration'];
+    // Rotas ainda servidas SEM prefixo de locale (páginas fixas globais).
+    // /regions e /international saíram daqui: agora são localizadas ([locale]/...)
+    // e são multiplicadas por idioma no bloco principal / em regionalRoutes.
+    const fixedNonLocalized = ['/services-integration'];
     const isFixedRoute = fixedNonLocalized.some(r => routeWithoutLocale === r || routeWithoutLocale.startsWith(r + '/'));
 
     if (isFixedRoute) {
@@ -116,16 +116,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // 2. Technical SEO - Regional Coverage. As páginas de região são servidas
-  // SEM prefixo de locale (route group /app/regions). Todas as variantes sob
-  // /{locale}/regions/... retornam 404 — emitir a URL real única por país/cidade.
-  const regionalRoutes = regionsData ? regionsData.flatMap(country => 
-    country.cities.map(city => ({
-      url: `${domain}/regions/${country.slug}/${city.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    }))
+  // 2. Technical SEO - Regional Coverage. As páginas de região agora são
+  // localizadas ([locale]/regions/pais/cidade): emitir uma URL por idioma p/
+  // cada país+cidade, alinhado com o hreflang gerado nas próprias páginas.
+  const regionalRoutes = regionsData ? supportedLocales.flatMap(locale =>
+    regionsData.flatMap(country =>
+      country.cities.map(city => ({
+        url: `${domain}/${locale}/regions/${country.slug}/${city.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      }))
+    )
   ) : [];
 
   // Combine and deduplicate if necessary

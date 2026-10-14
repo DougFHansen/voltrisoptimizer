@@ -1,25 +1,5 @@
 [
   {
-    "route": "/international/contact",
-    "lastModified": "2026-06-09T04:18:47.279Z"
-  },
-  {
-    "route": "/international",
-    "lastModified": "2026-09-19T11:12:43.009Z"
-  },
-  {
-    "route": "/international/quote",
-    "lastModified": "2026-06-09T04:18:47.319Z"
-  },
-  {
-    "route": "/international/services",
-    "lastModified": "2026-09-19T11:16:00.466Z"
-  },
-  {
-    "route": "/regions",
-    "lastModified": "2026-10-13T21:30:57.156Z"
-  },
-  {
     "route": "/services-integration",
     "lastModified": "2026-06-09T04:18:49.854Z"
   },
@@ -1524,6 +1504,22 @@
     "lastModified": "2026-10-13T12:02:57.156Z"
   },
   {
+    "route": "/[locale]/international/contact",
+    "lastModified": "2026-06-09T04:18:47.279Z"
+  },
+  {
+    "route": "/[locale]/international",
+    "lastModified": "2026-09-19T11:12:43.009Z"
+  },
+  {
+    "route": "/[locale]/international/quote",
+    "lastModified": "2026-10-14T00:34:53.946Z"
+  },
+  {
+    "route": "/[locale]/international/services",
+    "lastModified": "2026-10-14T00:34:37.546Z"
+  },
+  {
     "route": "/[locale]/it-technician",
     "lastModified": "2026-10-13T12:02:57.157Z"
   },
@@ -1602,6 +1598,10 @@
   {
     "route": "/[locale]/reduce-network-latency-online-games",
     "lastModified": "2026-10-13T12:02:57.167Z"
+  },
+  {
+    "route": "/[locale]/regions",
+    "lastModified": "2026-10-14T00:22:23.092Z"
   },
   {
     "route": "/[locale]/remote-technical-support",

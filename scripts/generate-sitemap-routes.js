@@ -35,7 +35,11 @@ function getPageRoutes(dir, baseUrl = '') {
       }
     } else if (file === 'page.tsx' || file === 'page.js') {
       const route = baseUrl || '/';
-      if ((!route.includes('[') || route.includes('[locale]')) && !route.includes('blog')) {
+      // Incluir apenas rotas estaicas ou localizadas ([locale]). Segmentos
+      // dinamicos alem de [locale] (ex.: [country]/[city], [service]) nao podem
+      // ser emitidos como literal -- sao gerados manualmente no sitemap.ts.
+      const hasOtherDynamic = /\[(?!locale\])[^\]]+\]/.test(route);
+      if (!hasOtherDynamic && !route.includes('blog')) {
         results.push({ route, lastModified: stat.mtime });
       }
     }

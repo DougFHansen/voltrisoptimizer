@@ -4,9 +4,14 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FiBarChart2, FiUser, FiMail, FiPhone, FiMessageSquare, FiClock, FiCheckCircle, FiAward, FiGlobe, FiShield, FiTrendingUp } from 'react-icons/fi';
+import { localizeMetadata } from "@/lib/site-i18n";
+import { getLocalizedAlternates } from "@/lib/seo";
 
-// Optimized SEO Metadata for international quotes
-export const metadata: Metadata = {
+// Optimized SEO Metadata for international quotes (localizado + hreflang)
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const { canonical, languages } = getLocalizedAlternates('/international/quote', locale);
+  return await localizeMetadata(locale, {
   title: "Request a Personalized Quote for International IT Services | VOLTRIS",
   description: "Get a personalized quote for international IT services. Specialized support in English and Portuguese for expatriates. Remote formatting, PC optimization, technical support, and more.",
   keywords: [
@@ -26,12 +31,13 @@ export const metadata: Metadata = {
   publisher: "VOLTRIS",
   metadataBase: new URL('https://www.voltrisoptimizer.com/international'),
   alternates: {
-    canonical: '/international/quote',
+    canonical,
+    languages,
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.voltrisoptimizer.com/international/quote',
+    url: canonical,
     siteName: 'VOLTRIS Global',
     title: 'Request a Personalized Quote for International IT Services',
     description: 'Free and personalized quote for international IT services. Specialized support for expatriates worldwide.',
@@ -62,7 +68,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-};
+  });
+}
 
 export default function QuoteInternationalPage() {
 

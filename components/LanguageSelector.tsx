@@ -41,9 +41,10 @@ const CODE: Record<Locale, string> = {
   'ru': 'RU', 'zh-cn': 'ZH', 'vi': 'VI', 'tr': 'TR', 'id': 'ID', 'pl': 'PL',
 };
 
-// Rotas de "bypass" do middleware: servem uma única página rica para TODOS os
-// idiomas (traduzida por cookie) e NÃO usam prefixo de idioma na URL.
-const BYPASS_ROUTES = ['regions', 'international', 'dashboard', 'auth'];
+// Rotas de "bypass" do middleware: área logada/app sem prefixo de idioma na URL
+// (traduzidas por cookie). /regions e /international NÃO estão mais aqui: viraram
+// rotas localizadas ([locale]/...) com URL + hreflang por idioma, como o resto do site.
+const BYPASS_ROUTES = ['dashboard', 'auth'];
 
 function readLocaleCookie(): Locale | null {
   if (typeof document === 'undefined') return null;

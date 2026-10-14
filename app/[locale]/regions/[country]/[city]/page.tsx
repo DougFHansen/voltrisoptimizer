@@ -2,17 +2,35 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import RegionsClient from '../../RegionsClient';
 import { regionsData, getCityData } from '../../data';
+import { getSiteT } from '@/lib/site-i18n';
+import { getLocalizedAlternates } from '@/lib/seo';
 
-export async function generateMetadata({ params }: { params: { country: string, city: string } }): Promise<Metadata> {
-    const data = getCityData(params.country, params.city);
+const LOCALES = ['en', 'es', 'pt-br', 'de', 'fr', 'it', 'ja', 'ko', 'ar', 'ru', 'zh-cn', 'vi', 'tr', 'id', 'pl'];
+
+// Título/descrição programáticos usam chaves-template no dicionário com tokens-tag
+// <city></city>/<country></country>: no pipeline de tradução as TAGS são preservadas
+// verbatim (só o texto entre elas é traduzido), então a ordem das palavras fica
+// correta em cada idioma; depois injetamos os topônimos e normalizamos o espaçamento.
+// hreflang/canonical vêm de getLocalizedAlternates.
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; country: string; city: string }> }): Promise<Metadata> {
+    const { locale, country: countrySlug, city: citySlug } = await params;
+    const data = getCityData(countrySlug, citySlug);
 
     if (!data) return { title: 'Remote IT Technician' };
 
     const { city, country } = data;
+    const { t } = await getSiteT(locale);
+    const fill = (s: string) => s
+        .replace(/<city><\/city>/g, ' ' + city.name + ' ')
+        .replace(/<country><\/country>/g, ' ' + country.name + ' ')
+        .replace(/\s+/g, ' ')
+        .replace(/\s+([,.;:!?])/g, '$1')
+        .trim();
+    const { canonical, languages } = getLocalizedAlternates(`/regions/${country.slug}/${city.slug}`, locale);
 
     return {
-        title: `Professional Remote IT Support in ${city.name}, ${country.name} | VOLTRIS`,
-        description: `Advanced remote PC optimization, performance enhancement, system repair, and Windows maintenance services for clients in ${city.name} and worldwide.`,
+        title: fill(t('Professional Remote IT Support in <city></city>, <country></country> | VOLTRIS')),
+        description: fill(t('Advanced remote PC optimization, performance enhancement, system repair, and Windows maintenance services for clients in <city></city> and worldwide.')),
         keywords: [
             `remote it support ${city.name}`,
             `remote pc repair ${city.name}`,
@@ -24,12 +42,13 @@ export async function generateMetadata({ params }: { params: { country: string, 
             `virus removal remote ${city.name}`
         ],
         alternates: {
-            canonical: `https://www.voltrisoptimizer.com/regions/${country.slug}/${city.slug}`
+            canonical,
+            languages
         },
         openGraph: {
-            title: `Remote IT Support in ${city.name} | VOLTRIS`,
-            description: `Get elite online computer maintenance and gaming optimization right in ${city.name}, ${country.name}. 100% remote.`,
-            url: `https://www.voltrisoptimizer.com/regions/${country.slug}/${city.slug}`,
+            title: fill(t('Remote IT Support in <city></city> | VOLTRIS')),
+            description: fill(t('Get elite online computer maintenance and gaming optimization right in <city></city>, <country></country>. 100% remote.')),
+            url: canonical,
             type: 'website',
             images: [{ url: '/logo.png', width: 1200, height: 630 }]
         }
@@ -37,13 +56,16 @@ export async function generateMetadata({ params }: { params: { country: string, 
 }
 
 export async function generateStaticParams() {
-    const params: { country: string, city: string }[] = [];
-    
-    regionsData.forEach(country => {
-        country.cities.forEach(city => {
-            params.push({
-                country: country.slug,
-                city: city.slug
+    const params: { locale: string; country: string; city: string }[] = [];
+
+    LOCALES.forEach((locale) => {
+        regionsData.forEach(country => {
+            country.cities.forEach(city => {
+                params.push({
+                    locale,
+                    country: country.slug,
+                    city: city.slug
+                });
             });
         });
     });
@@ -51,8 +73,9 @@ export async function generateStaticParams() {
     return params;
 }
 
-export default function RegionPage({ params }: { params: { country: string, city: string } }) {
-    const data = getCityData(params.country, params.city);
+export default async function RegionPage({ params }: { params: Promise<{ locale: string; country: string; city: string }> }) {
+    const { locale, country: countrySlug, city: citySlug } = await params;
+    const data = getCityData(countrySlug, citySlug);
 
     if (!data) {
         notFound();
@@ -70,7 +93,7 @@ export default function RegionPage({ params }: { params: { country: string, city
                         "@type": "LocalBusiness",
                         "name": `VOLTRIS - Remote IT Support in ${city.name}`,
                         "description": `Remote computer optimization, gaming performance boost, and maintenance for clients in ${city.name}.`,
-                        "url": `https://www.voltrisoptimizer.com/regions/${country.slug}/${city.slug}`,
+                        "url": `https://www.voltrisoptimizer.com/${locale}/regions/${country.slug}/${city.slug}`,
                         "telephone": "+5511996716235",
                         "areaServed": {
                             "@type": "City",

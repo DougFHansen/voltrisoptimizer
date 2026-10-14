@@ -1,29 +1,32 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { cookies } from 'next/headers';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { regionsData } from './data';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 import TechFloatingElements from '@/components/TechFloatingElements';
 import { localizeMetadata } from '@/lib/site-i18n';
+import { getLocalizedAlternates } from '@/lib/seo';
 
-export async function generateMetadata(): Promise<Metadata> {
-    // /regions é rota de bypass (serve todos os idiomas sem prefixo na URL), então
-    // o idioma vem do cookie escolhido — traduzimos title/description no servidor.
-    const store = await cookies();
-    const locale = store.get('voltris-locale')?.value || 'en';
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    // /regions agora é uma rota localizada ([locale]/regions): cada idioma tem URL
+    // própria e indexável. O idioma vem do segmento da URL; traduzimos o metadata no
+    // servidor e emitimos hreflang (alternates.languages) para o cluster multilíngue.
+    const { locale } = await params;
+    const { canonical, languages } = getLocalizedAlternates('/regions', locale);
     return await localizeMetadata(locale, {
         title: 'Global Remote IT Support Coverage | VOLTRIS',
         description: 'We provide elite remote IT support, PC optimization, and virus removal to major cities around the globe. See our full coverage.',
         keywords: ['global IT support', 'remote pc repair', 'international tech support'],
         alternates: {
-            canonical: 'https://www.voltrisoptimizer.com/regions'
+            canonical,
+            languages
         }
     });
 }
 
-export default function RegionsIndexPage() {
+export default async function RegionsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     return (
         <>
             <Header />
@@ -56,7 +59,7 @@ export default function RegionsIndexPage() {
                                     {country.cities.map((city) => (
                                         <li key={city.slug}>
                                             <Link 
-                                                href={`/regions/${country.slug}/${city.slug}`}
+                                                href={`/${locale}/regions/${country.slug}/${city.slug}`}
                                                 className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 group"
                                             >
                                                 <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-[#8B31FF] transition-colors"></span>

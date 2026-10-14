@@ -4,9 +4,14 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FiGlobe, FiUsers, FiClock, FiShield, FiDatabase, FiMonitor, FiCloud, FiBarChart2, FiPhone, FiMail, FiTrendingUp, FiPackage, FiCheckCircle, FiAward, FiLock } from 'react-icons/fi';
+import { localizeMetadata } from "@/lib/site-i18n";
+import { getLocalizedAlternates } from "@/lib/seo";
 
-// Optimized SEO Metadata
-export const metadata: Metadata = {
+// Optimized SEO Metadata (localizado: cada idioma tem URL + hreflang próprios)
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const { canonical, languages } = getLocalizedAlternates('/international/services', locale);
+  return await localizeMetadata(locale, {
   title: "Premium IT Services for Expatriates and International Users | VOLTRIS",
   description: "Global technology company specializing in remote technical support for expatriates. PC formatting, system optimization, digital security, and international IT consulting with multi-language support.",
   keywords: [
@@ -30,12 +35,13 @@ export const metadata: Metadata = {
   publisher: "VOLTRIS",
   metadataBase: new URL('https://www.voltrisoptimizer.com/international'),
   alternates: {
-    canonical: '/international/services',
+    canonical,
+    languages,
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.voltrisoptimizer.com/international/services',
+    url: canonical,
     siteName: 'VOLTRIS Global',
     title: '[2026] Premium IT Services for Expatriates Worldwide - VOLTRIS',
     description: '✓ 6 specialized services in English & Portuguese ✓ Remote tech support, formatting and optimization ✓ 24/7 support for expats ✓ Prices in EUR/USD ✓ International quality guaranteed',
@@ -66,7 +72,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-};
+  });
+}
 
 // Optimized services with rich and semantic content
 const optimizedServices = [

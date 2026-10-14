@@ -32,17 +32,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  // Normaliza rotas de bypass que por engano receberam prefixo de idioma
-  // (ex.: /fr/regions, /es/international vindos de links antigos ou do sitemap)
-  // → 301 para a página rica sem prefixo, que serve todos os idiomas via cookie.
-  const localizedBypass = pathname.match(
-    /^\/(?:en|es|pt-br|de|fr|it|ja|ko|ar|ru|zh-cn|vi|tr|id|pl)\/(regions|international)(\/.*)?$/
-  );
-  if (localizedBypass) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${localizedBypass[1]}${localizedBypass[2] || ''}`;
-    return NextResponse.redirect(url, 301);
-  }
+  // /regions e /international agora são rotas LOCALIZADAS ([locale]/...): cada
+  // idioma tem URL própria + hreflang, então NÃO são mais bypass — caem na
+  // lógica genérica abaixo (sem prefixo → 308 para /{idioma}/...).
 
   // Bypass para rotas não-localizadas da aplicação (Dashboard, Auth, API, etc)
   const bypassPaths = [
@@ -52,8 +44,6 @@ export function middleware(request: NextRequest) {
     '/debug-commands', 
     '/test-commands', 
     '/debug-link', 
-    '/international', 
-    '/regions', 
     '/services-integration',
     '/sitemap',     // Bypasses all sitemaps (sitemap.xml, sitemap-images.xml)
     '/robots.txt'
