@@ -2,26 +2,26 @@ import { z } from 'zod';
 
 // Schema de validação para formulários de contato
 export const contactFormSchema = z.object({
-  name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres').max(100, 'Nome muito longo'),
-  email: z.string().email('Email inválido'),
-  phone: z.string().min(10, 'Telefone inválido').max(15, 'Telefone muito longo'),
-  message: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres').max(1000, 'Mensagem muito longa'),
+  name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name is too long'),
+  email: z.string().email('Invalid email address'),
+  phone: z.string().min(10, 'Invalid phone number').max(15, 'Phone number is too long'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message is too long'),
 });
 
 // Schema de validação para login
 export const loginSchema = z.object({
-  email: z.string().email('Email inválido'),
-  password: z.string().min(6, 'Senha deve ter pelo menos 6 caracteres'),
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
 // Schema de validação para registro
 export const registerSchema = z.object({
-  name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  email: z.string().email('Email inválido'),
-  password: z.string().min(6, 'Senha deve ter pelo menos 6 caracteres'),
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Senhas não coincidem",
+  message: "Passwords do not match",
   path: ["confirmPassword"],
 });
 

@@ -43,7 +43,7 @@ const CODE: Record<Locale, string> = {
 
 // Rotas de "bypass" do middleware: servem uma única página rica para TODOS os
 // idiomas (traduzida por cookie) e NÃO usam prefixo de idioma na URL.
-const BYPASS_ROUTES = ['regions', 'international'];
+const BYPASS_ROUTES = ['regions', 'international', 'dashboard', 'auth'];
 
 function readLocaleCookie(): Locale | null {
   if (typeof document === 'undefined') return null;
