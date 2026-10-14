@@ -20,6 +20,11 @@ const keywords = [
     'cpu cores parking manager tutorial how to use'
 ];
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return createGuideMetadata('unpark-cpu-cores-gaming-performance', title, description, keywords, locale);
+}
+
 export default async function CoreParkingGuide({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const summaryTable = [

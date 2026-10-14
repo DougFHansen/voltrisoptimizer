@@ -23,6 +23,11 @@ const keywords = [
     'java runtime environment modified malware'
 ];
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return createGuideMetadata('tlauncher-virus-false-positive', title, description, keywords, locale);
+}
+
 export default async function TLauncherSecurityGuide({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     const summaryTable = [

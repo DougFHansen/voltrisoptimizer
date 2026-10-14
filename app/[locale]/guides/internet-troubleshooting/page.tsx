@@ -20,6 +20,11 @@ const keywords = [
   'reset windows 11 network settings tutorial'
 ];
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return createGuideMetadata('internet-troubleshooting', title, description, keywords, locale);
+}
+
 export default async function InternetTroubleshootingGuide({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
   const summaryTable = [
