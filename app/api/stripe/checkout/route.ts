@@ -1,108 +1,154 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { createAdminClient } from '@/utils/supabase/admin';
+import { createClient } from '@/utils/supabase/server';
+import {
+    SERVICE_CATALOG,
+    resolveLicenseProduct,
+    currencyForLocale,
+    toMinorUnits,
+    type Currency,
+} from '@/lib/license-catalog';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logSuccess,
+    logError,
+    logSupabaseError,
+    maskEmail,
+} from '@/lib/voltris-log';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.voltrisoptimizer.com';
 
-const PRICE_MAP: Record<string, any> = {
-  // Licenças (Assinaturas)
-  standard: {
-    month: { name: 'Licença Standard Mensal', amount: 9.90, mode: 'subscription' },
-    year:  { name: 'Licença Standard Anual',  amount: 79.90, mode: 'subscription' },
-  },
-  pro: {
-    month: { name: 'Licença Pro Gamer Mensal', amount: 69.90, mode: 'subscription' },
-    year:  { name: 'Licença Pro Gamer Anual',  amount: 149.90, mode: 'subscription' },
-  },
-  enterprise: {
-    month: { name: 'Licença Enterprise Mensal', amount: 299.90, mode: 'subscription' },
-    year:  { name: 'Licença Enterprise Anual',  amount: 1099.90, mode: 'subscription' },
-  },
-  // Serviços (Pagamento Único)
-  formatacao_basica: { name: 'Formatação Básica', amount: 19.90, mode: 'payment' },
-  formatacao_media: { name: 'Formatação Média', amount: 29.90, mode: 'payment' },
-  formatacao_avancada: { name: 'Formatação Avançada', amount: 39.90, mode: 'payment' },
-  formatacao_corporativa: { name: 'Formatação Corporativa', amount: 69.90, mode: 'payment' },
-  formatacao_gamer: { name: 'Formatação Gamer', amount: 89.90, mode: 'payment' },
-  otimizacao_basica: { name: 'Otimização Básica', amount: 15.90, mode: 'payment' },
-  otimizacao_media: { name: 'Otimização Média', amount: 19.90, mode: 'payment' },
-  otimizacao_avancada: { name: 'Otimização Avançada', amount: 29.90, mode: 'payment' },
-  correcao_windows: { name: 'Correção de Erros no Windows', amount: 9.90, mode: 'payment' },
-  impressora_basica: { name: 'Instalação de Impressora', amount: 9.90, mode: 'payment' },
-  virus_basica: { name: 'Remoção de Vírus', amount: 7.90, mode: 'payment' },
-  recuperacao_basica: { name: 'Recuperação Básica', amount: 20.00, mode: 'payment' },
-  recuperacao_media: { name: 'Recuperação Média', amount: 30.00, mode: 'payment' },
-  recuperacao_avancada: { name: 'Recuperação Avançada', amount: 40.00, mode: 'payment' },
-};
-
+/**
+ * POST /api/stripe/checkout (INTERNACIONAL)
+ *
+ * Espelha a metodologia auditada do site BR, com suporte a multi-moeda:
+ *  - usuario/email sai da SESSAO (cookie), nunca do body do navegador;
+ *  - plano/periodo validados contra o catalogo canonico (lib/license-catalog);
+ *  - MOEDA derivada do idioma do visitante (body.locale ou cookie voltris-locale),
+ *    nunca o cliente escolhe o valor: o preco vem SEMPRE do servidor;
+ *  - payments gravado completo (provider/billing_period/currency) com erro verificado;
+ *  - log estruturado com correlation id.
+ */
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { license_type, user_id, customer_email, customer_name, billing_period = 'month' } = body;
+    const correlationId = getOrCreateCorrelationId(req);
+    const ctx = startOperation('STRIPE_CHECKOUT', correlationId);
 
-    let itemData = PRICE_MAP[license_type];
-    if (itemData && itemData[billing_period]) {
-        itemData = itemData[billing_period];
-    }
+    try {
+        const body = await req.json().catch(() => ({}));
+        const licenseType = String(body.license_type ?? '').toLowerCase();
+        const billingPeriod = String(body.billing_period ?? 'month');
 
-    if (!itemData) {
-      return NextResponse.json({ error: 'Plano ou serviço inválido' }, { status: 400 });
-    }
+        // Idioma -> moeda. Fonte: body.locale, senao cookie voltris-locale, senao en.
+        const localeFromCookie = req.cookies.get('voltris-locale')?.value;
+        const locale = String(body.locale ?? localeFromCookie ?? 'en');
+        const currency: Currency = currencyForLocale(locale);
 
-    const mode = itemData.mode || 'subscription';
-    const referenceId = `${mode === 'payment' ? 'sv' : 'st'}_${Date.now()}`;
-    const supabase = createAdminClient();
+        // 1. Identidade: sessao autenticada e a unica fonte de user_id/email.
+        const auth = await createClient();
+        const { data: sessionData, error: authError } = await auth.auth.getUser();
+        const user = sessionData?.user ?? null;
 
-    // 1. Gravar intenção de pagamento no Supabase
-    await supabase.from('payments').insert([{
-      reference_id: referenceId,
-      user_id: user_id || null,
-      email: customer_email,
-      customer_name: customer_name || 'Cliente Voltris',
-      plan_type: license_type,
-      amount: itemData.amount,
-      status: 'pending'
-    }]);
+        if (authError || !user) {
+            logError(ctx, 'checkout sem sessao autenticada', { ip: req.headers.get('x-forwarded-for') });
+            return NextResponse.json(
+                { error: 'Please log in to purchase a license.' },
+                { status: 401 }
+            );
+        }
+        ctx.userId = user.id;
 
-    // 2. Criar a sessão no Stripe
-    const sessionOptions: any = {
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: itemData.name,
-              description: mode === 'payment' ? 'Serviço Profissional Voltris' : `Assinatura ${billing_period === 'month' ? 'Mensal' : 'Anual'} - Voltris Optimizer`,
+        const service = SERVICE_CATALOG[licenseType];
+        const product = resolveLicenseProduct(licenseType, billingPeriod, currency);
+
+        if (!product && !service) {
+            return NextResponse.json({ error: 'Invalid plan or service' }, { status: 400 });
+        }
+
+        const isLicense = !!product;
+        const mode = isLicense ? 'subscription' : 'payment';
+        const name = isLicense ? product.name : service.name;
+        const svcCurrency: Currency = service?.currency ?? 'usd';
+        const useCurrency: Currency = isLicense ? product.currency : svcCurrency;
+        const amount = isLicense ? product.amount : service.amount;
+        // Menor unidade respeita moedas sem decimal (JPY/KRW).
+        const minorAmount = isLicense ? product.minorAmount : toMinorUnits(service.amount, svcCurrency);
+        const referenceId = `${isLicense ? 'st' : 'sv'}_${Date.now()}`;
+        const email = user.email!;
+
+        const supabase = createAdminClient();
+
+        // 2. Registrar intencao de pagamento (erro verificado — sem silent fail).
+        const { error: payInsertError } = await supabase.from('payments').insert([{
+            reference_id: referenceId,
+            provider: 'stripe',
+            user_id: user.id,
+            email,
+            customer_name: user.user_metadata?.full_name || 'Voltris Customer',
+            plan_type: licenseType,
+            billing_period: isLicense ? billingPeriod : null,
+            amount,
+            currency: useCurrency,
+            status: 'pending',
+        }]);
+
+        if (payInsertError) {
+            logSupabaseError(ctx, 'registrar pagamento pendente', payInsertError);
+            return NextResponse.json({ error: 'Could not start the payment' }, { status: 500 });
+        }
+
+        // 3. Sessao Stripe (preco e moeda sempre do servidor/catalogo).
+        const sessionOptions: any = {
+            payment_method_types: ['card'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: useCurrency,
+                        product_data: {
+                            name,
+                            description: isLicense
+                                ? `Voltris Optimizer — ${billingPeriod === 'month' ? 'Monthly' : 'Annual'} subscription`
+                                : 'Voltris Professional Service',
+                        },
+                        unit_amount: minorAmount,
+                    },
+                    quantity: 1,
+                },
+            ],
+            mode,
+            success_url: `${BASE_URL}/dashboard?checkout_success=true&type=${isLicense ? 'license' : 'service'}&ref=${referenceId}`,
+            cancel_url: isLicense ? `${BASE_URL}/buy-license` : `${BASE_URL}/services`,
+            customer_email: email,
+            metadata: {
+                reference_id: referenceId,
+                user_id: user.id,
+                license_type: isLicense ? product.plan : licenseType,
+                billing_period: isLicense ? billingPeriod : '',
+                currency: useCurrency,
+                locale,
+                type: isLicense ? 'license' : 'service',
             },
-            unit_amount: Math.round(itemData.amount * 100),
-          },
-          quantity: 1,
-        },
-      ],
-      mode: mode,
-      success_url: `${BASE_URL}/dashboard?checkout_success=true&type=${mode === 'payment' ? 'service' : 'license'}&ref=${referenceId}`,
-      cancel_url: mode === 'payment' ? `${BASE_URL}/servicos` : `${BASE_URL}/adquirir-licenca`,
-      customer_email: customer_email,
-      metadata: {
-        reference_id: referenceId,
-        user_id: user_id,
-        license_type: license_type,
-        billing_period: mode === 'subscription' ? billing_period : null,
-        type: mode === 'payment' ? 'service' : 'license'
-      },
-    };
+        };
 
-    if (mode === 'subscription') {
-      sessionOptions.line_items[0].price_data.recurring = { interval: billing_period as 'month' | 'year' };
+        if (isLicense) {
+            sessionOptions.line_items[0].price_data.recurring = { interval: product.period };
+        }
+
+        const session = await stripe.checkout.sessions.create(sessionOptions);
+
+        logSuccess(ctx, 'sessao stripe criada', {
+            ref: referenceId,
+            plan: licenseType,
+            period: billingPeriod,
+            currency: useCurrency,
+            user: maskEmail(email),
+            session: session.id,
+        });
+
+        return NextResponse.json({ id: session.id, url: session.url });
+    } catch (error: any) {
+        logError(ctx, 'checkout falhou', { error: error?.message });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
-
-    const session = await stripe.checkout.sessions.create(sessionOptions);
-
-    return NextResponse.json({ id: session.id, url: session.url });
-
-  } catch (error: any) {
-    console.error('[STRIPE CHECKOUT ERROR]', error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
 }

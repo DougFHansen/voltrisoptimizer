@@ -1,174 +1,181 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { NextRequest } from 'next/server';
+import { getOptionalSessionUser } from '@/utils/supabase/ownership';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logRequest,
+    logWarn,
+    logSuccess,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+} from '@/lib/voltris-log';
+import { licenseRateGuard, guardIdentity, rateLimitedResponse } from '@/lib/license-rate-guard';
+import {
+    getServiceClient,
+    countLicenseDevices,
+    licenseIsOwnedBy,
+    findLicenseByKey,
+    type LicenseDeviceRow,
+} from '@/lib/license-schema';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
 /**
- * API de Desativação de Dispositivo - Voltris Optimizer
- * 
- * Endpoint usado pelo aplicativo desktop para desativar/liberar um dispositivo
  * POST /api/v1/license/deactivate
- * 
- * Body: {
- *   licenseKey: string,
- *   deviceId: string
- * }
+ *
+ * Libera o slot de um dispositivo. Chamado pelo app desktop (chave + deviceId)
+ * ou pelo painel (dono da licenca).
  */
 export async function POST(request: NextRequest) {
-  const requestId = `deactivate-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-  
-  console.log(`[LICENSE DEACTIVATE] ========== DESATIVAÇÃO ${requestId} ==========`);
-  
-  try {
-    // Parse body
-    const body = await request.json();
-    const { licenseKey, deviceId } = body;
-    
-    console.log(`[LICENSE DEACTIVATE] Dados recebidos:`, {
-      licenseKey: licenseKey ? `${licenseKey.substring(0, 20)}...` : 'ausente',
-      deviceId: deviceId ? `${deviceId.substring(0, 16)}...` : 'ausente',
-    });
-    
-    // Validações
+    const correlationId = getOrCreateCorrelationId(request);
+    const ctx = startOperation('LICENSE_DEACTIVATE', correlationId);
+
+    let body: any;
+    try {
+        body = await request.json();
+    } catch {
+        logRequest(ctx, request);
+        return errorWithCorrelation(ctx, 400, 'INVALID_JSON', 'Corpo da requisicao invalido', {
+            details: { success: false, errorCode: 'INVALID_JSON' },
+        });
+    }
+    logRequest(ctx, request, body);
+
+    const pick = (...keys: string[]) => {
+        for (const k of keys) {
+            const camel = k.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
+            const v = body?.[k] ?? body?.[camel];
+            if (v !== undefined && v !== null) return v;
+        }
+        return undefined;
+    };
+
+    const licenseKey = String(pick('license_key') ?? '').trim().toUpperCase();
+    const deviceId = String(pick('device_id') ?? '').trim();
+
+    // Rate limit (missão §9): desvincular liberando slot é uma operação com
+    // efeito — não pode ser martelada por script.
+    const guard = licenseRateGuard('deactivate', request, guardIdentity(licenseKey, deviceId));
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: desvinculações demais', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
+
     if (!licenseKey) {
-      return NextResponse.json(
-        {
-          success: false,
-          errorMessage: 'License key is required',
-          errorCode: 'MISSING_LICENSE_KEY',
-        },
-        { status: 400 }
-      );
+        return errorWithCorrelation(ctx, 400, 'MISSING_LICENSE_KEY', 'Chave de licenca e obrigatoria', {
+            details: { success: false, errorCode: 'MISSING_LICENSE_KEY' },
+        });
     }
-    
     if (!deviceId) {
-      return NextResponse.json(
-        {
-          success: false,
-          errorMessage: 'Device ID is required',
-          errorCode: 'MISSING_DEVICE_ID',
-        },
-        { status: 400 }
-      );
+        return errorWithCorrelation(ctx, 400, 'MISSING_DEVICE_ID', 'ID do dispositivo e obrigatorio', {
+            details: { success: false, errorCode: 'MISSING_DEVICE_ID' },
+        });
     }
-    
-    // Conectar ao Supabase com service role
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    
-    if (!supabaseUrl || !supabaseServiceKey) {
-      console.error('[LICENSE DEACTIVATE] Credenciais Supabase não configuradas');
-      return NextResponse.json(
-        {
-          success: false,
-          errorMessage: 'Server configuration error',
-          errorCode: 'SERVER_CONFIG_ERROR',
-        },
-        { status: 500 }
-      );
+
+    let supabase;
+    try {
+        supabase = getServiceClient();
+    } catch {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Erro de configuracao do servidor', {
+            details: { success: false, errorCode: 'SERVER_CONFIG_ERROR' },
+        });
     }
-    
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-    
-    // Buscar licença no banco
-    console.log(`[LICENSE DEACTIVATE] Buscando licença no banco...`);
-    
-    const { data: license, error: licenseError } = await supabase
-      .from('licenses')
-      .select('*')
-      .eq('license_key', licenseKey)
-      .single();
-    
-    if (licenseError || !license) {
-      console.log(`[LICENSE DEACTIVATE] Licença não encontrada:`, licenseError);
-      return NextResponse.json({
-        success: false,
-        errorMessage: 'License not found',
-        errorCode: 'LICENSE_NOT_FOUND',
-      });
+
+    let license;
+    try {
+        license = await findLicenseByKey(licenseKey);
+    } catch {
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar licenca', {
+            details: { success: false, errorCode: 'DEACTIVATION_ERROR' },
+        });
     }
-    
-    console.log(`[LICENSE DEACTIVATE] Licença encontrada:`, {
-      id: license.id,
-      type: license.license_type,
-      devicesInUse: license.devices_in_use,
-    });
-    
-    // Buscar dispositivo
+
+    if (!license) {
+        return errorWithCorrelation(ctx, 404, 'LICENSE_NOT_FOUND', 'Licenca nao encontrada', {
+            details: { success: false, errorCode: 'LICENSE_NOT_FOUND' },
+        });
+    }
+
+    const sessionUser = await getOptionalSessionUser();
+    if (sessionUser) {
+        ctx.userId = sessionUser.id;
+        if (!licenseIsOwnedBy(license, sessionUser)) {
+            return errorWithCorrelation(ctx, 403, 'NOT_OWNER', 'Esta licenca pertence a outra conta.', {
+                details: { success: false, errorCode: 'FORBIDDEN' },
+            });
+        }
+    }
+
     const { data: device, error: deviceError } = await supabase
-      .from('license_devices')
-      .select('*')
-      .eq('license_id', license.id)
-      .eq('device_id', deviceId)
-      .single();
-    
-    if (deviceError || !device) {
-      console.log(`[LICENSE DEACTIVATE] Dispositivo não encontrado`);
-      return NextResponse.json({
-        success: false,
-        errorMessage: 'Device is not registered to this license',
-        errorCode: 'DEVICE_NOT_FOUND',
-      });
+        .from('license_devices')
+        .select('*')
+        .eq('license_key', licenseKey)
+        .eq('device_id', deviceId)
+        .maybeSingle();
+
+    if (deviceError) {
+        logSupabaseError(ctx, 'buscar dispositivo da licenca', deviceError);
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar o dispositivo', {
+            details: { success: false, errorCode: 'DEACTIVATION_ERROR' },
+        });
     }
-    
-    console.log(`[LICENSE DEACTIVATE] Dispositivo encontrado, removendo...`);
-    
-    // Remover dispositivo
+
+    if (!device) {
+        // Idempotente: ja esta livre.
+        logSuccess(ctx, 'dispositivo nao estava registrado', { deviceId });
+        return jsonWithCorrelation(ctx, {
+            success: true,
+            already_released: true,
+            devicesInUse: await countLicenseDevices(licenseKey),
+            maxDevices: license.max_devices ?? 1,
+        });
+    }
+
     const { error: deleteError } = await supabase
-      .from('license_devices')
-      .delete()
-      .eq('id', device.id);
-    
+        .from('license_devices')
+        .delete()
+        .eq('id', (device as LicenseDeviceRow).id);
+
     if (deleteError) {
-      console.error(`[LICENSE DEACTIVATE] Erro ao remover dispositivo:`, deleteError);
-      return NextResponse.json(
-        {
-          success: false,
-          errorMessage: 'Error deactivating device',
-          errorCode: 'DEACTIVATION_ERROR',
-          details: deleteError.message,
-        },
-        { status: 500 }
-      );
+        logSupabaseError(ctx, 'remover license_devices', deleteError);
+        return errorWithCorrelation(ctx, 500, 'DEACTIVATION_ERROR', 'Erro ao desativar dispositivo', {
+            details: { success: false, pg_code: deleteError.code ?? null },
+        });
     }
-    
-    // Atualizar contador de dispositivos
-    const newDevicesCount = Math.max(0, license.devices_in_use - 1);
-    
-    await supabase
-      .from('licenses')
-      .update({ devices_in_use: newDevicesCount })
-      .eq('id', license.id);
-    
-    console.log(`[LICENSE DEACTIVATE] Dispositivo desativado! Dispositivos em uso: ${newDevicesCount}/${license.max_devices}`);
-    
-    return NextResponse.json({
-      success: true,
-      message: 'Device successfully deactivated',
-      devicesInUse: newDevicesCount,
-      maxDevices: license.max_devices,
+
+    const { data: stillThere } = await supabase
+        .from('license_devices')
+        .select('id')
+        .eq('id', (device as LicenseDeviceRow).id)
+        .maybeSingle();
+
+    if (stillThere) {
+        logSupabaseError(ctx, 'confirmar remocao do dispositivo', null);
+        return errorWithCorrelation(
+            ctx,
+            500,
+            'DEACTIVATION_NOT_CONFIRMED',
+            'A remocao do dispositivo nao pode ser confirmada.'
+        );
+    }
+
+    const devicesInUse = await countLicenseDevices(licenseKey);
+    logSuccess(ctx, 'dispositivo desativado e confirmado', { deviceId, devicesInUse });
+
+    return jsonWithCorrelation(ctx, {
+        success: true,
+        verified: true,
+        message: 'Dispositivo desativado com sucesso',
+        devicesInUse,
+        maxDevices: license.max_devices ?? 1,
     });
-    
-  } catch (error: any) {
-    console.error(`[LICENSE DEACTIVATE] Erro:`, error);
-    return NextResponse.json(
-      {
-        success: false,
-        errorMessage: 'Error deactivating device',
-        errorCode: 'DEACTIVATION_ERROR',
-        details: error.message,
-      },
-      { status: 500 }
-    );
-  }
 }
 
-// GET para health check
+/** Health check do endpoint. */
 export async function GET() {
-  return NextResponse.json({
-    status: 'ok',
-    endpoint: 'license deactivation',
-    timestamp: new Date().toISOString(),
-  });
+    return Response.json({ status: 'ok', endpoint: 'license/deactivate' });
 }

@@ -1,149 +1,245 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/utils/supabase/server';
+import { NextRequest } from 'next/server';
+import { getOptionalSessionUser } from '@/utils/supabase/ownership';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logRequest,
+    logWarn,
+    logSuccess,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+} from '@/lib/voltris-log';
+import { licenseRateGuard, guardIdentity, rateLimitedResponse } from '@/lib/license-rate-guard';
+import {
+    getServiceClient,
+    isLicenseExpired,
+    licenseDisplayName,
+    countLicenseDevices,
+    licenseIsOwnedBy,
+    findLicenseByKey,
+} from '@/lib/license-schema';
 
 export const runtime = 'nodejs';
+export const maxDuration = 30;
+
+const DEVICE_ID_RE = /^[A-Za-z0-9._:-]{8,128}$/;
 
 /**
- * Retorna o nome completo para exibição da licença
- */
-function getLicenseDisplayName(licenseType: string): string {
-    switch (licenseType?.toLowerCase()) {
-        case 'trial':
-            return 'Trial';
-        case 'standard':
-            return 'VOLTRIS STANDARD';
-        case 'pro':
-            return 'VOLTRIS PRO';
-        case 'enterprise':
-            return 'VOLTRIS ENTERPRISE';
-        default:
-            return licenseType || 'Unknown';
-    }
-}
-
-/**
- * API de Ativação de Licença - Voltris Optimizer
  * POST /api/v1/license/activate
+ *
+ * Registra um dispositivo em uma licenca. O limite de dispositivos e contado a
+ * partir de license_devices (fonte da verdade), nunca de um contador denormalizado.
  */
 export async function POST(request: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(request);
+    const ctx = startOperation('LICENSE_ACTIVATE', correlationId);
+
+    let body: any;
     try {
-        const body = await request.json();
-        const licenseKey = body.license_key || body.licenseKey;
-        const deviceId = body.device_id || body.deviceId;
-        const machineName = body.machine_name || body.machineName;
-        const osVersion = body.os_version || body.osVersion;
-        const processorCount = body.processor_count || body.processorCount;
+        body = await request.json();
+    } catch {
+        logRequest(ctx, request);
+        return errorWithCorrelation(ctx, 400, 'INVALID_JSON', 'Corpo da requisicao invalido', {
+            details: { success: false },
+        });
+    }
+    logRequest(ctx, request, body);
 
-        if (!licenseKey || !deviceId) {
-            return NextResponse.json({ success: false, errorMessage: 'License key and device ID are required' }, { status: 400 });
+    const pick = (...keys: string[]) => {
+        for (const k of keys) {
+            const camel = k.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
+            const v = body?.[k] ?? body?.[camel];
+            if (v !== undefined && v !== null) return v;
         }
+        return undefined;
+    };
 
-        const supabase = await createClient();
+    const licenseKey = String(pick('license_key') ?? '').trim().toUpperCase();
+    const deviceId = String(pick('device_id') ?? '').trim();
+    const machineName = pick('machine_name') ?? pick('device_name') ?? null;
+    const osVersion = pick('os_version') ?? null;
+    const appVersion = pick('app_version') ?? null;
+    const processorCount = Number(pick('processor_count') ?? 0) || null;
 
-        // 1. Buscar a licença com license_display_name
-        const { data: license, error: licError } = await supabase
-            .from('licenses')
-            .select('*, license_display_name')
-            .eq('license_key', licenseKey)
-            .single();
+    // Rate limit (missão §9): ativação é a porta de força bruta de catálogo
+    // (tentar VOLTRIS-PRO-... aleatórios). Orçamento por chave/device e por IP.
+    const guard = licenseRateGuard('activate', request, guardIdentity(licenseKey, deviceId));
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: tentativas demais de ativação', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
 
-        if (licError || !license) {
-            return NextResponse.json({ success: false, errorMessage: 'License not found', errorCode: 'LICENSE_NOT_FOUND' }, { status: 404 });
-        }
+    if (!licenseKey || !deviceId) {
+        return errorWithCorrelation(ctx, 400, 'MISSING_FIELDS', 'License key and device ID are required', {
+            details: { success: false, errorCode: 'MISSING_FIELDS' },
+        });
+    }
 
-        // 2. Verificar se está ativa e não expirada
-        if (!license.is_active) {
-            return NextResponse.json({ success: false, errorMessage: 'Inactive license', errorCode: 'LICENSE_INACTIVE' });
-        }
+    if (!DEVICE_ID_RE.test(deviceId)) {
+        return errorWithCorrelation(ctx, 400, 'INVALID_DEVICE_ID', 'Invalid device ID format', {
+            details: { success: false, errorCode: 'INVALID_DEVICE_ID' },
+        });
+    }
 
-        if (license.expires_at) {
-            const expiryDate = new Date(license.expires_at);
-            if (expiryDate < new Date()) {
-                return NextResponse.json({ success: false, errorMessage: 'License expired', errorCode: 'LICENSE_EXPIRED' });
-            }
-        }
+    let supabase;
+    try {
+        supabase = getServiceClient();
+    } catch {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Server configuration error', {
+            details: { success: false },
+        });
+    }
 
-        // 3. Segurança: Se a licença tem user_id, verificar se o usuário logado bate (Se houver login)
-        const { data: { user } } = await supabase.auth.getUser();
-        if (license.user_id && user && license.user_id !== user.id) {
-            return NextResponse.json({ success: false, errorMessage: 'This license belongs to another account.', errorCode: 'FORBIDDEN' }, { status: 403 });
-        }
+    let license;
+    try {
+        license = await findLicenseByKey(licenseKey);
+    } catch {
+        logSupabaseError(ctx, 'buscar licenca', null);
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar licenca', {
+            details: { success: false, errorCode: 'DB_ERROR' },
+        });
+    }
 
-        // 4. Verificar se o dispositivo já está registrado para esta licença
-        const { data: existingDevice } = await supabase
+    if (!license) {
+        return errorWithCorrelation(ctx, 404, 'LICENSE_NOT_FOUND', 'License not found', {
+            details: { success: false, errorCode: 'LICENSE_NOT_FOUND' },
+        });
+    }
+
+    // Se houver sessao autenticada, so o dono pode ativar.
+    const sessionUser = await getOptionalSessionUser();
+    if (sessionUser && !licenseIsOwnedBy(license, sessionUser)) {
+        return errorWithCorrelation(ctx, 403, 'NOT_OWNER', 'This license belongs to another account.', {
+            details: { success: false, errorCode: 'FORBIDDEN' },
+        });
+    }
+
+    if (license.revoked === true) {
+        return errorWithCorrelation(ctx, 403, 'LICENSE_REVOKED', 'Licenca revogada', {
+            details: { success: false, errorCode: 'LICENSE_REVOKED' },
+        });
+    }
+
+    if (isLicenseExpired(license)) {
+        return errorWithCorrelation(ctx, 403, 'LICENSE_EXPIRED', 'Licenca expirada', {
+            details: { success: false, errorCode: 'LICENSE_EXPIRED' },
+        });
+    }
+
+    const now = new Date().toISOString();
+    const maxDevices = license.max_devices ?? 1;
+    const isUnlimited = maxDevices >= 9999 || (license.plan_type ?? '').toLowerCase() === 'enterprise';
+
+    const { data: existingDevice } = await supabase
+        .from('license_devices')
+        .select('id')
+        .eq('license_key', licenseKey)
+        .eq('device_id', deviceId)
+        .maybeSingle();
+
+    if (existingDevice) {
+        const { error: touchError } = await supabase
             .from('license_devices')
-            .select('*')
-            .eq('license_id', license.id)
-            .eq('device_id', deviceId)
-            .single();
-
-        if (existingDevice) {
-            // Apenas atualizar o last_used_at
-            await supabase
-                .from('license_devices')
-                .update({ 
-                    last_used_at: new Date().toISOString(),
-                    machine_name: machineName,
-                    os_version: osVersion
-                })
-                .eq('id', existingDevice.id);
-
-            return NextResponse.json({
-                success: true,
-                message: 'Dashboard: Device already authorized.',
-                licenseType: license.license_type,
-                licenseDisplayName: license.license_display_name || getLicenseDisplayName(license.license_type),
-                expiresAt: license.expires_at ? new Date(license.expires_at).toISOString() : null,
-                maxDevices: license.max_devices
-            });
-        }
-
-        // 5. Verificar limite de dispositivos
-        // Contar dispositivos atuais diretamente do banco (mais confiável que o contador da tabela licenses)
-        const { count, error: countError } = await supabase
-            .from('license_devices')
-            .select('*', { count: 'exact', head: true })
-            .eq('license_id', license.id);
-
-        const currentDevices = count || 0;
-        const maxDevices = license.max_devices || 1;
-
-        if (license.license_type !== 'enterprise' && currentDevices >= maxDevices) {
-            return NextResponse.json({
-                success: false,
-                errorMessage: `Device limit reached (${maxDevices}). Remove an old device on the website.`,
-                errorCode: 'DEVICE_LIMIT_REACHED'
-            });
-        }
-
-        // 6. Registrar novo dispositivo
-        const { error: insertError } = await supabase
-            .from('license_devices')
-            .insert({
-                license_id: license.id,
-                device_id: deviceId,
-                device_name: machineName || 'Unknown PC',
+            .update({
+                last_used_at: now,
+                last_seen_at: now,
+                device_name: machineName,
                 machine_name: machineName,
                 os_version: osVersion,
-                processor_count: processorCount
-            });
+                app_version: appVersion,
+            })
+            .eq('id', existingDevice.id);
 
-        if (insertError) {
-            console.error('[ACTIVATION] Erro ao inserir dispositivo:', insertError);
-            return NextResponse.json({ success: false, errorMessage: 'Error registering device in database.' }, { status: 500 });
+        if (touchError) {
+            logSupabaseError(ctx, 'atualizar last_used_at', touchError);
         }
 
-        return NextResponse.json({
+        logSuccess(ctx, 'dispositivo ja autorizado; ultimo uso atualizado', { deviceId });
+        return jsonWithCorrelation(ctx, {
             success: true,
-            message: 'License successfully activated on this device!',
-            licenseType: license.license_type,
-            licenseDisplayName: license.license_display_name || getLicenseDisplayName(license.license_type),
-            expiresAt: license.expires_at ? new Date(license.expires_at).toISOString() : null,
-            maxDevices: license.max_devices
+            message: 'Device already authorized.',
+            licenseType: license.plan_type,
+            licenseDisplayName: licenseDisplayName(license),
+            expiresAt: license.expires_at,
+            maxDevices,
+            devicesInUse: await countLicenseDevices(licenseKey),
         });
-
-    } catch (err: any) {
-        console.error('[ACTIVATION] Erro interno:', err);
-        return NextResponse.json({ success: false, errorMessage: 'Internal error on activation server.' }, { status: 500 });
     }
+
+    const currentDevices = await countLicenseDevices(licenseKey);
+
+    if (!isUnlimited && currentDevices >= maxDevices) {
+        return errorWithCorrelation(
+            ctx,
+            409,
+            'DEVICE_LIMIT_REACHED',
+            `Limite de dispositivos atingido (${maxDevices}). Remova um dispositivo antigo no site.`,
+            { details: { success: false, errorCode: 'DEVICE_LIMIT_REACHED', devicesInUse: currentDevices } }
+        );
+    }
+
+    const { error: insertError } = await supabase.from('license_devices').insert({
+        license_key: licenseKey,
+        device_id: deviceId,
+        device_name: machineName ?? 'Unknown PC',
+        machine_name: machineName,
+        os_version: osVersion,
+        app_version: appVersion,
+        processor_count: processorCount,
+        activated_at: now,
+        last_used_at: now,
+        last_seen_at: now,
+    });
+
+    if (insertError) {
+        logSupabaseError(ctx, 'inserir license_devices', insertError);
+        const conflict = insertError.code === '23505';
+        return errorWithCorrelation(
+            ctx,
+            conflict ? 409 : 500,
+            conflict ? 'DEVICE_ALREADY_REGISTERED' : 'DB_INSERT_FAILED',
+            conflict ? 'Dispositivo ja registrado nesta licenca.' : 'Erro ao registrar o dispositivo.',
+            { details: { success: false, pg_code: insertError.code ?? null } }
+        );
+    }
+
+    // Confirmacao pos-escrita (regra 19).
+    const { data: confirmed } = await supabase
+        .from('license_devices')
+        .select('id, license_key, device_id')
+        .eq('license_key', licenseKey)
+        .eq('device_id', deviceId)
+        .maybeSingle();
+
+    if (!confirmed) {
+        logSupabaseError(ctx, 'confirmar ativacao', null);
+        return errorWithCorrelation(
+            ctx,
+            500,
+            'ACTIVATION_NOT_CONFIRMED',
+            'A ativacao nao pode ser confirmada no banco.'
+        );
+    }
+
+    // Mantém a licenca ativa marcada com carimbo de uso.
+    if (!license.activated_at) {
+        await supabase.from('licenses').update({ activated_at: now }).eq('license_key', licenseKey);
+    }
+
+    const devicesInUse = await countLicenseDevices(licenseKey);
+    logSuccess(ctx, 'licenca ativada e confirmada', { deviceId, devicesInUse, maxDevices });
+
+    return jsonWithCorrelation(ctx, {
+        success: true,
+        verified: true,
+        message: 'License successfully activated on this device!',
+        licenseType: license.plan_type,
+        licenseDisplayName: licenseDisplayName(license),
+        expiresAt: license.expires_at,
+        maxDevices,
+        devicesInUse,
+    });
 }

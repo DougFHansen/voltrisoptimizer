@@ -45,7 +45,7 @@
   },
   {
     "route": "/[locale]/best-programs-to-optimize-windows",
-    "lastModified": "2026-10-13T12:02:57.094Z"
+    "lastModified": "2026-10-14T13:20:03.242Z"
   },
   {
     "route": "/[locale]/best-sound-settings-for-gaming-windows",
@@ -53,7 +53,7 @@
   },
   {
     "route": "/[locale]/buy-license",
-    "lastModified": "2026-06-09T04:18:30.376Z"
+    "lastModified": "2026-10-17T12:12:49.779Z"
   },
   {
     "route": "/[locale]/check-processes-consuming-most-cpu-windows",
@@ -101,7 +101,7 @@
   },
   {
     "route": "/[locale]/disable-windows-telemetry",
-    "lastModified": "2026-10-13T12:02:57.098Z"
+    "lastModified": "2026-10-14T13:20:03.067Z"
   },
   {
     "route": "/[locale]/discover-who-is-using-your-wifi-windows",
@@ -761,7 +761,7 @@
   },
   {
     "route": "/[locale]/guides/internet-troubleshooting",
-    "lastModified": "2026-10-12T06:26:59.687Z"
+    "lastModified": "2026-10-14T04:03:20.077Z"
   },
   {
     "route": "/[locale]/guides/ips-vs-va-vs-tn-monitor-gaming",
@@ -837,7 +837,7 @@
   },
   {
     "route": "/[locale]/guides/micro-stuttering-in-games-causes",
-    "lastModified": "2026-10-13T23:08:24.257Z"
+    "lastModified": "2026-10-14T13:19:59.829Z"
   },
   {
     "route": "/[locale]/guides/minecraft-lag-fix-optifine-fabric",
@@ -941,7 +941,7 @@
   },
   {
     "route": "/[locale]/guides",
-    "lastModified": "2026-10-13T09:36:06.892Z"
+    "lastModified": "2026-10-14T13:20:01.933Z"
   },
   {
     "route": "/[locale]/guides/palworld-server-dlss-optimization",
@@ -1221,7 +1221,7 @@
   },
   {
     "route": "/[locale]/guides/tlauncher-virus-false-positive",
-    "lastModified": "2026-10-12T06:26:59.720Z"
+    "lastModified": "2026-10-14T04:03:32.011Z"
   },
   {
     "route": "/[locale]/guides/two-factor-authentication-guide",
@@ -1233,7 +1233,7 @@
   },
   {
     "route": "/[locale]/guides/unpark-cpu-cores-gaming-performance",
-    "lastModified": "2026-10-12T06:26:59.721Z"
+    "lastModified": "2026-10-14T04:03:43.479Z"
   },
   {
     "route": "/[locale]/guides/upgrade-old-pc-worth-it",
@@ -1393,7 +1393,7 @@
   },
   {
     "route": "/[locale]/hardware-diagnostics-pc-temperature",
-    "lastModified": "2026-10-13T12:02:57.143Z"
+    "lastModified": "2026-10-14T13:20:02.981Z"
   },
   {
     "route": "/[locale]/how-to-block-ads-windows-11-completely",
@@ -1489,11 +1489,11 @@
   },
   {
     "route": "/[locale]/improve-spotify-performance-windows-11",
-    "lastModified": "2026-10-13T12:02:57.155Z"
+    "lastModified": "2026-10-14T13:20:03.328Z"
   },
   {
     "route": "/[locale]/improve-steam-performance-windows-11",
-    "lastModified": "2026-10-13T12:02:57.155Z"
+    "lastModified": "2026-10-14T13:20:03.430Z"
   },
   {
     "route": "/[locale]/improve-windows-11-boot-speed",
@@ -1513,11 +1513,11 @@
   },
   {
     "route": "/[locale]/international/quote",
-    "lastModified": "2026-10-14T00:34:53.946Z"
+    "lastModified": "2026-10-14T13:20:00.996Z"
   },
   {
     "route": "/[locale]/international/services",
-    "lastModified": "2026-10-14T00:34:37.546Z"
+    "lastModified": "2026-10-14T13:20:00.815Z"
   },
   {
     "route": "/[locale]/it-technician",
@@ -1565,7 +1565,7 @@
   },
   {
     "route": "/[locale]/optimize-windows-for-photo-editing-photoshop",
-    "lastModified": "2026-10-13T12:02:57.163Z"
+    "lastModified": "2026-10-14T13:20:03.515Z"
   },
   {
     "route": "/[locale]/optimize-windows-for-programming-development",
@@ -1581,11 +1581,11 @@
   },
   {
     "route": "/[locale]/optimize-windows-for-video-editing",
-    "lastModified": "2026-10-13T12:02:57.164Z"
+    "lastModified": "2026-10-14T13:20:03.598Z"
   },
   {
     "route": "/[locale]",
-    "lastModified": "2026-10-13T12:03:37.963Z"
+    "lastModified": "2026-10-14T13:20:07.645Z"
   },
   {
     "route": "/[locale]/pc-optimization",
@@ -1609,7 +1609,7 @@
   },
   {
     "route": "/[locale]/remove-bloatware-windows-11",
-    "lastModified": "2026-10-13T12:02:57.170Z"
+    "lastModified": "2026-10-14T13:20:02.898Z"
   },
   {
     "route": "/[locale]/services",
@@ -1621,7 +1621,7 @@
   },
   {
     "route": "/[locale]/update-drivers-windows-automatically",
-    "lastModified": "2026-10-13T12:02:57.174Z"
+    "lastModified": "2026-10-14T13:20:03.144Z"
   },
   {
     "route": "/[locale]/voltris-optimizer",

@@ -1,14 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
-import {
-  FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
-  FiActivity, FiAlertTriangle, FiSearch, FiCopy, FiExternalLink, FiCpu, FiShield,
-  FiMonitor, FiDownload
-} from 'react-icons/fi';
+import VoltrisIcon, { type VoltrisIconName } from '@/components/dashboard/VoltrisIcon';
+import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 
 import type { Order } from '@/types/order';
 import { createClient } from '@/utils/supabase/client';
@@ -20,70 +17,215 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import { useDashboard } from '@/app/context/DashboardContext';
 import { notifyPageView } from '@/utils/notifications';
+import {
+  resolveLicenseProduct,
+  isPlanType,
+  SERVICE_CATALOG,
+  LICENSE_PLANS,
+  type PlanType,
+  type BillingPeriod,
+} from '@/lib/license-catalog';
 
+// ============================================================================
+// License states (mission §6) — canonical, resolved on the SERVER.
+//
+// The visual mapping below only renders the state the backend already decided
+// (/api/v1/license/me -> resolveLicenseState over licenses + payments +
+// subscriptions). The browser never re-derives anything.
+//
+// NOTE ON i18n: the dashboard is translated by the DOM SiteTextTranslator, whose
+// dictionary is keyed on ENGLISH source text. That is why every prose string in
+// this file is written in English (the source of truth) — not t(), and not the
+// Portuguese the BR site uses. Unknown strings simply stay English.
+// ============================================================================
+interface LicenseStateVisual {
+  icon: VoltrisIconName;
+  accent: string;
+  chip: string;
+  /** English label rendered from the stable state code (server label is PT). */
+  label: string;
+  hint: string;
+}
 
-// Componente de Card de Estatística Ultra-Moderno
-const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
+const LICENSE_STATE_STYLE: Record<string, LicenseStateVisual> = {
+  ATIVA: {
+    icon: 'check',
+    accent: DASHBOARD_ACCENT.success,
+    chip: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+    label: 'Active',
+    hint: 'Access is unlocked for the whole paid period.',
+  },
+  CANCELAMENTO_AGENDADO: {
+    icon: 'clock',
+    accent: DASHBOARD_ACCENT.info,
+    chip: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+    label: 'Cancellation scheduled',
+    hint: 'Auto-renewal is off, but access stays valid until the expiration date — a scheduled cancellation is not an immediate expiry.',
+  },
+  FALHA_NO_PAGAMENTO: {
+    icon: 'alertTriangle',
+    accent: DASHBOARD_ACCENT.warning,
+    chip: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    label: 'Payment failed',
+    hint: 'The recurring charge failed. You keep access for the period already paid; update your card in the Stripe Portal so renewal is not lost.',
+  },
+  PAGAMENTO_PENDENTE: {
+    icon: 'processing',
+    accent: DASHBOARD_ACCENT.warning,
+    chip: 'bg-amber-500/10 text-amber-300 border-amber-500/25',
+    label: 'Payment pending',
+    hint: 'Payment not confirmed by Stripe yet. Access is only unlocked after confirmation — nothing is granted early.',
+  },
+  EXPIRADA: {
+    icon: 'alertCircle',
+    accent: DASHBOARD_ACCENT.brandPink,
+    chip: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+    label: 'Expired',
+    hint: 'The paid period ended. Renew to reactivate PRO on the same computer, without reinstalling the app.',
+  },
+  REVOGADA: {
+    icon: 'lock',
+    accent: DASHBOARD_ACCENT.danger,
+    chip: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+    label: 'Revoked',
+    hint: 'License revoked (refund, chargeback or support decision). Your data was not deleted — contact us to understand the case.',
+  },
+};
+
+const STATE_STYLE_FALLBACK: Omit<LicenseStateVisual, 'label'> & { label: string } = {
+  icon: 'info',
+  accent: DASHBOARD_ACCENT.brandBlue,
+  chip: 'bg-slate-500/10 text-slate-300 border-slate-600/40',
+  label: '',
+  hint: '',
+};
+
+const SUBSCRIPTION_STATUS_LABEL: Record<string, string> = {
+  ACTIVE: 'Active',
+  CANCEL_SCHEDULED: 'Cancellation scheduled',
+  CANCELED: 'Canceled',
+  PAST_DUE: 'Past due',
+  TRIALING: 'Trial period',
+  INCOMPLETE: 'Incomplete signup',
+  INCOMPLETE_EXPIRED: 'Expired signup',
+  UNPAID: 'Unpaid',
+  PAUSED: 'Paused',
+};
+
+const PAYMENT_STATUS_LABEL: Record<string, string> = {
+  approved: 'Approved',
+  paid: 'Paid',
+  pending: 'Pending',
+  processing: 'Processing',
+  open: 'Awaiting',
+  unpaid: 'Unpaid',
+  failed: 'Declined',
+  payment_failed: 'Declined',
+  declined: 'Declined',
+  past_due: 'Past due',
+  refunded: 'Refunded',
+  charged_back: 'Chargeback',
+  canceled: 'Canceled',
+};
+
+// Polling with a limit + honest timeout (mission §6): instead of an eternal
+// setInterval, re-query every 15 s for at most 40 attempts (~10 min) while a
+// payment is pending, then stop on its own with a clear message.
+const LICENSE_POLL_INTERVAL_MS = 15_000;
+const LICENSE_POLL_MAX_ATTEMPTS = 40;
+
+/** Product name always comes from the backend catalog, never loose client text. */
+function productLabel(planType?: string | null, billingPeriod?: string | null): string {
+  const period: BillingPeriod = (billingPeriod ?? '').toLowerCase().startsWith('y') ? 'year' : 'month';
+  if (isPlanType(planType)) {
+    // name is currency-agnostic in the catalog, so default usd is enough for the label.
+    const product = resolveLicenseProduct(planType, period);
+    if (product) return product.name;
+  }
+  const service = SERVICE_CATALOG[(planType ?? '').toLowerCase()];
+  if (service) return service.name;
+  const plan = LICENSE_PLANS[planType as PlanType];
+  return plan ? plan.displayName : (planType || 'Product');
+}
+
+/**
+ * The license key is the activation secret: shown masked and only revealed under
+ * explicit action (screenshot and sharing were real risks).
+ */
+function maskLicenseKey(key?: string | null): string {
+  if (!key) return '— — — —';
+  const parts = key.split('-');
+  if (parts.length < 3) return `${key.slice(0, 3)}${'•'.repeat(Math.max(6, key.length - 3))}`;
+  const tail = parts[parts.length - 1];
+  const hiddenTail = tail.length > 4 ? `${'•'.repeat(tail.length - 4)}${tail.slice(-4)}` : tail;
+  return `${parts.slice(0, 2).join('-')}-${'•'.repeat(Math.max(3, parts[2].length))}-${'•'.repeat(6)}-${hiddenTail}`;
+}
+
+// Intl defaults: the dashboard is used across many locales, so dates/times use
+// the browser default locale (rendered client-side only, no SSR/hydration risk)
+// and money is formatted per the row's actual currency.
+const fmtDate = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleDateString() : '—';
+
+const fmtDateTime = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
+
+const fmtTime = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }) : '—';
+
+const fmtMoney = (amount?: number | null, currency?: string | null) => {
+  const cur = (currency || 'usd').toUpperCase();
+  try {
+    return new Intl.NumberFormat(undefined, { style: 'currency', currency: cur }).format(amount ?? 0);
+  } catch {
+    return `${cur} ${Number(amount ?? 0).toFixed(2)}`;
+  }
+};
+
+/** Renewal period label from the stable code (server label is PT). */
+const periodLabelEn = (p?: string | null) => ((p ?? '').toLowerCase().startsWith('y') ? 'Annual' : 'Monthly');
+
+const InfoCell = ({ label, value, tone = 'text-white/80' }: { label: string; value: ReactNode; tone?: string }) => (
+  <div className="flex flex-col gap-0.5 min-w-0">
+    <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">{label}</span>
+    <span className={`text-xs font-semibold ${tone} truncate`}>{value}</span>
+  </div>
+);
+
+// Statistic card — executive style, brand tile accent (INTL blue/purple theme).
+const StatCard = ({ title, value, icon, delay, description }: {
+  title: string;
+  value: number;
+  icon: VoltrisIconName;
+  delay: number;
+  description?: string;
+}) => {
   const { transparencyMode } = useDashboard();
-  
-  const colors: any = {
-    blue: 'from-[#31A8FF] to-[#1070FF]',
-    purple: 'from-[#8B31FF] to-[#6010FF]',
-    green: 'from-[#00FF88] to-[#00CC6A]',
-    pink: 'from-[#FF4B6B] to-[#FF2244]',
-  };
-
-  const glowColors: any = {
-    blue: 'rgba(49,168,255,0.4)',
-    purple: 'rgba(139,49,255,0.4)',
-    green: 'rgba(0,255,136,0.4)',
-    pink: 'rgba(255,75,107,0.4)',
-  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay, type: "spring", stiffness: 100 }}
-      className={`relative group overflow-hidden p-5 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border transition-all duration-500
-        ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}
-        hover:border-white/20 hover:-translate-y-2
+      transition={{ duration: 0.4, delay, ease: "easeOut" }}
+      className={`relative group p-5 sm:p-6 rounded-2xl border transition-all duration-200
+        ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}
+        hover:border-white/20
       `}
     >
-      <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${colors[color]} opacity-5 blur-[60px] group-hover:opacity-15 transition-all duration-700`}></div>
-      
-      <div className="relative z-10 flex flex-col h-full justify-center gap-4 sm:gap-6">
-        <div className="flex justify-between items-start">
-          <div className={`p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${colors[color]} shadow-lg flex items-center justify-center text-white relative`}>
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-            <div className={`absolute inset-0 rounded-2xl blur-lg opacity-40 bg-gradient-to-br ${colors[color]}`}></div>
-          </div>
-          <div className="flex flex-col items-end">
-             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
-             <div className="flex items-center gap-1.5">
-               <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
-               <span className="text-[9px] sm:text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">SYNCED</span>
-             </div>
-          </div>
-        </div>
-
-        <div className="space-y-1">
-           <p className="text-white/40 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
-          <div className="flex items-baseline gap-2">
-            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{value}</h3>
-          </div>
-        </div>
-
-        {/* Decorative Progress Line */}
-        <div className="relative h-1 w-full bg-white/5 rounded-full overflow-hidden mt-2">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 1.5, delay: delay + 0.3 }}
-            className={`absolute inset-y-0 left-0 bg-gradient-to-r ${colors[color]}`}
-          />
+      <div className="flex items-center justify-between gap-4 mb-4">
+        <span className="text-xs font-semibold text-white/40 uppercase tracking-wider">{title}</span>
+        <VoltrisIconTile icon={icon} accent={DASHBOARD_ACCENT.brand} size={9} />
+      </div>
+      <div className="flex items-baseline justify-between">
+        <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}</h3>
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#00FF94]"></div>
+          <span className="text-[10px] font-medium text-white/40 uppercase tracking-wider">Live</span>
         </div>
       </div>
+      {description && (
+        <p className="text-[11px] font-medium text-white/30 mt-2">{description}</p>
+      )}
     </motion.div>
   );
 };
@@ -112,9 +254,17 @@ function DashboardContent() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [payments, setPayments] = useState<any[]>([]);
   const [licenses, setLicenses] = useState<any[]>([]);
+  const [pendingPurchases, setPendingPurchases] = useState<any[]>([]);
+  const [hasPending, setHasPending] = useState(false);
+  const [serverTime, setServerTime] = useState<string | null>(null);
+  const [revealedKeys, setRevealedKeys] = useState<Record<string, boolean>>({});
+  const [isPolling, setIsPolling] = useState(false);
+  const [pollAttempt, setPollAttempt] = useState(0);
   const [installationsCount, setInstallationsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isCancelling, setIsCancelling] = useState(false);
   const supabase = useMemo(() => createClient(), []);
 
   const fetchData = useCallback(async (showLoading = true) => {
@@ -122,9 +272,14 @@ function DashboardContent() {
     try {
       if (showLoading) setIsLoading(true);
 
-      const [ordersRes, licensesRes, installationsRes, paymentsRes] = await Promise.all([
+      const [ordersRes, licensesJson, installationsRes, paymentsRes] = await Promise.all([
         supabase.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
-        supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false }),
+        // Licenses come from the canonical route (service_role + session filter).
+        // The old direct query used `.eq('email', ...)` and non-canonical columns
+        // (license_type/is_active/devices_in_use/id) that do not exist in
+        // public.licenses — the panel was left empty/broken.
+        fetch('/api/v1/license/me', { credentials: 'same-origin' })
+          .then(async (r) => (r.ok ? r.json() : { error: `HTTP ${r.status}` })),
         supabase.from('installations').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
         supabase.from('payments').select('*').eq('user_id', user.id).order('created_at', { ascending: false })
       ]);
@@ -132,9 +287,20 @@ function DashboardContent() {
       if (ordersRes.error) throw ordersRes.error;
       setOrders(ordersRes.data || []);
       setPayments(paymentsRes.data || []);
-      
-      if (!licensesRes.error) {
-        setLicenses(licensesRes.data || []);
+
+      if (licensesJson?.error) {
+        console.error('Error fetching licenses:', licensesJson.error);
+        setLicenses([]);
+        setPendingPurchases([]);
+        setHasPending(false);
+      } else {
+        // Canonical route contract: licenses[] already carry state/stateLabel/
+        // hasAccess resolved on the server, plus pendingPurchases/hasPending/
+        // server_time.
+        setLicenses(licensesJson?.licenses || []);
+        setPendingPurchases(licensesJson?.pendingPurchases || []);
+        setHasPending(licensesJson?.hasPending === true);
+        setServerTime(licensesJson?.server_time ?? null);
       }
 
       setInstallationsCount(installationsRes.count || 0);
@@ -145,27 +311,87 @@ function DashboardContent() {
     } finally {
       if (showLoading) setIsLoading(false);
     }
-  }, [user?.id, user?.email, supabase]); // Depende apenas do ID e email, não do objeto user inteiro
+  }, [user?.id, user?.email, supabase]);
 
-  // Carregar dados apenas na montagem e quando o ID do usuário mudar de fato
+  const handleManageBilling = async () => {
+    const toastId = toast.loading('Connecting to Stripe...');
+    try {
+      const response = await fetch('/api/stripe/portal', { method: 'POST' });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Could not open portal');
+      }
+    } catch (error: any) {
+      toast.error(error.message, { id: toastId });
+    } finally {
+      toast.dismiss(toastId);
+    }
+  };
+
+  const handleRequestRefund = async () => {
+    if (!window.confirm("Warning: the refund will cancel your subscription immediately and disable your access. The amount is returned only if the purchase was made within the last 7 days. Do you want to proceed?")) {
+      return;
+    }
+
+    const toastId = toast.loading('Processing refund with Stripe...');
+    try {
+      const response = await fetch('/api/stripe/refund', { method: 'POST' });
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success(data.message || 'Refund completed successfully!', { id: toastId });
+        fetchData(false);
+      } else {
+        throw new Error(data.error || 'Error processing refund');
+      }
+    } catch (error: any) {
+      toast.error(error.message, { id: toastId });
+    }
+  };
+
+  const handleConfirmCancel = async () => {
+    setIsCancelling(true);
+    const toastId = toast.loading('Processing cancellation...');
+    try {
+      const response = await fetch('/api/stripe/cancel', { method: 'POST' });
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Subscription canceled! You still have access until the end of the current period.', { id: toastId });
+        setIsCancelModalOpen(false);
+        fetchData(false);
+      } else {
+        throw new Error(data.error || 'Error canceling');
+      }
+    } catch (error: any) {
+      toast.error(error.message, { id: toastId });
+    } finally {
+      setIsCancelling(false);
+    }
+  };
+
+  // Load data only on mount and when the user ID actually changes.
   const userIdRef = useRef<string | undefined>(undefined);
   useEffect(() => {
-    // Se o auth terminou de carregar e não temos usuário, paramos o loading local
-    // para permitir que o AuthGuard execute o redirecionamento.
+    // If auth finished loading and we have no user, stop the local loading so
+    // AuthGuard can run the redirect.
     if (!loading && !user) {
       setIsLoading(false);
       return;
     }
 
     if (!user?.id) return;
-    
-    // Só buscar se o ID mudou (evita refetch em token refresh que recria o objeto user)
+
+    // Only fetch when the ID changed (avoids refetch on token refresh that
+    // recreates the user object).
     if (userIdRef.current === user.id) return;
     userIdRef.current = user.id;
     fetchData();
   }, [user?.id, loading, fetchData]);
 
-  // Notificar visualização da aba de licenças no Dashboard
+  // Notify the licenses-tab page view in the dashboard.
   useEffect(() => {
     if (activeTab === 'licenses') {
       notifyPageView("Licenses Tab (Internal Dashboard)");
@@ -184,8 +410,8 @@ function DashboardContent() {
       duration: 6000,
       position: 'top-center',
       icon: successIcon,
-      style: { 
-        background: 'rgba(10, 10, 15, 0.9)', 
+      style: {
+        background: 'rgba(10, 10, 15, 0.9)',
         color: '#fff',
         border: '1px solid rgba(49, 168, 255, 0.3)',
         backdropFilter: 'blur(10px)',
@@ -199,13 +425,74 @@ function DashboardContent() {
     return () => clearTimeout(timer);
   }, [searchParams, loading, fetchData]);
 
+  // LIMITED polling of a pending payment (mission §6): previously the panel only
+  // refreshed on F5, so whoever paid through checkout kept staring at a "no
+  // license" screen forever. Here it re-queries on its own, with an attempt cap.
+  useEffect(() => {
+    if (!user?.id || !hasPending) {
+      setIsPolling(false);
+      setPollAttempt(0);
+      return;
+    }
+
+    setIsPolling(true);
+    setPollAttempt(0);
+
+    let attempts = 0;
+    const id = setInterval(() => {
+      attempts += 1;
+      if (attempts > LICENSE_POLL_MAX_ATTEMPTS) {
+        clearInterval(id);
+        setIsPolling(false);
+        toast('Payment has not been confirmed by Stripe yet. Once approved, the key appears here — use "Check now" to avoid waiting.', {
+          icon: '⏳',
+          id: 'voltris-poll-limit',
+          duration: 9000,
+        });
+        return;
+      }
+      setPollAttempt(attempts);
+      void fetchData(false);
+    }, LICENSE_POLL_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, [user?.id, hasPending, fetchData]);
+
+  // Safe copy: the key goes to the clipboard under explicit action. If the
+  // browser blocks it (non-secure context), reveal the key instead of failing
+  // silently.
+  const handleCopyKey = async (key: string) => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('clipboard unavailable');
+      await navigator.clipboard.writeText(key);
+      toast.success('Key copied. It grants access to your plan — treat it like a password.');
+    } catch {
+      setRevealedKeys((prev) => ({ ...prev, [key]: true }));
+      toast.error('Your browser blocked automatic copying. The key was revealed below — copy it manually.', { duration: 8000 });
+    }
+  };
+
+  const toggleRevealKey = (key: string) =>
+    setRevealedKeys((prev) => ({ ...prev, [key]: !prev[key] }));
+
   const stats = {
     totalOrders: orders.length + payments.length,
-    activeLicenses: licenses.filter(l => l.is_active).length,
+    // "Active" = real access according to the server (includes scheduled
+    // cancellation and billing failure within the already-paid period). Pure
+    // isActive does not reflect this.
+    activeLicenses: licenses.filter(l => l.hasAccess ?? l.isActive).length,
     computers: installationsCount
   };
 
   const hardwareIDProtection = stats.activeLicenses > 0;
+
+  const tabs: { id: string; label: string; icon: VoltrisIconName; color: string }[] = [
+    { id: 'overview', label: 'Dashboard', icon: 'home', color: DASHBOARD_ACCENT.brandBlue },
+    { id: 'licenses', label: 'Licenses', icon: 'license', color: DASHBOARD_ACCENT.brand },
+    { id: 'orders', label: 'Orders', icon: 'orders', color: DASHBOARD_ACCENT.info },
+    { id: 'pc', label: 'Monitor', icon: 'system', color: DASHBOARD_ACCENT.success },
+    { id: 'security', label: 'Security', icon: 'security', color: DASHBOARD_ACCENT.danger },
+  ];
 
   return (
     <AuthGuard>
@@ -216,380 +503,603 @@ function DashboardContent() {
               <div className="w-20 h-20 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
               <div className="absolute inset-0 w-20 h-20 border-t-4 border-[#8B31FF] rounded-full animate-spin-slow"></div>
             </div>
-            <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing with Supabase Cloud...</p>
+            <p className="text-white/40 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing with Supabase Cloud...</p>
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-8 w-full max-w-full min-h-screen">
-        {/* Dashboard Header - Premium UI */}
-        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-center lg:text-left">
-          <div className="space-y-1.5 flex-1 min-w-0 flex flex-col items-center lg:items-start w-full">
-            <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
-              <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-3xl font-black text-white tracking-tighter uppercase italic leading-none break-words">Command <span className="text-[#31A8FF] not-italic">Center</span></h1>
-              
-              {/* Hardware ID Protection Status Badge */}
-               <div className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md transition-all duration-500
-                 ${hardwareIDProtection 
-                   ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
-                   : 'bg-red-500/10 border-red-500/20 text-red-400'}
+        <div className="flex flex-col gap-6 w-full max-w-full h-full min-h-0">
+          {/* Dashboard Header - Executive Style */}
+          <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-white/5">
+            <div className="space-y-1">
+              <div className="flex items-center gap-3 flex-wrap">
+                <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  Control Panel
+                </h2>
+
+                {/* Hardware ID Protection Status Badge */}
+                <div className={`inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[11px] font-medium border transition-colors
+                 ${hardwareIDProtection
+                    ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                    : 'bg-rose-500/10 border-rose-500/20 text-rose-400'}
                `}>
-                 <div className={`w-1.5 h-1.5 rounded-full animate-pulse shadow-lg
-                   ${hardwareIDProtection ? 'bg-emerald-400 shadow-emerald-500/50' : 'bg-red-400 shadow-red-500/50'}
-                 `}></div>
-                 <span className="text-[9px] font-black uppercase tracking-widest leading-none">
-                   PROT HID: {hardwareIDProtection ? 'ACTIVE' : 'OFFLINE'}
-                 </span>
-               </div>
+                  <div className={`w-1.5 h-1.5 rounded-full ${hardwareIDProtection ? 'bg-emerald-400' : 'bg-rose-400'}`}></div>
+                  <span>
+                    HID Protection: {hardwareIDProtection ? 'Active' : 'Offline'}
+                  </span>
+                </div>
+              </div>
+              <p className="text-white/40 text-xs font-normal">
+                Welcome back, <span className="text-white/80 font-medium">{profile?.full_name || user?.email?.split('@')[0] || 'User'}</span>
+              </p>
             </div>
-            <p className="text-white/40 font-bold text-[8px] xs:text-[10px] sm:text-xs tracking-wide uppercase px-2 lg:px-0 opacity-80 line-clamp-1">Tactical operation available for <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USER'}</span></p>
-          </div>
 
-          <div className="flex items-center justify-center lg:justify-end gap-3 px-4 lg:px-0">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => { 
-                setIsRefreshing(true); 
-                fetchData(false)
-                  .then(() => toast.success('Data updated!'))
-                  .finally(() => setIsRefreshing(false)); 
-              }}
-              className={`p-4 rounded-2xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
-            >
-              <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
-            </motion.button>
-            <Link href="/servicos" className="flex-1 lg:flex-none">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(49, 168, 255, 0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black uppercase italic tracking-[0.15em] rounded-2xl shadow-2xl text-xs"
+            <div className="flex items-center gap-2.5">
+              <Link
+                href="/"
+                className="px-3 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all text-xs font-medium text-white/60 hover:text-white flex items-center gap-1.5"
               >
-                <FiPlus className="w-4 h-4" />
-                <span>New Order</span>
+                <VoltrisIcon name="arrowLeft" size={14} className="text-white/50" />
+                <span>Back to Site</span>
+              </Link>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  setIsRefreshing(true);
+                  fetchData(false)
+                    .then(() => toast.success('Data updated!'))
+                    .finally(() => setIsRefreshing(false));
+                }}
+                className={`p-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
+                title="Refresh data"
+              >
+                <VoltrisIcon name="processing" size={16} className={isRefreshing ? 'animate-spin' : ''} />
               </motion.button>
-            </Link>
-          </div>
-        </header>
+              <Link href="/services">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-[#31A8FF] hover:bg-[#1070FF] text-white font-semibold text-xs rounded-xl shadow-md shadow-[#31A8FF]/20 transition-colors"
+                >
+                  <VoltrisIcon name="plus" size={16} />
+                  <span>New Order</span>
+                </motion.button>
+              </Link>
+            </div>
+          </header>
 
-        {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
-        <div className="w-full flex items-center justify-start sm:justify-center py-2 sm:py-4 overflow-x-auto scrollbar-hide px-2 sm:px-0">
-          <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all min-w-max sm:min-w-0`}>
-              {[
-                { id: 'overview', label: 'Dashboard', icon: FiActivity, color: '#31A8FF' },
-                { id: 'licenses', label: 'Licenses', icon: FiCheckCircle, color: '#8B31FF' },
-                { id: 'orders', label: 'Orders', icon: FiPackage, color: '#FF4B6B' },
-                { id: 'pc', label: 'Monitor', icon: FiMonitor, color: '#00C9A7' },
-                { id: 'security', label: 'Security', icon: FiShield, color: '#FFD700' }
-              ].map((tab) => (
+          {/* Custom Modern Tabs */}
+          <div className="w-full flex items-center justify-start sm:justify-center py-1 overflow-x-auto scrollbar-hide px-1 sm:px-0">
+            <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all min-w-max sm:min-w-0`}>
+              {tabs.map((tab) => (
                 <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
                   <div className={`
                     flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
-                    ${activeTab === tab.id 
-                      ? 'bg-white text-black' 
+                    ${activeTab === tab.id
+                      ? 'bg-white text-black'
                       : 'text-white/40 hover:text-white hover:bg-white/5'}
                   `}
-                  style={{ 
-                    boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
-                  }}>
-                    <tab.icon 
-                      className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-colors ${activeTab === tab.id ? '' : 'opacity-60'}`} 
-                      style={{ color: tab.color }}
-                    />
-                    <span className="inline-block" style={{ color: activeTab === tab.id ? 'black' : 'inherit' }}>{tab.label}</span>
+                    style={{ boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none' }}
+                  >
+                    <VoltrisIcon name={tab.icon} size={16} style={{ color: activeTab === tab.id ? 'black' : tab.color }} />
+                    <span>{tab.label}</span>
                   </div>
                 </Link>
               ))}
+            </div>
           </div>
-        </div>
 
-        {/* Tab Content Rendering */}
-        <div className="flex-1 min-h-0 relative">
-          <AnimatePresence mode="wait">
-            {activeTab === 'overview' && (
-              <motion.div 
-                key="overview"
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-              >
-                <StatCard title="Services Acquired" value={stats.totalOrders} icon={FiPackage} color="blue" delay={0.1} />
-                <StatCard title="Available Licenses" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
-                <StatCard title="Linked Computers" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
-                   {/* Tactical Billboard */}
-                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
-                   <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
-                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
-                     <div className="space-y-4">
-                        <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
-                          <FiDownload className="w-8 h-8 text-[#31A8FF]" />
-                        </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Maximum Performance <span className="text-[#31A8FF] not-italic">Unlocked</span></h2>
-                        <p className="text-white/40 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Download Voltris Optimizer now to apply hardware tweaks and eliminate input lag in seconds.</p>
-                     </div>
-                     <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
-                        Download Voltris Optimizer
-                     </Link>
-                   </div>
-                </div>
-              </motion.div>
-            )}
+          {/* Tab Content Rendering */}
+          <div className="flex-1 min-h-0 relative">
+            <AnimatePresence mode="wait">
+              {activeTab === 'overview' && (
+                <motion.div
+                  key="overview"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+                >
+                  <StatCard title="Services Acquired" value={stats.totalOrders} icon="package" delay={0.05} description="Total orders and services" />
+                  <StatCard title="Active Licenses" value={stats.activeLicenses} icon="success" delay={0.1} description="Ready for immediate use" />
+                  <StatCard title="Linked Computers" value={stats.computers} icon="display" delay={0.15} description="Machines with active uplink" />
 
-            {activeTab === 'licenses' && (
-              <motion.div 
-                key="licenses"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 30 }}
-                className="space-y-6"
-              >
-                {/* Urgent Warning if needed */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-[2rem] bg-amber-400/10 border border-amber-400/30 backdrop-blur-xl">
-                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
-                      <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
-                   </div>
-                   <div className="flex-1 text-center sm:text-left">
-                      <h4 className="font-black text-white uppercase italic tracking-wider text-sm sm:text-base">Payment Synchronization</h4>
-                      <p className="text-amber-200/60 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">If your order did not appear immediately, click the synchronization button.</p>
-                   </div>
-                   <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-amber-400 text-black font-black uppercase italic text-[10px] sm:text-xs rounded-xl shadow-xl hover:scale-105 transition-all">
-                      Sync Now
-                   </button>
-                </div>
+                  {/* Action Cards Grid */}
+                  <div className="md:col-span-2 lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-2">
 
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                  {licenses.length > 0 ? (
-                    licenses.map((lic, i) => (
-                      <motion.div 
-                        key={lic.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} hover:border-[#31A8FF]/40`}
+                    {/* App Download Card */}
+                    <div className={`p-6 sm:p-7 rounded-2xl border transition-all ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} flex flex-col justify-between gap-6`}>
+                      <div className="space-y-3">
+                        <VoltrisIconTile icon="download" accent={DASHBOARD_ACCENT.brandBlue} size={10} />
+                        <h3 className="text-lg font-bold text-white tracking-tight">Voltris Optimizer Desktop</h3>
+                        <p className="text-white/40 text-xs leading-relaxed">
+                          Download the app to apply low-latency optimizations, hardware telemetry and remote command management.
+                        </p>
+                      </div>
+                      <div className="pt-2">
+                        <Link href="/voltrisoptimizer" className="inline-flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-white/90 text-black font-semibold text-xs rounded-xl transition-all shadow-sm">
+                          <VoltrisIcon name="download" size={16} />
+                          <span>Download Voltris Optimizer</span>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Billing Hub Card */}
+                    <div className={`p-6 sm:p-7 rounded-2xl border transition-all ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} flex flex-col justify-between gap-6`}>
+                      <div className="space-y-3">
+                        <VoltrisIconTile icon="creditCard" accent={DASHBOARD_ACCENT.brand} size={10} />
+                        <h3 className="text-lg font-bold text-white tracking-tight">Billing & Subscription</h3>
+                        <p className="text-white/40 text-xs leading-relaxed">
+                          Manage your payment methods, access Stripe invoices, cancel auto-renewals or request the guarantee refund.
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-3 pt-2">
+                        <button
+                          onClick={handleManageBilling}
+                          className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 font-medium text-xs rounded-xl transition-all flex items-center gap-2"
+                        >
+                          <VoltrisIcon name="externalLink" size={14} /> Stripe Portal
+                        </button>
+                        <button
+                          onClick={() => setIsCancelModalOpen(true)}
+                          className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 font-medium text-xs rounded-xl transition-all"
+                        >
+                          Cancel Renewal
+                        </button>
+                        <button
+                          onClick={handleRequestRefund}
+                          className="px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all"
+                        >
+                          Refund (7 Days)
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === 'licenses' && (
+                <motion.div
+                  key="licenses"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="space-y-6"
+                >
+                  {/* Warning & Billing Actions Banner */}
+                  <div className="flex flex-col gap-4 p-5 sm:p-6 rounded-2xl bg-amber-500/[0.06] border border-amber-500/20">
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                      <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.warning} size={10} />
+                      <div className="flex-1 text-center sm:text-left">
+                        <h4 className="font-semibold text-white/90 text-sm">License & Billing Management</h4>
+                        <p className="text-white/40 text-xs mt-0.5">Manage your plan, cancel renewal or request a refund within 7 days.</p>
+                      </div>
+                      <button
+                        onClick={() => fetchData(true)}
+                        className="px-4 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-medium text-xs rounded-xl transition-all shadow-sm"
                       >
-                        {/* Interactive Background Elements */}
-                        <div className={`absolute -right-20 -bottom-20 w-80 h-80 ${lic.is_active ? 'bg-[#31A8FF]/10' : 'bg-red-500/10'} blur-[100px] rounded-full group-hover:scale-110 transition-transform duration-700`}></div>
-                        
-                        <div className="relative z-10 flex flex-col gap-8">
-                          {/* Card Top */}
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white relative ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF]' : 'bg-white/5 border border-white/10'}`}>
-                                <FiCheckCircle className="w-8 h-8" />
-                                <div className={`absolute inset-0 blur-lg opacity-40 ${lic.is_active ? 'bg-[#31A8FF]' : 'bg-transparent'}`}></div>
-                              </div>
-                              <div className="flex flex-col">
-                                <h4 className="text-xl font-black text-white uppercase italic tracking-tighter">{lic.license_type}</h4>
-                                <span className={`text-[9px] font-black tracking-[0.2em] px-3 py-1 rounded-full uppercase w-fit mt-1 border ${lic.is_active ? 'bg-emerald-400/10 text-emerald-400 border-emerald-400/20' : 'bg-red-400/10 text-red-400 border-red-400/20'}`}>
-                                   {lic.is_active ? 'Active' : 'Expired'}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="hidden sm:flex flex-col items-end">
-                               <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Validity</span>
-                               <span className="text-sm font-black text-white italic">{new Date(lic.expires_at).toLocaleDateString('en-US')}</span>
-                            </div>
-                          </div>
+                        Sync Now
+                      </button>
+                    </div>
 
-                          {/* Key Section - Dark Box */}
-                          <div className="bg-black/40 rounded-[2rem] p-6 border border-white/5 group-hover:border-[#31A8FF]/20 transition-all">
-                             <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.3em] mb-4 block">Activation Key</span>
-                             <div className="flex items-center justify-between gap-4">
-                                <code className="flex-1 font-mono text-base font-black text-white tracking-widest truncate select-all">{lic.license_key}</code>
-                                <div className="flex items-center gap-2">
-                                  <button
-                                    onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Key copied!'); }}
-                                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
-                                    title="Copy Key"
-                                  >
-                                    <FiCopy className="w-4 h-4" />
-                                  </button>
-                                  <Link href={`/dashboard?tab=pc`} className="p-3 rounded-xl bg-[#31A8FF]/10 hover:bg-[#31A8FF] text-[#31A8FF] hover:text-white transition-all border border-[#31A8FF]/20">
-                                     <FiExternalLink className="w-4 h-4" />
-                                  </Link>
-                                </div>
-                             </div>
-                          </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-amber-500/15">
+                      <button
+                        onClick={() => setIsCancelModalOpen(true)}
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 font-medium text-xs rounded-xl transition-all"
+                      >
+                        <VoltrisIcon name="close" size={14} /> Cancel Auto-Renewal
+                      </button>
+                      <button
+                        onClick={handleRequestRefund}
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all"
+                      >
+                        <VoltrisIcon name="processing" size={14} /> Request Refund (7 Days)
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Purchases awaiting Stripe confirmation. The license is not
+                      released yet (mission §6): this block comes from
+                      /api/v1/license/me -> pendingPurchases, not a guess. */}
+                  {pendingPurchases.length > 0 && (
+                    <div className="p-5 sm:p-6 rounded-2xl bg-amber-500/[0.06] border border-amber-500/25 flex flex-col gap-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <div className="flex items-center gap-3 flex-1">
+                          <VoltrisIconTile icon="processing" accent={DASHBOARD_ACCENT.warning} size={10} />
                           <div>
-                          {/* Footer Info */}
-                          <div className="flex items-center justify-between border-t border-white/5 pt-6">
-                             <div className="flex flex-col">
-                                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Devices</span>
-                                   <span className="text-sm font-black text-white">{lic.devices_in_use}/{lic.max_devices}</span>
-                                </div>
-                                <div className="flex flex-col">
-                                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Hardware ID</span>
-                                   <span className="text-[10px] font-black text-[#00FF88] uppercase tracking-widest">Linked</span>
-                                </div>
-                             </div>
-                              <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
-                                 Download App <FiPlus className="w-3 h-3" />
-                              </Link>
+                            <h4 className="text-sm font-semibold text-amber-200">
+                              {pendingPurchases.length === 1
+                                ? 'Payment awaiting confirmation'
+                                : `${pendingPurchases.length} payments awaiting confirmation`}
+                            </h4>
+                            <p className="text-xs text-white/40 mt-0.5">
+                              {isPolling
+                                ? `Querying Stripe automatically — attempt ${pollAttempt} of ${LICENSE_POLL_MAX_ATTEMPTS}.`
+                                : 'The activation key appears here as soon as the payment is approved.'}
+                            </p>
                           </div>
                         </div>
-                      </motion.div>
-                    ))
-                  ) : (
-                    <div className={`col-span-1 xl:col-span-2 p-20 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A0F]'}`}>
-                       <div className="w-24 h-24 rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center text-white/20">
-                          <FiShield className="w-12 h-12" />
-                       </div>
-                       <div className="space-y-4">
-                         <h3 className="text-4xl font-black text-white uppercase italic tracking-tighter">License Warehouse Empty</h3>
-                         <p className="text-white/30 font-bold max-w-lg mx-auto uppercase tracking-wide text-xs">You do not yet have operational licenses linked to this account. Purchase one now to unlock the Optimizer.</p>
-                       </div>
-                       <Link href="/buy-license">
-                          <button className="px-12 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl">
-                             Explore PRO Plans
-                          </button>
-                       </Link>
+                        <button
+                          onClick={() => fetchData(true)}
+                          className="px-4 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-200 text-xs font-medium transition-all"
+                        >
+                          Check now
+                        </button>
+                      </div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {pendingPurchases.map((p) => (
+                          <li key={p.payment_id} className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl bg-black/30 border border-white/5">
+                            <div className="flex flex-col min-w-0">
+                              <span className="text-xs font-semibold text-white/90 truncate">{productLabel(p.type, p.billingPeriod)}</span>
+                              <span className="text-[10px] text-white/30">Created {fmtDateTime(p.createdAt)}</span>
+                            </div>
+                            <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
+                              {PAYMENT_STATUS_LABEL[String(p.status ?? '').toLowerCase()] ?? String(p.status ?? '—')}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
-                </div>
-              </motion.div>
-            )}
 
-            {activeTab === 'orders' && (
-              <motion.div 
-                key="orders"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 30 }}
-                className="space-y-6"
-              >
-                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} shadow-2xl`}>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
-                    <div className="flex items-center gap-4">
-                      <div className="p-4 bg-gradient-to-br from-[#31A8FF] to-[#1070FF] rounded-2xl text-white shadow-lg shadow-blue-500/20">
-                        <FiPackage className="w-6 h-6" />
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+                    {licenses.length > 0 ? (
+                      licenses.map((lic, i) => {
+                        const stateStyle = LICENSE_STATE_STYLE[lic.state] ?? STATE_STYLE_FALLBACK;
+                        const revealed = revealedKeys[String(lic.license_key)] === true;
+                        const maxDevices = lic.maxDevices ?? 1;
+                        const devicesFull = (lic.devicesInUse ?? 0) >= maxDevices && maxDevices < 9999;
+                        return (
+                          <motion.div
+                            key={lic.license_key}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.05 }}
+                            className={`group relative p-6 rounded-2xl border transition-all duration-200 ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'} hover:border-white/20`}
+                          >
+                            <div className="relative z-10 flex flex-col gap-5">
+                              {/* Card Top: canonical state resolved on the server */}
+                              <div className="flex items-start justify-between gap-4">
+                                <div className="flex items-center gap-3">
+                                  <VoltrisIconTile icon={stateStyle.icon} accent={stateStyle.accent} size={10} />
+                                  <div className="flex flex-col">
+                                    <h4 className="text-base font-bold text-white tracking-tight">{productLabel(lic.type, lic.billingPeriod)}</h4>
+                                    <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider w-fit mt-0.5 border ${stateStyle.chip}`}>
+                                      {stateStyle.label || '—'}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div className="flex flex-col items-end">
+                                  <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">
+                                    {lic.hasAccess ? 'Access until' : 'Validity'}
+                                  </span>
+                                  <span className="text-xs font-semibold text-white/80 mt-0.5">{fmtDate(lic.expiresAt)}</span>
+                                  {typeof lic.daysLeft === 'number' && lic.hasAccess && (
+                                    <span className={`text-[10px] font-semibold mt-0.5 ${lic.expiringSoon ? 'text-amber-400' : 'text-white/30'}`}>
+                                      {lic.daysLeft > 0 ? `${lic.daysLeft} day${lic.daysLeft === 1 ? '' : 's'} left` : 'expires today'}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Why this state? (no jargon, no placebo) */}
+                              {stateStyle.hint && (
+                                <p className="text-[11px] leading-relaxed text-white/40 -mt-1">{stateStyle.hint}</p>
+                              )}
+
+                              {/* Key Section: masked by default */}
+                              <div className="bg-black/40 rounded-xl p-3.5 border border-white/5 flex flex-col gap-1.5">
+                                <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">Activation Key</span>
+                                <div className="flex items-center justify-between gap-3">
+                                  <code className="flex-1 font-mono text-xs font-semibold text-white tracking-wide truncate select-all">
+                                    {revealed ? lic.license_key : maskLicenseKey(lic.license_key)}
+                                  </code>
+                                  <div className="flex items-center gap-1.5">
+                                    <button
+                                      onClick={() => toggleRevealKey(lic.license_key)}
+                                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
+                                      title={revealed ? 'Hide key' : 'Reveal key'}
+                                    >
+                                      <VoltrisIcon name={revealed ? 'lock' : 'key'} size={14} />
+                                    </button>
+                                    <button
+                                      onClick={() => handleCopyKey(lic.license_key)}
+                                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
+                                      title="Copy Key"
+                                    >
+                                      <VoltrisIcon name="copy" size={14} />
+                                    </button>
+                                    <Link href={`/dashboard?tab=pc`} className="p-2 rounded-lg bg-[#31A8FF]/10 hover:bg-[#31A8FF]/20 text-[#31A8FF] transition-all border border-[#31A8FF]/25" title="View in My Computer">
+                                      <VoltrisIcon name="externalLink" size={14} />
+                                    </Link>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Real details: plan, period, activation, devices, subscription */}
+                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                <InfoCell label="Plan" value={productLabel(lic.type, lic.billingPeriod)} />
+                                <InfoCell label="Period" value={periodLabelEn(lic.billingPeriod)} />
+                                <InfoCell
+                                  label="Devices"
+                                  value={`${lic.devicesInUse ?? 0}/${maxDevices >= 9999 ? 'unlimited' : maxDevices}`}
+                                  tone={devicesFull ? 'text-amber-400' : 'text-white'}
+                                />
+                                <InfoCell
+                                  label="Activated on"
+                                  value={lic.activatedAt ? fmtDateTime(lic.activatedAt) : 'not activated yet'}
+                                  tone={lic.activatedAt ? 'text-white/80' : 'text-white/30'}
+                                />
+                                <InfoCell
+                                  label="Payment"
+                                  value={
+                                    lic.paymentStatus
+                                      ? PAYMENT_STATUS_LABEL[String(lic.paymentStatus).toLowerCase()] ?? String(lic.paymentStatus)
+                                      : 'no record'
+                                  }
+                                  tone={
+                                    lic.paymentStatus === 'approved' || lic.paymentStatus === 'paid'
+                                      ? 'text-emerald-400'
+                                      : lic.paymentStatus === 'failed' || lic.paymentStatus === 'unpaid' || lic.paymentStatus === 'refunded' || lic.paymentStatus === 'chargeback'
+                                        ? 'text-rose-400'
+                                        : 'text-amber-400'
+                                  }
+                                />
+                                <InfoCell
+                                  label="Subscription"
+                                  value={SUBSCRIPTION_STATUS_LABEL[String(lic.subscriptionStatus ?? '').toUpperCase()] ?? 'no subscription'}
+                                />
+                                <InfoCell
+                                  label={lic.nextBillingAt ? 'Renews on' : lic.canceledAt ? 'Canceled on' : 'Renewal'}
+                                  value={lic.nextBillingAt ? fmtDate(lic.nextBillingAt) : lic.canceledAt ? fmtDate(lic.canceledAt) : 'off'}
+                                />
+                              </div>
+
+                              {/* Footer: real sync + state-specific actions */}
+                              <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-4 text-xs">
+                                <div className="flex items-center gap-2 text-white/30">
+                                  <VoltrisIcon name="clock" size={12} />
+                                  <span>
+                                    {isPolling
+                                      ? 'Checking payment with Stripe…'
+                                      : `Data synced at ${fmtTime(serverTime)}`}
+                                  </span>
+                                </div>
+                                <div className="flex flex-wrap items-center gap-2">
+                                  {(lic.state === 'EXPIRADA' || lic.state === 'PAGAMENTO_PENDENTE') && (
+                                    <Link href="/buy-license" className="px-3 py-1.5 rounded-lg bg-[#31A8FF] hover:bg-[#1070FF] text-white font-semibold text-[11px] transition-colors">
+                                      Renew access
+                                    </Link>
+                                  )}
+                                  {lic.hasAccess && lic.subscriptionStatus && lic.subscriptionStatus !== 'CANCELED' && (
+                                    <button
+                                      onClick={handleManageBilling}
+                                      className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 font-medium text-[11px] transition-all"
+                                    >
+                                      Manage in Stripe Portal
+                                    </button>
+                                  )}
+                                  <Link href="/voltrisoptimizer" className="px-3 py-1.5 rounded-lg text-[#31A8FF] hover:text-[#1070FF] font-semibold flex items-center gap-1 transition-colors">
+                                    Download App <VoltrisIcon name="download" size={12} />
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })
+                    ) : (
+                      <div className={`col-span-1 xl:col-span-2 p-12 sm:p-16 rounded-2xl text-center border border-white/5 flex flex-col items-center gap-4 ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+                        <VoltrisIconTile icon="security" accent={DASHBOARD_ACCENT.brand} size={14} />
+                        <div className="space-y-1.5 max-w-md">
+                          <h3 className="text-lg font-bold text-white tracking-tight">No active license</h3>
+                          <p className="text-white/40 text-xs leading-relaxed">You do not have active licenses linked to this e-mail yet. Get a license to unlock Optimizer PRO.</p>
+                        </div>
+                        <Link href="/buy-license" className="mt-2">
+                          <button className="px-6 py-2.5 bg-[#31A8FF] hover:bg-[#1070FF] text-white font-semibold text-xs rounded-xl transition-all shadow-md shadow-[#31A8FF]/20">
+                            Explore PRO Plans
+                          </button>
+                        </Link>
                       </div>
-                      <div>
-                        <h2 className="text-2xl font-black text-white italic uppercase tracking-tighter">Order History</h2>
-                        <p className="text-white/30 text-[10px] font-black uppercase tracking-widest mt-1">Track all your services and licenses</p>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+
+              {activeTab === 'orders' && (
+                <motion.div
+                  key="orders"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="space-y-6"
+                >
+                  <div className={`p-6 sm:p-7 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}`}>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
+                      <div className="flex items-center gap-3">
+                        <VoltrisIconTile icon="package" accent={DASHBOARD_ACCENT.brand} size={10} />
+                        <div>
+                          <h2 className="text-lg font-bold text-white tracking-tight">Order History</h2>
+                          <p className="text-white/40 text-xs mt-0.5">Track all your contracted services and licenses</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left">
-                      <thead>
-                        <tr className="border-b border-white/5">
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Service / License</th>
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em] hidden sm:table-cell">Date</th>
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Price</th>
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-white/5">
-                        {/* Mesclagem de Pedidos e Pagamentos */}
-                        {[
-                          ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
-                          ...payments.map(p => {
-                            const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
-                            return { 
-                              ...p, 
-                              display_type: isService ? 'SERVICE' : 'LICENSE', 
-                              display_name: isService ? (p.plan_type?.replace(/_/g, ' ').toUpperCase() || 'SERVICE') : `LICENSE: ${p.plan_type?.toUpperCase()}`, 
-                              display_plan: isService ? 'PROFESSIONAL SERVICE' : 'PRIORITY SUPPORT', 
-                              amount: p.amount 
-                            };
-                          })
-                        ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).length > 0 ? (
-                          [
-                            ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left">
+                        <thead>
+                          <tr className="border-b border-white/5">
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider">Item / Service</th>
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider hidden sm:table-cell">Date</th>
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider">Amount</th>
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-white/5">
+                          {/* Merge of Orders and Payments */}
+                          {[
+                            ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price, currency: (o as any).currency ?? 'usd' })),
                             ...payments.map(p => {
                               const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
-                              return { 
-                                ...p, 
-                                display_type: isService ? 'SERVICE' : 'LICENSE', 
-                                display_name: isService ? (p.plan_type?.replace(/_/g, ' ').toUpperCase() || 'SERVICE') : `LICENSE: ${p.plan_type?.toUpperCase()}`, 
-                                display_plan: isService ? 'PROFESSIONAL SERVICE' : 'PRIORITY SUPPORT', 
-                                amount: p.amount 
+                              return {
+                                ...p,
+                                display_type: isService ? 'SERVICE' : 'LICENSE',
+                                display_name: isService ? productLabel(p.plan_type, p.billing_period) : productLabel(p.plan_type, p.billing_period),
+                                display_plan: isService ? 'Professional Service' : 'Priority Support',
+                                amount: p.amount,
+                                currency: p.currency ?? 'usd',
                               };
                             })
-                          ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
-                            <tr key={item.id + idx} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
-                              <td className="py-6 px-2">
-                                <div className="flex flex-col">
-                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{item.display_name}</span>
-                                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">
-                                    {item.display_type === 'LICENSE' ? (
-                                      <span className="text-[#31A8FF]">💎 DIGITAL PRODUCT</span>
-                                    ) : item.display_type === 'SERVICE' ? (
-                                      <span className="text-[#8B31FF]">🛠️ TECHNICAL SERVICE</span>
-                                    ) : (
-                                      item.display_plan || 'CUSTOM'
-                                    )}
+                          ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).length > 0 ? (
+                            [
+                              ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price, currency: (o as any).currency ?? 'usd' })),
+                              ...payments.map(p => {
+                                const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
+                                return {
+                                  ...p,
+                                  display_type: isService ? 'SERVICE' : 'LICENSE',
+                                  display_name: productLabel(p.plan_type, p.billing_period),
+                                  display_plan: isService ? 'Professional Service' : 'Priority Support',
+                                  amount: p.amount,
+                                  currency: p.currency ?? 'usd',
+                                };
+                              })
+                            ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
+                              <tr key={item.id + idx} className="group hover:bg-white/5 transition-colors">
+                                <td className="py-4 px-3">
+                                  <div className="flex flex-col">
+                                    <span className="text-xs font-semibold text-white tracking-tight">{item.display_name}</span>
+                                    <span className="text-[10px] font-medium text-white/40 mt-0.5">
+                                      {item.display_type === 'LICENSE' ? (
+                                        <span className="text-[#8B31FF]">Digital Product</span>
+                                      ) : item.display_type === 'SERVICE' ? (
+                                        <span className="text-[#31A8FF]">Specialized Service</span>
+                                      ) : (
+                                        item.display_plan || 'Custom'
+                                      )}
+                                    </span>
+                                  </div>
+                                </td>
+                                <td className="py-4 px-3 hidden sm:table-cell">
+                                  <span className="text-xs font-medium text-white/40">
+                                    {new Date(item.created_at).toLocaleDateString()}
                                   </span>
-                                </div>
-                              </td>
-                              <td className="py-6 px-2 hidden sm:table-cell">
-                                <span className="text-xs font-bold text-white/40 uppercase tracking-widest">
-                                  {new Date(item.created_at).toLocaleDateString('en-US')}
-                                </span>
-                              </td>
-                              <td className="py-6 px-2">
-                                <span className="text-xs font-black text-[#00FF88]">
-                                  R$ {(item.amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                                </span>
-                              </td>
-                              <td className="py-6 px-2">
-                                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border w-fit
-                                  ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
-                                    (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-500/10 border-red-500/20 text-red-400' :
-                                    'bg-amber-500/10 border-amber-500/20 text-amber-400'}
+                                </td>
+                                <td className="py-4 px-3">
+                                  <span className="text-xs font-semibold text-white/80">
+                                    {fmtMoney(item.amount, item.currency)}
+                                  </span>
+                                </td>
+                                <td className="py-4 px-3">
+                                  <div className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-[11px] font-medium
+                                  ${(['completed', 'approved', 'paid', 'active', 'succeeded'].includes(String(item.status).trim().toLowerCase())) ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                                      (['cancelled', 'rejected', 'declined', 'canceled', 'refunded'].includes(String(item.status).trim().toLowerCase())) ? 'bg-rose-500/10 border-rose-500/20 text-rose-400' :
+                                        'bg-amber-500/10 border-amber-500/20 text-amber-400'}
                                 `}>
-                                  <div className={`w-1 h-1 rounded-full ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-400' : (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-400' : 'bg-amber-400 animate-pulse'}`}></div>
-                                  <span className="text-[10px] font-black uppercase tracking-widest leading-none">
-                                    {(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'APPROVED' : 
-                                     (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'CANCELLED' : 
-                                     'PROCESSING'}
-                                  </span>
-                                </div>
+                                    <div className={`w-1.5 h-1.5 rounded-full ${(['completed', 'approved', 'paid', 'active', 'succeeded'].includes(String(item.status).trim().toLowerCase())) ? 'bg-emerald-400' : (['cancelled', 'rejected', 'declined', 'canceled', 'refunded'].includes(String(item.status).trim().toLowerCase())) ? 'bg-rose-400' : 'bg-amber-400'}`}></div>
+                                    <span>
+                                      {(['completed', 'approved', 'paid', 'active', 'succeeded'].includes(String(item.status).trim().toLowerCase())) ? 'Approved' :
+                                        (['cancelled', 'rejected', 'declined', 'canceled', 'refunded'].includes(String(item.status).trim().toLowerCase())) ? 'Canceled' :
+                                          'Pending'}
+                                    </span>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))
+                          ) : (
+                            <tr>
+                              <td colSpan={4} className="py-12 text-center">
+                                <p className="text-white/30 text-xs">No orders or payments recorded so far.</p>
                               </td>
                             </tr>
-                          ))
-                        ) : (
-                          <tr>
-                            <td colSpan={4} className="py-20 text-center">
-                              <p className="text-white/20 font-black uppercase tracking-[0.3em] text-[10px]">No orders or payments found.</p>
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
+                          )}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              )}
 
-            {activeTab === 'pc' && (
-              <motion.div 
-                key="pc"
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                className="h-full"
-              >
-                <MyComputerPage userId={user?.id || ''} />
-              </motion.div>
-            )}
+              {activeTab === 'pc' && (
+                <motion.div
+                  key="pc"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  className="h-full"
+                >
+                  <MyComputerPage userId={user?.id || ''} />
+                </motion.div>
+              )}
 
-            {activeTab === 'security' && (
-              <motion.div 
-                key="security"
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                className="h-full"
-              >
-                <SecurityPage />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              {activeTab === 'security' && (
+                <motion.div
+                  key="security"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  className="h-full"
+                >
+                  <SecurityPage />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       )}
+
+      {/* --- PROFESSIONAL CANCELLATION MODAL --- */}
+      <AnimatePresence>
+        {isCancelModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsCancelModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 10 }}
+              className="relative w-full max-w-md bg-[#12121A] rounded-2xl p-7 shadow-2xl border border-white/10 overflow-hidden"
+            >
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.danger} size={12} className="mb-5" />
+
+                <h3 className="text-lg font-bold text-white tracking-tight mb-2">
+                  Cancel Subscription?
+                </h3>
+
+                <p className="text-white/40 text-xs leading-relaxed mb-6">
+                  On confirmation, your auto-renewal will stop. You will keep access to PRO features until the end of the current billing cycle.
+                </p>
+
+                <div className="flex flex-col gap-2.5 w-full">
+                  <button
+                    onClick={handleConfirmCancel}
+                    disabled={isCancelling}
+                    className="w-full py-2.5 bg-rose-500 hover:bg-rose-600 disabled:opacity-50 text-white font-semibold text-xs rounded-xl transition-all shadow-sm"
+                  >
+                    {isCancelling ? 'Processing...' : 'Confirm Cancellation'}
+                  </button>
+                  <button
+                    onClick={() => setIsCancelModalOpen(false)}
+                    className="w-full py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 font-medium text-xs rounded-xl transition-all"
+                  >
+                    Keep my subscription
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </AuthGuard>
   );
 }

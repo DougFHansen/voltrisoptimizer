@@ -1,70 +1,138 @@
 import { createClient } from '@supabase/supabase-js';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logSuccess,
+    logWarn,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    normalizeUuid,
+} from '@/lib/voltris-log';
 
-export async function GET(req: NextRequest) {
-    try {
-        const { searchParams } = new URL(req.url);
-        const machine_id = searchParams.get('machine_id') || searchParams.get('device_id');
+export const dynamic = 'force-dynamic';
 
-        console.log('[API/COMMANDS/PENDING] ===== INÍCIO =====');
-        console.log('[API/COMMANDS/PENDING] machine_id/device_id:', machine_id);
+/** Comandos expirados nao sao entregues: evita replay de comando antigo. */
+const COMMAND_TTL_MINUTES = 30;
 
-        if (!machine_id) {
-            console.error('[API/COMMANDS/PENDING] machine_id faltando!');
-            return NextResponse.json({ error: 'Missing machine_id' }, { status: 400 });
-        }
+// Rate limiting em memória. O app desktop consulta a cada 2 minutos, então
+// 20/min fica muito acima do uso legítimo e corta flood/bot.
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 20;
 
-        const supabaseAdmin = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.SUPABASE_SERVICE_ROLE_KEY!
-        );
-
-        // Buscar installation_id usando machine_id
-        console.log('[API/COMMANDS/PENDING] Buscando instalação...');
-        const { data: installation, error: installError } = await supabaseAdmin
-            .from('installations')
-            .select('id')
-            .eq('id', machine_id)
-            .single();
-
-        if (installError || !installation) {
-            console.error('[API/COMMANDS/PENDING] Instalação não encontrada:', installError);
-            return NextResponse.json({ commands: [] }); // Silent fail for unregistered devices
-        }
-
-        console.log('[API/COMMANDS/PENDING] Instalação encontrada:', installation.id);
-
-        // Buscar comandos pendentes na tabela device_commands
-        console.log('[API/COMMANDS/PENDING] Buscando comandos pendentes...');
-        const { data: commands, error } = await supabaseAdmin
-            .from('device_commands')
-            .select('id, command_type, payload, status, created_at')
-            .eq('installation_id', installation.id)
-            .eq('status', 'pending')
-            .order('created_at', { ascending: true });
-
-        if (error) {
-            console.error('[API/COMMANDS/PENDING] Erro ao buscar comandos:', error);
-            return NextResponse.json({ commands: [] });
-        }
-
-        console.log('[API/COMMANDS/PENDING] Comandos encontrados:', commands?.length || 0);
-        if (commands && commands.length > 0) {
-            console.log('[API/COMMANDS/PENDING] Detalhes dos comandos:', JSON.stringify(commands, null, 2));
-        }
-        console.log('[API/COMMANDS/PENDING] ===== FIM =====');
-
-        return NextResponse.json(
-            { commands: commands || [] },
-            { 
-                headers: {
-                    'Cache-Control': 'private, s-maxage=10, stale-while-revalidate=5'
-                }
-            }
-        );
-
-    } catch (err) {
-        console.error('[API/COMMANDS/PENDING] Erro geral:', err);
-        return NextResponse.json({ error: 'Server Error' }, { status: 500 });
+function checkRateLimit(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+    if (!entry || now >= entry.resetAt) {
+        rateLimitMap.set(ip, { count: 1, resetAt: now + 60000 });
+        return true;
     }
+    if (entry.count >= RATE_LIMIT) return false;
+    entry.count++;
+    return true;
+}
+
+/**
+ * GET /api/v1/commands/pending
+ *
+ * Entrega os comandos pendentes de UMA maquina. O dispositivo authentica pelo
+ * proprio installation_id (que ele gera e persiste localmente).
+ */
+export async function GET(req: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(req);
+    const ctx = startOperation('COMMAND_PENDING', correlationId);
+
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    if (!checkRateLimit(ip)) {
+        return errorWithCorrelation(ctx, 429, 'RATE_LIMITED', 'Too Many Requests', {
+            details: { commands: [] },
+        });
+    }
+
+    const { searchParams } = req.nextUrl;
+    const rawId = searchParams.get('machine_id') ?? searchParams.get('device_id');
+    const machineId = normalizeUuid(rawId);
+
+    if (!machineId) {
+        return errorWithCorrelation(ctx, 400, 'INVALID_MACHINE_ID', 'Missing or invalid machine_id', {
+            details: { commands: [] },
+        });
+    }
+    ctx.installationId = machineId;
+
+    const ownershipError = await installationOwnershipErrorIfAuthenticated(machineId);
+    if (ownershipError) return ownershipError;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Database configuration missing', {
+            details: { commands: [] },
+        });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    const { data: installation, error: installError } = await supabase
+        .from('installations')
+        .select('id')
+        .eq('id', machineId)
+        .maybeSingle();
+
+    if (installError) {
+        logSupabaseError(ctx, 'buscar instalacao', installError);
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar o dispositivo.', {
+            details: { commands: [] },
+        });
+    }
+
+    if (!installation) {
+        // Dispositivo ainda nao registrado: responde lista vazia (nao erro) para
+        // o app nao entrar em loop de retry. Faz cache na CDN para evitar execuções repetidas.
+        logWarn(ctx, 'instalacao nao encontrada; retornando lista vazia');
+        return jsonWithCorrelation(ctx, { commands: [], registered: false }, 200, {
+            'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+            'CDN-Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+            'Vercel-CDN-Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+        });
+    }
+
+    const notExpired = new Date(Date.now() - COMMAND_TTL_MINUTES * 60_000).toISOString();
+
+    const { data: commands, error } = await supabase
+        .from('device_commands')
+        .select('id, command_type, payload, status, created_at')
+        .eq('installation_id', installation.id)
+        .eq('status', 'pending')
+        .gte('created_at', notExpired)
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        logSupabaseError(ctx, 'buscar device_commands pendentes', error);
+        return errorWithCorrelation(ctx, 500, 'DB_COMMAND_READ_FAILED', 'Erro ao buscar comandos.', {
+            details: { commands: [] },
+        });
+    }
+
+    logSuccess(ctx, 'comandos pendentes entregues', { count: commands?.length ?? 0 });
+
+    const hasCommands = Boolean(commands && commands.length > 0);
+    const cacheHeaders = hasCommands
+        ? { 'Cache-Control': 'no-store, no-cache, must-revalidate' }
+        : {
+            'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+            'CDN-Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+            'Vercel-CDN-Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+        };
+
+    return jsonWithCorrelation(
+        ctx,
+        { commands: commands ?? [], registered: true },
+        200,
+        cacheHeaders
+    );
 }

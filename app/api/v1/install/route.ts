@@ -1,76 +1,194 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logRequest,
+    logSupabaseError,
+    logSuccess,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    normalizeUuid,
+} from '@/lib/voltris-log';
 
 export const runtime = 'nodejs';
 
-export async function POST(request: NextRequest) {
-    try {
-        const body = await request.json();
-        const { installation_id, user_id, app_version, hardware } = body;
+// Cache em memória para evitar rodar upserts pesados no banco repetidamente.
+const recentHeartbeatCache = new Map<string, { lastSaved: number; isLinked: boolean }>();
 
-        console.log('[API/INSTALL] Recebida requisição de registro');
-        console.log('[API/INSTALL] installation_id:', installation_id);
-        console.log('[API/INSTALL] user_id:', user_id);
-        console.log('[API/INSTALL] app_version:', app_version);
-        console.log('[API/INSTALL] hardware:', hardware);
+// Rate limiting em memória. O app desktop envia heartbeat a cada 10 minutos.
+// 20/min fica muito acima do uso legítimo e corta flood/bot.
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 20;
 
-        if (!installation_id) {
-            console.error('[API/INSTALL] installation_id faltando');
-            return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
-        }
-
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-        if (!supabaseUrl || !supabaseServiceKey) {
-            console.error('[API/INSTALL] Configuração do banco faltando');
-            return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
-        }
-
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-        console.log('[API/INSTALL] Fazendo upsert da instalação (resiliente)...');
-        
-        // Mapeamento resiliente: tenta ler o padrão novo, depois fallbacks de chaves que o app antigo envia
-        const cpuName = hardware?.cpu_name || hardware?.cpu || hardware?.processor;
-        const gpuName = hardware?.gpu_name || hardware?.gpu || hardware?.graphics;
-        const ramTotal = hardware?.ram_gb_total || hardware?.ram || hardware?.memory;
-        const pcName = hardware?.pc_name || hardware?.hostname || hardware?.pc;
-
-        const upsertData: any = {
-            id: installation_id.trim(),
-            pc_name: pcName,
-            app_version: app_version,
-            cpu_name: cpuName,
-            ram_gb_total: ramTotal,
-            gpu_name: gpuName,
-            disk_type: hardware?.disk_type || hardware?.disk_main_type || hardware?.disk,
-            os_name: hardware?.os_name || hardware?.os,
-            os_build: hardware?.os_build || hardware?.build,
-            windows_edition: hardware?.windows_edition || hardware?.edition,
-            architecture: hardware?.architecture,
-            last_heartbeat: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-        };
-
-        // Só incluir user_id se ele vier na requisição, para não sobrescrever com null se já estiver vinculado
-        if (user_id) {
-            upsertData.user_id = user_id;
-        }
-
-        const { error } = await supabase
-            .from('installations')
-            .upsert(upsertData, { onConflict: 'id' });
-
-        if (error) {
-            console.error('[API/INSTALL] Erro ao fazer upsert:', error);
-            throw error;
-        }
-
-        console.log('[API/INSTALL] Instalação registrada com sucesso!');
-        return NextResponse.json({ success: true });
-    } catch (error: any) {
-        console.error('[API/INSTALL] Erro geral:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+function checkRateLimit(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+    if (!entry || now >= entry.resetAt) {
+        rateLimitMap.set(ip, { count: 1, resetAt: now + 60000 });
+        return true;
     }
+    if (entry.count >= RATE_LIMIT) return false;
+    entry.count++;
+    return true;
+}
+
+/**
+ * POST /api/v1/install
+ *
+ * Registra / atualiza a instalacao (hardware + heartbeat). Chamado pelo app
+ * desktop (sem sessao) e pelo painel (com sessao).
+ *
+ * Contrato: o app desktop envia snake_case. Por compatibilidade com builds
+ * antigos, camelCase tambem e aceito — mas snake_case e o canonico.
+ */
+export async function POST(request: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(request);
+    const ctx = startOperation('INSTALL_REGISTER', correlationId);
+
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    if (!checkRateLimit(ip)) {
+        return errorWithCorrelation(ctx, 429, 'RATE_LIMITED', 'Too Many Requests');
+    }
+
+    let body: any;
+    try {
+        body = await request.json();
+    } catch {
+        logRequest(ctx, request);
+        return errorWithCorrelation(ctx, 400, 'INVALID_JSON', 'JSON invalido no corpo da requisicao.');
+    }
+    logRequest(ctx, request, body);
+
+    // Aceita snake_case (canonico) e camelCase (legado).
+    const pick = (...keys: string[]) => {
+        for (const k of keys) {
+            const camel = k.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
+            const v = body?.[k] ?? body?.[camel];
+            if (v !== undefined && v !== null) return v;
+        }
+        return undefined;
+    };
+
+    const rawInstallationId = pick('installation_id');
+    const installationId = normalizeUuid(rawInstallationId);
+    if (!installationId) {
+        return errorWithCorrelation(
+            ctx,
+            400,
+            'INVALID_INSTALLATION_ID',
+            rawInstallationId
+                ? 'Formato de installation_id invalido (UUID v1-v8 esperado).'
+                : 'Missing installation_id'
+        );
+    }
+    ctx.installationId = installationId;
+
+    // Se a máquina já atualizou no banco há menos de 3 minutos, confirma imediatamente em 1ms
+    const nowMs = Date.now();
+    const recent = recentHeartbeatCache.get(installationId);
+    if (recent && nowMs - recent.lastSaved < 180_000) {
+        return jsonWithCorrelation(ctx, {
+            success: true,
+            installation_id: installationId,
+            is_linked: recent.isLinked,
+            last_heartbeat: new Date(recent.lastSaved).toISOString(),
+        });
+    }
+
+    const appVersion = pick('app_version');
+    const hardware = body?.hardware ?? body?.Hardware ?? null;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Configuracao do servidor incompleta.');
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    // Mapeia nomes antigos e novos. Nao inventar coluna: o upsert abaixo envia
+    // apenas colunas que existem em public.installations.
+    const h = (snake: string, ...legacy: string[]) => {
+        for (const k of [snake, ...legacy]) {
+            const camel = k.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
+            const v = hardware?.[k] ?? hardware?.[camel];
+            if (v !== undefined && v !== null) return v;
+        }
+        return null;
+    };
+
+    const now = new Date().toISOString();
+
+    const upsertData: Record<string, unknown> = {
+        id: installationId,
+        app_version: appVersion ?? null,
+        pc_name: h('pc_name', 'hostname', 'pc'),
+        cpu_name: h('cpu_name', 'cpu', 'processor'),
+        gpu_name: h('gpu_name', 'gpu', 'graphics'),
+        disk_type: h('disk_type', 'disk'),
+        disk_main_type: h('disk_main_type', 'disk_type', 'disk'),
+        os_name: h('os_name', 'os'),
+        os_build: h('os_build', 'build'),
+        windows_edition: h('windows_edition', 'edition'),
+        architecture: h('architecture'),
+        last_heartbeat: now,
+        updated_at: now,
+    };
+
+    const ram = h('ram_gb_total', 'ram', 'memory');
+    if (ram !== null && ram !== undefined) {
+        const ramNumber = Number(ram);
+        if (Number.isFinite(ramNumber)) upsertData.ram_gb_total = Math.round(ramNumber);
+    }
+
+    // Colunas nulas nao sao enviadas: nao sobrescreve dado existente com vazio.
+    for (const key of Object.keys(upsertData)) {
+        if (key === 'id') continue;
+        if (upsertData[key] === null) delete upsertData[key];
+    }
+
+    const { data, error } = await supabase
+        .from('installations')
+        .upsert(upsertData, { onConflict: 'id' })
+        .select('id, user_id, last_heartbeat, updated_at')
+        .single();
+
+    if (error) {
+        logSupabaseError(ctx, 'upsert installations', error);
+        return errorWithCorrelation(
+            ctx,
+            500,
+            'DB_UPSERT_FAILED',
+            'Nao foi possivel registrar a instalacao.',
+            { expose: true, details: { pg_code: error.code ?? null } }
+        );
+    }
+
+    // Confirmacao pos-escrita: o vinculo nao pode ser alterado por este
+    // endpoint (quem vincula e o /install/link, via sessao do dono).
+    logSuccess(ctx, 'instalacao registrada', {
+        linked: Boolean(data?.user_id),
+        lastHeartbeat: data?.last_heartbeat ?? null,
+        columnsSent: Object.keys(upsertData),
+    });
+
+    recentHeartbeatCache.set(installationId, {
+        lastSaved: nowMs,
+        isLinked: Boolean(data?.user_id),
+    });
+
+    return jsonWithCorrelation(ctx, {
+        success: true,
+        installation_id: data?.id ?? installationId,
+        is_linked: Boolean(data?.user_id),
+        last_heartbeat: data?.last_heartbeat ?? now,
+    });
+}
+
+/** Health check do endpoint. */
+export async function GET() {
+    return NextResponse.json({ status: 'ok', endpoint: 'install' });
 }
