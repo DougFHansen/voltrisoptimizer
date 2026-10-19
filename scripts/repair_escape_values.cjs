@@ -40,6 +40,11 @@ for (const l of LANGS) {
   }
   totalFixed += fixed; totalDropped += dropped;
   console.log(`${l.padEnd(6)} reparados: ${fixed}  removidos(p/ retraduzir): ${dropped}`);
-  if (APPLY && (fixed || dropped)) fs.writeFileSync(file, JSON.stringify(dict, null, 2) + '\n', 'utf8');
+  if (APPLY && (fixed || dropped)) {
+      // Escrita atomica (tmp + rename): ver repair_tag_names.cjs, mesmo motivo.
+      const tmp = file + '.tmp';
+      fs.writeFileSync(tmp, JSON.stringify(dict, null, 2) + '\n', 'utf8');
+      fs.renameSync(tmp, file);
+    }
 }
 console.log(`TOTAL: ${totalFixed} reparados, ${totalDropped} removidos ${APPLY ? '(GRAVADO)' : '(dry-run)'}`);

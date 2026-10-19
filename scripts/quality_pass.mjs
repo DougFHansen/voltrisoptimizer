@@ -50,7 +50,10 @@ for (const lang of LANGS) {
   totalFixes += fixes;
   console.log(`${lang.padEnd(6)} overrides aplicados: ${fixes}`);
   if (APPLY && fixes > 0) {
-    fs.writeFileSync(file, JSON.stringify(dict, null, 2) + '\n', 'utf8');
+    // Escrita atomica (tmp + rename): ver repair_tag_names.cjs, mesmo motivo.
+    const tmp = file + '.tmp';
+    fs.writeFileSync(tmp, JSON.stringify(dict, null, 2) + '\n', 'utf8');
+    fs.renameSync(tmp, file);
   }
 }
 console.log(`-- TOTAL overrides: ${totalFixes} ${APPLY ? '(GRAVADO)' : '(dry-run, use --apply)'}`);

@@ -107,7 +107,14 @@ for (const l of LANGS) {
   }
   totalRestored += restored; totalRenamed += renamed; totalDropped += dropped; totalClean += clean;
   report.push(`${l.padEnd(6)} já-ok: ${String(clean).padStart(4)} | spans restaurados: ${String(restored).padStart(4)} | nomes consertados: ${String(renamed).padStart(4)} | removidas: ${dropped}`);
-  if (APPLY && (restored || renamed || dropped)) fs.writeFileSync(file, JSON.stringify(dict, null, 2) + '\n', 'utf8');
+  if (APPLY && (restored || renamed || dropped)) {
+      // Escrita atomica (tmp + rename). Estes JSON tem ~6 MB: um processo morto no
+      // meio do writeFileSync deixava arquivo truncado no working tree, e um
+      // `git add -A` levava isso para o commit, derrubando o webpack na build.
+      const tmp = file + '.tmp';
+      fs.writeFileSync(tmp, JSON.stringify(dict, null, 2) + '\n', 'utf8');
+      fs.renameSync(tmp, file);
+    }
 }
 console.log(report.join('\n'));
 console.log(`TOTAL: ${totalRestored} entradas com spans restaurados, ${totalRenamed} nomes de tag consertados, ${totalDropped} removidas, ${totalClean} já-ok ${APPLY ? '(GRAVADO)' : '(dry-run)'}`);
