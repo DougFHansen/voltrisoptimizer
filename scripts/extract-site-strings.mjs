@@ -24,6 +24,13 @@ const REPO = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LOCALE_DIR = path.join(REPO, 'app/[locale]');
 const GUIDES_DIR = path.join(LOCALE_DIR, 'guides');
 const COMPONENTS_DIR = path.join(REPO, 'components');
+// App-surface roots that live OUTSIDE app/[locale] (middleware "bypass" routes):
+// the user dashboard, the (non-locale) auth helper pages, and the context
+// providers. Before these were added, none of their inline UI strings were ever
+// harvested, so login/dashboard text stayed in English for every locale. Their
+// dictionaries are served to the DOM translator (SiteTextTranslator) keyed by the
+// exact English source, so harvesting+translating them is all that's required.
+const APP_SURFACES = ['app/dashboard', 'app/auth', 'app/context', 'app/components', 'app/[locale]/login', 'app/hooks'].map((p) => path.join(REPO, p));
 const OUT_DIR = path.join(REPO, 'lib/guides-i18n');
 const STRINGS = path.join(OUT_DIR, 'strings.en.json');
 
@@ -105,7 +112,7 @@ function collectArraySentences(arrNode, set) {
   }
 }
 
-function extractFromFile(filePath, display = false) {
+function extractFromFile(filePath, display = false, prose = false) {
   const set = new Set();
   let src;
   try {
@@ -141,6 +148,14 @@ function extractFromFile(filePath, display = false) {
       if (['placeholder', 'aria-label', 'title', 'alt'].includes(an) && node.initializer && ts.isStringLiteral(node.initializer)) {
         add(set, node.initializer.text);
       }
+    }
+    // prose mode: capture EVERY sentence-like string literal, including UI copy
+    // that lives in ternaries / arbitrary props / arrays inside app-surface files
+    // (the conservative display-mode only knows a fixed key whitelist). Unused
+    // extras are harmless because the dictionary is an exact-match lookup.
+    if (prose && (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))) {
+      const t = node.text;
+      if (isProse(t) && isSentence(t)) add(set, t);
     }
     node.forEachChild(visit);
   }
@@ -191,6 +206,17 @@ for (const f of walkTsFiles(LOCALE_DIR)) {
 for (const f of walkTsFiles(COMPONENTS_DIR)) {
   for (const s of extractFromFile(f, true)) siteSet.add(s);
   filesScanned++;
+}
+
+// 4. app-surface bypass routes (dashboard / auth / context) that live outside
+//    app/[locale]. Scanned in aggressive prose mode so inline UI copy in props,
+//    ternaries and arrays is harvested too (these files were previously missed
+//    entirely, which is why the dashboard/login stayed in English).
+for (const dir of APP_SURFACES) {
+  for (const f of walkTsFiles(dir)) {
+    for (const s of extractFromFile(f, true, true)) siteSet.add(s);
+    filesScanned++;
+  }
 }
 
 // ---- Union with existing guide body strings ----

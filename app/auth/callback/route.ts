@@ -28,11 +28,27 @@ export async function GET(request: NextRequest) {
       console.log('✅ [OAuth Callback] Cliente Supabase criado');
       
       console.log('🔍 [OAuth Callback] Trocando código por sessão...');
-      const { data, error: authError } = await supabase.auth.exchangeCodeForSession(code);
-      
+      let { data, error: authError } = await supabase.auth.exchangeCodeForSession(code);
+
       if (authError) {
         console.error('❌ [OAuth Callback] Erro ao trocar código por sessão:', authError);
-        return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(`Erro de autenticação: ${authError.message}`)}`);
+
+        // O code pode já ter sido consumido pelo supabase-js do navegador
+        // (detectSessionInUrl) quando o Google cai primeiro na home -- porque o
+        // redirectTo não está na allowlist do Supabase -- e o fallback de HomeClient
+        // reenvia o MESMO code para cá. A troca falha com "invalid flow state, no valid
+        // flow state found", mas a sessão já está nos cookies: é inofensiva e não deve
+        // ser mostrada ao usuário como erro de autenticação.
+        const { data: sessaoAtual } = await supabase.auth.getUser();
+        if (sessaoAtual?.user) {
+          console.log('✅ [OAuth Callback] Code já consumido pelo navegador; sessão existente:', sessaoAtual.user.id);
+          // Cast: o tipo de data é a união {user,session} | {null,null}, então 'session:
+          // null' com 'user' preenchido não é representável -- mas nenhuma linha abaixo
+          // lê data.session, só data.user.
+          data = { user: sessaoAtual.user, session: null } as unknown as typeof data;
+        } else {
+          return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(`Erro de autenticação: ${authError.message}`)}`);
+        }
       }
       
       console.log('✅ [OAuth Callback] Sessão criada com sucesso para usuário:', data.user?.id);
