@@ -272,6 +272,14 @@ function LoginContent() {
       });
 
       if (error || !signInData.user) {
+        // Nao mascarar a falha. Antes disto, QUALQUER erro virava 'Incorrect password',
+        // o que escondia o caso real mais comum: e-mail ainda nao confirmado (o cadastro
+        // cria o usuario, mas o GoTrue recusa o login por senha ate o clique no link),
+        // fazendo a pessoa jurar que digitou a senha errada.
+        console.error('Login failed:', error?.code ?? '(no error object)', error?.message ?? 'no session returned');
+        if (error?.message && /not confirmed|could not authenticate/i.test(error.message)) {
+          throw new Error('Email not confirmed. Open the confirmation link we sent you and try again.');
+        }
         throw new Error('Incorrect password');
       }
       console.log('✅ Login successful:', signInData.user.id);

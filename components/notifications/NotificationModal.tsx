@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNotificationContext } from './NotificationContext';
+import { useNotificationContext, markNotifPromptAnswered } from './NotificationContext';
 import { FiBell, FiCheck, FiX, FiShield, FiCpu } from 'react-icons/fi';
 import { useDashboard } from '@/app/context/DashboardContext';
 
@@ -13,11 +13,19 @@ export default function NotificationModal() {
   if (!showPermissionModal) return null;
 
   const handleEnable = async () => {
+    markNotifPromptAnswered();
     await updateSettings({ notifications_enabled: true });
     setShowPermissionModal(false);
   };
 
   const handleDismiss = () => {
+    // "Agora não" precisa ficar registrado em algum lugar. Antes disto só se fechava o
+    // estado, então o provider (notifications_enabled continua NULL) reabria o convite
+    // a cada remontagem, ou seja, toda vez que se trocava de página e voltava.
+    markNotifPromptAnswered();
+    // Grava a recusa no banco também, mas sem esperar: se a escrita falhar, o registro
+    // local acima já mantém o modal fechado.
+    void updateSettings({ notifications_enabled: false });
     setShowPermissionModal(false);
   };
 

@@ -128,6 +128,23 @@ function handleNotificationSoundMessage(event: any, settings: NotificationSettin
   }
 }
 
+// Registro local de que o usuario ja respondeu ao convite de notificacoes
+// ("Inicializar conexao" ou "Agora nao"). Sem isto, o "Agora nao" nao gravava nada:
+// como o modal e aberto quando user_settings.notifications_enabled IS NULL, cada
+// remount do provider (trocar de pagina e voltar) reabria o convite para sempre.
+export const NOTIF_PROMPT_ANSWERED_KEY = 'voltris_notif_prompt_answered';
+
+export const markNotifPromptAnswered = () => {
+  if (typeof window !== 'undefined') {
+    try { localStorage.setItem(NOTIF_PROMPT_ANSWERED_KEY, 'true'); } catch { /* modo privado */ }
+  }
+};
+
+export const hasNotifPromptBeenAnswered = () => {
+  if (typeof window === 'undefined') return true;
+  try { return localStorage.getItem(NOTIF_PROMPT_ANSWERED_KEY) === 'true'; } catch { return false; }
+};
+
 export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const { user, isAdmin } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -188,10 +205,10 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
           .select()
           .single();
         setSettings(newSettings);
-        setShowPermissionModal(true);
+        if (!hasNotifPromptBeenAnswered()) setShowPermissionModal(true);
       } else {
         setSettings(settingsData || null);
-        if (settingsData && settingsData.notifications_enabled === null) {
+        if (settingsData && settingsData.notifications_enabled === null && !hasNotifPromptBeenAnswered()) {
           setShowPermissionModal(true);
         }
       }
@@ -362,7 +379,10 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       .from('user_settings')
       .select('*')
       .eq('user_id', user.id)
-      .single();
+      // maybeSingle, nao single: single() pede um objeto JSON ao PostgREST e vira
+      // HTTP 409 (PGRST116) quando o usuario ainda nao tem registro em user_settings
+      // (ou tem mais de um). O chamador ja trata null criando o padrao.
+      .maybeSingle();
     setSettings(settingsData || null);
     setLoading(false);
   };

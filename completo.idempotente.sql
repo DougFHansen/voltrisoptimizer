@@ -4579,15 +4579,18 @@ CREATE POLICY "Usuários podem ver seus próprios perfis"
     FOR SELECT
     USING (auth.uid() = id);
 
--- Admin pode ver todos os perfis (além do próprio)
+-- Admin pode ver todos os perfis (além do próprio).
+-- A checagem de admin NÃO pode ler public.profiles daqui: essa subconsulta aciona as
+-- próprias policies de profiles, que acionam esta de novo, e o PostgreSQL mata a
+-- consulta com "infinite recursion detected in policy for relation profiles" (o 500
+-- que o dashboard recebe em profiles?select=*). O arquivo já define
+-- public.check_is_admin() como SECURITY DEFINER (lê profiles furando o RLS), então é
+-- ela que vale aqui.
 CREATE POLICY "Admins podem ver todos os perfis"
     ON public.profiles
     FOR SELECT
     USING (
-      EXISTS (
-        SELECT 1 FROM public.profiles AS p
-        WHERE p.id = auth.uid() AND p.is_admin = true
-      )
+      public.check_is_admin()
       OR auth.uid() = id
     );
 
@@ -4683,13 +4686,13 @@ CREATE POLICY "Users can insert their own notifications"
     WITH CHECK (auth.uid() = user_id);
 
 DROP POLICY IF EXISTS "Admin can view all notifications" ON public.notifications;
+-- Mesmo caso da policy de profiles: EXISTS sobre public.profiles dentro desta policy
+-- reentrava no RLS de profiles e derrubava notifications?select=* com o mesmo erro de
+-- recursão. check_is_admin() é SECURITY DEFINER e corta o ciclo.
 CREATE POLICY "Admin can view all notifications"
     ON public.notifications FOR SELECT
     USING (
-        EXISTS (
-            SELECT 1 FROM public.profiles
-            WHERE id = auth.uid() AND is_admin = TRUE
-        )
+        public.check_is_admin()
         OR auth.uid() = user_id
     );
 

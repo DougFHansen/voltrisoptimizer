@@ -651,7 +651,12 @@ const nextConfig = {
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
             "img-src 'self' data: blob: https: http: https://grainy-gradients.vercel.app",
-            "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://api.stripe.com https://checkout.stripe.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://static.cloudflareinsights.com https://grainy-gradients.vercel.app",
+            // GA4 (gtag.js) envia beacon para https://www.google.com/g/collect e
+            // https://analytics.google.com/g/collect, e as regioes do endpoint ficam em
+            // *.google-analytics.com / *.googletagmanager.com. Sem estas origens o CSP
+            // bloqueava cada hit e o console enchia de "Fetch API cannot load ... violates
+            // connect-src".
+            "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://www.google.com https://analytics.google.com https://api.stripe.com https://checkout.stripe.com https://pagead2.googlesyndication.com https://*.adtrafficquality.google https://static.cloudflareinsights.com https://grainy-gradients.vercel.app",
             "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://td.doubleclick.net https://googleads.g.doubleclick.net https://*.adtrafficquality.google https://www.google.com",
             "object-src 'none'",
             "base-uri 'self'",
