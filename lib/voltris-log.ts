@@ -37,7 +37,10 @@ export type VoltrisOperation =
     | 'LICENSE_VALIDATE'
     | 'STRIPE_CHECKOUT'
     | 'STRIPE_WEBHOOK'
-    | 'ADMIN_RECONCILE';
+    | 'ADMIN_RECONCILE'
+    | 'EMAIL_ENQUEUE'
+    | 'EMAIL_WORKER'
+    | 'EMAIL_RESEND';
 
 type LogLevel = 'info' | 'warn' | 'error';
 
