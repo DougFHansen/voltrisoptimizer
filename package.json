@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --test tests/auth-safe.test.ts tests/profile-completeness.test.ts tests/locale.test.ts tests/resend-client.test.ts",
+    "test": "node --test tests/auth-safe.test.ts tests/profile-completeness.test.ts tests/locale.test.ts tests/resend-client.test.ts tests/email-templates.test.ts",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit"
   },
