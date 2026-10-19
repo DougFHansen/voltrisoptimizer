@@ -193,7 +193,15 @@ export function Flag({ locale, className = 'w-5 h-[14px]' }: { locale: Locale; c
 }
 
 // ── Selector ─────────────────────────────────────────────────────────────────
-export default function LanguageSelector({ inDrawer = false }: { inDrawer?: boolean }) {
+/**
+ * `compact` renders a flag-only button (no country code, no chevron) for tight
+ * spots — the dashboard's mobile top bar and the collapsed sidebar rail. The
+ * dropdown itself stays the same size so the list is always readable.
+ */
+export default function LanguageSelector({
+  inDrawer = false,
+  compact = false,
+}: { inDrawer?: boolean; compact?: boolean }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -270,14 +278,22 @@ export default function LanguageSelector({ inDrawer = false }: { inDrawer?: bool
         aria-expanded={open}
         aria-label="Change language"
         className={`group flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-white/[0.08] hover:border-white/20 ${
-          inDrawer ? 'w-full justify-start px-4 py-3' : 'px-3 py-2'
+          inDrawer
+            ? 'w-full justify-start px-4 py-3'
+            : compact
+              ? 'px-2.5 py-2'
+              : 'px-3 py-2'
         }`}
       >
         <Flag locale={current} className="w-5 h-[14px] shrink-0 shadow-sm" />
-        <span className="text-xs font-bold tracking-widest opacity-90">{CODE[current]}</span>
-        <svg viewBox="0 0 10 6" className={`w-2.5 h-1.5 text-slate-400 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}>
-          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-        </svg>
+        {!compact && (
+          <>
+            <span className="text-xs font-bold tracking-widest opacity-90">{CODE[current]}</span>
+            <svg viewBox="0 0 10 6" className={`w-2.5 h-1.5 text-slate-400 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}>
+              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+            </svg>
+          </>
+        )}
       </button>
 
       {/* Dropdown */}

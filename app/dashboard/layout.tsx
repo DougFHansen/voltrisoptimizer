@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import UISettingsModal from './UISettingsModal';
 import ProfileCompletionGate from '@/components/dashboard/ProfileCompletionGate';
+import LanguageSelector from '@/components/LanguageSelector';
 
 // Inner component to access context
 function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
@@ -58,9 +59,16 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
                <span className="text-[10px] font-medium text-indigo-400 uppercase tracking-widest leading-tight mt-0.5">Console</span>
              </div>
           </Link>
-           <button onClick={() => setMobileMenuOpen(true)} className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center active:scale-95 transition-all hover:bg-slate-800 text-slate-300">
+           <div className="flex items-center gap-2">
+             {/* Language Selector: the console has no site Header, so the
+                 switcher lives in the mobile top bar. /dashboard is a
+                 middleware bypass route, so the choice is persisted in the
+                 voltris-locale cookie and the page reloads translated. */}
+             <LanguageSelector compact />
+             <button onClick={() => setMobileMenuOpen(true)} className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center active:scale-95 transition-all hover:bg-slate-800 text-slate-300">
                <VoltrisIcon name="menu" size={16} />
-           </button>
+             </button>
+           </div>
         </div>
 
         {/* Scrollable Main Content */}

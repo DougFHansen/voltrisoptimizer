@@ -8,6 +8,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import VoltrisIcon from './VoltrisIcon';
+import LanguageSelector from '@/components/LanguageSelector';
 import { DASHBOARD_TABS, isDashboardTabActive } from './dashboardTabs';
 
 interface SidebarProps {
@@ -49,7 +50,24 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
             <span className="text-[10px] font-medium text-indigo-400 uppercase tracking-widest leading-none">Console</span>
           </Link>
         )}
+        {/* Language Selector: the console has no site Header, so the switcher
+            lives in the sidebar (desktop). /dashboard is a middleware bypass
+            route, so the choice is persisted in the voltris-locale cookie and
+            the page reloads translated. Not rendered on the mobile drawer,
+            where the top bar already carries it. */}
+        {!isMobile && !collapsed && (
+          <div className="ml-auto shrink-0">
+            <LanguageSelector />
+          </div>
+        )}
       </div>
+
+      {/* Language Selector (compact) for the collapsed rail */}
+      {!isMobile && collapsed && (
+        <div className="flex justify-center mb-6">
+          <LanguageSelector compact />
+        </div>
+      )}
 
       {/* Desktop Collapse Toggle */}
       {!isMobile && (

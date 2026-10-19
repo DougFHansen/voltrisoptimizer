@@ -10,6 +10,7 @@ import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
 import NotificationTester from '../../components/NotificationTester';
+import LanguageSelector from '@/components/LanguageSelector';
 
 const tabs = [
   {
@@ -62,12 +63,19 @@ export default function AdminDashboard() {
               Welcome to the admin panel, {user?.email}
             </p>
           </div>
-          {error && (
-            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 text-sm w-full lg:w-auto">
-              <p className="text-yellow-400 font-medium">Connection Warning</p>
-              <p className="text-yellow-300 text-xs">{error}</p>
-            </div>
-          )}
+          <div className="flex items-center gap-4 flex-wrap">
+            {error && (
+              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 text-sm w-full lg:w-auto">
+                <p className="text-yellow-400 font-medium">Connection Warning</p>
+                <p className="text-yellow-300 text-xs">{error}</p>
+              </div>
+            )}
+            {/* Language Selector inside the admin panel. The admin area lives
+                under /{locale}/restricted-area-admin, so switching rewrites the
+                locale segment of the URL (the choice is also persisted in the
+                voltris-locale cookie). */}
+            <LanguageSelector />
+          </div>
         </div>
 
         {/* Tabs with premium design */}

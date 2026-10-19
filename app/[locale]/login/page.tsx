@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
+import LanguageSelector from '@/components/LanguageSelector';
 import { describeAuthFailure, looksLikeEmail } from '@/lib/auth-safe';
 import { notifyPageView } from '@/utils/notifications';
 import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
@@ -604,6 +605,14 @@ function LoginContent() {
         <ArrowLeft className="w-4 h-4 text-[#FF4B6B] group-hover:-translate-x-1 transition-transform" />
         <span className="text-sm font-medium">Back</span>
       </Link>
+
+      {/* Language Selector (top-right) — this screen has no site Header, so the
+          switcher lives here. The page is served under /{locale}/login, so the
+          selector swaps the locale segment of the URL (and persists the choice
+          in the voltris-locale cookie for the rest of the site). */}
+      <div className="absolute top-8 right-8 z-50">
+        <LanguageSelector />
+      </div>
 
       {/* Card */}
       <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="w-full max-w-[400px] mx-4 relative z-10">
