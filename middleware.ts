@@ -55,6 +55,24 @@ export function middleware(request: NextRequest) {
     return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
+  // Login OAuth (Google) que o Supabase devolve para a RAIZ do Site URL em vez de
+  // /auth/callback (Site URL / Redirect URLs desalinhados, ex. apex vs www). Se a
+  // home carregar com ?code=, o createBrowserClient (detectSessionInUrl forçado) e o
+  // /auth/callback disputam o MESMO code (uso único) -> "invalid flow state", e ainda
+  // por cima a pessoa VÊ a home antes do dashboard. Ao redirecionar aqui, no servidor,
+  // para /auth/callback preservando a query, o navegador nunca renderiza a home: só o
+  // servidor resgata o code uma vez e dá 302 para o destino. Recovery/confirmación não
+  // são afetados porque caem em /reset-password (e são excluídos pelo 'type').
+  if (
+    request.nextUrl.searchParams.has('code') &&
+    !request.nextUrl.searchParams.has('type') &&
+    (pathname === '/' || locales.some((l) => pathname === `/${l}`))
+  ) {
+    const cb = request.nextUrl.clone();
+    cb.pathname = '/auth/callback';
+    return NextResponse.redirect(cb);
+  }
+
   // Verificar se o pathname já contém um locale suportado
   const localeMatch = locales.find((l) => pathname.startsWith(`/${l}/`) || pathname === `/${l}`);
 
