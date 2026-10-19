@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     state text,
     cep text,
     country text,
+    preferred_locale text DEFAULT 'en',
     is_admin boolean NOT NULL DEFAULT false,
     role text DEFAULT 'user',
     is_blocked boolean NOT NULL DEFAULT false,
@@ -57,6 +58,13 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
 );
+
+-- [INTL] Fonte de verdade do idioma no BACKEND (missao FASE 2): e-mails, PDFs e
+-- webhooks precisam resolver o idioma SEM navegador. Idempotente para bancos que
+-- ja existem (nao recria a tabela). Valores sempre normalizados para um dos 15
+-- locales; NULL/lixo caem no padrao 'en' na leitura (lib/locale.ts).
+ALTER TABLE public.profiles
+    ADD COLUMN IF NOT EXISTS preferred_locale TEXT DEFAULT 'en';
 
 CREATE TABLE IF NOT EXISTS public.licenses (
     license_key        TEXT PRIMARY KEY,
@@ -4566,6 +4574,7 @@ BEGIN
         state,
         cep,
         country,
+        preferred_locale,
         is_admin,
         role
     )
@@ -4581,6 +4590,7 @@ BEGIN
         COALESCE(NEW.raw_user_meta_data->>'state', ''),
         COALESCE(NEW.raw_user_meta_data->>'cep', ''),
         COALESCE(NEW.raw_user_meta_data->>'country', ''),
+        COALESCE(NEW.raw_user_meta_data->>'preferred_locale', 'en'),
         false,
         'user'
     )

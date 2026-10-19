@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { TelegramService } from '@/services/telegramService';
 import { oauthDestination } from '@/lib/auth-safe';
 import { isProfileComplete } from '@/lib/profile-completeness';
+import { normalizeLocale, localeFromAcceptLanguage, DEFAULT_LOCALE } from '@/lib/locale';
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -83,6 +84,15 @@ export async function GET(request: NextRequest) {
               .insert({
                 id: data.user.id,
                 full_name: data.user.user_metadata?.full_name || data.user.email || 'Usuário',
+                // Idioma so entra AQUI (perfil novo). Se o cliente ja escolheu um
+                // idioma no metadata, ele vence; senao detectamos pelo
+                // Accept-Language; senao padrao. Nunca sobrescrevemos um perfil
+                // existente (este bloco so roda quando o perfil nao existia).
+                preferred_locale: normalizeLocale(
+                  data.user.user_metadata?.preferred_locale ??
+                    localeFromAcceptLanguage(request.headers.get('accept-language')) ??
+                    DEFAULT_LOCALE
+                ),
                 created_at: new Date().toISOString(),
                 updated_at: new Date().toISOString()
               });

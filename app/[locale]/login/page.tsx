@@ -12,6 +12,7 @@ import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { describeAuthFailure, looksLikeEmail } from '@/lib/auth-safe';
 import { notifyPageView } from '@/utils/notifications';
 import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
+import { localeFromPathname } from '@/lib/locale';
 
 // Icons
 import { FaWhatsapp } from 'react-icons/fa';
@@ -441,7 +442,11 @@ function LoginContent() {
             cep, 
             address: `${street}, ${number}`,
             login,
-            country
+            country,
+            // Persiste o idioma escolhido ANTES do cadastro (página serva sob
+            // /{locale}/login). Vira profiles.preferred_locale via trigger, para
+            // que backend (webhook/e-mail/PDF/recuperao) resolva sem navegador.
+            preferred_locale: typeof window !== 'undefined' ? localeFromPathname(window.location.pathname) : 'en'
           } 
         },
       });
