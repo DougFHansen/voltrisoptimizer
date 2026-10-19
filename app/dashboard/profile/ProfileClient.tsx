@@ -10,7 +10,14 @@ import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import { useDashboard } from '@/app/context/DashboardContext';
 import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
-import { podeDesvincular } from '@/lib/auth-safe';
+import { podeDesvincular, oauthDestination } from '@/lib/auth-safe';
+import {
+  missingProfileFields,
+  isProfileComplete,
+  toE164,
+  nationalPart,
+  isPhonePlausible,
+} from '@/lib/profile-completeness';
 
 interface Profile {
   id: string;
@@ -29,7 +36,7 @@ interface Profile {
 
 export default function ProfileClient() {
   const { transparencyMode } = useDashboard();
-  const { user } = useAuth();
+  const { user, refreshAuth } = useAuth();
   const searchParams = useSearchParams();
 
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -42,7 +49,7 @@ export default function ProfileClient() {
   const [formData, setFormData] = useState({
     full_name: '',
     login: '',
-    country: 'Brazil',
+    country: '',
     phone: '',
     address: '',
     city: '',
@@ -78,8 +85,10 @@ export default function ProfileClient() {
         setFormData({
           full_name: data.full_name || '',
           login: data.login || '',
-          country: data.country || 'Brazil',
-          phone: data.phone || '',
+          country: data.country || '',
+          // O banco guarda E.164 (+DDI...); o input mostra só a parte nacional,
+          // com o DDI ao lado vindo de DIAL_CODES[country].
+          phone: nationalPart(DIAL_CODES[data.country] || '', data.phone || ''),
           address: data.address || '',
           city: data.city || '',
           state: data.state || '',
@@ -102,10 +111,12 @@ export default function ProfileClient() {
   }, [user, supabase]);
 
   useEffect(() => {
-    if (isCompletar && !loading) {
-        setIsEditing(true);
+    if (loading) return;
+    // Abre a edição sempre que o cadastro estiver incompleto (mesmo sem ?completar=1).
+    if (isCompletar || (profile && !isProfileComplete(profile))) {
+      setIsEditing(true);
     }
-  }, [isCompletar, loading]);
+  }, [isCompletar, loading, profile]);
 
   const formatPhone = (v: string, c: string) => { 
     if (c !== 'Brazil') return v;
@@ -166,36 +177,65 @@ export default function ProfileClient() {
 
   const handleSave = async () => {
     if (!user) return;
-    
-    if (!formData.login || !formData.phone || !formData.city || !formData.address) {
-        return toast.error("Please fill in all the required fields.", { icon: '⚠️' });
+    const wasIncomplete = profile ? !isProfileComplete(profile) : true;
+
+    const dialCode = DIAL_CODES[formData.country] || '';
+    // Sempre grava em E.164 (DDI + nacional), igual ao cadastro, sem duplicar o DDI.
+    const national = nationalPart(dialCode, formData.phone);
+    const storedPhone = toE164(dialCode, national);
+
+    const candidate = {
+      full_name: formData.full_name.trim(),
+      login: formData.login.trim(),
+      country: formData.country,
+      phone: storedPhone,
+      address: formData.address.trim(),
+      city: formData.city.trim(),
+      state: formData.state.trim(),
+      cep: formData.cep.trim(),
+    };
+
+    // 1) Cadastro 100% completo — todos os campos, em qualquer país.
+    if (missingProfileFields(candidate).length > 0) {
+      return toast.error('Please fill in all fields to complete your registration.', { icon: '⚠️' });
     }
-    
+
+    // 2) Telefone plausível no padrão internacional do país escolhido.
+    if (!isPhonePlausible(candidate.country, national)) {
+      return toast.error('Please enter a valid phone number for the selected country.', { icon: '⚠️' });
+    }
+
+    // 3) Brasil exige CEP real (validado na consulta automática); demais países usam texto livre.
+    if (candidate.country === 'Brazil' && !isCepValid) {
+      return toast.error('Please provide a valid ZIP Code (CEP).', { icon: '⚠️' });
+    }
+
     setSaving(true);
     try {
       const { error } = await supabase
         .from('profiles')
         .upsert({
           id: user.id,
-          ...formData,
+          ...candidate,
           updated_at: new Date().toISOString()
         });
 
       if (error) throw error;
 
+      setProfile((prev) => (prev ? { ...prev, ...candidate } : prev));
+      setFormData((prev) => ({ ...prev, ...candidate, phone: national }));
+
       toast.success('Profile updated successfully!');
       setIsEditing(false);
-      
-      if (isCompletar) {
-        window.history.replaceState({}, '', '/dashboard/profile');
+
+      // Destrava o dashboard: o ProfileCompletionGate reconsulta o perfil neste evento.
+      await refreshAuth();
+      if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
+
+      if (wasIncomplete && isProfileComplete(candidate)) {
+        const dest = oauthDestination(searchParams?.get('redirect'));
+        if (typeof window !== 'undefined') window.location.replace(dest);
       }
-      
-      const { data: updatedData } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .single();
-      setProfile(updatedData);
     } catch (error: any) {
       toast.error(error.message || 'Error saving profile');
     } finally {
@@ -301,6 +341,8 @@ export default function ProfileClient() {
   }
 
   const cepLocked = formData.country === 'Brazil' && isCepValid;
+  const incompleteProfile = !!profile && !isProfileComplete(profile);
+  const showCompletion = isCompletar || incompleteProfile;
 
   return (
     <AuthGuard>
@@ -340,6 +382,18 @@ export default function ProfileClient() {
             </div>
           )}
         </div>
+
+        {showCompletion && (
+          <div className="flex items-start gap-3 p-4 rounded-2xl border border-amber-500/30 bg-amber-500/10">
+            <VoltrisIcon name="alertTriangle" size={18} className="text-amber-400 mt-0.5 shrink-0" />
+            <div className="space-y-0.5">
+              <p className="text-sm font-bold text-amber-100 tracking-tight">Complete your registration to unlock the dashboard</p>
+              <p className="text-xs text-amber-200/80">
+                Fill in every field below — personal data and address, from any country — to continue. Your licenses, payments and devices stay safe while you finish.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Profile Card */}
         <div className={`p-6 sm:p-7 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'}`}>
@@ -439,9 +493,15 @@ export default function ProfileClient() {
                  {isEditing ? (
                     <select
                       value={formData.country}
-                      onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                      onChange={(e) => {
+                        const nextCountry = e.target.value;
+                        setFormData({ ...formData, country: nextCountry });
+                        // Fora do Brasil o código postal é texto livre; no Brasil exige validação real.
+                        setIsCepValid(nextCountry !== 'Brazil');
+                      }}
                       className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors cursor-pointer"
                     >
+                      <option value="" disabled>Select your country</option>
                       {COUNTRIES.map(c => (
                         <option key={c} value={c}>{c}</option>
                       ))}

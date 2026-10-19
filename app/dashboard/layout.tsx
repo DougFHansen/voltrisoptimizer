@@ -9,6 +9,7 @@ import { DashboardProvider, useDashboard } from '@/app/context/DashboardContext'
 import Link from 'next/link';
 import Image from 'next/image';
 import UISettingsModal from './UISettingsModal';
+import ProfileCompletionGate from '@/components/dashboard/ProfileCompletionGate';
 
 // Inner component to access context
 function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
@@ -65,7 +66,9 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
         {/* Scrollable Main Content */}
         <main id="main-dashboard-scroll" className={`flex-1 overflow-y-auto px-4 sm:px-8 py-6 relative z-10 scroll-smooth custom-scrollbar ${transparencyMode ? 'voltris-glass' : 'bg-transparent'}`}>
            <div className="mx-auto max-w-7xl h-full min-h-fit">
-             {children}
+             <ProfileCompletionGate>
+               {children}
+             </ProfileCompletionGate>
            </div>
         </main>
 

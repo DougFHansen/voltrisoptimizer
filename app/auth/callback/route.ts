@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { TelegramService } from '@/services/telegramService';
 import { oauthDestination } from '@/lib/auth-safe';
+import { isProfileComplete } from '@/lib/profile-completeness';
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -130,8 +131,10 @@ export async function GET(request: NextRequest) {
 
         console.log('✅ [OAuth Callback] Perfil encontrado para:', data.user.id);
 
-        // Se campos obrigatórios estão faltando, redirecionar para completar cadastro
-        const missingFields = !profile?.phone || !profile?.city || !profile?.state || !profile?.cep;
+        // Cadastro 100% completo: mesma regra canônica do gate e do ProfileClient
+        // (todos os campos obrigatórios, em qualquer país). Google não traz nenhum
+        // deles, então o primeiro acesso cai na tela de conclusão.
+        const missingFields = !isProfileComplete(profile);
         
         if (missingFields) {
           console.log('🔍 [OAuth Callback] Perfil incompleto, redirecionando para completar cadastro');
