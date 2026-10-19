@@ -33,12 +33,20 @@ import {
     renderForHook,
     toSupabaseResponseBody,
 } from '@/lib/auth-hook';
+import type {
+    AuthHookRateDecision,
+} from '@/lib/auth-hook-rate-limit';
+import {
+    checkAuthHookRate,
+    resolveIpFromHeaders,
+} from '@/lib/auth-hook-rate-limit';
 import {
     startOperation,
     logWarn,
     logError,
     logInfo,
     maskEmail,
+    generateCorrelationId,
 } from '@/lib/voltris-log';
 
 export const runtime = 'nodejs';
@@ -50,12 +58,46 @@ function unauthorized(): NextResponse {
     );
 }
 
+/**
+ * Wrapper da camada pura de rate limit, para manter este módulo testável em
+ * `node --test` sem arrastar next/server nas dependências. Retorna
+ * `NextResponse` 429 se estourou, `null` se passou.
+ */
+function guardRateLimit(req: NextRequest, perIp: number): NextResponse | null {
+    const decision: AuthHookRateDecision = checkAuthHookRate(req, { perIp });
+    if (decision.allowed) return null;
+    return NextResponse.json(
+        { error: 'auth_hook_rate_limited' },
+        {
+            status: 429,
+            headers: {
+                'Retry-After': String(decision.retryAfterSec),
+                'X-Auth-Hook-Rate-Remaining': '0',
+            },
+        }
+    );
+}
+
+// Re-export sutil para lint não reclamar de imports não usados se alguém
+// refatorar depois; `resolveIpFromHeaders` é a mesma função usada no teste.
+void resolveIpFromHeaders;
+
 export async function POST(req: NextRequest): Promise<NextResponse> {
+    // ---- FASE 15: rate limit por IP antes de QUALQUER outro trabalho.
+    // Renderizar é barato, mas uma bexiga de chamadas por ataque de signup em
+    // massa consome SMTP Resend e pode derrubar o domínio remetente.
+    const limited = guardRateLimit(req, 20);
+    if (limited) {
+        const ctx = startOperation('AUTH_HOOK', generateCorrelationId());
+        logWarn(ctx, 'hook rate-limited por IP');
+        return limited;
+    }
+
     const hookSecret = (process.env.SUPABASE_AUTH_HOOK_SECRET ?? '').trim();
 
     // Configuração ausente: melhor falhar alto do que deixar o hook aberto.
     if (!hookSecret) {
-        const ctx = startOperation('AUTH_HOOK');
+        const ctx = startOperation('AUTH_HOOK', generateCorrelationId());
         logError(ctx, 'SUPABASE_AUTH_HOOK_SECRET not configured — rejecting hook call');
         return NextResponse.json(
             { error: 'Send Email Hook not configured on server.' },
@@ -69,14 +111,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     // rede. Timing-safe seria overkill; o importante é NÃO aceitar sem o
     // segredo.
     if (authHeader !== `Bearer ${hookSecret}`) {
-        const ctx = startOperation('AUTH_HOOK');
+        const ctx = startOperation('AUTH_HOOK', generateCorrelationId());
         logWarn(ctx, 'hook call rejected: bad Authorization header', {
             hasHeader: Boolean(authHeader),
         });
         return unauthorized();
     }
 
-    const ctx = startOperation('AUTH_HOOK');
+    const ctx = startOperation('AUTH_HOOK', generateCorrelationId());
 
     let raw: unknown;
     try {
@@ -131,6 +173,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
  * segredo.
  */
 export async function GET(req: NextRequest): Promise<NextResponse> {
+    // Config-check: menos agressivo que POST mas ainda protegido (10/min/IP).
+    const limited = guardRateLimit(req, 10);
+    if (limited) return limited;
+
     const hookSecret = (process.env.SUPABASE_AUTH_HOOK_SECRET ?? '').trim();
     if (!hookSecret) {
         return NextResponse.json({ ok: false, error: 'not configured' }, { status: 500 });
