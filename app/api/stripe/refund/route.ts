@@ -2,6 +2,8 @@ import { stripe } from '@/lib/stripe';
 import { createClient } from '@/utils/supabase/server';
 import { createAdminClient } from '@/utils/supabase/admin';
 import { NextResponse } from 'next/server';
+import { dispatchRefundEmail } from '@/lib/billing-email-dispatch';
+import type { PaymentRow } from '@/lib/invoice-data';
 
 export async function POST(req: Request) {
     try {
@@ -63,11 +65,21 @@ export async function POST(req: Request) {
         });
 
         // 5. Se estiver atrelado a uma assinatura, cancelar a assinatura Imediatamente
-        if (latestCharge.invoice) {
-            const invoice = await stripe.invoices.retrieve(latestCharge.invoice as string);
-            if (invoice.subscription) {
+        // `invoice` e `subscription` existem no runtime, mas sumiram dos types
+        // do Stripe SDK v20+ (foram movidos para `parent.invoice_details`).
+        // Casting controlado e comentado para não silenciar outros typos.
+        const chargeAny = latestCharge as unknown as { invoice?: string | { id: string } | null };
+        const invRef = chargeAny.invoice
+            ? (typeof chargeAny.invoice === 'string' ? chargeAny.invoice : chargeAny.invoice.id)
+            : null;
+        if (invRef) {
+            const invoice = await stripe.invoices.retrieve(invRef) as unknown as { subscription?: string | { id: string } | null };
+            const subRef = invoice.subscription
+                ? (typeof invoice.subscription === 'string' ? invoice.subscription : invoice.subscription.id)
+                : null;
+            if (subRef) {
                 // Cancela na hora
-                await stripe.subscriptions.cancel(invoice.subscription as string);
+                await stripe.subscriptions.cancel(subRef);
             }
         }
 
@@ -84,6 +96,34 @@ export async function POST(req: Request) {
         await supabaseAdmin.from('payments')
             .update({ status: 'refunded' })
             .eq('email', user.email!);
+
+        // ---- FASE 13: e-mail de reembolso confirmado (best-effort; nunca
+        // derruba a resposta do POST). Busca o último payment recém-marcado
+        // como refunded para montar o InvoiceData no locale do cliente.
+        try {
+            const { data: refundedPay } = await supabaseAdmin
+                .from('payments')
+                .select('id, reference_id, provider, stripe_id, status, user_id, email, plan_type, billing_period, amount, currency, created_at')
+                .eq('email', user.email!)
+                .eq('status', 'refunded')
+                .order('created_at', { ascending: false })
+                .limit(1)
+                .maybeSingle<PaymentRow>();
+            if (refundedPay) {
+                const { data: profile } = await supabaseAdmin
+                    .from('profiles')
+                    .select('id, full_name, email, preferred_locale')
+                    .eq('id', user.id)
+                    .maybeSingle();
+                await dispatchRefundEmail({
+                    payment: refundedPay,
+                    profile: profile ?? null,
+                    license: null,
+                }, supabaseAdmin);
+            }
+        } catch {
+            // engolimos de propósito: reembolso já executado, e-mail é secundário.
+        }
 
         return NextResponse.json({ success: true, message: 'Reembolso processado com sucesso. Acesso bloqueado.' });
 

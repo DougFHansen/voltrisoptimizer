@@ -5,6 +5,13 @@ import { stripe } from '@/lib/stripe';
 import { createAdminClient } from '@/utils/supabase/admin';
 import { fromMinorUnits } from '@/lib/license-catalog';
 import {
+    dispatchPurchaseEmail,
+    dispatchRenewalEmail,
+    dispatchPastDueEmail,
+    dispatchCancellationEmail,
+} from '@/lib/billing-email-dispatch';
+import type { PaymentRow, LicenseRow, CustomerProfileRow } from '@/lib/invoice-data';
+import {
     startOperation,
     logWarn,
     logError,
@@ -154,6 +161,43 @@ async function processEvent(supabase: SupabaseClient, event: Stripe.Event, ctx: 
             logWarn(ctx, 'cobranca recorrente falhou (acesso mantido ate fim do periodo pago)', {
                 invoice: invoice.id, sub: subId, attempts: invoice.attempt_count,
             });
+            // ---- FASE 12: e-mail de cobrança recusada (best-effort; idempotente por invoice.id). ----
+            try {
+                if (subId) {
+                    const { data: subKnown } = await supabase.from('subscriptions')
+                        .select('user_id, email, plan_type, billing_period')
+                        .eq('pagbank_subscription_id', subId)
+                        .maybeSingle<{ user_id: string | null; email: string | null; plan_type: string | null; billing_period: string | null }>();
+                    if (subKnown) {
+                        const payment: PaymentRow = {
+                            id: invoice.id,
+                            reference_id: `past-due:${invoice.id}`,
+                            provider: 'stripe',
+                            stripe_id: invoice.payment_intent ? String(invoice.payment_intent) : null,
+                            status: 'past_due',
+                            user_id: subKnown.user_id,
+                            email: invoice.customer_email || subKnown.email,
+                            plan_type: subKnown.plan_type,
+                            billing_period: subKnown.billing_period,
+                            amount: fromMinorUnits(invoice.amount_paid ?? invoice.total ?? 0, String(invoice.currency || 'usd')),
+                            currency: String(invoice.currency || 'usd'),
+                            created_at: new Date((invoice.created ?? Math.floor(Date.now() / 1000)) * 1000).toISOString(),
+                        };
+                        const { data: profile } = await supabase.from('profiles')
+                            .select('id, full_name, email, preferred_locale')
+                            .eq('id', payment.user_id ?? '')
+                            .maybeSingle<CustomerProfileRow & { preferred_locale?: string | null }>();
+                        await dispatchPastDueEmail({
+                            payment,
+                            profile: profile ?? null,
+                            stripeInvoiceId: invoice.id,
+                            ctx,
+                        }, supabase);
+                    }
+                }
+            } catch (err: any) {
+                logWarn(ctx, 'dispatch past-due email falhou (estado preservado)', { error: err?.message ?? String(err) });
+            }
             break;
         }
 
@@ -280,6 +324,59 @@ async function handleCheckoutSettled(supabase: SupabaseClient, session: Stripe.C
     logSuccess(ctx, (data as { already_issued?: boolean }).already_issued
         ? 'licenca ja existia (idempotente por payment_id)'
         : 'licenca emitida', { key: issuedKey.slice(0, 12) + '…', plan: licenseType, period: billingPeriod });
+
+    // ---- FASE 10: e-mail de compra + link do PDF (nunca lança; se o render
+    // ou o enqueue falharem, a emissão da licença continua válida). ----
+    await firePurchaseEmail(supabase, paymentId, issuedKey, ctx);
+}
+
+async function firePurchaseEmail(
+    supabase: SupabaseClient,
+    paymentId: string | null,
+    licenseKey: string | null,
+    ctx: OperationContext,
+) {
+    if (!paymentId) return;
+    try {
+        const { data: full } = await supabase
+            .from('payments')
+            .select('id, reference_id, provider, stripe_id, status, user_id, email, plan_type, billing_period, amount, currency, created_at')
+            .eq('id', paymentId)
+            .maybeSingle<PaymentRow>();
+        if (!full) return;
+        const payment: PaymentRow = {
+            id: full.id,
+            reference_id: full.reference_id ?? null,
+            provider: full.provider ?? null,
+            stripe_id: full.stripe_id ?? null,
+            status: full.status ?? null,
+            user_id: full.user_id ?? null,
+            email: full.email ?? null,
+            plan_type: full.plan_type ?? null,
+            billing_period: full.billing_period ?? null,
+            amount: full.amount ?? null,
+            currency: full.currency ?? null,
+            created_at: full.created_at ?? null,
+        };
+        const { data: profile } = await supabase
+            .from('profiles')
+            .select('id, full_name, email, preferred_locale')
+            .eq('id', payment.user_id ?? '')
+            .maybeSingle<CustomerProfileRow & { preferred_locale?: string | null }>();
+        const license: LicenseRow | null = licenseKey
+            ? { license_key: licenseKey, expires_at: null }
+            : null;
+        const base = (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.voltrisoptimizer.com').replace(/\/$/, '');
+        await dispatchPurchaseEmail({
+            payment,
+            profile: profile ?? null,
+            license,
+            downloadUrl: `${base}/api/invoices/${payment.id}/download`,
+            ctx,
+        }, supabase);
+    } catch (err: any) {
+        logWarn(ctx, 'dispatch purchase email falhou (compra preservada)', { error: err?.message ?? String(err) });
+    }
 }
 
 // ============================================================================
@@ -368,6 +465,57 @@ async function handleInvoicePaid(supabase: SupabaseClient, invoiceRaw: Stripe.In
         expires_at: (data as { expires_at?: string })?.expires_at,
         invoice: invoice.id,
     });
+
+    // ---- FASE 12: e-mail de renovação (best-effort). ----
+    if (renewalPaymentId) {
+        try {
+            const { data: full } = await supabase
+                .from('payments')
+                .select('id, reference_id, provider, stripe_id, status, user_id, email, plan_type, billing_period, amount, currency, created_at')
+                .eq('id', renewalPaymentId)
+                .maybeSingle<PaymentRow>();
+            if (full) {
+                const payment: PaymentRow = {
+                    id: full.id,
+                    reference_id: full.reference_id ?? null,
+                    provider: full.provider ?? null,
+                    stripe_id: full.stripe_id ?? null,
+                    status: full.status ?? null,
+                    user_id: full.user_id ?? null,
+                    email: full.email ?? null,
+                    plan_type: full.plan_type ?? null,
+                    billing_period: full.billing_period ?? null,
+                    amount: full.amount ?? null,
+                    currency: full.currency ?? null,
+                    created_at: full.created_at ?? null,
+                    service_start: periodStart,
+                    service_end: periodEnd,
+                };
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('id, full_name, email, preferred_locale')
+                    .eq('id', payment.user_id ?? '')
+                    .maybeSingle<CustomerProfileRow & { preferred_locale?: string | null }>();
+                const license: LicenseRow | null = (data as { license_key?: string; expires_at?: string })?.license_key
+                    ? {
+                        license_key: (data as { license_key: string }).license_key,
+                        expires_at: (data as { expires_at?: string }).expires_at ?? null,
+                    }
+                    : null;
+                const base = (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.voltrisoptimizer.com').replace(/\/$/, '');
+                await dispatchRenewalEmail({
+                    payment,
+                    profile: profile ?? null,
+                    license,
+                    downloadUrl: `${base}/api/invoices/${payment.id}/download`,
+                    stripeInvoiceId: invoice.id,
+                    ctx,
+                }, supabase);
+            }
+        } catch (err: any) {
+            logWarn(ctx, 'dispatch renewal email falhou (renovação preservada)', { error: err?.message ?? String(err) });
+        }
+    }
 }
 
 // ============================================================================
@@ -450,5 +598,50 @@ async function revokeForSubscription(supabase: SupabaseClient, subId: string, ct
         logSuccess(ctx, 'revogacoes por e-mail', { count: byEmail.data?.length ?? 0 });
     } else {
         logSuccess(ctx, 'revogacoes por user_id', { count: byUser.data.length });
+    }
+
+    // ---- FASE 13: e-mail de cancelamento (best-effort). Chave =
+    // `cancel:<subscription_id>`, única por subscription. Se a Stripe reenviar
+    // o deleted, o outbox trata como duplicate e não manda de novo.
+    try {
+        const { data: lastPay } = await supabase.from('payments')
+            .select('id, reference_id, provider, stripe_id, status, user_id, email, plan_type, billing_period, amount, currency, created_at')
+            .eq('user_id', sub.user_id ?? '')
+            .eq('plan_type', sub.plan_type ?? '')
+            .order('created_at', { ascending: false })
+            .limit(1)
+            .maybeSingle<PaymentRow>();
+        if (lastPay) {
+            const payment: PaymentRow = {
+                id: lastPay.id,
+                reference_id: lastPay.reference_id ?? null,
+                provider: lastPay.provider ?? null,
+                stripe_id: lastPay.stripe_id ?? null,
+                status: 'canceled',
+                user_id: lastPay.user_id ?? null,
+                email: lastPay.email ?? null,
+                plan_type: lastPay.plan_type ?? null,
+                billing_period: lastPay.billing_period ?? null,
+                amount: lastPay.amount ?? null,
+                currency: lastPay.currency ?? null,
+                created_at: lastPay.created_at ?? null,
+            };
+            const { data: profile } = await supabase.from('profiles')
+                .select('id, full_name, email, preferred_locale')
+                .eq('id', payment.user_id ?? '')
+                .maybeSingle<CustomerProfileRow & { preferred_locale?: string | null }>();
+            const revokedLicense = Array.isArray(byUser.data) && byUser.data.length > 0
+                ? { license_key: byUser.data[0].license_key ?? null, expires_at: null }
+                : null;
+            await dispatchCancellationEmail({
+                payment,
+                profile: profile ?? null,
+                license: revokedLicense,
+                stripeSubscriptionId: subId,
+                ctx,
+            }, supabase);
+        }
+    } catch (err: any) {
+        logWarn(ctx, 'dispatch cancellation email falhou (revogação preservada)', { error: err?.message ?? String(err) });
     }
 }

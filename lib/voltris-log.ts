@@ -41,7 +41,9 @@ export type VoltrisOperation =
     | 'EMAIL_ENQUEUE'
     | 'EMAIL_WORKER'
     | 'EMAIL_RESEND'
-    | 'AUTH_HOOK';
+    | 'AUTH_HOOK'
+    | 'INVOICE_DOWNLOAD'
+    | 'INVOICE_PDF_RENDER';
 
 type LogLevel = 'info' | 'warn' | 'error';
 

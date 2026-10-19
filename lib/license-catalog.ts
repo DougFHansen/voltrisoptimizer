@@ -10,7 +10,7 @@
  *   standard=1, pro=3, enterprise=9999 (ilimitado), trial=1.
  */
 
-import type { Locale } from './i18n';
+import type { Locale } from './locale.ts';
 
 export type PlanType = 'standard' | 'pro' | 'enterprise';
 export type BillingPeriod = 'month' | 'year';

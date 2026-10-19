@@ -136,7 +136,7 @@ export interface RenderedEmail {
 // ============================================================================
 
 /** Marca no topo: texto VOLTRIS + tagline do produto + barra tricolor. */
-function logoBlock(copy: (k: EmailCopyKey) => string): string {
+export function logoBlock(copy: (k: EmailCopyKey) => string): string {
     return `
         <tr>
           <td style="padding:32px 32px 20px 32px;" align="left">
@@ -156,7 +156,7 @@ function logoBlock(copy: (k: EmailCopyKey) => string): string {
 }
 
 /** Faixa colorida da marca (fallback sólido, sem degradê). */
-function brandBar(): string {
+export function brandBar(): string {
     return `
         <tr>
           <td height="5" style="height:5px;background:${COLORS.purple};font-size:0;line-height:0;mso-line-height-rule:exactly;">&nbsp;</td>
@@ -164,7 +164,7 @@ function brandBar(): string {
 }
 
 /** Cabeçalho com degradê + cor sólida por baixo (Outlook ignora linear-gradient). */
-function hero(kicker: string, title: string, subtitle?: string): string {
+export function hero(kicker: string, title: string, subtitle?: string): string {
     return `
         <tr>
           <td align="center" bgcolor="${COLORS.surfaceAlt}"
@@ -187,7 +187,7 @@ function hero(kicker: string, title: string, subtitle?: string): string {
  * mente em `<td>`). O link em texto abaixo é OBRIGATÓRIO: se o botão quebrar,
  * o usuário ainda consegue colar a URL.
  */
-function button(label: string, href: string): string {
+export function button(label: string, href: string): string {
     const safeUrl = safeHref(href);
     return `
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:24px auto;">
@@ -210,11 +210,11 @@ function button(label: string, href: string): string {
 }
 
 /** Parágrafo padrão. */
-const paragraph = (text: string): string =>
+export const paragraph = (text: string): string =>
     `<p style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;font-size:14px;color:${COLORS.textSoft};line-height:1.7;margin:0 0 14px 0;">${text}</p>`;
 
 /** Caixa de aviso (nota cinza com borda). */
-function noteBlock(innerHtml: string): string {
+export function noteBlock(innerHtml: string): string {
     return `
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:14px 0 4px 0;">
           <tr>
@@ -228,7 +228,7 @@ function noteBlock(innerHtml: string): string {
 }
 
 /** Rodapé comum (copyright + suporte). */
-function footerBlock(copy: (k: EmailCopyKey) => string, ctx: EmailContext): string {
+export function footerBlock(copy: (k: EmailCopyKey) => string, ctx: EmailContext): string {
     const year = new Date().getFullYear();
     const copyright = interpolate(copy('footerCopyright'), { year });
     return `
