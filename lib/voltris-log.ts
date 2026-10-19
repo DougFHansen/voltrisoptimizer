@@ -40,7 +40,8 @@ export type VoltrisOperation =
     | 'ADMIN_RECONCILE'
     | 'EMAIL_ENQUEUE'
     | 'EMAIL_WORKER'
-    | 'EMAIL_RESEND';
+    | 'EMAIL_RESEND'
+    | 'AUTH_HOOK';
 
 type LogLevel = 'info' | 'warn' | 'error';
 
