@@ -3073,7 +3073,12 @@ create policy "Users can insert their own profile"
 DROP POLICY IF EXISTS "Users can update their own profile" ON public.profiles;
 create policy "Users can update their own profile"
     on public.profiles for update
-    using ( auth.uid() = id );
+    using ( auth.uid() = id )
+    with check ( auth.uid() = id );
+-- Sem WITH CHECK a policy vale tambem para a linha nova, e ai o proprio usuario
+-- conseguia gravar {"is_admin":true} pela REST API. O trigger
+-- trg_protect_profile_privileges (FASE 8.5b) fecha isso na origem; a clausula fica
+-- explicita aqui para a protecao nao depender de um unico lugar.
 
 -- Create function to handle updated_at
 create or replace function public.handle_updated_at()
@@ -4514,6 +4519,10 @@ RETURNS TRIGGER
 LANGUAGE plpgsql
 SECURITY DEFINER
 AS $$
+DECLARE
+    -- login pode colidir (a coluna e UNIQUE) e o cadastro manda country que antes
+    -- era descartado; ver comentarios junto do INSERT.
+    v_login text := COALESCE(NEW.raw_user_meta_data->>'login', split_part(NEW.email, '@', 1));
 BEGIN
     -- Debug: log dos dados recebidos
     RAISE NOTICE 'Criando perfil para usuário: %', NEW.id;
@@ -4527,6 +4536,24 @@ BEGIN
         NEW.raw_user_meta_data->>'state',
         NEW.raw_user_meta_data->>'cep';
     
+    -- 1) profiles.login e UNIQUE (L43). Dois cadastros cuja parte local do e-mail
+    --    era igual (a@gmail.com e a@outlook.com) colidiam, o INSERT devolvia 23505
+    --    e o GoTrue respondia 500 "Database error saving new user": a conta nao
+    --    nascia e ninguem sabia por que. Aqui o login repetido ganha sufixo.
+    -- 2) country vinha no metadata do cadastro e era descartado: o perfil nascia
+    --    sem pais e o formulario de completar cadastro caia no padrao Brazil num
+    --    site internacional.
+    -- 3) ON CONFLICT (id) DO NOTHING: se o perfil ja existe (re-execucao, ou corrida
+    --    com o insert administrativo de /auth/callback), o trigger NAO pode abortar
+    --    o INSERT em auth.users.
+    IF v_login IS NULL OR v_login = '' THEN
+        v_login := 'usuario';
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM public.profiles pr WHERE pr.login = v_login) THEN
+        v_login := v_login || '_' || left(NEW.id::text, 8);
+    END IF;
+
     INSERT INTO public.profiles (
         id,
         login,
@@ -4538,12 +4565,13 @@ BEGIN
         neighborhood,
         state,
         cep,
+        country,
         is_admin,
         role
     )
     VALUES (
         NEW.id,
-        COALESCE(NEW.raw_user_meta_data->>'login', split_part(NEW.email, '@', 1)),
+        v_login,
         NEW.email,
         COALESCE(NEW.raw_user_meta_data->>'full_name', ''),
         COALESCE(NEW.raw_user_meta_data->>'phone', ''),
@@ -4552,9 +4580,11 @@ BEGIN
         COALESCE(NEW.raw_user_meta_data->>'neighborhood', ''),
         COALESCE(NEW.raw_user_meta_data->>'state', ''),
         COALESCE(NEW.raw_user_meta_data->>'cep', ''),
+        COALESCE(NEW.raw_user_meta_data->>'country', ''),
         false,
         'user'
-    );
+    )
+    ON CONFLICT (id) DO NOTHING;
     
     RAISE NOTICE 'Perfil criado com sucesso para usuário: %', NEW.id;
     RETURN NEW;
@@ -4598,7 +4628,8 @@ CREATE POLICY "Admins podem ver todos os perfis"
 CREATE POLICY "Usuários podem atualizar seus próprios perfis"
     ON public.profiles
     FOR UPDATE
-    USING (auth.uid() = id);
+    USING (auth.uid() = id)
+    WITH CHECK (auth.uid() = id);
 
 -- Usuário pode inserir o próprio perfil
 CREATE POLICY "Permitir insert do próprio perfil"
@@ -8629,11 +8660,17 @@ CREATE UNIQUE INDEX IF NOT EXISTS uq_license_devices_license_device
     ON public.license_devices(license_key, device_id);
 
 -- Vincular licencas existentes ao dono pelo email (dado, nao estrutura).
+-- So casa endereco CONFIRMADO: sem essa clausula, registrar uma conta com o email
+-- de outra pessoa bastava para puxar a licenca dela (user_id = atacante) e o
+-- dashboard da vitima esvaziava.
 UPDATE public.licenses l
    SET user_id = p.id
   FROM public.profiles p
+  JOIN auth.users u ON u.id = p.id
  WHERE l.user_id IS NULL
    AND p.email IS NOT NULL
+   AND u.email_confirmed_at IS NOT NULL
+   AND u.deleted_at IS NULL
    AND lower(p.email) = lower(l.customer_email);
 
 UPDATE public.licenses
@@ -8817,6 +8854,100 @@ CREATE POLICY remote_commands_service_all
     USING (true)
     WITH CHECK (true);
 
+-- ----------------------------------------------------------------------------
+-- 8.5b Identidade canonica e guarda de privilegios
+--
+-- (a) current_verified_email(): devolve o e-mail do usuario logado SOMENTE se o
+--     endereco estiver confirmado no Auth. As policies de licenses usavam
+--     "(SELECT u.email FROM auth.users u WHERE u.id = auth.uid())" dentro da
+--     propria policy: depende de o papel authenticated ter leitura de auth.users,
+--     e quando nao tem a subconsulta volta NULL e o dashboard de quem comprou fica
+--     vazio mesmo com pagamento legitimo. Versao SECURITY DEFINER dona postgres
+--     le auth.users de forma confiavel (foi o que se provou no editor SQL) e ainda
+--     exige email_confirmed_at, o que fecha a porta de registrar um e-mail de
+--     terceiro para herdar a licenca dele.
+--
+-- (b) profiles.stripe_customer_id: os endpoints app/api/stripe/portal, /refund e
+--     /cancel gravem e leem essa coluna, mas ela nao existia no schema (0
+--     ocorrencias em completo.sql). Toda a area de assinatura quebrava com
+--     PGRST204/42703. Recebe UNIQUE parcial: dois logins nao podem dividir o
+--     mesmo cliente Stripe.
+--
+-- (c) protect_profile_privileges(): as policies "FOR UPDATE USING (auth.uid() =
+--     id)" nao tem WITH CHECK de colunas, e em RLS nao existe OLD. Resultado: o
+--     proprio usuario conseguia gravar is_admin/role pela REST API (escalada de
+--     privilegio) e trocar o proprio email para herdar licencas de outra pessoa.
+--     O trigger neutraliza esses campos quando quem escreve e anon/authenticated.
+-- ----------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION public.current_verified_email()
+RETURNS text
+LANGUAGE sql
+STABLE
+SECURITY DEFINER
+SET search_path = public
+AS $$
+    SELECT lower(u.email)
+      FROM auth.users u
+     WHERE u.id = auth.uid()
+       AND u.email_confirmed_at IS NOT NULL
+       AND u.deleted_at IS NULL
+       AND u.banned_until IS NULL
+$$;
+
+COMMENT ON FUNCTION public.current_verified_email() IS
+    'Email (minusculo) do usuario autenticado, ou NULL quando o endereco nao esta confirmado ou a conta esta banida/removida. Fallback legado das policies de licenca, que tem user_id como vinculo primario.';
+
+-- Assinatura exata desta funcao (zero argumentos), entao GRANT/REVOKE diretos sao
+-- seguros; o padrao de varrer pg_proc existe para as que tem overload.
+REVOKE EXECUTE ON FUNCTION public.current_verified_email() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.current_verified_email() TO authenticated, service_role;
+
+ALTER TABLE public.profiles
+    ADD COLUMN IF NOT EXISTS stripe_customer_id TEXT;
+
+CREATE UNIQUE INDEX IF NOT EXISTS uq_profiles_stripe_customer_id
+    ON public.profiles(stripe_customer_id)
+ WHERE stripe_customer_id IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_profiles_email_lower ON public.profiles(lower(email));
+
+CREATE OR REPLACE FUNCTION public.protect_profile_privileges()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+    v_papel text := coalesce(auth.jwt() ->> 'role', '');
+BEGIN
+    -- Fora do PostgREST (SQL editor, migracoes, service_role) nao ha JWT de
+    -- anon/authenticated: ai o painel e o webhook podem mexer em tudo.
+    IF v_papel NOT IN ('authenticated', 'anon') THEN
+        RETURN NEW;
+    END IF;
+
+    -- Campos de privilegio e de identidade financeira: nunca pertencem ao usuario.
+    -- O email segue auth.users (muda pelo fluxo oficial de confirmacao do Auth),
+    -- nunca por PATCH na REST API.
+    NEW.is_admin           := OLD.is_admin;
+    NEW.role               := OLD.role;
+    NEW.is_blocked         := OLD.is_blocked;
+    NEW.is_deleted         := OLD.is_deleted;
+    NEW.email              := OLD.email;
+    NEW.stripe_customer_id := OLD.stripe_customer_id;
+    NEW.id                 := OLD.id;
+    NEW.created_at         := OLD.created_at;
+    RETURN NEW;
+END $$;
+
+REVOKE EXECUTE ON FUNCTION public.protect_profile_privileges() FROM PUBLIC, anon, authenticated;
+
+DROP TRIGGER IF EXISTS trg_protect_profile_privileges ON public.profiles;
+CREATE TRIGGER trg_protect_profile_privileges
+    BEFORE UPDATE ON public.profiles
+    FOR EACH ROW
+    EXECUTE FUNCTION public.protect_profile_privileges();
+
 -- 8.6 licenses (schema canonico: user_id e o vinculo; customer_email e o fallback legado)
 DROP POLICY IF EXISTS "licenses_select_own" ON public.licenses;
 CREATE POLICY licenses_select_own
@@ -8825,7 +8956,7 @@ CREATE POLICY licenses_select_own
     TO authenticated
     USING (
         user_id = auth.uid()
-        OR lower(customer_email) = lower((SELECT u.email FROM auth.users u WHERE u.id = auth.uid()))
+        OR lower(customer_email) = public.current_verified_email()
     );
 
 DROP POLICY IF EXISTS "licenses_service_all" ON public.licenses;
@@ -8847,7 +8978,7 @@ CREATE POLICY license_devices_select_own
          WHERE l.license_key = license_devices.license_key
            AND (
                  l.user_id = auth.uid()
-                 OR lower(l.customer_email) = lower((SELECT u.email FROM auth.users u WHERE u.id = auth.uid()))
+                 OR lower(l.customer_email) = public.current_verified_email()
                )
     ));
 

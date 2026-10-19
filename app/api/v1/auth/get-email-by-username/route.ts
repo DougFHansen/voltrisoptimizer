@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { isPlausibleLogin } from '@/lib/auth-safe';
 
 // Rate limiting para prevenir enumeração de usuários
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -29,15 +30,14 @@ export async function POST(request: NextRequest) {
     try {
         const { username } = await request.json();
 
-        if (!username || typeof username !== 'string' || username.length > 50) {
+        // Validação estrita reaproveitando a regra pura testada (isPlausibleLogin):
+        // charset [a-zA-Z0-9_.-], 2..50. Barra payloads absurdos e caracteres que
+        // poderiam montar cláusulas de ILIKE no banco.
+        if (!isPlausibleLogin(username)) {
             return NextResponse.json({ error: 'Username required' }, { status: 400 });
         }
 
-        // Sanitizar username
-        const sanitized = username.trim().replace(/[^a-zA-Z0-9_.-]/g, '');
-        if (!sanitized) {
-            return NextResponse.json({ error: 'Username inválido' }, { status: 400 });
-        }
+        const sanitized = username.trim();
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;

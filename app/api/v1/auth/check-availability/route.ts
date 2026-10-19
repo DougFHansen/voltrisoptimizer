@@ -22,7 +22,11 @@ export async function POST(req: Request) {
             if (data) conflicts.push('username');
         }
 
-        // 2. Check Email
+        // 2. Check Email (apenas na tabela profiles, que a trigger do DB mantém
+        // sincronizada com auth.users). Antes disto havia um auth.admin.listUsers(),
+        // que BAIXAVA TODOS os usuários do projeto para achar um só: custo O(n),
+        // risco de vazamento em massa e timeout. A consulta pontual em profiles é
+        // suficiente e segura para o aviso de UX do cadastro.
         if (email) {
             const { data } = await supabaseAdmin
                 .from('profiles')
@@ -30,11 +34,6 @@ export async function POST(req: Request) {
                 .eq('email', email)
                 .maybeSingle();
             if (data) conflicts.push('e-mail');
-
-            // Also check Auth directly
-            const { data: authData } = await supabaseAdmin.auth.admin.listUsers();
-            const existingAuthUser = authData.users.find(u => u.email === email);
-            if (existingAuthUser && !conflicts.includes('e-mail')) conflicts.push('e-mail');
         }
 
         // 3. Check Phone

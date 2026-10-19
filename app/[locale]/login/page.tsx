@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
+import { describeAuthFailure, looksLikeEmail } from '@/lib/auth-safe';
 import { notifyPageView } from '@/utils/notifications';
 import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
 
@@ -229,58 +230,41 @@ function LoginContent() {
     setLoading(true);
     try {
       let loginEmail = email.trim();
-      const isEmail = validateEmail(loginEmail);
+      const isEmail = looksLikeEmail(loginEmail);
 
-      // Se não for e-mail, tenta buscar por username
+      // Se não for e-mail, resolve o e-mail pelo username. O endpoint devolve resposta
+      // genérica e não diz se o username existe; aqui também cai na mesma mensagem de
+      // credencial inválida, para não virar oráculo de enumeração.
       if (!isEmail) {
-        try {
-          const res = await fetch('/api/v1/auth/get-email-by-username', {
-            method: 'POST',
-            body: JSON.stringify({ username: loginEmail }),
-          });
-          const data = await res.json();
-          if (data.email) {
-            loginEmail = data.email;
-          } else {
-            throw new Error('User not found');
-          }
-        } catch (err) {
-          throw new Error('User not found');
-        }
-      } else {
-        // Se for e-mail, vamos verificar se ele existe antes de tentar a senha
-        try {
-          const checkRes = await fetch('/api/v1/auth/check-availability', {
-            method: 'POST',
-            body: JSON.stringify({ email: loginEmail }),
-            headers: { 'Content-Type': 'application/json' }
-          });
-          const checkData = await checkRes.json();
-          // Se available for true, quer dizer que o e-mail não foi usado, ou seja, NÃO EXISTE!
-          if (checkData.available === true) {
-            throw new Error('Email not found');
-          }
-        } catch (err: any) {
-          if (err.message === 'Email not found') throw err;
+        const res = await fetch('/api/v1/auth/get-email-by-username', {
+          method: 'POST',
+          body: JSON.stringify({ username: loginEmail }),
+        });
+        const data = await res.json();
+        if (data.email) {
+          loginEmail = data.email;
+        } else {
+          throw new Error('Invalid login credentials');
         }
       }
 
-      console.log('🔄 Starting login for:', loginEmail);
+      // Removida a pré-consulta "esse e-mail existe?" (check-availability) antes da senha.
+      // Ela era um oráculo de enumeração (devolvia 'Email not found') e mascarava o caso
+      // real mais comum: conta criada pelo Google não tem senha. O GoTrue já responde
+      // 'Invalid login credentials' tanto para e-mail inexistente quanto para senha errada;
+      // preservamos essa equivalência e apenas traduzimos a falha sem revelar a origem.
       const { data: signInData, error } = await supabase.auth.signInWithPassword({
         email: loginEmail,
         password
       });
 
       if (error || !signInData.user) {
-        // Nao mascarar a falha. Antes disto, QUALQUER erro virava 'Incorrect password',
-        // o que escondia o caso real mais comum: e-mail ainda nao confirmado (o cadastro
-        // cria o usuario, mas o GoTrue recusa o login por senha ate o clique no link),
-        // fazendo a pessoa jurar que digitou a senha errada.
+        // Nao mascarar a falha com um único 'Incorrect password'. O caso real mais comum
+        // que isso escondia: e-mail ainda nao confirmado (o cadastro cria o usuario, mas o
+        // GoTrue recusa o login por senha ate o clique no link). describeAuthFailure
+        // separa 'nao confirmado' / 'rate limit' / 'credencial invalida' sem enumerar.
         console.error('Login failed:', error?.code ?? '(no error object)', error?.message ?? 'no session returned');
-        if (error?.message && /not confirmed|could not authenticate/i.test(error.message)) {
-          throw new Error('Email not confirmed. Open the confirmation link we sent you and try again.');
-        }
-        throw new Error('Incorrect password');
+        throw new Error(error?.message ?? 'Invalid login credentials');
       }
       console.log('✅ Login successful:', signInData.user.id);
 
@@ -324,7 +308,8 @@ function LoginContent() {
       }, 400);
     } catch (err: any) {
       console.error('❌ Error in handleLogin:', err);
-      setError(translateError(err.message));
+      // Tradução única e anti-enumeração da falha de login.
+      setError(describeAuthFailure(err?.message).message);
       setLoading(false); // Ensure loading is deactivated in case of error
     } finally {
       // Loading should only stay true if success is false and there's no error

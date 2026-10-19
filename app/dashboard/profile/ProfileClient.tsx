@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import VoltrisIcon from '@/components/dashboard/VoltrisIcon';
@@ -10,6 +10,7 @@ import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import { useDashboard } from '@/app/context/DashboardContext';
 import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
+import { podeDesvincular } from '@/lib/auth-safe';
 
 interface Profile {
   id: string;
@@ -51,6 +52,14 @@ export default function ProfileClient() {
 
   const [isCepLoading, setIsCepLoading] = useState(false);
   const [isCepValid, setIsCepValid] = useState(false);
+
+  // --- SIGN-IN METHODS / IDENTITY LINKING ---
+  const [identidades, setIdentidades] = useState<Array<{ provider: string; identity_id: string }>>([]);
+  const [temSenha, setTemSenha] = useState(false);
+  const [gerindoConexao, setGerindoConexao] = useState(false);
+  const [novaSenha, setNovaSenha] = useState('');
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [salvandoSenha, setSalvandoSenha] = useState(false);
 
   const supabase = useMemo(() => createClient(), []);
 
@@ -193,6 +202,94 @@ export default function ProfileClient() {
       setSaving(false);
     }
   };
+
+  const refreshIdentities = useCallback(async () => {
+    try {
+      const { data } = await supabase.auth.getUserIdentities();
+      const lista = data?.identities ?? [];
+      setIdentidades(lista.map(i => ({ provider: i.provider, identity_id: i.identity_id })));
+      // Uma identidade 'email' só existe quando há credencial de senha. Conta criada
+      // pelo Google aparece apenas como 'google' até a pessoa definir uma senha.
+      setTemSenha(lista.some(i => i.provider === 'email'));
+    } catch (err) {
+      console.error('Error reading identities:', err);
+    }
+  }, [supabase]);
+
+  useEffect(() => {
+    if (user) refreshIdentities();
+  }, [user, refreshIdentities]);
+
+  const handleLinkGoogle = async () => {
+    setGerindoConexao(true);
+    try {
+      // linkIdentity anexa o Google à conta JÁ AUTENTICADA (mesmo user_id), preservando
+      // perfil, licenças, compras e dispositivos. Volta ao /auth/callback, que trata o
+      // code e redireciona de volta ao perfil.
+      const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent('/dashboard/profile')}`;
+      const { error } = await supabase.auth.linkIdentity({
+        provider: 'google',
+        options: { redirectTo },
+      });
+      if (error) {
+        toast.error(error.message || 'Could not connect Google.');
+        setGerindoConexao(false);
+      }
+      // Em sucesso o navegador navega para o Google; mantemos o botão em "Connecting...".
+    } catch (err: any) {
+      toast.error(err?.message || 'Could not connect Google.');
+      setGerindoConexao(false);
+    }
+  };
+
+  const handleUnlinkGoogle = async () => {
+    const googleSimplificada = identidades.find(i => i.provider === 'google');
+    if (!googleSimplificada) return;
+    if (!podeDesvincular(identidades, temSenha)) {
+      return toast.error('This is your only way to sign in. Set a password before disconnecting Google.');
+    }
+    setGerindoConexao(true);
+    try {
+      // unlinkIdentity exige o objeto UserIdentity completo; relemos do servidor para
+      // ter a representação atual (com last_sign_in etc.) antes de remover.
+      const { data } = await supabase.auth.getUserIdentities();
+      const alvo = (data?.identities ?? []).find(i => i.provider === 'google');
+      if (!alvo) throw new Error('Google is not connected to this account.');
+      const { error } = await supabase.auth.unlinkIdentity(alvo);
+      if (error) throw error;
+      toast.success('Google disconnected.');
+      await refreshIdentities();
+    } catch (err: any) {
+      toast.error(err?.message || 'Could not disconnect Google.');
+    } finally {
+      setGerindoConexao(false);
+    }
+  };
+
+  const handleSetPassword = async () => {
+    if (!novaSenha || novaSenha.length < 8) {
+      return toast.error('Password must be at least 8 characters.');
+    }
+    setSalvandoSenha(true);
+    try {
+      // updateUser({ password }) adiciona/atualiza a credencial de senha na MESMA
+      // conta. Não cria usuário novo nem mexe em auth.users/identities na mão.
+      const { error } = await supabase.auth.updateUser({ password: novaSenha });
+      if (error) throw error;
+      toast.success(temSenha
+        ? 'Password updated.'
+        : 'Password set. You can now also sign in with email and password.');
+      setNovaSenha('');
+      await refreshIdentities();
+    } catch (err: any) {
+      toast.error(err?.message || 'Could not save password.');
+    } finally {
+      setSalvandoSenha(false);
+    }
+  };
+
+  const temGoogle = identidades.some(i => i.provider === 'google');
+  const podeRemoverGoogle = podeDesvincular(identidades, temSenha);
 
   if (loading) {
     return (
@@ -477,6 +574,97 @@ export default function ProfileClient() {
                  )}
                </div>
             </div>
+          </div>
+        </div>
+
+        {/* Sign-in methods / identity linking */}
+        <div className={`p-6 sm:p-7 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'} space-y-5`}>
+          <div className="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+            <VoltrisIconTile icon="link" accent={DASHBOARD_ACCENT.brand} size={8} />
+            <div>
+              <h3 className="text-sm font-bold text-white tracking-tight">Sign-in methods</h3>
+              <p className="text-[11px] text-slate-500">Add Google or a password without losing your licenses, payments or devices</p>
+            </div>
+          </div>
+
+          {/* Google row */}
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-9 h-9 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center shrink-0">
+                <VoltrisIcon name="system" size={16} className="text-slate-300" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-white">Google</p>
+                {temGoogle
+                  ? <p className="text-[11px] text-emerald-400">Connected</p>
+                  : <p className="text-[11px] text-slate-500">Not connected</p>}
+              </div>
+            </div>
+            {temGoogle ? (
+              <button
+                type="button"
+                disabled={gerindoConexao || !podeRemoverGoogle}
+                onClick={handleUnlinkGoogle}
+                title={podeRemoverGoogle ? undefined : 'Set a password first to disconnect Google'}
+                className="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs hover:bg-slate-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Disconnect
+              </button>
+            ) : (
+              <button
+                type="button"
+                disabled={gerindoConexao}
+                onClick={handleLinkGoogle}
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all flex items-center gap-2 disabled:opacity-50"
+              >
+                <VoltrisIcon name="link" size={14} />
+                <span>{gerindoConexao ? 'Connecting...' : 'Connect Google'}</span>
+              </button>
+            )}
+          </div>
+
+          {/* Email & password row */}
+          <div className="pt-4 border-t border-slate-800/80 space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center shrink-0">
+                <VoltrisIcon name="key" size={16} className="text-slate-300" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-white">Email &amp; password</p>
+                <p className="text-[11px] text-slate-500">{temSenha ? 'Password configured' : 'No password set yet'}</p>
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:items-center">
+              <div className="relative flex-1">
+                <input
+                  type={mostrarSenha ? 'text' : 'password'}
+                  value={novaSenha}
+                  onChange={(e) => setNovaSenha(e.target.value)}
+                  placeholder={temSenha ? 'New password' : 'Create a password (min. 8 characters)'}
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors pr-16"
+                />
+                <button
+                  type="button"
+                  onClick={() => setMostrarSenha(s => !s)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-semibold text-slate-500 hover:text-slate-300"
+                >
+                  {mostrarSenha ? 'Hide' : 'Show'}
+                </button>
+              </div>
+              <button
+                type="button"
+                disabled={salvandoSenha || !novaSenha}
+                onClick={handleSetPassword}
+                className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl transition-all disabled:opacity-50 whitespace-nowrap"
+              >
+                {salvandoSenha ? 'Saving...' : (temSenha ? 'Update password' : 'Set password')}
+              </button>
+            </div>
+            {!temSenha && (
+              <p className="text-[11px] text-slate-500">
+                Setting a password lets you sign in with email and password too — the same account keeps all your licenses, payments and linked devices.
+              </p>
+            )}
           </div>
         </div>
 

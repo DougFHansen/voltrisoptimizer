@@ -1,14 +1,17 @@
 import { createClient } from '@/utils/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { TelegramService } from '@/services/telegramService';
+import { oauthDestination } from '@/lib/auth-safe';
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
   const error = searchParams.get('error');
   const errorDescription = searchParams.get('error_description');
-  // 'next' pode vir como query param (OAuth Google passa via redirectTo) ou como parâmetro direto
-  const next = searchParams.get('next') || '/';
+  // 'next' pode vir como query param (OAuth Google passa via redirectTo) ou como parâmetro direto.
+  // SEMPRE normalizado: um ?next controlado por terceiros jamais pode apontar para fora do domínio
+  // (open redirect com sessão recém-criada). oauthDestination devolve só caminho interno.
+  const next = oauthDestination(searchParams.get('next'));
 
   console.log('🔍 [OAuth Callback] Iniciando callback');
   console.log('🔍 [OAuth Callback] Código:', code ? 'SIM' : 'NÃO');
@@ -52,11 +55,8 @@ export async function GET(request: NextRequest) {
       }
       
       console.log('✅ [OAuth Callback] Sessão criada com sucesso para usuário:', data.user?.id);
-      console.log('🔍 [OAuth Callback] Dados do usuário:', {
-        id: data.user?.id,
-        email: data.user?.email,
-        metadata: data.user?.user_metadata
-      });
+      // Não logar e-mail/metadata: PII e dados de terceiros ficam retidos no log da plataforma.
+      // O id (opaco) basta para correlacionar o fluxo em caso de suporte.
       
       if (data.user) {
         // Verificar se o perfil existe
@@ -128,7 +128,7 @@ export async function GET(request: NextRequest) {
           return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao buscar perfil do usuário')}`);
         }
 
-        console.log('✅ [OAuth Callback] Perfil encontrado:', profile);
+        console.log('✅ [OAuth Callback] Perfil encontrado para:', data.user.id);
 
         // Se campos obrigatórios estão faltando, redirecionar para completar cadastro
         const missingFields = !profile?.phone || !profile?.city || !profile?.state || !profile?.cep;
@@ -138,9 +138,8 @@ export async function GET(request: NextRequest) {
           return NextResponse.redirect(`${origin}/dashboard/profile?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
         } else {
           console.log('✅ [OAuth Callback] Perfil completo, redirecionando para:', next);
-          // Se next é '/', redirecionar para dashboard como fallback
-          const finalDestination = next === '/' ? '/dashboard' : next;
-          return NextResponse.redirect(`${origin}${finalDestination}`);
+          // `next` já saiu por oauthDestination: é caminho interno, nunca //host nem URL externa.
+          return NextResponse.redirect(`${origin}${next}`);
         }
       }
     } catch (error) {
