@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { createAdminClient } from '@/utils/supabase/admin';
 import { createClient } from '@/utils/supabase/server';
+import { resolveUserLocale, DEFAULT_LOCALE, type Locale } from '@/lib/locale';
 import {
     SERVICE_CATALOG,
     resolveLicenseProduct,
@@ -40,11 +41,6 @@ export async function POST(req: NextRequest) {
         const licenseType = String(body.license_type ?? '').toLowerCase();
         const billingPeriod = String(body.billing_period ?? 'month');
 
-        // Idioma -> moeda. Fonte: body.locale, senao cookie voltris-locale, senao en.
-        const localeFromCookie = req.cookies.get('voltris-locale')?.value;
-        const locale = String(body.locale ?? localeFromCookie ?? 'en');
-        const currency: Currency = currencyForLocale(locale);
-
         // 1. Identidade: sessao autenticada e a unica fonte de user_id/email.
         const auth = await createClient();
         const { data: sessionData, error: authError } = await auth.auth.getUser();
@@ -58,6 +54,27 @@ export async function POST(req: NextRequest) {
             );
         }
         ctx.userId = user.id;
+
+        // 2. Idioma -> moeda. FASE 2 + 7: a FONTE PRIMARIA e o perfil do usuario
+        //    (coluna `profiles.preferred_locale`, gravada no cadastro). Body e
+        //    cookie viram apenas fallback para sessoes anonimas. O idioma NUNCA
+        //    depende do estado visual do navegador no momento do clique.
+        const admin = createAdminClient();
+        const { data: profile } = await admin
+            .from('profiles')
+            .select('preferred_locale')
+            .eq('id', user.id)
+            .maybeSingle();
+
+        const locale: Locale = resolveUserLocale({
+            profileLocale: profile?.preferred_locale,
+            metadataLocale: user.user_metadata?.preferred_locale,
+            cookieLocale: req.cookies.get('voltris-locale')?.value,
+            // body.locale e ignorado: um link compartilhado em outro idioma nao
+            // pode cobrar USD de quem mora na Franca.
+            acceptLanguage: req.headers.get('accept-language'),
+        }) ?? DEFAULT_LOCALE;
+        const currency: Currency = currencyForLocale(locale);
 
         const service = SERVICE_CATALOG[licenseType];
         const product = resolveLicenseProduct(licenseType, billingPeriod, currency);
@@ -77,9 +94,9 @@ export async function POST(req: NextRequest) {
         const referenceId = `${isLicense ? 'st' : 'sv'}_${Date.now()}`;
         const email = user.email!;
 
-        const supabase = createAdminClient();
+        const supabase = admin;
 
-        // 2. Registrar intencao de pagamento (erro verificado — sem silent fail).
+        // 3. Registrar intencao de pagamento (erro verificado — sem silent fail).
         const { error: payInsertError } = await supabase.from('payments').insert([{
             reference_id: referenceId,
             provider: 'stripe',
@@ -98,7 +115,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Could not start the payment' }, { status: 500 });
         }
 
-        // 3. Sessao Stripe (preco e moeda sempre do servidor/catalogo).
+        // 4. Sessao Stripe (preco e moeda sempre do servidor/catalogo).
         const sessionOptions: any = {
             payment_method_types: ['card'],
             line_items: [

@@ -330,7 +330,7 @@ async function handleInvoicePaid(supabase: SupabaseClient, invoiceRaw: Stripe.In
     if (!renewalPaymentId) {
         const { data: created, error: createErr } = await supabase.from('payments')
             .insert({
-                reference_id: `renew_${invoice.number ?? subId}_${Date.now()}`,
+                reference_id: `renew:${invoice.id}`,
                 provider: 'stripe',
                 stripe_id: paymentIntentId,
                 stripe_subscription_id: subId,
