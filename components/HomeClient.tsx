@@ -3,6 +3,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Link from "next/link";
 import { useState, useEffect } from 'react';
+import { createClient } from '@/utils/supabase/client';
 import {
     FiMonitor,
     FiSettings,
@@ -103,23 +104,58 @@ export default function HomeClient() {
     }, []);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const params = new URLSearchParams(window.location.search);
-            const code = params.get('code');
-            const error = params.get('error');
-            const errorDescription = params.get('error_description');
+        if (typeof window === 'undefined') return;
 
-            if (code) {
-                const savedRedirect = sessionStorage.getItem('oauth_redirect_after_login');
-                sessionStorage.removeItem('oauth_redirect_after_login');
-                const nextParam = savedRedirect ? `&next=${encodeURIComponent(savedRedirect)}` : '';
-                window.location.replace(`/auth/callback?code=${encodeURIComponent(code)}${nextParam}`);
-                return;
-            }
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const error = params.get('error');
+        const errorDescription = params.get('error_description');
 
-            if (error) {
-                alert(`Authentication error: ${error}\n${errorDescription || ''}`);
-            }
+        // Falha explícita do provedor (ex.: a pessoa cancelou no Google): só avisa e
+        // limpa a URL. Sem isso, um refresh re-exibiria o mesmo alerta.
+        if (error) {
+            alert(`Authentication error: ${error}\n${errorDescription || ''}`);
+            window.history.replaceState({}, '', window.location.pathname);
+            return;
+        }
+
+        // O Google devolveu o ?code= AQUI na home em vez de /auth/callback. Isso só
+        // acontece quando o redirectTo não bate com a allowlist do Supabase. Nesta
+        // página o createBrowserClient (que FORÇA detectSessionInUrl) já está trocando
+        // este mesmo code por sessão neste instante. Reenviá-lo para /auth/callback
+        // fazia a troca DUAS VEZES e o GoTrue respondia "invalid flow state, no valid
+        // flow state found" (o code é de uso único). Então NÃO reenviamos: aguardamos a
+        // sessão que o próprio navegador está criando e redirecionamos para o destino.
+        if (code) {
+            const dest = sessionStorage.getItem('oauth_redirect_after_login') || '/dashboard';
+            sessionStorage.removeItem('oauth_redirect_after_login');
+            // Remove o ?code= da URL sem navegar: evita um novo consumo se a pessoa
+            // atualizar a página, e mantém o componente montado para ouvir o evento.
+            window.history.replaceState({}, '', window.location.pathname);
+
+            const supabase = createClient();
+            let done = false;
+            const go = (to: string) => {
+                if (done) return;
+                done = true;
+                window.location.replace(to);
+            };
+
+            const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+                if (session?.user) go(dest);
+            });
+            // Cobertura para quando a sessão já foi criada antes deste listener.
+            supabase.auth.getSession().then(({ data }) => {
+                if (data.session?.user) go(dest);
+            });
+            // Sem sessão em 8s, o login não se completou: volta ao login com aviso claro
+            // (nunca para /dashboard deslogado, e nunca re-resgatando o code).
+            setTimeout(() => {
+                sub.subscription.unsubscribe();
+                go(`/login?error=${encodeURIComponent('We could not complete the Google sign-in. Please try again.')}`);
+            }, 8000);
+
+            return () => { sub.subscription.unsubscribe(); };
         }
     }, []);
 
