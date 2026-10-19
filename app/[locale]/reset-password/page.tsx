@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import Header from "@/components/Header";
@@ -13,8 +13,28 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [checking, setChecking] = useState(true);
+  const [hasSession, setHasSession] = useState(false);
   const router = useRouter();
-  const supabase = createClient();
+  // Um unico cliente para toda a pagina: o detectSessionInUrl consome a sessao de
+  // recuperacao que vem no link apenas na primeira inicializacao. useState com funcao
+  // garante criacao preguicosa (useRef(createClient()) reavaliaria createClient() a cada
+  // render, gerando instancias descartadas que disputariam o link).
+  const [supabase] = useState(() => createClient());
+
+  useEffect(() => {
+    let ativo = true;
+    supabase.auth.getSession().then(({ data }) => {
+      if (!ativo) return;
+      setHasSession(!!data.session);
+      setChecking(false);
+    });
+    // Se o link de recuperacao for consumido com sucesso, a sessao aparece aqui.
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) setHasSession(true);
+    });
+    return () => { ativo = false; sub.subscription.unsubscribe(); };
+  }, [supabase]);
 
   const handleResetPassword = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,6 +76,17 @@ export default function ResetPasswordPage() {
             <div className="text-center">
               <p className="text-green-500 mb-4">Password reset successfully!</p>
               <p className="text-[#adb5bd]">Redirecting to the login page...</p>
+            </div>
+          ) : checking ? (
+            <p className="text-center text-[#adb5bd] py-8">Validating the recovery link...</p>
+          ) : !hasSession ? (
+            <div className="text-center py-4">
+              <p className="text-[#FF4B6B] text-sm mb-4">
+                This page only works when opened from the recovery link sent to your email.
+              </p>
+              <a href="/login" className="inline-block px-6 py-2 rounded-lg bg-[#2a2a2e] text-white text-sm font-semibold border border-[#8B31FF]/30">
+                Back to login
+              </a>
             </div>
           ) : (
             <form onSubmit={handleResetPassword}>
