@@ -2,14 +2,9 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
-import { 
-  FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, 
-  FiEdit3, FiSave, FiX, FiShield, FiLock, 
-  FiCpu, FiCheckCircle, FiActivity
-} from 'react-icons/fi';
-import { Globe, ArrowRight, Loader2 as LucideLoader2 } from 'lucide-react';
+import VoltrisIcon from '@/components/dashboard/VoltrisIcon';
+import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
@@ -35,14 +30,14 @@ export default function ProfileClient() {
   const { transparencyMode } = useDashboard();
   const { user } = useAuth();
   const searchParams = useSearchParams();
-  
+
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  
+
   const isCompletar = searchParams?.get('completar') === '1';
   const [isEditing, setIsEditing] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     full_name: '',
     login: '',
@@ -54,7 +49,6 @@ export default function ProfileClient() {
     cep: ''
   });
 
-  const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isCepLoading, setIsCepLoading] = useState(false);
   const [isCepValid, setIsCepValid] = useState(false);
 
@@ -180,10 +174,7 @@ export default function ProfileClient() {
 
       if (error) throw error;
 
-      toast.success('Profile updated!', {
-        icon: '✅',
-        style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
-      });
+      toast.success('Profile updated successfully!');
       setIsEditing(false);
       
       if (isCompletar) {
@@ -205,329 +196,289 @@ export default function ProfileClient() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-64 gap-6">
-        <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
-        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Synchronizing User Identity...</p>
+      <div className="flex flex-col items-center justify-center py-32 gap-3 text-slate-400">
+        <div className="w-8 h-8 rounded-full border-2 border-slate-700 border-t-indigo-500 animate-spin"></div>
+        <p className="text-xs font-medium text-slate-400">Loading user data...</p>
       </div>
     );
   }
 
+  const cepLocked = formData.country === 'Brazil' && isCepValid;
+
   return (
     <AuthGuard>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-6 w-full max-w-full">
         
-        {/* Profile Identity Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`relative p-10 rounded-[3.5rem] border overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10] border-white/5 shadow-3xl'}`}
-        >
-          <div className="absolute -right-20 -top-20 w-[600px] h-[600px] bg-[#8B31FF]/5 blur-[150px] rounded-full"></div>
-          
-          <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
-             <div className="relative group">
-                <div className="w-40 h-40 rounded-[3rem] bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] p-[2px] shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                   <div className="w-full h-full rounded-[2.85rem] bg-[#0A0A10] flex items-center justify-center overflow-hidden">
-                      <FiUser className="w-16 h-16 text-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500" />
-                   </div>
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl bg-[#00FF88] flex items-center justify-center shadow-lg border-4 border-[#0A0A10]">
-                   <FiCheckCircle className="w-6 h-6 text-black" />
-                </div>
-             </div>
-
-             <div className="flex-1 space-y-4">
-                <div className="space-y-1">
-                   <div className="flex items-center gap-3 justify-center md:justify-start">
-                      <h1 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-tight break-words">{profile?.full_name || 'Optimization Agent'}</h1>
-                   </div>
-                   <p className="text-[#31A8FF] font-bold text-sm uppercase tracking-widest">@{profile?.login || 'username'}</p>
-                   <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
-                </div>
-
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
-                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
-                      <Globe className="w-4 h-4 text-[#FF4B6B]" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">{profile?.country || 'Global'}</span>
-                   </div>
-                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
-                      <FiCpu className="w-4 h-4 text-[#31A8FF]" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">ID: {user?.id.slice(0, 8).toUpperCase()}</span>
-                   </div>
-                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
-                      <FiActivity className="w-4 h-4 text-[#00FF88]" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">Status: Active</span>
-                   </div>
-                </div>
-             </div>
-
-             {!isEditing && (
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl text-sm"
-                >
-                  Edit Profile
-                </button>
-             )}
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-slate-800/80">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">My Profile</h2>
+            <p className="text-xs text-slate-400 mt-0.5">Manage credentials, contact information and address</p>
           </div>
-        </motion.div>
 
-        {/* Form Sections */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {!isEditing ? (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all flex items-center gap-2 active:scale-95"
+            >
+              <VoltrisIcon name="edit" size={14} />
+              <span>Edit Information</span>
+            </button>
+          ) : (
+            <div className="flex items-center gap-2.5">
+              <button
+                onClick={() => setIsEditing(false)}
+                className="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs hover:bg-slate-700 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSave}
+                disabled={saving}
+                className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all flex items-center gap-2 disabled:opacity-50"
+              >
+                <VoltrisIcon name="save" size={14} />
+                <span>{saving ? 'Saving...' : 'Save Changes'}</span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Profile Card */}
+        <div className={`p-6 sm:p-7 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'}`}>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+             <div className="relative shrink-0">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-slate-700 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-indigo-500/10">
+                  {user?.email?.[0]?.toUpperCase() || 'U'}
+                </div>
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-slate-950">
+                  <VoltrisIcon name="check" size={14} />
+                </div>
+             </div>
+
+             <div className="flex-1 space-y-2 min-w-0">
+                <div className="space-y-0.5">
+                   <h3 className="text-lg font-bold text-white tracking-tight truncate">{profile?.full_name || 'Name not set'}</h3>
+                   <p className="text-xs text-slate-400 font-mono truncate">{user?.email}</p>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1">
+                   <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-950/60 rounded-lg border border-slate-800 text-[11px] font-mono text-slate-300">
+                      <VoltrisIcon name="system" size={12} className="text-indigo-400" />
+                      <span>ID: {user?.id.slice(0, 8).toUpperCase()}</span>
+                   </div>
+                   {profile?.login && (
+                     <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-950/60 rounded-lg border border-slate-800 text-[11px] font-mono text-indigo-400">
+                        <VoltrisIcon name="person" size={12} />
+                        <span className="truncate">@{profile.login}</span>
+                     </div>
+                   )}
+                   <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 rounded-lg border border-emerald-500/20 text-[11px] font-medium text-emerald-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>Active Account</span>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        {/* Form Details Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          {/* Detailed Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'}`}
-          >
-            <div className="flex items-center gap-4 mb-10">
-               <div className="p-3 bg-[#31A8FF]/10 text-[#31A8FF] rounded-2xl">
-                 <FiUser className="w-6 h-6" />
+          {/* Personal Info */}
+          <div className={`p-6 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'} space-y-4`}>
+            <div className="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+               <VoltrisIconTile icon="person" accent={DASHBOARD_ACCENT.brand} size={8} />
+               <div>
+                 <h3 className="text-sm font-bold text-white tracking-tight">Personal Data</h3>
+                 <p className="text-[11px] text-slate-500">Registration details and main contact</p>
                </div>
-               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Personal <span className="text-[#31A8FF]">Data</span></h3>
             </div>
 
-            <div className="space-y-8">
-               <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Authentication Email</label>
-                 <div className="p-5 rounded-2xl bg-black/40 border border-white/5 text-white/40 italic font-bold">
+            <div className="space-y-4">
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Registered Email</label>
+                 <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800 text-xs text-slate-400 font-mono">
                     {user?.email}
                  </div>
                </div>
 
-               <div className="grid grid-cols-2 gap-6">
-                 <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Operational Name</label>
-                   {isEditing ? (
-                      <input
-                        type="text"
-                        value={formData.full_name}
-                        onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
-                        placeholder="Full Name"
-                      />
-                   ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
-                        {profile?.full_name || 'Pending'}
-                      </div>
-                   )}
-                 </div>
-                 <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Username</label>
-                   {isEditing ? (
-                      <input
-                        type="text"
-                        value={formData.login}
-                        onChange={(e) => setFormData({ ...formData, login: e.target.value })}
-                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
-                        placeholder="Username"
-                      />
-                   ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
-                        {profile?.login || 'Pending'}
-                      </div>
-                   )}
-                 </div>
-               </div>
-
-               <div className="grid grid-cols-2 gap-6">
-                 <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Country</label>
-                   {isEditing ? (
-                      <div className="relative">
-                        <div 
-                          onClick={() => setIsCountryOpen(!isCountryOpen)}
-                          className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus-within:border-[#31A8FF] outline-none transition-all flex items-center justify-between cursor-pointer"
-                        >
-                          <span className="text-white text-sm">{formData.country}</span>
-                          <ArrowRight className={`w-4 h-4 text-slate-500 transition-transform ${isCountryOpen ? 'rotate-90' : ''}`} />
-                        </div>
-                        <AnimatePresence>
-                          {isCountryOpen && (
-                            <motion.div 
-                              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-                              className="absolute top-full left-0 right-0 mt-2 bg-[#121218] border border-[#31A8FF]/20 rounded-xl shadow-2xl overflow-hidden z-50 max-h-[250px] overflow-y-auto custom-scrollbar"
-                            >
-                              {COUNTRIES.map(c => (
-                                <div 
-                                  key={c}
-                                  onClick={() => { setFormData({...formData, country: c}); setIsCountryOpen(false); }}
-                                  className={`px-4 py-3 text-sm cursor-pointer hover:bg-[#31A8FF]/20 transition-colors ${formData.country === c ? 'bg-[#31A8FF]/10 text-[#31A8FF] font-bold' : 'text-slate-300'}`}
-                                >
-                                  {c}
-                                </div>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                   ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
-                        {profile?.country || 'Global'}
-                      </div>
-                   )}
-                 </div>
-
-                 <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Secure Line</label>
-                   {isEditing ? (
-                      <div className="flex items-center w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus-within:border-[#31A8FF] transition-all">
-                        <span className="text-white/60 font-medium text-sm mr-2 border-r border-white/10 pr-2 whitespace-nowrap">
-                          {DIAL_CODES[formData.country] || '+'}
-                        </span>
-                        <input
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value, formData.country) })}
-                          className="bg-transparent w-full text-white outline-none placeholder:text-white/10"
-                          placeholder={formData.country === 'Brazil' ? "(11) 99999-9999" : "Phone"}
-                        />
-                      </div>
-                   ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
-                        {profile?.phone || 'Pending'}
-                      </div>
-                   )}
-                 </div>
-               </div>
-
-            </div>
-          </motion.div>
-
-          {/* Secure Location Link */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'}`}
-          >
-            <div className="flex items-center gap-4 mb-10">
-               <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl">
-                 <FiMapPin className="w-6 h-6" />
-               </div>
-               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Geographic <span className="text-[#8B31FF]">Link</span></h3>
-            </div>
-
-            <div className="space-y-8">
-               <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">System Zip Code</label>
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Full Name</label>
                  {isEditing ? (
-                    <div className="flex items-center w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus-within:border-[#8B31FF] transition-all relative">
+                    <input
+                      type="text"
+                      value={formData.full_name}
+                      onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
+                      className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors"
+                      placeholder="Your full name"
+                    />
+                 ) : (
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                      {profile?.full_name || 'Not provided'}
+                    </div>
+                 )}
+               </div>
+
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Username</label>
+                 {isEditing ? (
+                    <input
+                      type="text"
+                      value={formData.login}
+                      onChange={(e) => setFormData({ ...formData, login: e.target.value })}
+                      className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors"
+                      placeholder="username"
+                    />
+                 ) : (
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                      {profile?.login || 'Not provided'}
+                    </div>
+                 )}
+               </div>
+
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Country</label>
+                 {isEditing ? (
+                    <select
+                      value={formData.country}
+                      onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                      className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors cursor-pointer"
+                    >
+                      {COUNTRIES.map(c => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                 ) : (
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                      {profile?.country || 'Global'}
+                    </div>
+                 )}
+               </div>
+
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Phone / WhatsApp</label>
+                 {isEditing ? (
+                    <div className="flex items-center w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 focus-within:border-indigo-500 transition-colors">
+                      <span className="text-slate-400 text-xs mr-2 border-r border-slate-700 pr-2 whitespace-nowrap">
+                        {DIAL_CODES[formData.country] || '+'}
+                      </span>
                       <input
-                        type="text"
-                        value={formData.cep}
-                        onChange={(e) => handleCepChange(e.target.value)}
-                        className="bg-transparent w-full text-white outline-none placeholder:text-white/10"
-                        placeholder="ZIP Code"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value, formData.country) })}
+                        className="bg-transparent w-full text-white text-xs outline-none placeholder:text-slate-500"
+                        placeholder={formData.country === 'Brazil' ? "(11) 99999-9999" : "Phone number"}
                       />
-                      {isCepLoading && <LucideLoader2 className="absolute right-5 w-4 h-4 text-[#8B31FF] animate-spin" />}
                     </div>
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
-                      {profile?.cep || 'Pending'}
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                      {profile?.phone || 'Not provided'}
                     </div>
                  )}
-                 {(isEditing && formData.country === 'Brazil' && isCepValid) && (
-                   <button 
-                     type="button"
-                     onClick={() => { setFormData(p => ({...p, cep: '', city: '', state: '', address: ''})); setIsCepValid(false); }}
-                     className="text-[10px] text-[#FF4B6B] font-bold uppercase tracking-widest hover:underline mt-1 block"
-                   >
-                     Fix ZIP Code / Enter Manually
-                   </button>
+               </div>
+            </div>
+          </div>
+
+          {/* Location Info */}
+          <div className={`p-6 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'} space-y-4`}>
+            <div className="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+                 <VoltrisIconTile icon="mapPin" accent={DASHBOARD_ACCENT.success} size={8} />
+               <div>
+                 <h3 className="text-sm font-bold text-white tracking-tight">Address &amp; Location</h3>
+                 <p className="text-[11px] text-slate-500">Data used for invoicing and support</p>
+               </div>
+            </div>
+
+            <div className="space-y-4">
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">ZIP / Postal Code</label>
+                 {isEditing ? (
+                    <>
+                      <div className="flex items-center w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 focus-within:border-indigo-500 transition-colors relative">
+                        <input
+                          type="text"
+                          value={formData.cep}
+                          onChange={(e) => handleCepChange(e.target.value)}
+                          className="bg-transparent w-full text-white text-xs outline-none placeholder:text-slate-500 pr-6"
+                          placeholder={formData.country === 'Brazil' ? "00000-000" : "ZIP Code"}
+                        />
+                        {isCepLoading && <VoltrisIcon name="processing" size={14} className="absolute right-3.5 text-indigo-400 animate-spin" />}
+                      </div>
+                      {cepLocked && (
+                        <button 
+                          type="button"
+                          onClick={() => { setFormData(p => ({...p, cep: '', city: '', state: '', address: ''})); setIsCepValid(false); }}
+                          className="text-[11px] text-rose-400 font-semibold hover:underline mt-1 block"
+                        >
+                          Fix ZIP Code / Enter Manually
+                        </button>
+                      )}
+                    </>
+                 ) : (
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                      {profile?.cep || 'Not provided'}
+                    </div>
                  )}
                </div>
 
-               <div className="grid grid-cols-2 gap-6">
-                 <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">City / District</label>
+               <div className="grid grid-cols-2 gap-3">
+                 <div className="space-y-1.5">
+                   <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">City</label>
                    {isEditing ? (
                       <input
                         type="text"
                         value={formData.city}
-                        readOnly={formData.country === 'Brazil' && isCepValid}
-                        onChange={(e) => (!(formData.country === 'Brazil' && isCepValid)) && setFormData({ ...formData, city: e.target.value })}
-                        className={`w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10 ${(formData.country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`}
+                        readOnly={cepLocked}
+                        onChange={(e) => (!cepLocked) && setFormData({ ...formData, city: e.target.value })}
+                        className={`w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors ${cepLocked ? 'opacity-50 cursor-not-allowed select-none' : ''}`}
+                        placeholder="Your city"
                       />
                    ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
-                        {profile?.city || 'PD'}
+                      <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                        {profile?.city || 'Not provided'}
                       </div>
                    )}
                  </div>
-                 <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">State Code</label>
+                 <div className="space-y-1.5">
+                   <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">State</label>
                    {isEditing ? (
                       <input
                         type="text"
                         value={formData.state}
-                        readOnly={formData.country === 'Brazil' && isCepValid}
-                        onChange={(e) => (!(formData.country === 'Brazil' && isCepValid)) && setFormData({ ...formData, state: formData.country === 'Brazil' ? e.target.value.toUpperCase() : e.target.value })}
-                        className={`w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10 ${(formData.country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`}
+                        readOnly={cepLocked}
+                        onChange={(e) => (!cepLocked) && setFormData({ ...formData, state: formData.country === 'Brazil' ? e.target.value.toUpperCase() : e.target.value })}
+                        className={`w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors ${cepLocked ? 'opacity-50 cursor-not-allowed select-none' : ''}`}
+                        placeholder={formData.country === 'Brazil' ? "UF" : "State"}
                       />
                    ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
-                        {profile?.state || 'PD'}
+                      <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium">
+                        {profile?.state || 'Not provided'}
                       </div>
                    )}
                  </div>
                </div>
 
-               <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Base Address</label>
+               <div className="space-y-1.5">
+                 <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Address</label>
                  {isEditing ? (
                     <input
                       type="text"
                       value={formData.address}
-                      readOnly={formData.country === 'Brazil' && isCepValid}
-                      onChange={(e) => (!(formData.country === 'Brazil' && isCepValid)) && setFormData({ ...formData, address: e.target.value })}
-                      className={`w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10 ${(formData.country === 'Brazil' && isCepValid) ? 'opacity-30 cursor-not-allowed select-none' : ''}`}
-                      placeholder="Street, Number, Neighborhood"
+                      readOnly={cepLocked}
+                      onChange={(e) => (!cepLocked) && setFormData({ ...formData, address: e.target.value })}
+                      className={`w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors ${cepLocked ? 'opacity-50 cursor-not-allowed select-none' : ''}`}
+                      placeholder="Street, number, complement, district"
                     />
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold truncate">
-                      {profile?.address || 'Pending'}
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-950/30 border border-slate-800/80 text-xs text-slate-200 font-medium truncate">
+                      {profile?.address || 'Not provided'}
                     </div>
                  )}
                </div>
-
             </div>
-          </motion.div>
+          </div>
         </div>
-
-        {/* Footer Actions */}
-        <AnimatePresence>
-          {isEditing && (
-             <motion.div 
-               initial={{ opacity: 0, y: 50 }}
-               animate={{ opacity: 1, y: 0 }}
-               exit={{ opacity: 0, y: 50 }}
-               className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[150] w-[90%] max-w-2xl"
-             >
-                <div className="bg-[#0A0A10]/90 backdrop-blur-2xl border border-white/10 p-6 rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex items-center justify-between gap-6">
-                   <div className="flex flex-col">
-                      <span className="text-xs font-black text-white italic uppercase tracking-tighter">Edit Mode</span>
-                      <span className="text-[9px] font-bold text-white/40 uppercase tracking-widest leading-none">You have unsaved changes</span>
-                   </div>
-                   <div className="flex gap-4">
-                      <button 
-                        onClick={() => { setIsEditing(false); }} 
-                        className="px-6 py-3 rounded-xl bg-white/5 text-white/60 font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all"
-                      >
-                        Discard Changes
-                      </button>
-                      <button 
-                        onClick={handleSave} 
-                        disabled={saving}
-                        className="px-8 py-3 rounded-xl bg-[#00FF88] text-black font-black uppercase text-[10px] tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#00FF88]/20 disabled:grayscale"
-                      >
-                        {saving ? 'Saving System...' : 'Sync Identity'}
-                      </button>
-                   </div>
-                </div>
-             </motion.div>
-          )}
-        </AnimatePresence>
 
       </div>
     </AuthGuard>

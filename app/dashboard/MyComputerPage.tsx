@@ -45,15 +45,15 @@ const RemoteAction = ({
   loading?: boolean;
 }) => {
   const colorStyles: Record<string, string> = {
-    indigo: 'bg-[#0A0A0E]/60 border-white/5 text-white/70 hover:bg-[#8B31FF]/10 hover:border-[#8B31FF]/40 hover:text-white',
-    rose: 'bg-[#0A0A0E]/60 border-white/5 text-white/70 hover:bg-[#EF4444]/10 hover:border-[#EF4444]/40 hover:text-white',
-    amber: 'bg-[#0A0A0E]/60 border-white/5 text-white/70 hover:bg-[#F59E0B]/10 hover:border-[#F59E0B]/40 hover:text-white',
-    emerald: 'bg-[#0A0A0E]/60 border-white/5 text-white/70 hover:bg-[#00FF94]/10 hover:border-[#00FF94]/40 hover:text-white',
-    sky: 'bg-[#0A0A0E]/60 border-white/5 text-white/70 hover:bg-[#38BDF8]/10 hover:border-[#38BDF8]/40 hover:text-white',
+    indigo: 'bg-slate-900/60 border-slate-800/80 text-slate-300 hover:bg-[#8B31FF]/10 hover:border-[#8B31FF]/40 hover:text-white',
+    rose: 'bg-slate-900/60 border-slate-800/80 text-slate-300 hover:bg-[#EF4444]/10 hover:border-[#EF4444]/40 hover:text-white',
+    amber: 'bg-slate-900/60 border-slate-800/80 text-slate-300 hover:bg-[#F59E0B]/10 hover:border-[#F59E0B]/40 hover:text-white',
+    emerald: 'bg-slate-900/60 border-slate-800/80 text-slate-300 hover:bg-[#00FF94]/10 hover:border-[#00FF94]/40 hover:text-white',
+    sky: 'bg-slate-900/60 border-slate-800/80 text-slate-300 hover:bg-[#38BDF8]/10 hover:border-[#38BDF8]/40 hover:text-white',
   };
 
   const iconColors: Record<string, string> = {
-    indigo: 'text-[#31A8FF] group-hover:text-[#8B31FF]',
+    indigo: 'text-indigo-400 group-hover:text-[#8B31FF]',
     rose: 'text-rose-400 group-hover:text-[#EF4444]',
     amber: 'text-amber-400 group-hover:text-[#F59E0B]',
     emerald: 'text-emerald-400 group-hover:text-[#00FF94]',
@@ -81,14 +81,14 @@ const RemoteAction = ({
           size={13}
           className={`shrink-0 ${iconColor} transition-colors ${loading ? 'animate-spin' : ''}`}
         />
-        <span className="truncate text-[11px] font-medium text-white/80 group-hover:text-white select-none">
+        <span className="truncate text-[11px] font-medium text-slate-200 group-hover:text-white select-none">
           {label}
         </span>
       </div>
       {loading ? (
         <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping shrink-0" />
       ) : (
-        <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-current opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
+        <span className="w-1.5 h-1.5 rounded-full bg-slate-700/60 group-hover:bg-current opacity-40 group-hover:opacity-100 transition-opacity shrink-0" />
       )}
     </button>
   );
@@ -187,9 +187,9 @@ export default function MyComputerPage({ userId }: { userId: string }) {
       toast.success(`Command '${command}' sent successfully!`, {
         icon: '⚡',
         style: {
-          background: 'rgba(10, 10, 15, 0.95)',
+          background: 'rgba(15, 23, 42, 0.95)',
           color: '#fff',
-          border: '1px solid rgba(49, 168, 255, 0.25)',
+          border: '1px solid rgba(99, 102, 241, 0.25)',
           backdropFilter: 'blur(10px)',
           borderRadius: '0.75rem',
           fontSize: '0.8125rem'
@@ -236,9 +236,9 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-24 gap-3 text-white/40">
-        <div className="w-8 h-8 rounded-full border-2 border-white/10 border-t-[#31A8FF] animate-spin" />
-        <p className="text-xs font-medium text-white/40">Syncing computer telemetry...</p>
+      <div className="flex flex-col items-center justify-center py-24 gap-3 text-slate-400">
+        <div className="w-8 h-8 rounded-full border-2 border-slate-700 border-t-indigo-500 animate-spin" />
+        <p className="text-xs font-medium text-slate-400">Syncing computer telemetry...</p>
       </div>
     );
   }
@@ -253,14 +253,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
             <VoltrisIconTile icon="system" tone="gradient" size={10} />
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">My Computer</h2>
           </div>
-          <p className="text-xs sm:text-sm text-white/40 mt-1">
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
             Real-time hardware telemetry and remote command management.
           </p>
         </div>
 
         <Link
           href="/voltrisoptimizer"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#31A8FF] hover:bg-[#1070FF] text-white text-xs font-semibold transition-all shadow-md shadow-[#31A8FF]/20 active:scale-95 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-all shadow-md shadow-indigo-600/20 active:scale-95 shrink-0"
         >
           <VoltrisIcon name="download" size={16} />
           <span>Download Voltris Optimizer</span>
@@ -268,17 +268,17 @@ export default function MyComputerPage({ userId }: { userId: string }) {
       </div>
 
       {devices.length === 0 ? (
-        <div className={`p-10 sm:p-14 rounded-2xl border border-white/5 text-center flex flex-col items-center gap-4 ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+        <div className={`p-10 sm:p-14 rounded-2xl border border-slate-800 text-center flex flex-col items-center gap-4 ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/40'}`}>
           <VoltrisIconTile icon="display" accent={DASHBOARD_ACCENT.brand} size={14} />
           <div className="space-y-1.5 max-w-md">
             <h3 className="text-base font-semibold text-white">No computer connected</h3>
-            <p className="text-xs text-white/40 leading-relaxed">
+            <p className="text-xs text-slate-400 leading-relaxed">
               Open Voltris Optimizer on your machine to automatically sync hardware information with your panel.
             </p>
           </div>
           <Link
             href="/voltrisoptimizer"
-            className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black font-semibold text-xs rounded-xl hover:bg-white/90 transition-all shadow-md active:scale-95"
+            className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-950 font-semibold text-xs rounded-xl hover:bg-slate-100 transition-all shadow-md active:scale-95"
           >
             <VoltrisIcon name="download" size={16} />
             <span>Get Voltris Optimizer</span>
@@ -292,26 +292,26 @@ export default function MyComputerPage({ userId }: { userId: string }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               className={`relative rounded-2xl border overflow-hidden transition-all duration-300
-                ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}
-                hover:border-white/20
+                ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'}
+                hover:border-slate-700
               `}
             >
               <div className="relative z-10 flex flex-col xl:flex-row">
 
                 {/* Visual Identity / Host Info */}
-                <div className="p-6 xl:w-72 flex flex-col items-center justify-between text-center border-b xl:border-b-0 xl:border-r border-white/5 bg-black/30 shrink-0">
+                <div className="p-6 xl:w-72 flex flex-col items-center justify-between text-center border-b xl:border-b-0 xl:border-r border-slate-800/80 bg-slate-950/40 shrink-0">
                   <div className="flex flex-col items-center w-full">
                     {/* Monitor Icon Box */}
                     <div className="relative mb-4 mt-1">
                       <div className={`w-18 h-18 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border transition-all ${
                         device.is_online
-                          ? 'bg-[#31A8FF]/10 border-[#31A8FF]/30 text-[#31A8FF] shadow-lg shadow-[#31A8FF]/10'
-                          : 'bg-white/5 border-white/10 text-white/30'
+                          ? 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400 shadow-lg shadow-indigo-500/10'
+                          : 'bg-slate-800/60 border-slate-700 text-slate-500'
                       }`}>
                         <VoltrisIcon name="display" size={36} />
                       </div>
-                      <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-[#12121A] flex items-center justify-center ${
-                        device.is_online ? 'bg-emerald-500 text-black' : 'bg-white/10 text-white/40'
+                      <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-slate-900 flex items-center justify-center ${
+                        device.is_online ? 'bg-emerald-500 text-slate-950' : 'bg-slate-700 text-slate-400'
                       }`}>
                         {device.is_online ? <VoltrisIcon name="bolt" size={14} /> : <VoltrisIcon name="power" size={14} />}
                       </div>
@@ -326,12 +326,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                       <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold border ${
                         device.is_online
                           ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
-                          : 'bg-white/5 text-white/40 border-white/10'
+                          : 'bg-slate-800/80 text-slate-400 border-slate-700'
                       }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${device.is_online ? 'bg-emerald-400 animate-pulse' : 'bg-white/30'}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full ${device.is_online ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`} />
                         {device.is_online ? 'Connected' : 'Offline'}
                       </span>
-                      <span className="text-[10px] text-white/30 font-mono">
+                      <span className="text-[10px] text-slate-500 font-mono">
                         Last signal: {new Date(device.last_heartbeat || device.last_active).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </span>
                     </div>
@@ -350,15 +350,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 <div className="flex-1 flex flex-col min-w-0">
 
                   {/* Real-time Status Ribbons */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/5 border-b border-white/5">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-slate-800/80 border-b border-slate-800/80">
                     {([
-                      { label: 'Network Status', value: device.is_online ? 'Online' : 'Awaiting', icon: 'activity', color: device.is_online ? 'text-emerald-400' : 'text-white/30' },
-                      { label: 'Optimization', value: device.is_optimized ? 'Optimized' : 'Default', icon: 'bolt', color: device.is_optimized ? 'text-[#31A8FF]' : 'text-white/40' },
+                      { label: 'Network Status', value: device.is_online ? 'Online' : 'Awaiting', icon: 'activity', color: device.is_online ? 'text-emerald-400' : 'text-slate-500' },
+                      { label: 'Optimization', value: device.is_optimized ? 'Optimized' : 'Default', icon: 'bolt', color: device.is_optimized ? 'text-indigo-400' : 'text-slate-400' },
                       { label: 'Security', value: 'Monitoring', icon: 'security', color: 'text-emerald-400' },
-                      { label: 'License', value: device.is_licensed ? 'Active' : 'Pending', icon: 'check', color: device.is_licensed ? 'text-[#31A8FF]' : 'text-amber-400' },
+                      { label: 'License', value: device.is_licensed ? 'Active' : 'Pending', icon: 'check', color: device.is_licensed ? 'text-indigo-400' : 'text-amber-400' },
                     ] as const).map((stat, i) => (
-                      <div key={i} className="px-4 py-3 sm:px-5 sm:py-4 flex flex-col gap-1 bg-black/30">
-                        <div className="flex items-center justify-between text-white/30">
+                      <div key={i} className="px-4 py-3 sm:px-5 sm:py-4 flex flex-col gap-1 bg-slate-950/50">
+                        <div className="flex items-center justify-between text-slate-500">
                           <span className="text-[10px] font-medium uppercase tracking-wider">{stat.label}</span>
                           <VoltrisIcon name={stat.icon} size={14} className="opacity-60" />
                         </div>
@@ -368,42 +368,42 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   </div>
 
                   {/* Hardware Specification Architecture */}
-                  <div className="p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 bg-black/20">
-                    <div className="p-3.5 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex items-start gap-3">
+                  <div className="p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 bg-slate-950/30">
+                    <div className="p-3.5 rounded-xl border border-slate-800/80 bg-slate-900/40 flex items-start gap-3">
                       <VoltrisIconTile icon="system" accent={DASHBOARD_ACCENT.brand} size={8} bordered={false} />
                       <div className="min-w-0">
-                        <span className="block text-[10px] font-medium uppercase tracking-wider text-white/30 mb-0.5">Processor</span>
-                        <span className="block text-xs font-semibold text-white/80 truncate" title={device.cpu || 'Not detected'}>
+                        <span className="block text-[10px] font-medium uppercase tracking-wider text-slate-500 mb-0.5">Processor</span>
+                        <span className="block text-xs font-semibold text-slate-200 truncate" title={device.cpu || 'Not detected'}>
                           {device.cpu || 'Not detected'}
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex items-start gap-3">
+                    <div className="p-3.5 rounded-xl border border-slate-800/80 bg-slate-900/40 flex items-start gap-3">
                       <VoltrisIconTile icon="activity" accent={DASHBOARD_ACCENT.brand} size={8} bordered={false} />
                       <div className="min-w-0">
-                        <span className="block text-[10px] font-medium uppercase tracking-wider text-white/30 mb-0.5">RAM Memory</span>
-                        <span className="block text-xs font-semibold text-white/80 truncate">
+                        <span className="block text-[10px] font-medium uppercase tracking-wider text-slate-500 mb-0.5">RAM Memory</span>
+                        <span className="block text-xs font-semibold text-slate-200 truncate">
                           {device.ram || 'Not detected'}
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex items-start gap-3">
+                    <div className="p-3.5 rounded-xl border border-slate-800/80 bg-slate-900/40 flex items-start gap-3">
                       <VoltrisIconTile icon="display" accent={DASHBOARD_ACCENT.success} size={8} bordered={false} />
                       <div className="min-w-0">
-                        <span className="block text-[10px] font-medium uppercase tracking-wider text-white/30 mb-0.5">Graphics Card</span>
-                        <span className="block text-xs font-semibold text-white/80 truncate" title={device.gpu || 'Default hardware'}>
+                        <span className="block text-[10px] font-medium uppercase tracking-wider text-slate-500 mb-0.5">Graphics Card</span>
+                        <span className="block text-xs font-semibold text-slate-200 truncate" title={device.gpu || 'Default hardware'}>
                           {device.gpu || 'Default hardware'}
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex items-start gap-3">
+                    <div className="p-3.5 rounded-xl border border-slate-800/80 bg-slate-900/40 flex items-start gap-3">
                       <VoltrisIconTile icon="disk" accent={DASHBOARD_ACCENT.warning} size={8} bordered={false} />
                       <div className="min-w-0">
-                        <span className="block text-[10px] font-medium uppercase tracking-wider text-white/30 mb-0.5">System</span>
-                        <span className="block text-xs font-semibold text-white/80 truncate" title={device.os || 'Windows'}>
+                        <span className="block text-[10px] font-medium uppercase tracking-wider text-slate-500 mb-0.5">System</span>
+                        <span className="block text-xs font-semibold text-slate-200 truncate" title={device.os || 'Windows'}>
                           {device.os || 'Windows'}
                         </span>
                       </div>
@@ -411,17 +411,17 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   </div>
 
                   {/* Remote Command Terminal */}
-                  <div className="border-t border-white/5 bg-black/30 p-4 sm:p-5 space-y-4">
+                  <div className="border-t border-slate-800/80 bg-slate-950/50 p-4 sm:p-5 space-y-4">
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                          <h4 className="text-xs font-bold text-white/80 uppercase tracking-wider">
+                          <h4 className="text-xs font-bold text-slate-200 uppercase tracking-wider">
                             Real-Time Remote Actions
                           </h4>
                         </div>
-                        <p className="text-[11px] text-white/30 mt-0.5">
+                        <p className="text-[11px] text-slate-500 mt-0.5">
                           Send instant maintenance instructions and routines to the connected computer
                         </p>
                       </div>
@@ -449,15 +449,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     {/* Symmetrical 4-Module Matrix */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
                       {/* 1. Performance & Gamer */}
-                      <div className="p-3 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex flex-col justify-between space-y-2.5">
-                        <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                      <div className="p-3 rounded-xl border border-slate-800/80 bg-slate-900/40 flex flex-col justify-between space-y-2.5">
+                        <div className="flex items-center justify-between pb-1 border-b border-slate-800/50">
                           <div className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#31A8FF]" />
-                            <span className="text-[10px] font-bold text-[#31A8FF] uppercase tracking-wider">
+                            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                            <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">
                               Performance & Gamer
                             </span>
                           </div>
-                          <span className="text-[9px] font-mono text-white/30 uppercase">4 actions</span>
+                          <span className="text-[9px] font-mono text-slate-500 uppercase">4 actions</span>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-1.5">
                           <RemoteAction icon="bolt" label="Optimize" color="indigo" onClick={() => handleRemoteCommand(device.id, 'quick_optimize')} loading={commandLoading === `${device.id}-quick_optimize`} />
@@ -468,15 +468,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                       </div>
 
                       {/* 2. Disk & Repair */}
-                      <div className="p-3 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex flex-col justify-between space-y-2.5">
-                        <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                      <div className="p-3 rounded-xl border border-slate-800/80 bg-slate-900/40 flex flex-col justify-between space-y-2.5">
+                        <div className="flex items-center justify-between pb-1 border-b border-slate-800/50">
                           <div className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                             <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
                               Disk & Repair
                             </span>
                           </div>
-                          <span className="text-[9px] font-mono text-white/30 uppercase">4 actions</span>
+                          <span className="text-[9px] font-mono text-slate-500 uppercase">4 actions</span>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-1.5">
                           <RemoteAction icon="search" label="Analyze Disk" color="emerald" onClick={() => handleRemoteCommand(device.id, 'cleanup_analyze')} loading={commandLoading === `${device.id}-cleanup_analyze`} />
@@ -487,15 +487,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                       </div>
 
                       {/* 3. Network & Connection */}
-                      <div className="p-3 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex flex-col justify-between space-y-2.5">
-                        <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                      <div className="p-3 rounded-xl border border-slate-800/80 bg-slate-900/40 flex flex-col justify-between space-y-2.5">
+                        <div className="flex items-center justify-between pb-1 border-b border-slate-800/50">
                           <div className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
                             <span className="text-[10px] font-bold text-sky-400 uppercase tracking-wider">
                               Network & Connection
                             </span>
                           </div>
-                          <span className="text-[9px] font-mono text-white/30 uppercase">4 actions</span>
+                          <span className="text-[9px] font-mono text-slate-500 uppercase">4 actions</span>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-1.5">
                           <RemoteAction icon="network" label="Optimize Network" color="sky" onClick={() => handleRemoteCommand(device.id, 'network_optimize')} loading={commandLoading === `${device.id}-network_optimize`} />
@@ -506,15 +506,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                       </div>
 
                       {/* 4. Security & System */}
-                      <div className="p-3 rounded-xl border border-white/5 bg-[#0A0A0E]/40 flex flex-col justify-between space-y-2.5">
-                        <div className="flex items-center justify-between pb-1 border-b border-white/5">
+                      <div className="p-3 rounded-xl border border-slate-800/80 bg-slate-900/40 flex flex-col justify-between space-y-2.5">
+                        <div className="flex items-center justify-between pb-1 border-b border-slate-800/50">
                           <div className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
                             <span className="text-[10px] font-bold text-rose-400 uppercase tracking-wider">
                               Security & System
                             </span>
                           </div>
-                          <span className="text-[9px] font-mono text-white/30 uppercase">4 actions</span>
+                          <span className="text-[9px] font-mono text-slate-500 uppercase">4 actions</span>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-1.5">
                           <RemoteAction icon="security" label="Quick Scan" color="rose" onClick={() => handleRemoteCommand(device.id, 'shield_quick_scan')} loading={commandLoading === `${device.id}-shield_quick_scan`} />
@@ -546,27 +546,27 @@ export default function MyComputerPage({ userId }: { userId: string }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
               onClick={() => setShowUnlinkModal(null)}
             />
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className={`relative w-full max-w-md p-6 rounded-2xl border border-white/10 shadow-2xl text-center flex flex-col items-center ${
-                transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'
+              className={`relative w-full max-w-md p-6 rounded-2xl border border-slate-800 shadow-2xl text-center flex flex-col items-center ${
+                transparencyMode ? 'voltris-glass' : 'bg-slate-900'
               }`}
             >
               <VoltrisIconTile icon="alertCircle" accent={DASHBOARD_ACCENT.danger} size={12} className="mb-4" />
               <h3 className="text-lg font-bold text-white mb-2">Unlink Device</h3>
-              <p className="text-xs text-white/40 leading-relaxed mb-6 max-w-xs">
+              <p className="text-xs text-slate-400 leading-relaxed mb-6 max-w-xs">
                 Are you sure you want to unlink this device? Voltris Optimizer will stop receiving commands and updates until it is linked again.
               </p>
               <div className="flex w-full gap-3">
                 <button
                   type="button"
                   onClick={() => setShowUnlinkModal(null)}
-                  className="flex-1 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white/70 font-medium text-xs hover:bg-white/10 transition-colors"
+                  className="flex-1 py-2.5 rounded-xl border border-slate-700 bg-slate-800 text-slate-300 font-medium text-xs hover:bg-slate-700 transition-colors"
                 >
                   Cancel
                 </button>
@@ -587,15 +587,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
               onClick={() => setConfirmPowerModal(null)}
             />
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className={`relative w-full max-w-md p-6 rounded-2xl border border-white/10 shadow-2xl text-center flex flex-col items-center ${
-                transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'
+              className={`relative w-full max-w-md p-6 rounded-2xl border border-slate-800 shadow-2xl text-center flex flex-col items-center ${
+                transparencyMode ? 'voltris-glass' : 'bg-slate-900'
               }`}
             >
               <VoltrisIconTile
@@ -605,14 +605,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 className="mb-4"
               />
               <h3 className="text-lg font-bold text-white mb-2">{confirmPowerModal.title}</h3>
-              <p className="text-xs text-white/40 leading-relaxed mb-6 max-w-xs">
+              <p className="text-xs text-slate-400 leading-relaxed mb-6 max-w-xs">
                 {confirmPowerModal.description}
               </p>
               <div className="flex w-full gap-3">
                 <button
                   type="button"
                   onClick={() => setConfirmPowerModal(null)}
-                  className="flex-1 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white/70 font-medium text-xs hover:bg-white/10 transition-colors"
+                  className="flex-1 py-2.5 rounded-xl border border-slate-700 bg-slate-800 text-slate-300 font-medium text-xs hover:bg-slate-700 transition-colors"
                 >
                   Cancel
                 </button>

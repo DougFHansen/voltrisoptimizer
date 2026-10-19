@@ -2,15 +2,12 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { createClient } from '@/utils/supabase/client';
-import { 
-  FiMonitor, FiAlertTriangle, FiCpu, FiTrendingUp, 
-  FiZap, FiShield, FiActivity, FiArrowRight, FiPlus,
-  FiTerminal, FiBarChart2, FiPieChart, FiGrid
-} from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { useDashboard } from '@/app/context/DashboardContext';
+import VoltrisIcon, { type VoltrisIconName } from '@/components/dashboard/VoltrisIcon';
+import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 
 export default function CompaniesClient() {
     const { transparencyMode } = useDashboard();
@@ -91,10 +88,7 @@ export default function CompaniesClient() {
 
             if (error) throw error;
 
-            toast.success("Organization created successfully!", {
-                icon: '🏢',
-                style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
-            });
+            toast.success("Organization created successfully!");
             window.location.reload();
 
         } catch (err: any) {
@@ -103,10 +97,13 @@ export default function CompaniesClient() {
         }
     };
 
+    // NOTE: INTL company slot expansion currently updates the organization row
+    // directly (no Stripe checkout wired up for company-slots on INTL). Preserved
+    // from the INTL logic layer; only the visual layer was reconciled with BR.
     const handleBuyLicenses = async () => {
         if (!company) return;
         try {
-            const toastId = toast.loading("Processing Payment Link...");
+            const toastId = toast.loading("Processing expansion request...");
             await new Promise(r => setTimeout(r, 1500));
 
             const newMax = (company.max_devices || 0) + buyQuantity;
@@ -119,15 +116,12 @@ export default function CompaniesClient() {
             if (error) throw error;
 
             toast.dismiss(toastId);
-            toast.success(`${buyQuantity} Neural Slots Added!`, {
-                icon: '🔋',
-                style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
-            });
+            toast.success(`${buyQuantity} slots added!`);
             setIsBuyModalOpen(false);
             window.location.reload();
 
         } catch (err: any) {
-            toast.error("Link Failure: " + err.message);
+            toast.error("Error: " + err.message);
         }
     };
 
@@ -135,15 +129,17 @@ export default function CompaniesClient() {
         if (!company) return;
         if (!confirm("This will send an OPTIMIZATION sequence to ALL active nodes. Continue?")) return;
 
+        const toastId = toast.loading("Transmitting directive to the fleet...");
+
         try {
-            const toastId = toast.loading("Transmitting Tactical Command...");
             const { data: devices } = await supabase
                 .from('devices')
                 .select('id')
                 .eq('company_id', company.id);
 
-            if (!devices?.length) {
-                toast.error("No active nodes found on this link.");
+            if (!devices || devices.length === 0) {
+                toast.dismiss(toastId);
+                toast.error("No active nodes found.");
                 return;
             }
 
@@ -160,43 +156,39 @@ export default function CompaniesClient() {
             if (error) throw error;
 
             toast.dismiss(toastId);
-            toast.success(`Mass Transmission Sent: ${devices.length} Nodes Synchronized.`, {
-                icon: '📡',
-                style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
-            });
+            toast.success(`Command sent to ${devices.length} devices.`);
 
         } catch (err: any) {
-            toast.error("Transmission Failure: " + err.message);
+            toast.dismiss(toastId);
+            toast.error("Send failed: " + err.message);
         }
     };
 
     if (loading) {
         return (
-          <div className="flex flex-col items-center justify-center py-40 gap-6 opacity-30">
-            <div className="w-16 h-16 border-t-4 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
-            <p className="font-black uppercase tracking-[0.3em] text-[10px]">Synchronizing Fleet Telemetry...</p>
+          <div className="flex flex-col items-center justify-center py-32 gap-3 text-slate-400">
+            <div className="w-8 h-8 rounded-full border-2 border-slate-700 border-t-indigo-500 animate-spin"></div>
+            <p className="text-xs font-medium text-slate-400">Synchronizing organization telemetry...</p>
           </div>
         );
     }
 
     if (!company) {
         return (
-            <div className="flex flex-col items-center justify-center py-40 text-center gap-10">
-                <div className={`p-10 rounded-[3rem] border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
-                    <div className="w-24 h-24 rounded-[2rem] bg-white/5 flex items-center justify-center text-white/10 shrink-0">
-                        <FiMonitor className="w-12 h-12" />
-                    </div>
-                    <div className="space-y-4">
-                        <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">Disconnected <span className="text-[#31A8FF]">Fleet</span></h2>
-                        <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em] max-w-md mx-auto">
-                            Your account is not associated with any verified organization. Establish a link to start remote management.
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+                <div className={`p-8 sm:p-12 rounded-2xl border border-slate-800 flex flex-col items-center gap-6 max-w-md w-full ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 shadow-xl'}`}>
+                    <VoltrisIconTile icon="streamHub" accent={DASHBOARD_ACCENT.brand} size={16} />
+                    <div className="space-y-2">
+                        <h2 className="text-xl font-bold text-white tracking-tight">No Organization Linked</h2>
+                        <p className="text-xs text-slate-400 leading-relaxed">
+                            Your account is not linked to a company yet. Create a corporate organization to manage computer fleets centrally.
                         </p>
                     </div>
                     <button
                         onClick={handleCreateCompany}
-                        className="px-10 py-5 bg-[#31A8FF] text-black font-black uppercase italic tracking-[0.2em] rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-3xl text-sm"
+                        className="w-full py-3 px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all active:scale-95"
                     >
-                        Establish New Organization
+                        Create New Organization
                     </button>
                 </div>
             </div>
@@ -204,107 +196,107 @@ export default function CompaniesClient() {
     }
 
     return (
-        <div className="flex flex-col gap-10 relative w-full max-w-full overflow-hidden">
+        <div className="flex flex-col gap-6 w-full max-w-full">
             
-            {/* Fleet Header */}
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
-                <div className="space-y-2">
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-slate-800/80">
+                <div className="space-y-1">
                    <div className="flex items-center gap-3">
-                     <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
-                     <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">{company.name}</h2>
+                     <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{company.name}</h2>
+                     <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-wider">
+                       Plan {company.plan_type}
+                     </span>
                    </div>
-                   <div className="flex flex-wrap items-center gap-4 pl-5">
-                      <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20">
-                         <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.2em]">{company.plan_type.toUpperCase()} PROTOCOL</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                         <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Fleet Capacity:</span>
-                         <span className="text-[10px] font-black text-[#00FF88] uppercase tracking-[0.2em]">{stats.devices} / {company.max_devices} ACTIVE SLOTS</span>
-                      </div>
-                   </div>
+                   <p className="text-xs text-slate-400">
+                     Allocated capacity: <span className="text-emerald-400 font-semibold">{stats.devices}</span> of <span className="text-white font-semibold">{company.max_devices} slots</span> in use
+                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                    <Link href="/dashboard/companies/devices" className="px-8 py-4 bg-white/5 border border-white/5 text-white font-black uppercase italic tracking-widest rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center gap-3 text-xs shadow-2xl">
-                        <FiMonitor className="w-4 h-4" /> Manage Fleet Nodes
+                <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                    <Link 
+                      href="/dashboard/companies/devices" 
+                      className="flex-1 sm:flex-none px-4 py-2.5 bg-slate-900 border border-slate-800 hover:bg-slate-800 hover:border-slate-700 text-slate-200 text-xs font-semibold rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
+                    >
+                        <VoltrisIcon name="display" size={16} className="text-indigo-400" />
+                        <span>Manage Nodes</span>
                     </Link>
                     <button
                         onClick={() => setIsBuyModalOpen(true)}
-                        className="px-8 py-4 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl text-xs flex items-center justify-center gap-3"
+                        className="flex-1 sm:flex-none px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2"
                     >
-                        <FiPlus className="w-4 h-4" /> Expand Capacity
+                        <VoltrisIcon name="plus" size={16} />
+                        <span>Expand Slots</span>
                     </button>
                 </div>
             </div>
 
-            {/* Neural Metrics Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <StatCard
-                    title="Active Nodes"
+                    title="Connected Nodes"
                     value={stats.devices.toString()}
-                    icon={FiMonitor}
-                    color="#31A8FF"
-                    subtext={`${company.max_devices - stats.devices} Slots Available`}
+                    icon="display"
+                    color="indigo"
+                    subtext={`${company.max_devices - stats.devices} slots available`}
                     transparencyMode={transparencyMode}
                 />
                 <StatCard
-                    title="System Alerts"
+                    title="Critical Alerts"
                     value={stats.alerts.toString()}
-                    icon={FiAlertTriangle}
-                    color="#FF4B6B"
-                    subtext="Critical Attention Required"
+                    icon="alertTriangle"
+                    color={stats.alerts > 0 ? "rose" : "slate"}
+                    subtext={stats.alerts > 0 ? "Attention required" : "All normal"}
                     alert={stats.alerts > 0}
                     transparencyMode={transparencyMode}
                 />
                 <StatCard
-                    title="Fleet Cohesion"
+                    title="Fleet Health"
                     value={`${stats.avgHealth}%`}
-                    icon={FiTrendingUp}
-                    color="#00FF88"
-                    subtext="Global Stability"
+                    icon="trendingUp"
+                    color="emerald"
+                    subtext="Average stability"
                     transparencyMode={transparencyMode}
                 />
                 <StatCard
-                    title="Average Load"
+                    title="System Load"
                     value="12%"
-                    icon={FiCpu}
-                    color="#8B31FF"
-                    subtext="Stable Frequency"
+                    icon="system"
+                    color="indigo"
+                    subtext="Stable nominal usage"
                     transparencyMode={transparencyMode}
                 />
             </div>
 
-            {/* Tactical Grid Areas */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            {/* Content Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                {/* Visual Alert Stream */}
-                <div className={`lg:col-span-2 p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}`}>
-                    <div className="flex items-center justify-between mb-10">
-                       <div className="flex items-center gap-4">
-                          <div className="p-3 bg-[#FF4B6B]/10 text-[#FF4B6B] rounded-2xl border border-[#FF4B6B]/20 shadow-lg">
-                             <FiAlertTriangle className="w-6 h-6" />
+                {/* Recent Alerts */}
+                <div className={`lg:col-span-2 p-6 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'}`}>
+                    <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-800/80">
+                       <div className="flex items-center gap-2.5">
+                          <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.danger} size={8} />
+                          <div>
+                            <h3 className="text-sm font-bold text-white tracking-tight">Incident Log</h3>
+                            <p className="text-[11px] text-slate-500">Hardware anomaly monitoring across the fleet</p>
                           </div>
-                          <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Neural <span className="text-[#FF4B6B]">Disruptions</span></h3>
                        </div>
-                       <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-black text-white/20 uppercase tracking-widest font-mono">Real-Time Stream</span>
-                          <div className="w-2 h-2 rounded-full bg-[#FF4B6B] animate-pulse"></div>
-                       </div>
+                       <span className="text-[10px] font-semibold text-slate-400 px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Real-Time</span>
                     </div>
 
                     {recentAlerts.length === 0 ? (
-                        <div className="py-20 flex flex-col items-center justify-center text-center gap-6 opacity-30">
-                            <FiTrendingUp className="w-16 h-16" />
-                            <p className="text-[10px] font-black uppercase tracking-[0.3em] font-mono">No Disruptions Detected in the Cloud</p>
+                        <div className="py-16 flex flex-col items-center justify-center text-center gap-2 text-slate-500">
+                            <VoltrisIcon name="success" size={40} className="text-emerald-400 mb-1" />
+                            <p className="text-xs font-semibold text-slate-300">No pending alerts</p>
+                            <p className="text-[11px] text-slate-500">All organization computers are operating normally.</p>
                         </div>
                     ) : (
-                        <div className="space-y-6">
+                        <div className="space-y-3">
                             {recentAlerts.map(alert => (
                                 <AlertItem
                                     key={alert.id}
-                                    device={alert.devices?.hostname || "UNKNOWN NODE"}
+                                    device={alert.devices?.hostname || "Unidentified device"}
                                     msg={alert.message}
-                                    time={new Date(alert.created_at).toLocaleTimeString()}
+                                    time={new Date(alert.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                     level={alert.level.toLowerCase()}
                                 />
                             ))}
@@ -312,132 +304,116 @@ export default function CompaniesClient() {
                     )}
                 </div>
 
-                {/* Tactical Action Grid */}
-                <div className={`p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}`}>
-                    <div className="flex items-center gap-4 mb-10">
-                       <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl border border-[#8B31FF]/20 shadow-lg">
-                          <FiZap className="w-6 h-6" />
-                       </div>
-                       <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Remote <span className="text-[#8B31FF]">Guidelines</span></h3>
-                    </div>
+                {/* Remote Directives */}
+                <div className={`p-6 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-xl'} flex flex-col justify-between`}>
+                    <div>
+                      <div className="flex items-center gap-2.5 pb-4 mb-4 border-b border-slate-800/80">
+                         <VoltrisIconTile icon="bolt" accent={DASHBOARD_ACCENT.brand} size={8} />
+                         <div>
+                            <h3 className="text-sm font-bold text-white tracking-tight">Quick Commands</h3>
+                            <p className="text-[11px] text-slate-500">Automated routines for multiple nodes</p>
+                         </div>
+                      </div>
 
-                    <div className="space-y-4">
-                        <button
-                            onClick={handleOptimizeAll}
-                            className="w-full text-left p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#31A8FF]/40 transition-all flex items-center justify-between group"
-                        >
-                            <div className="flex items-center gap-4">
-                               <div className="w-12 h-12 rounded-2xl bg-[#31A8FF]/10 border border-[#31A8FF]/20 flex items-center justify-center text-[#31A8FF] group-hover:scale-110 transition-transform">
-                                  <FiZap className="w-6 h-6" />
-                               </div>
-                               <div className="flex flex-col">
-                                  <span className="text-[11px] font-black text-white uppercase tracking-wider italic">Mass Optimization</span>
-                                  <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest font-mono">Pulse for all nodes</span>
-                               </div>
-                            </div>
-                            <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
-                        </button>
+                      <div className="space-y-2.5">
+                          <button
+                              onClick={handleOptimizeAll}
+                              className="w-full text-left p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-indigo-500/40 hover:bg-slate-800/50 transition-all flex items-center justify-between group"
+                          >
+                              <div className="flex items-center gap-3 min-w-0">
+                                  <VoltrisIconTile icon="bolt" accent={DASHBOARD_ACCENT.brand} size={9} />
+                                 <div className="min-w-0">
+                                    <span className="block text-xs font-semibold text-slate-200 group-hover:text-white truncate">Mass Optimization</span>
+                                    <span className="block text-[10px] text-slate-500 truncate">Cleanup and RAM on all nodes</span>
+                                 </div>
+                              </div>
+                              <VoltrisIcon name="arrowRight" size={16} className="text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                          </button>
 
-                        <button className="w-full text-left p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#00FF88]/40 transition-all flex items-center justify-between group">
-                            <div className="flex items-center gap-4">
-                               <div className="w-12 h-12 rounded-2xl bg-[#00FF88]/10 border border-[#00FF88]/20 flex items-center justify-center text-[#00FF88] group-hover:scale-110 transition-transform">
-                                  <FiBarChart2 className="w-6 h-6" />
-                               </div>
-                               <div className="flex flex-col">
-                                  <span className="text-[11px] font-black text-white uppercase tracking-wider italic">Intelligence Report</span>
-                                  <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest font-mono">Monthly fleet data</span>
-                               </div>
-                            </div>
-                            <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
-                        </button>
-
-                        <Link href="/dashboard/companies/devices" className="w-full text-left p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#FF4B6B]/40 transition-all flex items-center justify-between group">
-                            <div className="flex items-center gap-4">
-                               <div className="w-12 h-12 rounded-2xl bg-[#FF4B6B]/10 border border-[#FF4B6B]/20 flex items-center justify-center text-[#FF4B6B] group-hover:scale-110 transition-transform">
-                                  <FiShield className="w-6 h-6" />
-                               </div>
-                               <div className="flex flex-col">
-                                  <span className="text-[11px] font-black text-white uppercase tracking-wider italic">Security Lock</span>
-                                  <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest font-mono">Manage node access</span>
-                               </div>
-                            </div>
-                            <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
-                        </Link>
+                          <Link href="/dashboard/companies/devices" className="w-full text-left p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-800/50 transition-all flex items-center justify-between group">
+                              <div className="flex items-center gap-3 min-w-0">
+                                  <VoltrisIconTile icon="security" accent={DASHBOARD_ACCENT.success} size={9} />
+                                 <div className="min-w-0">
+                                    <span className="block text-xs font-semibold text-slate-200 group-hover:text-white truncate">Inventory & Devices</span>
+                                    <span className="block text-[10px] text-slate-500 truncate">List and manage access</span>
+                                 </div>
+                              </div>
+                              <VoltrisIcon name="arrowRight" size={16} className="text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                          </Link>
+                      </div>
                     </div>
                 </div>
             </div>
 
-            {/* Neural Slot Expansion Modal */}
+            {/* Expansion Modal */}
             <AnimatePresence>
                 {isBuyModalOpen && (
-                    <div className="fixed inset-0 z-[300] flex items-center justify-center p-6">
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setIsBuyModalOpen(false)} />
+                    <div className="fixed inset-0 z-[300] flex items-center justify-center p-4">
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsBuyModalOpen(false)} />
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 30 }}
-                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.9, opacity: 0, y: 30 }}
-                            className={`bg-[#0A0A10] border border-white/10 rounded-[4rem] p-12 max-w-xl w-full shadow-3xl relative overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            className={`border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-slate-900'}`}
                         >
-                            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B]"></div>
-                            
-                            <div className="flex items-center gap-8 mb-12">
-                               <div className="w-20 h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10">
-                                 <FiPieChart className="w-10 h-10" />
+                            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                                <div className="flex items-center gap-3">
+                                  <VoltrisIconTile icon="pieChart" accent={DASHBOARD_ACCENT.brand} size={10} />
+                                  <div>
+                                    <h2 className="text-lg font-bold text-white tracking-tight">Expand Fleet Capacity</h2>
+                                    <p className="text-xs text-slate-400">Add new simultaneous nodes to the corporate plan</p>
+                                  </div>
                                </div>
-                               <div className="space-y-1">
-                                 <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Expand <span className="text-[#8B31FF] not-italic">Fleet</span></h2>
-                                 <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">Inject additional neural node slots</p>
-                               </div>
+                               <button onClick={() => setIsBuyModalOpen(false)} className="text-slate-500 hover:text-white transition-colors">
+                                 <VoltrisIcon name="close" size={20} />
+                               </button>
                             </div>
 
-                            <div className="mb-12 space-y-4">
-                                <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono pl-2">Select Cluster Size</label>
-                                <div className="grid grid-cols-4 gap-4">
+                            <div className="mb-6 space-y-2">
+                                <label className="text-xs font-semibold text-slate-300 block">Number of new computers:</label>
+                                <div className="grid grid-cols-4 gap-2.5">
                                     {[5, 10, 50, 100].map(qty => (
                                         <button
                                             key={qty}
+                                            type="button"
                                             onClick={() => setBuyQuantity(qty)}
-                                            className={`relative overflow-hidden py-4 rounded-3xl border font-black uppercase tracking-widest text-[10px] transition-all duration-500 hover:scale-105 active:scale-95
+                                            className={`py-2.5 rounded-xl border text-xs font-semibold transition-all
                                               ${buyQuantity === qty 
-                                                ? 'bg-[#8B31FF] border-[#8B31FF] text-white shadow-lg shadow-[#8B31FF]/30' 
-                                                : 'bg-white/5 border-white/10 text-white/30 hover:border-white/20'}`}
+                                                ? 'bg-indigo-600 border-indigo-500 text-white shadow-md shadow-indigo-600/30' 
+                                                : 'bg-slate-950/50 border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white'}`}
                                         >
-                                            <span className="relative z-10">+{qty}</span>
-                                            {buyQuantity === qty && (
-                                              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                                            )}
+                                            +{qty} nodes
                                         </button>
                                     ))}
                                 </div>
                             </div>
 
-                            <div className="flex justify-between items-center bg-black/40 border border-white/5 p-8 rounded-[2.5rem] mb-12 relative group overflow-hidden">
-                                <div className="space-y-1 relative z-10">
-                                  <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Total Allocation</span>
-                                  <div className="flex items-baseline gap-2">
-                                     <span className="text-3xl font-black text-white italic tracking-tighter uppercase whitespace-nowrap">R$ {(buyQuantity * 29.90).toFixed(2)}</span>
-                                     <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">/ Month</span>
+                            <div className="flex justify-between items-center bg-slate-950/60 border border-slate-800 p-4 rounded-xl mb-6">
+                                <div className="space-y-0.5">
+                                  <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Estimated Value</span>
+                                  <div className="flex items-baseline gap-1.5">
+                                     <span className="text-2xl font-bold text-white">R$ {(buyQuantity * 29.90).toFixed(2)}</span>
+                                     <span className="text-[11px] text-slate-500">/ month</span>
                                   </div>
-                               </div>
-                                 <div className="text-right relative z-10">
-                                    <div className="text-[10px] font-black text-[#8B31FF] uppercase tracking-widest font-mono">Pro Protocol</div>
-                                    <div className="text-[9px] font-bold text-white/20 uppercase tracking-widest whitespace-nowrap">24/7 Priority Support</div>
-                                 </div>
-                               <div className="absolute right-[-20px] top-[-20px] w-32 h-32 bg-[#8B31FF]/5 blur-3xl group-hover:bg-[#8B31FF]/10 transition-all rounded-full"></div>
+                                </div>
+                                <div className="text-right">
+                                   <span className="text-[11px] font-semibold text-indigo-400">Immediate Activation</span>
+                                   <span className="text-[10px] text-slate-500 block">Proportional billing</span>
+                                </div>
                             </div>
 
-                            <div className="flex gap-6">
+                            <div className="flex gap-3">
                                 <button
                                     onClick={() => setIsBuyModalOpen(false)}
-                                    className="flex-1 py-5 rounded-3xl bg-white/5 text-white/40 font-black uppercase italic tracking-widest text-[10px] hover:bg-white/10 transition-all"
+                                    className="flex-1 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs hover:bg-slate-700 transition-colors"
                                 >
-                                    Abort
+                                    Cancel
                                 </button>
                                 <button
                                     onClick={handleBuyLicenses}
-                                    className="flex-2 py-5 px-10 rounded-3xl bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-black uppercase italic tracking-widest text-[10px] hover:scale-[1.05] transition-all shadow-3xl shadow-[#8B31FF]/20"
+                                    className="flex-1 py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-md shadow-indigo-600/20 transition-all active:scale-95"
                                 >
-                                    Execute Uplink
+                                    Proceed to Checkout
                                 </button>
                             </div>
                         </motion.div>
@@ -448,67 +424,59 @@ export default function CompaniesClient() {
     );
 }
 
-function StatCard({ title, value, icon: Icon, color, subtext, alert = false, transparencyMode }: any) {
+function StatCard({ title, value, icon, color = 'indigo', subtext, alert = false, transparencyMode }: {
+    title: string;
+    value: string;
+    icon: VoltrisIconName;
+    color?: string;
+    subtext?: string;
+    alert?: boolean;
+    transparencyMode?: boolean;
+}) {
+    // Accents = desktop app palette (VoltrisDesignSystem.xaml:20-28).
+    const colorStyles: Record<string, string> = {
+      indigo: DASHBOARD_ACCENT.brand,
+      emerald: DASHBOARD_ACCENT.success,
+      rose: DASHBOARD_ACCENT.danger,
+      slate: DASHBOARD_ACCENT.brand,
+    };
+
+    const currentAccent = colorStyles[color] || colorStyles.indigo;
+
     return (
-        <motion.div
-            whileHover={{ y: -5 }}
-            className={`border rounded-[3rem] p-8 relative overflow-hidden transition-all duration-500
-              ${alert ? 'border-[#FF4B6B]/40 shadow-lg shadow-[#FF4B6B]/10' : 'border-white/5 shadow-2xl'} 
-              ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}
+        <div
+            className={`border rounded-xl p-5 relative overflow-hidden transition-all duration-200
+              ${alert ? 'border-rose-500/40 bg-rose-500/5' : 'border-slate-800/80 bg-slate-900/50 shadow-sm'} 
+              hover:border-slate-700
             `}
         >
-            <div className="relative z-10 space-y-6">
-                <div className="flex justify-between items-start">
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-white shadow-lg transition-transform group-hover:scale-110">
-                        <Icon className="w-6 h-6" style={{ color }} />
-                    </div>
-                    {alert && (
-                      <div className="flex items-center gap-2">
-                         <span className="text-[8px] font-black text-[#FF4B6B] uppercase tracking-widest">Action Required</span>
-                         <span className="w-3 h-3 rounded-full bg-[#FF4B6B] animate-pulse" />
-                      </div>
-                    )}
+            <div className="relative z-10 flex flex-col justify-between h-full gap-3">
+                <div className="flex justify-between items-center">
+                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{title}</span>
+                    <VoltrisIconTile icon={icon} accent={currentAccent} size={8} />
                 </div>
-                <div className="space-y-1">
-                   <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">{value}</h3>
-                   <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">{title}</p>
-                </div>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                    <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }}></div>
-                    <span className="text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono truncate">{subtext}</span>
+                <div>
+                   <h3 className="text-2xl font-bold text-white tracking-tight leading-none mb-1">{value}</h3>
+                   <span className="text-[11px] font-medium text-slate-500">{subtext}</span>
                 </div>
             </div>
-            {/* Ambient Background Glow */}
-            <div className="absolute -right-10 -bottom-10 w-32 h-32 rounded-full blur-[60px] opacity-[0.05]" style={{ background: color }}></div>
-        </motion.div>
-    )
+        </div>
+    );
 }
 
 function AlertItem({ device, msg, time, level = 'warning' }: any) {
-    const isCritical = level === 'critical';
-    const color = isCritical ? 'text-[#FF4B6B]' : 'text-amber-400';
-    const bg = isCritical ? 'bg-[#FF4B6B]/10 border-[#FF4B6B]/20' : 'bg-amber-400/10 border-amber-400/20';
+    const badgeAccent = level === 'critical' ? DASHBOARD_ACCENT.danger : DASHBOARD_ACCENT.warning;
 
     return (
-        <motion.div 
-           initial={{ opacity: 0, x: -10 }} 
-           animate={{ opacity: 1, x: 0 }}
-           className="flex items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-white/10 transition-all group"
-        >
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border transition-all group-hover:scale-110 ${bg} ${color}`}>
-                <FiAlertTriangle className="w-6 h-6" />
-            </div>
-            <div className="flex-1 min-w-0 space-y-1">
-                <h4 className="text-sm font-black text-white uppercase italic tracking-tighter truncate group-hover:text-[#FF4B6B] transition-colors">{msg}</h4>
-                <div className="flex items-center gap-2">
-                   <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">Origin Node:</span>
-                   <span className="text-[10px] font-black text-[#31A8FF] uppercase font-mono tracking-widest">{device}</span>
+        <div className="flex items-center gap-3.5 p-3.5 rounded-xl bg-slate-950/40 border border-slate-800/80 hover:border-slate-700 transition-colors">
+            <VoltrisIconTile icon="alertTriangle" accent={badgeAccent} size={9} />
+            <div className="flex-1 min-w-0">
+                <h4 className="text-xs font-semibold text-slate-200 truncate">{msg}</h4>
+                <div className="flex items-center gap-2 mt-0.5">
+                   <span className="text-[11px] text-slate-400 font-mono">{device}</span>
                 </div>
             </div>
-            <div className="flex flex-col items-end shrink-0 gap-1">
-               <span className="text-[9px] font-black text-white/10 uppercase tracking-[0.3em] font-mono italic">{time}</span>
-               <div className={`p-1 rounded-full ${isCritical ? 'bg-[#FF4B6B]' : 'bg-amber-400'} opacity-20`}></div>
-            </div>
-        </motion.div>
-    )
+            <span className="text-[10px] text-slate-500 font-mono shrink-0">{time}</span>
+        </div>
+    );
 }

@@ -185,9 +185,9 @@ const fmtMoney = (amount?: number | null, currency?: string | null) => {
 /** Renewal period label from the stable code (server label is PT). */
 const periodLabelEn = (p?: string | null) => ((p ?? '').toLowerCase().startsWith('y') ? 'Annual' : 'Monthly');
 
-const InfoCell = ({ label, value, tone = 'text-white/80' }: { label: string; value: ReactNode; tone?: string }) => (
+const InfoCell = ({ label, value, tone = 'text-slate-200' }: { label: string; value: ReactNode; tone?: string }) => (
   <div className="flex flex-col gap-0.5 min-w-0">
-    <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">{label}</span>
+    <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">{label}</span>
     <span className={`text-xs font-semibold ${tone} truncate`}>{value}</span>
   </div>
 );
@@ -208,23 +208,23 @@ const StatCard = ({ title, value, icon, delay, description }: {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay, ease: "easeOut" }}
       className={`relative group p-5 sm:p-6 rounded-2xl border transition-all duration-200
-        ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}
-        hover:border-white/20
+        ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/50 border-slate-800/80 shadow-sm'}
+        hover:border-slate-700
       `}
     >
       <div className="flex items-center justify-between gap-4 mb-4">
-        <span className="text-xs font-semibold text-white/40 uppercase tracking-wider">{title}</span>
+        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{title}</span>
         <VoltrisIconTile icon={icon} accent={DASHBOARD_ACCENT.brand} size={9} />
       </div>
       <div className="flex items-baseline justify-between">
         <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}</h3>
         <div className="flex items-center gap-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#00FF94]"></div>
-          <span className="text-[10px] font-medium text-white/40 uppercase tracking-wider">Live</span>
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+          <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Active</span>
         </div>
       </div>
       {description && (
-        <p className="text-[11px] font-medium text-white/30 mt-2">{description}</p>
+        <p className="text-[11px] font-medium text-slate-500 mt-2">{description}</p>
       )}
     </motion.div>
   );
@@ -236,7 +236,7 @@ export default function DashboardClient() {
       <div className="h-full w-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-6">
           <div className="w-20 h-20 border-t-4 border-l-4 border-b-4 border-transparent border-r-4 border-r-[#31A8FF] rounded-full animate-spin"></div>
-          <p className="text-white/40 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Starting Terminal...</p>
+          <p className="text-slate-400 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Starting Terminal...</p>
         </div>
       </div>
     }>
@@ -486,14 +486,6 @@ function DashboardContent() {
 
   const hardwareIDProtection = stats.activeLicenses > 0;
 
-  const tabs: { id: string; label: string; icon: VoltrisIconName; color: string }[] = [
-    { id: 'overview', label: 'Dashboard', icon: 'home', color: DASHBOARD_ACCENT.brandBlue },
-    { id: 'licenses', label: 'Licenses', icon: 'license', color: DASHBOARD_ACCENT.brand },
-    { id: 'orders', label: 'Orders', icon: 'orders', color: DASHBOARD_ACCENT.info },
-    { id: 'pc', label: 'Monitor', icon: 'system', color: DASHBOARD_ACCENT.success },
-    { id: 'security', label: 'Security', icon: 'security', color: DASHBOARD_ACCENT.danger },
-  ];
-
   return (
     <AuthGuard>
       {isLoading ? (
@@ -503,13 +495,13 @@ function DashboardContent() {
               <div className="w-20 h-20 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
               <div className="absolute inset-0 w-20 h-20 border-t-4 border-[#8B31FF] rounded-full animate-spin-slow"></div>
             </div>
-            <p className="text-white/40 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing with Supabase Cloud...</p>
+            <p className="text-slate-400 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing with Supabase Cloud...</p>
           </div>
         </div>
       ) : (
         <div className="flex flex-col gap-6 w-full max-w-full h-full min-h-0">
           {/* Dashboard Header - Executive Style */}
-          <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-white/5">
+          <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800/80">
             <div className="space-y-1">
               <div className="flex items-center gap-3 flex-wrap">
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
@@ -528,17 +520,17 @@ function DashboardContent() {
                   </span>
                 </div>
               </div>
-              <p className="text-white/40 text-xs font-normal">
-                Welcome back, <span className="text-white/80 font-medium">{profile?.full_name || user?.email?.split('@')[0] || 'User'}</span>
+              <p className="text-slate-400 text-xs font-normal">
+                Welcome back, <span className="text-slate-200 font-medium">{profile?.full_name || user?.email?.split('@')[0] || 'User'}</span>
               </p>
             </div>
 
             <div className="flex items-center gap-2.5">
               <Link
                 href="/"
-                className="px-3 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all text-xs font-medium text-white/60 hover:text-white flex items-center gap-1.5"
+                className="px-3 py-2 rounded-xl border border-slate-800 bg-slate-800 hover:bg-slate-700 hover:border-slate-700 transition-all text-xs font-medium text-slate-300 hover:text-white flex items-center gap-1.5"
               >
-                <VoltrisIcon name="arrowLeft" size={14} className="text-white/50" />
+                <VoltrisIcon name="arrowLeft" size={14} className="text-slate-400" />
                 <span>Back to Site</span>
               </Link>
               <motion.button
@@ -550,7 +542,7 @@ function DashboardContent() {
                     .then(() => toast.success('Data updated!'))
                     .finally(() => setIsRefreshing(false));
                 }}
-                className={`p-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
+                className={`p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
                 title="Refresh data"
               >
                 <VoltrisIcon name="processing" size={16} className={isRefreshing ? 'animate-spin' : ''} />
@@ -559,7 +551,7 @@ function DashboardContent() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-[#31A8FF] hover:bg-[#1070FF] text-white font-semibold text-xs rounded-xl shadow-md shadow-[#31A8FF]/20 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-colors"
                 >
                   <VoltrisIcon name="plus" size={16} />
                   <span>New Order</span>
@@ -567,27 +559,6 @@ function DashboardContent() {
               </Link>
             </div>
           </header>
-
-          {/* Custom Modern Tabs */}
-          <div className="w-full flex items-center justify-start sm:justify-center py-1 overflow-x-auto scrollbar-hide px-1 sm:px-0">
-            <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all min-w-max sm:min-w-0`}>
-              {tabs.map((tab) => (
-                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
-                  <div className={`
-                    flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
-                    ${activeTab === tab.id
-                      ? 'bg-white text-black'
-                      : 'text-white/40 hover:text-white hover:bg-white/5'}
-                  `}
-                    style={{ boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none' }}
-                  >
-                    <VoltrisIcon name={tab.icon} size={16} style={{ color: activeTab === tab.id ? 'black' : tab.color }} />
-                    <span>{tab.label}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
 
           {/* Tab Content Rendering */}
           <div className="flex-1 min-h-0 relative">
@@ -609,16 +580,16 @@ function DashboardContent() {
                   <div className="md:col-span-2 lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-2">
 
                     {/* App Download Card */}
-                    <div className={`p-6 sm:p-7 rounded-2xl border transition-all ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} flex flex-col justify-between gap-6`}>
+                    <div className={`p-6 sm:p-7 rounded-2xl border transition-all ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/40 border-slate-800/80'} flex flex-col justify-between gap-6`}>
                       <div className="space-y-3">
                         <VoltrisIconTile icon="download" accent={DASHBOARD_ACCENT.brandBlue} size={10} />
                         <h3 className="text-lg font-bold text-white tracking-tight">Voltris Optimizer Desktop</h3>
-                        <p className="text-white/40 text-xs leading-relaxed">
+                        <p className="text-slate-400 text-xs leading-relaxed">
                           Download the app to apply low-latency optimizations, hardware telemetry and remote command management.
                         </p>
                       </div>
                       <div className="pt-2">
-                        <Link href="/voltrisoptimizer" className="inline-flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-white/90 text-black font-semibold text-xs rounded-xl transition-all shadow-sm">
+                        <Link href="/voltrisoptimizer" className="inline-flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-slate-100 text-slate-950 font-semibold text-xs rounded-xl transition-all shadow-sm">
                           <VoltrisIcon name="download" size={16} />
                           <span>Download Voltris Optimizer</span>
                         </Link>
@@ -626,24 +597,24 @@ function DashboardContent() {
                     </div>
 
                     {/* Billing Hub Card */}
-                    <div className={`p-6 sm:p-7 rounded-2xl border transition-all ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} flex flex-col justify-between gap-6`}>
+                    <div className={`p-6 sm:p-7 rounded-2xl border transition-all ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/40 border-slate-800/80'} flex flex-col justify-between gap-6`}>
                       <div className="space-y-3">
                         <VoltrisIconTile icon="creditCard" accent={DASHBOARD_ACCENT.brand} size={10} />
                         <h3 className="text-lg font-bold text-white tracking-tight">Billing & Subscription</h3>
-                        <p className="text-white/40 text-xs leading-relaxed">
+                        <p className="text-slate-400 text-xs leading-relaxed">
                           Manage your payment methods, access Stripe invoices, cancel auto-renewals or request the guarantee refund.
                         </p>
                       </div>
                       <div className="flex flex-wrap items-center gap-3 pt-2">
                         <button
                           onClick={handleManageBilling}
-                          className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 font-medium text-xs rounded-xl transition-all flex items-center gap-2"
+                          className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-800 text-slate-200 font-medium text-xs rounded-xl transition-all flex items-center gap-2"
                         >
                           <VoltrisIcon name="externalLink" size={14} /> Stripe Portal
                         </button>
                         <button
                           onClick={() => setIsCancelModalOpen(true)}
-                          className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 font-medium text-xs rounded-xl transition-all"
+                          className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all"
                         >
                           Cancel Renewal
                         </button>
@@ -674,8 +645,8 @@ function DashboardContent() {
                     <div className="flex flex-col sm:flex-row items-center gap-4">
                       <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.warning} size={10} />
                       <div className="flex-1 text-center sm:text-left">
-                        <h4 className="font-semibold text-white/90 text-sm">License & Billing Management</h4>
-                        <p className="text-white/40 text-xs mt-0.5">Manage your plan, cancel renewal or request a refund within 7 days.</p>
+                        <h4 className="font-semibold text-slate-200 text-sm">License & Billing Management</h4>
+                        <p className="text-slate-400 text-xs mt-0.5">Manage your plan, cancel renewal or request a refund within 7 days.</p>
                       </div>
                       <button
                         onClick={() => fetchData(true)}
@@ -688,7 +659,7 @@ function DashboardContent() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-amber-500/15">
                       <button
                         onClick={() => setIsCancelModalOpen(true)}
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 font-medium text-xs rounded-xl transition-all"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all"
                       >
                         <VoltrisIcon name="close" size={14} /> Cancel Auto-Renewal
                       </button>
@@ -715,7 +686,7 @@ function DashboardContent() {
                                 ? 'Payment awaiting confirmation'
                                 : `${pendingPurchases.length} payments awaiting confirmation`}
                             </h4>
-                            <p className="text-xs text-white/40 mt-0.5">
+                            <p className="text-xs text-slate-400 mt-0.5">
                               {isPolling
                                 ? `Querying Stripe automatically — attempt ${pollAttempt} of ${LICENSE_POLL_MAX_ATTEMPTS}.`
                                 : 'The activation key appears here as soon as the payment is approved.'}
@@ -731,10 +702,10 @@ function DashboardContent() {
                       </div>
                       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {pendingPurchases.map((p) => (
-                          <li key={p.payment_id} className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl bg-black/30 border border-white/5">
+                          <li key={p.payment_id} className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800/80">
                             <div className="flex flex-col min-w-0">
-                              <span className="text-xs font-semibold text-white/90 truncate">{productLabel(p.type, p.billingPeriod)}</span>
-                              <span className="text-[10px] text-white/30">Created {fmtDateTime(p.createdAt)}</span>
+                              <span className="text-xs font-semibold text-slate-200 truncate">{productLabel(p.type, p.billingPeriod)}</span>
+                              <span className="text-[10px] text-slate-500">Created {fmtDateTime(p.createdAt)}</span>
                             </div>
                             <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
                               {PAYMENT_STATUS_LABEL[String(p.status ?? '').toLowerCase()] ?? String(p.status ?? '—')}
@@ -758,7 +729,7 @@ function DashboardContent() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05 }}
-                            className={`group relative p-6 rounded-2xl border transition-all duration-200 ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'} hover:border-white/20`}
+                            className={`group relative p-6 rounded-2xl border transition-all duration-200 ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/50 border-slate-800/80 shadow-sm'} hover:border-slate-700`}
                           >
                             <div className="relative z-10 flex flex-col gap-5">
                               {/* Card Top: canonical state resolved on the server */}
@@ -773,12 +744,12 @@ function DashboardContent() {
                                   </div>
                                 </div>
                                 <div className="flex flex-col items-end">
-                                  <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">
+                                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
                                     {lic.hasAccess ? 'Access until' : 'Validity'}
                                   </span>
-                                  <span className="text-xs font-semibold text-white/80 mt-0.5">{fmtDate(lic.expiresAt)}</span>
+                                  <span className="text-xs font-semibold text-slate-200 mt-0.5">{fmtDate(lic.expiresAt)}</span>
                                   {typeof lic.daysLeft === 'number' && lic.hasAccess && (
-                                    <span className={`text-[10px] font-semibold mt-0.5 ${lic.expiringSoon ? 'text-amber-400' : 'text-white/30'}`}>
+                                    <span className={`text-[10px] font-semibold mt-0.5 ${lic.expiringSoon ? 'text-amber-400' : 'text-slate-500'}`}>
                                       {lic.daysLeft > 0 ? `${lic.daysLeft} day${lic.daysLeft === 1 ? '' : 's'} left` : 'expires today'}
                                     </span>
                                   )}
@@ -787,12 +758,12 @@ function DashboardContent() {
 
                               {/* Why this state? (no jargon, no placebo) */}
                               {stateStyle.hint && (
-                                <p className="text-[11px] leading-relaxed text-white/40 -mt-1">{stateStyle.hint}</p>
+                                <p className="text-[11px] leading-relaxed text-slate-400 -mt-1">{stateStyle.hint}</p>
                               )}
 
                               {/* Key Section: masked by default */}
-                              <div className="bg-black/40 rounded-xl p-3.5 border border-white/5 flex flex-col gap-1.5">
-                                <span className="text-[10px] font-semibold text-white/40 uppercase tracking-wider">Activation Key</span>
+                              <div className="bg-slate-950/70 rounded-xl p-3.5 border border-slate-800/80 flex flex-col gap-1.5">
+                                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Activation Key</span>
                                 <div className="flex items-center justify-between gap-3">
                                   <code className="flex-1 font-mono text-xs font-semibold text-white tracking-wide truncate select-all">
                                     {revealed ? lic.license_key : maskLicenseKey(lic.license_key)}
@@ -800,19 +771,19 @@ function DashboardContent() {
                                   <div className="flex items-center gap-1.5">
                                     <button
                                       onClick={() => toggleRevealKey(lic.license_key)}
-                                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
+                                      className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-800"
                                       title={revealed ? 'Hide key' : 'Reveal key'}
                                     >
                                       <VoltrisIcon name={revealed ? 'lock' : 'key'} size={14} />
                                     </button>
                                     <button
                                       onClick={() => handleCopyKey(lic.license_key)}
-                                      className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
+                                      className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-800"
                                       title="Copy Key"
                                     >
                                       <VoltrisIcon name="copy" size={14} />
                                     </button>
-                                    <Link href={`/dashboard?tab=pc`} className="p-2 rounded-lg bg-[#31A8FF]/10 hover:bg-[#31A8FF]/20 text-[#31A8FF] transition-all border border-[#31A8FF]/25" title="View in My Computer">
+                                    <Link href={`/dashboard?tab=pc`} className="p-2 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 hover:text-indigo-300 transition-all border border-indigo-500/25" title="View in My Computer">
                                       <VoltrisIcon name="externalLink" size={14} />
                                     </Link>
                                   </div>
@@ -831,7 +802,7 @@ function DashboardContent() {
                                 <InfoCell
                                   label="Activated on"
                                   value={lic.activatedAt ? fmtDateTime(lic.activatedAt) : 'not activated yet'}
-                                  tone={lic.activatedAt ? 'text-white/80' : 'text-white/30'}
+                                  tone={lic.activatedAt ? 'text-slate-200' : 'text-slate-500'}
                                 />
                                 <InfoCell
                                   label="Payment"
@@ -859,8 +830,8 @@ function DashboardContent() {
                               </div>
 
                               {/* Footer: real sync + state-specific actions */}
-                              <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-4 text-xs">
-                                <div className="flex items-center gap-2 text-white/30">
+                              <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/80 pt-4 text-xs">
+                                <div className="flex items-center gap-2 text-slate-500">
                                   <VoltrisIcon name="clock" size={12} />
                                   <span>
                                     {isPolling
@@ -870,19 +841,19 @@ function DashboardContent() {
                                 </div>
                                 <div className="flex flex-wrap items-center gap-2">
                                   {(lic.state === 'EXPIRADA' || lic.state === 'PAGAMENTO_PENDENTE') && (
-                                    <Link href="/buy-license" className="px-3 py-1.5 rounded-lg bg-[#31A8FF] hover:bg-[#1070FF] text-white font-semibold text-[11px] transition-colors">
+                                    <Link href="/buy-license" className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-[11px] transition-colors">
                                       Renew access
                                     </Link>
                                   )}
                                   {lic.hasAccess && lic.subscriptionStatus && lic.subscriptionStatus !== 'CANCELED' && (
                                     <button
                                       onClick={handleManageBilling}
-                                      className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 font-medium text-[11px] transition-all"
+                                      className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-800 text-slate-300 font-medium text-[11px] transition-all"
                                     >
                                       Manage in Stripe Portal
                                     </button>
                                   )}
-                                  <Link href="/voltrisoptimizer" className="px-3 py-1.5 rounded-lg text-[#31A8FF] hover:text-[#1070FF] font-semibold flex items-center gap-1 transition-colors">
+                                  <Link href="/voltrisoptimizer" className="px-3 py-1.5 rounded-lg text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1 transition-colors">
                                     Download App <VoltrisIcon name="download" size={12} />
                                   </Link>
                                 </div>
@@ -892,14 +863,14 @@ function DashboardContent() {
                         );
                       })
                     ) : (
-                      <div className={`col-span-1 xl:col-span-2 p-12 sm:p-16 rounded-2xl text-center border border-white/5 flex flex-col items-center gap-4 ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+                      <div className={`col-span-1 xl:col-span-2 p-12 sm:p-16 rounded-2xl text-center border border-slate-800/80 flex flex-col items-center gap-4 ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/30'}`}>
                         <VoltrisIconTile icon="security" accent={DASHBOARD_ACCENT.brand} size={14} />
                         <div className="space-y-1.5 max-w-md">
                           <h3 className="text-lg font-bold text-white tracking-tight">No active license</h3>
-                          <p className="text-white/40 text-xs leading-relaxed">You do not have active licenses linked to this e-mail yet. Get a license to unlock Optimizer PRO.</p>
+                          <p className="text-slate-400 text-xs leading-relaxed">You do not have active licenses linked to this e-mail yet. Get a license to unlock Optimizer PRO.</p>
                         </div>
                         <Link href="/buy-license" className="mt-2">
-                          <button className="px-6 py-2.5 bg-[#31A8FF] hover:bg-[#1070FF] text-white font-semibold text-xs rounded-xl transition-all shadow-md shadow-[#31A8FF]/20">
+                          <button className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl transition-all shadow-md shadow-indigo-600/20">
                             Explore PRO Plans
                           </button>
                         </Link>
@@ -918,13 +889,13 @@ function DashboardContent() {
                   transition={{ duration: 0.2 }}
                   className="space-y-6"
                 >
-                  <div className={`p-6 sm:p-7 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}`}>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
+                  <div className={`p-6 sm:p-7 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/50 border-slate-800/80 shadow-sm'}`}>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800/80">
                       <div className="flex items-center gap-3">
                         <VoltrisIconTile icon="package" accent={DASHBOARD_ACCENT.brand} size={10} />
                         <div>
                           <h2 className="text-lg font-bold text-white tracking-tight">Order History</h2>
-                          <p className="text-white/40 text-xs mt-0.5">Track all your contracted services and licenses</p>
+                          <p className="text-slate-400 text-xs mt-0.5">Track all your contracted services and licenses</p>
                         </div>
                       </div>
                     </div>
@@ -932,14 +903,14 @@ function DashboardContent() {
                     <div className="overflow-x-auto">
                       <table className="w-full text-left">
                         <thead>
-                          <tr className="border-b border-white/5">
-                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider">Item / Service</th>
-                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider hidden sm:table-cell">Date</th>
-                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider">Amount</th>
-                            <th className="pb-3 px-3 text-[11px] font-semibold text-white/40 uppercase tracking-wider">Status</th>
+                          <tr className="border-b border-slate-800/80">
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Item / Service</th>
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider hidden sm:table-cell">Date</th>
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Amount</th>
+                            <th className="pb-3 px-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Status</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-white/5">
+                        <tbody className="divide-y divide-slate-800/60">
                           {/* Merge of Orders and Payments */}
                           {[
                             ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price, currency: (o as any).currency ?? 'usd' })),
@@ -969,15 +940,15 @@ function DashboardContent() {
                                 };
                               })
                             ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
-                              <tr key={item.id + idx} className="group hover:bg-white/5 transition-colors">
+                              <tr key={item.id + idx} className="group hover:bg-slate-900/60 transition-colors">
                                 <td className="py-4 px-3">
                                   <div className="flex flex-col">
                                     <span className="text-xs font-semibold text-white tracking-tight">{item.display_name}</span>
-                                    <span className="text-[10px] font-medium text-white/40 mt-0.5">
+                                    <span className="text-[10px] font-medium text-slate-400 mt-0.5">
                                       {item.display_type === 'LICENSE' ? (
-                                        <span className="text-[#8B31FF]">Digital Product</span>
+                                        <span className="text-indigo-400">Digital Product</span>
                                       ) : item.display_type === 'SERVICE' ? (
-                                        <span className="text-[#31A8FF]">Specialized Service</span>
+                                        <span className="text-blue-400">Specialized Service</span>
                                       ) : (
                                         item.display_plan || 'Custom'
                                       )}
@@ -985,12 +956,12 @@ function DashboardContent() {
                                   </div>
                                 </td>
                                 <td className="py-4 px-3 hidden sm:table-cell">
-                                  <span className="text-xs font-medium text-white/40">
+                                  <span className="text-xs font-medium text-slate-400">
                                     {new Date(item.created_at).toLocaleDateString()}
                                   </span>
                                 </td>
                                 <td className="py-4 px-3">
-                                  <span className="text-xs font-semibold text-white/80">
+                                  <span className="text-xs font-semibold text-slate-200">
                                     {fmtMoney(item.amount, item.currency)}
                                   </span>
                                 </td>
@@ -1013,7 +984,7 @@ function DashboardContent() {
                           ) : (
                             <tr>
                               <td colSpan={4} className="py-12 text-center">
-                                <p className="text-white/30 text-xs">No orders or payments recorded so far.</p>
+                                <p className="text-slate-500 text-xs">No orders or payments recorded so far.</p>
                               </td>
                             </tr>
                           )}
@@ -1067,7 +1038,7 @@ function DashboardContent() {
               initial={{ scale: 0.95, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 10 }}
-              className="relative w-full max-w-md bg-[#12121A] rounded-2xl p-7 shadow-2xl border border-white/10 overflow-hidden"
+              className="relative w-full max-w-md bg-slate-900/30 rounded-2xl p-7 shadow-2xl border border-slate-800 overflow-hidden"
             >
               <div className="relative z-10 flex flex-col items-center text-center">
                 <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.danger} size={12} className="mb-5" />
@@ -1076,7 +1047,7 @@ function DashboardContent() {
                   Cancel Subscription?
                 </h3>
 
-                <p className="text-white/40 text-xs leading-relaxed mb-6">
+                <p className="text-slate-400 text-xs leading-relaxed mb-6">
                   On confirmation, your auto-renewal will stop. You will keep access to PRO features until the end of the current billing cycle.
                 </p>
 
@@ -1090,7 +1061,7 @@ function DashboardContent() {
                   </button>
                   <button
                     onClick={() => setIsCancelModalOpen(false)}
-                    className="w-full py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 font-medium text-xs rounded-xl transition-all"
+                    className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all"
                   >
                     Keep my subscription
                   </button>

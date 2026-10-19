@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX } from 'react-icons/fi';
+import VoltrisIcon from '@/components/dashboard/VoltrisIcon';
+import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 
 export default function UserOptimizerSection({ userId }: { userId: string }) {
     const [installations, setInstallations] = useState<any[]>([]);
@@ -82,44 +83,42 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
     if (installations.length === 0) {
         return (
-            <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
-                <div className="flex items-center justify-between px-2">
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <FiMonitor className="text-[#31A8FF]" /> My Computer
+            <div className="space-y-4 pt-6 mt-6 border-t border-slate-800">
+                <div className="flex items-center justify-between px-1">
+                    <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+                        <VoltrisIcon name="display" size={16} className="text-[#8B31FF]" /> My Computer
                     </h2>
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-8 bg-[#1A1A22] border border-white/5 rounded-3xl flex flex-col items-center text-center max-w-2xl mx-auto"
+                    className="p-8 bg-slate-900/60 border border-slate-800 rounded-2xl flex flex-col items-center text-center mx-auto shadow-xl"
                 >
-                    <div className="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-blue-400 mb-6">
-                        <FiZap className="w-8 h-8" />
-                    </div>
+                    <VoltrisIconTile icon="bolt" accent={DASHBOARD_ACCENT.brand} size={14} className="mb-5" />
 
-                    <h3 className="text-2xl font-bold text-white mb-2">Link your computer</h3>
-                    <p className="text-slate-400 mb-8 max-w-md">
+                    <h3 className="text-base font-bold text-white mb-1.5">Link your computer</h3>
+                    <p className="text-xs text-slate-400 mb-6 max-w-xs leading-relaxed">
                         Access real-time information about your machine, optimization status, and manage your license directly from the website.
                     </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                        <div className="bg-[#121218] border border-white/5 p-4 rounded-2xl flex items-center gap-4 text-left">
-                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 font-bold">1</div>
-                            <p className="text-xs text-slate-300">Open the <span className="text-white font-bold">Voltris Optimizer</span> on your PC</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-6">
+                        <div className="bg-slate-800/60 border border-slate-700 p-3.5 rounded-xl flex items-center gap-3 text-left">
+                            <div className="w-8 h-8 bg-slate-700 rounded-lg flex items-center justify-center text-white shrink-0 font-bold text-xs">1</div>
+                            <p className="text-xs text-slate-400">Open the <span className="text-white font-semibold">Voltris Optimizer</span> on your PC</p>
                         </div>
-                        <div className="bg-[#121218] border border-white/5 p-4 rounded-2xl flex items-center gap-4 text-left">
-                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 font-bold">2</div>
-                            <p className="text-xs text-slate-300">Click on <span className="text-white font-bold">Link Account</span> at the top of the app</p>
+                        <div className="bg-slate-800/60 border border-slate-700 p-3.5 rounded-xl flex items-center gap-3 text-left">
+                            <div className="w-8 h-8 bg-slate-700 rounded-lg flex items-center justify-center text-white shrink-0 font-bold text-xs">2</div>
+                            <p className="text-xs text-slate-400">Click on <span className="text-white font-semibold">Link Account</span> at the top of the app</p>
                         </div>
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-white/5 w-full flex flex-col items-center">
-                        <p className="text-xs text-slate-500 mb-4 uppercase tracking-widest font-black">Don't have the program?</p>
+                    <div className="pt-5 border-t border-slate-800 w-full flex flex-col items-center gap-3">
+                        <p className="text-[10px] text-slate-500 uppercase tracking-wider font-medium">Don't have the program?</p>
                         <a
                             href="https://www.voltrisoptimizer.com/voltrisoptimizer"
                             target="_blank"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all active:scale-95"
                         >
                             Download Voltris Optimizer
                         </a>
@@ -131,178 +130,173 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
     return (
         <>
-            <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
-                <div className="flex items-center justify-between px-2">
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                        <FiMonitor className="text-[#31A8FF]" /> My Computers (Voltris)
+            <div className="space-y-4 pt-6 mt-6 border-t border-slate-800">
+                <div className="flex items-center justify-between px-1">
+                    <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+                        <VoltrisIcon name="display" size={16} className="text-[#8B31FF]" /> My Computers
                     </h2>
-                    <span className="text-xs text-slate-500 font-medium">Synchronized via Telemetry</span>
+                    <span className="text-[10px] text-slate-500 font-medium">Synchronized via Telemetry</span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {installations.map((inst) => (
-                        <motion.div
-                            key={inst.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="bg-[#1A1A22] border border-white/5 p-5 rounded-2xl hover:border-white/10 transition-all group overflow-hidden relative"
-                        >
-                            {/* Background Glow */}
-                            <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/10' : 'bg-blue-500/10'
-                                }`}></div>
-
-                            <div className="flex justify-between items-start relative z-10">
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-2">
-                                        <div className={`w-2 h-2 rounded-full ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000
-                                            ? 'bg-emerald-400 animate-pulse'
-                                            : 'bg-slate-500'
-                                            }`}></div>
-                                        <span className="text-white font-bold text-sm tracking-tight">{inst.os_name}</span>
-                                    </div>
-
-                                    <div className="flex flex-col gap-1.5">
-                                        <div className="flex items-center gap-2 text-xs text-slate-400">
-                                            <FiCpu className="text-[#31A8FF]" />
-                                            <span className="truncate max-w-[180px]">{inst.cpu_name}</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {installations.map((inst) => {
+                        const isOnline = new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 900000;
+                        return (
+                            <motion.div
+                                key={inst.id}
+                                initial={{ opacity: 0, scale: 0.97 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="bg-slate-900/60 border border-slate-800 p-4 rounded-xl hover:border-slate-700 transition-all overflow-hidden relative"
+                            >
+                                <div className="flex justify-between items-start">
+                                    <div className="space-y-2.5 flex-1 min-w-0">
+                                        <div className="flex items-center gap-2">
+                                            <div className={`w-2 h-2 rounded-full shrink-0 ${isOnline ? 'bg-emerald-400 animate-pulse' : 'bg-slate-600'}`}></div>
+                                            <span className="text-white font-semibold text-sm truncate">{inst.os_name}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-xs text-slate-400">
-                                            <FiShield className="text-[#8B31FF]" />
-                                            <span>v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
+
+                                        <div className="flex flex-col gap-1">
+                                            <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                                                <VoltrisIcon name="system" size={14} className="text-[#8B31FF] shrink-0" />
+                                                <span className="truncate max-w-[160px]">{inst.cpu_name}</span>
+                                            </div>
+                                            <div className="flex items-center gap-1.5 text-xs text-slate-400">
+                                                <VoltrisIcon name="security" size={14} className="text-[#8B31FF] shrink-0" />
+                                                <span>v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div className="flex flex-col items-end gap-2 text-right">
-                                    <div className={`px-2.5 py-1 rounded-lg text-[10px] font-black tracking-widest ${inst.is_optimized
-                                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                                        : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                    <div className="flex flex-col items-end gap-1.5 text-right shrink-0 ml-3">
+                                        <div className={`px-2 py-0.5 rounded-lg text-[10px] font-semibold border ${
+                                            inst.is_optimized
+                                                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                                                : 'bg-slate-800 text-slate-400 border-slate-700'
                                         }`}>
-                                        {inst.is_optimized ? 'OPTIMIZED' : 'STANDARD SYSTEM'}
-                                    </div>
+                                            {inst.is_optimized ? 'Optimized' : 'Standard'}
+                                        </div>
 
-                                    <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${inst.license_status === 'active'
-                                        ? 'text-emerald-400 bg-emerald-400/5'
-                                        : 'text-blue-400 bg-blue-400/5'
+                                        <div className={`text-[9px] font-semibold px-1.5 py-0.5 rounded border ${
+                                            inst.license_status === 'active'
+                                                ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+                                                : 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20'
                                         }`}>
-                                        LICENSE: {inst.license_status?.toUpperCase() || 'TRIAL'}
-                                        {inst.license_status === 'trial' && inst.license_expires_at && (
-                                            <span className="ml-2 opacity-60">Expires on: {new Date(inst.license_expires_at).toLocaleDateString()}</span>
-                                        )}
-                                    </div>
+                                            {inst.license_status?.toUpperCase() || 'TRIAL'}
+                                        </div>
 
-                                    <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1.5">
-                                        {new Date(inst.last_heartbeat).toLocaleTimeString()} <FiClock />
+                                        <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1">
+                                            {new Date(inst.last_heartbeat).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} <VoltrisIcon name="clock" size={12} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Action Overlay */}
-                            <div className="mt-4 pt-4 border-t border-white/5 flex gap-4">
-                                <div className="flex-1">
-                                    <div className="text-[10px] uppercase text-slate-500 font-bold mb-1">Performance Status</div>
-                                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            animate={{ width: inst.is_optimized ? '100%' : '60%' }}
-                                            className={`h-full bg-gradient-to-r ${inst.is_optimized ? 'from-emerald-500 to-emerald-400' : 'from-blue-500 to-blue-400'}`}
-                                        />
+                                {/* Action Row */}
+                                <div className="mt-3.5 pt-3.5 border-t border-slate-800/80 flex gap-2 items-center">
+                                    <div className="flex-1">
+                                        <div className="text-[10px] text-slate-500 font-medium mb-1.5">Performance</div>
+                                        <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                animate={{ width: inst.is_optimized ? '100%' : '60%' }}
+                                                className={`h-full rounded-full ${inst.is_optimized ? 'bg-emerald-500' : 'bg-indigo-500'}`}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-2 items-center">
+                                        <button
+                                            onClick={async () => {
+                                                const toastId = toast.loading('Sending command...');
+                                                try {
+                                                    await fetch('/api/v1/commands/create', {
+                                                        method: 'POST',
+                                                        headers: { 'Content-Type': 'application/json' },
+                                                        body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
+                                                    });
+                                                    toast.success('Command sent!', { id: toastId });
+                                                } catch { toast.error('Failed to send', { id: toastId }); }
+                                            }}
+                                            className="px-2.5 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 hover:bg-indigo-500/20 text-[10px] font-semibold rounded-lg transition-colors"
+                                        >
+                                            ⚡ RAM
+                                        </button>
+                                        <button
+                                            onClick={async () => {
+                                                const toastId = toast.loading('Requesting cleanup...');
+                                                try {
+                                                    await fetch('/api/v1/commands/create', {
+                                                        method: 'POST',
+                                                        headers: { 'Content-Type': 'application/json' },
+                                                        body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
+                                                    });
+                                                    toast.success('Cleanup scheduled!', { id: toastId });
+                                                } catch { toast.error('Failed to send', { id: toastId }); }
+                                            }}
+                                            className="px-2.5 py-1 bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 text-[10px] font-semibold rounded-lg transition-colors"
+                                        >
+                                            🧹 Cache
+                                        </button>
+
+                                        <div className="h-4 w-px bg-slate-700 mx-0.5"></div>
+
+                                        <button
+                                            onClick={() => handleUnlinkClick(inst)}
+                                            className="w-7 h-7 flex items-center justify-center bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-lg hover:bg-rose-500/20 transition-colors shrink-0"
+                                            title="Unlink Computer"
+                                        >
+                                            <VoltrisIcon name="close" size={14} />
+                                        </button>
                                     </div>
                                 </div>
-                                <div className="flex gap-2 items-center">
-                                    <button
-                                        onClick={async () => {
-                                            const toastId = toast.loading('⚡ Sending command...');
-                                            try {
-                                                await fetch('/api/v1/commands/create', {
-                                                    method: 'POST',
-                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
-                                                });
-                                                toast.success('Command sent!', { id: toastId, icon: '🚀' });
-                                            } catch { toast.error('Failed to send', { id: toastId }); }
-                                        }}
-                                        className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0 shadow-lg shadow-white/10"
-                                    >
-                                        ⚡ RAM
-                                    </button>
-                                    <button
-                                        onClick={async () => {
-                                            const toastId = toast.loading('🧹 Requesting cleanup...');
-                                            try {
-                                                await fetch('/api/v1/commands/create', {
-                                                    method: 'POST',
-                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
-                                                });
-                                                toast.success('Cleanup scheduled!', { id: toastId, icon: '✨' });
-                                            } catch { toast.error('Failed to send', { id: toastId }); }
-                                        }}
-                                        className="px-3 py-1 bg-[#121218] border border-white/10 text-white text-[10px] font-bold rounded-lg hover:bg-white/10 transition-colors shrink-0"
-                                    >
-                                        🧹 Cache
-                                    </button>
-
-                                    <div className="h-4 w-px bg-white/10 mx-1"></div>
-
-                                    <button
-                                        onClick={() => handleUnlinkClick(inst)}
-                                        className="w-7 h-7 flex items-center justify-center bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors shrink-0"
-                                        title="Unlink Computer"
-                                    >
-                                        ✕
-                                    </button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
 
-            {/* Modal de Confirmação */}
+            {/* Confirmation Modal */}
             <AnimatePresence>
                 {unlinkModalOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
                         onClick={() => setUnlinkModalOpen(false)}
                     >
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
+                            initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-[#121218] border border-white/10 rounded-2xl p-6 max-w-md w-full shadow-2xl"
+                            className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full shadow-2xl"
                         >
-                            <div className="flex items-start gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
-                                    ⚠️
-                                </div>
+                            <div className="flex items-start gap-4 mb-5">
+                                <VoltrisIconTile icon="close" accent={DASHBOARD_ACCENT.danger} size={10} />
                                 <div className="flex-1">
-                                    <h2 className="text-xl font-bold text-white mb-2">Unlink Computer?</h2>
-                                    <p className="text-sm text-slate-400 leading-relaxed">
+                                    <h2 className="text-sm font-bold text-white mb-1">Unlink Computer?</h2>
+                                    <p className="text-xs text-slate-400 leading-relaxed">
                                         You will lose remote access and telemetry for this device.
                                     </p>
                                 </div>
                                 <button
                                     onClick={() => setUnlinkModalOpen(false)}
-                                    className="text-slate-400 hover:text-white transition-colors"
+                                    className="text-slate-500 hover:text-white transition-colors shrink-0"
                                 >
-                                    <FiX className="w-5 h-5" />
+                                    <VoltrisIcon name="close" size={16} />
                                 </button>
                             </div>
-                            <div className="flex gap-3 justify-end">
+                            <div className="flex gap-2.5 justify-end">
                                 <button
                                     onClick={() => setUnlinkModalOpen(false)}
-                                    className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                                    className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white transition-colors"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleConfirmUnlink}
-                                    className="px-6 py-2 text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
+                                    className="px-5 py-2 text-xs bg-rose-600 hover:bg-rose-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-rose-600/20 active:scale-95"
                                 >
-                                    Yes, Unlink
+                                    Confirm
                                 </button>
                             </div>
                         </motion.div>

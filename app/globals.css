@@ -1281,3 +1281,131 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #31A8FF80; }
 
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { -webkit-box-shadow: 0 0 0 30px #121218 inset !important; -webkit-text-fill-color: white !important; transition: background-color 5000s ease-in-out 0s; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Voltris dashboard tabs (.vtab) — ported from the desktop app XAML.
+   • The glyph is FILL only; the color comes from --vtab-color.
+   • The icon box is 22x22 in both states; the visual difference comes only from
+     transform: scale(), so the label never reflows when switching tabs.
+   • Scale: 0.93 normal -> 0.985 hover -> 1.0 active.
+   • The active item gets a brand gradient pill at 15% opacity, a 4x22px side
+     indicator and a glow in the glyph color itself.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.vtab {
+  --vtab-color: #31a8ff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.vtab:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #f1f5f9;
+}
+
+.vtab[aria-current="page"] {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Gradient pill of the active item (15% opacity, like the XAML). */
+.vtab[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 75, 107, 0.15) 0%,
+    rgba(139, 49, 255, 0.15) 50%,
+    rgba(49, 168, 255, 0.15) 100%
+  );
+}
+
+/* 4x22px side indicator filled with the brand gradient. */
+.vtab[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 22px;
+  transform: translateY(-50%);
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(90deg, #ff4b6b 0%, #8b31ff 50%, #31a8ff 100%);
+  box-shadow: 0 0 12px rgba(139, 49, 255, 0.6);
+}
+
+.vtab__ico {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  color: var(--vtab-color);
+  opacity: 0.72;
+  transform: scale(0.93);
+  transform-origin: 50% 50%;
+  transition: transform 0.16s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.2s ease,
+    filter 0.22s ease;
+}
+
+.vtab:hover .vtab__ico {
+  transform: scale(0.985);
+  opacity: 0.92;
+}
+
+/* Active: full scale + glow in the glyph color. */
+.vtab[aria-current="page"] .vtab__ico {
+  transform: scale(1);
+  opacity: 1;
+  filter: drop-shadow(0 0 15px var(--vtab-color));
+}
+
+.vtab__label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Horizontal bar mode (MobileTabs) — the bottom indicator replaces the side rail. */
+.vtab--bar[aria-current="page"]::after {
+  display: none;
+}
+
+/* Rail mode — collapsed sidebar (20x20 box, reduced glow, like the app). */
+.vtab--rail {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.vtab--rail .vtab__ico {
+  width: 20px;
+  height: 20px;
+}
+
+.vtab--rail[aria-current="page"]::after {
+  height: 20px;
+}
+
+.vtab--rail[aria-current="page"] .vtab__ico {
+  filter: drop-shadow(0 0 8px var(--vtab-color));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vtab__ico {
+    transition: none;
+  }
+  .vtab:hover .vtab__ico,
+  .vtab[aria-current="page"] .vtab__ico {
+    transform: none;
+  }
+}

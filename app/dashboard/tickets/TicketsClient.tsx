@@ -6,11 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { useAuth } from '@/app/hooks/useAuth';
-import { 
-  FiPlus, FiMessageSquare, FiClock, FiCheckCircle, 
-  FiAlertCircle, FiX, FiSend, FiInbox, FiFilter,
-  FiTerminal, FiActivity, FiArrowRight, FiShield
-} from 'react-icons/fi';
+import VoltrisIcon, { type VoltrisIconName } from '@/components/dashboard/VoltrisIcon';
+import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 import { useDashboard } from '@/app/context/DashboardContext';
 
 interface Ticket {
@@ -80,12 +77,9 @@ export default function TicketsClient() {
       setNewTicket({ title: '', description: '', priority: 'medium' });
       setShowCreateForm(false);
       refetch();
-      toast.success('Support ticket opened!', {
-        icon: '🎫',
-        style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
-      });
+      toast.success('Support ticket opened successfully!');
     } catch (err: any) {
-      toast.error(err.message);
+      toast.error(err.message || 'Error opening ticket');
     } finally {
       setIsCreating(false);
     }
@@ -111,115 +105,110 @@ export default function TicketsClient() {
     }
   };
 
-  const statusConfig = (status: string) => {
+  const statusConfig = (status: string): { color: string; bg: string; border: string; icon: VoltrisIconName } => {
     switch (status) {
-      case 'Open': return { color: 'text-amber-400', bg: 'bg-amber-400/10', border: 'border-amber-400/20', icon: FiClock };
-      case 'Under Review': return { color: 'text-[#31A8FF]', bg: 'bg-[#31A8FF]/10', border: 'border-[#31A8FF]/20', icon: FiActivity };
-      case 'Resolved': return { color: 'text-[#00FF88]', bg: 'bg-[#00FF88]/10', border: 'border-[#00FF88]/20', icon: FiCheckCircle };
-      case 'Closed': return { color: 'text-slate-400', bg: 'bg-slate-400/10', border: 'border-slate-400/10', icon: FiShield };
-      default: return { color: 'text-slate-400', bg: 'bg-slate-400/10', border: 'border-slate-400/10', icon: FiInbox };
+      case 'Open': return { color: 'text-[#F59E0B]', bg: 'bg-amber-500/10', border: 'border-amber-500/20', icon: 'clock' };
+      case 'Under Review': return { color: 'text-[#8B31FF]', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', icon: 'activity' };
+      case 'Resolved': return { color: 'text-[#00FF94]', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', icon: 'success' };
+      case 'Closed': return { color: 'text-slate-400', bg: 'bg-slate-800', border: 'border-slate-700', icon: 'security' };
+      default: return { color: 'text-slate-400', bg: 'bg-slate-800', border: 'border-slate-700', icon: 'inbox' };
     }
   };
 
   const filteredTickets = tickets.filter(t => filter === 'all' || t.status === filter);
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-6 w-full max-w-full">
       
       {/* Header Area */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
-        <div className="space-y-2">
-           <div className="flex items-center gap-3">
-             <div className="w-2 h-8 bg-gradient-to-b from-[#8B31FF] to-[#31A8FF] rounded-full"></div>
-             <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Command <span className="text-[#8B31FF] not-italic">Support</span></h2>
-           </div>
-           <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Neural interface for technical assistance</p>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-slate-800/80">
+        <div>
+           <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Support Center</h2>
+           <p className="text-xs text-slate-400 mt-0.5">Open tickets for specialized technical assistance, license or optimization questions</p>
         </div>
 
-        <div className="flex items-center gap-4 w-full md:w-auto">
-           <div className="relative group flex-1 md:flex-none">
-              <FiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-[#8B31FF] transition-colors" />
+        <div className="flex items-center gap-2.5 w-full sm:w-auto">
+           <div className="relative flex-1 sm:flex-none">
               <select 
                 value={filter} 
                 onChange={e => setFilter(e.target.value)}
-                className="w-full md:w-56 pl-11 pr-6 py-4 rounded-2xl bg-[#0A0A10]/50 border border-white/5 text-white/40 group-hover:text-white font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#8B31FF] transition-all appearance-none cursor-pointer"
+                className="w-full sm:w-44 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer shadow-sm"
               >
-                 <option value="all">ALL FREQUENCIES</option>
-                <option value="Open">OPEN NODES</option>
-                <option value="Under Review">UNDER REVIEW</option>
-                <option value="Resolved">RESOLVED</option>
+                 <option value="all">All Statuses</option>
+                 <option value="Open">Open</option>
+                 <option value="Under Review">Under Review</option>
+                 <option value="Resolved">Resolved</option>
               </select>
            </div>
            <button 
              onClick={() => setShowCreateForm(true)}
-             className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-3xl text-xs whitespace-nowrap"
+             className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all flex items-center justify-center gap-2 active:scale-95 shrink-0"
            >
-              <FiPlus className="w-4 h-4" />
-              Open Support
+              <VoltrisIcon name="plus" size={16} />
+              <span>New Ticket</span>
            </button>
         </div>
       </div>
 
       {isLoading ? (
-        <div className="flex flex-col items-center justify-center py-20 gap-6 opacity-30">
-          <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
-          <p className="font-black uppercase tracking-[0.3em] text-[10px]">Scanning Uplinks...</p>
+        <div className="flex flex-col items-center justify-center py-32 gap-3 text-slate-400">
+          <div className="w-8 h-8 rounded-full border-2 border-slate-700 border-t-indigo-500 animate-spin"></div>
+          <p className="text-xs font-medium text-slate-400">Loading tickets...</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <AnimatePresence mode="popLayout">
             {filteredTickets.length > 0 ? (
-              filteredTickets.map((ticket, i) => {
+              filteredTickets.map((ticket) => {
                 const config = statusConfig(ticket.status);
-                const Icon = config.icon;
                 return (
-                  <motion.div
+                  <div
                     key={ticket.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ y: -5 }}
                     onClick={() => { setSelectedTicket(ticket); setShowTicketModal(true); }}
-                    className={`group p-8 rounded-[3rem] border transition-all duration-500 cursor-pointer overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'} hover:border-[#8B31FF]/40`}
+                    className={`p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between gap-4 group
+                      ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/60 border-slate-800 shadow-sm'} 
+                      hover:border-slate-700 hover:bg-slate-900/80
+                    `}
                   >
-                    <div className="relative z-10 flex flex-col h-full gap-6">
-                       <div className="flex justify-between items-start">
-                          <div className={`p-4 rounded-2xl ${config.bg} ${config.border} ${config.color} shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-3`}>
-                             <Icon className="w-6 h-6" />
-                          </div>
-                          <div className="flex flex-col items-end">
-                             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">Priority</span>
-                             <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border border-white/5 ${ticket.priority === 'high' ? 'text-red-400 bg-red-400/5' : ticket.priority === 'medium' ? 'text-amber-400 bg-amber-400/5' : 'text-emerald-400 bg-emerald-400/5'}`}>
-                                {ticket.priority === 'high' ? 'URGENT' : ticket.priority === 'medium' ? 'MEDIUM' : 'LOW'}
-                             </span>
-                          </div>
-                       </div>
+                     <div className="space-y-3">
+                        <div className="flex justify-between items-center">
+                           <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${config.bg} ${config.color} ${config.border}`}>
+                              <VoltrisIcon name={config.icon} size={12} />
+                              <span>{ticket.status}</span>
+                           </span>
+                           <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${
+                             ticket.priority === 'high' 
+                               ? 'text-rose-400 bg-rose-500/10 border-rose-500/20' 
+                               : ticket.priority === 'medium' 
+                                 ? 'text-amber-400 bg-amber-500/10 border-amber-500/20' 
+                                 : 'text-slate-400 bg-slate-800 border-slate-700'
+                           }`}>
+                              {ticket.priority === 'high' ? 'High' : ticket.priority === 'medium' ? 'Medium' : 'Normal'}
+                           </span>
+                        </div>
 
-                       <div className="space-y-2">
-                         <h3 className="text-xl font-black text-white uppercase italic tracking-tighter truncate leading-none">{ticket.title}</h3>
-                         <p className="text-white/30 text-xs font-bold line-clamp-2 leading-relaxed uppercase tracking-wider">{ticket.description}</p>
-                       </div>
+                        <div>
+                          <h3 className="text-sm font-bold text-white tracking-tight group-hover:text-indigo-300 transition-colors line-clamp-1">{ticket.title}</h3>
+                          <p className="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">{ticket.description}</p>
+                        </div>
+                     </div>
 
-                       <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                          <div className="flex flex-col">
-                             <span className="text-[9px] font-black text-white/10 uppercase tracking-widest">ID Hash</span>
-                             <span className="text-[10px] font-black text-[#8B31FF] uppercase font-mono tracking-widest">#{ticket.id.slice(0, 6)}</span>
-                          </div>
-                           <div className="flex items-center gap-2 text-white/20 group-hover:text-white transition-colors">
-                             <span className="text-[10px] font-black uppercase tracking-widest italic">Review Transmission</span>
-                             <FiArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                          </div>
-                       </div>
-                    </div>
-                  </motion.div>
+                     <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 font-mono">
+                        <span>#{ticket.id.slice(0, 6)}</span>
+                        <div className="flex items-center gap-1 text-slate-400 group-hover:text-white transition-colors">
+                           <span>View messages</span>
+                           <VoltrisIcon name="arrowRight" size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                     </div>
+                  </div>
                 );
               })
             ) : (
-               <div className={`col-span-full p-24 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
-                 <FiInbox className="w-20 h-20 text-white/5" />
-                 <div className="space-y-2">
-                    <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">No Active Uplink</h3>
-                    <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em]">You have no active technical support frequencies at the moment.</p>
+               <div className={`col-span-full p-16 rounded-2xl text-center border border-slate-800 flex flex-col items-center gap-3 ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/40 shadow-xl'}`}>
+                 <VoltrisIconTile icon="inbox" accent={DASHBOARD_ACCENT.brand} size={12} />
+                 <div className="space-y-1 max-w-sm">
+                    <h3 className="text-base font-bold text-white tracking-tight">No tickets found</h3>
+                    <p className="text-xs text-slate-400">You have no active support tickets matching the selected filters.</p>
                  </div>
               </div>
             )}
@@ -230,149 +219,155 @@ export default function TicketsClient() {
       {/* Modern Ticket Creation Modal */}
       <AnimatePresence>
         {showCreateForm && (
-          <div className="fixed inset-0 z-[300] flex items-center justify-center p-6">
+          <div className="fixed inset-0 z-[300] flex items-center justify-center p-4">
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }} 
-              className="absolute inset-0 bg-black/95 backdrop-blur-md" 
+              className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" 
               onClick={() => setShowCreateForm(false)} 
             />
             <motion.div 
-              initial={{ scale: 0.9, y: 30 }} 
+              initial={{ scale: 0.95, y: 15 }} 
               animate={{ scale: 1, y: 0 }} 
-              exit={{ scale: 0.9, y: 30 }} 
-              className={`relative w-full max-w-2xl p-8 md:p-12 rounded-[3.5rem] border border-white/10 shadow-3xl overflow-y-auto max-h-[95vh] custom-scrollbar-modern ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}
+              exit={{ scale: 0.95, y: 15 }} 
+              className={`relative w-full max-w-lg p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-2xl ${transparencyMode ? 'voltris-glass' : 'bg-slate-900'}`}
             >
-               <button onClick={() => setShowCreateForm(false)} className="absolute top-8 right-8 p-3 rounded-2xl bg-white/5 text-white/40 hover:text-white transition-all z-20"><FiX size={20} /></button>
-               
-               <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-10 text-center md:text-left relative z-10">
-                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10 shrink-0">
-                   <FiTerminal className="w-8 h-8 md:w-10 md:h-10" />
-                 </div>
-                 <div className="space-y-1">
-                   <h3 className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter">New <span className="text-[#8B31FF] not-italic">Support</span></h3>
-                   <p className="text-white/40 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] font-mono leading-none">Establishing interface with Voltris Tech</p>
-                 </div>
+               <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
+                  <div className="flex items-center gap-3">
+                     <VoltrisIconTile icon="message" accent={DASHBOARD_ACCENT.brand} size={10} />
+                    <div>
+                      <h3 className="text-lg font-bold text-white tracking-tight">Open New Ticket</h3>
+                      <p className="text-xs text-slate-400">Our technical team will respond as soon as possible</p>
+                    </div>
+                  </div>
+                  <button onClick={() => setShowCreateForm(false)} className="text-slate-500 hover:text-white transition-colors">
+                    <VoltrisIcon name="close" size={20} />
+                  </button>
                </div>
 
-                <form onSubmit={handleCreateTicket} className="space-y-8 relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                      <label className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono ml-4">Transmission Subject</label>
-                      <input 
-                        type="text" required 
-                        value={newTicket.title} onChange={e => setNewTicket({...newTicket, title: e.target.value})}
-                        className="w-full px-6 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 text-xs font-bold uppercase tracking-wider" 
-                        placeholder="Define the problem space.."
-                      />
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono ml-4">Priority</label>
-                      <div className="relative group">
-                        <select 
-                          value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
-                          className="w-full px-6 py-5 rounded-2xl bg-white/5 border border-white/10 text-white/60 focus:text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all appearance-none uppercase font-black text-[9px] tracking-widest cursor-pointer"
-                        >
-                           <option value="low" className="bg-[#050510]">STANDARD PRIORITY</option>
-                           <option value="medium" className="bg-[#050510]">MEDIUM PRIORITY</option>
-                           <option value="high" className="bg-[#050510]">URGENT RESPONSE</option>
-                        </select>
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-20 group-hover:opacity-100 transition-opacity">
-                          <FiArrowRight className="w-4 h-4 rotate-90" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                   <div className="space-y-3">
-                    <label className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono ml-4">Data Payload (Description)</label>
-                    <textarea 
-                      required rows={5}
-                      value={newTicket.description} onChange={e => setNewTicket({...newTicket, description: e.target.value})}
-                      className="w-full p-6 rounded-3xl bg-white/5 border border-white/10 text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none text-xs font-bold leading-relaxed tracking-wider" 
-                      placeholder="Identify specific hardware or software failure markers..."
+                <form onSubmit={handleCreateTicket} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Subject / Title</label>
+                    <input 
+                      type="text" required 
+                      value={newTicket.title} onChange={e => setNewTicket({...newTicket, title: e.target.value})}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors placeholder:text-slate-500" 
+                      placeholder="e.g. Question about activating the Optimizer"
                     />
                   </div>
-                  <button 
-                    type="submit" disabled={isCreating}
-                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#8B31FF] bg-[length:200%_auto] hover:bg-right text-white font-black uppercase italic text-[11px] tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-500 disabled:opacity-50"
-                  >
-                    {isCreating ? 'Transmitting Data...' : 'Transmit Support Request'}
-                  </button>
+
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Priority</label>
+                    <select 
+                      value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors cursor-pointer"
+                    >
+                       <option value="low">Standard priority</option>
+                       <option value="medium">Medium priority</option>
+                       <option value="high">Urgent priority</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Message / Details</label>
+                    <textarea 
+                      required rows={4}
+                      value={newTicket.description} onChange={e => setNewTicket({...newTicket, description: e.target.value})}
+                      className="w-full p-3.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:border-indigo-500 outline-none transition-colors placeholder:text-slate-500 resize-none leading-relaxed" 
+                      placeholder="Describe what is happening or your request..."
+                    />
+                  </div>
+
+                  <div className="pt-2 flex gap-3">
+                    <button 
+                      type="button"
+                      onClick={() => setShowCreateForm(false)}
+                      className="flex-1 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs hover:bg-slate-700 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                    <button 
+                      type="submit" disabled={isCreating}
+                      className="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-600/20 transition-all disabled:opacity-50"
+                    >
+                      {isCreating ? 'Submitting...' : 'Submit Ticket'}
+                    </button>
+                  </div>
                </form>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      {/* Details/Chat Uplink Modal */}
+      {/* Details/Chat Modal */}
       <AnimatePresence>
         {showTicketModal && selectedTicket && (
-          <div className="fixed inset-0 z-[350] flex items-center justify-center p-6 pb-0 md:pb-6">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/98 backdrop-blur-2xl" onClick={() => setShowTicketModal(false)} />
-            <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }} onClick={e => e.stopPropagation()} className={`relative w-full max-w-4xl h-full md:h-[90vh] flex flex-col overflow-hidden rounded-t-[3rem] md:rounded-[4rem] border border-white/10 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A12]'}`}>
+          <div className="fixed inset-0 z-[350] flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setShowTicketModal(false)} />
+            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} onClick={e => e.stopPropagation()} className={`relative w-full max-w-2xl h-[85vh] flex flex-col overflow-hidden rounded-2xl border border-slate-800 shadow-2xl ${transparencyMode ? 'voltris-glass' : 'bg-slate-900'}`}>
                
-               {/* Modal Navigation Header */}
-               <div className="px-10 py-8 bg-black/40 border-b border-white/5 flex justify-between items-center">
-                  <div className="flex items-center gap-6">
-                    <div className={`p-4 rounded-2xl ${statusConfig(selectedTicket.status).bg} ${statusConfig(selectedTicket.status).color} border ${statusConfig(selectedTicket.status).border}`}>
-                       {React.createElement(statusConfig(selectedTicket.status).icon, { className: 'w-6 h-6' })}
+               {/* Modal Header */}
+               <div className="px-6 py-4 bg-slate-950/80 border-b border-slate-800 flex justify-between items-center shrink-0">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className={`p-2 rounded-lg ${statusConfig(selectedTicket.status).bg} ${statusConfig(selectedTicket.status).color} border ${statusConfig(selectedTicket.status).border} shrink-0`}>
+                       <VoltrisIcon name={statusConfig(selectedTicket.status).icon} size={16} />
                     </div>
-                     <div className="space-y-1">
-                      <h4 className="text-xl font-black text-white uppercase italic tracking-tighter truncate max-w-[200px] md:max-w-md">{selectedTicket.title}</h4>
-                      <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Transmission Channel: <span className="text-[#8B31FF]">#{selectedTicket.id.slice(0, 12)}</span></p>
+                    <div className="min-w-0">
+                      <h4 className="text-sm font-bold text-white tracking-tight truncate">{selectedTicket.title}</h4>
+                      <p className="text-[10px] text-slate-500 font-mono">Ticket #{selectedTicket.id.slice(0, 8)}</p>
                     </div>
                  </div>
-                  <button onClick={() => setShowTicketModal(false)} className="p-3 bg-white/5 text-white/20 hover:text-white rounded-2xl transition-all"><FiX size={24} /></button>
+                  <button onClick={() => setShowTicketModal(false)} className="text-slate-400 hover:text-white transition-colors p-1">
+                    <VoltrisIcon name="close" size={20} />
+                  </button>
                </div>
 
                {/* Communications Stream */}
-               <div className="flex-1 overflow-y-auto p-10 space-y-10 custom-scrollbar-modern">
+               <div className="flex-1 overflow-y-auto p-6 space-y-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                   {messages.map((msg, i) => {
                     const isMe = msg.user_id === user?.id;
                     return (
-                      <motion.div 
-                        initial={{ opacity: 0, x: isMe ? 20 : -20 }} 
-                        animate={{ opacity: 1, x: 0 }} 
+                      <div 
                         key={i} 
                         className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}
                       >
-                         <div className={`group relative p-6 rounded-[2.5rem] max-w-[85%] md:max-w-[70%] border transition-all duration-300 ${isMe ? 'bg-[#8B31FF]/10 border-[#8B31FF]/20 text-white rounded-tr-none' : 'bg-white/5 border-white/10 text-white/80 rounded-tl-none'}`}>
-                            <p className="text-sm font-bold leading-relaxed whitespace-pre-wrap uppercase tracking-wide italic">{msg.content}</p>
-                            <div className={`absolute top-0 ${isMe ? '-right-1' : '-left-1'} w-3 h-3 bg-inherit border-inherit rotate-45`}></div>
+                         <div className={`px-4 py-3 rounded-2xl max-w-[85%] text-xs leading-relaxed ${isMe ? 'bg-indigo-600 text-white rounded-tr-none' : 'bg-slate-800 text-slate-200 border border-slate-700/80 rounded-tl-none'}`}>
+                            <p className="whitespace-pre-wrap">{msg.content}</p>
                          </div>
-                          <span className="mt-3 px-2 text-[8px] font-black text-white/20 uppercase tracking-[0.3em] font-mono">
-                            {isMe ? 'TRANSMITTER' : 'RESONANCE CORE'} • {new Date(msg.created_at).toLocaleTimeString()}
+                          <span className="mt-1 px-1 text-[9px] font-mono text-slate-500">
+                            {isMe ? 'You' : 'Technical Support'} • {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </span>
-                      </motion.div>
+                      </div>
                     );
                   })}
                </div>
 
-               {/* Broadcast Input Station */}
-               <div className="p-8 bg-black/60 border-t border-white/10">
-                   <div className="relative group">
+               {/* Input Station */}
+               <div className="p-4 bg-slate-950/80 border-t border-slate-800 shrink-0">
+                   <div className="relative flex items-center">
                      <textarea 
                         rows={1}
                         value={replyText}
                         onChange={e => setReplyText(e.target.value)}
-                        placeholder="Inject the resonance sequence (Your reply)..."
-                        className="w-full bg-white/5 border border-white/5 rounded-3xl pl-8 pr-24 py-6 text-white text-sm font-bold focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none"
+                        onKeyDown={e => {
+                          if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            handleSendReply();
+                          }
+                        }}
+                        placeholder="Write your reply..."
+                        className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-4 pr-24 py-3 text-white text-xs focus:border-indigo-500 outline-none transition-colors placeholder:text-slate-500 resize-none"
                      />
                      <button 
                        onClick={handleSendReply}
                        disabled={!replyText.trim() || isSendingReply}
-                       className="absolute right-3 top-3 bottom-3 px-6 bg-[#8B31FF] text-white rounded-2xl font-black uppercase italic text-[10px] tracking-widest flex items-center gap-3 transition-all hover:scale-105 active:scale-95 disabled:grayscale disabled:opacity-30"
+                       className="absolute right-2 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all disabled:opacity-30"
                      >
-                        {isSendingReply ? 'Syncing...' : (
-                          <>
-                            <span className="hidden md:block">Transmit</span>
-                            <FiSend className="w-4 h-4" />
-                          </>
-                        )}
+                        <span>{isSendingReply ? 'Sending...' : 'Send'}</span>
+                        <VoltrisIcon name="send" size={12} />
                      </button>
                   </div>
-                   <p className="mt-4 text-center text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Neural interface protected by Voltris Protocol v.4.0</p>
                 </div>
 
             </motion.div>
