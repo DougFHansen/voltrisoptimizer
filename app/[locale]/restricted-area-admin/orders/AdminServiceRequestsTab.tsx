@@ -8,7 +8,7 @@ interface ServiceRequest {
   id: string;
   created_at: string;
   status: string;
-  requested_services: unknown[];
+  requested_services: { service_name?: string }[];
   scheduling_type: string;
   requested_datetime?: string;
   admin_notes?: string;
@@ -251,7 +251,7 @@ export default function AdminServiceRequestsTab() {
                         <div className="text-xs text-gray-400">
                           {request.requested_services?.length || 0} service(s)
                         </div>
-                        {request.requested_services?.slice(0, 2).map((service: unknown, index: number) => (
+                        {request.requested_services?.slice(0, 2).map((service: { service_name?: string }, index: number) => (
                           <div key={index} className="text-xs text-gray-400">
                             • {service.service_name || 'Service'}
                           </div>
