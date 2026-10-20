@@ -21169,5 +21169,9 @@
   "Are you sure you want to delete this user?": "确定要删除此用户吗？",
   "User deleted successfully!": "用户已成功删除！",
   "Block": "屏蔽",
-  "Delete": "删除"
+  "Delete": "删除",
+  "License Purchase": "购买许可证",
+  "Complete your registration to continue": "完成注册以继续",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "打开仪表板前我们需要您完整的个人资料信息。正在带您前往个人资料…",
+  "Collapse": "折叠"
 }

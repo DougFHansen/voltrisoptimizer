@@ -21168,5 +21168,9 @@
   "Are you sure you want to delete this user?": "Bu kullanıcıyı silmek istediğinize emin misiniz?",
   "User deleted successfully!": "Kullanıcı başarıyla silindi!",
   "Block": "Engelle",
-  "Delete": "Sil"
+  "Delete": "Sil",
+  "License Purchase": "Lisans Satın Alma",
+  "Complete your registration to continue": "Devam etmek için kaydınızı tamamlayın",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Paneli açmadan önce tüm profil bilgilerinize ihtiyacımız var. Sizi profilinize götürüyoruz…",
+  "Collapse": "Daralt"
 }

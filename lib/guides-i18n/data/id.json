@@ -21169,5 +21169,9 @@
   "Are you sure you want to delete this user?": "Yakin ingin menghapus pengguna ini?",
   "User deleted successfully!": "Pengguna berhasil dihapus!",
   "Block": "Blokir",
-  "Delete": "Hapus"
+  "Delete": "Hapus",
+  "License Purchase": "Pembelian lisensi",
+  "Complete your registration to continue": "Selesaikan pendaftaran untuk melanjutkan",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Kami memerlukan semua informasi profil Anda sebelum membuka dasbor. Mengarahkan Anda ke profil…",
+  "Collapse": "Ciutkan"
 }

@@ -21164,5 +21164,9 @@
   "Are you sure you want to delete this user?": "Möchten Sie diesen Benutzer wirklich löschen?",
   "User deleted successfully!": "Benutzer erfolgreich gelöscht!",
   "Block": "Blockieren",
-  "Delete": "Löschen"
+  "Delete": "Löschen",
+  "License Purchase": "Lizenzkauf",
+  "Complete your registration to continue": "Schließen Sie Ihre Registrierung ab, um fortzufahren",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Wir benötigen alle Ihre Profildaten, bevor das Dashboard geöffnet wird. Wir führen Sie zu Ihrem Profil…",
+  "Collapse": "Reduzieren"
 }

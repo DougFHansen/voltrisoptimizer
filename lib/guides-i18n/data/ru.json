@@ -21168,5 +21168,9 @@
   "Are you sure you want to delete this user?": "Вы уверены, что хотите удалить этого пользователя?",
   "User deleted successfully!": "Пользователь успешно удалён!",
   "Block": "Заблокировать",
-  "Delete": "Удалить"
+  "Delete": "Удалить",
+  "License Purchase": "Покупка лицензии",
+  "Complete your registration to continue": "Завершите регистрацию, чтобы продолжить",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Нам нужны все данные вашего профиля, прежде чем открыть панель. Перенаправляем вас в профиль…",
+  "Collapse": "Свернуть"
 }

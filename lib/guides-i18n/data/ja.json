@@ -21169,5 +21169,9 @@
   "Are you sure you want to delete this user?": "このユーザーを削除してもよろしいですか？",
   "User deleted successfully!": "ユーザーが正常に削除されました！",
   "Block": "ブロック",
-  "Delete": "削除"
+  "Delete": "削除",
+  "License Purchase": "ライセンス購入",
+  "Complete your registration to continue": "続行するには登録を完了してください",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "ダッシュボードを開く前にプロフィール情報をすべて入力する必要があります。プロフィールへ移動しています…",
+  "Collapse": "折りたたむ"
 }

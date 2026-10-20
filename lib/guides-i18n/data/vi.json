@@ -21151,5 +21151,9 @@
   "Payment pending": "Thanh toán đang chờ xử lý",
   "Trial period": "Thời gian dùng thử",
   "The paid period ended. Renew to reactivate PRO on the same computer, without reinstalling the app.": "Kỳ hạn trả phí đã kết thúc. Gia hạn để kích hoạt lại PRO trên cùng máy tính, không cần cài đặt lại ứng dụng.",
-  "License revoked (refund, chargeback or support decision). Your data was not deleted — contact us to understand the case.": "Giấy phép đã bị thu hồi (hoàn tiền, hoàn trả qua ngân hàng hoặc quyết định từ bộ phận hỗ trợ). Dữ liệu của bạn không bị xóa — hãy liên hệ chúng tôi để tìm hiểu trường hợp này."
+  "License revoked (refund, chargeback or support decision). Your data was not deleted — contact us to understand the case.": "Giấy phép đã bị thu hồi (hoàn tiền, hoàn trả qua ngân hàng hoặc quyết định từ bộ phận hỗ trợ). Dữ liệu của bạn không bị xóa — hãy liên hệ chúng tôi để tìm hiểu trường hợp này.",
+  "License Purchase": "Mua giấy phép",
+  "Complete your registration to continue": "Hoàn tất đăng ký để tiếp tục",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Chúng tôi cần đầy đủ thông tin hồ sơ của bạn trước khi mở bảng điều khiển. Đang đưa bạn đến hồ sơ…",
+  "Collapse": "Thu gọn"
 }

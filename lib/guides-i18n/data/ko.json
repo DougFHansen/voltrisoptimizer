@@ -21169,5 +21169,9 @@
   "Are you sure you want to delete this user?": "이 사용자를 삭제하시겠습니까?",
   "User deleted successfully!": "사용자가 성공적으로 삭제되었습니다!",
   "Block": "차단",
-  "Delete": "삭제"
+  "Delete": "삭제",
+  "License Purchase": "라이선스 구매",
+  "Complete your registration to continue": "계속하려면 등록을 완료하세요",
+  "We need all of your profile information before opening the dashboard. Taking you to your profile…": "대시보드를 열기 전에 프로필 정보를 모두 입력해야 합니다. 프로필로 이동합니다…",
+  "Collapse": "축소"
 }
