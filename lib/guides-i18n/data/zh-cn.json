@@ -21187,5 +21187,16 @@
   "Search notifications…": "搜索通知…",
   "Filter by type": "按类型筛选",
   "Filter by read status": "按已读状态筛选",
-  "Reload": "重新加载"
+  "Reload": "重新加载",
+  "Business Overview": "业务概览",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "直接从数据库获取的实时指标。计数遵循管理员访问规则。",
+  "Unread notifications": "未读通知",
+  "New in period": "周期内新增",
+  "Today": "今天",
+  "7 days": "7天",
+  "All time": "全部时间",
+  "Loading metrics…": "正在加载指标…",
+  "Could not load metrics": "无法加载指标",
+  "Try again": "重试",
+  "Refresh": "刷新"
 }

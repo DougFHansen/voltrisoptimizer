@@ -21186,5 +21186,16 @@
   "Search notifications…": "Поиск уведомлений…",
   "Filter by type": "Фильтр по типу",
   "Filter by read status": "Фильтр по статусу прочтения",
-  "Reload": "Обновить"
+  "Reload": "Обновить",
+  "Business Overview": "Обзор бизнеса",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "Метрики в реальном времени, полученные напрямую из базы данных. Подсчёты соблюдают правила доступа администратора.",
+  "Unread notifications": "Непрочитанные уведомления",
+  "New in period": "Новых за период",
+  "Today": "Сегодня",
+  "7 days": "7 дней",
+  "All time": "За всё время",
+  "Loading metrics…": "Загрузка метрик…",
+  "Could not load metrics": "Не удалось загрузить метрики",
+  "Try again": "Повторить",
+  "Refresh": "Обновить"
 }

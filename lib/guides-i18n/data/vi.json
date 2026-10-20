@@ -21169,5 +21169,16 @@
   "Search notifications…": "Tìm kiếm thông báo…",
   "Filter by type": "Lọc theo loại",
   "Filter by read status": "Lọc theo trạng thái đã đọc",
-  "Reload": "Tải lại"
+  "Reload": "Tải lại",
+  "Business Overview": "Tổng quan kinh doanh",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "Số liệu thời gian thực được lấy trực tiếp từ cơ sở dữ liệu. Số lượng tuân theo quy tắc truy cập của quản trị viên.",
+  "Unread notifications": "Thông báo chưa đọc",
+  "New in period": "Mới trong kỳ",
+  "Today": "Hôm nay",
+  "7 days": "7 ngày",
+  "All time": "Toàn bộ thời gian",
+  "Loading metrics…": "Đang tải số liệu…",
+  "Could not load metrics": "Không thể tải số liệu",
+  "Try again": "Thử lại",
+  "Refresh": "Làm mới"
 }

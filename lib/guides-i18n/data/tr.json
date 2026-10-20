@@ -21186,5 +21186,16 @@
   "Search notifications…": "Bildirimlerde ara…",
   "Filter by type": "Türe göre filtrele",
   "Filter by read status": "Okundu durumuna göre filtrele",
-  "Reload": "Yenile"
+  "Reload": "Yenile",
+  "Business Overview": "İşletme Genel Bakışı",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "Veritabanından doğrudan alınan gerçek zamanlı ölçümler. Sayımlar yönetici erişim kurallarına uyar.",
+  "Unread notifications": "Okunmamış bildirimler",
+  "New in period": "Dönemde yeni",
+  "Today": "Bugün",
+  "7 days": "7 gün",
+  "All time": "Tüm zamanlar",
+  "Loading metrics…": "Ölçümler yükleniyor…",
+  "Could not load metrics": "Ölçümler yüklenemedi",
+  "Try again": "Yeniden dene",
+  "Refresh": "Yenile"
 }

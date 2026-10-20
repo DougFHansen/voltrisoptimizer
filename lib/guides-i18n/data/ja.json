@@ -21187,5 +21187,16 @@
   "Search notifications…": "通知を検索…",
   "Filter by type": "種類で絞り込み",
   "Filter by read status": "既読状態で絞り込み",
-  "Reload": "再読み込み"
+  "Reload": "再読み込み",
+  "Business Overview": "ビジネス概要",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "データベースから直接取得したリアルタイムの指標。カウントは管理者アクセスルールに従います。",
+  "Unread notifications": "未読の通知",
+  "New in period": "期間内の新規",
+  "Today": "今日",
+  "7 days": "7日",
+  "All time": "全期間",
+  "Loading metrics…": "メトリックを読み込み中…",
+  "Could not load metrics": "メトリックを読み込めませんでした",
+  "Try again": "再試行",
+  "Refresh": "更新"
 }

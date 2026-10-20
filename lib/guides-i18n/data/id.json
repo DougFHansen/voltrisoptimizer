@@ -21187,5 +21187,16 @@
   "Search notifications…": "Cari notifikasi…",
   "Filter by type": "Saring berdasarkan tipe",
   "Filter by read status": "Saring berdasarkan status baca",
-  "Reload": "Muat ulang"
+  "Reload": "Muat ulang",
+  "Business Overview": "Ikhtisar Bisnis",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "Metrik waktu nyata yang diambil langsung dari basis data. Penghitungan mematuhi aturan akses admin.",
+  "Unread notifications": "Notifikasi belum dibaca",
+  "New in period": "Baru dalam periode",
+  "Today": "Hari ini",
+  "7 days": "7 hari",
+  "All time": "Sepanjang waktu",
+  "Loading metrics…": "Memuat metrik…",
+  "Could not load metrics": "Tidak dapat memuat metrik",
+  "Try again": "Coba lagi",
+  "Refresh": "Segarkan"
 }

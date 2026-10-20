@@ -21187,5 +21187,16 @@
   "Search notifications…": "알림 검색…",
   "Filter by type": "유형별 필터",
   "Filter by read status": "읽음 상태별 필터",
-  "Reload": "새로 고침"
+  "Reload": "새로 고침",
+  "Business Overview": "비즈니스 개요",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "데이터베이스에서 직접 가져온 실시간 지표. 집계는 관리자 접근 규칙을 따릅니다.",
+  "Unread notifications": "읽지 않은 알림",
+  "New in period": "기간 내 신규",
+  "Today": "오늘",
+  "7 days": "7일",
+  "All time": "전체 기간",
+  "Loading metrics…": "지표 로드 중…",
+  "Could not load metrics": "지표를 로드할 수 없습니다",
+  "Try again": "다시 시도",
+  "Refresh": "새로 고침"
 }

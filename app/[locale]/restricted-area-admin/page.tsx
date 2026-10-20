@@ -10,10 +10,16 @@ import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
 import AdminNotificationsTab from './notifications/AdminNotificationsTab';
+import AdminOverviewTab from './overview/AdminOverviewTab';
 import NotificationTester from '../../components/NotificationTester';
 import LanguageSelector from '@/components/LanguageSelector';
 
 const tabs = [
+  {
+    label: 'Overview',
+    value: 'overview',
+    icon: <FiZap size={20} className="text-[#00FF94]" />,
+  },
   {
     label: 'Orders',
     value: 'orders',
@@ -43,7 +49,7 @@ const tabs = [
 
 export default function AdminDashboard() {
   const { user, isAdmin, loading, error } = useAuth();
-  const [activeTab, setActiveTab] = useState('orders');
+  const [activeTab, setActiveTab] = useState('overview');
 
   if (loading) {
     return (
@@ -107,6 +113,7 @@ export default function AdminDashboard() {
 
         {/* Tab content - fluid layout */}
         <div className="w-full">
+          {activeTab === 'overview' && <AdminOverviewTab />}
           {activeTab === 'orders' && <AdminOrdersTab />}
           {activeTab === 'tickets' && <AdminTicketsTab />}
           {activeTab === 'newsletter' && <AdminNewsletterTab />}

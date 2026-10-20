@@ -21187,5 +21187,16 @@
   "Search notifications…": "Buscar notificações…",
   "Filter by type": "Filtrar por tipo",
   "Filter by read status": "Filtrar por status de leitura",
-  "Reload": "Recarregar"
+  "Reload": "Recarregar",
+  "Business Overview": "Visão geral do negócio",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "Métricas em tempo real extraídas diretamente do banco de dados. As contagens respeitam as regras de acesso de administrador.",
+  "Unread notifications": "Notificações não lidas",
+  "New in period": "Novos no período",
+  "Today": "Hoje",
+  "7 days": "7 dias",
+  "All time": "Todo o período",
+  "Loading metrics…": "Carregando métricas…",
+  "Could not load metrics": "Não foi possível carregar as métricas",
+  "Try again": "Tentar de novo",
+  "Refresh": "Atualizar"
 }

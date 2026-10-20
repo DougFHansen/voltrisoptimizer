@@ -21187,5 +21187,16 @@
   "Search notifications…": "البحث في الإشعارات…",
   "Filter by type": "تصفية حسب النوع",
   "Filter by read status": "تصفية حسب حالة القراءة",
-  "Reload": "إعادة تحميل"
+  "Reload": "إعادة تحميل",
+  "Business Overview": "نظرة عامة على النشاط",
+  "Real-time metrics pulled straight from the database. Counts respect admin access rules.": "مقاييس فورية مُستقاة مباشرةً من قاعدة البيانات. تحترم عمليات العد قواعد وصول المسؤول.",
+  "Unread notifications": "إشعارات غير مقروءة",
+  "New in period": "جديد في الفترة",
+  "Today": "اليوم",
+  "7 days": "7 أيام",
+  "All time": "طوال الوقت",
+  "Loading metrics…": "جارٍ تحميل المقاييس…",
+  "Could not load metrics": "تعذّر تحميل المقاييس",
+  "Try again": "حاول مرة أخرى",
+  "Refresh": "تحديث"
 }
