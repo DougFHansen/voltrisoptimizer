@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --test tests/auth-safe.test.ts tests/profile-completeness.test.ts tests/locale.test.ts tests/resend-client.test.ts tests/email-templates.test.ts tests/auth-hook.test.ts tests/invoice-intl.test.ts tests/billing-email.test.ts tests/password-recovery.test.ts tests/password-recovery-link.test.ts tests/admin-notifications.test.ts tests/no-bom.test.ts tests/admin-overview.test.ts tests/admin-orders-dedup.test.ts tests/intl-currency.test.ts tests/intl-seo.test.ts",
+    "test": "node --test tests/auth-safe.test.ts tests/profile-completeness.test.ts tests/locale.test.ts tests/resend-client.test.ts tests/email-templates.test.ts tests/auth-hook.test.ts tests/invoice-intl.test.ts tests/billing-email.test.ts tests/password-recovery.test.ts tests/password-recovery-link.test.ts tests/admin-notifications.test.ts tests/no-bom.test.ts tests/admin-overview.test.ts tests/admin-orders-dedup.test.ts tests/intl-currency.test.ts tests/intl-seo.test.ts tests/admin-emails.test.ts",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit"
   },

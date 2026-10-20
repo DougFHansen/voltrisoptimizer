@@ -3,7 +3,7 @@
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import { useState, useEffect } from 'react';
-import { FiUsers, FiPackage, FiMessageSquare, FiMail, FiFileText, FiZap, FiBell } from 'react-icons/fi';
+import { FiUsers, FiPackage, FiMessageSquare, FiMail, FiFileText, FiZap, FiBell, FiInbox } from 'react-icons/fi';
 import { ClipboardList, TicketCheck } from 'lucide-react';
 import AdminOrdersTab from './orders/AdminOrdersTab';
 import AdminTicketsTab from './tickets/AdminTicketsTab';
@@ -11,6 +11,7 @@ import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
 import AdminNotificationsTab from './notifications/AdminNotificationsTab';
 import AdminOverviewTab from './overview/AdminOverviewTab';
+import AdminEmailsTab from './emails/AdminEmailsTab';
 import NotificationTester from '../../components/NotificationTester';
 import LanguageSelector from '@/components/LanguageSelector';
 
@@ -29,6 +30,11 @@ const tabs = [
     label: 'Tickets',
     value: 'tickets',
     icon: <TicketCheck size={20} className="text-[#8B31FF]" />,
+  },
+  {
+    label: 'Emails',
+    value: 'emails',
+    icon: <FiInbox size={20} className="text-[#FF4B6B]" />,
   },
   {
     label: 'Newsletter',
@@ -126,6 +132,7 @@ export default function AdminDashboard() {
           {activeTab === 'overview' && <AdminOverviewTab />}
           {activeTab === 'orders' && <AdminOrdersTab />}
           {activeTab === 'tickets' && <AdminTicketsTab />}
+          {activeTab === 'emails' && <AdminEmailsTab />}
           {activeTab === 'newsletter' && <AdminNewsletterTab />}
           {activeTab === 'users' && <AdminUsersTab />}
           {activeTab === 'notifications' && <AdminNotificationsTab />}
