@@ -155,7 +155,7 @@ function extractFromFile(filePath, display = false, prose = false) {
     // extras are harmless because the dictionary is an exact-match lookup.
     if (prose && (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))) {
       const t = node.text;
-      if (isProse(t) && isSentence(t)) add(set, t);
+      if (isProse(t) && (isSentence(t) || /^[A-Z][A-Za-z]{3,}$/.test(t))) add(set, t);
     }
     node.forEachChild(visit);
   }
