@@ -3,12 +3,13 @@
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import { useState, useEffect } from 'react';
-import { FiUsers, FiPackage, FiMessageSquare, FiMail, FiFileText, FiZap } from 'react-icons/fi';
+import { FiUsers, FiPackage, FiMessageSquare, FiMail, FiFileText, FiZap, FiBell } from 'react-icons/fi';
 import { ClipboardList, TicketCheck } from 'lucide-react';
 import AdminOrdersTab from './orders/AdminOrdersTab';
 import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
+import AdminNotificationsTab from './notifications/AdminNotificationsTab';
 import NotificationTester from '../../components/NotificationTester';
 import LanguageSelector from '@/components/LanguageSelector';
 
@@ -32,6 +33,11 @@ const tabs = [
     label: 'Users',
     value: 'users',
     icon: <FiUsers size={20} className="text-[#00FF94]" />,
+  },
+  {
+    label: 'Notifications',
+    value: 'notifications',
+    icon: <FiBell size={20} className="text-[#31A8FF]" />,
   },
 ];
 
@@ -105,6 +111,7 @@ export default function AdminDashboard() {
           {activeTab === 'tickets' && <AdminTicketsTab />}
           {activeTab === 'newsletter' && <AdminNewsletterTab />}
           {activeTab === 'users' && <AdminUsersTab />}
+          {activeTab === 'notifications' && <AdminNotificationsTab />}
         </div>
 
         {/* Push Notification Tester - Admin Only */}

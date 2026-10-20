@@ -21173,5 +21173,19 @@
   "License Purchase": "라이선스 구매",
   "Complete your registration to continue": "계속하려면 등록을 완료하세요",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "대시보드를 열기 전에 프로필 정보를 모두 입력해야 합니다. 프로필로 이동합니다…",
-  "Collapse": "축소"
+  "Collapse": "축소",
+  "Read": "읽음",
+  "Loading notifications…": "알림 불러오는 중…",
+  "No notifications here": "여기에 알림이 없음",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "구매, 주문, 티켓, 환불이 모두 여기에 실시간으로 표시됩니다.",
+  "Event": "이벤트",
+  "Recipient": "수신자",
+  "Type": "유형",
+  "When": "시간",
+  "Purchases": "구매",
+  "Ticket status": "티켓 상태",
+  "Search notifications…": "알림 검색…",
+  "Filter by type": "유형별 필터",
+  "Filter by read status": "읽음 상태별 필터",
+  "Reload": "새로 고침"
 }

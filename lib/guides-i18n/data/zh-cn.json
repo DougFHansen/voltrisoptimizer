@@ -21173,5 +21173,19 @@
   "License Purchase": "购买许可证",
   "Complete your registration to continue": "完成注册以继续",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "打开仪表板前我们需要您完整的个人资料信息。正在带您前往个人资料…",
-  "Collapse": "折叠"
+  "Collapse": "折叠",
+  "Read": "已读",
+  "Loading notifications…": "正在加载通知…",
+  "No notifications here": "此处没有通知",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "购买、订单、工单和退款都将实时显示在这里。",
+  "Event": "事件",
+  "Recipient": "接收者",
+  "Type": "类型",
+  "When": "时间",
+  "Purchases": "购买",
+  "Ticket status": "工单状态",
+  "Search notifications…": "搜索通知…",
+  "Filter by type": "按类型筛选",
+  "Filter by read status": "按已读状态筛选",
+  "Reload": "重新加载"
 }

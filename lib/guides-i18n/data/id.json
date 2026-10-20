@@ -21173,5 +21173,19 @@
   "License Purchase": "Pembelian lisensi",
   "Complete your registration to continue": "Selesaikan pendaftaran untuk melanjutkan",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Kami memerlukan semua informasi profil Anda sebelum membuka dasbor. Mengarahkan Anda ke profil…",
-  "Collapse": "Ciutkan"
+  "Collapse": "Ciutkan",
+  "Read": "Dibaca",
+  "Loading notifications…": "Memuat notifikasi…",
+  "No notifications here": "Tidak ada notifikasi di sini",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "Pembelian, pesanan, tiket, dan pengembalian dana akan muncul di sini secara real time.",
+  "Event": "Acara",
+  "Recipient": "Penerima",
+  "Type": "Tipe",
+  "When": "Kapan",
+  "Purchases": "Pembelian",
+  "Ticket status": "Status tiket",
+  "Search notifications…": "Cari notifikasi…",
+  "Filter by type": "Saring berdasarkan tipe",
+  "Filter by read status": "Saring berdasarkan status baca",
+  "Reload": "Muat ulang"
 }

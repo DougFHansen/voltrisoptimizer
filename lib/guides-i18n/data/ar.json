@@ -21173,5 +21173,19 @@
   "License Purchase": "شراء الترخيص",
   "Complete your registration to continue": "أكمل تسجيلك للمتابعة",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "نحتاج إلى جميع معلومات ملفك الشخصي قبل فتح لوحة التحكم. نأخذك إلى ملفك الشخصي…",
-  "Collapse": "طي"
+  "Collapse": "طي",
+  "Read": "مقروء",
+  "Loading notifications…": "جارٍ تحميل الإشعارات…",
+  "No notifications here": "لا توجد إشعارات هنا",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "ستظهر عمليات الشراء والطلبات والتذاكر وطلبات الاسترداد هنا في الوقت الفعلي.",
+  "Event": "الحدث",
+  "Recipient": "المستلم",
+  "Type": "النوع",
+  "When": "متى",
+  "Purchases": "المشتريات",
+  "Ticket status": "حالة التذكرة",
+  "Search notifications…": "البحث في الإشعارات…",
+  "Filter by type": "تصفية حسب النوع",
+  "Filter by read status": "تصفية حسب حالة القراءة",
+  "Reload": "إعادة تحميل"
 }

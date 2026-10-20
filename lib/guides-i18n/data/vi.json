@@ -21155,5 +21155,19 @@
   "License Purchase": "Mua giấy phép",
   "Complete your registration to continue": "Hoàn tất đăng ký để tiếp tục",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Chúng tôi cần đầy đủ thông tin hồ sơ của bạn trước khi mở bảng điều khiển. Đang đưa bạn đến hồ sơ…",
-  "Collapse": "Thu gọn"
+  "Collapse": "Thu gọn",
+  "Read": "Đã đọc",
+  "Loading notifications…": "Đang tải thông báo…",
+  "No notifications here": "Không có thông báo ở đây",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "Mua hàng, đơn hàng, ticket và hoàn tiền sẽ đều xuất hiện ở đây theo thời gian thực.",
+  "Event": "Sự kiện",
+  "Recipient": "Người nhận",
+  "Type": "Loại",
+  "When": "Thời gian",
+  "Purchases": "Mua hàng",
+  "Ticket status": "Trạng thái ticket",
+  "Search notifications…": "Tìm kiếm thông báo…",
+  "Filter by type": "Lọc theo loại",
+  "Filter by read status": "Lọc theo trạng thái đã đọc",
+  "Reload": "Tải lại"
 }

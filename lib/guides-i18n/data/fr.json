@@ -21173,5 +21173,19 @@
   "License Purchase": "Achat de licence",
   "Complete your registration to continue": "Terminez votre inscription pour continuer",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Nous avons besoin de toutes les informations de votre profil avant d’ouvrir le tableau de bord. Nous vous emmenons vers votre profil…",
-  "Collapse": "Réduire"
+  "Collapse": "Réduire",
+  "Read": "Lu",
+  "Loading notifications…": "Chargement des notifications…",
+  "No notifications here": "Aucune notification ici",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "Les achats, commandes, tickets et remboursements apparaîtront ici en temps réel.",
+  "Event": "Événement",
+  "Recipient": "Destinataire",
+  "Type": "Type",
+  "When": "Quand",
+  "Purchases": "Achats",
+  "Ticket status": "Statut du ticket",
+  "Search notifications…": "Rechercher des notifications…",
+  "Filter by type": "Filtrer par type",
+  "Filter by read status": "Filtrer par statut de lecture",
+  "Reload": "Recharger"
 }

@@ -21172,5 +21172,19 @@
   "License Purchase": "Lisans Satın Alma",
   "Complete your registration to continue": "Devam etmek için kaydınızı tamamlayın",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Paneli açmadan önce tüm profil bilgilerinize ihtiyacımız var. Sizi profilinize götürüyoruz…",
-  "Collapse": "Daralt"
+  "Collapse": "Daralt",
+  "Read": "Okundu",
+  "Loading notifications…": "Bildirimler yükleniyor…",
+  "No notifications here": "Burada bildirim yok",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "Satın almalar, siparişler, ticket’lar ve iadeler burada gerçek zamanlı olarak görünür.",
+  "Event": "Etkinlik",
+  "Recipient": "Alıcı",
+  "Type": "Tür",
+  "When": "Ne zaman",
+  "Purchases": "Satın almalar",
+  "Ticket status": "Ticket durumu",
+  "Search notifications…": "Bildirimlerde ara…",
+  "Filter by type": "Türe göre filtrele",
+  "Filter by read status": "Okundu durumuna göre filtrele",
+  "Reload": "Yenile"
 }

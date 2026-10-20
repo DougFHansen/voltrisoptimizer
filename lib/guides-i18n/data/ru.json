@@ -21172,5 +21172,19 @@
   "License Purchase": "Покупка лицензии",
   "Complete your registration to continue": "Завершите регистрацию, чтобы продолжить",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "Нам нужны все данные вашего профиля, прежде чем открыть панель. Перенаправляем вас в профиль…",
-  "Collapse": "Свернуть"
+  "Collapse": "Свернуть",
+  "Read": "Прочитано",
+  "Loading notifications…": "Загрузка уведомлений…",
+  "No notifications here": "Здесь нет уведомлений",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "Покупки, заказы, тикеты и возвраты будут отображаться здесь в реальном времени.",
+  "Event": "Событие",
+  "Recipient": "Получатель",
+  "Type": "Тип",
+  "When": "Когда",
+  "Purchases": "Покупки",
+  "Ticket status": "Статус тикета",
+  "Search notifications…": "Поиск уведомлений…",
+  "Filter by type": "Фильтр по типу",
+  "Filter by read status": "Фильтр по статусу прочтения",
+  "Reload": "Обновить"
 }

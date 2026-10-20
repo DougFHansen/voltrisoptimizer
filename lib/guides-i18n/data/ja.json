@@ -21173,5 +21173,19 @@
   "License Purchase": "ライセンス購入",
   "Complete your registration to continue": "続行するには登録を完了してください",
   "We need all of your profile information before opening the dashboard. Taking you to your profile…": "ダッシュボードを開く前にプロフィール情報をすべて入力する必要があります。プロフィールへ移動しています…",
-  "Collapse": "折りたたむ"
+  "Collapse": "折りたたむ",
+  "Read": "既読",
+  "Loading notifications…": "通知を読み込み中…",
+  "No notifications here": "通知はありません",
+  "Purchases, orders, tickets and refunds will all appear here in real time.": "購入、注文、チケット、返金がすべてここにリアルタイムで表示されます。",
+  "Event": "イベント",
+  "Recipient": "受信者",
+  "Type": "種類",
+  "When": "日時",
+  "Purchases": "購入",
+  "Ticket status": "チケットのステータス",
+  "Search notifications…": "通知を検索…",
+  "Filter by type": "種類で絞り込み",
+  "Filter by read status": "既読状態で絞り込み",
+  "Reload": "再読み込み"
 }
