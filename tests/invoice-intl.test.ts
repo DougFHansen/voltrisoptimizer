@@ -39,7 +39,6 @@ import {
     formatDateRange,
     type PaymentRow,
     type CustomerProfileRow,
-    type LicenseRow,
 } from '../lib/invoice-data.ts';
 import { renderInvoicePdf, __test as pdfTest } from '../lib/invoice-pdf.ts';
 
