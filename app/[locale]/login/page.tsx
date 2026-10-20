@@ -11,6 +11,7 @@ import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 import LanguageSelector from '@/components/LanguageSelector';
 import { describeAuthFailure, looksLikeEmail } from '@/lib/auth-safe';
+import { recoveryClient } from '@/lib/recovery-client';
 import { notifyPageView } from '@/utils/notifications';
 import { COUNTRIES, DIAL_CODES } from '@/utils/countries';
 import { localeFromPathname } from '@/lib/locale';
@@ -501,9 +502,16 @@ function LoginContent() {
   const handlePasswordRecovery = async () => {
     setError(null); setLoading(true);
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
+      // Implicit-flow client (link works in any browser/device) + LOCALE-PRESERVING
+      // redirect so the recovery page opens in the user's language. Non-blocking
+      // toast instead of a raw alert().
+      const loc = localeFromPathname(window.location.pathname);
+      const { error } = await recoveryClient().auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/${loc}/reset-password`,
+      });
       if (error) throw error;
-      alert("Email sent!"); setIsRecoveryView(false); setIsLoginView(true);
+      toast.success('Recovery link sent. Check your email.');
+      setIsRecoveryView(false); setIsLoginView(true);
     } catch (err: any) { setError(err.message); } finally { setLoading(false); }
   };
 
