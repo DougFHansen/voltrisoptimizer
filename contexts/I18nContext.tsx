@@ -29,16 +29,26 @@ export function useTranslation(page?: string) {
 export function I18nProvider({
   children,
   initialLocale = defaultLocale,
+  initialTranslations,
 }: {
   children: React.ReactNode;
   initialLocale?: Locale;
+  initialTranslations?: Record<string, any>;
 }) {
   // Estado inicializado diretamente com o locale do servidor — sem fallback para pt-br aqui
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
-  const [translations, setTranslations] = useState<Record<string, any>>({});
+  // Seed synchronously from server-rendered messages so the FIRST paint (and the
+  // SSR HTML) already shows real translations — no raw-key flash while the
+  // /api/translations fetch resolves. Falls back to {} only if none were passed.
+  const hasInitial = !!initialTranslations && Object.keys(initialTranslations).length > 0;
+  const [translations, setTranslations] = useState<Record<string, any>>(initialTranslations || {});
 
-  // Carrega traduções sempre que o locale mudar
+  // (Re)load translations whenever the locale changes AT RUNTIME (SPA switch).
+  // Skipped when the mount locale already arrived with server messages, which is
+  // the normal case (the language switcher does a hard navigation, remounting the
+  // provider with fresh initialTranslations), so we avoid a redundant fetch.
   useEffect(() => {
+    if (hasInitial) return;
     const loadTranslations = async () => {
       try {
         const response = await fetch(`/api/translations/${locale}`);
@@ -52,7 +62,7 @@ export function I18nProvider({
     };
 
     loadTranslations();
-  }, [locale]);
+  }, [locale, hasInitial]);
 
   const setLocale = useCallback((newLocale: Locale) => {
     if (isValidLocale(newLocale) && newLocale !== locale) {

@@ -9,6 +9,7 @@ import { AuthProvider } from '@/app/context/AuthContext';
 
 import I18nClientProvider from '@/components/I18nClientProvider';
 import { Locale, isValidLocale } from '@/lib/i18n';
+import { loadLocaleMessages } from '@/lib/i18n-server';
 import { notFound } from 'next/navigation';
 import { getSiteT } from '@/lib/site-i18n';
 import { SiteTProvider } from '@/lib/site-i18n/client';
@@ -66,6 +67,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   const validLocale = locale as Locale;
 
+  // Load the (tiny) UI message catalog on the server and seed the client i18n
+  // provider with it. This eliminates the raw-key flash ("hero_title_1", ...)
+  // that used to appear on every page load / language switch while the client
+  // fetched /api/translations asynchronously with an empty initial state.
+  const messages = loadLocaleMessages(validLocale);
+
   // NOTE: we deliberately do NOT load the site dictionary here and pass it down
   // as a prop — that would inline the whole (multi-MB) dictionary into every
   // static page. Metadata above is localized server-side (only title/description
@@ -79,7 +86,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <ReactQueryProvider>
           <SiteTProvider locale={locale}>
             <CookieBanner />
-            <I18nClientProvider initialLocale={validLocale}>
+            <I18nClientProvider initialLocale={validLocale} initialTranslations={messages}>
               {children}
             </I18nClientProvider>
             <ClientPWAInstall />

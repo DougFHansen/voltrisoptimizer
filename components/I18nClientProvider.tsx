@@ -7,6 +7,7 @@ import { Locale } from '@/lib/i18n';
 interface I18nClientProviderProps {
   children: React.ReactNode;
   initialLocale: Locale;
+  initialTranslations?: Record<string, any>;
 }
 
 // Mapa de locale para lang do html e direção
@@ -28,7 +29,7 @@ const localeHtmlConfig: Record<Locale, { lang: string; dir: 'ltr' | 'rtl' }> = {
   'pl':    { lang: 'pl',    dir: 'ltr' },
 };
 
-export default function I18nClientProvider({ children, initialLocale }: I18nClientProviderProps) {
+export default function I18nClientProvider({ children, initialLocale, initialTranslations }: I18nClientProviderProps) {
   // Atualiza o atributo lang e dir do <html> no client para refletir o locale correto.
   // Isso é necessário para roteamento dinâmico sem duplicar a tag <html>.
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function I18nClientProvider({ children, initialLocale }: I18nClie
   }, [initialLocale]);
 
   return (
-    <I18nProvider initialLocale={initialLocale}>
+    <I18nProvider initialLocale={initialLocale} initialTranslations={initialTranslations}>
       {children}
     </I18nProvider>
   );
