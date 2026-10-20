@@ -232,6 +232,11 @@ function LoginContent() {
     setError(null);
     setLoading(true);
     try {
+      // App-level validation with translated messages (inputs no longer use
+      // HTML5 `required`, which would trigger the browser's native, un-translated
+      // tooltip before handleLogin could show the localized error).
+      if (!email.trim()) { setLoading(false); return setError('Please enter your Email.'); }
+      if (!password) { setLoading(false); return setError('Please enter a Password.'); }
       let loginEmail = email.trim();
       const isEmail = looksLikeEmail(loginEmail);
 
@@ -722,7 +727,6 @@ function LoginContent() {
                             onChange={e => setEmail(e.target.value)}
                             className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600 appearance-none"
                             autoComplete="username"
-                            required
                           />
                         </div>
                         <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all group/input">
@@ -734,7 +738,6 @@ function LoginContent() {
                             onChange={e => setPassword(e.target.value)} 
                             className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600 appearance-none" 
                             autoComplete="current-password"
-                            required
                           />
                           <button 
                             type="button" 

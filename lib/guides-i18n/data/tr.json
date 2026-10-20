@@ -1,7 +1,7 @@
 {
-  "The": "The",
   "100": "100",
   "240": "240",
+  "The": "The",
   "Technical Guides and Tutorials | VOLTRIS": "Teknik Kılavuzlar ve Öğreticiler | VOLTRIS",
   "Learn how to format, optimize, remove viruses and solve problems on your PC with our detailed guides written by specialists.": "Uzmanlar tarafından yazılan ayrıntılı kılavuzlarımızla bilgisayarınızdaki virüsleri nasıl biçimlendireceğinizi, optimize edeceğinizi, kaldıracağınızı ve sorunları nasıl çözeceğinizi öğrenin.",
   "Processors in 2026: Complete Guide and Performance Analysis": "2026'daki İşlemciler: Tam Kılavuz ve Performans Analizi",
@@ -21492,7 +21492,7 @@
   "Show": "Göstermek",
   "Enter": "Girmek",
   "TRIAL": "DURUŞMA",
-  "Fair": "Adil",
+  "Fair": "Orta",
   "Strong": "Güçlü",
   "TIMEOUT": "ZAMAN AŞIMI",
   "Welcome": "Hoş geldin",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Oturumunuzu açamadık. Kimlik bilgilerinizi kontrol edip tekrar deneyin.",
   "facebook": "facebook",
   "Could not create your profile. Please try again, or contact support.": "Profiliniz oluşturulamadı. Lütfen tekrar deneyin veya destek ekibiyle iletişime geçin.",
-  "Could not load your profile. Please try again.": "Profiliniz yüklenemedi. Lütfen tekrar deneyin."
+  "Could not load your profile. Please try again.": "Profiliniz yüklenemedi. Lütfen tekrar deneyin.",
+  "Step 1 of 3": "Adım 1/3",
+  "Step 2 of 3": "Adım 2/3",
+  "Step 3 of 3": "Adım 3/3",
+  "Please enter a Password.": "Lütfen bir Şifre girin."
 }

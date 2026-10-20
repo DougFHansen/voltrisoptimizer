@@ -1,7 +1,7 @@
 {
-  "The": "The",
   "100": "100",
   "240": "240",
+  "The": "The",
   "Technical Guides and Tutorials | VOLTRIS": "Технические руководства и руководства | ВОЛЬТРИС",
   "Learn how to format, optimize, remove viruses and solve problems on your PC with our detailed guides written by specialists.": "Узнайте, как форматировать, оптимизировать, удалять вирусы и решать проблемы на вашем компьютере с помощью наших подробных руководств, написанных специалистами.",
   "Processors in 2026: Complete Guide and Performance Analysis": "Процессоры в 2026 году: полное руководство и анализ производительности",
@@ -21492,7 +21492,7 @@
   "Show": "Показывать",
   "Enter": "Входить",
   "TRIAL": "ПРОБНЫЙ",
-  "Fair": "Справедливый",
+  "Fair": "Средний",
   "Strong": "Сильный",
   "TIMEOUT": "ТАЙМ-АУТ",
   "Welcome": "Добро пожаловать",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Нам не удалось войти в систему. Проверьте свои учетные данные и повторите попытку.",
   "facebook": "Фейсбук",
   "Could not create your profile. Please try again, or contact support.": "Не удалось создать свой профиль. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.",
-  "Could not load your profile. Please try again.": "Не удалось загрузить ваш профиль. Пожалуйста, попробуйте еще раз."
+  "Could not load your profile. Please try again.": "Не удалось загрузить ваш профиль. Пожалуйста, попробуйте еще раз.",
+  "Step 1 of 3": "Шаг 1 из 3",
+  "Step 2 of 3": "Шаг 2 из 3",
+  "Step 3 of 3": "Шаг 3 из 3",
+  "Please enter a Password.": "Пожалуйста, введите пароль."
 }

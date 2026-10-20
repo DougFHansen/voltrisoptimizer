@@ -2975,7 +2975,7 @@
   "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.": "게임 성능 및 Windows 최적화의 권위자입니다. Voltris Optimizer를 다운로드하고, FPS 가이드를 확인하고, 전문가 기술 지원을 요청하세요.",
   "Sign In to Client Area | VOLTRIS": "클라이언트 영역에 로그인 | 볼트리스",
   "Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.": "서비스, ​​주문, 원격 기술 지원을 관리하려면 VOLTRIS 계정에 액세스하세요. 안전하고 빠른 로그인.",
-  "Back": "뒤쪽에",
+  "Back": "뒤로",
   "Success!": "성공!",
   "2FA Authentication": "2FA 인증",
   "Voltris Protection: Enter your 6-digit Google Authenticator code.": "Voltris Protection: 6자리 Google OTP 코드를 입력하세요.",
@@ -21492,7 +21492,7 @@
   "Show": "보여주다",
   "Enter": "입력하다",
   "TRIAL": "재판",
-  "Fair": "공정한",
+  "Fair": "보통",
   "Strong": "강한",
   "TIMEOUT": "시간 초과",
   "Welcome": "환영",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "로그인할 수 없습니다. 자격 증명을 확인하고 다시 시도하세요.",
   "facebook": "페이스북",
   "Could not create your profile. Please try again, or contact support.": "프로필을 생성할 수 없습니다. 다시 시도하거나 지원팀에 문의하세요.",
-  "Could not load your profile. Please try again.": "프로필을 로드할 수 없습니다. 다시 시도해 주세요."
+  "Could not load your profile. Please try again.": "프로필을 로드할 수 없습니다. 다시 시도해 주세요.",
+  "Step 1 of 3": "3단계 중 1단계",
+  "Step 2 of 3": "3단계 중 2단계",
+  "Step 3 of 3": "3단계 중 3단계",
+  "Please enter a Password.": "비밀번호를 입력하세요."
 }

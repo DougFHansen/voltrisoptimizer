@@ -220,7 +220,7 @@
   "Mouse, Keyboard, Headset: What actually changes your gameplay and what is pure marketing? Complete guide on high-performance peripherals in 2026.": "الماوس ولوحة المفاتيح وسماعات الرأس: ما الذي يغير أسلوب لعبك بالفعل وما هو التسويق الخالص؟ الدليل الكامل حول الأجهزة الطرفية عالية الأداء في عام 2026.",
   "Gaming Peripheral Brands: Which are Worth it in 2026?": "العلامات التجارية للأجهزة الطرفية للألعاب: ما هي الأشياء التي تستحق العناء في عام 2026؟",
   "Logitech, Razer, Corsair, or Chinese brands? Find out which peripheral brands deliver real durability and performance in 2026.": "ماركات Logitech أو Razer أو Corsair أو الصينية؟ اكتشف العلامات التجارية الطرفية التي توفر متانة وأداء حقيقيين في عام 2026.",
-  "Gaming VPN (2026): ExitLag vs NoPing vs Regular VPN": "Gaming VPN (2026): ExitLag vs NoPing vs Regular VPN",
+  "Gaming VPN (2026): ExitLag vs NoPing vs Regular VPN": "VPN للألعاب (2026): ExitLag مقابل NoPing مقابل VPN العادي",
   "Does a gaming VPN actually work or is it a placebo? Understand how packet routing works and when it's worth paying for ExitLag, NoPing, or using a normal VPN.": "هل تعمل شبكة VPN للألعاب بالفعل أم أنها علاج وهمي؟ افهم كيفية عمل توجيه الحزم ومتى يستحق الدفع مقابل ExitLag أو NoPing أو استخدام VPN عادي.",
   "Genshin Impact (2026): 120 FPS Unlock, Filters, and Optimization": "تأثير Genshin (2026): فتح 120 إطارًا في الثانية، والمرشحات، والتحسين",
   "Genshin Impact is locked to 60 FPS on PC by default. Learn how to safely unlock it to 120 FPS, reduce Unity Engine stuttering, and enhance visual colors.": "يتم قفل Genshin Impact بمعدل 60 إطارًا في الثانية على جهاز الكمبيوتر بشكل افتراضي. تعرف على كيفية فتحه بأمان بمعدل 120 إطارًا في الثانية، وتقليل تقطع محرك Unity، وتحسين الألوان المرئية.",
@@ -2975,7 +2975,7 @@
   "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.": "السلطة في أداء الألعاب وتحسين Windows. قم بتنزيل Voltris Optimizer، وراجع أدلة FPS الخاصة بنا، واطلب الدعم الفني المتخصص.",
   "Sign In to Client Area | VOLTRIS": "قم بتسجيل الدخول إلى منطقة العميل | فولتريس",
   "Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.": "قم بالوصول إلى حساب VOLTRIS الخاص بك لإدارة الخدمات والطلبات والدعم الفني عن بعد. تسجيل دخول آمن وسريع.",
-  "Back": "خلف",
+  "Back": "رجوع",
   "Success!": "نجاح!",
   "2FA Authentication": "مصادقة 2FA",
   "Voltris Protection: Enter your 6-digit Google Authenticator code.": "حماية فولتريس: أدخل رمز Google Authenticator المكون من 6 أرقام.",
@@ -21492,7 +21492,7 @@
   "Show": "يعرض",
   "Enter": "يدخل",
   "TRIAL": "محاكمة",
-  "Fair": "عدل",
+  "Fair": "متوسطة",
   "Strong": "قوي",
   "TIMEOUT": "نفذ الوقت",
   "Welcome": "مرحباً",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "لم نتمكن من تسجيل دخولك. تحقق من بيانات الاعتماد الخاصة بك وحاول مرة أخرى.",
   "facebook": "فيسبوك",
   "Could not create your profile. Please try again, or contact support.": "لا يمكن إنشاء ملف التعريف الخاص بك. يرجى المحاولة مرة أخرى، أو الاتصال بالدعم.",
-  "Could not load your profile. Please try again.": "تعذر تحميل ملف التعريف الخاص بك. يرجى المحاولة مرة أخرى."
+  "Could not load your profile. Please try again.": "تعذر تحميل ملف التعريف الخاص بك. يرجى المحاولة مرة أخرى.",
+  "Step 1 of 3": "الخطوة 1 من 3",
+  "Step 2 of 3": "الخطوة 2 من 3",
+  "Step 3 of 3": "الخطوة 3 من 3",
+  "Please enter a Password.": "الرجاء إدخال كلمة المرور."
 }

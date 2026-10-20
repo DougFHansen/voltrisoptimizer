@@ -3757,7 +3757,7 @@
   "Removed": "ENTFERNT",
   "Blocked": "Blockiert",
   "Previous": "Vorherige",
-  "Next": "Nächste",
+  "Next": "Weiter",
   "Services & Technical Support | VOLTRIS": "Dienstleistungen und technischer Support | VOLTRIS",
   "Expert PC optimization, format, virus removal, and error correction services. Remote technical support for maximum performance.": "Kompetente PC-Optimierungs-, Formatierungs-, Virenentfernungs- und Fehlerkorrekturdienste. Technischer Fernsupport für maximale Leistung.",
   "Expert PC optimization, format, virus removal, and error correction services.": "Kompetente PC-Optimierungs-, Formatierungs-, Virenentfernungs- und Fehlerkorrekturdienste.",
@@ -19379,7 +19379,7 @@
   "Setup 2FA": "Richten Sie 2FA ein",
   "Shield Active": "Schild aktiv",
   "Shutdown": "Abschalten",
-  "Sign up": "Melden Sie sich an",
+  "Sign up": "Registrieren",
   "Sign up with Google": "Melden Sie sich bei Google an",
   "Silent Frequency": "Stille Frequenz",
   "Solid Mode": "Solid-Modus",
@@ -21492,7 +21492,7 @@
   "Show": "Zeigen",
   "Enter": "Eingeben",
   "TRIAL": "VERSUCH",
-  "Fair": "Gerecht",
+  "Fair": "Mittel",
   "Strong": "Stark",
   "TIMEOUT": "TIME-OUT",
   "Welcome": "Willkommen",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Wir konnten Sie nicht anmelden. Überprüfen Sie Ihre Anmeldeinformationen und versuchen Sie es erneut.",
   "facebook": "Facebook",
   "Could not create your profile. Please try again, or contact support.": "Ihr Profil konnte nicht erstellt werden. Bitte versuchen Sie es erneut oder wenden Sie sich an den Support.",
-  "Could not load your profile. Please try again.": "Ihr Profil konnte nicht geladen werden. Bitte versuchen Sie es erneut."
+  "Could not load your profile. Please try again.": "Ihr Profil konnte nicht geladen werden. Bitte versuchen Sie es erneut.",
+  "Step 1 of 3": "Schritt 1 von 3",
+  "Step 2 of 3": "Schritt 2 von 3",
+  "Step 3 of 3": "Schritt 3 von 3",
+  "Please enter a Password.": "Bitte geben Sie ein Passwort ein."
 }

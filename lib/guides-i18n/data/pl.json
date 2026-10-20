@@ -2975,7 +2975,7 @@
   "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.": "Autorytet w zakresie wydajności gier i optymalizacji systemu Windows. Pobierz Voltris Optimizer, sprawdź nasze przewodniki po grach FPS i poproś o specjalistyczną pomoc techniczną.",
   "Sign In to Client Area | VOLTRIS": "Zaloguj się do Strefy Klienta | VOLTRIS",
   "Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.": "Uzyskaj dostęp do swojego konta VOLTRIS, aby zarządzać usługami, zamówieniami i zdalną pomocą techniczną. Bezpieczne i szybkie logowanie.",
-  "Back": "Z powrotem",
+  "Back": "Wstecz",
   "Success!": "Sukces!",
   "2FA Authentication": "Uwierzytelnianie 2FA",
   "Voltris Protection: Enter your 6-digit Google Authenticator code.": "Ochrona Voltris: wprowadź swój 6-cyfrowy kod Google Authenticator.",
@@ -21492,10 +21492,10 @@
   "Show": "Pokazywać",
   "Enter": "Wchodzić",
   "TRIAL": "TEST",
-  "Fair": "Sprawiedliwy",
+  "Fair": "Przeciętna",
   "Strong": "Mocny",
   "TIMEOUT": "LIMIT CZASU",
-  "Welcome": "Powitanie",
+  "Welcome": "Witamy",
   "Unknown": "Nieznany",
   "HTTPS": "HTTPS",
   "DELETE": "USUWAĆ",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Nie mogliśmy Cię zalogować. Sprawdź swoje dane uwierzytelniające i spróbuj ponownie.",
   "facebook": "facebooku",
   "Could not create your profile. Please try again, or contact support.": "Nie można utworzyć Twojego profilu. Spróbuj ponownie lub skontaktuj się z pomocą techniczną.",
-  "Could not load your profile. Please try again.": "Nie można załadować Twojego profilu. Spróbuj ponownie."
+  "Could not load your profile. Please try again.": "Nie można załadować Twojego profilu. Spróbuj ponownie.",
+  "Step 1 of 3": "Krok 1 z 3",
+  "Step 2 of 3": "Krok 2 z 3",
+  "Step 3 of 3": "Krok 3 z 3",
+  "Please enter a Password.": "Proszę wprowadzić hasło."
 }

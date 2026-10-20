@@ -21492,10 +21492,10 @@
   "Show": "見せる",
   "Enter": "入力",
   "TRIAL": "トライアル",
-  "Fair": "公平",
+  "Fair": "普通",
   "Strong": "強い",
   "TIMEOUT": "タイムアウト",
-  "Welcome": "いらっしゃいませ",
+  "Welcome": "ようこそ",
   "Unknown": "未知",
   "HTTPS": "HTTPS",
   "DELETE": "消去",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "サインインできませんでした。資格情報を確認して、もう一度試してください。",
   "facebook": "フェイスブック",
   "Could not create your profile. Please try again, or contact support.": "プロフィールを作成できませんでした。もう一度試すか、サポートにお問い合わせください。",
-  "Could not load your profile. Please try again.": "プロフィールを読み込めませんでした。もう一度試してください。"
+  "Could not load your profile. Please try again.": "プロフィールを読み込めませんでした。もう一度試してください。",
+  "Step 1 of 3": "ステップ 1/3",
+  "Step 2 of 3": "ステップ 2/3",
+  "Step 3 of 3": "ステップ 3/3",
+  "Please enter a Password.": "パスワードを入力してください。"
 }

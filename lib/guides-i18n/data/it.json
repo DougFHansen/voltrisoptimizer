@@ -21492,7 +21492,7 @@
   "Show": "Spettacolo",
   "Enter": "Entra",
   "TRIAL": "PROVA",
-  "Fair": "Giusto",
+  "Fair": "Discreta",
   "Strong": "Forte",
   "TIMEOUT": "TEMPO SCADUTO",
   "Welcome": "Benvenuto",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Non è stato possibile farti accedere. Controlla le tue credenziali e riprova.",
   "facebook": "Facebook",
   "Could not create your profile. Please try again, or contact support.": "Impossibile creare il tuo profilo. Riprova o contatta l'assistenza.",
-  "Could not load your profile. Please try again.": "Impossibile caricare il tuo profilo. Per favore riprova."
+  "Could not load your profile. Please try again.": "Impossibile caricare il tuo profilo. Per favore riprova.",
+  "Step 1 of 3": "Passaggio 1 di 3",
+  "Step 2 of 3": "Passaggio 2 di 3",
+  "Step 3 of 3": "Passaggio 3 di 3",
+  "Please enter a Password.": "Inserisci una password."
 }

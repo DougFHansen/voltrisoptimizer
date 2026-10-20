@@ -2975,7 +2975,7 @@
   "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.": "Thẩm quyền về hiệu suất chơi game và tối ưu hóa Windows. Tải xuống Voltris Optimizer, xem hướng dẫn FPS của chúng tôi và yêu cầu hỗ trợ kỹ thuật từ chuyên gia.",
   "Sign In to Client Area | VOLTRIS": "Đăng nhập vào khu vực khách hàng | VOLTRIS",
   "Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.": "Truy cập tài khoản VOLTRIS của bạn để quản lý dịch vụ, đơn đặt hàng và hỗ trợ kỹ thuật từ xa. Đăng nhập an toàn và nhanh chóng.",
-  "Back": "Mặt sau",
+  "Back": "Quay lại",
   "Success!": "Thành công!",
   "2FA Authentication": "Xác thực 2FA",
   "Voltris Protection: Enter your 6-digit Google Authenticator code.": "Bảo vệ Voltris: Nhập mã Google Authenticator gồm 6 chữ số của bạn.",
@@ -21492,7 +21492,7 @@
   "Show": "Trình diễn",
   "Enter": "Đi vào",
   "TRIAL": "SỰ THỬ NGHIỆM",
-  "Fair": "Hội chợ",
+  "Fair": "Trung bình",
   "Strong": "Mạnh",
   "TIMEOUT": "HẾT THỜI GIAN",
   "Welcome": "Chào mừng",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Chúng tôi không thể đăng nhập cho bạn. Hãy kiểm tra thông tin đăng nhập của bạn và thử lại.",
   "facebook": "facebook",
   "Could not create your profile. Please try again, or contact support.": "Không thể tạo hồ sơ của bạn. Vui lòng thử lại hoặc liên hệ với bộ phận hỗ trợ.",
-  "Could not load your profile. Please try again.": "Không thể tải hồ sơ của bạn. Vui lòng thử lại."
+  "Could not load your profile. Please try again.": "Không thể tải hồ sơ của bạn. Vui lòng thử lại.",
+  "Step 1 of 3": "Bước 1 trên 3",
+  "Step 2 of 3": "Bước 2 trên 3",
+  "Step 3 of 3": "Bước 3 trên 3",
+  "Please enter a Password.": "Vui lòng nhập Mật khẩu."
 }

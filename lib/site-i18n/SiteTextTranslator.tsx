@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import type { Dict } from './apply';
 
 // Webpack compilation hash (unique per build), replaced as a global at bundle time.
@@ -24,9 +24,16 @@ declare const __webpack_hash__: string;
  *    dictionary key are replaced (never partial/inline-mixed fragments, so
  *    "Hello {name}" style nodes and inline <Link>/<strong> siblings are safe).
  *  - Skips <script>/<style>/<code>/<pre>/<textarea> and noscript.
- *  - Idempotent: once a node holds a translated value it is no longer a key, and
- *    we capture the original English per node so re-walks never double-translate.
- *  - MutationObserver translates content added later (SPA nav, lazy reveals).
+ *  - React-safe for DYNAMIC views: React reuses the same text node when a
+ *    ternary like `isLogin ? 'Welcome' : 'Create Account'` flips, updating only
+ *    the node's data (characterData) rather than remounting it. We therefore
+ *    re-evaluate a node EVERY time its current text changes and treat the new
+ *    value as fresh English source — instead of caching the first English we
+ *    ever saw on that node (which caused a stale/incorrect translation after a
+ *    client-side view switch). To stay idempotent and avoid double-translating
+ *    our own output we remember, per node/attribute, the exact translated value
+ *    we last wrote, and only skip while the DOM still holds that value.
+ *  - MutationObserver covers SPA nav, lazy reveals AND later text/attr changes.
  *  - English locale fetches nothing and is inert (no cost, no flash).
  *
  * The dictionary is fetched once from a CDN-cacheable API route (never inlined
@@ -38,13 +45,16 @@ const SKIP_SELECTOR = 'script,style,code,pre,textarea,noscript';
 // regardless of locale (e.g. the language selector, whose entries are written in
 // their native script by design and must never be machine-translated).
 const NO_TRANS_ATTR = 'data-notrans';
-const cache = new WeakMap<Node, string | null>(); // original English captured per node
 // Visible text also lives in a handful of attributes (search placeholders, icon
-// tooltips, accessible labels, image alts). We translate the same exact-match
-// way as text nodes, capturing the original English per element+attribute so
-// re-walks never double-translate.
+// tooltips, accessible labels, image alts). We translate the same exact-match,
+// re-evaluable way as text nodes.
 const TRANSLATE_ATTRS = ['placeholder', 'aria-label', 'title', 'alt'] as const;
-const attrCache = new WeakMap<Element, Record<string, string>>();
+// Per-node last-written translated value, so re-walks never double-translate and
+// never mistake our own output for English source. Cleared implicitly when React
+// (or the app) overwrites the node, because the stored value then no longer
+// matches the DOM and we re-evaluate.
+interface VTNode { __trOut?: string }
+interface VTAttr { __trAttrs?: Record<string, string> }
 const dictCache: Record<string, Dict | null> = {};
 // Per-deploy cache-busting token. `__webpack_hash__` is the compilation hash,
 // unique per build and inlined by webpack on both server and client, so a new
@@ -82,91 +92,110 @@ async function fetchDict(locale: string): Promise<Dict | null> {
 }
 
 export default function SiteTextTranslator({ locale }: { locale: string }) {
-  const dictRef = useRef<Record<string, string> | null>(null);
-
   useEffect(() => {
     let cancelled = false;
     let observer: MutationObserver | null = null;
     const timers: ReturnType<typeof setTimeout>[] = [];
+    let dict: Record<string, string> | null = null;
 
     const translateText = (node: Text) => {
-      if (shouldSkip(node) || !dictRef.current) return;
+      if (shouldSkip(node) || !dict) return;
       const cur = node.nodeValue;
       if (cur == null) return;
-      const original = cache.has(node) ? cache.get(node) : cur;
-      if (original == null) return;
-      const key = normalized(String(original));
+      const vt = node as Text & VTNode;
+      // Already showing exactly what we last wrote -> untouched by React since;
+      // nothing to do (keeps re-walks idempotent, no double translation).
+      if (vt.__trOut != null && cur === vt.__trOut) return;
+      const key = normalized(cur);
       if (!key) return;
-      const tr = dictRef.current[key];
+      const tr = dict[key];
       if (tr && tr !== cur) {
         // Replace only the text run, preserving leading/trailing whitespace.
         const lead = (cur.match(/^\s*/) || [''])[0];
         const trail = (cur.match(/\s*$/) || [''])[0];
-        node.nodeValue = lead + tr + trail;
+        const out = lead + tr + trail;
+        node.nodeValue = out;
+        vt.__trOut = out;
       }
     };
 
     const translateAttrs = (el: Element) => {
-      if (shouldSkip(el) || !dictRef.current) return;
-      let store = attrCache.get(el);
-      if (!store) {
-        store = {};
-        for (const a of TRANSLATE_ATTRS) {
-          const v = el.getAttribute(a);
-          if (v != null) store[a] = v;
-        }
-        attrCache.set(el, store);
-      }
+      if (shouldSkip(el) || !dict) return;
+      const vt = el as Element & VTAttr;
+      const store = (vt.__trAttrs ||= {});
       for (const a of TRANSLATE_ATTRS) {
-        const orig = store[a];
-        if (orig == null) continue;
-        const key = normalized(orig);
+        const cur = el.getAttribute(a);
+        if (cur == null) continue;
+        // Skip only while the attribute still holds exactly our last output.
+        if (store[a] != null && cur === store[a]) continue;
+        const key = normalized(cur);
         if (!key) continue;
-        const tr = dictRef.current[key];
-        if (tr && tr !== el.getAttribute(a)) el.setAttribute(a, tr);
+        const tr = dict[key];
+        if (tr && tr !== cur) {
+          el.setAttribute(a, tr);
+          store[a] = tr;
+        }
       }
     };
 
     const walk = (root: Node) => {
+      if (root.nodeType === 3) { translateText(root as Text); return; }
+      if (root.nodeType !== 1 && root.nodeType !== 9 && root.nodeType !== 11) return;
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+      if (root.nodeType === 1) translateAttrs(root as Element);
       let tn: Node | null;
       while ((tn = walker.nextNode())) {
-        if (tn.nodeType === 1) {
-          translateAttrs(tn as Element);
-          continue;
-        }
-        if (!(tn as any).__vt) {
-          cache.set(tn, (tn as Text).nodeValue);
-          (tn as any).__vt = true;
-        }
-        translateText(tn as Text);
+        if (tn === root) continue;
+        if (tn.nodeType === 1) translateAttrs(tn as Element);
+        else translateText(tn as Text);
       }
     };
 
-    fetchDict(locale).then((dict) => {
-      if (cancelled || !dict || Object.keys(dict).length === 0) return;
+    fetchDict(locale).then((loaded) => {
+      if (cancelled || !loaded || Object.keys(loaded).length === 0) return;
       const m: Record<string, string> = {};
-      for (const k of Object.keys(dict)) {
+      for (const k of Object.keys(loaded)) {
         const n = normalized(k);
-        if (n) m[n] = dict[k];
+        if (n) m[n] = loaded[k];
       }
-      dictRef.current = m;
+      dict = m;
 
       walk(document.body);
 
       observer = new MutationObserver((muts) => {
         for (const mu of muts) {
-          mu.addedNodes.forEach((nd) => {
-            if (nd.nodeType === 1 || nd.nodeType === 3) walk(nd);
-          });
+          if (mu.type === 'childList') {
+            mu.addedNodes.forEach((nd) => {
+              if (nd.nodeType === 1 || nd.nodeType === 3) walk(nd);
+            });
+          } else if (mu.type === 'characterData') {
+            // React (or the app) rewrote an existing text node for a new view:
+            // re-evaluate it as fresh English source.
+            const t = mu.target as Text;
+            (t as Text & VTNode).__trOut = undefined;
+            translateText(t);
+          } else if (mu.type === 'attributes') {
+            const el = mu.target as Element;
+            if (el.nodeType === 1 && mu.attributeName) {
+              const vt = el as Element & VTAttr;
+              if (vt.__trAttrs) delete vt.__trAttrs[mu.attributeName];
+              translateAttrs(el);
+            }
+          }
         }
       });
-      observer.observe(document.body, { childList: true, subtree: true });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: [...TRANSLATE_ATTRS],
+      });
 
       // Catch-all re-walks for content injected after first paint but not via a
-      // childList we can see cleanly (e.g. next/script JSON-LD, delayed reveals,
+      // mutation we can see cleanly (e.g. next/script JSON-LD, delayed reveals,
       // the cookie banner). walk() is idempotent and only ever rewrites nodes
-      // whose ORIGINAL English still matches a key, so this is safe to repeat.
+      // whose CURRENT text is an English key, so this is safe to repeat.
       const t1 = setTimeout(() => { if (!cancelled) walk(document.body); }, 900);
       const t2 = setTimeout(() => { if (!cancelled) walk(document.body); }, 2500);
       timers.push(t1, t2);

@@ -2975,7 +2975,7 @@
   "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.": "游戏性能和Windows优化方面的权威。下载 Voltris Optimizer，查看我们的 FPS 指南，并请求专家技术支持。",
   "Sign In to Client Area | VOLTRIS": "登录客户区 |沃尔特里斯",
   "Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.": "访问您的 VOLTRIS 帐户以管理服务、订单和远程技术支持。安全快速的登录。",
-  "Back": "后退",
+  "Back": "返回",
   "Success!": "成功！",
   "2FA Authentication": "2FA 身份验证",
   "Voltris Protection: Enter your 6-digit Google Authenticator code.": "Voltris 保护：输入您的 6 位 Google 身份验证器代码。",
@@ -21492,7 +21492,7 @@
   "Show": "展示",
   "Enter": "进入",
   "TRIAL": "审判",
-  "Fair": "公平的",
+  "Fair": "中等",
   "Strong": "强的",
   "TIMEOUT": "暂停",
   "Welcome": "欢迎",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "我们无法让您登录。请检查您的凭据并重试。",
   "facebook": "Facebook",
   "Could not create your profile. Please try again, or contact support.": "无法创建您的个人资料。请重试，或联系支持人员。",
-  "Could not load your profile. Please try again.": "无法加载您的个人资料。请再试一次。"
+  "Could not load your profile. Please try again.": "无法加载您的个人资料。请再试一次。",
+  "Step 1 of 3": "第 1 步（共 3 步）",
+  "Step 2 of 3": "第 2 步（共 3 步）",
+  "Step 3 of 3": "第 3 步（共 3 步）",
+  "Please enter a Password.": "请输入密码。"
 }

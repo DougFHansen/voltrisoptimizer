@@ -2975,7 +2975,7 @@
   "The authority in gaming performance and Windows optimization. Download Voltris Optimizer, check our FPS guides, and request expert technical support.": "L'autorité en matière de performances de jeu et d'optimisation de Windows. Téléchargez Voltris Optimizer, consultez nos guides FPS et demandez une assistance technique experte.",
   "Sign In to Client Area | VOLTRIS": "Connectez-vous à l'espace client | VOLTRIS",
   "Access your VOLTRIS account to manage services, orders, and remote technical support. Secure and fast login.": "Accédez à votre compte VOLTRIS pour gérer les services, les commandes et le support technique à distance. Connexion sécurisée et rapide.",
-  "Back": "Dos",
+  "Back": "Retour",
   "Success!": "Succès!",
   "2FA Authentication": "Authentification 2FA",
   "Voltris Protection: Enter your 6-digit Google Authenticator code.": "Protection Voltris : saisissez votre code d'authentification Google à 6 chiffres.",
@@ -21492,10 +21492,10 @@
   "Show": "Montrer",
   "Enter": "Entrer",
   "TRIAL": "PROCÈS",
-  "Fair": "Équitable",
+  "Fair": "Moyenne",
   "Strong": "Fort",
   "TIMEOUT": "TEMPS MORT",
-  "Welcome": "Accueillir",
+  "Welcome": "Bienvenue",
   "Unknown": "Inconnu",
   "HTTPS": "HTTPS",
   "DELETE": "SUPPRIMER",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Nous n'avons pas pu vous connecter. Vérifiez vos informations d'identification et réessayez.",
   "facebook": "Facebook",
   "Could not create your profile. Please try again, or contact support.": "Impossible de créer votre profil. Veuillez réessayer ou contacter l'assistance.",
-  "Could not load your profile. Please try again.": "Impossible de charger votre profil. Veuillez réessayer."
+  "Could not load your profile. Please try again.": "Impossible de charger votre profil. Veuillez réessayer.",
+  "Step 1 of 3": "Étape 1 sur 3",
+  "Step 2 of 3": "Étape 2 sur 3",
+  "Step 3 of 3": "Étape 3 sur 3",
+  "Please enter a Password.": "Veuillez entrer un mot de passe."
 }

@@ -21492,7 +21492,7 @@
   "Show": "Mostrar",
   "Enter": "Digitar",
   "TRIAL": "JULGAMENTO",
-  "Fair": "Justo",
+  "Fair": "Razoável",
   "Strong": "Forte",
   "TIMEOUT": "TEMPO ESGOTADO",
   "Welcome": "Bem-vindo",
@@ -21906,5 +21906,9 @@
   "We could not sign you in. Check your credentials and try again.": "Não foi possível fazer seu login. Verifique suas credenciais e tente novamente.",
   "facebook": "Facebook",
   "Could not create your profile. Please try again, or contact support.": "Não foi possível criar seu perfil. Tente novamente ou entre em contato com o suporte.",
-  "Could not load your profile. Please try again.": "Não foi possível carregar seu perfil. Por favor, tente novamente."
+  "Could not load your profile. Please try again.": "Não foi possível carregar seu perfil. Por favor, tente novamente.",
+  "Step 1 of 3": "Etapa 1 de 3",
+  "Step 2 of 3": "Etapa 2 de 3",
+  "Step 3 of 3": "Etapa 3 de 3",
+  "Please enter a Password.": "Por favor insira uma senha."
 }
