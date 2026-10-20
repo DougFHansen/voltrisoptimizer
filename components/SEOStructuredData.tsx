@@ -28,7 +28,7 @@ export default function SoftwareApplicationSchema({
   operatingSystem = 'Windows',
   offers = {
     price: '0',
-    priceCurrency: 'BRL',
+    priceCurrency: 'USD',
     availability: 'https://schema.org/InStock'
   },
   features = [],

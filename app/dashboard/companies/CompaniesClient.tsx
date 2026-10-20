@@ -392,7 +392,7 @@ export default function CompaniesClient() {
                                 <div className="space-y-0.5">
                                   <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Estimated Value</span>
                                   <div className="flex items-baseline gap-1.5">
-                                     <span className="text-2xl font-bold text-white">R$ {(buyQuantity * 29.90).toFixed(2)}</span>
+                                     <span className="text-2xl font-bold text-white">US$ {(buyQuantity * 29.90).toFixed(2)}</span>
                                      <span className="text-[11px] text-slate-500">/ month</span>
                                   </div>
                                 </div>

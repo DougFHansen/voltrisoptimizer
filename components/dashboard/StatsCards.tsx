@@ -85,7 +85,7 @@ export default async function StatsCards() {
           </div>
           <h3 className="text-[#e2e8f0] text-sm font-medium">Total Spent</h3>
         </div>
-        <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] drop-shadow-[0_0_15px_rgba(139,49,255,0.2)]">R$ {totalAmount.toFixed(2)}</p>
+        <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] drop-shadow-[0_0_15px_rgba(139,49,255,0.2)]">US$ {totalAmount.toFixed(2)}</p>
         <span className="text-sm text-[#e2e8f0]/70">Across all orders</span>
       </div>
     </div>

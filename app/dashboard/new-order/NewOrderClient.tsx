@@ -157,7 +157,7 @@ export default function NewOrderClient() {
                 <div className="space-y-3">
                    <div className="flex justify-between items-start gap-2">
                       <VoltrisIconTile icon="package" accent={DASHBOARD_ACCENT.brand} size={9} />
-                      <span className="text-base font-bold text-white tracking-tight">R$ {service.price.toFixed(2)}</span>
+                      <span className="text-base font-bold text-white tracking-tight">US$ {service.price.toFixed(2)}</span>
                    </div>
                    
                    <div>
@@ -206,7 +206,7 @@ export default function NewOrderClient() {
                         >
                           <div className="min-w-0 flex-1">
                             <h5 className="text-xs font-semibold text-white truncate">{service.name}</h5>
-                            <span className="text-[11px] font-semibold text-indigo-400">R$ {item.price.toFixed(2)}</span>
+                            <span className="text-[11px] font-semibold text-indigo-400">US$ {item.price.toFixed(2)}</span>
                           </div>
 
                           <div className="flex items-center gap-2">
@@ -227,7 +227,7 @@ export default function NewOrderClient() {
                   <div className="pt-4 border-t border-slate-800/80 space-y-4">
                     <div className="flex justify-between items-baseline">
                        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total</span>
-                       <span className="text-2xl font-bold text-white">R$ {calculateTotal().toFixed(2)}</span>
+                       <span className="text-2xl font-bold text-white">US$ {calculateTotal().toFixed(2)}</span>
                     </div>
 
                     <div className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20 flex items-start gap-2.5">

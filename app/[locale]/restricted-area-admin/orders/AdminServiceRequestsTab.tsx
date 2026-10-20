@@ -244,7 +244,7 @@ export default function AdminServiceRequestsTab() {
                       {new Date(request.created_at).toLocaleDateString('en-US')}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                      R$ {request.final_price.toFixed(2)}
+                      US$ {request.final_price.toFixed(2)}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-300">
                       <div className="space-y-1">

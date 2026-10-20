@@ -35,28 +35,28 @@ const services = [
     {
         title: "Institutional Websites",
         description: "Professional websites for companies",
-        price: "Starting at R$ 997.90",
+        price: "Starting at US$ 997.90",
         icon: <MonitorSmartphone className="w-6 h-6 text-white" />,
         color: "from-[#31A8FF] to-[#00CCFF]"
     },
     {
         title: "E-commerce",
         description: "Complete online stores",
-        price: "Starting at R$ 2,997.90",
+        price: "Starting at US$ 2,997.90",
         icon: <Globe className="w-6 h-6 text-white" />,
         color: "from-[#8B31FF] to-[#9D4EDD]"
     },
     {
         title: "Landing Pages",
         description: "Optimized conversion pages",
-        price: "Starting at R$ 497.90",
+        price: "Starting at US$ 497.90",
         icon: <Target className="w-6 h-6 text-white" />,
         color: "from-[#FF4B6B] to-[#FF0055]"
     },
     {
         title: "Professional Blogs",
         description: "SEO-optimized blogs",
-        price: "Starting at R$ 797.90",
+        price: "Starting at US$ 797.90",
         icon: <Code className="w-6 h-6 text-white" />,
         color: "from-[#00FF94] to-[#00CC88]"
     }
