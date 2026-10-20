@@ -4833,6 +4833,22 @@ CREATE POLICY "Admin can view all notifications"
         OR auth.uid() = user_id
     );
 
+-- UPDATE (parity FASE 7/9 — tambem aplicado via adicoes.sql; idempotente):
+-- sem estas duas policies o "Mark as read" (sino do usuario e aba Notifications
+-- do painel admin) e negado por RLS silenciosamente.
+DROP POLICY IF EXISTS "Users can update their own notifications" ON public.notifications;
+CREATE POLICY "Users can update their own notifications"
+    ON public.notifications FOR UPDATE
+    USING (auth.uid() = user_id)
+    WITH CHECK (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Admin can update all notifications" ON public.notifications;
+-- check_is_admin() e SECURITY DEFINER: evita recursao de RLS sobre profiles.
+CREATE POLICY "Admin can update all notifications"
+    ON public.notifications FOR UPDATE
+    USING (public.check_is_admin())
+    WITH CHECK (public.check_is_admin());
+
 -- 3. Tabela user_settings
 CREATE TABLE IF NOT EXISTS public.user_settings (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

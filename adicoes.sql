@@ -16,6 +16,10 @@
 -- SEGURANÇA:
 --   * 100% aditivo e IDEMPOTENTE (DROP POLICY IF EXISTS + CREATE POLICY). Pode
 --     ser executado mais de uma vez sem efeito colateral.
+--   * CONSOLIDADO (FASE 9): as MESMAS duas policies UPDATE tambem vivem agora
+--     em completo.idempotente.sql (bloco de policies de public.notifications).
+--     Instalar com o master ja as traz; rodar este arquivo por cima e seguro
+--     porque a dupla aplicacao e idempotente (DROP IF EXISTS + CREATE).
 --   * Não Apaga dados. Não ALTERA colunas. Não Desabilita RLS em nenhuma tabela.
 --   * Depende apenas de objetos já existentes: public.notifications,
 --     public.profiles, public.check_is_admin() (SECURITY DEFINER).
