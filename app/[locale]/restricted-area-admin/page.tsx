@@ -51,6 +51,16 @@ export default function AdminDashboard() {
   const { user, isAdmin, loading, error } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
 
+  // Deep-link support: /restricted-area-admin?tab=orders opens that tab directly.
+  // This keeps a single admin entry point (no duplicate standalone pages) and
+  // matches the consolidated navigation targeted by notification action URLs.
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get('tab');
+    if (requested && tabs.some((t) => t.value === requested)) {
+      setActiveTab(requested);
+    }
+  }, []);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#18181b] via-[#23232b] to-[#18181b] text-white">

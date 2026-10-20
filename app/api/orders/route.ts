@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'Invalid order: no items' }, { status: 400 });
         }
 
-        console.log(`🛒 Processando novo pedido para ${user.email} (Total: R$ ${total})`);
+        console.log(`🛒 New order for ${user.email} (Total: US$ ${total})`);
 
         // 2. Buscar perfil completo do usuário (para usar nome na notificação)
         const { data: profile } = await supabase
@@ -59,23 +59,26 @@ export async function POST(req: NextRequest) {
         // OBRIGATÓRIO: Notificar Usuário e Admins via NotificationService persistente
 
         try {
-            // A) Notificar o Cliente (Confirmação)
+            // A) Notify the customer (confirmation). Stored as English
+            // source-of-truth; the notification renderer localizes on display.
             await NotificationService.notify({
                 recipients: [user.id],
                 type: 'order',
-                title: 'Pedido Recebido! 🚀',
-                message: `Seu pedido #${order.id.slice(0, 8)} foi recebido e está sendo processado.`,
+                title: 'Order received! 🚀',
+                message: `Your order #${order.id.slice(0, 8)} has been received and is being processed.`,
                 sound: 'chime',
-                actionUrl: `/dashboard/orders`, // Link para ver o pedido
+                actionUrl: `/dashboard?tab=orders`,
             });
 
-            // B) Notificar Administradores (Alerta de Venda)
+            // B) Notify admins (sale alert). Amount uses the international
+            // currency (US$), never a Brazilian currency mask. Links to the
+            // consolidated admin Orders tab rather than a standalone page.
             await NotificationService.notifyAdmins({
                 type: 'order',
-                title: '💰 Novo Pedido Realizado',
-                message: `${userName} realizou um pedido de R$ ${Number(total).toFixed(2)}.`,
+                title: '💰 New order placed',
+                message: `${userName} placed an order of US$ ${Number(total).toFixed(2)}.`,
                 sound: 'chime',
-                actionUrl: `/restricted-area-admin/orders`, // Link para painel admin
+                actionUrl: `/restricted-area-admin?tab=orders`,
             });
 
         } catch (notifError) {
