@@ -420,7 +420,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <link rel="dns-prefetch" href="//www.googletagmanager.com" />
       <link rel="dns-prefetch" href="//www.google-analytics.com" />
       <link rel="dns-prefetch" href="//img.clerk.com" />
-      <link rel="dns-prefetch" href="//vjscxpxvdfhryixksrno.supabase.co" />
+      <link rel="dns-prefetch" href="//nooyofqlmnyaxwlbtqfx.supabase.co" />
       
       {/* Preconnect for Critical Resources */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />

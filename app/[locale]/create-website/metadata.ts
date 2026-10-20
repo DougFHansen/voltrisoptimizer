@@ -17,6 +17,6 @@ export const metadata: Metadata = generateMetadata({
     "portfolio",
     "institutional website"
   ],
-  url: '/criar-site',
+  url: '/create-website',
   image: 'https://www.voltrisoptimizer.com/logo.png'
 }); 
