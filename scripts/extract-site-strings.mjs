@@ -30,7 +30,10 @@ const COMPONENTS_DIR = path.join(REPO, 'components');
 // harvested, so login/dashboard text stayed in English for every locale. Their
 // dictionaries are served to the DOM translator (SiteTextTranslator) keyed by the
 // exact English source, so harvesting+translating them is all that's required.
-const APP_SURFACES = ['app/dashboard', 'app/auth', 'app/context', 'app/components', 'app/[locale]/login', 'app/hooks'].map((p) => path.join(REPO, p));
+const APP_SURFACES = ['app/dashboard', 'app/auth', 'app/context', 'app/components', 'app/[locale]/login', 'app/[locale]/reset-password', 'app/hooks', 'components/dashboard', 'components/notifications', 'components/tickets'].map((p) => path.join(REPO, p));
+// Single files outside the roots above whose string literals are rendered to the
+// user (login/auth error messages live in a pure lib module, not a component).
+const EXTRA_PROSE_FILES = ['lib/auth-safe.ts'].map((p) => path.join(REPO, p));
 const OUT_DIR = path.join(REPO, 'lib/guides-i18n');
 const STRINGS = path.join(OUT_DIR, 'strings.en.json');
 
@@ -155,7 +158,7 @@ function extractFromFile(filePath, display = false, prose = false) {
     // extras are harmless because the dictionary is an exact-match lookup.
     if (prose && (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))) {
       const t = node.text;
-      if (isProse(t) && (isSentence(t) || /^[A-Z][A-Za-z]{3,}$/.test(t))) add(set, t);
+      if (isProse(t) && (isSentence(t) || /^[A-Z][A-Za-z]{1,}$/.test(t))) add(set, t);
     }
     node.forEachChild(visit);
   }
@@ -217,6 +220,13 @@ for (const dir of APP_SURFACES) {
     for (const s of extractFromFile(f, true, true)) siteSet.add(s);
     filesScanned++;
   }
+}
+
+// 5. single user-facing lib modules (auth error messages) scanned in prose mode.
+for (const f of EXTRA_PROSE_FILES) {
+  if (!fs.existsSync(f)) continue;
+  for (const s of extractFromFile(f, true, true)) siteSet.add(s);
+  filesScanned++;
 }
 
 // ---- Union with existing guide body strings ----

@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
               .from('profiles')
               .insert({
                 id: data.user.id,
-                full_name: data.user.user_metadata?.full_name || data.user.email || 'Usuário',
+                full_name: data.user.user_metadata?.full_name || data.user.email || 'User',
                 // Idioma so entra AQUI (perfil novo). Se o cliente ja escolheu um
                 // idioma no metadata, ele vence; senao detectamos pelo
                 // Accept-Language; senao padrao. Nunca sobrescrevemos um perfil
@@ -110,12 +110,12 @@ export async function GET(request: NextRequest) {
                   .from('profiles')
                   .insert({
                     id: data.user.id,
-                    full_name: 'Usuário'
+                    full_name: 'User'
                   });
                   
                 if (minInsertError && minInsertError.code !== '23505') {
                   console.error('❌ [OAuth Callback] Erro na inserção mínima:', minInsertError);
-                  return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao criar perfil do usuário')}`);
+                  return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Could not create your profile. Please try again, or contact support.')}`);
                 } else {
                   console.log('✅ [OAuth Callback] Perfil criado (ou já existia) após inserção mínima');
                 }
@@ -136,7 +136,7 @@ export async function GET(request: NextRequest) {
             return NextResponse.redirect(`${origin}/dashboard/profile?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
           }
           
-          return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao buscar perfil do usuário')}`);
+          return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Could not load your profile. Please try again.')}`);
         }
 
         console.log('✅ [OAuth Callback] Perfil encontrado para:', data.user.id);
